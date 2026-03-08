@@ -1,0 +1,49 @@
+# Environment — NEVER commit
+.env
+.env.*
+*.env
+.env.local
+.env.*.local
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Go build artifacts
+/backend/tmp/
+/backend/daily-stoic
+/backend/*.exe
+
+# Node / React
+/frontend/node_modules/
+/frontend/build/
+/frontend/.env.local
+/frontend/.env.*.local
+
+# IDE
+.DS_Store
+.vscode/settings.json
+.idea/
+
+# Docker volumes (if mounted locally)
+postgres_data/
+
+# Any file or folder with test in its name
+*test*
+ 
+
+# sh files
+*.sh
+
+.blackboxcli/
+
+# ignore docs folder
+docs/
+
+
+# ignore all .md files except for README.md
+*.md
+!README.md
