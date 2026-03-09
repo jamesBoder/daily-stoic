@@ -89,6 +89,7 @@ func main() {
 
 	// 8. Router
 	r := gin.Default()
+	r.RedirectTrailingSlash = false
 
 	r.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{cfg.FrontendURL},

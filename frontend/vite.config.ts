@@ -6,14 +6,27 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
+    setupFiles: './src/setupTests.ts',
   },
   server: {
-    port: 3000,
+    port: 5173,
     host: true,
-    strictPort: true,
+    strictPort: false,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8082',
+        changeOrigin: true,
+        configure: (proxy) => {
+          proxy.on('proxyReq', (proxyReq) => {
+            proxyReq.removeHeader('origin')
+            proxyReq.removeHeader('referer')
+          })
+        },
+      },
+    },
   },
   preview: {
-    port: 3000,
+    port: 5173,
     host: true,
   },
   build: {

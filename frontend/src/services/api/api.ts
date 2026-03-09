@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosError, InternalAxiosRequestConfig } from 'ax
 
 
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8082';
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? '';
 const TOKEN_KEY = 'auth_token';
 
 // Create axios instance
