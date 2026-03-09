@@ -51,8 +51,9 @@ func SetupRoutes(
 		quotes.GET("/:id", quoteHandler.GetQuoteByID)
 	}
 
-	// Authors (public)
+	// Authors & Traditions (public)
 	api.GET("/authors", quoteHandler.ListAuthors)
+	api.GET("/traditions", quoteHandler.ListTraditions)
 
 	// Protected routes (require auth)
 	protected := api.Group("/")

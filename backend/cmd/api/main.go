@@ -43,6 +43,7 @@ func main() {
 	userRepo            := repository.NewUserRepository(db)
 	quoteRepo           := repository.NewQuoteRepository(db)
 	authorRepo          := repository.NewAuthorRepository(db)
+	traditionRepo       := repository.NewTraditionRepository(db)
 	favoriteRepo        := repository.NewFavoriteRepository(db)
 	historyRepo         := repository.NewHistoryRepository(db)
 	commentRepo         := repository.NewCommentRepository(db)
@@ -73,7 +74,7 @@ func main() {
 	// 7. Handlers
 	authHandler     := handlers.NewAuthHandler(userRepo, tokenSvc, emailValidSvc, emailSvc, passwordHistoryRepo)
 	oauthHandler    := handlers.NewOAuthHandler(oauthSvc)
-	quoteHandler    := handlers.NewQuoteHandler(quoteRepo, authorRepo, dailyQuoteSvc, streakSvc)
+	quoteHandler    := handlers.NewQuoteHandler(quoteRepo, authorRepo, traditionRepo, dailyQuoteSvc, streakSvc)
 	favoriteHandler := handlers.NewFavoriteHandler(favoriteSvc)
 	historyHandler  := handlers.NewHistoryHandler(historySvc)
 	commentHandler  := handlers.NewCommentHandler(commentSvc)

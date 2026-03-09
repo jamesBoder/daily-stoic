@@ -10,21 +10,24 @@ import (
 )
 
 type QuoteHandler struct {
-	quoteRepo     *repository.QuoteRepository
-	authorRepo    *repository.AuthorRepository
-	dailyQuoteSvc *services.DailyQuoteService
-	streakSvc     *services.StreakService
+	quoteRepo      *repository.QuoteRepository
+	authorRepo     *repository.AuthorRepository
+	traditionRepo  *repository.TraditionRepository
+	dailyQuoteSvc  *services.DailyQuoteService
+	streakSvc      *services.StreakService
 }
 
 func NewQuoteHandler(
 	quoteRepo *repository.QuoteRepository,
 	authorRepo *repository.AuthorRepository,
+	traditionRepo *repository.TraditionRepository,
 	dailyQuoteSvc *services.DailyQuoteService,
 	streakSvc *services.StreakService,
 ) *QuoteHandler {
 	return &QuoteHandler{
 		quoteRepo:     quoteRepo,
 		authorRepo:    authorRepo,
+		traditionRepo: traditionRepo,
 		dailyQuoteSvc: dailyQuoteSvc,
 		streakSvc:     streakSvc,
 	}
@@ -115,4 +118,14 @@ func (h *QuoteHandler) ListAuthors(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"authors": authors})
+}
+
+// GET /api/traditions
+func (h *QuoteHandler) ListTraditions(c *gin.Context) {
+	traditions, err := h.traditionRepo.GetAll()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not retrieve traditions"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"traditions": traditions})
 }
