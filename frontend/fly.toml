@@ -8,7 +8,7 @@ primary_region = 'ord'
 
 [build]
   [build.args]
-    VITE_API_URL = https://dailystoic-backend.fly.dev
+    VITE_API_URL = "https://dailystoic-backend.fly.dev"
 
 
 [http_service]
