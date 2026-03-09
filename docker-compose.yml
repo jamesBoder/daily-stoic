@@ -41,7 +41,7 @@ services:
       dockerfile: Dockerfile
       args:
         NGINX_CONF: nginx.conf
-        REACT_APP_API_URL: http://localhost
+        VITE_API_URL: http://localhost
     container_name: dailystoic-frontend
     restart: unless-stopped
     ports:
