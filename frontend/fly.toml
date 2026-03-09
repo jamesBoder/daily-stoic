@@ -1,0 +1,24 @@
+# fly.toml app configuration file generated for wordsofpraise-frontend on 2026-02-03T17:48:30-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'wordsofpraise-frontend'
+primary_region = 'ewr'
+
+[build]
+  [build.args]
+    REACT_APP_API_URL = "https://api.wordsofpraise.app"
+
+[http_service]
+  internal_port = 80
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '256mb'
+  cpus = 1
+  memory_mb = 256
