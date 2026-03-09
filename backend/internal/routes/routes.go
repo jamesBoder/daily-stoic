@@ -61,26 +61,26 @@ func SetupRoutes(
 	{
 		// Favorites
 		fav := protected.Group("favorites")
-		fav.GET("/", favoriteHandler.GetFavorites)
-		fav.POST("/", favoriteHandler.AddFavorite)
+		fav.GET("", favoriteHandler.GetFavorites)
+		fav.POST("", favoriteHandler.AddFavorite)
 		fav.DELETE("/:id", favoriteHandler.RemoveFavorite)
 
 		// History
 		hist := protected.Group("history")
-		hist.GET("/", historyHandler.GetHistory)
-		hist.DELETE("/", historyHandler.ClearHistory)
+		hist.GET("", historyHandler.GetHistory)
+		hist.DELETE("", historyHandler.ClearHistory)
 
 		// Comments
 		com := protected.Group("comments")
-		com.POST("/", commentHandler.AddOrUpdateComment)
+		com.POST("", commentHandler.AddOrUpdateComment)
 		com.GET("/quote/:id", commentHandler.GetCommentForQuote)
 		com.DELETE("/:id", commentHandler.DeleteComment)
 		com.GET("/user", commentHandler.GetUserComments)
 
 		// Profile
 		profile := protected.Group("profile")
-		profile.GET("/", profileHandler.GetProfile)
-		profile.PUT("/", profileHandler.UpdateProfile)
+		profile.GET("", profileHandler.GetProfile)
+		profile.PUT("", profileHandler.UpdateProfile)
 		profile.GET("/stats", profileHandler.GetStats)
 		profile.GET("/streak", profileHandler.GetUserStreak)
 		profile.GET("/achievements", profileHandler.GetUserAchievements)
@@ -90,8 +90,8 @@ func SetupRoutes(
 
 		// Settings
 		settings := protected.Group("settings")
-		settings.GET("/", settingsHandler.GetSettings)
-		settings.PUT("/", settingsHandler.UpdateSettings)
+		settings.GET("", settingsHandler.GetSettings)
+		settings.PUT("", settingsHandler.UpdateSettings)
 		settings.GET("/language", settingsHandler.GetLanguage)
 		settings.PUT("/language", settingsHandler.UpdateLanguage)
 	}
