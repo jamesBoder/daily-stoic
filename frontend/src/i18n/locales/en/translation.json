@@ -1,7 +1,7 @@
 {
   "app": {
-    "title": "Words of Praise",
-    "tagline": "Daily Bible Inspiration"
+    "title": "Daily Stoic",
+    "tagline": "Ancient Wisdom, Every Morning"
   },
   "nav": {
     "home": "Home",
@@ -14,17 +14,17 @@
     "signup": "Sign Up",
     "logout": "Logout"
   },
-  "dailyVerse": {
-    "title": "Today's Verse",
-    "loading": "Loading today's verse...",
-    "error": "Failed to load verse",
+  "dailyQuote": {
+    "title": "Today's Quote",
+    "loading": "Loading today's quote...",
+    "error": "Failed to load quote",
     "retry": "Retry"
   },
-  "verse": {
+  "quote": {
     "addToFavorites": "Add to Favorites",
     "removeFromFavorites": "Remove from Favorites",
     "share": "Share",
-    "copied": "Verse copied to clipboard!",
+    "copied": "Quote copied to clipboard!",
     "comment": "Add a note",
     "commentPlaceholder": "Add your personal reflection..."
   },
@@ -70,29 +70,29 @@
   "favorites": {
     "title": "My Favorites",
     "empty": "No favorites yet",
-    "emptyDescription": "Start adding verses to your favorites to see them here",
+    "emptyDescription": "Start adding quotes to your favorites to see them here",
     "remove": "Remove",
-    "viewVerse": "View Verse",
-    "verse": "verse",
-    "verses": "verses",
+    "viewQuote": "View Quote",
+    "quote": "quote",
+    "quotes": "quotes",
     "saved": "saved",
     "of": "of",
     "sortBy": "Sort by",
     "sortOptions": {
       "date": "Date Added",
       "book": "Book",
-      "reference": "Verse Reference",
-      "translation": "Translation",
-      "chapter": "Chapter",
-      "verseNumber": "Verse Number"
+      "author": "Author",
+      "source": "Source",
+      "tradition": "Tradition",
+      "date": "Date Added"
     },
     "ascending": "Asc",
     "descending": "Desc",
-    "filterPlaceholder": "Filter by keyword (verse text, reference, book, translation…)",
-    "viewDailyVerse": "View Daily Verse",
-    "shareVerse": "Share this verse",
+    "filterPlaceholder": "Filter by keyword (quote text, author, source, tradition…)",
+    "viewDailyQuote": "View Daily Quote",
+    "shareQuote": "Share this quote",
     "added": "Added",
-    "removeConfirm": "Remove this verse from favorites?",
+    "removeConfirm": "Remove this quote from favorites?",
     "removeFailed": "Failed to remove favorite",
     "clearFilter": "Clear filter",
     "noMatch": "No favorites match"
@@ -100,12 +100,12 @@
   "history": {
     "title": "History",
     "empty": "Your history is empty.",
-    "emptyDescription": "Your verse reading history will appear here",
+    "emptyDescription": "Your quote reading history will appear here",
     "clear": "Clear History",
     "clearing": "Clearing...",
     "clearConfirm": "Are you sure you want to clear your history?",
     "clearFailed": "Failed to clear history",
-    "shareVerse": "Share this verse",
+    "shareQuote": "Share this quote",
     "viewed": "Viewed",
     "today": "Today",
     "yesterday": "Yesterday"
@@ -119,12 +119,12 @@
     "noData": "No profile data available.",
     "statistics": "Statistics",
     "totalFavorites": "Total Favorites",
-    "totalViews": "Verses Viewed",
+    "totalViews": "Quotes Viewed",
     "totalComments": "Reflections Added",
     "readingStreak": "Reading Streak",
     "days": "days",
     "yourStatistics": "Your Statistics",
-    "versesRead": "Verses Read",
+    "quotesRead": "Quotes Read",
     "favorites": "Favorites",
     "notes": "Reflections",
     "daysActive": "Days Active",
@@ -148,8 +148,8 @@
       "title": "Notifications",
       "emailNotifications": "Email Notifications",
       "emailDescription": "Receive updates via email",
-      "dailyReminder": "Daily Verse Reminder",
-      "reminderDescription": "Get reminded to read your daily verse"
+      "dailyReminder": "Daily Quote Reminder",
+      "reminderDescription": "Get reminded to read your daily quote"
     },
     "language": {
       "title": "Language",
@@ -178,33 +178,33 @@
     "saveFailed": "Failed to save settings"
   },
   "about": {
-    "title": "About Words of Praise",
-    "dedication": "Dedicated to Clairemena Jean-Pierre",
-    "description": "A modern web application for daily Bible verses with favorites, comments, and history tracking.",
+    "title": "About Daily Stoic",
+    "dedication": "Dedicated to seekers of wisdom",
+    "description": "A modern web application for daily Stoic quotes with favorites, reflections, and history tracking.",
     "mission": "Our Mission",
-    "missionText": "To provide daily spiritual inspiration through God's Word, making it accessible and meaningful for everyone.",
+    "missionText": "To provide daily philosophical inspiration through ancient wisdom, making Stoic teachings accessible and meaningful for modern life.",
     "features": "Features",
-    "feature1": "Daily inspirational Bible verses",
-    "feature2": "Save your favorite verses",
+    "feature1": "Daily inspirational Stoic quotes",
+    "feature2": "Save your favorite quotes",
     "feature3": "Add personal notes and reflections",
     "feature4": "Track your reading history",
     "feature5": "Beautiful, distraction-free reading experience",
     "back": "Back",
-    "subtitle": "Daily Inspiration Through God's Word",
-    "feature1Title": "Daily Verse",
-    "feature1Desc": "Receive a new inspirational Bible verse every day at midnight",
+    "subtitle": "Ancient Wisdom for Modern Life",
+    "feature1Title": "Daily Quote",
+    "feature1Desc": "Receive a new inspirational Stoic quote every day at midnight",
     "feature2Title": "Favorites",
-    "feature2Desc": "Save and organize your favorite verses for easy access",
+    "feature2Desc": "Save and organize your favorite quotes for easy access",
     "feature3Title": "History",
-    "feature3Desc": "Browse past daily verses using back and forward arrows right on the home screen. Sign in to access up to 30 days of verse history.",
+    "feature3Desc": "Browse past daily quotes using back and forward arrows right on the home screen. Sign in to access up to 30 days of quote history.",
     "feature4Title": "Personal Reflections",
-    "feature4Desc": "Add your own reflections and thoughts to any verse",
+    "feature4Desc": "Add your own reflections and thoughts to any quote",
     "feature5Title": "Dark Mode",
     "feature5Desc": "Comfortable reading experience day or night",
     "feature6Title": "Mobile Friendly",
     "feature6Desc": "Beautiful and responsive on all devices",
     "ctaTitle": "Unlock the Full Experience",
-    "ctaDesc": "Create a free account to save your favorite verses, browse past daily verses, add personal reflections, and more. Sign up takes less than a minute!",
+    "ctaDesc": "Create a free account to save your favorite quotes, browse past daily quotes, add personal reflections, and more. Sign up takes less than a minute!",
     "createAccount": "Create Free Account",
     "alreadyHaveAccount": "Already have an account? Sign In",
     "comingSoon": "Coming Soon",
@@ -219,7 +219,7 @@
     "followInstagram": "Follow us on Instagram:",
     "instagramUpdate": "📱 Stay updated with daily inspiration and app updates",
     "inLovingMemory": "In Loving Memory",
-    "devotedChild": "A devoted child of God"
+    "devotedChild": "A seeker of wisdom"
   },
   "account": {
     "setPassword": "Set Password",
@@ -267,7 +267,7 @@
     "edit": "Edit",
     "delete": "Delete",
     "lastUpdated": "Last updated:",
-    "placeholder": "Add your personal thoughts, reflections, or prayers about this verse...",
+    "placeholder": "Add your personal thoughts, reflections, or insights about this quote...",
     "characters": "characters",
     "saveNote": "Save Reflection",
     "deleteConfirm": "Are you sure you want to delete this comment?",

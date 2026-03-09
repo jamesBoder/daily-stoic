@@ -1,7 +1,7 @@
 // init types for history
 
 // imports
-import { Verse } from "./verse";
+import { Quote } from "./quote";
 
 export interface HistoryResponse {
     history: HistoryEntry[];
@@ -16,8 +16,8 @@ export interface HistoryResponse {
 export interface HistoryEntry {
     id: string;
     user_id: number;
-    verse_id: number;
-    verse: Verse;
+    quote_id: number;
+    quote: Quote;
     viewed_at: string;
     created_at: string;
 }
@@ -27,7 +27,7 @@ export interface ClearHistoryResponse {
 }
 
 export interface AddHistoryEntryRequest {
-    verse_id: number;
+    quote_id: number;
 }
 
 export interface AddHistoryEntryResponse {

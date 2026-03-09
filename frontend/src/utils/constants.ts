@@ -15,10 +15,14 @@ export const API_ENDPOINTS = {
   RESET_PASSWORD: '/api/auth/reset-password',
   PROFILE_RESEND_VERIFICATION: '/api/profile/resend-verification',
   
-  // Verses
-  DAILY_VERSE: '/api/verses/daily',
-  VERSE_BY_REFERENCE: '/api/verses',
-  SEARCH_VERSES: '/api/verses/search',
+  // Quotes
+  DAILY_QUOTE: '/api/quotes/daily',
+  QUOTE_BY_ID: '/api/quotes',
+  SEARCH_QUOTES: '/api/quotes/search',
+  
+  // Streak and Traditions
+  STREAK: '/api/profile/streak',
+  TRADITIONS: '/api/traditions',
   
   // Favorites
   FAVORITES: '/api/favorites',

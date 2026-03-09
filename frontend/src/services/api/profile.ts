@@ -4,6 +4,7 @@
 import apiClient from './client';
 import { API_ENDPOINTS } from '../../utils/constants';
 import { UpdateUserSettingsRequest, UserProfile, UserSettingsResponse, UserStats, ChangePasswordRequest, ChangePasswordResponse } from '../../types/profile';
+import { Streak, Achievement } from '../../types/quote';
 import { showToast } from '../../utils/toast';
 
 // init GetUserProfileParams interface
@@ -174,6 +175,32 @@ export const profileService = {
             );
             return response.data;
         } catch (error: any) {
+            throw error;
+        }
+    },
+
+    // getStreak - get user's reading streak
+    getStreak: async (): Promise<Streak> => {
+        try {
+            const response = await apiClient.get<Streak>(
+                API_ENDPOINTS.STREAK
+            );
+            return response.data;
+        } catch (error: any) {
+            showToast.error('Failed to load streak');
+            throw error;
+        }
+    },
+
+    // getAchievements - get user's achievements
+    getAchievements: async (): Promise<Achievement[]> => {
+        try {
+            const response = await apiClient.get<Achievement[]>(
+                `${API_ENDPOINTS.PROFILE}/achievements`
+            );
+            return response.data;
+        } catch (error: any) {
+            showToast.error('Failed to load achievements');
             throw error;
         }
     },

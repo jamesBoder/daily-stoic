@@ -3,44 +3,35 @@ import { useNavigate } from "react-router-dom";
 import { useFavorites } from "../../hooks/useFavorites";
 import { Card } from "../../components/common/Card";
 import { Button } from "../../components/common/Button";
-import { CommentSection } from "../verse/CommentSection";
-import { VerseCardSkeleton } from "../../components/common/Skeleton";
+import { CommentSection } from "../quote/CommentSection";
 import { useTranslation } from "react-i18next";
 import { showToast } from "../../utils/toast";
+import type { Quote } from "../../types/quote";
 
-type SortField = "date" | "reference" | "book" | "translation" | "chapter" | "verseNumber";
+type SortField = "date" | "author" | "source" | "tradition";
 type SortDirection = "asc" | "desc";
 
-const SORT_FIELDS: SortField[] = ["date", "book", "reference", "translation", "chapter", "verseNumber"];
+const SORT_FIELDS: SortField[] = ["date", "author", "source", "tradition"];
 
-// ── Share helpers ────────────────────────────────────────────────────────────
-interface VerseData {
-  text?: string;
-  reference?: string;
-  version?: string;
-  translation?: string;
-}
-
-const buildShareText = (verse: VerseData): string => {
-  const version = verse.version || verse.translation;
-  return `"${verse.text}" — ${verse.reference}${version ? ` (${version})` : ""}\n\nvia Daily Stoic app`;
-};
+// ── Share helpers ─────────────────────────────────────────────────────────────
+const buildShareText = (quote: Quote): string =>
+  `"${quote.text}" — ${quote.author.name}, ${quote.source}\n\nvia Daily Stoic`;
 
 // ── Share Panel Component ─────────────────────────────────────────────────────
 interface SharePanelProps {
-  verse: VerseData;
+  quote: Quote;
   cardId: number;
   copiedId: number | null;
-  onCopy: (verse: VerseData, id: number, e: React.MouseEvent) => void;
-  onTwitter: (verse: VerseData, e: React.MouseEvent) => void;
-  onWhatsApp: (verse: VerseData, e: React.MouseEvent) => void;
-  onFacebook: (verse: VerseData, e: React.MouseEvent) => void;
-  onInstagram: (verse: VerseData, id: number, e: React.MouseEvent) => void;
-  onNativeShare: (verse: VerseData, e: React.MouseEvent) => void;
+  onCopy: (quote: Quote, id: number, e: React.MouseEvent) => void;
+  onTwitter: (quote: Quote, e: React.MouseEvent) => void;
+  onWhatsApp: (quote: Quote, e: React.MouseEvent) => void;
+  onFacebook: (quote: Quote, e: React.MouseEvent) => void;
+  onInstagram: (quote: Quote, id: number, e: React.MouseEvent) => void;
+  onNativeShare: (quote: Quote, e: React.MouseEvent) => void;
 }
 
 const SharePanel: React.FC<SharePanelProps> = ({
-  verse, cardId, copiedId,
+  quote, cardId, copiedId,
   onCopy, onTwitter, onWhatsApp, onFacebook, onInstagram, onNativeShare,
 }) => {
   const { t } = useTranslation();
@@ -54,22 +45,21 @@ const SharePanel: React.FC<SharePanelProps> = ({
 
   return (
     <div
-      className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 animate-fade-in"
+      className="mt-4 pt-4 border-t border-primary-200 animate-fade-in"
       onClick={(e) => e.stopPropagation()}
     >
-      <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">
-        {t('favorites.shareVerse')}
+      <p className="font-display text-xs tracking-widest uppercase text-primary-400 mb-3">
+        {t('favorites.shareQuote')}
       </p>
       <div className="flex items-center gap-2">
-        {/* Copy */}
         <button
-          onClick={(e) => onCopy(verse, cardId, e)}
-          aria-label="Copy verse to clipboard"
-          title="Copy verse to clipboard"
+          onClick={(e) => onCopy(quote, cardId, e)}
+          aria-label="Copy quote to clipboard"
+          title="Copy quote to clipboard"
           className={`${btnBase} ${
             isCopied
               ? "bg-green-500 text-white focus:ring-green-400"
-              : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 focus:ring-gray-400"
+              : "bg-primary-100 text-primary-700 hover:bg-primary-200 focus:ring-primary-300"
           }`}
         >
           {isCopied ? (
@@ -83,21 +73,19 @@ const SharePanel: React.FC<SharePanelProps> = ({
           )}
         </button>
 
-        {/* Twitter / X */}
         <button
-          onClick={(e) => onTwitter(verse, e)}
+          onClick={(e) => onTwitter(quote, e)}
           aria-label="Share on Twitter / X"
           title="Share on Twitter / X"
-          className={`${btnBase} bg-black text-white hover:bg-gray-800 dark:bg-gray-900 dark:hover:bg-black focus:ring-gray-600`}
+          className={`${btnBase} bg-black text-white hover:bg-gray-800 focus:ring-gray-600`}
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
           </svg>
         </button>
 
-        {/* WhatsApp */}
         <button
-          onClick={(e) => onWhatsApp(verse, e)}
+          onClick={(e) => onWhatsApp(quote, e)}
           aria-label="Share on WhatsApp"
           title="Share on WhatsApp"
           className={`${btnBase} bg-[#25D366] text-white hover:bg-[#1ebe5d] focus:ring-[#25D366]`}
@@ -107,9 +95,8 @@ const SharePanel: React.FC<SharePanelProps> = ({
           </svg>
         </button>
 
-        {/* Facebook */}
         <button
-          onClick={(e) => onFacebook(verse, e)}
+          onClick={(e) => onFacebook(quote, e)}
           aria-label="Share on Facebook"
           title="Share on Facebook"
           className={`${btnBase} bg-[#1877F2] text-white hover:bg-[#166fe5] focus:ring-[#1877F2]`}
@@ -119,10 +106,9 @@ const SharePanel: React.FC<SharePanelProps> = ({
           </svg>
         </button>
 
-        {/* Instagram */}
         <button
-          onClick={(e) => onInstagram(verse, cardId, e)}
-          aria-label="Share on Instagram (copies text, opens Instagram)"
+          onClick={(e) => onInstagram(quote, cardId, e)}
+          aria-label="Share on Instagram"
           title="Share on Instagram (copies text, opens Instagram)"
           className={`${btnBase} bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white hover:opacity-90 focus:ring-[#ee2a7b]`}
         >
@@ -131,13 +117,12 @@ const SharePanel: React.FC<SharePanelProps> = ({
           </svg>
         </button>
 
-        {/* Native Share (only if supported) */}
         {supportsNativeShare && (
           <button
-            onClick={(e) => onNativeShare(verse, e)}
+            onClick={(e) => onNativeShare(quote, e)}
             aria-label="Share via device share sheet"
             title="Share via device share sheet"
-            className={`${btnBase} bg-primary-600 text-white hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 focus:ring-primary-400`}
+            className={`${btnBase} bg-accent text-white hover:bg-accent-dark focus:ring-accent`}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
@@ -149,34 +134,42 @@ const SharePanel: React.FC<SharePanelProps> = ({
   );
 };
 
+// ── Loading Skeleton ───────────────────────────────────────────────────────────
+const FavoritesListSkeleton: React.FC = () => (
+  <div className="max-w-4xl mx-auto px-4 py-8 space-y-4">
+    {Array.from({ length: 3 }).map((_, i) => (
+      <div key={i} className="bg-surface-card rounded-card border border-primary-100 px-6 py-5 animate-pulse">
+        <div className="h-4 bg-primary-100 rounded w-3/4 mb-3" />
+        <div className="h-4 bg-primary-100 rounded w-1/2 mb-2" />
+        <div className="h-3 bg-primary-100 rounded w-1/4" />
+      </div>
+    ))}
+  </div>
+);
+
 // ── Main Component ────────────────────────────────────────────────────────────
 export const FavoritesList: React.FC = () => {
   const { t } = useTranslation();
 
   const SORT_OPTIONS: { value: SortField; label: string }[] = [
-    { value: "date",        label: t('favorites.sortOptions.date')        },
-    { value: "book",        label: t('favorites.sortOptions.book')        },
-    { value: "reference",   label: t('favorites.sortOptions.reference')   },
-    { value: "translation", label: t('favorites.sortOptions.translation') },
-    { value: "chapter",     label: t('favorites.sortOptions.chapter')     },
-    { value: "verseNumber", label: t('favorites.sortOptions.verseNumber') },
+    { value: "date",      label: t('favorites.sortOptions.date')      },
+    { value: "author",    label: t('favorites.sortOptions.author')    },
+    { value: "source",    label: t('favorites.sortOptions.source')    },
+    { value: "tradition", label: t('favorites.sortOptions.tradition') },
   ];
   const { favorites, isLoading, error, removeFavorite } = useFavorites();
   const navigate = useNavigate();
   const [removingId, setRemovingId] = React.useState<number | null>(null);
   const [confirmingRemoveId, setConfirmingRemoveId] = React.useState<number | null>(null);
 
-  // Card selection state
   const [selectedId, setSelectedId] = React.useState<number | null>(null);
   const [copiedId, setCopiedId]     = React.useState<number | null>(null);
   const containerRef                = useRef<HTMLDivElement>(null);
 
-  // Sort & filter state
   const [sortField, setSortField]         = React.useState<SortField>("date");
   const [sortDirection, setSortDirection] = React.useState<SortDirection>("desc");
   const [keyword, setKeyword]             = React.useState<string>("");
 
-  // Click-outside to deselect (supports both mouse and touch for mobile)
   useEffect(() => {
     const handleOutside = (e: MouseEvent | TouchEvent) => {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
@@ -195,94 +188,79 @@ export const FavoritesList: React.FC = () => {
     setSelectedId((prev) => (prev === id ? null : id));
   };
 
-  // ── Share handlers ──────────────────────────────────────────────────────────
-  const handleCopy = async (verse: VerseData, id: number, e: React.MouseEvent) => {
+  const handleCopy = async (quote: Quote, id: number, e: React.MouseEvent) => {
     e.stopPropagation();
     try {
-      await navigator.clipboard.writeText(buildShareText(verse));
+      await navigator.clipboard.writeText(buildShareText(quote));
       setCopiedId(id);
       setTimeout(() => setCopiedId(null), 2000);
     } catch {}
   };
 
-  const handleTwitterShare = (verse: VerseData, e: React.MouseEvent) => {
+  const handleTwitterShare = (quote: Quote, e: React.MouseEvent) => {
     e.stopPropagation();
-    const text = encodeURIComponent(buildShareText(verse));
-    window.open(`https://twitter.com/intent/tweet?text=${text}`, "_blank", "noopener,noreferrer");
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(buildShareText(quote))}`, "_blank", "noopener,noreferrer");
   };
 
-  const handleWhatsAppShare = (verse: VerseData, e: React.MouseEvent) => {
+  const handleWhatsAppShare = (quote: Quote, e: React.MouseEvent) => {
     e.stopPropagation();
-    const text = encodeURIComponent(buildShareText(verse));
-    window.open(`https://wa.me/?text=${text}`, "_blank", "noopener,noreferrer");
+    window.open(`https://wa.me/?text=${encodeURIComponent(buildShareText(quote))}`, "_blank", "noopener,noreferrer");
   };
 
-  const handleFacebookShare = (verse: VerseData, e: React.MouseEvent) => {
+  const handleFacebookShare = (quote: Quote, e: React.MouseEvent) => {
     e.stopPropagation();
-    const text = encodeURIComponent(buildShareText(verse));
-    window.open(`https://www.facebook.com/sharer/sharer.php?quote=${text}`, "_blank", "noopener,noreferrer");
+    window.open(`https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(buildShareText(quote))}`, "_blank", "noopener,noreferrer");
   };
 
-  const handleInstagramShare = async (verse: VerseData, id: number, e: React.MouseEvent) => {
+  const handleInstagramShare = async (quote: Quote, id: number, e: React.MouseEvent) => {
     e.stopPropagation();
-    // Instagram has no public URL share API — copy text then open Instagram
     try {
-      await navigator.clipboard.writeText(buildShareText(verse));
+      await navigator.clipboard.writeText(buildShareText(quote));
       setCopiedId(id);
       setTimeout(() => setCopiedId(null), 2000);
     } catch {}
     window.open("https://www.instagram.com/", "_blank", "noopener,noreferrer");
   };
 
-  const handleNativeShare = async (verse: VerseData, e: React.MouseEvent) => {
+  const handleNativeShare = async (quote: Quote, e: React.MouseEvent) => {
     e.stopPropagation();
     try {
-      await navigator.share({ title: "Bible Verse", text: buildShareText(verse) });
+      await navigator.share({ title: "Stoic Quote", text: buildShareText(quote) });
     } catch {}
   };
 
   const toggleDirection = () =>
     setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"));
 
-  // Derived: filter then sort
   const sortedFavorites = useMemo(() => {
     const kw = keyword.trim().toLowerCase();
-
-    // 1. Filter by keyword
     const filtered = kw
       ? favorites.filter((fav) => {
-          const v = fav.verse;
+          const q = fav.quote;
           return (
-            v?.text?.toLowerCase().includes(kw) ||
-            v?.reference?.toLowerCase().includes(kw) ||
-            v?.book?.toLowerCase().includes(kw) ||
-            v?.version?.toLowerCase().includes(kw) ||
-            v?.translation?.toLowerCase().includes(kw)
+            q?.text?.toLowerCase().includes(kw) ||
+            q?.author?.name?.toLowerCase().includes(kw) ||
+            q?.source?.toLowerCase().includes(kw) ||
+            q?.tradition?.name?.toLowerCase().includes(kw) ||
+            q?.themes?.some(theme => theme.toLowerCase().includes(kw))
           );
         })
       : favorites;
 
-    // 2. Sort
     return [...filtered].sort((a, b) => {
       let cmp = 0;
       switch (sortField) {
         case "date":
           cmp = new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
           break;
-        case "reference":
-          cmp = (a.verse?.reference ?? "").localeCompare(b.verse?.reference ?? "");
+        case "author":
+          cmp = (a.quote?.author?.name ?? "").localeCompare(b.quote?.author?.name ?? "");
           break;
-        case "book":
-          cmp = (a.verse?.book ?? "").localeCompare(b.verse?.book ?? "");
+        case "source":
+          cmp = (a.quote?.source ?? "").localeCompare(b.quote?.source ?? "");
           break;
-        case "translation":
-          cmp = (a.verse?.version ?? "").localeCompare(b.verse?.version ?? "");
-          break;
-        case "chapter":
-          cmp = (a.verse?.chapter ?? 0) - (b.verse?.chapter ?? 0);
-          break;
-        case "verseNumber":
-          cmp = (a.verse?.verse ?? 0) - (b.verse?.verse ?? 0);
+        case "tradition":
+          cmp = (a.quote?.tradition?.name ?? "").localeCompare(b.quote?.tradition?.name ?? "");
           break;
       }
       return sortDirection === "asc" ? cmp : -cmp;
@@ -294,284 +272,215 @@ export const FavoritesList: React.FC = () => {
     setRemovingId(favoriteId);
     try {
       await removeFavorite(favoriteId);
-    } catch (err) {
+    } catch {
       showToast.error(t('favorites.removeFailed'));
     } finally {
       setRemovingId(null);
     }
   };
 
-  if (isLoading) {
-    return <VerseCardSkeleton />;
-  }
+  if (isLoading) return <FavoritesListSkeleton />;
 
   if (error) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-          <p className="text-red-700">{error}</p>
+        <div className="bg-red-50 border border-red-200 rounded-card p-6 text-center">
+          <p className="font-sans text-sm text-red-700">{error}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      {/* Header row: title left, sort controls right */}
-      <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
-        {/* Left: title + count */}
-        <div>
-          <h1 className="text-4xl font-display font-bold text-primary-600 dark:text-primary-400 mb-1 transition-all duration-300 hover:brightness-125 hover:drop-shadow-[0_0_8px_rgba(79,70,229,0.3)] dark:hover:drop-shadow-[0_0_8px_rgba(129,140,248,0.3)] cursor-default">
-            {t('favorites.title')}
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400 text-sm">
-            {keyword.trim()
-              ? `${sortedFavorites.length} ${t('favorites.of')} ${favorites.length} ${favorites.length === 1 ? t('favorites.verse') : t('favorites.verses')}`
-              : `${favorites.length} ${favorites.length === 1 ? t('favorites.verse') : t('favorites.verses')} ${t('favorites.saved')}`}
-          </p>
-        </div>
-
-        {/* Right: sort controls */}
-        <div className="flex items-center gap-2 flex-shrink-0">
-          <label
-            htmlFor="sort-field"
-            className="text-sm font-medium text-gray-600 dark:text-gray-400 whitespace-nowrap"
-          >
-            {t('favorites.sortBy')}:
-          </label>
-          <select
-            id="sort-field"
-            value={sortField}
-            onChange={(e) => setSortField(e.target.value as SortField)}
-            className="text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 cursor-pointer"
-          >
-            {SORT_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-
-          {/* Asc / Desc toggle */}
-          <button
-            onClick={toggleDirection}
-            title={sortDirection === "asc" ? t('favorites.ascending') : t('favorites.descending')}
-            className="flex items-center gap-1 px-3 py-2 text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
-          >
-            {sortDirection === "asc" ? (
-              <>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9M3 12h5m8 0l4-4m0 0l4 4m-4-4v12" />
-                </svg>
-                <span>{t('favorites.ascending')}</span>
-              </>
-            ) : (
-              <>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9M3 12h5m8 8l4-4m0 0l4 4m-4-4V8" />
-                </svg>
-                <span>{t('favorites.descending')}</span>
-              </>
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Keyword filter input */}
-      <div className="mb-6 relative">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </div>
-        <input
-          type="text"
-          value={keyword}
-          onChange={(e) => setKeyword(e.target.value)}
-          placeholder={t('favorites.filterPlaceholder')}
-          className="w-full pl-9 pr-9 py-2 text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-shadow duration-200"
-        />
-        {keyword && (
-          <button
-            onClick={() => setKeyword("")}
-            className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
-            title="Clear filter"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        )}
-      </div>
-
-      {favorites.length === 0 ? (
-        <Card>
-          <div className="text-center py-12">
-            <svg
-              className="w-16 h-16 text-gray-400 dark:text-gray-600 mx-auto mb-4 animate-float"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              />
-            </svg>
-            <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
-              {t('favorites.empty')}
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
-              {t('favorites.emptyDescription')}
+    <main className="min-h-screen bg-surface-base py-16 px-4">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="mb-8 flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="font-display text-xs tracking-widest uppercase text-primary-400 mb-1">Archive</p>
+            <h1 className="font-display text-2xl text-primary-800">{t('favorites.title')}</h1>
+            <p className="font-sans text-sm text-primary-400 mt-1">
+              {keyword.trim()
+                ? `${sortedFavorites.length} ${t('favorites.of')} ${favorites.length} ${favorites.length === 1 ? t('favorites.quote') : t('favorites.quotes')}`
+                : `${favorites.length} ${favorites.length === 1 ? t('favorites.quote') : t('favorites.quotes')} ${t('favorites.saved')}`}
             </p>
-            <Button
-              onClick={() => navigate("/daily")}
-              variant="primary"
-            >
-              {t('favorites.viewDailyVerse')}
-            </Button>
           </div>
-        </Card>
-      ) : sortedFavorites.length === 0 ? (
-        <Card>
-          <div className="text-center py-12">
-            <svg
-              className="w-12 h-12 text-gray-400 dark:text-gray-600 mx-auto mb-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <label htmlFor="sort-field" className="font-sans text-sm text-primary-500 whitespace-nowrap">
+              {t('favorites.sortBy')}:
+            </label>
+            <select
+              id="sort-field"
+              value={sortField}
+              onChange={(e) => setSortField(e.target.value as SortField)}
+              className="font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent/40 cursor-pointer"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <p className="text-gray-600 dark:text-gray-400">
-              {t('favorites.noMatch')} <span className="font-medium">"{keyword}"</span>
-            </p>
+              {SORT_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
+              ))}
+            </select>
+
             <button
-              onClick={() => setKeyword("")}
-              className="mt-3 text-sm text-primary-600 dark:text-primary-400 hover:underline"
+              onClick={toggleDirection}
+              title={sortDirection === "asc" ? t('favorites.ascending') : t('favorites.descending')}
+              className="flex items-center gap-1 px-3 py-2 font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-600 hover:bg-surface-elevated transition-colors focus:outline-none focus:ring-2 focus:ring-accent/40"
             >
-              {t('favorites.clearFilter')}
+              {sortDirection === "asc" ? (
+                <>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9M3 12h5m8 0l4-4m0 0l4 4m-4-4v12" />
+                  </svg>
+                  <span>{t('favorites.ascending')}</span>
+                </>
+              ) : (
+                <>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9M3 12h5m8 8l4-4m0 0l4 4m-4-4V8" />
+                  </svg>
+                  <span>{t('favorites.descending')}</span>
+                </>
+              )}
             </button>
           </div>
-        </Card>
-      ) : (
-        <div className="space-y-4" ref={containerRef}>
-          {sortedFavorites.map((favorite, index) => {
-            const isSelected = selectedId === favorite.id;
-            const isAnySelected = selectedId !== null;
-            return (
-              <div
-                key={favorite.id}
-                onClick={() => handleCardClick(favorite.id)}
-                className={`
-                  cursor-pointer rounded-lg transition-all duration-300 ease-out
-                  ${isSelected
-                    ? "scale-[1.02] z-10 relative"
-                    : isAnySelected
-                    ? "opacity-60 scale-100"
-                    : "scale-100 opacity-100 hover:-translate-y-1 hover:shadow-xl"
-                  }
-                  ${index < 10 ? "opacity-0 animate-fade-in" : ""}
-                `}
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                <Card
-                  className={`transition-all duration-300 ease-out ${
-                    isSelected ? "card-selected-glow" : "shadow-lg"
-                  }`}
-                >
-                  {/* Verse content — always visible */}
-                  <div className="mb-3">
-                    <p className="text-lg text-gray-800 dark:text-gray-200 font-serif leading-relaxed mb-3">
-                      {favorite.verse?.text}
-                    </p>
-                    <p className="text-lg font-display font-semibold text-primary-700 dark:text-primary-400 transition-all duration-300 hover:brightness-125 hover:drop-shadow-[0_0_8px_rgba(79,70,229,0.3)] dark:hover:drop-shadow-[0_0_8px_rgba(129,140,248,0.3)] cursor-default">
-                      {favorite.verse?.reference}
-                    </p>
-                    {favorite.verse?.version && (
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                        {favorite.verse.version}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Date — always visible */}
-                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
-                    {t('favorites.added')} {new Date(favorite.created_at).toLocaleDateString()}
-                  </p>
-
-                  {/* Expanded content — only visible when card is selected */}
-                  {isSelected && (
-                    <>
-                      {/* Share Panel */}
-                      {favorite.verse && (
-                        <SharePanel
-                          verse={favorite.verse}
-                          cardId={favorite.id}
-                          copiedId={copiedId}
-                          onCopy={handleCopy}
-                          onTwitter={handleTwitterShare}
-                          onWhatsApp={handleWhatsAppShare}
-                          onFacebook={handleFacebookShare}
-                          onInstagram={handleInstagramShare}
-                          onNativeShare={handleNativeShare}
-                        />
-                      )}
-
-                      {/* Remove button */}
-                      <div
-                        className="flex justify-end items-center gap-2 mt-3 pt-3 border-t border-gray-200 dark:border-gray-700"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        {confirmingRemoveId === favorite.id ? (
-                          <>
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                              {t('favorites.removeConfirm')}
-                            </span>
-                            <Button
-                              onClick={() => handleRemove(favorite.id)}
-                              variant="danger"
-                              isLoading={removingId === favorite.id}
-                              className="text-sm"
-                            >
-                              {t('common.confirm')}
-                            </Button>
-                            <Button
-                              onClick={() => setConfirmingRemoveId(null)}
-                              variant="secondary"
-                              className="text-sm"
-                            >
-                              {t('common.cancel')}
-                            </Button>
-                          </>
-                        ) : (
-                          <Button
-                            onClick={() => setConfirmingRemoveId(favorite.id)}
-                            variant="danger"
-                            className="text-sm"
-                          >
-                            {t('favorites.remove')}
-                          </Button>
-                        )}
-                      </div>
-
-                      {/* Comment Section (Notes) */}
-                      <div onClick={(e) => e.stopPropagation()}>
-                        <CommentSection
-                          verseId={favorite.verse_id}
-                          verseReference={favorite.verse?.reference || ""}
-                        />
-                      </div>
-                    </>
-                  )}
-                </Card>
-              </div>
-            );
-          })}
         </div>
-      )}
-    </div>
+
+        {/* Keyword filter */}
+        <div className="mb-6 relative">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg className="w-4 h-4 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            type="text"
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+            placeholder={t('favorites.filterPlaceholder')}
+            className="w-full pl-9 pr-9 py-2 font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-800 placeholder-primary-300 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-shadow"
+          />
+          {keyword && (
+            <button
+              onClick={() => setKeyword("")}
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-primary-400 hover:text-primary-600"
+              title="Clear filter"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
+        </div>
+
+        {/* Empty state */}
+        {favorites.length === 0 ? (
+          <Card>
+            <div className="text-center py-12">
+              <svg className="w-12 h-12 text-primary-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              <h2 className="font-display text-lg text-primary-700 mb-2">{t('favorites.empty')}</h2>
+              <p className="font-sans text-sm text-primary-400 mb-6">{t('favorites.emptyDescription')}</p>
+              <Button onClick={() => navigate("/")} variant="primary">
+                {t('favorites.viewDailyQuote')}
+              </Button>
+            </div>
+          </Card>
+        ) : sortedFavorites.length === 0 ? (
+          <Card>
+            <div className="text-center py-12">
+              <p className="font-sans text-sm text-primary-500">
+                {t('favorites.noMatch')} <span className="font-medium">"{keyword}"</span>
+              </p>
+              <button onClick={() => setKeyword("")} className="mt-3 font-sans text-sm text-accent hover:underline">
+                {t('favorites.clearFilter')}
+              </button>
+            </div>
+          </Card>
+        ) : (
+          <div className="space-y-4" ref={containerRef}>
+            {sortedFavorites.map((favorite, index) => {
+              const isSelected = selectedId === favorite.id;
+              const isAnySelected = selectedId !== null;
+              return (
+                <div
+                  key={favorite.id}
+                  onClick={() => handleCardClick(favorite.id)}
+                  className={`
+                    cursor-pointer rounded-card transition-all duration-300 ease-out
+                    ${isSelected ? "scale-[1.01] z-10 relative" : isAnySelected ? "opacity-60" : "hover:-translate-y-0.5 hover:shadow-elevated"}
+                    ${index < 10 ? "opacity-0 animate-fade-in" : ""}
+                  `}
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <Card className={`transition-all duration-300 ${isSelected ? "shadow-elevated" : "shadow-card"}`}>
+                    <div className="mb-3">
+                      <p className="font-serif text-base text-primary-800 leading-relaxed mb-3">
+                        &ldquo;{favorite.quote?.text}&rdquo;
+                      </p>
+                      <p className="font-display text-xs tracking-widest uppercase text-primary-600">
+                        {favorite.quote?.author?.name}
+                      </p>
+                      {favorite.quote?.source && (
+                        <p className="font-sans text-xs italic text-primary-400 mt-0.5">
+                          {favorite.quote.source}
+                        </p>
+                      )}
+                    </div>
+
+                    <p className="font-sans text-xs text-primary-400 mt-2">
+                      {t('favorites.added')} {new Date(favorite.created_at).toLocaleDateString()}
+                    </p>
+
+                    {isSelected && (
+                      <>
+                        {favorite.quote && (
+                          <SharePanel
+                            quote={favorite.quote}
+                            cardId={favorite.id}
+                            copiedId={copiedId}
+                            onCopy={handleCopy}
+                            onTwitter={handleTwitterShare}
+                            onWhatsApp={handleWhatsAppShare}
+                            onFacebook={handleFacebookShare}
+                            onInstagram={handleInstagramShare}
+                            onNativeShare={handleNativeShare}
+                          />
+                        )}
+
+                        <div
+                          className="flex justify-end items-center gap-2 mt-3 pt-3 border-t border-primary-200"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {confirmingRemoveId === favorite.id ? (
+                            <>
+                              <span className="font-sans text-sm text-primary-500">{t('favorites.removeConfirm')}</span>
+                              <Button onClick={() => handleRemove(favorite.id)} variant="danger" isLoading={removingId === favorite.id} className="text-sm">
+                                {t('common.confirm')}
+                              </Button>
+                              <Button onClick={() => setConfirmingRemoveId(null)} variant="secondary" className="text-sm">
+                                {t('common.cancel')}
+                              </Button>
+                            </>
+                          ) : (
+                            <Button onClick={() => setConfirmingRemoveId(favorite.id)} variant="danger" className="text-sm">
+                              {t('favorites.remove')}
+                            </Button>
+                          )}
+                        </div>
+
+                        <div onClick={(e) => e.stopPropagation()}>
+                          <CommentSection quoteId={favorite.quote_id} />
+                        </div>
+                      </>
+                    )}
+                  </Card>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </main>
   );
 };

@@ -1,4 +1,5 @@
-// Theme Context to manage gloabal theme state and toggle between light and dark modes
+// Theme Context to manage global theme state and toggle between light and dark modes
+// Updated for Stoic visual identity with warm stone/parchment palette
 
 // imports
 import React from "react";
@@ -8,6 +9,7 @@ import { useState, useEffect, ReactNode } from "react";
 export interface ThemeContextType {
   isDarkMode: boolean;
   toggleTheme: () => void;
+  theme: 'light' | 'dark';
 }
 
 // export ThemeContext
@@ -50,8 +52,10 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     });
   };
 
+  const theme = isDarkMode ? 'dark' : 'light';
+
   return (
-    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+    <ThemeContext.Provider value={{ isDarkMode, toggleTheme, theme }}>
       {children}
     </ThemeContext.Provider>
   );

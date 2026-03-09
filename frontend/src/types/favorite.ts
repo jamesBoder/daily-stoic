@@ -1,12 +1,12 @@
 // init interfaces for favorites 
-import { Verse } from "./verse";
+import { Quote } from "./quote";
 
 
 export interface Favorite {
     id: number;
     user_id: number;
-    verse_id: number;
-    verse?: Verse;
+    quote_id: number;
+    quote?: Quote;
     created_at: string;
     updated_at: string;
     user?: {
@@ -28,7 +28,7 @@ export interface FavoritesResponse {
     }
 
 export interface AddFavoriteRequest {
-    verse_id: number;
+    quote_id: number;
 }
 
 export interface AddFavoriteResponse {

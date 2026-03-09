@@ -1,42 +1,114 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
-  darkMode: "class",
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
         primary: {
-          50: "#f0f9ff",
-          100: "#e0f2fe",
-          200: "#bae6fd",
-          300: "#7dd3fc",
-          400: "#38bdf8",
-          500: "#0ea5e9",
-          600: "#0284c7",
-          700: "#0369a1",
-          800: "#075985",
-          900: "#0c4a6e",
+          50:  '#f5f5f0',  // parchment white — page backgrounds
+          100: '#e8e6df',  // card surfaces, input backgrounds
+          200: '#d4d0c4',  // borders, dividers
+          300: '#b8b2a0',  // disabled text, placeholders
+          400: '#9c9480',  // secondary labels
+          500: '#7d7560',  // muted olive-stone — primary UI text
+          600: '#635d4c',  // navigation, metadata
+          700: '#4d4839',  // body text on light surfaces
+          800: '#38342a',  // headings, strong emphasis
+          900: '#26231c',  // near-black — quote text, max contrast
         },
-        dark: {
-          bg: {
-            primary: "#1a1a1a",
-            secondary: "#2d2d2d",
-            tertiary: "#3d3d3d",
-          },
-          text: {
-            primary: "#e5e5e5",
-            secondary: "#a3a3a3",
-            tertiary: "#737373",
-          },
-          border: "#404040",
+        accent: {
+          DEFAULT: '#8b7355',  // warm bronze — CTAs, active states, streak flame
+          light:   '#c4a882',  // hover states, badges
+          dark:    '#5c4a2a',  // pressed states, focus rings
+        },
+        surface: {
+          base:    '#f2f0ea',  // app-wide background
+          card:    '#ece9e1',  // quote card, modals
+          elevated:'#e6e3da',  // hover card, dropdown menus
+        },
+        // Semantic
+        success: '#5a7a5a',   // streak active, confirmation
+        warning: '#a07840',   // approaching gate, soft alerts
+        danger:  '#8a4a3a',   // errors, destructive actions
+      },
+
+      fontFamily: {
+        serif:   ['"Cormorant Garamond"', 'Georgia', 'Cambria', 'serif'],
+        display: ['"Cinzel"', '"Trajan Pro"', 'Georgia', 'serif'],
+        sans:    ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+        mono:    ['"JetBrains Mono"', 'monospace'],
+      },
+
+      fontSize: {
+        // Quote-specific scale — generous for readability and presence
+        'quote-sm':  ['1.125rem', { lineHeight: '1.85', letterSpacing: '0.01em' }],
+        'quote-md':  ['1.375rem', { lineHeight: '1.8',  letterSpacing: '0.005em' }],
+        'quote-lg':  ['1.75rem',  { lineHeight: '1.7',  letterSpacing: '0' }],
+        'quote-xl':  ['2.25rem',  { lineHeight: '1.6',  letterSpacing: '-0.01em' }],
+      },
+
+      borderRadius: {
+        'stone': '2px',   // near-square — classical, not bubbly
+        'card':  '6px',
+        'modal': '8px',
+      },
+
+      boxShadow: {
+        'card':    '0 1px 4px rgba(38,35,28,0.08), 0 4px 16px rgba(38,35,28,0.06)',
+        'modal':   '0 8px 48px rgba(38,35,28,0.18)',
+        'elevated':'0 2px 8px rgba(38,35,28,0.10)',
+      },
+
+      keyframes: {
+        // Quote entrance — fade in with subtle upward drift
+        'quote-enter': {
+          '0%':   { opacity: '0', transform: 'translateY(12px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        // Streak flame pulse — organic, breathing
+        'flame-pulse': {
+          '0%, 100%': { transform: 'scaleY(1)',    filter: 'brightness(1)' },
+          '50%':      { transform: 'scaleY(1.08)', filter: 'brightness(1.15)' },
+        },
+        // Milestone burst — radial reveal for day-7 / day-30 modal
+        'milestone-burst': {
+          '0%':   { transform: 'scale(0.7)', opacity: '0' },
+          '60%':  { transform: 'scale(1.05)', opacity: '1' },
+          '100%': { transform: 'scale(1)',   opacity: '1' },
+        },
+        // Modal arrive — rises from below with ease
+        'modal-rise': {
+          '0%':   { transform: 'translateY(24px) scale(0.98)', opacity: '0' },
+          '100%': { transform: 'translateY(0) scale(1)',       opacity: '1' },
+        },
+        // Page shimmer — skeleton loading state
+        'shimmer': {
+          '0%':   { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+        // Reveal text — char-by-char feeling without JS (CSS mask)
+        'text-reveal': {
+          '0%':   { clipPath: 'inset(0 100% 0 0)' },
+          '100%': { clipPath: 'inset(0 0% 0 0)' },
+        },
+        // Confetti drop — milestone celebration
+        'confetti-fall': {
+          '0%':   { transform: 'translateY(-20px) rotate(0deg)', opacity: '1' },
+          '100%': { transform: 'translateY(80px) rotate(360deg)', opacity: '0' },
         },
       },
-      fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        serif: ["Merriweather", "Georgia", "serif"],
-        display: ["Playfair Display", "Georgia", "serif"],
+
+      animation: {
+        'quote-enter':     'quote-enter 0.6s cubic-bezier(0.22,1,0.36,1) forwards',
+        'flame-pulse':     'flame-pulse 2.4s ease-in-out infinite',
+        'milestone-burst': 'milestone-burst 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards',
+        'modal-rise':      'modal-rise 0.35s cubic-bezier(0.22,1,0.36,1) forwards',
+        'shimmer':         'shimmer 1.6s linear infinite',
+        'text-reveal':     'text-reveal 0.8s cubic-bezier(0.22,1,0.36,1) forwards',
+        'confetti-fall':   'confetti-fall 1.2s ease-in forwards',
       },
     },
   },
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: "class",
   plugins: [],
-};
+}

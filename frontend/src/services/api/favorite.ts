@@ -67,24 +67,24 @@ export const favoriteService = {
 },
 
   /**
- * Adds a verse to user's favorites
- * @param verseId - ID of the verse to favorite
+ * Adds a quote to user's favorites
+ * @param quoteId - ID of the quote to favorite
  * @returns Promise with success message
- * @throws Error if verse is already favorited (409) or other errors
+ * @throws Error if quote is already favorited (409) or other errors
  */
-  addFavorite: async (verseId: number) => {
+  addFavorite: async (quoteId: number) => {
     try {
         const response = await apiClient.post<AddFavoriteResponse>(
         API_ENDPOINTS.FAVORITES, 
-        { verse_id: verseId }
+        { quote_id: quoteId }
         );
         showToast.success('Added to favorites!');
         return response.data; // { message: "Favorite added successfully" }
     } catch (error: any) {
       // Correct status code for conflict
       if (error.response?.status === 409) {
-        showToast.error('This verse is already in your favorites');
-        throw new Error('This verse is already in your favorites');
+        showToast.error('This quote is already in your favorites');
+        throw new Error('This quote is already in your favorites');
       }
       showToast.error('Failed to add favorite');
       throw error;
@@ -111,14 +111,14 @@ export const favoriteService = {
   },
 
   /**
- * Checks if a verse is in user's favorites
- * @param verseId - ID of the verse to check
+ * Checks if a quote is in user's favorites
+ * @param quoteId - ID of the quote to check
  * @returns Promise<boolean> - true if favorited, false otherwise
  */
-isFavorited: async (verseId: number): Promise<boolean> => {
+isFavorited: async (quoteId: number): Promise<boolean> => {
   try {
     const response = await favoriteService.getFavorites(1, 100); // Get first 100
-    return response.favorites.some(fav => fav.verse_id === verseId);
+    return response.favorites.some(fav => fav.quote_id === quoteId);
   } catch (error) {
     console.error('Error checking if favorited:', error);
     return false;

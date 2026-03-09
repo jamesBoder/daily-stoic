@@ -4,14 +4,14 @@ import { favoriteService } from '../services/api/favorite';
 import { useAuth } from './useAuth';
 
 export const useFavorites = () => {
-  const { isGuest } = useAuth();
+  const { isGuest, isAuthenticated } = useAuth();
   const { i18n } = useTranslation();
   const lang = i18n.language;
 
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['favorites', lang],
     queryFn: () => favoriteService.getFavorites(1, 100, undefined, lang),
-    enabled: !isGuest, // Pitfall 1: skip API call entirely for guests (prevents 401)
+    enabled: isAuthenticated && !isGuest, // skip for guests and unauthenticated users (prevents 401)
     select: (response) => response.favorites,
   });
 
@@ -41,14 +41,25 @@ export const useFavorites = () => {
 
 
 
-  const isFavorited = (verseId: number): boolean => {
-    return (data ?? []).some(fav => fav.verse_id === verseId);
+  const isFavorited = (quoteId: number): boolean => {
+    return (data ?? []).some(fav => fav.quote_id === quoteId);
   };
 
 
-  const getFavoriteId = (verseId: number): number | null => {
-    const favorite = (data ?? []).find(fav => fav.verse_id === verseId);
+  const getFavoriteId = (quoteId: number): number | null => {
+    const favorite = (data ?? []).find(fav => fav.quote_id === quoteId);
     return favorite ? favorite.id : null;
+  };
+  
+  const toggleFavorite = async (quoteId: number) => {
+    if (isFavorited(quoteId)) {
+      const favoriteId = getFavoriteId(quoteId);
+      if (favoriteId) {
+        await removeMutation.mutateAsync(favoriteId);
+      }
+    } else {
+      await addMutation.mutateAsync(quoteId);
+    }
   };
 
 
@@ -57,9 +68,10 @@ export const useFavorites = () => {
     favorites: data ?? [],
     isLoading,
     error: error?.message ?? null,
-    addFavorite: (verseId: number) => addMutation.mutateAsync(verseId),
+    addFavorite: (quoteId: number) => addMutation.mutateAsync(quoteId),
     removeFavorite: (favoriteId: number) => removeMutation.mutateAsync(favoriteId),
     isFavorited,
+    toggleFavorite,
     getFavoriteId,
     refetch,
     // Bonus: individual loading states

@@ -4,18 +4,10 @@
 
 @layer base {
   body {
-    @apply text-gray-900;
+    @apply text-primary-700 bg-surface-base;
     font-size: 16px;
-    /* Subtle gradient background for better contrast with white verse card */
-    background: linear-gradient(
-      to bottom,
-      #f8fafc 0%,
-      #e2e8f0 50%,
-      #cbd5e1 100%
-    );
     min-height: 100vh;
-    background-attachment: fixed;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 
     /* Safe area insets for devices with notches */
     padding-top: env(safe-area-inset-top);
@@ -24,46 +16,36 @@
     padding-right: env(safe-area-inset-right);
   }
 
-  /* Dark mode gradient */
+  /* Dark mode */
   .dark body {
-    background: linear-gradient(
-      to bottom,
-      #1a1a1a 0%,
-      #0f172a 50%,
-      #1e293b 100%
-    );
+    @apply bg-primary-900 text-primary-100;
   }
 
   #root {
     min-height: 100vh;
   }
 
+  /* Typography defaults */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+  
+  .quote-text {
+    @apply font-serif;
+  }
+  
   /* Color contrast fixes for WCAG AA compliance */
-  /* Override gray-600 to be darker for better contrast (4.5:1 minimum) */
-  .text-gray-600 {
-    color: #4b5563 !important; /* gray-600 - contrast ratio 7.0:1 */
+  /* Text color utilities using Stoic palette */
+  .text-muted {
+    @apply text-primary-400 dark:text-primary-300;
   }
-
-  .dark .text-gray-600 {
-    color: #9ca3af !important; /* gray-400 in dark mode */
+  
+  .text-secondary {
+    @apply text-primary-600 dark:text-primary-200;
   }
-
-  /* Override gray-500 to use gray-700 for better contrast */
-  .text-gray-500 {
-    color: #374151 !important; /* gray-700 - contrast ratio 10.7:1 */
-  }
-
-  .dark .text-gray-500 {
-    color: #d1d5db !important; /* gray-300 in dark mode */
-  }
-
-  /* Override gray-400 to use gray-700 for better contrast */
-  .text-gray-400 {
-    color: #374151 !important; /* gray-700 - contrast ratio 10.7:1 */
-  }
-
-  .dark .text-gray-400 {
-    color: #d1d5db !important; /* gray-300 in dark mode */
+  
+  .text-tertiary {
+    @apply text-primary-500 dark:text-primary-300;
   }
 }
 
@@ -111,73 +93,86 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-primary-600 text-white px-4 py-2 rounded-lg 
-           hover:bg-primary-700 transition-colors
-           dark:bg-primary-500 dark:hover:bg-primary-600;
+    @apply bg-accent text-white px-4 py-2 rounded-stone 
+           hover:bg-accent-dark transition-all duration-200
+           shadow-card hover:shadow-modal
+           dark:bg-accent-light dark:hover:bg-accent
+           dark:text-primary-900;
   }
 
   .btn-secondary {
-    @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-lg 
-           hover:bg-gray-300 transition-colors
-           dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600;
+    @apply bg-surface-card text-primary-700 px-4 py-2 rounded-stone 
+           hover:bg-surface-elevated transition-all duration-200
+           border border-primary-200 hover:border-primary-300
+           dark:bg-primary-800 dark:text-primary-100 
+           dark:hover:bg-primary-700
+           dark:border-primary-700 dark:hover:border-primary-600;
   }
 
   .input-field {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-lg 
-           focus:ring-2 focus:ring-primary-500 focus:border-transparent
-           dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100
-           dark:focus:ring-primary-400;
+    @apply w-full px-4 py-2 border border-primary-200 rounded-stone 
+           bg-primary-100
+           focus:ring-2 focus:ring-accent focus:border-transparent
+           placeholder:text-primary-400
+           dark:bg-primary-800 dark:border-primary-700 
+           dark:text-primary-100
+           dark:focus:ring-accent-light
+           dark:placeholder:text-primary-500;
   }
 
   .card {
-    @apply bg-white rounded-lg shadow-lg p-6
-           dark:bg-gray-800 dark:shadow-xl;
+    @apply bg-surface-card rounded-card shadow-card p-6
+           border border-primary-100
+           dark:bg-primary-800 dark:shadow-xl
+           dark:border-primary-700;
   }
 
-  /* Selected card glow — matches the title/header glow aesthetic */
+  /* Selected card glow — warm bronze accent */
   .card-selected-glow {
     box-shadow:
-      0 0 0 2px #38bdf8,
-      0 0 18px 5px rgba(56, 189, 248, 0.45),
-      0 20px 40px -8px rgba(0, 0, 0, 0.2);
+      0 0 0 2px #8b7355,
+      0 0 18px 5px rgba(139, 115, 85, 0.35),
+      0 20px 40px -8px rgba(38, 35, 28, 0.15);
   }
 
   .dark .card-selected-glow {
     box-shadow:
-      0 0 0 2px #7dd3fc,
-      0 0 22px 7px rgba(125, 211, 252, 0.5),
+      0 0 0 2px #c4a882,
+      0 0 22px 7px rgba(196, 168, 130, 0.4),
       0 20px 40px -8px rgba(0, 0, 0, 0.5);
   }
 
-  /* Stats card hover glows — light mode: subtle ring + soft glow */
-  .stat-card-blue-glow,
-  .stat-card-red-glow,
-  .stat-card-green-glow,
-  .stat-card-purple-glow { transition: box-shadow 0.25s ease, transform 0.2s ease; }
+  /* Stats card hover glows — using Stoic semantic colors */
+  .stat-card-success-glow,
+  .stat-card-warning-glow,
+  .stat-card-danger-glow,
+  .stat-card-info-glow { 
+    @apply transition-all duration-200;
+  }
 
-  .stat-card-blue-glow:hover   { box-shadow: 0 0 0 2px #3b82f6, 0 0 18px 5px rgba(59, 130, 246, 0.40); transform: translateY(-2px); }
-  .stat-card-red-glow:hover    { box-shadow: 0 0 0 2px #ef4444, 0 0 18px 5px rgba(239, 68, 68, 0.40); transform: translateY(-2px); }
-  .stat-card-green-glow:hover  { box-shadow: 0 0 0 2px #22c55e, 0 0 18px 5px rgba(34, 197, 94, 0.40); transform: translateY(-2px); }
-  .stat-card-purple-glow:hover { box-shadow: 0 0 0 2px #a855f7, 0 0 18px 5px rgba(168, 85, 247, 0.40); transform: translateY(-2px); }
+  .stat-card-success-glow:hover { box-shadow: 0 0 0 2px #5a7a5a, 0 0 18px 5px rgba(90, 122, 90, 0.35); transform: translateY(-2px); }
+  .stat-card-warning-glow:hover { box-shadow: 0 0 0 2px #a07840, 0 0 18px 5px rgba(160, 120, 64, 0.35); transform: translateY(-2px); }
+  .stat-card-danger-glow:hover  { box-shadow: 0 0 0 2px #8a4a3a, 0 0 18px 5px rgba(138, 74, 58, 0.35); transform: translateY(-2px); }
+  .stat-card-info-glow:hover    { box-shadow: 0 0 0 2px #7d7560, 0 0 18px 5px rgba(125, 117, 96, 0.35); transform: translateY(-2px); }
 
-  /* Stats card hover glows — dark mode: stronger ring + wider, more vivid glow */
-  .dark .stat-card-blue-glow:hover   { box-shadow: 0 0 0 2px #60a5fa, 0 0 24px 8px rgba(96, 165, 250, 0.60); }
-  .dark .stat-card-red-glow:hover    { box-shadow: 0 0 0 2px #f87171, 0 0 24px 8px rgba(248, 113, 113, 0.60); }
-  .dark .stat-card-green-glow:hover  { box-shadow: 0 0 0 2px #4ade80, 0 0 24px 8px rgba(74, 222, 128, 0.60); }
-  .dark .stat-card-purple-glow:hover { box-shadow: 0 0 0 2px #c084fc, 0 0 24px 8px rgba(192, 132, 252, 0.60); }
+  /* Dark mode hover glows */
+  .dark .stat-card-success-glow:hover { box-shadow: 0 0 0 2px #5a7a5a, 0 0 24px 8px rgba(90, 122, 90, 0.5); }
+  .dark .stat-card-warning-glow:hover { box-shadow: 0 0 0 2px #a07840, 0 0 24px 8px rgba(160, 120, 64, 0.5); }
+  .dark .stat-card-danger-glow:hover  { box-shadow: 0 0 0 2px #8a4a3a, 0 0 24px 8px rgba(138, 74, 58, 0.5); }
+  .dark .stat-card-info-glow:hover    { box-shadow: 0 0 0 2px #7d7560, 0 0 24px 8px rgba(125, 117, 96, 0.5); }
 
-  /* Nav arrow buttons — history navigation on Daily Verse page */
+  /* Nav arrow buttons — history navigation */
   .nav-arrow-glow {
-    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    @apply transition-all duration-300;
   }
 
   .nav-arrow-glow:hover {
-    box-shadow: 0 0 0 2px #6366f1, 0 0 18px 6px rgba(79, 70, 229, 0.35);
+    box-shadow: 0 0 0 2px #8b7355, 0 0 18px 6px rgba(139, 115, 85, 0.3);
     transform: scale(1.1);
   }
 
   .dark .nav-arrow-glow:hover {
-    box-shadow: 0 0 0 2px #818cf8, 0 0 22px 8px rgba(129, 140, 248, 0.50);
+    box-shadow: 0 0 0 2px #c4a882, 0 0 22px 8px rgba(196, 168, 130, 0.45);
     transform: scale(1.1);
   }
 
@@ -186,13 +181,26 @@
   }
 
   /* Logo/Brand Text Styling */
-  .font-display {
-    letter-spacing: 0.02em;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  .brand-text {
+    font-family: Cinzel, Georgia, serif;
+    letter-spacing: 0.03em;
+    text-shadow: 0 2px 4px rgba(38, 35, 28, 0.1);
     transition: all 0.3s ease;
   }
 
-  .dark .font-display {
-    text-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+  .dark .brand-text {
+    text-shadow: 0 2px 8px rgba(196, 168, 130, 0.25);
+  }
+  
+  /* Quote styling */
+  .quote-text {
+    @apply font-serif text-quote-md text-primary-900 dark:text-primary-50;
+    line-height: 1.6;
+  }
+  
+  /* Author attribution */
+  .quote-author {
+    @apply font-display text-primary-600 dark:text-primary-300;
+    letter-spacing: 0.05em;
   }
 }

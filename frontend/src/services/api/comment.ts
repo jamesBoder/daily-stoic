@@ -25,6 +25,21 @@ export const commentService = {
     }
   },
 
+  // Get comment for specific quote
+  getCommentForQuote: async (quoteId: number): Promise<Comment | null> => {
+    try {
+      const response = await apiClient.get<{ comment: Comment }>(
+        `${API_ENDPOINTS.COMMENTS}/quote/${quoteId}`
+      );
+      return response.data.comment;
+    } catch (error: any) {
+      if (error.response?.status === 404) {
+        return null;
+      }
+      throw error;
+    }
+  },
+
   // Get comment for specific verse
   getCommentForVerse: async (verseReference: string): Promise<Comment | null> => {
     try {
