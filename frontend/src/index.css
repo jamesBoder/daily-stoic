@@ -29,6 +29,19 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
   }
+
+  /* Title lift — drop shadow so all display-font text reads clearly over the textured background */
+  .font-display {
+    text-shadow: 0 1px 3px rgba(38, 35, 28, 0.2), 0 1px 1px rgba(38, 35, 28, 0.1);
+  }
+
+  h1 {
+    text-shadow: 0 3px 10px rgba(38, 35, 28, 0.28), 0 1px 3px rgba(38, 35, 28, 0.18);
+  }
+
+  h2, h3 {
+    text-shadow: 0 2px 7px rgba(38, 35, 28, 0.24), 0 1px 2px rgba(38, 35, 28, 0.14);
+  }
   
   .quote-text {
     @apply font-serif;
@@ -50,6 +63,21 @@
 }
 
 @layer utilities {
+  /* Worn scroll texture — applied to every surface-base element so it
+     persists through bg-surface-base paint (body background-image alone
+     gets covered by child elements with their own background-color). */
+  .bg-surface-base {
+    background-image:
+      radial-gradient(ellipse 130% 110% at 50% 0%, transparent 58%, rgba(38, 35, 28, 0.055) 100%),
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 11px,
+        rgba(38, 35, 28, 0.04) 11px,
+        rgba(38, 35, 28, 0.04) 12px
+      );
+  }
+
   @keyframes fade-in {
     from {
       opacity: 0;
@@ -63,15 +91,6 @@
 
   .animate-fade-in {
     animation: fade-in 0.5s ease-out forwards;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50%       { transform: translateY(-10px); }
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
   }
 
   @media (prefers-reduced-motion: reduce) {

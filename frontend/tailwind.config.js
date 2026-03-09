@@ -21,9 +21,9 @@ module.exports = {
           dark:    '#5c4a2a',  // pressed states, focus rings
         },
         surface: {
-          base:    '#f2f0ea',  // app-wide background
-          card:    '#ece9e1',  // quote card, modals
-          elevated:'#e6e3da',  // hover card, dropdown menus
+          base:    '#eae6db',  // app-wide background — deeper parchment for worn scroll feel
+          card:    '#e4e0d5',  // quote card, modals
+          elevated:'#dedad0',  // hover card, dropdown menus
         },
         // Semantic
         success: '#5a7a5a',   // streak active, confirmation
@@ -53,9 +53,11 @@ module.exports = {
       },
 
       boxShadow: {
-        'card':    '0 1px 4px rgba(38,35,28,0.08), 0 4px 16px rgba(38,35,28,0.06)',
-        'modal':   '0 8px 48px rgba(38,35,28,0.18)',
-        'elevated':'0 2px 8px rgba(38,35,28,0.10)',
+        'card':          '0 2px 8px rgba(38,35,28,0.14), 0 8px 32px rgba(38,35,28,0.10)',
+        'card-hover':    '0 4px 16px rgba(38,35,28,0.18), 0 16px 48px rgba(38,35,28,0.14)',
+        'modal':         '0 8px 48px rgba(38,35,28,0.18)',
+        'elevated':      '0 2px 8px rgba(38,35,28,0.10)',
+        'header-scroll': '0 2px 20px rgba(38,35,28,0.14), 0 4px 12px rgba(38,35,28,0.08)',
       },
 
       keyframes: {
@@ -95,6 +97,16 @@ module.exports = {
           '0%':   { transform: 'translateY(-20px) rotate(0deg)', opacity: '1' },
           '100%': { transform: 'translateY(80px) rotate(360deg)', opacity: '0' },
         },
+        // Float — gentle perpetual lift for the quote card
+        'float': {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%':      { transform: 'translateY(-3px)' },
+        },
+        // Title glow — warm bronze breath on headlines
+        'title-glow': {
+          '0%, 100%': { textShadow: '0 0 0px rgba(139,115,85,0)' },
+          '50%':      { textShadow: '0 0 18px rgba(139,115,85,0.35), 0 0 36px rgba(139,115,85,0.15)' },
+        },
       },
 
       animation: {
@@ -105,6 +117,8 @@ module.exports = {
         'shimmer':         'shimmer 1.6s linear infinite',
         'text-reveal':     'text-reveal 0.8s cubic-bezier(0.22,1,0.36,1) forwards',
         'confetti-fall':   'confetti-fall 1.2s ease-in forwards',
+        'float':           'float 5s ease-in-out infinite',
+        'title-glow':      'title-glow 4s ease-in-out infinite',
       },
     },
   },

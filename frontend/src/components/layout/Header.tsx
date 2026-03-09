@@ -1,5 +1,6 @@
 // src/components/layout/Header.tsx
 
+import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { useStreak } from '../../hooks/useStreak'
@@ -8,13 +9,25 @@ import { UserMenu } from './UserMenu'
 export const Header = () => {
   const { isAuthenticated } = useAuth()
   const { data: streak } = useStreak()
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 6)
+    window.addEventListener('scroll', handler, { passive: true })
+    return () => window.removeEventListener('scroll', handler)
+  }, [])
 
   return (
-    <header className="sticky top-0 z-40 bg-surface-base/90 backdrop-blur-sm border-b border-primary-200">
+    <header className={`sticky top-0 z-40 bg-surface-base/90 backdrop-blur-sm border-b border-primary-200 transition-shadow duration-400 ${scrolled ? 'shadow-header-scroll' : ''}`}>
       <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="font-display text-lg text-primary-800 tracking-wide">
+        <Link
+          to="/"
+          className="font-display text-lg text-primary-800 tracking-wide transition-colors duration-300 hover:text-accent"
+          onMouseEnter={e => (e.currentTarget.style.textShadow = '0 0 10px rgba(139,115,85,0.55), 0 0 28px rgba(139,115,85,0.22)')}
+          onMouseLeave={e => (e.currentTarget.style.textShadow = '')}
+        >
           Daily Stoic
         </Link>
 
@@ -60,7 +73,7 @@ export const Header = () => {
           ) : (
             <Link
               to="/auth/login"
-              className="font-sans text-sm text-accent border border-accent/40 rounded-stone px-3 py-1.5 hover:bg-accent hover:text-white transition-colors"
+              className="font-sans text-sm text-primary-500 hover:text-primary-800 transition-colors"
             >
               Sign in
             </Link>
