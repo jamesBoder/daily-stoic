@@ -27,6 +27,9 @@ var traditionSeedData = []models.Tradition{
 	{ID: 5, Name: "Kabbalah", Slug: "kabbalah", Tier: "premium", SortOrder: 5},
 	{ID: 6, Name: "Pythagoreanism", Slug: "pythagoreanism", Tier: "premium", SortOrder: 6},
 	{ID: 7, Name: "Pre-Socratic", Slug: "pre-socratic", Tier: "premium", SortOrder: 7},
+	{ID: 8, Name: "African Philosophy", Slug: "african-philosophy", Tier: "free", SortOrder: 8},
+	{ID: 9, Name: "Renaissance Philosophy", Slug: "renaissance-philosophy", Tier: "free", SortOrder: 9},
+	{ID: 10, Name: "Transcendentalism", Slug: "transcendentalism", Tier: "free", SortOrder: 10},
 }
 
 // --- Author seed data ---
@@ -40,6 +43,14 @@ var authorSeedData = []models.Author{
 	{Slug: "musonius-rufus", Name: "Musonius Rufus", Born: "20 AD", Died: "101 AD", Nationality: "Roman", TraditionID: 1, WikidataID: "Q316696"},
 	{Slug: "cato-the-younger", Name: "Cato the Younger", Born: "95 BC", Died: "46 BC", Nationality: "Roman", TraditionID: 1, WikidataID: "Q193290"},
 	{Slug: "cleanthes", Name: "Cleanthes", Born: "330 BC", Died: "230 BC", Nationality: "Greek", TraditionID: 1, WikidataID: "Q178359"},
+	{Slug: "hierocles", Name: "Hierocles", Born: "100 AD", Died: "150 AD", Nationality: "Greek", TraditionID: 1, WikidataID: "Q314261"},
+	{Slug: "kocc-barma-fall", Name: "Kocc Barma Fall", Born: "1586", Died: "1655", Nationality: "Senegalese", TraditionID: 8, WikidataID: "Q3197285"},
+	{Slug: "cicero", Name: "Cicero", Born: "106 BC", Died: "43 BC", Nationality: "Roman", TraditionID: 1, WikidataID: "Q1541"},
+	{Slug: "montaigne", Name: "Michel de Montaigne", Born: "1533", Died: "1592", Nationality: "French", TraditionID: 9, WikidataID: "Q44267"},
+	{Slug: "francis-bacon", Name: "Francis Bacon", Born: "1561", Died: "1626", Nationality: "English", TraditionID: 9, WikidataID: "Q37388"},
+	{Slug: "spinoza", Name: "Baruch Spinoza", Born: "1632", Died: "1677", Nationality: "Dutch", TraditionID: 9, WikidataID: "Q35802"},
+	{Slug: "publius-syrus", Name: "Publius Syrus", Born: "85 BC", Died: "43 BC", Nationality: "Roman", TraditionID: 1, WikidataID: "Q216895"},
+	{Slug: "emerson", Name: "Ralph Waldo Emerson", Born: "1803", Died: "1882", Nationality: "American", TraditionID: 10, WikidataID: "Q35185"},
 }
 
 // --- Quote JSON structure ---

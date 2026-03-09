@@ -1,6 +1,8 @@
 package database
 
 import (
+	"log"
+
 	"github.com/jamesBoder/daily-stoic/internal/models"
 	"gorm.io/gorm"
 )
@@ -22,14 +24,15 @@ func RunMigrations(db *gorm.DB) error {
 		return err
 	}
 
-	// pgvector extension — required for embedding column (Phase 4+)
+	// pgvector extension + embedding column — Phase 4+ only, not available on all Postgres hosts.
+	// Log and skip if unavailable rather than crashing.
 	if err := db.Exec(`CREATE EXTENSION IF NOT EXISTS vector`).Error; err != nil {
-		return err
+		log.Printf("pgvector extension not available, skipping embedding column: %v", err)
+		return nil
 	}
 
-	// embedding column — NOT managed by GORM to avoid type conflicts with pgvector
 	if err := db.Exec(`ALTER TABLE quotes ADD COLUMN IF NOT EXISTS embedding vector(1536)`).Error; err != nil {
-		return err
+		log.Printf("Failed to add embedding column: %v", err)
 	}
 
 	return nil

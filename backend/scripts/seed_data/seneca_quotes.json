@@ -1,0 +1,740 @@
+[
+  {
+    "text": "Retire into yourself as much as you can; associate with those who are likely to improve you. Welcome those whom you yourself can improve. The process is mutual; for men learn while they teach.",
+    "source": "Letters to Lucilius, Letter VII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"service\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Reflect carefully before you make a man your friend; but when you have decided to do so, welcome him heart and soul, and speak as boldly with him as with yourself.",
+    "source": "Letters to Lucilius, Letter III",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"integrity\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "A consciousness of wrongdoing is the beginning of salvation. You have to catch yourself doing it before you can correct it.",
+    "source": "Letters to Lucilius, Letter XXVIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Cherish some man of high character and keep him ever before your eyes, living as if he were watching you, and ordering all your actions as if he beheld them.",
+    "source": "Letters to Lucilius, Letter XI",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"integrity\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Real joy is a serious thing. Do you think that anyone can despise death, open his house to poverty, keep the curb on pleasure, and meditate on the endurance of pain, without wearing an expression of great earnestness?",
+    "source": "Letters to Lucilius, Letter XXIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"equanimity\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "There is no genuine good except what a man finds in himself; it is dependent only on himself, and I beg you not to look for it elsewhere.",
+    "source": "Letters to Lucilius, Letter XXIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"inner_strength\",\"control\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Cling tooth and nail to the following rule: not to give in to adversity, not to trust prosperity, and always take full note of fortune's habit of behaving just as she pleases, treating her as if she were actually going to do everything it is in her power to do.",
+    "source": "Letters to Lucilius, Letter XXIV",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"equanimity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Rehearse death. To say this is to tell a person to rehearse his freedom. A person who has learned how to die has unlearned how to be a slave.",
+    "source": "Letters to Lucilius, Letter XXVI",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"impermanence\",\"freedom\",\"courage\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "I feel, my dear Lucilius, that I am being not only reformed, but transformed. I do not yet promise, or even trust, that there is nothing left in me that needs to be changed—but I know that change is happening.",
+    "source": "Letters to Lucilius, Letter VI",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"wisdom\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "God is near you, he is with you, he is within you. A holy spirit dwells within us, one who marks our good and bad deeds and is our guardian.",
+    "source": "Letters to Lucilius, Letter XLI",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"nature\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "What is God? The mind of the universe. What is God? All that you see and all that you do not see.",
+    "source": "Letters to Lucilius, Letter XCI",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "They are slaves. But they are also men. They are slaves. But they share the same roof as yourself. They are slaves—but also friends, humble friends. Treat your inferiors as you would be treated by your betters.",
+    "source": "Letters to Lucilius, Letter XLVII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"justice\",\"service\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "The question is not whether the man at your side is noble or slave, freeborn or freed; wherever there is a human soul there is the opportunity for kindness.",
+    "source": "Letters to Lucilius, Letter XLVII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"service\",\"justice\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Philosophy promises above all things: common sense, humanity, and fellowship. Separated from these, it is no philosophy at all but a vain show.",
+    "source": "Letters to Lucilius, Letter XVI",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"service\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Travel does not make a better man of you; it only changes the sky above your head, not the mind within. The man who is fretful and unsettled will be fretful and unsettled in every country he visits.",
+    "source": "Letters to Lucilius, Letter CIV",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"control\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Nothing, Lucilius, is ours except time. We were entrusted by nature with the ownership of this single thing, so fleeting and slippery that anyone who will can oust us from possession.",
+    "source": "Letters to Lucilius, Letter I",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"impermanence\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Lay hold of today's task, and you will depend less upon tomorrow's. While we are postponing, life speeds by.",
+    "source": "Letters to Lucilius, Letter CX",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"self_discipline\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Hasten, therefore, to make yourself such as you wish to be before you die—and as long as life remains, while you are still able. Do not defer: the future is uncertain.",
+    "source": "Letters to Lucilius, Letter XXXII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"virtue\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "No one is free who is not master of himself. Nature gave us the beginning; reason brings it to completion.",
+    "source": "Letters to Lucilius, Letter XC",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"freedom\",\"reason\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Nothing is so ruinous to good character as the habit of lounging at public shows; for then it is that vice steals subtly upon one through the avenue of pleasure.",
+    "source": "Letters to Lucilius, Letter VII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "The man who spends his time choosing one resort after another in search of peace will in every place find something to prevent his enjoying it—the fault lies within, not outside him.",
+    "source": "Letters to Lucilius, Letter XXVIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"wisdom\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "What is the good of dragging up sufferings that are over, of being unhappy now just because you were then? Every man has his burden of grief; some carry theirs with pride, others with self-reproach. We should feel neither.",
+    "source": "Letters to Lucilius, Letter LXXVIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"resilience\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "Consider how great a portion of your time was stolen by a creditor, a mistress, a patron, a client, quarrelling with your wife, punishing your slaves, rushing about the city on your social obligations. Add to this illnesses which we have brought on ourselves.",
+    "source": "On the Shortness of Life, Ch. III",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"mindfulness\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "It is not that I am brave enough to despise death; I understand only that neither life nor death holds any terror for one who has learned to think rightly about both.",
+    "source": "Letters to Lucilius, Letter LXXVII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"courage\",\"equanimity\",\"impermanence\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Let us receive with open minds all that fortune has brought—whatever happens, it happens by law. That thought is consolation enough.",
+    "source": "Letters to Lucilius, Letter CVII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"acceptance\",\"equanimity\",\"nature\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "The part of life we really live is small. For all the rest of existence is not life, but merely time.",
+    "source": "Letters to Lucilius, Letter LXXVII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"impermanence\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "As bees gather honey from flowers of every kind, so too we should gather from whatever we read, then blend it all into one wholeness; for the result will be something different from its source, better and unmistakably our own.",
+    "source": "Letters to Lucilius, Letter LXXXIV",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"reason\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "You ask: what is the proper limit to wealth? It is, first, to have what is necessary, and second, to have what is enough.",
+    "source": "Letters to Lucilius, Letter II",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"self_discipline\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Philosophy teaches us to act, not merely to speak; it exacts of every man that he shall live by his own standards, that his life shall not be out of harmony with his words, and further, that his inner life shall be of one hue.",
+    "source": "Letters to Lucilius, Letter CVIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"integrity\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Nothing is hidden so deep that it will not come to light; even if it is not reported, it reports itself.",
+    "source": "Letters to Lucilius, Letter XCVII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"integrity\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Philosophy's first promise is a feeling of fellowship, of belonging to mankind and being a member of a community.",
+    "source": "Letters to Lucilius, Letter V",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"service\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The wise man is self-sufficient. And yet he desires friends, neighbors, and associates, no matter how much he is sufficient unto himself. He is self-sufficient not because he wants to be alone, but because he is able to be alone.",
+    "source": "Letters to Lucilius, Letter IX",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"wisdom\",\"inner_strength\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "If you consider any man a friend whom you do not trust as you trust yourself, you are greatly mistaken and do not sufficiently understand what true friendship means.",
+    "source": "Letters to Lucilius, Letter III",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"integrity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Set yourself free for your own sake; gather and save the time which till lately has been forced from you, or filched away, or has merely slipped from your hands.",
+    "source": "Letters to Lucilius, Letter I",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"control\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "The greatest hindrance to living is expectancy, which depends upon tomorrow and wastes today. You dispose of what lies in the hands of Fortune; you let go of what lies in your own.",
+    "source": "Letters to Lucilius, Letter CI",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"control\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Let your studies make you genuinely agreeable, not merely learned in abstract things. And when you have learned what you ought, show it by living it.",
+    "source": "Letters to Lucilius, Letter V",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"integrity\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "Enjoy the pleasures of life in such a way as not to harm future pleasures. Moderation in all things is the truest luxury.",
+    "source": "Letters to Lucilius, Letter XII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"virtue\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "Think how many things are planned for the future, how many friendships we form, how many works we undertake—and then suddenly death cuts all this short and reminds us it was never really ours to plan.",
+    "source": "Letters to Lucilius, Letter XLIX",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"impermanence\",\"time\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Omit everything superfluous; be suspicious of what gives pleasure; gather in all the time that has hitherto been lost.",
+    "source": "Letters to Lucilius, Letter LXII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"self_discipline\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Whatever you do, do it because it is honourable, not because people will see you. Virtue seeks no witness.",
+    "source": "Letters to Lucilius, Letter LXXIX",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"integrity\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "We are united by Nature, which begot us all from the same source and for the same end. She instilled in us mutual love and made us companionable. She established fairness and justice.",
+    "source": "Letters to Lucilius, Letter XCIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"service\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "You may find the old books that tell of virtue more useful than new commentaries: the simplest precept is always the best.",
+    "source": "Letters to Lucilius, Letter XXXIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.86
+  },
+  {
+    "text": "The question has often been raised whether it is better to have moderate emotions, or none at all. Those of us in our school prefer to eliminate the emotions entirely; they can never be truly moderate once they have been allowed to grow.",
+    "source": "Letters to Lucilius, Letter CXVI",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "A good man does nothing for show. Even when alone he does the same things as he does in public. Or rather, he does more; for he is more careful when with himself.",
+    "source": "Letters to Lucilius, Letter X",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"integrity\",\"virtue\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Fortune does not change men; it only unmasks them.",
+    "source": "Letters to Lucilius, Letter CXIX",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "The first step toward health is to know what the disease is. Those who are unaware of their faults do not desire to be made better; you must catch yourself in the act before you can correct it.",
+    "source": "Letters to Lucilius, Letter XXVIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"self_discipline\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Let all your activity be directed to some object, let it have some end in view. It is not industry that makes men restless, but false impressions of things drive them mad.",
+    "source": "Letters to Lucilius, Letter II",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"reason\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "The man who follows another not only finds nothing, but is not even looking. Ask yourself at all times: am I following, or discovering?",
+    "source": "Letters to Lucilius, Letter XXXIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"reason\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "It takes the whole of life to learn how to live, and—what will perhaps make you wonder more—it takes the whole of life to learn how to die.",
+    "source": "On the Shortness of Life, Ch. VII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"impermanence\",\"time\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  },
+  {
+    "text": "It is not that we have a short time to live, but that we waste a great deal of it. Life is long enough, and a sufficiently generous amount has been given to us for the highest achievements if it were all well invested.",
+    "source": "On the Shortness of Life, Ch. I",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"self_discipline\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  },
+  {
+    "text": "No one will bring back the years; no one will restore you to yourself. Life will follow the path it began to take, and will neither reverse nor check its course. It will cause no commotion to remind you of its swiftness.",
+    "source": "On the Shortness of Life, Ch. VIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"impermanence\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Of all men they alone are at leisure who make time for philosophy; they alone really live. They are not content, like others, to be mere guardians of their own lifetime.",
+    "source": "On the Shortness of Life, Ch. XIV",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"time\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "While we are postponing, life speeds by. Nothing, Lucilius, belongs to us: time alone is ours, and even time is a thing of loan.",
+    "source": "On the Shortness of Life, Ch. IX",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"impermanence\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "The life of the philosopher extends over the whole of time. He ranges over all the years that have been and all that will be; past ages obey him; the present serves him; the future is already his.",
+    "source": "On the Shortness of Life, Ch. XV",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"time\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Turn to these occupations then with all your soul, sit with them, pay court to them; great fellowship will grow between you and them, and they will spare you from the regrets of a wasted life.",
+    "source": "On the Shortness of Life, Ch. XIV",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"time\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "Those who forget the past, neglect the present, and fear for the future have a life that is very brief and troubled. They rush from desire to desire—they never stand still.",
+    "source": "On the Shortness of Life, Ch. XVII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"mindfulness\",\"time\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Can anything be sillier than certain people—I mean those who boast of their foresight? They keep themselves very busily engaged in order that they may be able to live better; they spend life in making ready to live.",
+    "source": "On the Shortness of Life, Ch. III",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"mindfulness\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Every moment of time is being snatched from us; nothing is secure unless we possess the present. No one can take from you what you have already lived.",
+    "source": "On the Shortness of Life, Ch. X",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"mindfulness\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "All things, Paulinus, belong to other men; time alone belongs to us.",
+    "source": "On the Shortness of Life, Ch. I",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"control\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "I am collecting and saving what has been lost, scattered in different directions. I turn back, Lucilius, to myself from the shows of the crowd.",
+    "source": "On the Shortness of Life, Ch. II",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"mindfulness\",\"self_discipline\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "Those men are occupied even in their leisure—their country house, their hunting, their social calls. They carry the city with them wherever they retire to. They are never alone and never with themselves.",
+    "source": "On the Shortness of Life, Ch. XII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"mindfulness\",\"wisdom\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "Of all the passions, none is more extreme than anger: it is a frenzied disorder of the mind, no different in its nature from madness, except that it is temporary.",
+    "source": "On Anger, Book I, Ch. I",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"reason\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "The greatest remedy for anger is delay. Beg anger to grant you this at the first, not in order that it may pardon the offence, but that it may weigh it; its first onsets are heavy.",
+    "source": "On Anger, Book II, Ch. XXIX",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"equanimity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  },
+  {
+    "text": "How much better is it to heal an injury than to avenge it! Revenge does not take long; the time spent on it could have been spent on something worthy.",
+    "source": "On Anger, Book II, Ch. XXXIV",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"wisdom\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Anger is a temporary madness; and though it feels like strength, it is the very mark of weakness. The strong man endures injury in silence.",
+    "source": "On Anger, Book I, Ch. I",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"self_discipline\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Nothing is more honorable than a great man bearing misfortune calmly: just as a great fire is seen to be fed by the stiffest winds.",
+    "source": "On Anger, Book III, Ch. XXVII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"virtue\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Let us turn to the other side—to those things which can make a man calm. First, let him consider how evil and how futile anger is; second, let him think of what his own life has cost others, and how often he himself has erred.",
+    "source": "On Anger, Book III, Ch. XXXVI",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"wisdom\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The man who is angry at other people's misdeeds is himself a miserable man. What reason is there to be angry at another person's error, when you yourself commit so many?",
+    "source": "On Anger, Book III, Ch. XXVI",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"equanimity\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Reckon up the days in which you have been angry. Such days are lost days. Think of what peace you would have had if you had given all those days to good thought and good action.",
+    "source": "On Anger, Book III, Ch. VIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"mindfulness\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Do you want to know what anger does? It makes even the brave man cruel and the just man unjust. No virtue stands firm in its presence.",
+    "source": "On Anger, Book I, Ch. XVI",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "It is a proof of a great mind to bear the failures of Fortune patiently; but it is still greater proof to have thought out everything in advance and to have resolved that Fortune can do nothing to you that has not already been foreseen.",
+    "source": "Letters to Lucilius, Letter CXII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"equanimity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Poverty is not owning too little; it is wanting more than you have. Make up your mind that you are poor—and you immediately become poor in truth.",
+    "source": "Letters to Lucilius, Letter CXXIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"wisdom\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "The good of man is a virtuous soul; virtue itself is the only true good, and by possessing it you are proof against all the things that are presented to you as goods or evils by fortune.",
+    "source": "Letters to Lucilius, Letter LXXXVII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "What does this mean: to be good? It means to follow reason. What is opposed to reason? All those things which urge us on by fear, by pleasure, by ambition—those are the great deceivers of human life.",
+    "source": "Letters to Lucilius, Letter LXXXIX",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Luck is what happens when preparation meets opportunity. The wise man is always ready; fortune never surprises him.",
+    "source": "Letters to Lucilius, Letter CIX",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"resilience\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Spend your time on the things that really matter—yourself, your reason, your soul. Books will teach you; but only practice will perfect you.",
+    "source": "Letters to Lucilius, Letter XLV",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"self_discipline\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "A great man who has met with adversity and has not been overwhelmed by it is not only to be envied but admired. Calamity is virtue's opportunity.",
+    "source": "On Providence, Ch. IV",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"virtue\",\"courage\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "God, I say, is showing favour to those whom he wills shall achieve the highest possible virtue, whenever he gives them the means of doing a courageous and brave deed.",
+    "source": "On Providence, Ch. II",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"courage\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "I will govern my life and thoughts as if the whole world could see what I am doing and thinking.",
+    "source": "Letters to Lucilius, Letter LXXXIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"integrity\",\"virtue\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "What difference does it make how much is laid away in a man's safe, or in his barns, how large are his flocks and how fat his dividends, if he covets his neighbour's property and reckons up, not his past gains, but his hopes of gains to come?",
+    "source": "Letters to Lucilius, Letter XIV",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"wisdom\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "Associate with those who will make a better man of you. Welcome those whom you yourself can improve. The process is mutual; for men learn while they teach.",
+    "source": "Letters to Lucilius, Letter VII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"service\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "When a man does not know what harbour he is making for, no wind is the right wind.",
+    "source": "Letters to Lucilius, Letter LXXI",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"self_discipline\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  }
+]

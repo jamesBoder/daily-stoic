@@ -1,0 +1,272 @@
+[
+  {
+    "text": "We are not born for ourselves alone; our country claims a share of our birth, and our friends a share. As the Stoics hold, the things that grow upon the earth are all created for the use of man; but men themselves are born for the sake of men, that they may be able mutually to help one another.",
+    "source": "De Officiis, Book I, Ch. VII",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"service\",\"virtue\",\"duty\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "The foundation of justice is good faith—that is, truth and fidelity to promises and agreements.",
+    "source": "De Officiis, Book I, Ch. VII",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"justice\",\"integrity\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Injustice may be done in two ways: either by actual force or by fraud. Fraud seems to belong to the cunning fox, force to the lion. Both are utterly foreign to human nature; but fraud is the more despicable.",
+    "source": "De Officiis, Book I, Ch. XIII",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"justice\",\"integrity\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Nothing is morally right that is not at the same time profitable; and nothing is profitable that is not morally right. This is the central truth of all ethics: the honest and the advantageous are inseparable.",
+    "source": "De Officiis, Book III, Ch. III",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "There is nothing so absurd but some philosopher has said it. Yet of all the things philosophers have said, none is more worth remembering than this: virtue is sufficient for happiness.",
+    "source": "De Divinatione, Book II, Ch. LVIII",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"wisdom\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The strength and security of a state rests wholly upon its good faith. No public obligation can be binding if private honesty is not first secured.",
+    "source": "De Officiis, Book II, Ch. XXIV",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"justice\",\"integrity\",\"duty\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "In all morality the supreme factor is the will to do what is honourable, and that will depends not on discussion but on an inborn, instinctive impulse toward that which is honourable.",
+    "source": "De Officiis, Book I, Ch. IV",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"nature\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "It is the duty of every man to make the pursuit of his own advantage consist with the common advantage. For whoever appropriates to himself while he injures another has more of the nature of a wild beast than a man.",
+    "source": "De Officiis, Book III, Ch. V",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"service\",\"justice\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The sum of all virtue consists in maintaining the social bond among men, and in not severing it. He who breaks faith with his fellow-man breaks faith with himself.",
+    "source": "De Officiis, Book I, Ch. XVII",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"service\",\"integrity\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The four virtues are prudence, justice, fortitude, and temperance. Prudence is the knowledge of things good, evil, and neither; justice gives to each his due; fortitude is a resolute undertaking of danger; temperance is the government of desire by reason.",
+    "source": "De Officiis, Book I, Ch. V",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Philosophy is the guide of life; it has shown us what the gods are and what they require; it has taught us our duties to our fellow-men; and it has taught us how to master grief, fear, desire, and all the perturbations of the soul.",
+    "source": "Tusculanae Disputationes, Book V, Ch. II",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Virtue is sufficient for a happy life. This is a bold claim; let us see whether it can be maintained. I believe it can—for what do we lack, if only we possess virtue?",
+    "source": "Tusculanae Disputationes, Book V, Ch. I",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"equanimity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "The whole life of the philosopher is, as Plato says, a preparation for death. For what is death but the departure of the soul from the body? And is not philosophy itself the practice of dying daily—of loosening the soul from the grip of pleasure, fear, and appetite?",
+    "source": "Tusculanae Disputationes, Book I, Ch. XXX",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"impermanence\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Death is nothing—or rather, it is something good. For if sensation is extinguished in death, then death robs us of no good; and if sensation is not extinguished, it opens us to greater good than we can conceive.",
+    "source": "Tusculanae Disputationes, Book I, Ch. XI",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"impermanence\",\"equanimity\",\"courage\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "We must set a limit to grief: the grief of a wise man, if it comes at all, should be short. For grief itself proves that what we valued was not truly our own—the body, or the opinion of others—and not virtue, which cannot be taken.",
+    "source": "Tusculanae Disputationes, Book III, Ch. XII",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"wisdom\",\"acceptance\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Pain has certainly a sting in it; but the wise man endures it. Were it the worst of evils, every good man who suffered it would be wretched. But we see good men bearing great pain with cheerfulness.",
+    "source": "Tusculanae Disputationes, Book II, Ch. XIV",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"virtue\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "The wise man alone is rich. For what is richness but the possession of everything you need? And what does the wise man lack? Virtue is his wealth—inexhaustible and entirely his own.",
+    "source": "Tusculanae Disputationes, Book V, Ch. XXX",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"wisdom\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The wise man alone is free. For freedom is not in the gift of another; it is not the result of birth, or of rank, or of law. It is the condition of the soul that has conquered fear and desire.",
+    "source": "Tusculanae Disputationes, Book V, Ch. XXXI",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"freedom\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "A man's soul is at its best when it subdues the passions and keeps them in their proper place, subject to reason—neither suppressed so completely as to be extinguished, nor allowed such freedom as to become our master.",
+    "source": "Tusculanae Disputationes, Book IV, Ch. V",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"reason\",\"self_discipline\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "When you have decided that a thing is right, hold to it. Never be shaken out of a right purpose by the displeasure of others, by clamour, by the threat of danger.",
+    "source": "De Officiis, Book I, Ch. XX",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"courage\",\"integrity\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Every promise, every agreement should be honoured when it can be without injury to those to whom you have made it. And if you cannot fulfil a promise without injury to the person to whom you made it, then the obligation is removed—not by your decision, but by necessity.",
+    "source": "De Officiis, Book I, Ch. X",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"integrity\",\"justice\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "Liberality, which is either giving or receiving, is governed by two principles: first, that it should do no harm; and second, that it should help in proportion to one's means. The man who gives more than he can afford is not generous, but reckless.",
+    "source": "De Officiis, Book I, Ch. XIV",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"wisdom\",\"service\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "Those who say that we should love our friends for their usefulness do not honor friendship at all. True friendship is born of virtue; it grows slowly; it is not flattered by gain, nor diminished by loss.",
+    "source": "De Officiis, Book I, Ch. XVIII",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"service\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "No man can be truly brave who thinks pain is the greatest evil, nor truly temperate who holds pleasure to be the highest good. These two errors—the fear of pain and the love of pleasure—are the roots of all weakness of character.",
+    "source": "Tusculanae Disputationes, Book II, Ch. VII",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "We are all led by the same light of reason; we share the same capacity for virtue and for vice. There is no nation so savage or barbarous as not to have some tincture of piety and of justice—which proves that virtue is not opinion, but nature.",
+    "source": "Tusculanae Disputationes, Book I, Ch. XIII",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Let us not be enslaved to fear of death; for nothing so enslaves the whole of life as the fear of its ending. Once conquered, fear of death frees us to live without any master.",
+    "source": "Tusculanae Disputationes, Book I, Ch. VIII",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"courage\",\"freedom\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "What is admirable in a man is not that he prospers when fortune is kind, but that he remains steadfast and unmoved when she turns against him. In adversity character is revealed; in prosperity it is hidden.",
+    "source": "Tusculanae Disputationes, Book II, Ch. XI",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"virtue\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Old age is honored only if it defends itself, maintains its rights, is subservient to no one, and retains its authority to the last breath.",
+    "source": "De Senectute, Ch. XI",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"resilience\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "To be ignorant of what happened before you were born is to live as a child forever; for what is a man's life, unless woven into the lives of those who came before by the memory of history?",
+    "source": "De Oratore, Book I, Ch. XXXIV",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"perspective\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Gratitude is not only the greatest of virtues, but the parent of all the others.",
+    "source": "Pro Plancio, Ch. XXXIII",
+    "author_slug": "cicero",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"gratitude\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  }
+]

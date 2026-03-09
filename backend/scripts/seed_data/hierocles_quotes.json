@@ -1,0 +1,164 @@
+[
+  {
+    "text": "Every animal, from the moment of its birth, perceives itself. For it is impossible that it should be ignorant of its own constitution and at the same time capable of using it. The first impulse of every animal is toward the preservation of itself.",
+    "source": "Elements of Ethics, Col. I",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "The soul is always aware of itself; it perceives its own faculties and capacities continuously and not merely at intervals. This self-awareness is not a gift of circumstance but is given with the very constitution of a rational being.",
+    "source": "Elements of Ethics, Col. II",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"reason\",\"nature\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "Since every animal is self-perceiving, it seeks what is beneficial and avoids what is harmful to its own constitution. This is the root of all appropriate action, and it is the same root in man as in the other animals, though in man it is governed by reason.",
+    "source": "Elements of Ethics, Col. III",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "The rational animal differs from the non-rational not in having impulse, but in that its impulse is subject to the judgement of reason. It is reason that transforms mere self-preservation into an ethical life.",
+    "source": "Elements of Ethics, Col. IV",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"reason\",\"virtue\",\"nature\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "The first and most fundamental affiliation is a man's affiliation with himself. He who does not yet know how to be affiliated with himself will not know how to be affiliated with others, and thus can play no true part in the community of rational beings.",
+    "source": "Elements of Ethics, Col. VI",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Virtue is not a possession added from outside but a perfection of the nature we already have. It is the full flowering of the self-perception and rational impulse with which every human being is endowed from birth.",
+    "source": "Elements of Ethics, Col. VII",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"nature\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Each of us is, as it were, entirely encompassed by many circles: some smaller, some larger, each enclosing the other. The first and nearest is drawn around the mind itself, as around a center.",
+    "source": "Ethical Fragments, via Stobaeus IV.671",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"service\",\"virtue\",\"duty\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "The second circle from the center contains parents, siblings, wife, and children. The third contains uncles, aunts, grandparents, nephews, nieces, and cousins. After that come other relatives, and then fellow-citizens, and then members of neighboring towns.",
+    "source": "Ethical Fragments, via Stobaeus IV.671",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"duty\",\"service\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The outermost and largest circle of all is that which encompasses the entire human race. It is the task of a well-tempered person to draw these circles continually toward the center, transferring those in the outer rings inward, treating strangers ever more nearly as kin.",
+    "source": "Ethical Fragments, via Stobaeus IV.671",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"service\",\"virtue\",\"duty\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "To call fellow human beings by the name of brother or sister is not an empty courtesy; it reminds us of what we truly are to one another, and habit in speech produces habit in disposition.",
+    "source": "Ethical Fragments, via Stobaeus IV.671",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"service\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "We should accustom ourselves to address elder men as fathers, those of the same age as brothers, and those younger as sons. Then our actions toward each will follow naturally from the name, for names rightly applied guide the feelings.",
+    "source": "Ethical Fragments, via Stobaeus IV.671",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"service\",\"duty\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Marriage is the primary bond of society. It is earlier in time than the city, more intimate than friendship, and is the seed from which all other human community grows. To neglect it is to neglect the foundation of a just life.",
+    "source": "Ethical Fragments, via Stobaeus IV.502",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"duty\",\"virtue\",\"service\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "Husband and wife ought to consider that their bodies, their goods, and their very minds are held in common. Brought into union by nature for the continuation of the race, they serve a purpose higher than either of them alone.",
+    "source": "Ethical Fragments, via Stobaeus IV.502",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"duty\",\"service\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "Parents are to their children what the gods are to the world: the cause of their existence, the source of their nurture, and the first object of their appropriate affiliation. To honor them is not a convention but a necessity of reason.",
+    "source": "Ethical Fragments, via Stobaeus IV.640",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"duty\",\"virtue\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "The appropriate feeling toward a brother is to regard him as nearly another self. All the benefits which friendship prescribes, and more, are owed to him by nature before they are owed by any chosen bond.",
+    "source": "Ethical Fragments, via Stobaeus IV.660",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"duty\",\"service\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "The man who is genuinely making progress in philosophy will count his native city as a small thing and the whole world as his true city; for all rational beings share one law, one reason, and one divine origin.",
+    "source": "Ethical Fragments, via Stobaeus II.57",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"service\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "It is appropriate action—action that flows from reason and affiliation—that constitutes a good life, not the outcome. For the outcome belongs to fortune; the action belongs to us.",
+    "source": "Elements of Ethics, Col. V",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"control\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Self-knowledge is not a terminus but a beginning. Once we have perceived ourselves rightly—as rational, social, and mortal—we are ready to perceive our proper relation to everything else.",
+    "source": "Elements of Ethics, Col. II",
+    "author_slug": "hierocles",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  }
+]

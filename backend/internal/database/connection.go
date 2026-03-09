@@ -2,6 +2,7 @@ package database
 
 import (
     "fmt"
+    "os"
     "time"
     "github.com/jamesBoder/daily-stoic/internal/config"
 
@@ -14,9 +15,13 @@ import (
 
 func Connect(config *config.Config) (*gorm.DB, error) {
 
-    dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
-    config.DBHost, config.DBPort, config.DBUser, 
-    config.DBPassword, config.DBName, config.DBSSLMode)
+    // Prefer DATABASE_URL if set (Fly.io postgres attach sets this automatically)
+    dsn := os.Getenv("DATABASE_URL")
+    if dsn == "" {
+        dsn = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
+            config.DBHost, config.DBPort, config.DBUser,
+            config.DBPassword, config.DBName, config.DBSSLMode)
+    }
 
     db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
         // logger : logger.Default.LogMode(logger.Info),

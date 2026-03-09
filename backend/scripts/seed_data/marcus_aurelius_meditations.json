@@ -1,0 +1,479 @@
+[
+  {
+    "text": "Begin the morning by saying to thyself, I shall meet with the busy-body, the ungrateful, arrogant, deceitful, envious, unsocial. All these things happen to them by reason of their ignorance of what is good and evil.",
+    "source": "Meditations, Book II, Ch. 1",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"mindfulness\",\"virtue\",\"acceptance\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Give thyself time to learn something new and good, and cease to be whirled around.",
+    "source": "Meditations, Book II, Ch. 4",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"self_discipline\",\"tranquility\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "How quickly things disappear: in the universe the bodies themselves, but in time the remembrance of them; what is the nature of all sensible things, and particularly those which attract with the bait of pleasure or terrify by pain.",
+    "source": "Meditations, Book II, Ch. 5",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"impermanence\",\"time\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "The universe is transformation: life is opinion.",
+    "source": "Meditations, Book II, Ch. 11",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"reason\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Though thou shouldst be going to live three thousand more years, and as many times ten thousand years, still remember that no one loses any other life than that which he now lives, and that which he loses is nothing but what is present.",
+    "source": "Meditations, Book II, Ch. 14",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"impermanence\",\"time\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Of human life the time is a point, and the substance is in a flux, and the perception dull, and the composition of the whole body subject to putrefaction, and the soul a whirl, and fortune hard to divine, and fame a thing devoid of judgement.",
+    "source": "Meditations, Book II, Ch. 17",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"impermanence\",\"time\",\"nature\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "Do not waste the residue of thy life in thoughts about other people, unless thou doest this with a view to some common benefit. For thou dost lose the opportunity of doing something else, when thou hast such thoughts as these.",
+    "source": "Meditations, Book III, Ch. 4",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"mindfulness\",\"control\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "Never esteem anything as of advantage to thee that will make thee break thy word or lose thy self-respect.",
+    "source": "Meditations, Book III, Ch. 7",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"integrity\",\"duty\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "To the rational animal the same act is according to nature and according to reason.",
+    "source": "Meditations, Book III, Ch. 11",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.86
+  },
+  {
+    "text": "Body, soul, mind: to the body belong sensations, to the soul belong appetites, to the mind belong principles.",
+    "source": "Meditations, Book III, Ch. 16",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"reason\",\"virtue\",\"nature\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "Men seek retreats for themselves, houses in the country, sea-shores, and mountains; and thou too art wont to desire such things very much. But this is altogether a mark of the most common sort of men, for it is in thy power whenever thou shalt choose to retire into thyself.",
+    "source": "Meditations, Book IV, Ch. 3",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"tranquility\",\"inner_strength\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Nowhere with more quiet or more freedom from trouble does a man retire than into his own soul; above all, he who has within him such thoughts that by looking into them he is immediately in perfect tranquillity.",
+    "source": "Meditations, Book IV, Ch. 3",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"tranquility\",\"inner_strength\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Look within. Within is the fountain of good, and it will ever bubble up, if thou wilt ever dig.",
+    "source": "Meditations, Book IV, Ch. 7",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"inner_strength\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Do not act as if thou hadst ten thousand years to live. The inevitable impends. While thou hast life, while thou hast power, make thyself good.",
+    "source": "Meditations, Book IV, Ch. 17",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"impermanence\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "How much trouble he avoids who does not look to see what his neighbour says or does or thinks, but only to what he does himself, that it may be just and pure.",
+    "source": "Meditations, Book IV, Ch. 18",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"equanimity\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "A little while and thou wilt have forgotten everything; a little while and everything will have forgotten thee.",
+    "source": "Meditations, Book IV, Ch. 21",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"impermanence\",\"time\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "Do not disturb thyself by picturing thy life as a whole; do not assemble in thy mind the many and varied troubles which have come to thee in the past and will come again in the future, but ask thyself with regard to every present difficulty: What is there in this that is intolerable and beyond endurance?",
+    "source": "Meditations, Book IV, Ch. 24",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"mindfulness\",\"resilience\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Always think of the universe as one living creature, embracing one being and one soul; how all is absorbed into the one consciousness of this living creature; how it compasses all things with a single purpose, and how all things work together to cause all that comes to pass.",
+    "source": "Meditations, Book IV, Ch. 26",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"reason\",\"acceptance\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "In the morning when thou risest unwillingly, let this thought be present: I am rising to the work of a human being. Why then am I dissatisfied if I am going to do the things for which I exist and for which I was brought into the world?",
+    "source": "Meditations, Book V, Ch. 1",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"duty\",\"virtue\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "That which is not good for the beehive cannot be good for the bee.",
+    "source": "Meditations, Book V, Ch. 8",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"duty\",\"nature\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The object of life is not to be on the side of the majority, but to escape finding oneself in the ranks of the insane.",
+    "source": "Meditations, Book VI, Ch. 10",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Let it be thy earnest and incessant care as a Roman and a man to perform whatever it is that thou art about with true and unaffected gravity, natural feeling, freedom, and justice; and to give thyself relief from all other thoughts.",
+    "source": "Meditations, Book VI, Ch. 2",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"duty\",\"virtue\",\"integrity\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "Do not look around thee to discover other men's ruling principles, but look straight to this, to what nature leads thee, both the universal nature through the things which happen to thee, and thy own nature through the acts which must be done by thee.",
+    "source": "Meditations, Book VI, Ch. 7",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"control\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Everything harmonizes with me, which is harmonious to thee, O Universe. Nothing for me is too early nor too late, which is in due time for thee. Everything is fruit to me which thy seasons bring, O Nature: from thee are all things, in thee are all things, to thee all things return.",
+    "source": "Meditations, Book IV, Ch. 23",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"acceptance\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Things do not touch the soul, for they are external and remain without; but our perturbations come only from the opinion which is within.",
+    "source": "Meditations, Book VI, Ch. 16",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"equanimity\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "If it is not right, do not do it; if it is not true, do not say it.",
+    "source": "Meditations, Book VI, Ch. 38",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"integrity\",\"duty\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "I have often wondered how it is that every man loves himself more than all the rest of men, but yet sets less value on his own opinion of himself than on the opinion of others.",
+    "source": "Meditations, Book VI, Ch. 44",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "All things are suitable to me, which are suitable to thee, O Universe. Nothing is too early or too late for me, which is in due time for thee.",
+    "source": "Meditations, Book VII, Ch. 9",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"acceptance\",\"nature\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The art of life is more like the wrestler's art than the dancer's, in respect of this, that it should stand ready and firm to meet onsets which are sudden and unexpected.",
+    "source": "Meditations, Book VII, Ch. 22",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"virtue\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Confine thyself to the present.",
+    "source": "Meditations, Book VII, Ch. 68",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"mindfulness\",\"equanimity\",\"control\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Look within. Let neither the peculiar quality of anything nor its value escape thee.",
+    "source": "Meditations, Book VII, Ch. 58",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"reason\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "Remember that to change thy mind and to follow him who sets thee right, is to be none the less the free agent that thou wast before.",
+    "source": "Meditations, Book VIII, Ch. 17",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "On the occasion of every act ask thyself: How is this with respect to me? Shall I repent of it? A little time and I am dead, and all is gone.",
+    "source": "Meditations, Book VIII, Ch. 2",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"mindfulness\",\"impermanence\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "How many a Chrysippus, how many a Socrates, how many an Epictetus, time has already swallowed up?",
+    "source": "Meditations, Book VI, Ch. 13",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"impermanence\",\"time\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "Despise not death, but welcome it, for nature wills it like all else. For dissolution is one of the things that nature wills.",
+    "source": "Meditations, Book IX, Ch. 3",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"acceptance\",\"nature\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "The best revenge is to be unlike him who performed the injury.",
+    "source": "Meditations, Book VI, Ch. 6",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"integrity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Accept the things to which fate binds you, and love the people with whom fate brings you together, and do so with all your heart.",
+    "source": "Meditations, Book VI, Ch. 39",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"acceptance\",\"virtue\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Think not so much of what thou hast not as of what thou hast; but of the things which thou hast, select the best, and then reflect how eagerly they would have been sought if thou hadst them not.",
+    "source": "Meditations, Book VII, Ch. 27",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"gratitude\",\"perspective\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "No longer talk at all about the kind of man that a good man ought to be, but be such.",
+    "source": "Meditations, Book X, Ch. 16",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"self_discipline\",\"duty\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "If it is not becoming, do not do it; if it is not true, do not say it. Let thy impulse be in thy own power.",
+    "source": "Meditations, Book XII, Ch. 17",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"integrity\",\"control\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "All those things at which thou wishest to arrive by a circuitous road, thou canst have now, if thou dost not refuse them to thyself.",
+    "source": "Meditations, Book XII, Ch. 1",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"mindfulness\",\"inner_strength\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The properties of the rational soul: it sees itself, analyses itself, and makes of itself what it chooses; the fruit which it bears itself enjoys; it obtains its own end, wherever the limit of life may be fixed.",
+    "source": "Meditations, Book XI, Ch. 1",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"reason\",\"virtue\",\"inner_strength\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "When thou art troubled about anything, thou hast forgotten this: that all things happen according to the universal nature.",
+    "source": "Meditations, Book XII, Ch. 26",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"acceptance\",\"nature\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "Receive without conceit, release without struggle.",
+    "source": "Meditations, Book VIII, Ch. 33",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"acceptance\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "If someone is able to show me that what I think or do is not right, I will happily change, for I seek the truth, by which no one was ever truly harmed.",
+    "source": "Meditations, Book VI, Ch. 21",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Loss is nothing else but change, and change is Nature's delight.",
+    "source": "Meditations, Book IX, Ch. 28",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"impermanence\",\"nature\",\"acceptance\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Very little is needed to make a happy life; it is all within yourself, in your way of thinking.",
+    "source": "Meditations, Book VII, Ch. 67",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"inner_strength\",\"tranquility\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "He who lives in harmony with himself lives in harmony with the universe.",
+    "source": "Meditations, Book IV, Ch. 29",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"virtue\",\"tranquility\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "I have seen the beauty of good, and the ugliness of evil, and have recognized that the wrongdoer has a nature related to my own—not of the same blood or birth, but the same mind, and possessing a share of the divine.",
+    "source": "Meditations, Book IV, Ch. 3",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"service\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "When you wake up in the morning, tell yourself: the people I deal with today will be meddling, ungrateful, arrogant, dishonest, jealous, and surly. They are this way because they cannot tell good from evil. But I have seen the beauty of good, and the ugliness of evil, and have recognized that the wrongdoer has a nature related to my own.",
+    "source": "Meditations, Book II, Ch. 1",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"mindfulness\",\"acceptance\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "The first rule is to keep an untroubled spirit. The second is to look things in the face and know them for what they are.",
+    "source": "Meditations, Book VIII, Ch. 7",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"reason\",\"tranquility\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "When you have trouble getting out of bed in the morning, remember that your defining characteristic—what defines a human being—is to work with others.",
+    "source": "Meditations, Book VIII, Ch. 12",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"duty\",\"service\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "Perfection of character is this: to live each day as if it were your last, without frenzy, without apathy, without pretense.",
+    "source": "Meditations, Book VII, Ch. 69",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"mindfulness\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  }
+]

@@ -1,0 +1,227 @@
+[
+  {
+    "text": "Some books are to be tasted, others to be swallowed, and some few to be chewed and digested; that is, some books are to be read only in parts; others to be read but not curiously; and some few to be read wholly, and with diligence and attention.",
+    "source": "Essays, \"Of Studies\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"self_discipline\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Reading maketh a full man; conference a ready man; and writing an exact man.",
+    "source": "Essays, \"Of Studies\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"self_discipline\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "In taking revenge, a man is but even with his enemy; but in passing it over, he is superior. For it is a prince's part to pardon.",
+    "source": "Essays, \"Of Revenge\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"virtue\",\"wisdom\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "A man that studieth revenge keepeth his own wounds green, which otherwise would heal and do well.",
+    "source": "Essays, \"Of Revenge\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"equanimity\",\"wisdom\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Prosperity is the blessing of the Old Testament; adversity is the blessing of the New, which carrieth the greater benediction and the clearer revelation of God's favour.",
+    "source": "Essays, \"Of Adversity\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"resilience\",\"equanimity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Prosperity doth best discover vice, but adversity doth best discover virtue.",
+    "source": "Essays, \"Of Adversity\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"virtue\",\"resilience\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "It is a strange desire, to seek power and to lose liberty; or to seek power over others and to lose power over a man's self.",
+    "source": "Essays, \"Of Great Place\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"freedom\",\"wisdom\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Men in great place are thrice servants: servants of the sovereign or state; servants of fame; and servants of business. So as they have no freedom, neither in their persons, nor in their actions, nor in their times.",
+    "source": "Essays, \"Of Great Place\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"freedom\",\"wisdom\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "The rising unto place is laborious, and by pains men come to greater pains; and it is sometimes base, and by indignities men come to dignities. The standing is slippery, and the regress is either a downfall, or at least an eclipse.",
+    "source": "Essays, \"Of Great Place\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"perspective\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "If a man be gracious and courteous to strangers, it shows he is a citizen of the world, and that his heart is no island cut off from other lands, but a continent that joins to them.",
+    "source": "Essays, \"Of Goodness and Goodness of Nature\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"virtue\",\"service\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "The desire of power in excess caused the angels to fall; the desire of knowledge in excess caused man to fall; but in charity there is no excess, neither can man or angels come into danger by it.",
+    "source": "Essays, \"Of Goodness and Goodness of Nature\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"virtue\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "He that hath wife and children hath given hostages to fortune; for they are impediments to great enterprises, either of virtue or mischief.",
+    "source": "Essays, \"Of Marriage and Single Life\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"perspective\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "It is generally better to deal by speech than by letter, and by the mediation of a third than by a man's self.",
+    "source": "Essays, \"Of Negotiating\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"reason\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.83
+  },
+  {
+    "text": "Choose the life that is most useful, and habit will make it the most agreeable.",
+    "source": "Essays, \"Of Custom and Education\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"self_discipline\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Men's thoughts are much according to their inclination; their discourse and speeches according to their learning and infused opinions; but their deeds are after as they have been accustomed.",
+    "source": "Essays, \"Of Custom and Education\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"self_discipline\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "Silence is the sleep that nourishes wisdom.",
+    "source": "Essays, \"Of Discourse\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"self_discipline\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Knowledge is power. Not because knowledge acts on nature, but because it frees man to act. The ignorant man is chained to the wheel of fortune; the learned man turns it.",
+    "source": "Novum Organum, Book I, Aphorism III",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"reason\",\"freedom\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "The human understanding when it has once adopted an opinion draws all things else to support and agree with it. And though there be a greater number and weight of instances to be found on the other side, yet these it either neglects and despises.",
+    "source": "Novum Organum, Book I, Aphorism XLVI",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"reason\",\"wisdom\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Truth is the daughter not of authority but of time.",
+    "source": "Novum Organum, Book I, Aphorism LXXXIV",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"reason\",\"integrity\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Fortitude is that virtue which makes men able to bear misfortune with equanimity, and to face what is formidable with resolution.",
+    "source": "De Augmentis Scientiarum, Book VII, Ch. 3",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"resilience\",\"courage\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "A wise man will make more opportunities than he finds.",
+    "source": "Essays, \"Of Ceremonies and Respects\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"self_discipline\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "The remedy is worse than the disease, when those who seek to cure a social ill bring about a greater one through their correction.",
+    "source": "Essays, \"Of Seditions and Troubles\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"reason\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "Begin doing what you want to do now. We are not living in eternity. We have only this moment, sparkling like a star in our hand—and melting like a snowflake.",
+    "source": "Essays, \"Of Delay\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"time\",\"mindfulness\",\"impermanence\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The monuments of wit survive the monuments of power. The verses of a poet endure without a syllable lost while the towers of princes are buried in the ground.",
+    "source": "Essays, \"Of Fame\" (1625 ed.)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"impermanence\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "Age appears to be best in four things: old wood best to burn, old wine to drink, old friends to trust, and old authors to read.",
+    "source": "Apophthegms New and Old, No. 97 (1625)",
+    "author_slug": "francis-bacon",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"perspective\",\"gratitude\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  }
+]
