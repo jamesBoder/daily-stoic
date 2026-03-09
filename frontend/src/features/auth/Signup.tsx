@@ -1,62 +1,57 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { authService } from "../../services/api/authService";
-import { Button } from "../../components/common/Button";
-import { Input } from "../../components/common/Input";
-import { Card } from "../../components/common/Card";
-import GoogleLoginButton from "../../components/common/GoogleLoginButton";
-import { PasswordInput } from "../../components/common/PasswordInput";
+import React, { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import { authService } from '../../services/api/authService'
+import { PasswordInput } from '../../components/common/PasswordInput'
+import GoogleLoginButton from '../../components/common/GoogleLoginButton'
 
 export const Signup: React.FC = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
-    email: "",
-    username: "",
-    password: "",
-    confirmPassword: "",
-    name: "",
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [suggestions, setSuggestions] = useState<Record<string, string>>({});
-  const [isLoading, setIsLoading] = useState(false);
+    email: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+    name: '',
+  })
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [suggestions, setSuggestions] = useState<Record<string, string>>({})
+  const [isLoading, setIsLoading] = useState(false)
 
   const validateForm = () => {
-    const newErrors: Record<string, string> = {};
+    const newErrors: Record<string, string> = {}
 
     if (!formData.email) {
-      newErrors.email = "Email is required";
+      newErrors.email = 'Email is required'
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
+      newErrors.email = 'Email is invalid'
     }
 
     if (!formData.username) {
-      newErrors.username = "Username is required";
+      newErrors.username = 'Username is required'
     } else if (formData.username.length < 3) {
-      newErrors.username = "Username must be at least 3 characters";
+      newErrors.username = 'Username must be at least 3 characters'
     }
 
     if (!formData.password) {
-      newErrors.password = "Password is required";
-    } 
+      newErrors.password = 'Password is required'
+    }
 
     if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
+      newErrors.confirmPassword = 'Passwords do not match'
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return
 
-    setIsLoading(true);
-    setErrors({});
+    setIsLoading(true)
+    setErrors({})
 
     try {
       await authService.signup({
@@ -64,145 +59,142 @@ export const Signup: React.FC = () => {
         username: formData.username,
         password: formData.password,
         name: formData.name,
-      });
-      navigate("/verify-email-pending", { state: { email: formData.email } });
+      })
+      navigate('/auth/verify-email-pending', { state: { email: formData.email } })
     } catch (err: any) {
-      const errorMessage = err.response?.data?.details || 
-                     err.response?.data?.error || 
-                     "Signup failed. Please try again.";
-      const errorField = err.response?.data?.field;
-      const suggestion = err.response?.data?.suggestion;
+      const errorMessage = err.response?.data?.details ||
+                           err.response?.data?.error ||
+                           'Signup failed. Please try again.'
+      const errorField = err.response?.data?.field
+      const suggestion = err.response?.data?.suggestion
 
       if (errorField) {
-        setErrors({ [errorField]: errorMessage });
+        setErrors({ [errorField]: errorMessage })
         if (suggestion) {
-          setSuggestions({ [errorField]: suggestion });
+          setSuggestions({ [errorField]: suggestion })
         }
       } else {
-        setErrors({ general: errorMessage });
+        setErrors({ general: errorMessage })
       }
-
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-    // Clear error and suggestion for this field
-    if (errors[e.target.name]) {
-      setErrors({
-        ...errors,
-        [e.target.name]: "",
-      });
-    }
-    if (suggestions[e.target.name]) {
-      setSuggestions({
-        ...suggestions,
-        [e.target.name]: "",
-      });
-    }
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+    if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: '' })
+    if (suggestions[e.target.name]) setSuggestions({ ...suggestions, [e.target.name]: '' })
+  }
 
   const applySuggestion = (field: string, value: string) => {
-    setFormData({
-      ...formData,
-      [field]: value,
-    });
-    setSuggestions({
-      ...suggestions,
-      [field]: "",
-    });
-    setErrors({
-      ...errors,
-      [field]: "",
-    });
-  };
+    setFormData({ ...formData, [field]: value })
+    setSuggestions({ ...suggestions, [field]: '' })
+    setErrors({ ...errors, [field]: '' })
+  }
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-            Create Account
-          </h2>
-          <p className="mt-2 text-gray-600 dark:text-gray-400">
-            Join us on your spiritual journey
+    <div className="min-h-screen bg-surface-base flex items-center justify-center px-4 py-16">
+      <div className="w-full max-w-sm">
+
+        {/* Wordmark */}
+        <div className="text-center mb-10">
+          <p className="font-display text-xs tracking-widest uppercase text-primary-400 mb-3">
+            Daily Stoic
+          </p>
+          <h1 className="font-serif text-3xl text-primary-800 leading-snug">
+            Begin your practice
+          </h1>
+          <p className="font-sans text-sm text-primary-400 mt-2">
+            One quote. Every morning. A better mind.
           </p>
         </div>
-        <GoogleLoginButton
-          mode="login"
-          onError={(err) => setErrors({ general: err.message })}
-        />
-        <div className="my-6 flex items-center">
-          <hr className="flex-grow border-t border-gray-300 dark:border-gray-700" />
-          <span className="mx-4 text-gray-500 dark:text-gray-400">OR</span>
-          <hr className="flex-grow border-t border-gray-300 dark:border-gray-700" />
+
+        {/* Google — easiest path first */}
+        <div className="mb-6">
+          <GoogleLoginButton
+            mode="signup"
+            onError={err => setErrors({ general: err.message })}
+          />
         </div>
 
-        <Card>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {errors.general && (
-              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 px-4 py-3 rounded-lg">
-                <p className="font-semibold">Registration Failed</p>
-                <p className="text-sm mt-1">{errors.general}</p>
-              </div>
-            )}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="flex-1 border-t border-primary-200" />
+          <span className="font-sans text-xs text-primary-400 tracking-wider">or sign up with email</span>
+          <div className="flex-1 border-t border-primary-200" />
+        </div>
 
+        {/* Form container */}
+        <div className="bg-surface-card rounded-card shadow-card border border-primary-200 px-8 py-8">
 
+          {errors.general && (
+            <div className="mb-5 px-4 py-3 rounded-stone border border-danger/30 bg-danger/5 text-danger font-sans text-sm">
+              {errors.general}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <Input
-                label="Email"
+              <label className="block font-sans text-xs tracking-widest uppercase text-primary-500 mb-1.5">
+                Email
+              </label>
+              <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="your@email.com"
-                error={errors.email}
                 required
                 autoComplete="email"
+                className={`input-field ${errors.email ? 'border-danger' : ''}`}
               />
+              {errors.email && <p className="mt-1 font-sans text-xs text-danger">{errors.email}</p>}
               {suggestions.email && (
-                <div className="mt-2 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-                  <p className="text-sm text-blue-700 dark:text-blue-300">
-                    Did you mean{" "}
-                    <button
-                      type="button"
-                      onClick={() => applySuggestion("email", suggestions.email)}
-                      className="font-semibold underline hover:no-underline"
-                    >
-                      {suggestions.email}
-                    </button>
-                    ?
-                  </p>
-                </div>
+                <p className="mt-1 font-sans text-xs text-primary-500">
+                  Did you mean{' '}
+                  <button
+                    type="button"
+                    onClick={() => applySuggestion('email', suggestions.email)}
+                    className="underline hover:no-underline text-accent"
+                  >
+                    {suggestions.email}
+                  </button>
+                  ?
+                </p>
               )}
             </div>
 
-            <Input
-              label="Username"
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              placeholder="johndoe"
-              error={errors.username}
-              required
-              autoComplete="username"
-            />
+            <div>
+              <label className="block font-sans text-xs tracking-widest uppercase text-primary-500 mb-1.5">
+                Username
+              </label>
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                placeholder="marcus_aurelius"
+                required
+                autoComplete="username"
+                className={`input-field ${errors.username ? 'border-danger' : ''}`}
+              />
+              {errors.username && <p className="mt-1 font-sans text-xs text-danger">{errors.username}</p>}
+            </div>
 
-            <Input
-              label="Name (Optional)"
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="John Doe"
-              autoComplete="name"
-            />
+            <div>
+              <label className="block font-sans text-xs tracking-widest uppercase text-primary-500 mb-1.5">
+                Name <span className="normal-case tracking-normal text-primary-400">(optional)</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Marcus Aurelius"
+                autoComplete="name"
+                className="input-field"
+              />
+            </div>
 
             <PasswordInput
               label="Password"
@@ -227,30 +219,23 @@ export const Signup: React.FC = () => {
               autoComplete="new-password"
             />
 
-
-            <Button
+            <button
               type="submit"
-              variant="primary"
-              isLoading={isLoading}
-              className="w-full"
+              disabled={isLoading}
+              className="btn-primary w-full mt-2 disabled:opacity-50"
             >
-              Create Account
-            </Button>
+              {isLoading ? 'Creating account…' : 'Create Account'}
+            </button>
           </form>
+        </div>
 
-          <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Already have an account?{" "}
-              <Link
-                to="/login"
-                className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium"
-              >
-                Sign in
-              </Link>
-            </p>
-          </div>
-        </Card>
+        <p className="text-center font-sans text-sm text-primary-400 mt-6">
+          Already practicing?{' '}
+          <Link to="/auth/login" className="text-accent hover:text-accent-dark transition-colors">
+            Sign in
+          </Link>
+        </p>
       </div>
     </div>
-  );
-};
+  )
+}

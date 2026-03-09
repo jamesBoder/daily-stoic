@@ -1,7 +1,7 @@
 {
   "app": {
-    "title": "Paroles de Louange",
-    "tagline": "Inspiration Biblique Quotidienne"
+    "title": "Daily Stoic",
+    "tagline": "Philosophie Stoïcienne Quotidienne"
   },
   "nav": {
     "home": "Accueil",
@@ -14,18 +14,18 @@
     "signup": "S'inscrire",
     "logout": "Déconnexion"
   },
-  "dailyVerse": {
-    "title": "Verset du Jour",
-    "loading": "Chargement du verset du jour...",
-    "error": "Échec du chargement du verset",
+  "dailyQuote": {
+    "title": "Citation du Jour",
+    "loading": "Chargement de la citation du jour...",
+    "error": "Échec du chargement de la citation",
     "retry": "Réessayer"
   },
-  "verse": {
+  "quote": {
     "addToFavorites": "Ajouter aux Favoris",
     "removeFromFavorites": "Retirer des Favoris",
     "share": "Partager",
-    "copied": "Verset copié dans le presse-papiers !",
-    "comment": "Ajouter une note",
+    "copied": "Citation copiée dans le presse-papiers !",
+    "comment": "Ajouter une méditation",
     "commentPlaceholder": "Ajoutez votre réflexion personnelle..."
   },
   "auth": {
@@ -70,29 +70,27 @@
   "favorites": {
     "title": "Mes Favoris",
     "empty": "Aucun favori pour le moment",
-    "emptyDescription": "Commencez à ajouter des versets à vos favoris pour les voir ici",
+    "emptyDescription": "Commencez à ajouter des citations à vos favoris pour les voir ici",
     "remove": "Supprimer",
-    "viewVerse": "Voir le Verset",
-    "verse": "verset",
-    "verses": "versets",
-    "saved": "enregistrés",
+    "viewQuote": "Voir la Citation",
+    "quote": "citation",
+    "quotes": "citations",
+    "saved": "enregistrées",
     "of": "sur",
     "sortBy": "Trier par",
     "sortOptions": {
       "date": "Date d'ajout",
-      "book": "Livre",
-      "reference": "Référence du Verset",
-      "translation": "Traduction",
-      "chapter": "Chapitre",
-      "verseNumber": "Numéro de Verset"
+      "author": "Auteur",
+      "tradition": "Tradition",
+      "source": "Source"
     },
     "ascending": "Asc",
     "descending": "Desc",
-    "filterPlaceholder": "Filtrer par mot-clé (texte, référence, livre, traduction…)",
-    "viewDailyVerse": "Voir le Verset du Jour",
-    "shareVerse": "Partager ce verset",
+    "filterPlaceholder": "Filtrer par mot-clé (texte, auteur, tradition…)",
+    "viewDailyQuote": "Voir la Citation du Jour",
+    "shareQuote": "Partager cette citation",
     "added": "Ajouté",
-    "removeConfirm": "Retirer ce verset des favoris ?",
+    "removeConfirm": "Retirer cette citation des favoris ?",
     "removeFailed": "Échec de la suppression du favori",
     "clearFilter": "Effacer le filtre",
     "noMatch": "Aucun favori ne correspond"
@@ -100,12 +98,12 @@
   "history": {
     "title": "Historique",
     "empty": "Votre historique est vide.",
-    "emptyDescription": "Votre historique de lecture de versets apparaîtra ici",
+    "emptyDescription": "Votre historique de lecture de citations apparaîtra ici",
     "clear": "Effacer l'Historique",
     "clearing": "Effacement...",
     "clearConfirm": "Êtes-vous sûr de vouloir effacer votre historique ?",
     "clearFailed": "Échec de l'effacement de l'historique",
-    "shareVerse": "Partager ce verset",
+    "shareQuote": "Partager cette citation",
     "viewed": "Consulté",
     "today": "Aujourd'hui",
     "yesterday": "Hier"
@@ -119,12 +117,12 @@
     "noData": "Aucune donnée de profil disponible.",
     "statistics": "Statistiques",
     "totalFavorites": "Total des Favoris",
-    "totalViews": "Versets Consultés",
-    "totalComments": "Réflexions Ajoutées",
+    "totalViews": "Citations Consultées",
+    "totalComments": "Méditations Ajoutées",
     "readingStreak": "Série de Lecture",
     "days": "jours",
     "yourStatistics": "Vos Statistiques",
-    "versesRead": "Versets Lus",
+    "quotesRead": "Citations Lues",
     "favorites": "Favoris",
     "notes": "Réflexions",
     "daysActive": "Jours Actifs",
@@ -148,8 +146,8 @@
       "title": "Notifications",
       "emailNotifications": "Notifications par Email",
       "emailDescription": "Recevoir des mises à jour par email",
-      "dailyReminder": "Rappel du Verset Quotidien",
-      "reminderDescription": "Recevez un rappel pour lire votre verset quotidien"
+      "dailyReminder": "Rappel de Citation Quotidienne",
+      "reminderDescription": "Recevez un rappel pour lire votre citation quotidienne"
     },
     "language": {
       "title": "Langue",
@@ -178,48 +176,48 @@
     "saveFailed": "Échec de l'enregistrement des paramètres"
   },
   "about": {
-    "title": "À Propos de Paroles de Louange",
+    "title": "À Propos de Daily Stoic",
     "dedication": "Dédié à Clairemena Jean-Pierre",
-    "description": "Une application web moderne pour les versets bibliques quotidiens avec favoris, commentaires et suivi de l'historique.",
+    "description": "Une application web moderne pour la sagesse stoïcienne quotidienne avec favoris, méditations et suivi de l'historique.",
     "mission": "Notre Mission",
-    "missionText": "Fournir une inspiration spirituelle quotidienne à travers la Parole de Dieu, la rendant accessible et significative pour tous.",
+    "missionText": "Fournir une sagesse philosophique quotidienne à travers les enseignements stoïciens, la rendant accessible et significative pour tous.",
     "features": "Fonctionnalités",
-    "feature1": "Versets bibliques inspirants quotidiens",
-    "feature2": "Enregistrez vos versets préférés",
+    "feature1": "Citations stoïciennes inspirantes quotidiennes",
+    "feature2": "Enregistrez vos citations préférées",
     "feature3": "Ajoutez des notes et réflexions personnelles",
     "feature4": "Suivez votre historique de lecture",
     "feature5": "Expérience de lecture belle et sans distraction",
     "back": "Retour",
-    "subtitle": "Inspiration Quotidienne par la Parole de Dieu",
-    "feature1Title": "Verset du Jour",
-    "feature1Desc": "Recevez un nouveau verset biblique inspirant chaque jour à minuit",
+    "subtitle": "Sagesse Quotidienne par la Philosophie Stoïcienne",
+    "feature1Title": "Citation du Jour",
+    "feature1Desc": "Recevez une nouvelle citation stoïcienne inspirante chaque jour",
     "feature2Title": "Favoris",
-    "feature2Desc": "Enregistrez et organisez vos versets préférés pour y accéder facilement",
+    "feature2Desc": "Enregistrez et organisez vos citations préférées pour y accéder facilement",
     "feature3Title": "Historique",
-    "feature3Desc": "Parcourez les versets quotidiens passés avec les flèches de navigation sur la page principale. Connectez-vous pour accéder à 30 jours d'historique.",
+    "feature3Desc": "Parcourez les citations quotidiennes passées. Connectez-vous pour accéder à 30 jours d'historique.",
     "feature4Title": "Réflexions Personnelles",
-    "feature4Desc": "Ajoutez vos propres réflexions et pensées à n'importe quel verset",
+    "feature4Desc": "Ajoutez vos propres méditations et pensées à n'importe quelle citation",
     "feature5Title": "Mode Sombre",
     "feature5Desc": "Expérience de lecture confortable jour et nuit",
     "feature6Title": "Compatible Mobile",
     "feature6Desc": "Beau et réactif sur tous les appareils",
     "ctaTitle": "Débloquez l'Expérience Complète",
-    "ctaDesc": "Créez un compte gratuit pour enregistrer vos versets préférés, parcourir vos versets quotidiens passés, ajouter des réflexions personnelles, et plus encore. L'inscription prend moins d'une minute !",
+    "ctaDesc": "Créez un compte gratuit pour enregistrer vos citations préférées, parcourir vos citations quotidiennes passées, ajouter des réflexions personnelles, et plus encore. L'inscription prend moins d'une minute !",
     "createAccount": "Créer un Compte Gratuit",
     "alreadyHaveAccount": "Vous avez déjà un compte ? Se Connecter",
     "comingSoon": "Bientôt Disponible",
-    "comingSoon1": "Commentaires Disqus",
+    "comingSoon1": "Traditions philosophiques supplémentaires",
     "comingSoon2": "Séries de Lecture Quotidienne",
-    "comingSoon3": "Traductions Multiples",
+    "comingSoon3": "Plans de Lecture",
     "comingSoon4": "Et Plus...",
     "getInTouch": "Contactez-Nous",
     "contactDesc": "Nous serions ravis de vous entendre ! Que vous ayez trouvé un bug, une suggestion, ou que vous souhaitiez simplement partager vos pensées, n'hésitez pas à nous contacter.",
     "emailUs": "Envoyez-nous un email à :",
     "responseTime": "⏱️ Nous répondons généralement dans les 24-48 heures",
     "followInstagram": "Suivez-nous sur Instagram :",
-    "instagramUpdate": "📱 Restez informé des inspirations quotidiennes et des mises à jour de l'application",
+    "instagramUpdate": "📱 Restez informé des sagesses quotidiennes et des mises à jour de l'application",
     "inLovingMemory": "En Mémoire Aimante",
-    "devotedChild": "Un enfant dévoué de Dieu"
+    "devotedChild": "Un esprit dévoué à la sagesse"
   },
   "account": {
     "setPassword": "Définir le Mot de passe",
@@ -243,7 +241,7 @@
     "noGoogleConnected": "Aucun Compte Google Connecté",
     "noGoogleDesc": "Liez votre compte Google pour une connexion plus rapide et plus facile",
     "exportData": "Exporter Vos Données",
-    "exportDataDesc": "Téléchargez toutes vos données incluant les favoris, l'historique et les commentaires.",
+    "exportDataDesc": "Téléchargez toutes vos données incluant les favoris, l'historique et les méditations.",
     "exporting": "Exportation...",
     "exportDataBtn": "Exporter les Données",
     "dangerZone": "Zone Dangereuse",
@@ -260,21 +258,21 @@
     "unlinkGooglePasswordRequired": "Vous devez définir un mot de passe avant de délier votre compte Google. Veuillez d'abord définir un mot de passe dans la section 'Définir le Mot de passe' ci-dessus."
   },
   "notes": {
-    "title": "Ma Réflexion",
-    "hideNotes": "Masquer la réflexion",
-    "showNotes": "Afficher la réflexion",
-    "addNote": "Ajouter une Réflexion Personnelle",
+    "title": "Ma Méditation",
+    "hideNotes": "Masquer la méditation",
+    "showNotes": "Afficher la méditation",
+    "addNote": "Ajouter une Méditation Personnelle",
     "edit": "Modifier",
     "delete": "Supprimer",
     "lastUpdated": "Dernière mise à jour :",
-    "placeholder": "Ajoutez vos pensées personnelles, réflexions ou prières sur ce verset...",
+    "placeholder": "Ajoutez vos pensées personnelles et réflexions sur cette citation...",
     "characters": "caractères",
-    "saveNote": "Enregistrer la Réflexion",
-    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce commentaire ?",
-    "emptyError": "Le commentaire ne peut pas être vide",
-    "tooLongError": "Le commentaire doit contenir moins de 1000 caractères",
-    "saveFailed": "Échec de l'enregistrement du commentaire",
-    "deleteFailed": "Échec de la suppression du commentaire"
+    "saveNote": "Enregistrer la Méditation",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cette méditation ?",
+    "emptyError": "La méditation ne peut pas être vide",
+    "tooLongError": "La méditation doit contenir moins de 1000 caractères",
+    "saveFailed": "Échec de l'enregistrement de la méditation",
+    "deleteFailed": "Échec de la suppression de la méditation"
   },
   "common": {
     "loading": "Chargement...",
@@ -291,6 +289,6 @@
     "search": "Rechercher",
     "noResults": "Aucun résultat trouvé",
     "contact": "Contact",
-    "comment": "Ajouter une réflexion"
+    "comment": "Ajouter une méditation"
   }
 }

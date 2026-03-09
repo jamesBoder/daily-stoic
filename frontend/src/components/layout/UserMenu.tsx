@@ -1,13 +1,14 @@
 // src/components/layout/UserMenu.tsx
 
 import { useState, useRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 
 export const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const { user, logout } = useAuth()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -63,6 +64,7 @@ export const UserMenu = () => {
             onClick={() => {
               logout()
               setIsOpen(false)
+              navigate('/')
             }}
             className="block w-full text-left px-4 py-2 text-sm text-primary-600 hover:bg-surface-card transition-colors"
           >

@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
           {/* Social Media */}
           <div className="flex items-center space-x-4 mb-4 md:mb-0">
             <a
-              href="https://instagram.com/wordsofpraiseapp"
+              href="https://instagram.com/dailystoicapp"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center gap-2"
@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-sm">@wordsofpraiseapp</span>
+              <span className="text-sm">@dailystoicapp</span>
             </a>
           </div>
 

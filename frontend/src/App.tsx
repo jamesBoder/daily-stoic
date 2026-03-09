@@ -18,6 +18,7 @@ import { ForgotPassword } from './features/auth/ForgotPassword'
 import { ResetPassword } from './features/auth/ResetPassword'
 import { GoogleCallback } from './features/auth/GoogleCallback'
 import { ProtectedRoute } from './components/common/ProtectedRoute'
+import { About } from './features/about/About'
 // Stub pages for Phase 2 — full implementation in Phase 4
 import { TraditionsStub } from './features/traditions/TraditionsStub'
 import { ReadingPlansStub } from './features/reading-plans/ReadingPlansStub'
@@ -56,6 +57,7 @@ export default function App() {
               <Route element={<Layout />}>
                 {/* Public */}
                 <Route index element={<DailyQuote />} />
+                <Route path="about" element={<About />} />
                 <Route path="traditions" element={<TraditionsStub />} />
                 <Route path="reading-plans" element={<ReadingPlansStub />} />
 

@@ -27,10 +27,10 @@ export const GuestAccountManagement: React.FC = () => {
           {/* Feature list */}
           <ul className="text-left max-w-sm mx-auto space-y-3 mb-8">
             {[
-              { icon: "⭐", text: "Save your favorite verses" },
+              { icon: "⭐", text: "Save your favorite quotes" },
               { icon: "📜", text: "Track your reading history" },
-              { icon: "💬", text: "Add personal reflections" },
-              { icon: "🔔", text: "Daily verse reminders" },
+              { icon: "💬", text: "Write meditations on each quote" },
+              { icon: "🔔", text: "Daily quote reminders" },
               { icon: "👤", text: "Personalized profile" },
             ].map(({ icon, text }) => (
               <li key={text} className="flex items-center gap-3 text-gray-700 dark:text-gray-300">

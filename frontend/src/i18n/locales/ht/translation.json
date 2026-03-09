@@ -1,7 +1,7 @@
 {
   "app": {
-    "title": "Pawòl Lwanj",
-    "tagline": "Enspirasyon Biblik Chak Jou"
+    "title": "Daily Stoic",
+    "tagline": "Filozofi Stoyisyen Chak Jou"
   },
   "nav": {
     "home": "Akèy",
@@ -14,18 +14,18 @@
     "signup": "Enskri",
     "logout": "Dekonekte"
   },
-  "dailyVerse": {
-    "title": "Vèsè Jodi a",
-    "loading": "Ap chaje vèsè jodi a...",
-    "error": "Pa rive chaje vèsè a",
+  "dailyQuote": {
+    "title": "Panse Jodi a",
+    "loading": "Ap chaje panse jodi a...",
+    "error": "Pa rive chaje panse a",
     "retry": "Eseye ankò"
   },
-  "verse": {
+  "quote": {
     "addToFavorites": "Ajoute nan Favori",
     "removeFromFavorites": "Retire nan Favori",
     "share": "Pataje",
-    "copied": "Vèsè kopye nan pres papye!",
-    "comment": "Ajoute yon nòt",
+    "copied": "Panse kopye nan pres papye!",
+    "comment": "Ajoute yon meditasyon",
     "commentPlaceholder": "Ajoute refleksyon pèsonèl ou..."
   },
   "auth": {
@@ -70,29 +70,27 @@
   "favorites": {
     "title": "Favori Mwen",
     "empty": "Pa gen favori ankò",
-    "emptyDescription": "Kòmanse ajoute vèsè nan favori ou pou wè yo isit la",
+    "emptyDescription": "Kòmanse ajoute panse nan favori ou pou wè yo isit la",
     "remove": "Retire",
-    "viewVerse": "Gade Vèsè",
-    "verse": "vèsè",
-    "verses": "vèsè",
+    "viewQuote": "Gade Panse",
+    "quote": "panse",
+    "quotes": "panse",
     "saved": "anrejistre",
     "of": "nan",
     "sortBy": "Triye pa",
     "sortOptions": {
       "date": "Dat Ajoute",
-      "book": "Liv",
-      "reference": "Referans Vèsè",
-      "translation": "Tradiksyon",
-      "chapter": "Chapit",
-      "verseNumber": "Nimewo Vèsè"
+      "author": "Otè",
+      "tradition": "Tradisyon",
+      "source": "Sous"
     },
     "ascending": "Asc",
     "descending": "Desc",
-    "filterPlaceholder": "Filtre pa mo kle (tèks, referans, liv, tradiksyon…)",
-    "viewDailyVerse": "Gade Vèsè Jodi a",
-    "shareVerse": "Pataje vèsè sa",
+    "filterPlaceholder": "Filtre pa mo kle (tèks, otè, tradisyon…)",
+    "viewDailyQuote": "Gade Panse Jodi a",
+    "shareQuote": "Pataje panse sa",
     "added": "Ajoute",
-    "removeConfirm": "Retire vèsè sa nan favori?",
+    "removeConfirm": "Retire panse sa nan favori?",
     "removeFailed": "Pa rive retire favori",
     "clearFilter": "Efase filtre",
     "noMatch": "Pa gen favori ki koresponn"
@@ -100,12 +98,12 @@
   "history": {
     "title": "Istwa",
     "empty": "Istwa ou vid.",
-    "emptyDescription": "Istwa lekti vèsè ou yo ap parèt isit la",
+    "emptyDescription": "Istwa lekti panse ou yo ap parèt isit la",
     "clear": "Efase Istwa",
     "clearing": "Ap efase...",
     "clearConfirm": "Èske ou sèten ou vle efase istwa ou?",
     "clearFailed": "Pa rive efase istwa",
-    "shareVerse": "Pataje vèsè sa",
+    "shareQuote": "Pataje panse sa",
     "viewed": "Gade",
     "today": "Jodi",
     "yesterday": "Yè"
@@ -119,12 +117,12 @@
     "noData": "Pa gen done pwofil disponib.",
     "statistics": "Estatistik",
     "totalFavorites": "Total Favori",
-    "totalViews": "Vèsè Gade",
-    "totalComments": "Refleksyon Ajoute",
+    "totalViews": "Panse Gade",
+    "totalComments": "Meditasyon Ajoute",
     "readingStreak": "Seri Lekti",
     "days": "jou",
     "yourStatistics": "Estatistik Ou",
-    "versesRead": "Vèsè Li",
+    "quotesRead": "Panse Li",
     "favorites": "Favori",
     "notes": "Refleksyon",
     "daysActive": "Jou Aktif",
@@ -148,8 +146,8 @@
       "title": "Notifikasyon",
       "emailNotifications": "Notifikasyon pa Imèl",
       "emailDescription": "Resevwa mizajou pa imèl",
-      "dailyReminder": "Rapèl Vèsè Chak Jou",
-      "reminderDescription": "Resevwa yon rapèl pou li vèsè chak jou ou"
+      "dailyReminder": "Rapèl Panse Chak Jou",
+      "reminderDescription": "Resevwa yon rapèl pou li panse chak jou ou"
     },
     "language": {
       "title": "Lang",
@@ -178,48 +176,48 @@
     "saveFailed": "Echèk pou anrejistre paramèt yo"
   },
   "about": {
-    "title": "Konsènan Pawòl Lwanj",
+    "title": "Konsènan Daily Stoic",
     "dedication": "Dedye a Clairemena Jean-Pierre",
-    "description": "Yon aplikasyon wèb modèn pou vèsè biblik chak jou avèk favori, kòmantè ak swivi istwa.",
+    "description": "Yon aplikasyon wèb modèn pou sajès stoyisyen chak jou avèk favori, meditasyon ak swivi istwa.",
     "mission": "Misyon Nou",
-    "missionText": "Bay enspirasyon espirityèl chak jou atravè Pawòl Bondye, fè li aksesib ak enpòtan pou tout moun.",
+    "missionText": "Bay sajès filozofik chak jou atravè ansèyman stoyisyen yo, fè li aksesib ak enpòtan pou tout moun.",
     "features": "Karakteristik",
-    "feature1": "Vèsè biblik enspiran chak jou",
-    "feature2": "Anrejistre vèsè prefere ou yo",
+    "feature1": "Panse stoyisyen enspiran chak jou",
+    "feature2": "Anrejistre panse prefere ou yo",
     "feature3": "Ajoute nòt ak refleksyon pèsonèl",
     "feature4": "Swiv istwa lekti ou",
     "feature5": "Eksperyans lekti bèl san distraksyon",
     "back": "Retounen",
-    "subtitle": "Enspirasyon Chak Jou Atravè Pawòl Bondye",
-    "feature1Title": "Vèsè Chak Jou",
-    "feature1Desc": "Resevwa yon nouvo vèsè biblik enspiran chak jou a minwi",
+    "subtitle": "Sajès Chak Jou Atravè Filozofi Stoyisyen",
+    "feature1Title": "Panse Chak Jou",
+    "feature1Desc": "Resevwa yon nouvo panse stoyisyen enspiran chak jou",
     "feature2Title": "Favori",
-    "feature2Desc": "Anrejistre ak òganize vèsè prefere ou yo pou jwenn yo fasil",
+    "feature2Desc": "Anrejistre ak òganize panse prefere ou yo pou jwenn yo fasil",
     "feature3Title": "Istwa",
-    "feature3Desc": "Navige nan vèsè kotidyen pase yo ak flèch sou ekran prensipal la. Konekte pou wè jiska 30 jou istwa vèsè.",
+    "feature3Desc": "Navige nan panse kotidyen pase yo. Konekte pou wè jiska 30 jou istwa.",
     "feature4Title": "Refleksyon Pèsonèl",
-    "feature4Desc": "Ajoute refleksyon ak panse pèsonèl ou nan nenpòt vèsè",
+    "feature4Desc": "Ajoute meditasyon ak panse pèsonèl ou nan nenpòt panse",
     "feature5Title": "Mòd Nwa",
     "feature5Desc": "Eksperyans lekti konfòtab lajounen ak lannwit",
     "feature6Title": "Konpatib ak Mobil",
     "feature6Desc": "Bèl ak responsif sou tout aparèy",
     "ctaTitle": "Debloke Eksperyans Konplè a",
-    "ctaDesc": "Kreye yon kont gratis pou anrejistre vèsè prefere ou yo, navige nan vèsè kotidyen pase yo, ajoute refleksyon pèsonèl, ak plis. Enskripsyon an pran mwens pase yon minit!",
+    "ctaDesc": "Kreye yon kont gratis pou anrejistre panse prefere ou yo, navige nan panse kotidyen pase yo, ajoute refleksyon pèsonèl, ak plis. Enskripsyon an pran mwens pase yon minit!",
     "createAccount": "Kreye Kont Gratis",
     "alreadyHaveAccount": "Ou gen yon kont deja? Konekte",
     "comingSoon": "Byento Disponib",
-    "comingSoon1": "Kòmantè Disqus",
+    "comingSoon1": "Tradisyon filozofik adisyonèl",
     "comingSoon2": "Seri Lekti Chak Jou",
-    "comingSoon3": "Plizyè Tradiksyon",
+    "comingSoon3": "Plan Lekti",
     "comingSoon4": "Ak Plis...",
     "getInTouch": "Kontakte Nou",
     "contactDesc": "Nou ta renmen tande ou! Kit ou jwenn yon erè, gen yon sijesyon, oswa ou vle pataje panse ou, tanpri kontakte nou.",
     "emailUs": "Voye nou yon imèl nan:",
     "responseTime": "⏱️ Nou reponn anjeneral nan 24-48 èdtan",
     "followInstagram": "Swiv nou sou Instagram:",
-    "instagramUpdate": "📱 Rete enfòme avèk enspirasyon chak jou ak mizajou aplikasyon",
+    "instagramUpdate": "📱 Rete enfòme avèk sajès chak jou ak mizajou aplikasyon",
     "inLovingMemory": "Nan Souvni Renmen",
-    "devotedChild": "Yon pitit Bondye devwe"
+    "devotedChild": "Yon lespri devwe nan sajès"
   },
   "account": {
     "setPassword": "Mete Modpas",
@@ -243,7 +241,7 @@
     "noGoogleConnected": "Pa gen Kont Google Konekte",
     "noGoogleDesc": "Konekte kont Google ou pou koneksyon pi rapid ak pi fasil",
     "exportData": "Ekspòte Done Ou",
-    "exportDataDesc": "Telechaje tout done ou yo ki gen ladan favori, istwa ak kòmantè.",
+    "exportDataDesc": "Telechaje tout done ou yo ki gen ladan favori, istwa ak meditasyon.",
     "exporting": "Ap ekspòte...",
     "exportDataBtn": "Ekspòte Done",
     "dangerZone": "Zòn Danjere",
@@ -260,21 +258,21 @@
     "unlinkGooglePasswordRequired": "Ou dwe mete yon modpas anvan ou dekonekte kont Google ou. Tanpri mete yon modpas dabò nan seksyon 'Mete Modpas' anlè a."
   },
   "notes": {
-    "title": "Refleksyon Mwen",
-    "hideNotes": "Kache refleksyon",
-    "showNotes": "Montre refleksyon",
-    "addNote": "Ajoute yon Refleksyon Pèsonèl",
+    "title": "Meditasyon Mwen",
+    "hideNotes": "Kache meditasyon",
+    "showNotes": "Montre meditasyon",
+    "addNote": "Ajoute yon Meditasyon Pèsonèl",
     "edit": "Modifye",
     "delete": "Efase",
     "lastUpdated": "Dènye mizajou:",
-    "placeholder": "Ajoute panse pèsonèl ou, refleksyon oswa priyè sou vèsè sa...",
+    "placeholder": "Ajoute panse pèsonèl ou ak refleksyon sou panse sa...",
     "characters": "karaktè",
-    "saveNote": "Anrejistre Refleksyon",
-    "deleteConfirm": "Èske ou sèten ou vle efase kòmantè sa?",
-    "emptyError": "Kòmantè pa ka vid",
-    "tooLongError": "Kòmantè dwe gen mwens pase 1000 karaktè",
-    "saveFailed": "Pa rive anrejistre kòmantè",
-    "deleteFailed": "Pa rive efase kòmantè"
+    "saveNote": "Anrejistre Meditasyon",
+    "deleteConfirm": "Èske ou sèten ou vle efase meditasyon sa?",
+    "emptyError": "Meditasyon pa ka vid",
+    "tooLongError": "Meditasyon dwe gen mwens pase 1000 karaktè",
+    "saveFailed": "Pa rive anrejistre meditasyon",
+    "deleteFailed": "Pa rive efase meditasyon"
   },
   "common": {
     "loading": "Ap chaje...",
@@ -291,6 +289,6 @@
     "search": "Chèche",
     "noResults": "Pa jwenn rezilta",
     "contact": "Kontak",
-    "comment": "Ajoute yon refleksyon"
+    "comment": "Ajoute yon meditasyon"
   }
 }

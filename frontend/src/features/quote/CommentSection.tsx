@@ -45,11 +45,11 @@ export const CommentSection = ({ quoteId }: Props) => {
 
   const handleSave = async () => {
     if (!commentText.trim()) {
-      setError('Reflection cannot be empty.')
+      setError('Meditation cannot be empty.')
       return
     }
     if (commentText.length > 1000) {
-      setError('Reflection must be 1000 characters or fewer.')
+      setError('Meditation must be 1000 characters or fewer.')
       return
     }
     setIsSaving(true)
@@ -62,7 +62,7 @@ export const CommentSection = ({ quoteId }: Props) => {
       setComment(saved)
       setIsEditing(false)
     } catch (err: any) {
-      setError(err.response?.data?.error || 'Failed to save reflection.')
+      setError(err.response?.data?.error || 'Failed to save meditation.')
     } finally {
       setIsSaving(false)
     }
@@ -78,7 +78,7 @@ export const CommentSection = ({ quoteId }: Props) => {
       setCommentText('')
       setIsEditing(false)
     } catch (err: any) {
-      setError(err.response?.data?.error || 'Failed to delete reflection.')
+      setError(err.response?.data?.error || 'Failed to delete meditation.')
     } finally {
       setIsSaving(false)
     }
@@ -95,7 +95,7 @@ export const CommentSection = ({ quoteId }: Props) => {
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <h2 className="font-display text-sm tracking-widest uppercase text-primary-600">
-            My Reflection
+            Meditations
           </h2>
           {!isVisible && comment && (
             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-sans bg-accent/10 text-accent">
@@ -106,7 +106,7 @@ export const CommentSection = ({ quoteId }: Props) => {
         <button
           onClick={() => setIsVisible(v => !v)}
           className="text-primary-400 hover:text-primary-600 transition-colors"
-          aria-label={isVisible ? 'Hide reflection' : 'Show reflection'}
+          aria-label={isVisible ? 'Hide meditation' : 'Show meditation'}
         >
           {isVisible ? (
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -137,7 +137,7 @@ export const CommentSection = ({ quoteId }: Props) => {
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
-            Add a reflection
+            Add a meditation
           </button>
         )}
 
@@ -155,7 +155,7 @@ export const CommentSection = ({ quoteId }: Props) => {
               </button>
               {confirmingDelete ? (
                 <>
-                  <span className="font-sans text-sm text-primary-500">Delete this reflection?</span>
+                  <span className="font-sans text-sm text-primary-500">Delete this meditation?</span>
                   <button
                     onClick={handleDelete}
                     disabled={isSaving}
@@ -191,7 +191,7 @@ export const CommentSection = ({ quoteId }: Props) => {
               ref={textareaRef}
               value={commentText}
               onChange={e => setCommentText(e.target.value)}
-              placeholder="Write your reflection on this quote..."
+              placeholder="Write your meditation on this quote..."
               className="w-full px-4 py-3 font-sans text-sm text-primary-800 bg-surface-elevated border border-primary-200 rounded-card focus:ring-2 focus:ring-accent/40 focus:border-accent resize-none outline-none"
               rows={4}
               maxLength={1000}
