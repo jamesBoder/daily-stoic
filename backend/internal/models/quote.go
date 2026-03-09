@@ -1,10 +1,46 @@
 package models
 
 import (
+	"database/sql/driver"
+	"encoding/json"
+	"fmt"
 	"time"
 
 	"gorm.io/gorm"
 )
+
+// StringSlice stores as a JSON text column in Postgres but serializes as a
+// proper JSON array ([]string) in API responses.
+type StringSlice []string
+
+func (s StringSlice) Value() (driver.Value, error) {
+	b, err := json.Marshal(s)
+	return string(b), err
+}
+
+func (s *StringSlice) Scan(value interface{}) error {
+	var raw string
+	switch v := value.(type) {
+	case string:
+		raw = v
+	case []byte:
+		raw = string(v)
+	case nil:
+		*s = StringSlice{}
+		return nil
+	default:
+		return fmt.Errorf("StringSlice: unsupported type %T", value)
+	}
+	return json.Unmarshal([]byte(raw), s)
+}
+
+func (s StringSlice) MarshalJSON() ([]byte, error) {
+	if s == nil {
+		return []byte("[]"), nil
+	}
+	type plain []string
+	return json.Marshal(plain(s))
+}
 
 // Quote is the central content unit of the app — replaces Verse from Daily Bible.
 type Quote struct {
@@ -27,7 +63,7 @@ type Quote struct {
 	// Classification
 	TraditionID uint      `gorm:"not null" json:"tradition_id"`
 	Tradition   Tradition `gorm:"foreignKey:TraditionID" json:"tradition,omitempty"`
-	Themes      string    `gorm:"type:text" json:"themes"` // JSON-encoded string array: ["resilience","virtue"]
+	Themes      StringSlice `gorm:"type:text" json:"themes"` // JSON-encoded string array: ["resilience","virtue"]
 
 	// Scheduling
 	DailyDate *string `gorm:"uniqueIndex;type:date" json:"daily_date,omitempty"`

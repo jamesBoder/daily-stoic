@@ -134,12 +134,19 @@ func main() {
 			continue
 		}
 
+		var themes models.StringSlice
+		if q.Themes != "" {
+			if err := json.Unmarshal([]byte(q.Themes), &themes); err != nil {
+				themes = models.StringSlice{}
+			}
+		}
+
 		quote := models.Quote{
 			Text:         q.Text,
 			Source:       q.Source,
 			AuthorID:     authorID,
 			TraditionID:  q.TraditionID,
-			Themes:       q.Themes,
+			Themes:       themes,
 			Tier:         q.Tier,
 			QualityScore: q.QualityScore,
 		}
