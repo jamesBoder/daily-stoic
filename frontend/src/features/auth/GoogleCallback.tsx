@@ -28,7 +28,7 @@ export const GoogleCallback: React.FC = () => {
         await loginWithToken(token);
 
         // Redirect to daily quote
-        navigate("/daily", { replace: true });
+        navigate("/", { replace: true });
       } catch (error) {
         console.error("Google OAuth callback error:", error);
         navigate("/login", { replace: true });
