@@ -2,7 +2,7 @@ import { vi } from 'vitest';
 import '@testing-library/jest-dom';
 
 // Add Jest compatibility
-global.jest = vi;
+(global as any).jest = vi;
 
 // Make vi.fn() available as jest.fn()
 (global as any).jest.fn = vi.fn;

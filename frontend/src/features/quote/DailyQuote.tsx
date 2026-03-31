@@ -1,6 +1,6 @@
 // src/features/quote/DailyQuote.tsx
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import { QuoteCard } from './QuoteCard'
 import { QuoteCardSkeleton } from './QuoteCardSkeleton'
@@ -10,6 +10,8 @@ import { MilestoneModal } from '../gamification/MilestoneModal'
 import { useMilestone } from '../../hooks/useMilestone'
 import { useAuth } from '../../hooks/useAuth'
 import { Link } from 'react-router-dom'
+import { usePullToRefresh } from '../../hooks/usePullToRefresh'
+import PullRefreshIndicator from '../../components/common/PullRefreshIndicator'
 
 export const DailyQuote = () => {
   const [scrollY, setScrollY] = useState(0)
@@ -20,11 +22,20 @@ export const DailyQuote = () => {
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
   }, [])
-  const { data, isLoading, isError } = useDailyQuote()
+  const { data, isLoading, isError, refetch } = useDailyQuote()
   const { data: streak } = useStreak()
   const { milestone, dismissMilestone } = useMilestone(streak?.current_streak)
   const { isAuthenticated, isGuest } = useAuth()
   const isRealUser = isAuthenticated && !isGuest
+
+  const handleRefresh = useCallback(async () => {
+    await refetch()
+    if (isRealUser) queryClient.invalidateQueries({ queryKey: ['streak'] })
+  }, [refetch, isRealUser, queryClient])
+
+  const { onTouchStart, onTouchMove, onTouchEnd, pullProgress, isRefreshing } = usePullToRefresh({
+    onRefresh: handleRefresh,
+  })
 
   // The daily quote fetch triggers RecordDailyRead server-side, which increments
   // the streak. Invalidate the streak cache once the quote loads so the header
@@ -45,7 +56,13 @@ export const DailyQuote = () => {
   )
 
   return (
-    <main className="bg-surface-base pt-8 pb-24 px-4">
+    <main
+      className="bg-surface-base pt-8 pb-24 px-4"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
+      <PullRefreshIndicator progress={pullProgress} isRefreshing={isRefreshing} />
       {/* Date header — parallax drifts slower than page scroll */}
       <header
         className="text-center mb-8"

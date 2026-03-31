@@ -19,6 +19,7 @@ import { ResetPassword } from './features/auth/ResetPassword'
 import { GoogleCallback } from './features/auth/GoogleCallback'
 import { ProtectedRoute } from './components/common/ProtectedRoute'
 import { About } from './features/about/About'
+import { Settings } from './features/profile/Settings'
 // Stub pages for Phase 2 — full implementation in Phase 4
 import { TraditionsStub } from './features/traditions/TraditionsStub'
 import { ReadingPlansStub } from './features/reading-plans/ReadingPlansStub'
@@ -76,6 +77,7 @@ export default function App() {
                 <Route path="saved" element={<ProtectedRoute><FavoritesList /></ProtectedRoute>} />
                 <Route path="history" element={<ProtectedRoute><HistoryList /></ProtectedRoute>} />
                 <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+                <Route path="settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
               </Route>
             </Routes>
           </LanguageProvider>

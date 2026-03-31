@@ -1,11 +1,15 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  className?: string;
+}
+
+export const Footer: React.FC<FooterProps> = ({ className }) => {
   const { t } = useTranslation();
-  
+
   return (
-    <footer className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-6 mt-12">
+    <footer className={`bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-6 mt-12 ${className ?? ''}`}>
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between">
           {/* Links Section */}

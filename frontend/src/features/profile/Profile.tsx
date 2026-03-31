@@ -8,10 +8,14 @@ import { ProfileEditForm } from "./ProfileEditForm";
 import { Card } from "../../components/common/Card";
 import { Button } from "../../components/common/Button";
 import { VerseCardSkeleton } from "../../components/common/Skeleton";
+import JourneyStats from "./JourneyStats";
+import NextMilestoneBar from "./NextMilestoneBar";
+import { useStreak } from "../../hooks/useStreak";
 
 export const Profile: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { user } = useAuth(); // ✅ Get from auth context
+  const { data: streak } = useStreak();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -70,6 +74,20 @@ export const Profile: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
+      {/* Journey Stats + Milestone Bar */}
+      {streak && (
+        <Card>
+          <JourneyStats
+            currentStreak={streak.current_streak}
+            longestStreak={streak.longest_streak}
+            totalReads={streak.total_reads}
+          />
+          <div className="mt-4">
+            <NextMilestoneBar currentStreak={streak.current_streak} />
+          </div>
+        </Card>
+      )}
+
       {/* Email verification banner */}
       {profile.email_verified === false && (
         <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
