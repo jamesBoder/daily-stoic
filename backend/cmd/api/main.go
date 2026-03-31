@@ -18,6 +18,7 @@ import (
 	"github.com/jamesBoder/daily-stoic/internal/middleware"
 	"github.com/jamesBoder/daily-stoic/internal/repository"
 	"github.com/jamesBoder/daily-stoic/internal/routes"
+	"github.com/jamesBoder/daily-stoic/internal/seeds"
 	"github.com/jamesBoder/daily-stoic/internal/services"
 )
 
@@ -39,7 +40,12 @@ func main() {
 		log.Fatal("Failed to run migrations:", err)
 	}
 
-	// 4. Repositories
+	// 4. Seed if empty (no-op after first run)
+	if err := seeds.SeedIfEmpty(db); err != nil {
+		log.Printf("Warning: seeding failed: %v", err)
+	}
+
+	// 5. Repositories
 	userRepo            := repository.NewUserRepository(db)
 	quoteRepo           := repository.NewQuoteRepository(db)
 	authorRepo          := repository.NewAuthorRepository(db)

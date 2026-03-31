@@ -1,23 +1,17 @@
-//go:build ignore
-
-// Seed script — run manually to populate the database.
-// Usage: go run scripts/seed.go
-// Requires: backend/.env or environment variables set
-
-package main
+package seeds
 
 import (
+	"embed"
 	"encoding/json"
-	"fmt"
+	"io/fs"
 	"log"
-	"os"
 
-	"github.com/jamesBoder/daily-stoic/internal/config"
-	"github.com/jamesBoder/daily-stoic/internal/database"
 	"github.com/jamesBoder/daily-stoic/internal/models"
+	"gorm.io/gorm"
 )
 
-// --- Tradition seed data ---
+//go:embed data
+var seedFS embed.FS
 
 var traditionSeedData = []models.Tradition{
 	{ID: 1, Name: "Stoicism", Slug: "stoicism", Tier: "free", SortOrder: 1},
@@ -31,8 +25,6 @@ var traditionSeedData = []models.Tradition{
 	{ID: 9, Name: "Renaissance Philosophy", Slug: "renaissance-philosophy", Tier: "free", SortOrder: 9},
 	{ID: 10, Name: "Transcendentalism", Slug: "transcendentalism", Tier: "free", SortOrder: 10},
 }
-
-// --- Author seed data ---
 
 var authorSeedData = []models.Author{
 	{Slug: "marcus-aurelius", Name: "Marcus Aurelius", Born: "121 AD", Died: "180 AD", Nationality: "Roman", TraditionID: 1, WikidataID: "Q1427"},
@@ -53,8 +45,6 @@ var authorSeedData = []models.Author{
 	{Slug: "emerson", Name: "Ralph Waldo Emerson", Born: "1803", Died: "1882", Nationality: "American", TraditionID: 10, WikidataID: "Q35185"},
 }
 
-// --- Quote JSON structure ---
-
 type quoteJSON struct {
 	Text         string  `json:"text"`
 	Source       string  `json:"source"`
@@ -65,106 +55,91 @@ type quoteJSON struct {
 	QualityScore float64 `json:"quality_score"`
 }
 
-func main() {
-	cfg, err := config.Load()
-	if err != nil {
-		log.Fatalf("Failed to load config: %v", err)
+// SeedIfEmpty seeds traditions, authors, and quotes only when the quotes table
+// is empty. Safe to call on every startup — it's a no-op after the first run.
+func SeedIfEmpty(db *gorm.DB) error {
+	var count int64
+	db.Model(&models.Quote{}).Count(&count)
+	if count > 0 {
+		return nil
 	}
 
-	db, err := database.Connect(cfg)
-	if err != nil {
-		log.Fatalf("Failed to connect to database: %v", err)
-	}
+	log.Println("Quotes table is empty — seeding database...")
+	return seed(db)
+}
 
-	// --- Seed traditions ---
-	log.Println("Seeding traditions...")
+func seed(db *gorm.DB) error {
+	// Traditions
 	for _, t := range traditionSeedData {
-		result := db.Where(models.Tradition{ID: t.ID}).FirstOrCreate(&t)
-		if result.Error != nil {
-			log.Printf("  ERROR tradition %s: %v", t.Slug, result.Error)
-		} else if result.RowsAffected > 0 {
-			log.Printf("  Created tradition: %s", t.Name)
-		} else {
-			log.Printf("  Skipped (exists): %s", t.Name)
+		if err := db.Where(models.Tradition{ID: t.ID}).FirstOrCreate(&t).Error; err != nil {
+			log.Printf("seed: tradition %s: %v", t.Slug, err)
 		}
 	}
 
-	// --- Seed authors ---
-	log.Println("Seeding authors...")
-	authorIDBySlug := make(map[string]uint)
+	// Authors — build slug→ID map for quote insertion
+	authorIDBySlug := make(map[string]uint, len(authorSeedData))
 	for _, a := range authorSeedData {
 		var existing models.Author
-		result := db.Where("slug = ?", a.Slug).FirstOrCreate(&existing, a)
-		if result.Error != nil {
-			log.Printf("  ERROR author %s: %v", a.Slug, result.Error)
+		if err := db.Where("slug = ?", a.Slug).FirstOrCreate(&existing, a).Error; err != nil {
+			log.Printf("seed: author %s: %v", a.Slug, err)
 			continue
 		}
-		if result.RowsAffected > 0 {
-			log.Printf("  Created author: %s", a.Name)
-			authorIDBySlug[a.Slug] = existing.ID
-		} else {
-			log.Printf("  Skipped (exists): %s", a.Name)
-			authorIDBySlug[a.Slug] = existing.ID
-		}
+		authorIDBySlug[a.Slug] = existing.ID
 	}
 
-	// --- Seed quotes from JSON ---
-	quotesPath := "internal/seeds/data/quotes.json"
-	if len(os.Args) > 1 {
-		quotesPath = os.Args[1]
-	}
-
-	data, err := os.ReadFile(quotesPath)
+	// Quotes — load every JSON file from the embedded data directory
+	entries, err := fs.ReadDir(seedFS, "data")
 	if err != nil {
-		log.Fatalf("Failed to read %s: %v", quotesPath, err)
+		return err
 	}
 
-	var quotes []quoteJSON
-	if err := json.Unmarshal(data, &quotes); err != nil {
-		log.Fatalf("Failed to parse quotes JSON: %v", err)
-	}
-
-	log.Printf("Seeding %d quotes...", len(quotes))
 	created, skipped, failed := 0, 0, 0
-	for i, q := range quotes {
-		authorID, ok := authorIDBySlug[q.AuthorSlug]
-		if !ok {
-			log.Printf("  [%d] SKIP — unknown author slug: %s", i+1, q.AuthorSlug)
-			failed++
+	for _, entry := range entries {
+		if entry.IsDir() {
 			continue
 		}
-
-		var themes models.StringSlice
-		if q.Themes != "" {
-			if err := json.Unmarshal([]byte(q.Themes), &themes); err != nil {
-				themes = models.StringSlice{}
+		raw, err := seedFS.ReadFile("data/" + entry.Name())
+		if err != nil {
+			log.Printf("seed: read %s: %v", entry.Name(), err)
+			continue
+		}
+		var quotes []quoteJSON
+		if err := json.Unmarshal(raw, &quotes); err != nil {
+			log.Printf("seed: parse %s: %v", entry.Name(), err)
+			continue
+		}
+		for _, q := range quotes {
+			authorID, ok := authorIDBySlug[q.AuthorSlug]
+			if !ok {
+				failed++
+				continue
+			}
+			var themes models.StringSlice
+			if q.Themes != "" {
+				_ = json.Unmarshal([]byte(q.Themes), &themes)
+			}
+			quote := models.Quote{
+				Text:         q.Text,
+				Source:       q.Source,
+				AuthorID:     authorID,
+				TraditionID:  q.TraditionID,
+				Themes:       themes,
+				Tier:         q.Tier,
+				QualityScore: q.QualityScore,
+			}
+			var existing models.Quote
+			if db.Where("text = ? AND author_id = ?", q.Text, authorID).First(&existing).Error == nil {
+				skipped++
+				continue
+			}
+			if err := db.Create(&quote).Error; err != nil {
+				failed++
+			} else {
+				created++
 			}
 		}
-
-		quote := models.Quote{
-			Text:         q.Text,
-			Source:       q.Source,
-			AuthorID:     authorID,
-			TraditionID:  q.TraditionID,
-			Themes:       themes,
-			Tier:         q.Tier,
-			QualityScore: q.QualityScore,
-		}
-
-		var existing models.Quote
-		result := db.Where("text = ? AND author_id = ?", q.Text, authorID).First(&existing)
-		if result.Error == nil {
-			skipped++
-			continue
-		}
-
-		if err := db.Create(&quote).Error; err != nil {
-			log.Printf("  [%d] ERROR: %v", i+1, err)
-			failed++
-		} else {
-			created++
-		}
 	}
 
-	fmt.Printf("\nDone. Created: %d | Skipped (exists): %d | Failed: %d\n", created, skipped, failed)
+	log.Printf("Seed complete — created: %d | skipped: %d | failed: %d", created, skipped, failed)
+	return nil
 }
