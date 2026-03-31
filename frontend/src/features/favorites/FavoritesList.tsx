@@ -306,7 +306,7 @@ export const FavoritesList: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
             <label htmlFor="sort-field" className="font-sans text-sm text-primary-500 whitespace-nowrap">
               {t('favorites.sortBy')}:
             </label>

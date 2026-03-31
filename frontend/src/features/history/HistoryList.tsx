@@ -169,7 +169,7 @@ export const HistoryList = () => {
                 <button
                   onClick={() => setPage(p => Math.max(1, p - 1))}
                   disabled={page === 1}
-                  className="font-sans text-sm text-primary-500 hover:text-primary-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                  className="font-sans text-sm text-primary-500 hover:text-primary-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors min-h-[44px] px-4"
                 >
                   ← Previous
                 </button>
@@ -179,7 +179,7 @@ export const HistoryList = () => {
                 <button
                   onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                   disabled={page === totalPages}
-                  className="font-sans text-sm text-primary-500 hover:text-primary-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                  className="font-sans text-sm text-primary-500 hover:text-primary-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors min-h-[44px] px-4"
                 >
                   Next →
                 </button>

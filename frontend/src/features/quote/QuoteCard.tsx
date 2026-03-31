@@ -39,7 +39,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
 
   return (
     <div className="max-w-2xl mx-auto animate-float" style={{ animationDelay: '0.65s' }}>
-      <article className="animate-quote-enter bg-surface-card rounded-card shadow-card px-8 py-10 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-500">
+      <article className="animate-quote-enter bg-surface-card rounded-card shadow-card px-4 py-6 sm:px-8 sm:py-10 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-500">
 
         {/* Header row */}
         <div className="flex items-center justify-between mb-8">
@@ -82,7 +82,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
             {/* Action row */}
             <div className="flex items-center gap-2 pt-2">
               <button
-                onClick={() => isAuthenticated ? toggleFavorite(quote.id) : promptLogin('save quotes')}
+                onClick={() => { navigator.vibrate?.(10); isAuthenticated ? toggleFavorite(quote.id) : promptLogin('save quotes') }}
                 className={`flex items-center gap-1.5 text-sm font-sans rounded-full px-4 py-2 transition-colors ${
                   isFav
                     ? 'bg-accent text-white'
