@@ -17,15 +17,19 @@ export const SharePanel = ({ quote, onClose }: Props) => {
   const shareText = buildShareText(quote)
   const shareUrl = window.location.href
 
-  // Close on outside click
+  // Close on outside click or touch (touchstart covers mobile tap-outside)
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
+    const handler = (e: MouseEvent | TouchEvent) => {
       if (panelRef.current && !panelRef.current.contains(e.target as Node)) {
         onClose()
       }
     }
     document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
+    document.addEventListener('touchstart', handler)
+    return () => {
+      document.removeEventListener('mousedown', handler)
+      document.removeEventListener('touchstart', handler)
+    }
   }, [onClose])
 
   const handleCopy = async () => {

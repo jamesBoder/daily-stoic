@@ -27,6 +27,7 @@ export interface Quote {
   themes: string[]
   tier: 'free' | 'premium'
   daily_date?: string
+  image_url?: string
   author: Author
   tradition: Tradition
 }
