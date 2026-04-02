@@ -68,6 +68,9 @@ type Quote struct {
 	// Scheduling
 	DailyDate *string `gorm:"uniqueIndex;type:date" json:"daily_date,omitempty"`
 
+	// Media — optional per-quote override; frontend falls back to theme slug image
+	ImageURL string `gorm:"size:500" json:"image_url,omitempty"`
+
 	// Access control
 	Tier         string  `gorm:"size:20;default:'free'" json:"tier"` // "free" | "premium"
 	QualityScore float64 `gorm:"default:0" json:"quality_score"`
