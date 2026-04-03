@@ -6,7 +6,7 @@ import { useSwipe } from '../../hooks/useSwipe';
 import {
   Home,
   Bookmark,
-  Clock,
+  ScrollText,
   User,
   Menu,
   X,
@@ -15,16 +15,16 @@ import {
   LogOut,
   LogIn,
   UserPlus,
+  Clock,
+  Sun,
+  Moon,
 } from 'lucide-react';
-
-// ── BottomNav ──────────────────────────────────────────────────────────────────
-// Mobile-only persistent tab bar. Hidden on md+ screens where the header handles
-// navigation. Shown to all users including guests.
-// ──────────────────────────────────────────────────────────────────────────────
+import { useTheme } from '../../contexts/ThemeContext';
 
 const BottomNav: React.FC = () => {
   const { t } = useTranslation();
   const { isAuthenticated, isGuest, logout } = useAuth();
+  const { isDarkMode, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -32,17 +32,11 @@ const BottomNav: React.FC = () => {
 
   const sheetSwipe = useSwipe({ onSwipeDown: () => setSheetOpen(false) });
 
-  // Close sheet on route change
-  useEffect(() => {
-    setSheetOpen(false);
-  }, [location.pathname]);
+  useEffect(() => { setSheetOpen(false); }, [location.pathname]);
 
-  // Close sheet on Escape key
   useEffect(() => {
     if (!sheetOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSheetOpen(false);
-    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSheetOpen(false); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [sheetOpen]);
@@ -55,72 +49,69 @@ const BottomNav: React.FC = () => {
 
   const tabBase =
     'flex flex-col items-center justify-center gap-0.5 flex-1 h-full text-[11px] font-medium transition-all duration-150 active:scale-90 select-none focus:outline-none min-w-0 overflow-hidden';
-  const tabActive = 'text-accent dark:text-accent-light';
-  const tabInactive = 'text-primary-400 dark:text-primary-500';
+  const tabActive   = 'text-accent dark:text-star-gold';
+  const tabInactive = 'text-primary-400 dark:text-night-400';
+
+  const sheetItemBase =
+    'flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors';
+  const sheetItemActive =
+    'bg-accent/10 text-accent dark:bg-star-gold/15 dark:text-star-gold';
+  const sheetItemInactive =
+    'text-primary-700 hover:bg-primary-100 dark:text-night-200 dark:hover:bg-night-700/60';
 
   return (
     <>
-      {/* ── Tab bar ─────────────────────────────────────────────────────── */}
+      {/* ── Tab bar ─────────────────────────────────────────────────── */}
       <nav
-        className="md:hidden fixed bottom-0 inset-x-0 z-30 border-t border-primary-200/60 dark:border-primary-700/40 bg-surface-base/95 backdrop-blur-sm"
-        style={{ paddingBottom: 'env(safe-area-inset-bottom)', willChange: 'transform', transform: 'translateZ(0)' }}
+        className="md:hidden fixed bottom-0 inset-x-0 z-30
+                   border-t border-primary-200/60 dark:border-white/[0.06]
+                   bg-surface-base/95 dark:bg-night-950/75 backdrop-blur-sm dark:backdrop-blur-glass"
+        style={{
+          paddingBottom: 'env(safe-area-inset-bottom)',
+          WebkitBackdropFilter: 'blur(20px)',
+          willChange: 'transform',
+          transform: 'translateZ(0)',
+        }}
         aria-label={t('nav.mainNavigation', 'Main navigation')}
       >
         <div className="flex items-stretch h-14">
 
           {/* Home */}
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`}
-            aria-label={t('nav.home', 'Home')}
-          >
+          <NavLink to="/" end className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Home">
             {({ isActive }) => (
               <>
                 <Home size={22} strokeWidth={isActive ? 2.5 : 1.75} />
-                <span className="truncate w-full text-center">{t('nav.home', 'Home')}</span>
+                <span className="truncate w-full text-center">Home</span>
               </>
             )}
           </NavLink>
 
           {/* Saved */}
-          <NavLink
-            to="/saved"
-            className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`}
-            aria-label={t('nav.saved', 'Saved')}
-          >
+          <NavLink to="/saved" className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Saved">
             {({ isActive }) => (
               <>
                 <Bookmark size={22} strokeWidth={isActive ? 2.5 : 1.75} fill={isActive ? 'currentColor' : 'none'} />
-                <span className="truncate w-full text-center">{t('nav.saved', 'Saved')}</span>
+                <span className="truncate w-full text-center">Saved</span>
               </>
             )}
           </NavLink>
 
-          {/* History */}
-          <NavLink
-            to="/history"
-            className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`}
-            aria-label={t('nav.history', 'History')}
-          >
+          {/* Traditions */}
+          <NavLink to="/traditions" className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Traditions">
             {({ isActive }) => (
               <>
-                <Clock size={22} strokeWidth={isActive ? 2.5 : 1.75} />
-                <span className="truncate w-full text-center">{t('nav.history', 'History')}</span>
+                <ScrollText size={22} strokeWidth={isActive ? 2.5 : 1.75} />
+                <span className="truncate w-full text-center">Traditions</span>
               </>
             )}
           </NavLink>
 
           {/* Profile */}
-          <NavLink
-            to="/profile"
-            className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`}
-            aria-label={t('nav.profile', 'Profile')}
-          >
+          <NavLink to="/profile" className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Profile">
             {({ isActive }) => (
               <>
                 <User size={22} strokeWidth={isActive ? 2.5 : 1.75} fill={isActive ? 'currentColor' : 'none'} />
-                <span className="truncate w-full text-center">{t('nav.profile', 'Profile')}</span>
+                <span className="truncate w-full text-center">Profile</span>
               </>
             )}
           </NavLink>
@@ -129,94 +120,120 @@ const BottomNav: React.FC = () => {
           <button
             className={`${tabBase} ${sheetOpen ? tabActive : tabInactive}`}
             onClick={() => setSheetOpen(true)}
-            aria-label={t('nav.more', 'More')}
+            aria-label="More"
             aria-haspopup="dialog"
             aria-expanded={sheetOpen}
           >
             <Menu size={22} strokeWidth={sheetOpen ? 2.5 : 1.75} />
-            <span className="truncate w-full text-center">{t('nav.more', 'More')}</span>
+            <span className="truncate w-full text-center">More</span>
           </button>
 
         </div>
       </nav>
 
-      {/* ── Backdrop ─────────────────────────────────────────────────────── */}
+      {/* ── Backdrop ─────────────────────────────────────────────────── */}
       <div
-        className={`md:hidden fixed inset-0 z-40 bg-black/40 transition-opacity duration-200 ${
+        className={`md:hidden fixed inset-0 z-40 bg-black/40 dark:bg-night-950/60 transition-opacity duration-200 ${
           sheetOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden="true"
         onClick={() => setSheetOpen(false)}
       />
 
-      {/* ── More slide-up sheet ──────────────────────────────────────────── */}
+      {/* ── More slide-up sheet ──────────────────────────────────────── */}
       <div
         ref={sheetRef}
         role="dialog"
         aria-modal="true"
-        aria-label={t('nav.moreMenu', 'More options')}
-        className={`md:hidden fixed inset-x-0 bottom-0 z-50 rounded-t-2xl border-t border-primary-200/60 dark:border-primary-700/40 bg-surface-base/98 backdrop-blur-sm transition-transform duration-300 ease-out ${
-          sheetOpen ? 'translate-y-0' : 'translate-y-full'
-        }`}
-        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+        aria-label="More options"
+        className={`md:hidden fixed inset-x-0 bottom-0 z-50 rounded-t-2xl
+                   border-t border-primary-200/60 dark:border-white/[0.07]
+                   bg-surface-base/98 dark:bg-night-900/85 backdrop-blur-sm dark:backdrop-blur-glass
+                   transition-transform duration-300 ease-out ${
+                     sheetOpen ? 'translate-y-0' : 'translate-y-full'
+                   }`}
+        style={{ paddingBottom: 'env(safe-area-inset-bottom)', WebkitBackdropFilter: 'blur(20px)' }}
         {...sheetSwipe}
       >
         {/* Drag handle */}
         <div className="flex justify-center pt-3 pb-1">
-          <div className="w-10 h-1 rounded-full bg-primary-300 dark:bg-primary-600" />
+          <div className="w-10 h-1 rounded-full bg-primary-300 dark:bg-night-600" />
         </div>
 
-        {/* Close button */}
+        {/* Close */}
         <button
-          className="absolute top-3 right-4 p-2 rounded-full text-primary-400 dark:text-primary-500 hover:bg-primary-100 dark:hover:bg-primary-700 transition-colors"
+          className="absolute top-3 right-4 p-2 rounded-full text-primary-400 dark:text-night-400
+                     hover:bg-primary-100 dark:hover:bg-night-700/60 transition-colors"
           onClick={() => setSheetOpen(false)}
-          aria-label={t('common.close', 'Close')}
+          aria-label="Close"
         >
           <X size={18} />
         </button>
 
         {isGuest || !isAuthenticated ? (
-          /* ── Guest sheet: sign-up prompt ─────────────────────────────── */
+          /* ── Guest sheet ──────────────────────────────────────────── */
           <div className="px-4 pb-6 pt-2">
-            <p className="text-xs font-semibold text-primary-400 dark:text-primary-500 uppercase tracking-wider mb-3 px-1">
-              {t('nav.more', 'More')}
+            <p className="text-xs font-semibold text-primary-400 dark:text-night-400 uppercase tracking-wider mb-3 px-1">
+              More
             </p>
-            <p className="text-sm text-primary-500 dark:text-primary-400 mb-5 px-1">
-              Create a free account to save quotes, track your streak, and build a Stoic practice.
+            <p className="text-sm text-primary-500 dark:text-night-300 mb-5 px-1">
+              Create a free account to save quotes, track your streak, and build a practice.
             </p>
             <div className="flex flex-col gap-2">
               <button
                 onClick={() => { setSheetOpen(false); navigate('/auth/register'); }}
-                className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-white bg-accent hover:bg-accent-dark transition-colors w-full"
+                className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold
+                           text-white bg-accent dark:bg-star-gold dark:text-night-950
+                           hover:bg-accent-dark dark:hover:bg-star-gold-dark transition-colors w-full"
               >
                 <UserPlus size={20} />
                 Sign Up Free
               </button>
               <button
                 onClick={() => { setSheetOpen(false); navigate('/auth/login'); }}
-                className="flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-primary-700 dark:text-primary-300 bg-primary-100 dark:bg-primary-800 hover:bg-primary-200 dark:hover:bg-primary-700 transition-colors w-full"
+                className="flex items-center gap-3 px-4 py-3 rounded-xl font-medium
+                           text-primary-700 bg-primary-100 hover:bg-primary-200
+                           dark:text-night-200 dark:bg-night-700/60 dark:hover:bg-night-600/60
+                           transition-colors w-full"
               >
                 <LogIn size={20} />
                 Sign In
               </button>
+              <button
+                onClick={toggleTheme}
+                className="flex items-center gap-3 px-4 py-3 rounded-xl font-medium
+                           text-primary-700 bg-primary-100 hover:bg-primary-200
+                           dark:text-night-200 dark:bg-night-700/60 dark:hover:bg-night-600/60
+                           transition-colors w-full"
+              >
+                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                {isDarkMode ? 'Light mode' : 'Dark mode'}
+              </button>
             </div>
           </div>
         ) : (
-          /* ── Authenticated sheet: nav links ──────────────────────────── */
+          /* ── Authenticated sheet ──────────────────────────────────── */
           <div className="px-4 pb-4 pt-2">
-            <p className="text-xs font-semibold text-primary-400 dark:text-primary-500 uppercase tracking-wider mb-3 px-1">
-              {t('nav.more', 'More')}
+            <p className="text-xs font-semibold text-primary-400 dark:text-night-400 uppercase tracking-wider mb-3 px-1">
+              More
             </p>
 
             <div className="flex flex-col gap-1">
+              {/* Reading History */}
+              <NavLink
+                to="/history"
+                className={({ isActive }) =>
+                  `${sheetItemBase} ${isActive ? sheetItemActive : sheetItemInactive}`
+                }
+              >
+                <Clock size={20} />
+                Reading History
+              </NavLink>
+
               <NavLink
                 to="/settings"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors ${
-                    isActive
-                      ? 'bg-accent/10 dark:bg-accent/20 text-accent dark:text-accent-light'
-                      : 'text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-800'
-                  }`
+                  `${sheetItemBase} ${isActive ? sheetItemActive : sheetItemInactive}`
                 }
               >
                 <Settings size={20} />
@@ -226,22 +243,27 @@ const BottomNav: React.FC = () => {
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
-                  `flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors ${
-                    isActive
-                      ? 'bg-accent/10 dark:bg-accent/20 text-accent dark:text-accent-light'
-                      : 'text-primary-700 dark:text-primary-300 hover:bg-primary-100 dark:hover:bg-primary-800'
-                  }`
+                  `${sheetItemBase} ${isActive ? sheetItemActive : sheetItemInactive}`
                 }
               >
                 <Info size={20} />
                 {t('nav.about', 'About')}
               </NavLink>
 
-              <div className="h-px bg-primary-200 dark:bg-primary-700 my-1" />
+              <button
+                onClick={toggleTheme}
+                className={`${sheetItemBase} ${sheetItemInactive}`}
+              >
+                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                {isDarkMode ? 'Light mode' : 'Dark mode'}
+              </button>
+
+              <div className="h-px bg-primary-200 dark:bg-night-700/60 my-1" />
 
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 w-full text-left"
+                className="flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors
+                           text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 w-full text-left"
               >
                 <LogOut size={20} />
                 {t('nav.logout', 'Sign out')}
