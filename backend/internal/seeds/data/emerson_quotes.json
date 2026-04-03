@@ -1,0 +1,272 @@
+[
+  {
+    "text": "Trust thyself: every heart vibrates to that iron string.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"inner_strength\",\"virtue\",\"courage\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  },
+  {
+    "text": "Whoso would be a man must be a nonconformist. He who would gather immortal palms must not be hindered by the name of goodness, but must explore if it be goodness.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"courage\",\"integrity\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "A foolish consistency is the hobgoblin of little minds, adored by little statesmen and philosophers and divines. With consistency a great soul has simply nothing to do.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"wisdom\",\"courage\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "To be great is to be misunderstood.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"courage\",\"integrity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "What I must do is all that concerns me, not what the people think. This rule, equally arduous in actual and in intellectual life, may serve for the whole distinction between greatness and meanness.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"control\",\"virtue\",\"inner_strength\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Society everywhere is in conspiracy against the manhood of every one of its members. Society is a joint-stock company, in which the members agree to surrender the liberty and culture of the eater.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"freedom\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Imitation is suicide. Insist on yourself; never imitate. Your own gift you can present every moment with the cumulative force of a whole life's cultivation.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"inner_strength\",\"virtue\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Nothing can bring you peace but yourself. Nothing can bring you peace but the triumph of principles.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"tranquility\",\"inner_strength\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  },
+  {
+    "text": "Speak what you think today in hard words, and tomorrow speak what tomorrow thinks in hard words again, though it contradict everything you said today.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"integrity\",\"courage\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "We but half express ourselves, and are ashamed of that divine idea which each of us represents. It may be safely trusted as proportionate and of good issues, so it be faithfully imparted.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"integrity\",\"courage\",\"inner_strength\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Cause and effect, means and ends, seed and fruit, cannot be severed; for the effect already blooms in the cause, the end pre-exists in the means, the fruit in the seed.",
+    "source": "Compensation (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"nature\",\"reason\",\"acceptance\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Every excess causes a defect; every defect an excess. Every sweet has its sour; every evil its good. Every faculty which is a receiver of pleasure has an equal penalty put on its abuse.",
+    "source": "Compensation (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"nature\",\"wisdom\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The dice of God are always loaded. The world looks like a multiplication table, or a mathematical equation, which, turn it how you will, balances itself.",
+    "source": "Compensation (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"acceptance\",\"nature\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "A man's fortunes are the fruit of his character. A man's enemies are a part of his own kin: their bitter words are not words but wounds, and they have a share in him.",
+    "source": "Fate (1860)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"virtue\",\"acceptance\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "So far as a man thinks, he is free. The revelation of thought takes men out of servitude into freedom.",
+    "source": "Fate (1860)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"freedom\",\"reason\",\"inner_strength\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Character is higher than intellect. A great soul will be strong to live, as well as strong to think.",
+    "source": "The American Scholar (1837)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"virtue\",\"wisdom\",\"inner_strength\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "The reward of a thing well done is to have done it.",
+    "source": "New England Reformers (1844)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"virtue\",\"integrity\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Finish each day and be done with it. You have done what you could. Some blunders and absurdities no doubt crept in; forget them as soon as you can tomorrow is a new day.",
+    "source": "Letters and Social Aims (1876)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"mindfulness\",\"equanimity\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  },
+  {
+    "text": "The only way to have a friend is to be one.",
+    "source": "Friendship (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"virtue\",\"service\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Nothing is at last sacred but the integrity of your own mind. Absolve you to yourself, and you shall have the suffrage of the world.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"integrity\",\"inner_strength\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "It is easy in the world to live after the world's opinion; it is easy in solitude to live after our own; but the great man is he who in the midst of the crowd keeps with perfect sweetness the independence of solitude.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"inner_strength\",\"virtue\",\"courage\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  },
+  {
+    "text": "To laugh often and much; to win the respect of intelligent people and the affection of children; to earn the appreciation of honest critics: this is to have succeeded.",
+    "source": "Essays, Second Series: \"Character\" (1844)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"virtue\",\"wisdom\",\"service\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "All life is an experiment. The more experiments you make, the better. What if they are a little coarse, and you may get your coat soiled or torn? What if you do fail?",
+    "source": "Journals (1842)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"courage\",\"resilience\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "People wish to be settled; only as far as they are unsettled is there any hope for them.",
+    "source": "Circles (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"wisdom\",\"perspective\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The man is only half himself; the other half is his expression.",
+    "source": "The Poet (1844)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"integrity\",\"inner_strength\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "For every minute you remain angry, you give up sixty seconds of peace of mind.",
+    "source": "Journals (c. 1840)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"equanimity\",\"self_discipline\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Adopt the pace of nature: her secret is patience.",
+    "source": "Journals (1834)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"nature\",\"equanimity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "What lies behind us and what lies before us are tiny matters compared to what lies within us.",
+    "source": "Journals (c. 1850)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"inner_strength\",\"virtue\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Nobody can bring you peace but yourself.",
+    "source": "Self-Reliance (1841)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"control\",\"inner_strength\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Life is a journey, not a destination. What you are is what you have been becoming; what you shall be is what you begin being now.",
+    "source": "Journals (c. 1855)",
+    "author_slug": "emerson",
+    "tradition_id": 10,
+    "themes": "[\"wisdom\",\"impermanence\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  }
+]

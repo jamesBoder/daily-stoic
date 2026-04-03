@@ -1,0 +1,740 @@
+[
+  {
+    "text": "Some things are in our control, and others not. Things in our control are opinion, pursuit, desire, aversion, and, in a word, whatever are our own actions. Things not in our control are body, property, reputation, command, and, in one word, whatever are not our own actions.",
+    "source": "Enchiridion, Ch. 1",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  },
+  {
+    "text": "The things in our control are by nature free, unrestrained, unhindered; but those not in our control are weak, slavish, restrained, belonging to others.",
+    "source": "Enchiridion, Ch. 1",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"freedom\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Men are disturbed, not by the things which happen, but by the opinions about the things: for example, death is nothing terrible, for if it were, it would have seemed so to Socrates; for the opinion about death, that it is terrible, is the terrible thing.",
+    "source": "Enchiridion, Ch. 5",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"reason\",\"equanimity\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Demand not that events should happen as you wish; but wish them to happen as they do happen, and you will have a tranquil flow of life.",
+    "source": "Enchiridion, Ch. 8",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"acceptance\",\"equanimity\",\"control\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Sickness is an impediment to the body, but not to the will, unless the will consent. Lameness is an impediment to the leg, but not to the will; and say this to yourself with regard to everything that happens.",
+    "source": "Enchiridion, Ch. 9",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"control\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Never say of any thing, I have lost it; but, I have returned it. Is your child dead? It is returned. Is your wife dead? She is returned. Is your estate taken away? Well, and is not that likewise returned?",
+    "source": "Enchiridion, Ch. 11",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"acceptance\",\"impermanence\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "If you want to improve, be content to be thought foolish and stupid with regard to external things.",
+    "source": "Enchiridion, Ch. 13",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"self_discipline\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "If you wish your children, and your wife, and your friends to live for ever, you are stupid; for you wish to be in your power what is not in your power, and to be your own what is not your own.",
+    "source": "Enchiridion, Ch. 14",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"acceptance\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "Remember that you must behave in life as at a dinner party. Is any thing brought around to you? Put out your hand, and take your share with moderation. Does it pass by you? Do not stop it. Is it not yet come? Do not stretch your desire towards it, but wait till it reaches you.",
+    "source": "Enchiridion, Ch. 15",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"acceptance\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Remember that you are an actor in a drama, the nature of which is determined by the Author: if short, a short one; if long, a long one. If he wishes you to act a poor man, see that you act it well; or a lame man, or a ruler, or a private person, the like. For this is your duty, to act well the character assigned you; to choose it, belongs to another.",
+    "source": "Enchiridion, Ch. 17",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"duty\",\"acceptance\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "You may be invincible, if you enter into no contest in which it is not in your own power to conquer. Have a care, therefore, lest when you see any person in such a post of honour or power, or highly esteemed on any account, you be carried away with the appearance.",
+    "source": "Enchiridion, Ch. 19",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Bear in mind that it is not he who gives abuse or blows who affronts, but the view we take of these things as insulting. When, therefore, any one provokes you, be assured that it is your own opinion which provokes you.",
+    "source": "Enchiridion, Ch. 20",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"reason\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Let death and exile, and all other things which appear terrible, be daily before your eyes, but chiefly death; and you will never entertain any abject thought, nor too eagerly covet any thing.",
+    "source": "Enchiridion, Ch. 21",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"impermanence\",\"courage\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "If you are desirous of philosophy, prepare yourself from the very beginning to be laughed at, to be sneered at by the multitude, who will say, He is returned to us a philosopher all at once.",
+    "source": "Enchiridion, Ch. 22",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"courage\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "If you ever happen to turn your attention to externals, so as to wish to please any one, be assured that you have ruined your scheme of life. Be contented, then, in every thing with being a philosopher; and, if you wish to be thought so likewise by any one, appear so to yourself.",
+    "source": "Enchiridion, Ch. 23",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"control\",\"integrity\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "Is any one honoured before you at an entertainment, or in a compliment, or in being admitted to a consultation? If these things are good, you ought to be glad that he has gotten them; and if they are evil, don't be grieved that you have not gotten them.",
+    "source": "Enchiridion, Ch. 25",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"virtue\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "We may learn the will of nature from the things in which we don't differ from each other. For example, when your neighbour's boy breaks a cup, or the like, we are presently ready to say, These are casualties that will happen. Be assured, then, that when your own cup likewise is broken, you ought to be affected just as when another's cup was broken.",
+    "source": "Enchiridion, Ch. 26",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"acceptance\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "If a person gave your body to any stranger he met on his way, you would certainly be angry. And do you feel no shame in handing over your own mind to be confused and mystified by anyone who happens to verbally attack you?",
+    "source": "Enchiridion, Ch. 28",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "In every affair consider what precedes and follows, and then undertake it. Otherwise you will begin with spirit; but not having thought of the consequences, when some of them appear you will shamefully desist.",
+    "source": "Enchiridion, Ch. 29",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"self_discipline\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "Duties are universally measured by relations. Is any one a father? The duty is to take care of him, to give way to him in all things, to submit when he is abusive or strikes.",
+    "source": "Enchiridion, Ch. 30",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"duty\",\"virtue\",\"service\"]",
+    "tier": "free",
+    "quality_score": 0.85
+  },
+  {
+    "text": "Be assured that the essence of piety towards the gods lies in this, to form right opinions concerning them, as existing and as governing the universe with goodness and justice.",
+    "source": "Enchiridion, Ch. 31",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"acceptance\"]",
+    "tier": "free",
+    "quality_score": 0.86
+  },
+  {
+    "text": "Immediately prescribe some character and form of conduct to yourself, which you may keep both alone and in company.",
+    "source": "Enchiridion, Ch. 33",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"integrity\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "When you are charmed with pleasure, be sure to guard yourself against being hurried away by it; but let the thing wait your leisure, and procure yourself some delay.",
+    "source": "Enchiridion, Ch. 34",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"virtue\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.86
+  },
+  {
+    "text": "When you do any thing from a clear judgment that it ought to be done, never shun the being seen to do it, even though the world should make a wrong supposition about it; for, if you don't act right, shun the action itself; but, if you do, why are you afraid of those who censure you wrongly?",
+    "source": "Enchiridion, Ch. 35",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"integrity\",\"courage\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "It is the mark of an ill-instructed man to blame others for his own bad condition; it is the mark of one who has begun to be instructed, to lay the blame on himself; and of one whose instruction is completed, neither to blame another, nor himself.",
+    "source": "Enchiridion, Ch. 41",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"wisdom\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Every thing has two handles, the one by which it may be carried, the other by which it cannot. If your brother acts unjustly, don't lay hold on the action by the handle of his injustice, for by that it cannot be carried; but by the opposite, that he is your brother, that he was brought up with you.",
+    "source": "Enchiridion, Ch. 43",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"perspective\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Never call yourself a philosopher, nor talk a great deal among the unlearned about theorems, but act conformably to them. Thus, at an entertainment, don't talk how persons ought to eat, but eat as you ought.",
+    "source": "Enchiridion, Ch. 46",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"integrity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The condition and characteristic of a vulgar person, is, that he never expects either benefit or hurt from himself, but from externals. The condition and characteristic of a philosopher is, that he expects all hurt and benefit from himself.",
+    "source": "Enchiridion, Ch. 48",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"virtue\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Whatever moral rules you have deliberately proposed to yourself, abide by them as they were laws, and as if you would be guilty of impiety by violating them. Do not regard what any one says of you, for this, after all, is no concern of yours.",
+    "source": "Enchiridion, Ch. 50",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"integrity\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "How long are you going to wait before you demand the best for yourself, and in no instance bypass the discriminations of reason? You have been given the principles that you ought to endorse, and you have endorsed them.",
+    "source": "Enchiridion, Ch. 51",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"self_discipline\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The first and most necessary topic in philosophy is that of the use of moral theorems, such as, We ought not to lie: the second is that of demonstrations, as, Why it is that we ought not to lie: the third, that which gives strength and articulation to the other two.",
+    "source": "Enchiridion, Ch. 52",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"reason\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.85
+  },
+  {
+    "text": "Of all existing things some are in our power, and others are not in our power. In our power are our opinions, our impulses, our desires, our aversions. Not in our power are our bodies, our reputations, our offices, and in a word, everything which is not our own action.",
+    "source": "Discourses, Book I, Ch. 1",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"reason\",\"freedom\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "God has placed beside each man a guardian, each man's Daemon, to whom He has committed the care of the man, a guardian who never sleeps, is never deceived. For to what better and more careful guardian could He have committed each of us?",
+    "source": "Discourses, Book I, Ch. 14",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"nature\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.84
+  },
+  {
+    "text": "He is a man of progress who blames no one, neither himself nor others; who praises no one, who blames no one, who says nothing about himself as if he were somebody or knew something.",
+    "source": "Discourses, Book I, Ch. 4",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "When you are going to take in hand any action, remind yourself what kind of action it is. If you are going to bathe, set before yourself what happens at the bath: some splashing, some pushing, some abusing, and some stealing. And you will undertake the action more safely.",
+    "source": "Discourses, Book I, Ch. 6",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"mindfulness\",\"equanimity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "That man is free who lives as he wishes to live; who is neither subject to compulsion nor to hindrance, nor to force; whose movements to action are not impeded, whose desires attain their purpose, and who does not fall into that which he would avoid.",
+    "source": "Discourses, Book I, Ch. 12",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"freedom\",\"virtue\",\"control\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "We cannot choose our external circumstances, but we can always choose how we respond to them.",
+    "source": "Discourses, Book I, Ch. 1",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"resilience\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Seek not that the things which happen should happen as you wish; but wish the things which happen to be as they are, and you will have a tranquil flow of life.",
+    "source": "Discourses, Book I, Ch. 15",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"acceptance\",\"equanimity\",\"tranquility\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "When a person gives you any trouble, never remember it against him; for it is not that person who troubles you, but your own notions of that person.",
+    "source": "Discourses, Book I, Ch. 18",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"equanimity\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "If you seek truth you will not seek victory by dishonorable means, and if you find truth you will become invincible.",
+    "source": "Discourses, Book I, Ch. 19",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"integrity\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Freedom is not procured by a full enjoyment of what is desired, but by controlling the desire.",
+    "source": "Discourses, Book I, Ch. 2",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"freedom\",\"self_discipline\",\"control\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Consider yourself a citizen of the world, a child of God; and that between God and man there is a community, not of parentage and bodily form alone, but of mind and reason.",
+    "source": "Discourses, Book I, Ch. 9",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"service\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "First say to yourself what you would be; and then do what you have to do. For in almost all other arts and professions, the mere will is sufficient.",
+    "source": "Discourses, Book I, Ch. 10",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"self_discipline\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Consider first, what the matter is, and what your own nature is able to bear. If you would be a wrestler, consider your shoulders, your back, your thighs; for different persons are made for different things.",
+    "source": "Discourses, Book II, Ch. 1",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"self_discipline\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "Philosophy does not promise to secure to man any external thing. For if it did, it would be undertaking something not within its province.",
+    "source": "Discourses, Book II, Ch. 5",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"control\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "There is but one way to peace, and that is to cease troubling ourselves about things which are beyond the power of our will.",
+    "source": "Discourses, Book II, Ch. 10",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"tranquility\",\"control\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Is a little oil spilt? A little wine stolen? Say to yourself, This is the price paid for apathy, for tranquillity; and nothing is to be had for nothing.",
+    "source": "Discourses, Book II, Ch. 13",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"acceptance\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The beginning of philosophy is to know the condition of one's own mind. If a man knows that his mind is weak and unstable, he will not employ it in studies requiring the greatest force.",
+    "source": "Discourses, Book II, Ch. 16",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"reason\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "How long will you delay to demand of yourself the noblest improvements, and never to transgress the decisions of reason? You have received the precepts to which you ought to assent.",
+    "source": "Discourses, Book II, Ch. 18",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"self_discipline\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "If you would be good, first believe that you are bad.",
+    "source": "Discourses, Book II, Ch. 21",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"wisdom\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "When you have been compelled by circumstances to be disturbed in mind, quickly return to yourself and do not continue out of tune longer than the compulsion lasts.",
+    "source": "Discourses, Book II, Ch. 14",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"resilience\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Practice yourself, for heaven's sake, in little things; and thence proceed to greater.",
+    "source": "Discourses, Book III, Ch. 12",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Know, first, who you are; and then adorn yourself accordingly.",
+    "source": "Discourses, Book III, Ch. 1",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"integrity\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "If you do not wish to be discontented, do not wish for more than what you have; and in no instance hold yourself at a cheaper rate than your character warrants.",
+    "source": "Discourses, Book III, Ch. 9",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"gratitude\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Never call any thing ruinous to yourself which happens to another; but think it ruinous when it happens to yourself, for it would argue you to be in no better condition than the rest of mankind.",
+    "source": "Discourses, Book III, Ch. 24",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"perspective\",\"equanimity\",\"acceptance\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "What is the mark of the good and excellent man? To never expect that good or evil will come to him from without, but always from within, from his own actions.",
+    "source": "Discourses, Book III, Ch. 22",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"control\",\"inner_strength\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "When any person harms you, or speaks ill of you, remember that he acts or speaks from a supposition of its being his duty. Now, it is not possible that he should follow what appears right to you, but he must follow what appears so to himself.",
+    "source": "Discourses, Book IV, Ch. 4",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"acceptance\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "He is free who is not enslaved to anything: neither to affliction, nor to fear, nor to pleasure, nor to pain.",
+    "source": "Discourses, Book II, Ch. 9",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"freedom\",\"virtue\",\"control\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "He is a wise man who, in all things, looks for good from himself, not from others or from circumstances.",
+    "source": "Discourses, Book III, Ch. 3",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"control\",\"inner_strength\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Never step outside your own freedom, and never let your confidence rest on another's virtue.",
+    "source": "Discourses, Book III, Ch. 8",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"freedom\",\"virtue\",\"control\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "Is it not in our power to write as we will? And is it not in our power to write as we ought? He then who is master of what he ought, is better than he who is master of what he will.",
+    "source": "Discourses, Book II, Ch. 19",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.84
+  },
+  {
+    "text": "Try to enjoy the great festival of life with other men.",
+    "source": "Discourses, Book II, Ch. 12",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"equanimity\",\"gratitude\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "Thou art a little soul bearing about a corpse, as Epictetus used to say. The things themselves are indifferent; but the use of them is not indifferent.",
+    "source": "Discourses, Book I, Ch. 1",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"impermanence\",\"perspective\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "From the very beginning apply yourself to this: when you are entering into any company, what kind of things are these persons about, and with what are they occupied? Do they discourse of virtue? Then apply yourself with all attention.",
+    "source": "Discourses, Book I, Ch. 22",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.85
+  },
+  {
+    "text": "Show me what you wish to be, and I will tell you whether you will attain it. For the attainment depends on your choice, not on the obstacles.",
+    "source": "Discourses, Book III, Ch. 26",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"control\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Never in the name of outward peace protest against your own convictions. If you find that you have been wrong, change your opinion; but if you have been right, why should you change it?",
+    "source": "Discourses, Book I, Ch. 25",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"integrity\",\"virtue\",\"courage\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Begin to be free at once: start to cease expecting, start to refrain from the objects of desire. Be resolute, and the thing is done.",
+    "source": "Discourses, Book IV, Ch. 8",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"freedom\",\"self_discipline\",\"control\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The discipline of the will requires that we desire nothing which is not virtuous, and avoid nothing which is not disgraceful.",
+    "source": "Discourses, Book III, Ch. 2",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"self_discipline\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "We have a peculiar faculty by nature to see what is just and unjust, true and false; and without it, all rules of life would be uncertain and empty.",
+    "source": "Discourses, Book I, Ch. 26",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"reason\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "Reckon the days in which you have not been angry. I used to be angry every day; then every other day; then every third and fourth day: and if you miss it so long as thirty days, offer a sacrifice of thanksgiving to God.",
+    "source": "Discourses, Book II, Ch. 18",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"virtue\",\"mindfulness\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Seek not to bring things to pass in accordance with your wishes, but wish for them as they are, and you will find them.",
+    "source": "Discourses, Book III, Ch. 4",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"acceptance\",\"equanimity\",\"control\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "If you desire what you cannot obtain or if you want to avoid what you cannot escape, you will be wretched. But if you only desire what is within your power and avoid only what is within your power to avoid, you will be happy.",
+    "source": "Discourses, Book III, Ch. 16",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"equanimity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "With every accident, ask yourself what abilities you have for making a right use of it. If you see a handsome man or woman, you will find temperance the ability for that. If pain elects you, you will find fortitude.",
+    "source": "Enchiridion, Ch. 10",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"wisdom\",\"resilience\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "If you want to improve, reject such reasonings as these: if I neglect my affairs, I shall have nothing to live on; if I do not correct my servant he will be bad. For it is better to die with hunger, exempt from grief and fear, than to live in affluence with perturbation.",
+    "source": "Enchiridion, Ch. 12",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"control\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "No one is master of another's ruling faculty; and in this alone consists good and evil. No one, therefore, can procure good for me, or involve me in evil, but I myself.",
+    "source": "Discourses, Book III, Ch. 19",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"virtue\",\"freedom\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "When you have determined that a thing ought to be done, and are doing it, never shun being seen to do it, though the multitude should misunderstand it; for if it is not right to do it, avoid doing it; but if it is right, why are you afraid of those who shall reprove you wrongly?",
+    "source": "Discourses, Book I, Ch. 20",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"courage\",\"integrity\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "In company never talk much or unnecessarily about your own hazards and adventures; for though it is pleasant to you to make mention of your dangers, it is not so agreeable to others to hear your escapes.",
+    "source": "Enchiridion, Ch. 33",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.85
+  },
+  {
+    "text": "Remember that you are playing a part in a play, the character of which is determined by the Poet: if short, a short part; if long, a long one. If he bids you act the part of a poor man, do it with all your power; and so if he bids you act the part of a lame man, or a ruler, or a private man.",
+    "source": "Enchiridion, Ch. 17",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"acceptance\",\"duty\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "True instruction is this: to learn to wish that every thing may happen as it does.",
+    "source": "Enchiridion, Ch. 8",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"acceptance\",\"wisdom\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "He who is progressing rightly is neither proud when he is praised, nor in disgrace when he is blamed; but he is made cheerful when he is praised for virtue, and when blamed on account of vice, he is not troubled.",
+    "source": "Discourses, Book I, Ch. 4",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"equanimity\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Seek not to think highly of yourself, as if you were born to a great end; but do what is right, because it is right, and rejoice in your work because you are capable of it.",
+    "source": "Discourses, Book II, Ch. 24",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"duty\",\"integrity\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "It is not he who has little, but he who craves more, that is poor. And yet the man who wants nothing, though without possessions, is truly rich.",
+    "source": "Discourses, Book I, Ch. 3",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"gratitude\",\"equanimity\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  }
+]

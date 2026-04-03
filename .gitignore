@@ -13,9 +13,12 @@
 *.dylib
 
 # Go build artifacts
-/backend/tmp/
+/.backend/tmp/
 /backend/daily-stoic
 /backend/*.exe
+
+# log 
+*.log
 
 # Node / React
 /frontend/node_modules/

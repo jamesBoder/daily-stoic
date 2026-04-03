@@ -1,0 +1,182 @@
+[
+  {
+    "text": "Do not weep; do not wax indignant. Understand.",
+    "source": "Tractatus Politicus, Ch. I, §4, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"reason\",\"equanimity\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.99
+  },
+  {
+    "text": "All noble things are as difficult as they are rare.",
+    "source": "Ethics, Part V, Prop. 42, Scholium, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"virtue\",\"wisdom\",\"resilience\"]",
+    "tier": "free",
+    "quality_score": 0.99
+  },
+  {
+    "text": "Blessedness is not the reward of virtue, but virtue itself; neither do we rejoice in it because we restrain our desires, but contrariwise, because we rejoice in it, we are able to restrain them.",
+    "source": "Ethics, Part V, Prop. 42, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"virtue\",\"equanimity\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  },
+  {
+    "text": "The free man thinks of nothing less than of death, and his wisdom is a meditation not on death but on life.",
+    "source": "Ethics, Part IV, Prop. 67, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"freedom\",\"wisdom\",\"impermanence\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  },
+  {
+    "text": "I call him free who is led solely by reason.",
+    "source": "Ethics, Part IV, Def. VIII, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"freedom\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Emotion, which is suffering, ceases to be suffering as soon as we form a clear and precise picture of it.",
+    "source": "Ethics, Part V, Prop. 3, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"reason\",\"equanimity\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Peace is not an absence of war; it is a virtue, a state of mind, a disposition for benevolence, confidence, and justice.",
+    "source": "Tractatus Theologico-Politicus, Ch. XVI, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"virtue\",\"tranquility\",\"justice\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  },
+  {
+    "text": "The highest activity a human being can attain is learning for understanding, because to understand is to be free.",
+    "source": "Ethics, Part II, Prop. 43, Scholium, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"freedom\",\"reason\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Men believe themselves to be free simply because they are conscious of their volitions and desires, yet are ignorant of the causes by which they are led to wish and desire.",
+    "source": "Ethics, Part II, Prop. 35, Scholium, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"reason\",\"wisdom\",\"perspective\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Fear cannot be without hope nor hope without fear. He who lives under the guidance of reason endeavors to repay another's hatred, rage, or contempt with love and generosity.",
+    "source": "Ethics, Part III, Prop. 50, Scholium, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"virtue\",\"reason\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "In so far as the mind understands all things as necessary, it has more power over the emotions, and is less subject to them.",
+    "source": "Ethics, Part V, Prop. 6, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"reason\",\"control\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The more the mind knows, the better it understands its forces and the order of nature; the more it understands its forces, the more easily it can direct itself and lay down the rules for itself.",
+    "source": "Ethics, Part IV, Preface, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"reason\",\"wisdom\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Whatsoever is contrary to nature is contrary to reason, and whatsoever is contrary to reason is absurd, and to be rejected.",
+    "source": "Ethics, Part IV, Prop. 18, Scholium, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"reason\",\"nature\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "A free man—that is, a man who lives according to the dictates of reason alone—is not led by fear of death, but desires what is good, and acts accordingly.",
+    "source": "Ethics, Part IV, Prop. 67, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"freedom\",\"reason\",\"courage\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Every man exists by the highest right of nature, and consequently every man has the highest right to do all that his nature requires. Whatever any man does by the laws of his nature, he does by the highest natural right.",
+    "source": "Tractatus Theologico-Politicus, Ch. XVI, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"nature\",\"reason\",\"freedom\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "Men are not born fit for political life but must be made so. For the passions are the only guides of human action; if the passions are left ungoverned, they destroy rather than unite.",
+    "source": "Tractatus Politicus, Ch. I, §5, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"reason\",\"self_discipline\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "He who loves God cannot endeavour that God should love him in return. Love toward a thing eternal and infinite feeds the mind with pure joy alone.",
+    "source": "Ethics, Part V, Prop. 19, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"acceptance\",\"equanimity\",\"nature\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  },
+  {
+    "text": "The more we understand particular things, the more we understand God. And since to understand God is the highest good of the mind, it follows that those who understand the most are the happiest.",
+    "source": "Ethics, Part V, Prop. 24, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"wisdom\",\"reason\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "There is nothing over which a free man broods less than over death; his wisdom is a meditation not on death but on life—and the life he lives is most fully, rightly his own.",
+    "source": "Ethics, Part IV, Prop. 67, Scholium, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"freedom\",\"mindfulness\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Hatred is increased by being reciprocated, and can on the other hand be destroyed by love. Hatred which is completely vanquished by love passes into love.",
+    "source": "Ethics, Part III, Prop. 44, trans. R.H.M. Elwes",
+    "author_slug": "spinoza",
+    "tradition_id": 9,
+    "themes": "[\"virtue\",\"wisdom\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  }
+]

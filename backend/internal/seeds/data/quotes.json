@@ -1,0 +1,137 @@
+[
+  {
+    "text": "You have power over your mind, not outside events. Realize this, and you will find strength.",
+    "source": "Meditations, Book VI",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"resilience\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "The impediment to action advances action. What stands in the way becomes the way.",
+    "source": "Meditations, Book V",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"virtue\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Waste no more time arguing about what a good man should be. Be one.",
+    "source": "Meditations, Book X",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"duty\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Never let the future disturb you. You will meet it, if you have to, with the same weapons of reason which today arm you against the present.",
+    "source": "Meditations, Book VII",
+    "author_slug": "marcus-aurelius",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"equanimity\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Make the best use of what is in your power, and take the rest as it happens.",
+    "source": "Enchiridion, Chapter 1",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"equanimity\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "He is a wise man who does not grieve for the things which he has not, but rejoices for those which he has.",
+    "source": "Discourses, Book I",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"gratitude\",\"equanimity\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Seek not the good in external things; seek it in yourselves.",
+    "source": "Discourses, Book III",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"control\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "It is not that I am brave, but that I value other things more than I fear danger.",
+    "source": "Discourses, Book II",
+    "author_slug": "epictetus",
+    "tradition_id": 1,
+    "themes": "[\"courage\",\"virtue\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "It is not the man who has too little, but the man who craves more, that is poor.",
+    "source": "Letters to Lucilius, Letter II",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"gratitude\",\"equanimity\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Begin at once to live, and count each separate day as a separate life.",
+    "source": "Letters to Lucilius, Letter I",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"impermanence\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "We suffer more often in imagination than in reality.",
+    "source": "Letters to Lucilius, Letter XIII",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"control\",\"equanimity\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Omnia aliena sunt, tempus tantum nostrum est. All things are alien to us; time alone is ours.",
+    "source": "Letters to Lucilius, Letter I",
+    "author_slug": "seneca",
+    "tradition_id": 1,
+    "themes": "[\"time\",\"impermanence\",\"control\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Follow nature and you will never be poor; follow opinion and you will never be rich.",
+    "source": "Fragments, via Diogenes Laertius VII",
+    "author_slug": "zeno-of-citium",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"virtue\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "Happiness is a good flow of life.",
+    "source": "Fragments, via Stobaeus",
+    "author_slug": "zeno-of-citium",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"equanimity\",\"nature\"]",
+    "tier": "free",
+    "quality_score": 0.85
+  },
+  {
+    "text": "The goal of life is to live in agreement with nature.",
+    "source": "Fragments, via Diogenes Laertius VII",
+    "author_slug": "zeno-of-citium",
+    "tradition_id": 1,
+    "themes": "[\"nature\",\"virtue\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.87
+  }
+]

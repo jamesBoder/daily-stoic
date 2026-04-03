@@ -1,0 +1,272 @@
+[
+  {
+    "text": "Just as there is no use in medical science if it does not expel the diseases of the body, so there is no use in philosophy if it does not expel the sufferings of the mind.",
+    "source": "Lectures, I",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"virtue\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "We come into the world with a natural aptitude for virtue; and this is true of us all—men and women alike.",
+    "source": "Lectures, II",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"nature\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "One who is making progress in philosophy ought to practice being free from luxury, being free from cowardice, being free from avarice, not merely arguing about these things, but actually doing them.",
+    "source": "Lectures, V",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"self_discipline\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Just as one cannot become a good physician merely from reading books but must also practice, so one who wishes to become good must practise being good, not merely understand what goodness requires.",
+    "source": "Lectures, V",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"self_discipline\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "The body must be accustomed to hardship, so that it will not flinch from toil undertaken on behalf of virtue. For how can a man who is unable to endure hardship be self-controlled, or just, or courageous?",
+    "source": "Lectures, VI",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"virtue\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "We must train both soul and body. The training of the soul consists in proving by reasoned argument that things thought to be evils are not evils, and that things thought to be goods are not goods.",
+    "source": "Lectures, VI",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"reason\",\"self_discipline\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Exile does not strip a man of virtue, and without virtue there is no happiness. Since virtue is not taken away by exile, happiness is not taken away either.",
+    "source": "Lectures, IX",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"equanimity\",\"resilience\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Exile deprives a man of his homeland, but it does not deprive him of what makes him a good person. The good man carries his country with him wherever he goes.",
+    "source": "Lectures, IX",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"resilience\",\"inner_strength\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Pleasures obtained through toil are more satisfying than those obtained without toil, as is shown most clearly by the fact that in the case of food and drink, the pleasure is greater when hunger or thirst precedes.",
+    "source": "Lectures, VI",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "We should eat to live, not live to eat. Food should be simple, not prepared to flatter the appetite, and enough to sustain life and provide strength for work; nothing more.",
+    "source": "Lectures, XVIII",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"virtue\",\"nature\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "It is not those who live in exile who are the wretched ones, but those who live shamefully and viciously. For the place does not harm the man; it is the character that matters.",
+    "source": "Lectures, IX",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"perspective\",\"resilience\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Not to practise what one teaches is like a doctor who prescribes medicine for his patients but refuses to take it himself when he is ill. What confidence could anyone place in such a doctor?",
+    "source": "Lectures, I",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"integrity\",\"virtue\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "When a man controls his appetite for food and drink and keeps it in proper measure, he controls not a small matter but the greatest, and he contributes to the good ordering of his whole life.",
+    "source": "Lectures, XVIII",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"virtue\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "Women as well as men have received from the gods the gift of reason, which we use in our dealings with one another and by which we judge whether a thing is good or bad, right or wrong. I would never grant that women have inferior capacity for virtue.",
+    "source": "Lectures, III",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"justice\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "The same virtues are fitting for both men and women. Justice is fitting for both, courage is fitting for both, and so is wisdom. For the virtues do not differ according to sex.",
+    "source": "Lectures, IV",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"justice\",\"reason\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The man who is progressing toward wisdom will bear patiently the poverty, the disease, the disgrace, and the other misfortunes that befall men, knowing that these things are not evils at all.",
+    "source": "Lectures, VII",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"resilience\",\"equanimity\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "One ought to choose to die rather than to do anything base, since virtue is the only true good, and what is base proceeds from the only true evil—vice.",
+    "source": "Sayings, Fragment 29",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"courage\",\"integrity\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Saying what is true is part of justice; lying is part of injustice. But many men lie, thinking that no harm will come from a small lie, not knowing that custom of small things leads to great ones.",
+    "source": "Sayings, Fragment 40",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"integrity\",\"virtue\",\"justice\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "Those who transgress in small matters, if they go unchecked, will in time transgress in greater ones too. For habit and practice either build up virtue or lead away from it.",
+    "source": "Sayings, Fragment 41",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"self_discipline\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "A man cannot live well if he does not at the same time live justly, prudently, and courageously. For the virtues are so bound together that if one is present, all are present.",
+    "source": "Lectures, II",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"justice\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Luxury in clothing is to be avoided by philosophers, not only because it is useless, but because it makes the soul soft and the body idle, whereas plain clothing makes the body vigorous and the soul fit for toil.",
+    "source": "Lectures, XIX",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"virtue\",\"nature\"]",
+    "tier": "free",
+    "quality_score": 0.86
+  },
+  {
+    "text": "The man who does not make philosophy the guide of his life is like a man who sets out on a journey without a road: he wanders, and even if he reaches his destination, he arrives by chance and not by reason.",
+    "source": "Lectures, I",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "A happy life is impossible if it is not also just and temperate and courageous and prudent, for the virtues which constitute happiness are not separate things but are all bound together in one.",
+    "source": "Lectures, XVI",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"reason\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The philosopher should above all things practice what he teaches; otherwise he will be like a helmsman who does not know how to steer, or like a physician who cannot heal himself.",
+    "source": "Lectures, I",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"integrity\",\"wisdom\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Work that is done with proper reasoning is both healthy and good. Even agriculture, if the philosopher does not disdain it, provides a life that is in agreement with nature.",
+    "source": "Lectures, XI",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"nature\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.85
+  },
+  {
+    "text": "The purpose of marriage is first and foremost a partnership in life and the procreation of children; but also mutual support, the sharing of toil, and in all things the common care of a household.",
+    "source": "Lectures, XIII",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"duty\",\"virtue\",\"service\"]",
+    "tier": "free",
+    "quality_score": 0.84
+  },
+  {
+    "text": "Whatever we see or hear, every experience from the morning hour until night, should be used as practice for virtue. For nothing is without its use if we only have the right disposition toward it.",
+    "source": "Lectures, VI",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"mindfulness\",\"virtue\",\"self_discipline\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "If you accomplish something good with hard work, the labor passes away quickly but the good endures. If you do something shameful in pursuit of pleasure, the pleasure passes away quickly but the shame endures.",
+    "source": "Sayings, Fragment 51",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"virtue\",\"resilience\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "The philosopher does not disdain poverty, but welcomes it as an opportunity to practice frugality, self-restraint, and confidence in what is truly his own.",
+    "source": "Lectures, VIII",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"self_discipline\",\"virtue\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.89
+  },
+  {
+    "text": "Of all things most important for a man, or for a woman, is this: to have a sound understanding of what is good and what is evil, and to distinguish the one from the other without being deceived.",
+    "source": "Lectures, II",
+    "author_slug": "musonius-rufus",
+    "tradition_id": 1,
+    "themes": "[\"wisdom\",\"reason\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  }
+]
