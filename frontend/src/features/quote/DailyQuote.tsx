@@ -12,6 +12,7 @@ import { useAuth } from '../../hooks/useAuth'
 import { Link } from 'react-router-dom'
 import { usePullToRefresh } from '../../hooks/usePullToRefresh'
 import PullRefreshIndicator from '../../components/common/PullRefreshIndicator'
+import { AdBanner } from './AdBanner'
 
 export const DailyQuote = () => {
   const [scrollY, setScrollY] = useState(0)
@@ -92,6 +93,8 @@ export const DailyQuote = () => {
           streakCount={streak?.current_streak}
         />
       )}
+
+      <AdBanner />
 
       {/* Streak / practice prompt below card */}
       {isRealUser && streak && streak.current_streak > 0 ? (
