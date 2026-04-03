@@ -35,10 +35,11 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
   const { isAuthenticated } = useAuth()
   const isFav = isFavorited(quote.id)
 
+  // Font bump — each threshold shifted up one step for more presence
   const quoteFontClass =
-    quote.text.length < 80  ? 'text-quote-xl' :
-    quote.text.length < 160 ? 'text-quote-lg' :
-    quote.text.length < 280 ? 'text-quote-md' :
+    quote.text.length < 120 ? 'text-quote-xl' :
+    quote.text.length < 220 ? 'text-quote-lg' :
+    quote.text.length < 340 ? 'text-quote-md' :
                                'text-quote-sm'
 
   const cardImage =
@@ -66,7 +67,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
     >
       {/* Card face */}
       <article
-        className="animate-quote-enter bg-surface-card rounded-card shadow-card border border-primary-200/60 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-500"
+        className="animate-quote-enter bg-surface-card rounded-card shadow-card border border-primary-200/60 hover:shadow-[0_8px_32px_rgba(38,35,28,0.22),0_24px_64px_rgba(38,35,28,0.16)] hover:-translate-y-2 transition-all duration-500"
         {...swipe}
       >
         <div className="p-4 sm:p-5">
@@ -91,18 +92,29 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
               )}
             </div>
 
-            {/* Medallion image — centered, square, ~40% card width */}
+            {/* Medallion image + theme label */}
             {!compact && (
-              <div
-                className="w-2/5 mx-auto mb-4 overflow-hidden rounded-[2px] border border-primary-200/80"
-                style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-              >
-                <LazyImage
-                  src={cardImage}
-                  alt={`${quote.themes[0] || 'wisdom'} — ${quote.author.name}`}
-                  className="w-full aspect-square object-cover"
-                  eager
-                />
+              <div className="flex flex-col items-center mb-4">
+                <div
+                  className="w-2/5 overflow-hidden rounded-[2px] border border-primary-200/80"
+                  style={{
+                    willChange: 'transform',
+                    transform: 'translateZ(0)',
+                    boxShadow: 'inset 0 2px 6px rgba(38,35,28,0.18), inset 0 0 0 1px rgba(38,35,28,0.06)',
+                  }}
+                >
+                  <LazyImage
+                    src={cardImage}
+                    alt={`${quote.themes[0] || 'wisdom'} — ${quote.author.name}`}
+                    className="w-full aspect-square object-cover"
+                    eager
+                  />
+                </div>
+                {quote.themes[0] && (
+                  <span className="font-display text-[9px] tracking-[0.2em] uppercase text-primary-400 mt-1.5 select-none">
+                    {quote.themes[0]}
+                  </span>
+                )}
               </div>
             )}
 
