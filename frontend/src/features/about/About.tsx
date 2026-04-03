@@ -12,15 +12,16 @@ export const About: React.FC = () => {
       {/* Hero */}
       <section className="max-w-2xl mx-auto px-6 pt-20 pb-14 text-center">
         <p className="font-display text-xs tracking-widest uppercase text-primary-400 mb-4">
-          Daily Stoic
+          DailyXam
         </p>
         <h1 className="font-serif text-5xl text-primary-800 leading-tight mb-6">
-          Ancient wisdom.<br />One quote a day.
+          Ancient wisdom.<br />One card a day.
         </h1>
         <div className="w-12 border-t border-primary-300 mx-auto mb-6" />
         <p className="font-sans text-base text-primary-500 leading-relaxed max-w-md mx-auto">
           A daily practice built on the teachings of Marcus Aurelius, Seneca,
-          Epictetus, and the Stoic tradition — delivered simply, without noise.
+          Epictetus, and the Stoic tradition — delivered as beautiful visual
+          cards, simply, without noise.
         </p>
       </section>
 
@@ -31,11 +32,19 @@ export const About: React.FC = () => {
         </h2>
         <div className="space-y-8">
           <div>
-            <h3 className="font-display text-base text-primary-700 mb-2">One quote, every morning</h3>
+            <h3 className="font-display text-base text-primary-700 mb-2">One card, every morning</h3>
             <p className="font-sans text-sm text-primary-500 leading-relaxed">
               Each day a single passage from the Stoic canon — drawn from the
               Meditations, Letters to Lucilius, the Discourses, and beyond.
               Read it. Sit with it. Let it shape your day.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-display text-base text-primary-700 mb-2">Beautiful visual cards</h3>
+            <p className="font-sans text-sm text-primary-500 leading-relaxed">
+              Every quote is presented as a richly illustrated card with theme
+              artwork. Swipe to save the ones that speak to you, or share them
+              directly with anyone.
             </p>
           </div>
           <div>
@@ -100,21 +109,21 @@ export const About: React.FC = () => {
           <p>
             Found a bug or have a suggestion?{' '}
             <a
-              href="mailto:hello@dailystoic.app"
+              href="mailto:hello@dailyxam.app"
               className="text-accent hover:text-accent-dark transition-colors"
             >
-              hello@dailystoic.app
+              hello@dailyxam.app
             </a>
           </p>
           <p>
             Instagram:{' '}
             <a
-              href="https://instagram.com/dailystoicapp"
+              href="https://instagram.com/dailyxamapp"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:text-accent-dark transition-colors"
             >
-              @dailystoicapp
+              @dailyxamapp
             </a>
           </p>
         </div>

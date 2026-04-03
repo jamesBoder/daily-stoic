@@ -15,7 +15,7 @@ const SORT_FIELDS: SortField[] = ["date", "author", "source", "tradition"];
 
 // ── Share helpers ─────────────────────────────────────────────────────────────
 const buildShareText = (quote: Quote): string =>
-  `"${quote.text}" — ${quote.author.name}, ${quote.source}\n\nvia Daily Stoic`;
+  `"${quote.text}" — ${quote.author.name}, ${quote.source}\n\nvia DailyXam`;
 
 // ── Share Panel Component ─────────────────────────────────────────────────────
 interface SharePanelProps {

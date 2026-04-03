@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
           {/* Social Media */}
           <div className="flex items-center space-x-4 mb-4 md:mb-0">
             <a
-              href="https://instagram.com/dailystoicapp"
+              href="https://instagram.com/dailyxamapp"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center gap-2"
@@ -49,13 +49,13 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-sm">@dailystoicapp</span>
+              <span className="text-sm">@dailyxamapp</span>
             </a>
           </div>
 
           {/* Copyright */}
           <div className="text-sm text-center md:text-right">
-            &copy; {new Date().getFullYear()} Daily Stoic. All rights reserved.
+            &copy; {new Date().getFullYear()} DailyXam. All rights reserved.
           </div>
         </div>
       </div>

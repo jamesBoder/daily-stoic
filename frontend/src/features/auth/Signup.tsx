@@ -100,7 +100,7 @@ export const Signup: React.FC = () => {
         {/* Wordmark */}
         <div className="text-center mb-10">
           <p className="font-display text-xs tracking-widest uppercase text-primary-400 mb-3">
-            Daily Stoic
+            DailyXam
           </p>
           <h1 className="font-serif text-3xl text-primary-800 leading-snug">
             Begin your practice

@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Daily Stoic",
+    "title": "DailyXam",
     "tagline": "Filosofía Estoica Diaria"
   },
   "nav": {
@@ -176,7 +176,7 @@
     "saveFailed": "Error al guardar la configuración"
   },
   "about": {
-    "title": "Acerca de Daily Stoic",
+    "title": "Acerca de DailyXam",
     "dedication": "Dedicado a Clairemena Jean-Pierre",
     "description": "Una aplicación web moderna para la sabiduría estoica diaria con favoritos, meditaciones y seguimiento del historial.",
     "mission": "Nuestra Misión",

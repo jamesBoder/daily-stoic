@@ -4,11 +4,13 @@ import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { useStreak } from '../../hooks/useStreak'
+import { useSubscription } from '../../contexts/SubscriptionContext'
 import { UserMenu } from './UserMenu'
 
 export const Header = () => {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, isGuest } = useAuth()
   const { data: streak } = useStreak()
+  const { isPremium } = useSubscription()
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -28,7 +30,7 @@ export const Header = () => {
           onMouseEnter={e => (e.currentTarget.style.textShadow = '0 0 10px rgba(139,115,85,0.55), 0 0 28px rgba(139,115,85,0.22)')}
           onMouseLeave={e => (e.currentTarget.style.textShadow = '')}
         >
-          Daily Stoic
+          DailyXam
         </Link>
 
         {/* Nav links */}
@@ -66,6 +68,23 @@ export const Header = () => {
               <span className="animate-flame-pulse inline-block">🔥</span>
               <span>{streak.current_streak}</span>
             </Link>
+          )}
+
+          {/* Upgrade CTA — free authenticated users only */}
+          {isAuthenticated && !isGuest && !isPremium && (
+            <Link
+              to="/upgrade"
+              className="font-display text-xs tracking-wider uppercase text-accent border border-accent/30 rounded-full px-3 py-1 hover:bg-accent hover:text-white transition-colors"
+            >
+              Upgrade
+            </Link>
+          )}
+
+          {/* Practitioner badge — premium users */}
+          {isPremium && (
+            <span className="font-display text-xs tracking-widest uppercase text-primary-400 select-none">
+              ✦ Practitioner
+            </span>
           )}
 
           {isAuthenticated ? (

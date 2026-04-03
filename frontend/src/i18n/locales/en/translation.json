@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Daily Stoic",
+    "title": "DailyXam",
     "tagline": "Ancient Wisdom, Every Morning"
   },
   "nav": {
@@ -178,7 +178,7 @@
     "saveFailed": "Failed to save settings"
   },
   "about": {
-    "title": "About Daily Stoic",
+    "title": "About DailyXam",
     "dedication": "Dedicated to seekers of wisdom",
     "description": "A modern web application for daily Stoic quotes with favorites, meditations, and history tracking.",
     "mission": "Our Mission",

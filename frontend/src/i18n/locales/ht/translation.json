@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Daily Stoic",
+    "title": "DailyXam",
     "tagline": "Filozofi Stoyisyen Chak Jou"
   },
   "nav": {
@@ -176,7 +176,7 @@
     "saveFailed": "Echèk pou anrejistre paramèt yo"
   },
   "about": {
-    "title": "Konsènan Daily Stoic",
+    "title": "Konsènan DailyXam",
     "dedication": "Dedye a Clairemena Jean-Pierre",
     "description": "Yon aplikasyon wèb modèn pou sajès stoyisyen chak jou avèk favori, meditasyon ak swivi istwa.",
     "mission": "Misyon Nou",

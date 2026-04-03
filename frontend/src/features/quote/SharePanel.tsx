@@ -10,7 +10,7 @@ interface Props {
 }
 
 const buildShareText = (quote: Quote) =>
-  `"${quote.text}" — ${quote.author.name}, ${quote.source}\n\nvia Daily Stoic`
+  `"${quote.text}" — ${quote.author.name}, ${quote.source}\n\nvia DailyXam`
 
 export const SharePanel = ({ quote, onClose }: Props) => {
   const panelRef = useRef<HTMLDivElement>(null)

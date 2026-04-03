@@ -82,7 +82,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
             <span className="absolute bottom-1.5 right-2 text-primary-300 text-[10px] select-none leading-none">✦</span>
 
             {/* Header — tradition badge + streak centered */}
-            <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="flex items-center justify-center gap-3 mb-1">
               <TraditionBadge tradition={quote.tradition} />
               {showStreak && streakCount && streakCount > 0 && (
                 <span className="font-display text-xs text-accent flex items-center gap-1">

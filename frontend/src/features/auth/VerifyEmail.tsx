@@ -37,7 +37,7 @@ export const VerifyEmail: React.FC = () => {
       // Auto-login with the returned JWT
       await loginWithToken(response.data.token);
       setStatus("success");
-      showToast.success("Email verified! Welcome to Daily Stoic 🎉");
+      showToast.success("Email verified! Welcome to DailyXam 🎉");
       setTimeout(() => navigate("/"), 2000);
     } catch (err: any) {
       const msg =

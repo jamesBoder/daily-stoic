@@ -2,6 +2,7 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
+import { SubscriptionProvider } from './contexts/SubscriptionContext'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { Toaster } from 'react-hot-toast'
@@ -23,12 +24,15 @@ import { Settings } from './features/profile/Settings'
 // Stub pages for Phase 2 — full implementation in Phase 4
 import { TraditionsStub } from './features/traditions/TraditionsStub'
 import { ReadingPlansStub } from './features/reading-plans/ReadingPlansStub'
+import { PricingPage } from './features/subscription/PricingPage'
+import { SubscriptionSuccess } from './features/subscription/SubscriptionSuccess'
 
 export default function App() {
   return (
     <BrowserRouter>
       <ThemeProvider>
         <AuthProvider>
+          <SubscriptionProvider>
           <LanguageProvider>
             <Toaster
               position="top-right"
@@ -78,9 +82,14 @@ export default function App() {
                 <Route path="history" element={<ProtectedRoute><HistoryList /></ProtectedRoute>} />
                 <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
                 <Route path="settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+
+                {/* Subscription */}
+                <Route path="upgrade" element={<PricingPage />} />
+                <Route path="subscription/success" element={<ProtectedRoute><SubscriptionSuccess /></ProtectedRoute>} />
               </Route>
             </Routes>
           </LanguageProvider>
+          </SubscriptionProvider>
         </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>
