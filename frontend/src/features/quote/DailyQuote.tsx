@@ -57,7 +57,7 @@ export const DailyQuote = () => {
 
   return (
     <main
-      className="bg-surface-base pt-8 pb-24 px-4"
+      className="bg-surface-base pt-3 pb-24 px-4"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -65,7 +65,7 @@ export const DailyQuote = () => {
       <PullRefreshIndicator progress={pullProgress} isRefreshing={isRefreshing} />
       {/* Date header — parallax drifts slower than page scroll */}
       <header
-        className="text-center mb-8"
+        className="text-center mb-4"
         style={{ transform: `translateY(${scrollY * 0.18}px)`, willChange: 'transform' }}
       >
         <p className="font-display text-xs tracking-widest uppercase text-primary-400" style={{ textShadow: '0 1px 3px rgba(38,35,28,0.18)' }}>

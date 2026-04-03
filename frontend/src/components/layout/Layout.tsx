@@ -13,7 +13,7 @@ export const Layout: React.FC = () => {
       <Header />
       <OfflineBanner />
       {/* pb-16 on mobile reserves space above the fixed BottomNav */}
-      <main key={location.pathname} className="flex-1 py-8 pb-20 md:pb-8 animate-fade-in">
+      <main key={location.pathname} className="flex-1 pt-4 pb-20 md:pb-8 animate-fade-in">
         <Outlet />
       </main>
       <Footer className="hidden md:block" />
