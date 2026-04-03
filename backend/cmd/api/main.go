@@ -45,7 +45,12 @@ func main() {
 		log.Printf("Warning: seeding failed: %v", err)
 	}
 
-	// 5. Repositories
+	// 5. Upsert dev account with lifetime access (idempotent, local only)
+	if err := seeds.SeedDevUser(db); err != nil {
+		log.Printf("Warning: dev user seed failed: %v", err)
+	}
+
+	// 6. Repositories
 	userRepo            := repository.NewUserRepository(db)
 	quoteRepo           := repository.NewQuoteRepository(db)
 	authorRepo          := repository.NewAuthorRepository(db)

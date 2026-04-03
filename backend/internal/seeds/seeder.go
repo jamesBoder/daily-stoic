@@ -3,6 +3,7 @@ package seeds
 import (
 	"embed"
 	"encoding/json"
+	"fmt"
 	"io/fs"
 	"log"
 
@@ -53,6 +54,32 @@ type quoteJSON struct {
 	Themes       string  `json:"themes"`
 	Tier         string  `json:"tier"`
 	QualityScore float64 `json:"quality_score"`
+}
+
+// SeedDevUser upserts a local dev account with lifetime access.
+// Safe to call on every startup — idempotent.
+// Credentials: dev@dailystoic.local / DevStoic1!
+func SeedDevUser(db *gorm.DB) error {
+	devUser := models.User{
+		Email:         "dev@dailystoic.local",
+		Username:      "dev",
+		Password:      "DevStoic1!",
+		EmailVerified: true,
+	}
+	var user models.User
+	if err := db.Where("email = ?", devUser.Email).FirstOrCreate(&user, devUser).Error; err != nil {
+		return fmt.Errorf("seed: dev user: %w", err)
+	}
+
+	var sub models.Subscription
+	if err := db.Where(models.Subscription{UserID: user.ID}).
+		Assign(models.Subscription{Tier: "lifetime", Status: "active"}).
+		FirstOrCreate(&sub).Error; err != nil {
+		return fmt.Errorf("seed: dev subscription: %w", err)
+	}
+
+	log.Printf("Dev user ready — email: %s  tier: %s", user.Email, sub.Tier)
+	return nil
 }
 
 // SeedIfEmpty seeds traditions, authors, and quotes only when the quotes table
