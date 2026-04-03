@@ -5,8 +5,8 @@ import type { Tradition, Quote } from '../../types/quote'
 
 export const traditionsApi = {
   list: (): Promise<Tradition[]> =>
-    apiClient.get('/traditions').then(r => r.data),
+    apiClient.get('/api/traditions').then(r => r.data.traditions ?? []),
 
   getBySlug: (slug: string): Promise<Tradition & { quotes: Quote[] }> =>
-    apiClient.get(`/traditions/${slug}`).then(r => r.data),
+    apiClient.get(`/api/traditions/${slug}`).then(r => r.data),
 }

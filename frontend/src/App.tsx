@@ -21,8 +21,7 @@ import { GoogleCallback } from './features/auth/GoogleCallback'
 import { ProtectedRoute } from './components/common/ProtectedRoute'
 import { About } from './features/about/About'
 import { Settings } from './features/profile/Settings'
-// Stub pages for Phase 2 — full implementation in Phase 4
-import { TraditionsStub } from './features/traditions/TraditionsStub'
+import { TraditionBrowser } from './features/traditions/TraditionBrowser'
 import { ReadingPlansStub } from './features/reading-plans/ReadingPlansStub'
 import { PricingPage } from './features/subscription/PricingPage'
 import { SubscriptionSuccess } from './features/subscription/SubscriptionSuccess'
@@ -63,7 +62,7 @@ export default function App() {
                 {/* Public */}
                 <Route index element={<DailyQuote />} />
                 <Route path="about" element={<About />} />
-                <Route path="traditions" element={<TraditionsStub />} />
+                <Route path="traditions" element={<TraditionBrowser />} />
                 <Route path="reading-plans" element={<ReadingPlansStub />} />
 
                 {/* Auth */}
