@@ -50,7 +50,12 @@ func main() {
 		log.Printf("Warning: dev user seed failed: %v", err)
 	}
 
-	// 6. Repositories
+	// 6. Seed premium Hermetic + Neoplatonic content (idempotent)
+	if err := seeds.SeedPremiumContent(db); err != nil {
+		log.Printf("Warning: premium content seed failed: %v", err)
+	}
+
+	// 7. Repositories
 	userRepo            := repository.NewUserRepository(db)
 	quoteRepo           := repository.NewQuoteRepository(db)
 	authorRepo          := repository.NewAuthorRepository(db)

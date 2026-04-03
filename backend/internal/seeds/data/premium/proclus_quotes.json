@@ -1,0 +1,74 @@
+[
+  {
+    "text": "Every producer brings into being things like to itself before things unlike itself.",
+    "source": "Elements of Theology, Prop. 28",
+    "author_slug": "proclus",
+    "tradition_id": 3,
+    "themes": "[\"creation\",\"being\",\"unity\",\"law\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "All that proceeds from any principle remains in that principle, proceeds from it, and reverts upon it.",
+    "source": "Elements of Theology, Prop. 35",
+    "author_slug": "proclus",
+    "tradition_id": 3,
+    "themes": "[\"return\",\"unity\",\"law\",\"being\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "The Good is that to which all things tend, and which all desire — that which is the source and end of all striving.",
+    "source": "Elements of Theology, Prop. 8",
+    "author_slug": "proclus",
+    "tradition_id": 3,
+    "themes": "[\"goodness\",\"the One\",\"unity\",\"soul\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "The One is the measure of all things; in proportion as each being participates in unity, it exists.",
+    "source": "Elements of Theology, Prop. 1",
+    "author_slug": "proclus",
+    "tradition_id": 3,
+    "themes": "[\"the One\",\"unity\",\"being\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Time is the moving image of eternity, proceeding according to number from the eternal order of the intelligible world.",
+    "source": "Commentary on Plato's Timaeus",
+    "author_slug": "proclus",
+    "tradition_id": 3,
+    "themes": "[\"eternity\",\"time\",\"being\",\"divine\"]",
+    "tier": "premium",
+    "quality_score": 0.97
+  },
+  {
+    "text": "The soul illuminates the body as the sun illuminates the world — by presence, not by mixing; by shining, not by descending.",
+    "source": "Elements of Theology, Prop. 64",
+    "author_slug": "proclus",
+    "tradition_id": 3,
+    "themes": "[\"soul\",\"light\",\"divine\",\"being\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Every multiplicity participates in some way in unity. For if it did not participate in unity in some way, it would neither be a whole nor consist of parts — for each of the parts must be one part, and the whole must be one whole.",
+    "source": "Elements of Theology, Prop. 1",
+    "author_slug": "proclus",
+    "tradition_id": 3,
+    "themes": "[\"unity\",\"the One\",\"being\",\"law\"]",
+    "tier": "premium",
+    "quality_score": 0.91
+  },
+  {
+    "text": "All things aspire to the Good as to their proper perfection, and from the Good they receive the power to accomplish what is natural to them.",
+    "source": "Elements of Theology, Prop. 8",
+    "author_slug": "proclus",
+    "tradition_id": 3,
+    "themes": "[\"goodness\",\"soul\",\"perfection\",\"divine\"]",
+    "tier": "premium",
+    "quality_score": 0.93
+  }
+]

@@ -1,0 +1,227 @@
+[
+  {
+    "text": "THE ALL is MIND; The Universe is Mental.",
+    "source": "The Kybalion, Ch. 1 — The Principle of Mentalism",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"unity\",\"law\"]",
+    "tier": "premium",
+    "quality_score": 0.99
+  },
+  {
+    "text": "As above, so below; as below, so above. As within, so without; as without, so within.",
+    "source": "The Kybalion, Ch. 2 — The Principle of Correspondence",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"correspondence\",\"unity\",\"law\"]",
+    "tier": "premium",
+    "quality_score": 0.99
+  },
+  {
+    "text": "Nothing rests; everything moves; everything vibrates.",
+    "source": "The Kybalion, Ch. 4 — The Principle of Vibration",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"vibration\",\"law\",\"nature\"]",
+    "tier": "premium",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Everything is Dual; everything has poles; everything has its pair of opposites; like and unlike are the same; opposites are identical in nature, but different in degree.",
+    "source": "The Kybalion, Ch. 5 — The Principle of Polarity",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"polarity\",\"law\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Everything flows, out and in; everything has its tides; all things rise and fall; the pendulum-swing manifests in everything.",
+    "source": "The Kybalion, Ch. 6 — The Principle of Rhythm",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"rhythm\",\"law\",\"nature\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Every Cause has its Effect; every Effect has its Cause; everything happens according to Law; Chance is but a name for Law not recognized.",
+    "source": "The Kybalion, Ch. 7 — The Principle of Cause and Effect",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"causation\",\"law\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Gender is in everything; everything has its Masculine and Feminine Principles; Gender manifests on all planes.",
+    "source": "The Kybalion, Ch. 8 — The Principle of Gender",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"gender\",\"law\",\"creation\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "The lips of wisdom are closed, except to the ears of Understanding.",
+    "source": "The Kybalion, Introduction",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"knowledge\",\"silence\"]",
+    "tier": "premium",
+    "quality_score": 0.98
+  },
+  {
+    "text": "To change your mood or mental state — change your vibration.",
+    "source": "The Kybalion, Ch. 9",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"vibration\",\"transformation\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Mind, as well as metals and elements, may be transmuted from state to state, degree to degree, condition to condition, pole to pole, vibration to vibration. True Hermetic Transmutation is a Mental Art.",
+    "source": "The Kybalion, Ch. 9",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"transformation\",\"mind\",\"vibration\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "THE ALL dwells within all things; yet all things dwell within THE ALL.",
+    "source": "The Kybalion, Ch. 3",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"unity\",\"divine\",\"correspondence\"]",
+    "tier": "premium",
+    "quality_score": 0.97
+  },
+  {
+    "text": "All truths are but half-truths; all paradoxes may be reconciled.",
+    "source": "The Kybalion, Introduction",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"polarity\",\"truth\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "He who grasps the truth of the Mental Nature of the Universe is well advanced on the Path to Mastery.",
+    "source": "The Kybalion, Ch. 1",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"wisdom\",\"mastery\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "The Masters apply the Principle of Polarity in their work, transmuting evil into good by the use of the Art.",
+    "source": "The Kybalion, Ch. 10",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"polarity\",\"transformation\",\"mastery\"]",
+    "tier": "premium",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Good and Evil are but the poles of the same thing, and the Master transmutes the undesirable into the desirable by changing its polarity.",
+    "source": "The Kybalion, Ch. 10",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"polarity\",\"wisdom\",\"transformation\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Transmutation, not presumptuous denial, is the weapon of the Master.",
+    "source": "The Kybalion, Ch. 10",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"transformation\",\"mastery\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "The half-wise, recognizing the comparative unreality of the Universe, imagine that they may defy its Laws — such are vain and presumptuous fools.",
+    "source": "The Kybalion, Ch. 3",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"law\",\"wisdom\",\"humility\"]",
+    "tier": "premium",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Where fall the footsteps of the Master, the ears of those ready for his Teaching open wide.",
+    "source": "The Kybalion, Introduction",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"teaching\",\"readiness\"]",
+    "tier": "premium",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The Principle of Correspondence enables man to reason intelligently from the Known to the Unknown.",
+    "source": "The Kybalion, Ch. 2",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"correspondence\",\"reason\",\"knowledge\"]",
+    "tier": "premium",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The Universe is a Mental Creation of THE ALL, subject to the Laws of Created Things, yet these laws are all within the Mind of THE ALL.",
+    "source": "The Kybalion, Ch. 3",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"creation\",\"law\",\"divine\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Everything is, and yet is not; all is becoming.",
+    "source": "The Kybalion, Ch. 4",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"polarity\",\"vibration\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.91
+  },
+  {
+    "text": "The Principle of Rhythm explains how the pendulum swings in all things — and the Master learns to neutralize its effects.",
+    "source": "The Kybalion, Ch. 11",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"rhythm\",\"mastery\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.91
+  },
+  {
+    "text": "The truly wise man, knowing the nature of the Universe, uses Law against laws, the higher against the lower, and by the Art of Alchemy transmutes all that is undesirable into gold.",
+    "source": "The Kybalion, Ch. 16",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"law\",\"transformation\",\"mastery\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "The Principle of Mentalism explains the true nature of Energy, Power, and Matter, and why and how all these are subordinate to the Mastery of Mind.",
+    "source": "The Kybalion, Ch. 1",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"mastery\",\"law\"]",
+    "tier": "premium",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Gender manifests in everything as the tendency to generate and create. Every male thing has a female element; every female thing has a male element.",
+    "source": "The Kybalion, Ch. 8",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"gender\",\"creation\",\"unity\"]",
+    "tier": "premium",
+    "quality_score": 0.90
+  }
+]

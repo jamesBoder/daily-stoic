@@ -1,0 +1,290 @@
+[
+  {
+    "text": "That which is below corresponds to that which is above, and that which is above corresponds to that which is below, to accomplish the miracle of the One Thing.",
+    "source": "Emerald Tablet",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"correspondence\",\"unity\",\"law\"]",
+    "tier": "premium",
+    "quality_score": 0.99
+  },
+  {
+    "text": "As above, so below; as below, so above; as within, so without; as without, so within.",
+    "source": "Emerald Tablet",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"correspondence\",\"unity\",\"law\"]",
+    "tier": "premium",
+    "quality_score": 0.99
+  },
+  {
+    "text": "Its father is the Sun; its mother the Moon. The wind carries it in its belly; the earth is its nurse.",
+    "source": "Emerald Tablet",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"creation\",\"nature\",\"divine\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Separate the earth from the fire, the subtle from the gross, acting with prudent judgment. It ascends from the earth to the heaven, and again descends to the earth, and receives the power of the superior and inferior things.",
+    "source": "Emerald Tablet",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"transformation\",\"wisdom\",\"ascent\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Thus will you have the glory of the whole world, and all darkness will fly from you.",
+    "source": "Emerald Tablet",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"light\",\"wisdom\",\"transformation\"]",
+    "tier": "premium",
+    "quality_score": 0.93
+  },
+  {
+    "text": "It is the source of all perfection throughout the universe.",
+    "source": "Emerald Tablet",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"unity\",\"divine\",\"perfection\"]",
+    "tier": "premium",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Mind is the Good, and if it be so, then Mind is God.",
+    "source": "Corpus Hermeticum, Book II",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"divine\",\"goodness\"]",
+    "tier": "premium",
+    "quality_score": 0.98
+  },
+  {
+    "text": "God sent Mind unto men as a gift. But not all men have received it; some have their share of it, some have not.",
+    "source": "Corpus Hermeticum, Book IV",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"divine\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Think not that God is invisible. No one is more manifest than God. He made all things for this reason alone — that through them you might see Him.",
+    "source": "Corpus Hermeticum, Book V",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"divine\",\"knowledge\",\"nature\"]",
+    "tier": "premium",
+    "quality_score": 0.97
+  },
+  {
+    "text": "If then thou dost not make thyself equal to God, thou canst not apprehend God; for like is known by like.",
+    "source": "Corpus Hermeticum, Book XI",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"divine\",\"knowledge\",\"soul\"]",
+    "tier": "premium",
+    "quality_score": 0.98
+  },
+  {
+    "text": "Leap clear of all that is corporeal, and make thyself grow to a like expanse with that greatness which is beyond all measure; rise above all time and become Eternal.",
+    "source": "Corpus Hermeticum, Book XI",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"eternity\",\"soul\",\"ascent\",\"divine\"]",
+    "tier": "premium",
+    "quality_score": 0.98
+  },
+  {
+    "text": "Think that nothing is impossible for thee; think thyself immortal and able to understand all arts, all sciences, the way of every life.",
+    "source": "Corpus Hermeticum, Book XI",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"potential\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Nothing that exists is destroyed, but men being in error call the changes which take place destruction and death.",
+    "source": "Corpus Hermeticum, Book XII",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"eternity\",\"transformation\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Knowledge is the end of impiety, and the beginning of the knowing of God.",
+    "source": "Corpus Hermeticum, Book X",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"knowledge\",\"divine\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "The Father of all is Mind; Life and Light. He gave birth to Man, a Being like unto Himself, whom He loved as His own child.",
+    "source": "Corpus Hermeticum, Book I",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"divine\",\"creation\",\"soul\",\"light\"]",
+    "tier": "premium",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Nothing is swifter than Mind; nothing broader; nothing more pleasant.",
+    "source": "Corpus Hermeticum, Book II",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The soul that has seen the Good longs to return thither; and it does return, for such is the Good.",
+    "source": "Corpus Hermeticum, Book X",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"soul\",\"goodness\",\"return\",\"divine\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "The road is hard to travel in the beginning, when you first set out; it is unfamiliar and quite impassable, and full of gloom. But when you have traveled it, you may travel it well enough.",
+    "source": "Corpus Hermeticum, Book IV",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"perseverance\",\"knowledge\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "The Word came forth from the Light, and it is the son of God.",
+    "source": "Corpus Hermeticum, Book I",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"light\",\"divine\",\"creation\"]",
+    "tier": "premium",
+    "quality_score": 0.93
+  },
+  {
+    "text": "To know God, you must be like God. Make yourself grow — ascend beyond time, become eternity.",
+    "source": "Corpus Hermeticum, Book XI",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"divine\",\"knowledge\",\"soul\",\"eternity\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "God is not invisible; He is the most visible of all things. He is so visible that all things become visible through Him.",
+    "source": "Corpus Hermeticum, Book V",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"divine\",\"light\",\"knowledge\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Truth is not hidden; it is men who are hidden from truth by the veil of their passions.",
+    "source": "Corpus Hermeticum, Book X",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"truth\",\"mind\"]",
+    "tier": "premium",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Silence is the great mystery. Silence is the teacher of those who seek the truth.",
+    "source": "Corpus Hermeticum, Book XIII",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"silence\",\"knowledge\"]",
+    "tier": "premium",
+    "quality_score": 0.91
+  },
+  {
+    "text": "The universe is not a collection of dead matter but a living being, full of mind and soul.",
+    "source": "Corpus Hermeticum, Book XII",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"soul\",\"mind\",\"nature\",\"divine\"]",
+    "tier": "premium",
+    "quality_score": 0.92
+  },
+  {
+    "text": "What is within us must agree with what is above us, and what is above us agrees with what is within us.",
+    "source": "Corpus Hermeticum, Book XI",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"correspondence\",\"unity\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Seek not the things of earth, for they perish; seek the things of heaven, for they are eternal and never change.",
+    "source": "Corpus Hermeticum, Book IV",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"eternity\",\"wisdom\",\"soul\"]",
+    "tier": "premium",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Man is a great wonder, a living being worthy of worship and reverence, for he passes into the nature of a god as though he were himself a god.",
+    "source": "Asclepius (Hermetic text)",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"soul\",\"divine\",\"potential\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "There is one Mind which is the maker of all, and it makes all things by thought alone.",
+    "source": "Corpus Hermeticum, Book XII",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"creation\",\"divine\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "All is one, and one is all — in God, for God contains all.",
+    "source": "Corpus Hermeticum, Book XI",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"unity\",\"divine\",\"law\"]",
+    "tier": "premium",
+    "quality_score": 0.93
+  },
+  {
+    "text": "He who has understood the way of Fate shall have no Master.",
+    "source": "Hermetic Fragments",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"law\",\"freedom\"]",
+    "tier": "premium",
+    "quality_score": 0.90
+  },
+  {
+    "text": "The wise man rules the stars; the fool obeys them.",
+    "source": "Hermetic Tradition",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"mind\",\"law\"]",
+    "tier": "premium",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Death is not the end of things but their transformation.",
+    "source": "Corpus Hermeticum, Book VIII",
+    "author_slug": "hermes-trismegistus",
+    "tradition_id": 2,
+    "themes": "[\"transformation\",\"eternity\",\"soul\"]",
+    "tier": "premium",
+    "quality_score": 0.92
+  }
+]
