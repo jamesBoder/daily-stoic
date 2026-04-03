@@ -12,7 +12,7 @@ import { useAuth } from '../../hooks/useAuth'
 import { Link } from 'react-router-dom'
 import { usePullToRefresh } from '../../hooks/usePullToRefresh'
 import PullRefreshIndicator from '../../components/common/PullRefreshIndicator'
-import { AdBanner } from './AdBanner'
+import { AdBannerTop, AdBannerBottom, AdRail } from './AdBanner'
 
 export const DailyQuote = () => {
   const [scrollY, setScrollY] = useState(0)
@@ -64,6 +64,7 @@ export const DailyQuote = () => {
       onTouchEnd={onTouchEnd}
     >
       <PullRefreshIndicator progress={pullProgress} isRefreshing={isRefreshing} />
+
       {/* Date header — parallax drifts slower than page scroll */}
       <header
         className="text-center mb-4"
@@ -86,15 +87,28 @@ export const DailyQuote = () => {
         </h1>
       </header>
 
-      {data && (
-        <QuoteCard
-          quote={data.quote}
-          showStreak
-          streakCount={streak?.current_streak}
-        />
-      )}
+      {/* Mobile top banner */}
+      <AdBannerTop />
 
-      <AdBanner />
+      {/* Desktop: three-column layout with sticky side rails */}
+      <div className="flex items-start justify-center gap-4">
+        <AdRail side="left" />
+
+        <div className="flex-1 min-w-0">
+          {data && (
+            <QuoteCard
+              quote={data.quote}
+              showStreak
+              streakCount={streak?.current_streak}
+            />
+          )}
+        </div>
+
+        <AdRail side="right" />
+      </div>
+
+      {/* Mobile bottom banner */}
+      <AdBannerBottom />
 
       {/* Streak / practice prompt below card */}
       {isRealUser && streak && streak.current_streak > 0 ? (
