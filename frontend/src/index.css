@@ -7,65 +7,107 @@
     @apply text-primary-700 bg-surface-base;
     font-size: 16px;
     min-height: 100vh;
-    transition: background-color 0.3s ease, color 0.3s ease;
-
-    /* Safe area insets for devices with notches */
+    transition: background-color 0.4s ease, color 0.4s ease;
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
   }
 
-  /* Dark mode */
+  /* ── Dark mode: starry night desert sky ────────────────────────── */
   .dark body {
-    @apply bg-primary-900 text-primary-100;
+    color: #e0ddd4;
+    background-color: #040810;
+    background-image:
+      /* ── Milky Way / nebula haze ── */
+      radial-gradient(ellipse 110% 55% at 55% 28%, rgba(30, 55, 120, 0.30) 0%, transparent 65%),
+      radial-gradient(ellipse 70% 40% at 15% 50%, rgba(15, 30, 80, 0.20) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 30% at 85% 20%, rgba(25, 45, 100, 0.22) 0%, transparent 50%),
+      /* ── Desert horizon warm glow ── */
+      radial-gradient(ellipse 120% 25% at 50% 102%, rgba(80, 40, 8, 0.55) 0%, rgba(40, 18, 4, 0.30) 40%, transparent 70%),
+      /* ── Stars: Bright (1.5–2px) ── */
+      radial-gradient(1.8px 1.8px at  4%  7%, rgba(255,255,255,0.95) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 14%  2%, rgba(220,235,255,0.88) 0%, transparent 100%),
+      radial-gradient(2px   2px   at 27%  9%, rgba(255,255,255,0.92) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 41%  4%, rgba(240,248,255,0.85) 0%, transparent 100%),
+      radial-gradient(1.8px 1.8px at 57% 11%, rgba(255,255,255,0.90) 0%, transparent 100%),
+      radial-gradient(2px   2px   at 72%  3%, rgba(255,250,220,0.88) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 88%  8%, rgba(220,235,255,0.92) 0%, transparent 100%),
+      radial-gradient(1.8px 1.8px at 96%  5%, rgba(255,255,255,0.85) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at  9% 21%, rgba(255,255,255,0.88) 0%, transparent 100%),
+      radial-gradient(2px   2px   at 31% 17%, rgba(240,248,255,0.90) 0%, transparent 100%),
+      radial-gradient(1.8px 1.8px at 50% 23%, rgba(255,255,255,0.85) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 67% 19%, rgba(220,235,255,0.88) 0%, transparent 100%),
+      radial-gradient(1.8px 1.8px at 84% 15%, rgba(255,255,255,0.92) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at  3% 38%, rgba(255,250,220,0.85) 0%, transparent 100%),
+      radial-gradient(2px   2px   at 22% 44%, rgba(255,255,255,0.88) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 46% 39%, rgba(220,235,255,0.85) 0%, transparent 100%),
+      radial-gradient(1.8px 1.8px at 74% 41%, rgba(255,255,255,0.90) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 91% 36%, rgba(240,248,255,0.85) 0%, transparent 100%),
+      /* ── Stars: Medium (1px) ── */
+      radial-gradient(1px 1px at  2% 14%, rgba(200,220,255,0.78) 0%, transparent 100%),
+      radial-gradient(1px 1px at 11% 31%, rgba(255,255,255,0.72) 0%, transparent 100%),
+      radial-gradient(1px 1px at 19% 10%, rgba(220,235,255,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 27%, rgba(255,255,255,0.70) 0%, transparent 100%),
+      radial-gradient(1px 1px at 34%  5%, rgba(200,220,255,0.76) 0%, transparent 100%),
+      radial-gradient(1px 1px at 38% 49%, rgba(255,255,255,0.68) 0%, transparent 100%),
+      radial-gradient(1px 1px at 44% 16%, rgba(240,248,255,0.74) 0%, transparent 100%),
+      radial-gradient(1px 1px at 49%  2%, rgba(255,255,255,0.78) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 34%, rgba(220,235,255,0.70) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 14%, rgba(255,255,255,0.74) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 47%, rgba(200,220,255,0.68) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 28%, rgba(255,255,255,0.76) 0%, transparent 100%),
+      radial-gradient(1px 1px at 78% 12%, rgba(240,248,255,0.72) 0%, transparent 100%),
+      radial-gradient(1px 1px at 83% 44%, rgba(255,255,255,0.70) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 22%, rgba(220,235,255,0.75) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 33%, rgba(255,255,255,0.68) 0%, transparent 100%),
+      radial-gradient(1px 1px at 98% 18%, rgba(200,220,255,0.72) 0%, transparent 100%),
+      radial-gradient(1px 1px at  7% 55%, rgba(255,255,255,0.65) 0%, transparent 100%),
+      radial-gradient(1px 1px at 16% 62%, rgba(220,235,255,0.68) 0%, transparent 100%),
+      radial-gradient(1px 1px at 28% 58%, rgba(255,255,255,0.62) 0%, transparent 100%),
+      radial-gradient(1px 1px at 43% 66%, rgba(240,248,255,0.65) 0%, transparent 100%),
+      radial-gradient(1px 1px at 58% 57%, rgba(255,255,255,0.62) 0%, transparent 100%),
+      radial-gradient(1px 1px at 77% 63%, rgba(220,235,255,0.65) 0%, transparent 100%),
+      radial-gradient(1px 1px at 89% 59%, rgba(255,255,255,0.60) 0%, transparent 100%),
+      /* ── Stars: Faint ── */
+      radial-gradient(1px 1px at  6% 48%, rgba(255,255,255,0.40) 0%, transparent 100%),
+      radial-gradient(1px 1px at 13% 70%, rgba(200,220,255,0.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 23% 43%, rgba(255,255,255,0.38) 0%, transparent 100%),
+      radial-gradient(1px 1px at 36% 73%, rgba(220,235,255,0.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 52% 52%, rgba(255,255,255,0.42) 0%, transparent 100%),
+      radial-gradient(1px 1px at 64% 68%, rgba(200,220,255,0.36) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 50%, rgba(255,255,255,0.38) 0%, transparent 100%),
+      radial-gradient(1px 1px at 93% 70%, rgba(220,235,255,0.33) 0%, transparent 100%);
+    background-attachment: fixed;
   }
 
-  #root {
-    min-height: 100vh;
-  }
+  #root { min-height: 100vh; }
 
-  /* Typography defaults */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
-  }
-
-  /* Title lift — drop shadow so all display-font text reads clearly over the textured background */
+  /* ── Font-display shadows ─────────────────────────────────────── */
   .font-display {
     text-shadow: 0 1px 3px rgba(38, 35, 28, 0.2), 0 1px 1px rgba(38, 35, 28, 0.1);
   }
+  .dark .font-display { text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6); }
 
-  h1 {
-    text-shadow: 0 3px 10px rgba(38, 35, 28, 0.28), 0 1px 3px rgba(38, 35, 28, 0.18);
-  }
+  h1 { text-shadow: 0 3px 10px rgba(38, 35, 28, 0.28), 0 1px 3px rgba(38, 35, 28, 0.18); }
+  .dark h1 { text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7); }
 
-  h2, h3 {
-    text-shadow: 0 2px 7px rgba(38, 35, 28, 0.24), 0 1px 2px rgba(38, 35, 28, 0.14);
-  }
-  
-  .quote-text {
-    @apply font-serif;
-  }
-  
-  /* Color contrast fixes for WCAG AA compliance */
-  /* Text color utilities using Stoic palette */
-  .text-muted {
-    @apply text-primary-400 dark:text-primary-300;
-  }
-  
-  .text-secondary {
-    @apply text-primary-600 dark:text-primary-200;
-  }
-  
-  .text-tertiary {
-    @apply text-primary-500 dark:text-primary-300;
-  }
+  h2, h3 { text-shadow: 0 2px 7px rgba(38, 35, 28, 0.24), 0 1px 2px rgba(38, 35, 28, 0.14); }
+  .dark h2, .dark h3 { text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6); }
+
+  .quote-text { @apply font-serif; }
+
+  .text-muted     { @apply text-primary-400; }
+  .text-secondary { @apply text-primary-600; }
+  .text-tertiary  { @apply text-primary-500; }
+
+  .dark .text-muted     { color: #8892b8; }
+  .dark .text-secondary { color: #b0b8d0; }
+  .dark .text-tertiary  { color: #8892b8; }
 }
 
 @layer utilities {
-  /* Worn scroll texture — applied to every surface-base element so it
-     persists through bg-surface-base paint (body background-image alone
-     gets covered by child elements with their own background-color). */
+  /* ── Light mode: worn scroll texture on surface-base ─────────── */
   .bg-surface-base {
     background-image:
       radial-gradient(ellipse 130% 110% at 50% 0%, transparent 58%, rgba(38, 35, 28, 0.055) 100%),
@@ -78,31 +120,72 @@
       );
   }
 
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* ── Dark mode: global surface overrides ─────────────────────── *
+   * These override every bg-surface-* and bg-primary-* utility    *
+   * across ALL components, so we never need dark: on individual   *
+   * elements. Higher specificity (.dark .class) wins cleanly.     */
+
+  /* Surfaces: transparent lets the starry body background show */
+  .dark .bg-surface-base    { background-color: transparent; background-image: none; }
+  .dark .bg-surface-card    {
+    background-color: rgba(10, 20, 44, 0.62);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .dark .bg-surface-elevated {
+    background-color: rgba(15, 28, 60, 0.68);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
 
-  .animate-fade-in {
-    animation: fade-in 0.5s ease-out forwards;
+  /* Primary background shades */
+  .dark .bg-primary-50  { background-color: rgba(8, 12, 28, 0.50); }
+  .dark .bg-primary-100 { background-color: rgba(12, 20, 44, 0.55); }
+  .dark .bg-primary-200 { background-color: rgba(18, 30, 60, 0.60); }
+  .dark .bg-primary-800 { background-color: rgba(8, 15, 34, 0.70); }
+  .dark .bg-primary-900 { background-color: rgba(4, 8, 20, 0.85); }
+
+  /* Text: remap primary scale → warm off-whites and night blues */
+  .dark .text-primary-900 { color: #ede8dc; }
+  .dark .text-primary-800 { color: #e0ddd4; }
+  .dark .text-primary-700 { color: #ccc8bc; }
+  .dark .text-primary-600 { color: #b0a898; }
+  .dark .text-primary-500 { color: #8892b8; }
+  .dark .text-primary-400 { color: #6070a0; }
+  .dark .text-primary-300 { color: #4a5888; }
+
+  /* Borders */
+  .dark .border-primary-100 { border-color: rgba(255, 255, 255, 0.05); }
+  .dark .border-primary-200 { border-color: rgba(255, 255, 255, 0.08); }
+  .dark .border-primary-300 { border-color: rgba(255, 255, 255, 0.12); }
+
+  /* Accent */
+  .dark .text-accent        { color: #d4a853; }
+  .dark .border-accent      { border-color: #d4a853; }
+  .dark .bg-accent          { background-color: #d4a853; }
+
+  /* Placeholder text */
+  .dark .placeholder-primary-300::placeholder { color: #4a5888; }
+  .dark .placeholder-primary-400::placeholder { color: #4a5888; }
+
+  /* Glass utility class */
+  .glass {
+    background: rgba(10, 18, 40, 0.60);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in { animation: fade-in 0.5s ease-out forwards; }
 
   @media (prefers-reduced-motion: reduce) {
-    .animate-fade-in {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-
-    *,
-    *::before,
-    *::after {
+    .animate-fade-in { animation: none; opacity: 1; transform: none; }
+    *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -112,114 +195,89 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-accent text-white px-4 py-2 rounded-stone 
+    @apply bg-accent text-white px-4 py-2 rounded-stone
            hover:bg-accent-dark transition-all duration-200
-           shadow-card hover:shadow-modal
-           dark:bg-accent-light dark:hover:bg-accent
-           dark:text-primary-900;
+           shadow-card hover:shadow-modal;
   }
+  .dark .btn-primary {
+    background-color: #d4a853;
+    color: #040810;
+  }
+  .dark .btn-primary:hover { background-color: #9a7030; }
 
   .btn-secondary {
-    @apply bg-surface-card text-primary-700 px-4 py-2 rounded-stone 
+    @apply bg-surface-card text-primary-700 px-4 py-2 rounded-stone
            hover:bg-surface-elevated transition-all duration-200
-           border border-primary-200 hover:border-primary-300
-           dark:bg-primary-800 dark:text-primary-100 
-           dark:hover:bg-primary-700
-           dark:border-primary-700 dark:hover:border-primary-600;
+           border border-primary-200 hover:border-primary-300;
   }
+  .dark .btn-secondary {
+    background-color: rgba(15, 24, 48, 0.6);
+    color: #d8dce8;
+    border-color: rgba(42, 54, 96, 0.4);
+  }
+  .dark .btn-secondary:hover { background-color: rgba(26, 36, 68, 0.6); }
 
   .input-field {
     @apply w-full px-4 py-3 border border-primary-200 rounded-stone
            bg-primary-100
            focus:ring-2 focus:ring-accent focus:border-transparent
-           placeholder:text-primary-400
-           dark:bg-primary-800 dark:border-primary-700 
-           dark:text-primary-100
-           dark:focus:ring-accent-light
-           dark:placeholder:text-primary-500;
+           placeholder:text-primary-400;
   }
+  .dark .input-field {
+    background-color: rgba(15, 24, 48, 0.5);
+    border-color: rgba(42, 54, 96, 0.4);
+    color: #d8dce8;
+  }
+  .dark .input-field::placeholder { color: #5c6a96; }
+  .dark .input-field:focus { --tw-ring-color: #d4a853; }
 
   .card {
-    @apply bg-surface-card rounded-card shadow-card p-6
-           border border-primary-100
-           dark:bg-primary-800 dark:shadow-xl
-           dark:border-primary-700;
+    @apply bg-surface-card rounded-card shadow-card p-6 border border-primary-100;
+  }
+  .dark .card {
+    background-color: rgba(15, 24, 48, 0.6);
+    border-color: rgba(42, 54, 96, 0.3);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04);
   }
 
-  /* Selected card glow — warm bronze accent */
   .card-selected-glow {
-    box-shadow:
-      0 0 0 2px #8b7355,
-      0 0 18px 5px rgba(139, 115, 85, 0.35),
-      0 20px 40px -8px rgba(38, 35, 28, 0.15);
+    box-shadow: 0 0 0 2px #8b7355, 0 0 18px 5px rgba(139,115,85,0.35), 0 20px 40px -8px rgba(38,35,28,0.15);
   }
-
   .dark .card-selected-glow {
-    box-shadow:
-      0 0 0 2px #c4a882,
-      0 0 22px 7px rgba(196, 168, 130, 0.4),
-      0 20px 40px -8px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px #d4a853, 0 0 24px 8px rgba(212,168,83,0.45), 0 20px 40px -8px rgba(0,0,0,0.6);
   }
 
-  /* Stats card hover glows — using Stoic semantic colors */
   .stat-card-success-glow,
   .stat-card-warning-glow,
   .stat-card-danger-glow,
-  .stat-card-info-glow { 
-    @apply transition-all duration-200;
-  }
+  .stat-card-info-glow { @apply transition-all duration-200; }
 
-  .stat-card-success-glow:hover { box-shadow: 0 0 0 2px #5a7a5a, 0 0 18px 5px rgba(90, 122, 90, 0.35); transform: translateY(-2px); }
-  .stat-card-warning-glow:hover { box-shadow: 0 0 0 2px #a07840, 0 0 18px 5px rgba(160, 120, 64, 0.35); transform: translateY(-2px); }
-  .stat-card-danger-glow:hover  { box-shadow: 0 0 0 2px #8a4a3a, 0 0 18px 5px rgba(138, 74, 58, 0.35); transform: translateY(-2px); }
-  .stat-card-info-glow:hover    { box-shadow: 0 0 0 2px #7d7560, 0 0 18px 5px rgba(125, 117, 96, 0.35); transform: translateY(-2px); }
+  .stat-card-success-glow:hover { box-shadow: 0 0 0 2px #5a7a5a, 0 0 18px 5px rgba(90,122,90,0.35);  transform: translateY(-2px); }
+  .stat-card-warning-glow:hover { box-shadow: 0 0 0 2px #a07840, 0 0 18px 5px rgba(160,120,64,0.35); transform: translateY(-2px); }
+  .stat-card-danger-glow:hover  { box-shadow: 0 0 0 2px #8a4a3a, 0 0 18px 5px rgba(138,74,58,0.35);  transform: translateY(-2px); }
+  .stat-card-info-glow:hover    { box-shadow: 0 0 0 2px #7d7560, 0 0 18px 5px rgba(125,117,96,0.35); transform: translateY(-2px); }
 
-  /* Dark mode hover glows */
-  .dark .stat-card-success-glow:hover { box-shadow: 0 0 0 2px #5a7a5a, 0 0 24px 8px rgba(90, 122, 90, 0.5); }
-  .dark .stat-card-warning-glow:hover { box-shadow: 0 0 0 2px #a07840, 0 0 24px 8px rgba(160, 120, 64, 0.5); }
-  .dark .stat-card-danger-glow:hover  { box-shadow: 0 0 0 2px #8a4a3a, 0 0 24px 8px rgba(138, 74, 58, 0.5); }
-  .dark .stat-card-info-glow:hover    { box-shadow: 0 0 0 2px #7d7560, 0 0 24px 8px rgba(125, 117, 96, 0.5); }
+  .dark .stat-card-success-glow:hover { box-shadow: 0 0 0 2px #5a7a5a, 0 0 28px 10px rgba(90,122,90,0.55); }
+  .dark .stat-card-warning-glow:hover { box-shadow: 0 0 0 2px #d4a853, 0 0 28px 10px rgba(212,168,83,0.55); }
+  .dark .stat-card-danger-glow:hover  { box-shadow: 0 0 0 2px #8a4a3a, 0 0 28px 10px rgba(138,74,58,0.55); }
+  .dark .stat-card-info-glow:hover    { box-shadow: 0 0 0 2px #7d7560, 0 0 28px 10px rgba(125,117,96,0.55); }
 
-  /* Nav arrow buttons — history navigation */
-  .nav-arrow-glow {
-    @apply transition-all duration-300;
-  }
+  .nav-arrow-glow { @apply transition-all duration-300; }
+  .nav-arrow-glow:hover       { box-shadow: 0 0 0 2px #8b7355, 0 0 18px 6px rgba(139,115,85,0.30); transform: scale(1.1); }
+  .dark .nav-arrow-glow:hover { box-shadow: 0 0 0 2px #d4a853, 0 0 24px 8px rgba(212,168,83,0.50); transform: scale(1.1); }
+  .nav-arrow-glow:active      { transform: scale(0.95); }
 
-  .nav-arrow-glow:hover {
-    box-shadow: 0 0 0 2px #8b7355, 0 0 18px 6px rgba(139, 115, 85, 0.3);
-    transform: scale(1.1);
-  }
-
-  .dark .nav-arrow-glow:hover {
-    box-shadow: 0 0 0 2px #c4a882, 0 0 22px 8px rgba(196, 168, 130, 0.45);
-    transform: scale(1.1);
-  }
-
-  .nav-arrow-glow:active {
-    transform: scale(0.95);
-  }
-
-  /* Logo/Brand Text Styling */
   .brand-text {
     font-family: Cinzel, Georgia, serif;
     letter-spacing: 0.03em;
     text-shadow: 0 2px 4px rgba(38, 35, 28, 0.1);
     transition: all 0.3s ease;
   }
+  .dark .brand-text { text-shadow: 0 2px 12px rgba(212,168,83,0.30), 0 0 30px rgba(212,168,83,0.12); }
 
-  .dark .brand-text {
-    text-shadow: 0 2px 8px rgba(196, 168, 130, 0.25);
-  }
-  
-  /* Quote styling */
-  .quote-text {
-    @apply font-serif text-quote-md text-primary-900 dark:text-primary-50;
-    line-height: 1.6;
-  }
-  
-  /* Author attribution */
-  .quote-author {
-    @apply font-display text-primary-600 dark:text-primary-300;
-    letter-spacing: 0.05em;
-  }
+  .quote-text   { @apply font-serif text-quote-md text-primary-900; line-height: 1.6; }
+  .dark .quote-text { color: #ede8dc; }
+
+  .quote-author { @apply font-display text-primary-600; letter-spacing: 0.05em; }
+  .dark .quote-author { color: #c8b89a; }
 }

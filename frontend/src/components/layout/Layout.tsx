@@ -9,7 +9,7 @@ import { OfflineBanner } from "../common/OfflineBanner";
 export const Layout: React.FC = () => {
   const location = useLocation();
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col dark:text-[#e0ddd4]">
       <Header />
       <OfflineBanner />
       {/* pb-16 on mobile reserves space above the fixed BottomNav */}

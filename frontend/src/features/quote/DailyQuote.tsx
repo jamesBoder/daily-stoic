@@ -70,19 +70,12 @@ export const DailyQuote = () => {
         className="text-center mb-4"
         style={{ transform: `translateY(${scrollY * 0.18}px)`, willChange: 'transform' }}
       >
-        <p className="font-display text-xs tracking-widest uppercase text-primary-400" style={{ textShadow: '0 1px 3px rgba(38,35,28,0.18)' }}>
+        <p className="font-display text-xs tracking-widest uppercase text-primary-400">
           {new Date().toLocaleDateString('en-US', {
             weekday: 'long', month: 'long', day: 'numeric'
           })}
         </p>
-        <h1
-          className="font-display text-2xl text-primary-800 mt-1 cursor-default animate-title-glow transition-all duration-400 hover:tracking-widest hover:text-accent-dark"
-          style={{ textShadow: '0 2px 6px rgba(38,35,28,0.22), 0 1px 2px rgba(38,35,28,0.12)' }}
-          onMouseEnter={e => {
-            e.currentTarget.style.textShadow = '0 0 14px rgba(139,115,85,0.6), 0 0 32px rgba(139,115,85,0.28), 0 2px 6px rgba(38,35,28,0.2)'
-          }}
-          onMouseLeave={e => { e.currentTarget.style.textShadow = '0 2px 6px rgba(38,35,28,0.22), 0 1px 2px rgba(38,35,28,0.12)' }}
-        >
+        <h1 className="font-display text-2xl text-primary-800 mt-1 cursor-default animate-title-glow transition-all duration-400 hover:tracking-widest hover:text-accent-dark dark:hover:text-star-gold">
           Daily Meditation
         </h1>
       </header>
