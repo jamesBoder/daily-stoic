@@ -63,7 +63,7 @@ const AdUnit = ({ format = 'auto', className = '', style }: AdUnitProps) => {
 // Shown above the card on mobile only (hidden md+).
 export const AdBannerTop = () => {
   const { isPremium } = useSubscription()
-  if (isPremium) return null
+  if (isPremium || !CLIENT || !SLOT) return null
   return (
     <div className="block md:hidden w-full mb-4" style={{ minHeight: 60 }} aria-hidden="true">
       <AdUnit format="horizontal" style={{ display: 'block', width: '100%', height: 60 }} />
@@ -75,7 +75,7 @@ export const AdBannerTop = () => {
 // Shown below the card on mobile only (hidden md+).
 export const AdBannerBottom = () => {
   const { isPremium } = useSubscription()
-  if (isPremium) return null
+  if (isPremium || !CLIENT || !SLOT) return null
   return (
     <div className="block md:hidden w-full mt-6" style={{ minHeight: 60 }} aria-hidden="true">
       <AdUnit format="horizontal" style={{ display: 'block', width: '100%', height: 60 }} />
@@ -87,7 +87,7 @@ export const AdBannerBottom = () => {
 // Sticky vertical unit — hidden on mobile, shown as side columns on md+.
 export const AdRail = ({ side }: { side: 'left' | 'right' }) => {
   const { isPremium } = useSubscription()
-  if (isPremium) return null
+  if (isPremium || !CLIENT || !SLOT) return null
   return (
     <div
       className="hidden md:flex flex-col items-center pt-4 sticky top-20 self-start"
