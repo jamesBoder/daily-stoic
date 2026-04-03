@@ -3,13 +3,15 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Button } from '../../components/common/Button'
 import { commentService } from '../../services/api/comment'
+import { useAuth } from '../../hooks/useAuth'
 import type { Comment } from '../../types/comment'
 
 interface Props {
   quoteId: number
+  onAuthRequired?: () => void
 }
 
-export const CommentSection = ({ quoteId }: Props) => {
+export const CommentSection = ({ quoteId, onAuthRequired }: Props) => {
   const [comment, setComment] = useState<Comment | null>(null)
   const [commentText, setCommentText] = useState('')
   const [isEditing, setIsEditing] = useState(false)
@@ -18,8 +20,10 @@ export const CommentSection = ({ quoteId }: Props) => {
   const [isVisible, setIsVisible] = useState(false)
   const [confirmingDelete, setConfirmingDelete] = useState(false)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const { isAuthenticated } = useAuth()
 
   const loadComment = useCallback(async () => {
+    if (!isAuthenticated) return
     try {
       const existing = await commentService.getCommentForQuote(quoteId)
       if (existing) {
@@ -33,15 +37,19 @@ export const CommentSection = ({ quoteId }: Props) => {
       setComment(null)
       setCommentText('')
     }
-  }, [quoteId])
+  }, [quoteId, isAuthenticated])
 
   useEffect(() => {
     setComment(null)
     setCommentText('')
     setIsEditing(false)
     setError('')
-    loadComment()
-  }, [loadComment])
+    if (isAuthenticated) {
+      loadComment()
+    } else {
+      setIsEditing(true)
+    }
+  }, [loadComment, isAuthenticated])
 
   const handleSave = async () => {
     if (!commentText.trim()) {
@@ -50,6 +58,10 @@ export const CommentSection = ({ quoteId }: Props) => {
     }
     if (commentText.length > 1000) {
       setError('Meditation must be 1000 characters or fewer.')
+      return
+    }
+    if (!isAuthenticated) {
+      onAuthRequired?.()
       return
     }
     setIsSaving(true)

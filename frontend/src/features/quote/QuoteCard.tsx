@@ -31,9 +31,10 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
   const [commentsOpen, setCommentsOpen] = useState(false)
   const [showLoginPrompt, setShowLoginPrompt] = useState(false)
   const [loginPromptAction, setLoginPromptAction] = useState('')
+  const [localFav, setLocalFav] = useState(false)
   const { isFavorited, toggleFavorite } = useFavorites()
   const { isAuthenticated } = useAuth()
-  const isFav = isFavorited(quote.id)
+  const isFav = isAuthenticated ? isFavorited(quote.id) : localFav
 
   // Font bump — each threshold shifted up one step for more presence
   const quoteFontClass =
@@ -52,11 +53,17 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
     setShowLoginPrompt(true)
   }
 
+  const handleSave = () => {
+    navigator.vibrate?.(10)
+    if (isAuthenticated) {
+      toggleFavorite(quote.id)
+    } else {
+      setLocalFav(v => !v)
+    }
+  }
+
   const swipe = useSwipe({
-    onSwipeLeft: () => {
-      navigator.vibrate?.(10)
-      isAuthenticated ? toggleFavorite(quote.id) : promptLogin('save quotes')
-    },
+    onSwipeLeft: handleSave,
     threshold: 60,
   })
 
@@ -157,7 +164,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
       {!compact && (
         <div className="flex items-center justify-center gap-2 mt-4">
           <button
-            onClick={() => { navigator.vibrate?.(10); isAuthenticated ? toggleFavorite(quote.id) : promptLogin('save quotes') }}
+            onClick={handleSave}
             className={`flex items-center gap-1.5 text-sm font-sans rounded-full px-4 py-2 transition-colors ${
               isFav
                 ? 'bg-accent text-white'
@@ -170,7 +177,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
           </button>
 
           <button
-            onClick={() => isAuthenticated ? setCommentsOpen(!commentsOpen) : promptLogin('write meditations')}
+            onClick={() => setCommentsOpen(!commentsOpen)}
             className="flex items-center gap-1.5 text-sm font-sans bg-primary-100 text-primary-700 hover:bg-primary-200 rounded-full px-4 py-2 transition-colors"
           >
             <span>💬</span>
@@ -187,7 +194,24 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
         </div>
       )}
 
-      {commentsOpen && !compact && <CommentSection quoteId={quote.id} />}
+      {localFav && !isAuthenticated && (
+        <p className="font-sans text-xs text-primary-500 text-center mt-2">
+          <button
+            onClick={() => promptLogin('save quotes')}
+            className="underline hover:text-primary-700 transition-colors"
+          >
+            Sign in
+          </button>{' '}
+          to keep this saved across devices
+        </p>
+      )}
+
+      {commentsOpen && !compact && (
+        <CommentSection
+          quoteId={quote.id}
+          onAuthRequired={() => promptLogin('write meditations')}
+        />
+      )}
 
       {shareOpen && (
         <SharePanel quote={quote} onClose={() => setShareOpen(false)} />
