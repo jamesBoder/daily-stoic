@@ -45,11 +45,15 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   // Toggle theme and save preference to localStorage
   const toggleTheme = () => {
+    document.documentElement.classList.add('theme-transitioning');
     setIsDarkMode((prevMode) => {
       const newMode = !prevMode;
       localStorage.setItem("isDarkMode", JSON.stringify(newMode));
       return newMode;
     });
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-transitioning');
+    }, 500);
   };
 
   const theme = isDarkMode ? 'dark' : 'light';
