@@ -20,6 +20,7 @@ func RunMigrations(db *gorm.DB) error {
 		&models.Comment{},
 		&models.UserStreak{},
 		&models.Achievement{},
+		&models.Subscription{},
 	); err != nil {
 		return err
 	}

@@ -1,10 +1,11 @@
 package routes
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/jamesBoder/daily-stoic/internal/handlers"
 	"github.com/jamesBoder/daily-stoic/internal/middleware"
+	"github.com/jamesBoder/daily-stoic/internal/repository"
 	"github.com/jamesBoder/daily-stoic/internal/services"
-	"github.com/gin-gonic/gin"
 )
 
 func SetupRoutes(
@@ -17,10 +18,12 @@ func SetupRoutes(
 	commentHandler *handlers.CommentHandler,
 	profileHandler *handlers.ProfileHandler,
 	settingsHandler *handlers.SettingsHandler,
+	subscriptionHandler *handlers.SubscriptionHandler,
 	tokenService *services.TokenService,
+	subscriptionRepo *repository.SubscriptionRepository,
 ) {
-	authMW := middleware.AuthMiddleware(tokenService)
-	optionalAuthMW := middleware.OptionalAuthMiddleware(tokenService)
+	authMW := middleware.AuthMiddleware(tokenService, subscriptionRepo)
+	optionalAuthMW := middleware.OptionalAuthMiddleware(tokenService, subscriptionRepo)
 
 	api := r.Group("/api")
 
@@ -94,5 +97,13 @@ func SetupRoutes(
 		settings.PUT("", settingsHandler.UpdateSettings)
 		settings.GET("/language", settingsHandler.GetLanguage)
 		settings.PUT("/language", settingsHandler.UpdateLanguage)
+	}
+
+	// Subscription
+	sub := api.Group("/subscription")
+	{
+		sub.GET("", optionalAuthMW, subscriptionHandler.GetStatus)
+		sub.POST("/checkout", authMW, subscriptionHandler.CreateCheckout)
+		sub.POST("/webhook", subscriptionHandler.HandleWebhook) // no auth — Stripe-signed
 	}
 }

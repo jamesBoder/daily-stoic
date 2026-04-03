@@ -70,6 +70,17 @@ func (h *QuoteHandler) GetQuoteByID(c *gin.Context) {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Quote not found"})
 		return
 	}
+	if quote.Tier == "premium" {
+		isPremium, _ := c.Get("isPremium")
+		if isPremium != true {
+			c.JSON(http.StatusOK, gin.H{
+				"gated":         true,
+				"tier_required": "lifetime",
+				"message":       "This content is available to Practitioner members.",
+			})
+			return
+		}
+	}
 	c.JSON(http.StatusOK, gin.H{"quote": quote})
 }
 

@@ -4,84 +4,91 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/jamesBoder/daily-stoic/internal/services"
 	"github.com/gin-gonic/gin"
-	
+	"github.com/jamesBoder/daily-stoic/internal/repository"
+	"github.com/jamesBoder/daily-stoic/internal/services"
 )
 
-func AuthMiddleware(tokenService *services.TokenService) gin.HandlerFunc {
+// resolveSubscription checks the user's tier and sets "isPremium" in context.
+// Called after userID is confirmed. Fails open — a DB error means isPremium=false.
+func resolveSubscription(c *gin.Context, userID uint, subscriptionRepo *repository.SubscriptionRepository) {
+	if subscriptionRepo == nil {
+		c.Set("isPremium", false)
+		return
+	}
+	sub, err := subscriptionRepo.GetByUserID(userID)
+	if err != nil {
+		c.Set("isPremium", false)
+		return
+	}
+	c.Set("isPremium", sub.Tier == "lifetime")
+}
+
+func AuthMiddleware(tokenService *services.TokenService, subscriptionRepo ...*repository.SubscriptionRepository) gin.HandlerFunc {
+	var subRepo *repository.SubscriptionRepository
+	if len(subscriptionRepo) > 0 {
+		subRepo = subscriptionRepo[0]
+	}
 	return func(c *gin.Context) {
-		// Extract token from Authorization header
 		authHeader := c.GetHeader("Authorization")
 		if authHeader == "" {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
 			return
 		}
 
-		// Trim spaces and strip "Bearer " prefix
 		authHeader = strings.TrimSpace(authHeader)
 		token := strings.TrimPrefix(authHeader, "Bearer ")
 		if token == authHeader {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Invalid token format"})
 			return
 		}
-		
-		// Trim any remaining spaces from the token
 		token = strings.TrimSpace(token)
 
-		// validate token using TokenService
 		claims, err := tokenService.ValidateToken(token)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Invalid token"})
 			return
 		}
 
-		// store user ID in Gin context
 		c.Set("userID", claims.UserID)
-
+		resolveSubscription(c, claims.UserID, subRepo)
 		c.Next()
 	}
 }
 
-// OptionalAuthMiddleware validates authentication if token is present, but doesn't require it
-// This allows endpoints to work for both authenticated and anonymous users
-// If authenticated, userID will be set in context for features like history tracking
-func OptionalAuthMiddleware(tokenService *services.TokenService) gin.HandlerFunc {
+// OptionalAuthMiddleware validates authentication if token is present, but doesn't require it.
+// If authenticated, sets userID and isPremium in context.
+func OptionalAuthMiddleware(tokenService *services.TokenService, subscriptionRepo ...*repository.SubscriptionRepository) gin.HandlerFunc {
+	var subRepo *repository.SubscriptionRepository
+	if len(subscriptionRepo) > 0 {
+		subRepo = subscriptionRepo[0]
+	}
 	return func(c *gin.Context) {
-		// Extract token from Authorization header
 		authHeader := c.GetHeader("Authorization")
-		
-		// If no auth header, continue without authentication
 		if authHeader == "" {
+			c.Set("isPremium", false)
 			c.Next()
 			return
 		}
 
-		// Trim spaces and strip "Bearer " prefix
 		authHeader = strings.TrimSpace(authHeader)
 		token := strings.TrimPrefix(authHeader, "Bearer ")
-		
-		// If token format is invalid, continue without authentication
 		if token == authHeader || token == "" {
+			c.Set("isPremium", false)
 			c.Next()
 			return
 		}
-		
-		// Trim any remaining spaces from the token
 		token = strings.TrimSpace(token)
 
-		// Validate token using TokenService
 		claims, err := tokenService.ValidateToken(token)
 		if err != nil {
-			// If token is invalid, continue without authentication
-			// Don't abort the request - just don't set userID
+			c.Set("isPremium", false)
 			c.Next()
 			return
 		}
 
-		// Store user ID in Gin context for authenticated requests
 		c.Set("userID", claims.UserID)
-
+		resolveSubscription(c, claims.UserID, subRepo)
 		c.Next()
 	}
 }

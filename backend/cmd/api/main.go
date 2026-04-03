@@ -55,6 +55,7 @@ func main() {
 	commentRepo         := repository.NewCommentRepository(db)
 	streakRepo          := repository.NewStreakRepository(db)
 	passwordHistoryRepo := repository.NewPasswordHistoryRepository(db)
+	subscriptionRepo    := repository.NewSubscriptionRepository(db)
 
 	// 5. Services
 	tokenSvc      := services.NewTokenService(cfg)
@@ -69,6 +70,8 @@ func main() {
 
 	// Philosophy API service — used by seeding scripts, not live endpoints in Phase 1
 	_ = services.NewPhilosophyAPIService(cfg.PhilosophyAPIBaseURL, cfg.PhilosophyAPIKey)
+
+	stripeSvc := services.NewStripeService(cfg, subscriptionRepo)
 
 	// OAuth service
 	oauthCfg    := config.GoogleOAuthConfig()
@@ -89,7 +92,8 @@ func main() {
 		passwordHistoryRepo, streakRepo,
 		emailSvc, emailValidSvc, streakSvc, validate,
 	)
-	settingsHandler := handlers.NewSettingsHandler(settingsSvc)
+	settingsHandler     := handlers.NewSettingsHandler(settingsSvc)
+	subscriptionHandler := handlers.NewSubscriptionHandler(subscriptionRepo, stripeSvc, cfg)
 
 	_ = validate // used by profileHandler
 
@@ -112,7 +116,8 @@ func main() {
 	})
 
 	routes.SetupRoutes(r, authHandler, oauthHandler, quoteHandler, favoriteHandler,
-		historyHandler, commentHandler, profileHandler, settingsHandler, tokenSvc)
+		historyHandler, commentHandler, profileHandler, settingsHandler,
+		subscriptionHandler, tokenSvc, subscriptionRepo)
 
 	// 9. Start server with graceful shutdown
 	port := cfg.Port

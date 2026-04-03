@@ -29,6 +29,11 @@ type Config struct {
 	// Philosophy API (author metadata enrichment)
 	PhilosophyAPIKey     string
 	PhilosophyAPIBaseURL string
+
+	// Stripe (lifetime purchase only)
+	StripeSecretKey       string
+	StripeWebhookSecret   string
+	StripeLifetimePriceID string
 }
 
 func Load() (*Config, error) {
@@ -52,6 +57,9 @@ func Load() (*Config, error) {
 		FromEmail:            getEnvOrDefault("FROM_EMAIL", "noreply@dailystoic.app"),
 		PhilosophyAPIKey:     os.Getenv("PHILOSOPHY_API_KEY"),
 		PhilosophyAPIBaseURL: getEnvOrDefault("PHILOSOPHY_API_BASE_URL", "https://philosophyapi.com/api"),
+		StripeSecretKey:       os.Getenv("STRIPE_SECRET_KEY"),
+		StripeWebhookSecret:   os.Getenv("STRIPE_WEBHOOK_SECRET"),
+		StripeLifetimePriceID: os.Getenv("STRIPE_LIFETIME_PRICE_ID"),
 	}, nil
 }
 
