@@ -95,7 +95,7 @@ export const DailyQuote = () => {
         <AdRail side="left" />
 
         <div className="flex-1 min-w-0">
-          {data && (
+          {data?.quote && (
             <QuoteCard
               quote={data.quote}
               showStreak
