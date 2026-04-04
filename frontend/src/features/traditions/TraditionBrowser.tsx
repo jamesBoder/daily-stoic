@@ -1,108 +1,15 @@
 // src/features/traditions/TraditionBrowser.tsx
 
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { traditionsApi } from '../../services/api/traditions'
 import apiClient from '../../services/api/api'
 import type { Tradition, Quote } from '../../types/quote'
 import { useSubscription } from '../../contexts/SubscriptionContext'
+import { useIsDark } from '../../hooks/useIsDark'
 import { PremiumGate } from '../../components/common/PremiumGate'
-import { QuoteCard } from '../quote/QuoteCard'
-
-// ── Tradition metadata ────────────────────────────────────────────────────────
-
-const META: Record<string, {
-  description: string
-  icon: string
-  accent: string       // CSS color for the icon circle
-  accentDark: string   // accent for dark mode
-}> = {
-  stoicism: {
-    description: 'Virtue, reason, and living according to nature — the bedrock of Greco-Roman wisdom.',
-    icon: '⊕',
-    accent: 'rgba(139,115,85,0.18)',
-    accentDark: 'rgba(212,168,83,0.18)',
-  },
-  hermeticism: {
-    description: 'The Seven Hermetic Principles — As Above, So Below. The Emerald Tablet speaks.',
-    icon: '✦',
-    accent: 'rgba(110,70,160,0.18)',
-    accentDark: 'rgba(180,120,255,0.18)',
-  },
-  neoplatonism: {
-    description: 'The emanation of the One into Being, Intellect, and Soul — Plotinus, Porphyry, Proclus.',
-    icon: '◎',
-    accent: 'rgba(180,145,50,0.18)',
-    accentDark: 'rgba(240,195,70,0.20)',
-  },
-  gnosticism: {
-    description: 'Gnosis — direct knowledge of the divine spark within, liberation from matter.',
-    icon: '✧',
-    accent: 'rgba(150,50,60,0.18)',
-    accentDark: 'rgba(220,80,100,0.18)',
-  },
-  kabbalah: {
-    description: 'The Tree of Life, Sefirot, and the infinite nature of Ein Sof.',
-    icon: '✡',
-    accent: 'rgba(40,80,180,0.18)',
-    accentDark: 'rgba(80,140,255,0.20)',
-  },
-  pythagoreanism: {
-    description: 'Number as the principle of all things — harmony, proportion, and the music of the spheres.',
-    icon: '△',
-    accent: 'rgba(40,140,130,0.18)',
-    accentDark: 'rgba(60,200,180,0.18)',
-  },
-  'pre-socratic': {
-    description: 'The first seekers — Heraclitus, Parmenides, Anaximander — asking what everything is made of.',
-    icon: '∞',
-    accent: 'rgba(180,90,30,0.18)',
-    accentDark: 'rgba(240,130,50,0.20)',
-  },
-  'african-philosophy': {
-    description: 'Ubuntu, Maat, and the deep wisdom traditions of the African continent.',
-    icon: '◇',
-    accent: 'rgba(160,80,30,0.18)',
-    accentDark: 'rgba(220,130,60,0.20)',
-  },
-  'renaissance-philosophy': {
-    description: 'Montaigne, Bacon, Spinoza — reason, humanism, and the revival of ancient thought.',
-    icon: '☿',
-    accent: 'rgba(60,120,60,0.18)',
-    accentDark: 'rgba(90,180,90,0.20)',
-  },
-  transcendentalism: {
-    description: 'The Over-Soul, self-reliance, and the sacred in nature — Emerson and beyond.',
-    icon: '☀',
-    accent: 'rgba(60,130,180,0.18)',
-    accentDark: 'rgba(90,170,240,0.20)',
-  },
-}
-
-const iconColor: Record<string, string> = {
-  stoicism:               '#8b7355',
-  hermeticism:            '#9a6fd0',
-  neoplatonism:           '#c8a83a',
-  gnosticism:             '#c04060',
-  kabbalah:               '#4080e0',
-  pythagoreanism:         '#28c8b8',
-  'pre-socratic':         '#e07830',
-  'african-philosophy':   '#d08040',
-  'renaissance-philosophy':'#48a048',
-  transcendentalism:      '#4898d8',
-}
-
-const iconColorDark: Record<string, string> = {
-  stoicism:               '#d4a853',
-  hermeticism:            '#c090ff',
-  neoplatonism:           '#f0c840',
-  gnosticism:             '#f06080',
-  kabbalah:               '#70b0ff',
-  pythagoreanism:         '#50e8d8',
-  'pre-socratic':         '#f0a060',
-  'african-philosophy':   '#e8a060',
-  'renaissance-philosophy':'#70c870',
-  transcendentalism:      '#70c0ff',
-}
+import { PassageCard } from './PassageCard'
+import { META, ICON_COLOR, ICON_COLOR_DARK } from './constants'
 
 // ── Section divider ───────────────────────────────────────────────────────────
 
@@ -139,13 +46,15 @@ function TraditionCard({
 
   const meta = META[tradition.slug] ?? {
     description: '',
+    tagline: '',
     icon: '✦',
     accent: 'rgba(139,115,85,0.15)',
     accentDark: 'rgba(212,168,83,0.15)',
+    era: '',
   }
 
-  const color    = (isDark ? iconColorDark : iconColor)[tradition.slug] ?? '#8b7355'
-  const bgColor  = isDark ? meta.accentDark : meta.accent
+  const color   = (isDark ? ICON_COLOR_DARK : ICON_COLOR)[tradition.slug] ?? '#8b7355'
+  const bgColor = isDark ? meta.accentDark : meta.accent
 
   const toggle = async () => {
     if (isLocked) return
@@ -170,7 +79,6 @@ function TraditionCard({
                   dark:bg-[rgba(10,20,44,0.55)] dark:border-[rgba(255,255,255,0.07)]
                   dark:shadow-[0_2px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.04)]
                   ${isLocked ? '' : 'cursor-pointer hover:-translate-y-0.5 hover:shadow-card-hover dark:hover:shadow-glass-hover'}`}
-      onClick={isLocked ? undefined : toggle}
       style={{ WebkitBackdropFilter: 'blur(16px)' }}
     >
       <div className="p-4">
@@ -207,35 +115,71 @@ function TraditionCard({
             </p>
           </div>
 
-          {/* Expand chevron */}
-          {!isLocked && (
-            <span
-              className="flex-shrink-0 text-primary-400 dark:text-night-500 text-sm mt-1 transition-transform duration-200"
-              style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
-            >
-              ▾
-            </span>
-          )}
+          {/* Right side — Explore link + expand chevron */}
+          <div className="flex-shrink-0 flex flex-col items-end gap-1.5 mt-0.5">
+            {/* Explore link */}
+            {!isLocked && (
+              <Link
+                to={`/traditions/${tradition.slug}`}
+                onClick={e => e.stopPropagation()}
+                className="font-display text-[8px] tracking-[0.2em] uppercase transition-opacity hover:opacity-100 py-1 px-2 rounded-stone"
+                style={{
+                  color,
+                  opacity: 0.7,
+                  background: `${color}10`,
+                  border: `1px solid ${color}25`,
+                }}
+              >
+                Explore
+              </Link>
+            )}
+
+            {/* Expand chevron */}
+            {!isLocked && (
+              <span
+                className="text-primary-400 dark:text-night-500 text-sm transition-transform duration-200"
+                style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
+              >
+                ▾
+              </span>
+            )}
+          </div>
         </div>
 
-        {/* Expanded quotes */}
+        {/* Expanded passages */}
         {expanded && (
           <div className="mt-4 border-t border-primary-200/50 dark:border-[rgba(255,255,255,0.06)] pt-4">
             {loading ? (
               <p className="font-sans text-xs text-primary-400 dark:text-night-500 text-center py-4">
-                Loading quotes…
+                Loading passages…
               </p>
             ) : quotes.length === 0 ? (
               <p className="font-sans text-xs text-primary-400 dark:text-night-500 text-center py-4">
-                No quotes found.
+                No passages found.
               </p>
             ) : (
-              <div className="space-y-5">
+              <div className="space-y-7">
                 {quotes.map(q => (
-                  <QuoteCard key={q.id} quote={q} compact />
+                  <PassageCard
+                    key={q.id}
+                    quote={q}
+                    accentColor={isDark ? ICON_COLOR_DARK[tradition.slug] : ICON_COLOR[tradition.slug]}
+                  />
                 ))}
               </div>
             )}
+
+            {/* Link to full tradition page */}
+            <div className="mt-6 text-center">
+              <Link
+                to={`/traditions/${tradition.slug}`}
+                className="font-display text-[9px] tracking-[0.2em] uppercase transition-opacity hover:opacity-100"
+                style={{ color, opacity: 0.65 }}
+                onClick={e => e.stopPropagation()}
+              >
+                Explore all passages →
+              </Link>
+            </div>
           </div>
         )}
       </div>
@@ -255,18 +199,7 @@ export const TraditionBrowser = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const { isPremium } = useSubscription()
-
-  // Detect dark mode by checking document class
-  const [isDark, setIsDark] = useState(
-    document.documentElement.classList.contains('dark')
-  )
-  useEffect(() => {
-    const obs = new MutationObserver(() => {
-      setIsDark(document.documentElement.classList.contains('dark'))
-    })
-    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-    return () => obs.disconnect()
-  }, [])
+  const isDark = useIsDark()
 
   useEffect(() => {
     traditionsApi.list()
@@ -280,7 +213,7 @@ export const TraditionBrowser = () => {
 
   return (
     <main className="min-h-screen bg-surface-base dark:bg-transparent py-16 px-4">
-      <div className="max-w-lg mx-auto">
+      <div className="max-w-lg md:max-w-2xl mx-auto">
 
         {/* Page header */}
         <header className="text-center mb-12">
@@ -292,7 +225,7 @@ export const TraditionBrowser = () => {
           </h1>
           <p className="font-sans text-sm text-primary-500 dark:text-night-400 max-w-sm mx-auto leading-relaxed">
             Ten schools of thought spanning three millennia.
-            Tap any tradition to read from its canon.
+            Tap any tradition to preview — or Explore for the full deep-dive.
           </p>
         </header>
 
@@ -318,7 +251,6 @@ export const TraditionBrowser = () => {
         {/* Grouped lists */}
         {!loading && !error && (
           <div className="space-y-8">
-            {/* ── Open traditions (free) ── */}
             {free.length > 0 && (
               <section>
                 <SectionHeader
@@ -333,7 +265,6 @@ export const TraditionBrowser = () => {
               </section>
             )}
 
-            {/* ── Practitioner traditions (premium) ── */}
             {premium.length > 0 && (
               <section>
                 <SectionHeader

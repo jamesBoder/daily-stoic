@@ -22,6 +22,8 @@ import { ProtectedRoute } from './components/common/ProtectedRoute'
 import { About } from './features/about/About'
 import { Settings } from './features/profile/Settings'
 import { TraditionBrowser } from './features/traditions/TraditionBrowser'
+import { TraditionPage } from './features/traditions/TraditionPage'
+import { AuthorPage } from './features/traditions/AuthorPage'
 import { ReadingPlansStub } from './features/reading-plans/ReadingPlansStub'
 import { PricingPage } from './features/subscription/PricingPage'
 import { SubscriptionSuccess } from './features/subscription/SubscriptionSuccess'
@@ -63,6 +65,8 @@ export default function App() {
                 <Route index element={<DailyQuote />} />
                 <Route path="about" element={<About />} />
                 <Route path="traditions" element={<TraditionBrowser />} />
+                <Route path="traditions/:slug" element={<TraditionPage />} />
+                <Route path="authors/:slug" element={<AuthorPage />} />
                 <Route path="reading-plans" element={<ReadingPlansStub />} />
 
                 {/* Auth */}
