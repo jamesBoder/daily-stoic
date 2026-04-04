@@ -6,7 +6,9 @@
     "tradition_id": 10,
     "themes": "[\"inner_strength\",\"virtue\",\"courage\"]",
     "tier": "free",
-    "quality_score": 0.98
+    "quality_score": 0.98,
+    "context_full": "This is the opening salvo of Self-Reliance, Emerson's most radical essay. Written against the conformist pressures of 19th-century American society — religious orthodoxy, social expectation, reputational anxiety — it calls for a complete reorientation of authority from outside to inside. The 'iron string' is the note of genuine selfhood: each person has one, and authentic life means following its vibration rather than tuning yourself to others' expectations. Emerson was not advocating selfishness but self-knowledge — the discovery of one's own deepest nature and the courage to express it.",
+    "reflection_prompt": "Where in your life are you vibrating to someone else's string — living by their values, seeking their approval, measuring yourself by their standards? What does your own string sound like when you listen for it?"
   },
   {
     "text": "Whoso would be a man must be a nonconformist. He who would gather immortal palms must not be hindered by the name of goodness, but must explore if it be goodness.",
@@ -159,7 +161,9 @@
     "tradition_id": 10,
     "themes": "[\"mindfulness\",\"equanimity\",\"self_discipline\"]",
     "tier": "free",
-    "quality_score": 0.98
+    "quality_score": 0.98,
+    "context_full": "Emerson here describes a practice of daily completion — treating each day as a self-contained unit rather than as a fragment of an infinite project of self-improvement. The instruction to 'forget blunders as soon as you can' is not an excuse for carelessness but a release from the paralysis of excessive self-examination. Some mistakes deserve analysis; most deserve only to be done with. Tomorrow's effort is best served by a mind that is rested and forward-facing, not rehearsing yesterday's failures.",
+    "reflection_prompt": "Is there a mistake or failure from the past day or week that you are still rehearsing? Have you learned what it had to teach? If so, what would it take to set it down completely and meet tomorrow fresh?"
   },
   {
     "text": "The only way to have a friend is to be one.",
@@ -177,7 +181,9 @@
     "tradition_id": 10,
     "themes": "[\"integrity\",\"inner_strength\",\"virtue\"]",
     "tier": "free",
-    "quality_score": 0.97
+    "quality_score": 0.97,
+    "context_full": "Emerson's ethics of self-reliance rests on the sacredness of honest thought. He is not arguing that whatever you think is automatically right — he is arguing that the only path to truth runs through honesty with yourself. The person who sacrifices their genuine thought to gain acceptance, avoid conflict, or maintain comfort is committing a kind of spiritual fraud. The 'integrity of the mind' means keeping it clean of borrowed opinions, comfortable illusions, and fear-driven beliefs — a harder practice than any external discipline.",
+    "reflection_prompt": "Where are you holding a belief you don't actually hold — maintaining a position for social, professional, or relational safety? What would you actually think if those pressures disappeared? What would it cost you to think it honestly?"
   },
   {
     "text": "It is easy in the world to live after the world's opinion; it is easy in solitude to live after our own; but the great man is he who in the midst of the crowd keeps with perfect sweetness the independence of solitude.",

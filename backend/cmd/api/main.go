@@ -55,7 +55,15 @@ func main() {
 		log.Printf("Warning: premium content seed failed: %v", err)
 	}
 
-	// 7. Repositories
+	// 7. Patch author bios and quote commentary/practice prompts (idempotent)
+	if err := seeds.UpdateAuthorBios(db); err != nil {
+		log.Printf("Warning: author bio update failed: %v", err)
+	}
+	if err := seeds.UpdateQuoteContent(db); err != nil {
+		log.Printf("Warning: quote content update failed: %v", err)
+	}
+
+	// 9. Repositories
 	userRepo            := repository.NewUserRepository(db)
 	quoteRepo           := repository.NewQuoteRepository(db)
 	authorRepo          := repository.NewAuthorRepository(db)

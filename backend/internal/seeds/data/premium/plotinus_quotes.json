@@ -6,61 +6,9 @@
     "tradition_id": 3,
     "themes": "[\"beauty\",\"virtue\",\"soul\",\"contemplation\"]",
     "tier": "premium",
-    "quality_score": 0.99
-  },
-  {
-    "text": "Beauty addresses itself chiefly to sight; but there is a beauty for the hearing too, as in certain combinations of words and in all kinds of music, for melodies and cadences are beautiful.",
-    "source": "Enneads I.6 — On Beauty",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"beauty\",\"soul\",\"wisdom\"]",
-    "tier": "premium",
-    "quality_score": 0.96
-  },
-  {
-    "text": "This is the spirit that Beauty must ever induce: wonderment and a delicious trouble, longing and love and a trembling that is all delight.",
-    "source": "Enneads I.6 — On Beauty",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"beauty\",\"love\",\"soul\"]",
-    "tier": "premium",
-    "quality_score": 0.98
-  },
-  {
-    "text": "Never stop working on your statue.",
-    "source": "Enneads I.6 — On Beauty",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"virtue\",\"soul\",\"beauty\",\"perseverance\"]",
-    "tier": "premium",
-    "quality_score": 0.99
-  },
-  {
-    "text": "Our concern is not merely to be sinless but to be God.",
-    "source": "Enneads I.2 — On Virtue",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"virtue\",\"divine\",\"soul\",\"ascent\"]",
-    "tier": "premium",
-    "quality_score": 0.98
-  },
-  {
-    "text": "All things aspire to Contemplation. The plant contemplates in its own way; the animal in its own; and man in his. Contemplation is the goal of all beings.",
-    "source": "Enneads III.8 — On Nature, Contemplation, and The One",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"contemplation\",\"unity\",\"soul\",\"nature\"]",
-    "tier": "premium",
-    "quality_score": 0.97
-  },
-  {
-    "text": "The One is perfect because it seeks nothing, has nothing, needs nothing; overflowing, it produces something; but it does not become less.",
-    "source": "Enneads V.1 — The Three Primal Hypostases",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"the One\",\"divine\",\"perfection\",\"unity\"]",
-    "tier": "premium",
-    "quality_score": 0.98
+    "quality_score": 0.99,
+    "context_full": "This is Plotinus's central teaching on moral self-cultivation. The image of the sculptor is precise: you are both the artist and the statue, and the work is never finished until nothing unnecessary remains. What Plotinus means by 'beautiful' is not aesthetic beauty but the radiance that comes when a soul is fully aligned with the Good — when no dishonesty, cowardice, or impurity clouds the light of reason within. The practice he describes is Socratic self-examination taken to its metaphysical depth.",
+    "reflection_prompt": "What is the one excess, distortion, or shadow in your character that most needs to be chiselled away right now? Not in theory — name it specifically. What single habit or pattern would you address first if you were the sculptor?"
   },
   {
     "text": "The flight of the alone to the Alone.",
@@ -69,7 +17,73 @@
     "tradition_id": 3,
     "themes": "[\"soul\",\"the One\",\"ascent\",\"unity\"]",
     "tier": "premium",
-    "quality_score": 0.99
+    "quality_score": 0.99,
+    "context_full": "These five words are the most compressed summary of Neoplatonic mysticism. The soul, in its deepest nature, is 'alone' — singular, undivided, not a composite of parts. Its return to the One is not a journey through space or time but a recognition of what was always the case: that the soul, at its innermost level, was never separate from its source. The 'flight' is not an escape from the world but a stripping away of everything that is not essential — until only the essential remains.",
+    "reflection_prompt": "Is there a moment in your recent experience — however brief — of complete stillness, presence, or unity? What allowed that moment? What conditions, inner or outer, made it possible?"
+  },
+  {
+    "text": "Never stop working on your statue.",
+    "source": "Enneads I.6 — On Beauty",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"virtue\",\"soul\",\"beauty\",\"perseverance\"]",
+    "tier": "premium",
+    "quality_score": 0.99,
+    "context_full": "This is Plotinus at his most compressed: the entire project of philosophical life — self-purification, intellectual ascent, moral cultivation — summed in five words. The image of the statue reappears here as a standing instruction. There is no point at which the work is finished; there is no version of the self so complete that it needs no further refinement. This is not pessimism but a description of the good life: an ongoing, interested engagement with one's own becoming.",
+    "reflection_prompt": "What does your current chisel work look like? Name one quality you are actively developing and one excess you are actively removing. How would you know you were making progress?"
+  },
+  {
+    "text": "Our concern is not merely to be sinless but to be God.",
+    "source": "Enneads I.2 — On Virtue",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"virtue\",\"divine\",\"soul\",\"ascent\"]",
+    "tier": "premium",
+    "quality_score": 0.98,
+    "context_full": "Plotinus distinguishes between two levels of virtue. The 'civic virtues' — justice, temperance, courage, prudence — belong to the practical life and are necessary; but the deeper goal of philosophy is theosis: the assimilation of the soul to the divine. Not 'being a good person' (though that is the beginning) but the full actualization of the soul's highest capacity. The Enneads treat ethical behavior not as an end but as the precondition for contemplation, which is the real destination.",
+    "reflection_prompt": "Are you living your philosophical life as a project of not doing wrong, or as a project of becoming something? What is the highest version of yourself — not the most productive or successful, but the most fully realized — that you can imagine?"
+  },
+  {
+    "text": "The One is perfect because it seeks nothing, has nothing, needs nothing; overflowing, it produces something; but it does not become less.",
+    "source": "Enneads V.1 — The Three Primal Hypostases",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"the One\",\"divine\",\"perfection\",\"unity\"]",
+    "tier": "premium",
+    "quality_score": 0.98,
+    "context_full": "This is Plotinus's description of the creative act of the One — not a deliberate choice but an inevitable overflow, like the sun's radiation. The One does not lose anything by generating the world; its perfection is not diminished by giving rise to everything else. This model of creativity as abundance rather than sacrifice has profound practical implications: genuine generosity, genuine love, genuine teaching do not deplete the giver. They are the natural expression of a soul that is, in however small a way, at peace.",
+    "reflection_prompt": "Is there an area of your life — giving, creating, loving, serving — where you hold back for fear of being depleted? What would it feel like to give from fullness rather than from obligation or fear of loss?"
+  },
+  {
+    "text": "Knowledge has three degrees — opinion, science, illumination. The means or instrument of the first is sense; of the second, dialectic; of the third, intuition.",
+    "source": "Enneads V.3 — The Knowing Hypostases and the Transcendent",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"knowledge\",\"intellect\",\"wisdom\",\"contemplation\"]",
+    "tier": "premium",
+    "quality_score": 0.97,
+    "context_full": "Plotinus maps the three levels of knowing onto the three hypostases of his metaphysics: sensory experience (tied to the body and time), rational understanding (tied to the Intellect and its clear concepts), and illumination (a direct, non-conceptual contact with the truth that transcends subject-object division). The Enneads is fundamentally an argument that the third form of knowing — what later tradition called gnosis or mystical intuition — is real, available, and the highest human activity.",
+    "reflection_prompt": "Have you ever known something with a certainty that came from direct experience rather than argument or authority — where the knowing was immediate and undeniable? How does that kind of knowing differ from what you know by logic or information alone?"
+  },
+  {
+    "text": "All things aspire to Contemplation. The plant contemplates in its own way; the animal in its own; and man in his. Contemplation is the goal of all beings.",
+    "source": "Enneads III.8 — On Nature, Contemplation, and The One",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"contemplation\",\"unity\",\"soul\",\"nature\"]",
+    "tier": "premium",
+    "quality_score": 0.97,
+    "context_full": "One of Plotinus's most striking ideas: he extends contemplation beyond the human mind to all of nature. The plant's growth is its form of contemplation — a silent turning toward the light of Being. Action itself, for Plotinus, is contemplation made external: we act because our inner contemplative life overflows into the world. The most active person is expressing something they have first seen inwardly. This inverts the usual hierarchy of doing over thinking.",
+    "reflection_prompt": "Consider your most characteristic activity — the thing you spend the most energy on. What are you contemplating, attending to, or oriented toward through that activity? What is it that you are really reaching for?"
+  },
+  {
+    "text": "Happiness is not to be laid up in outward things but in what is within, in that which is ours and our own. If a man holds happiness as something external to himself, he is far from the truth.",
+    "source": "Enneads I.4 — On Well-Being",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"virtue\",\"wisdom\",\"soul\",\"goodness\"]",
+    "tier": "premium",
+    "quality_score": 0.95
   },
   {
     "text": "We must close the eyes and invoke a new manner of seeing, a wakefulness that is the birthright of us all, though few turn it to use.",
@@ -99,6 +113,24 @@
     "quality_score": 0.96
   },
   {
+    "text": "Beauty addresses itself chiefly to sight; but there is a beauty for the hearing too, as in certain combinations of words and in all kinds of music, for melodies and cadences are beautiful.",
+    "source": "Enneads I.6 — On Beauty",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"beauty\",\"soul\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "This is the spirit that Beauty must ever induce: wonderment and a delicious trouble, longing and love and a trembling that is all delight.",
+    "source": "Enneads I.6 — On Beauty",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"beauty\",\"love\",\"soul\"]",
+    "tier": "premium",
+    "quality_score": 0.98
+  },
+  {
     "text": "Intellect and Being are identical; they are one and the same thing. The Intellect could not exist without Being, nor Being without Intellect.",
     "source": "Enneads V.1 — The Three Primal Hypostases",
     "author_slug": "plotinus",
@@ -113,6 +145,51 @@
     "author_slug": "plotinus",
     "tradition_id": 3,
     "themes": "[\"the One\",\"being\",\"creation\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "The soul descended into this world not to be lost in it, but to illuminate it; and it is always up there with the divine, even as its shadow falls here below.",
+    "source": "Enneads IV.8 — The Soul's Descent into Body",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"soul\",\"light\",\"divine\",\"return\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "The soul is amphibious: living at once in the higher world and this lower one, it is never wholly absent from either.",
+    "source": "Enneads IV.8 — The Soul's Descent into Body",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"soul\",\"being\",\"ascent\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "The good man is in pain at the trouble of those about him, but his true life is not touched by anything; his inner life is unshaken.",
+    "source": "Enneads I.4 — On Well-Being",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"virtue\",\"equanimity\",\"soul\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Our most important aim is to turn towards the highest, towards The Good, towards the One, and to remain orientated there.",
+    "source": "Enneads VI.9 — On the Good, or The One",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"the One\",\"goodness\",\"contemplation\",\"ascent\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Beauty is rather a Light that plays over the symmetry of things. That is why the most perfectly symmetrical face may be not beautiful, while a lesser face, catching some gleam of radiance, is beautiful.",
+    "source": "Enneads I.6 — On Beauty",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"beauty\",\"light\",\"soul\"]",
     "tier": "premium",
     "quality_score": 0.95
   },
@@ -135,24 +212,6 @@
     "quality_score": 0.94
   },
   {
-    "text": "The soul is amphibious: living at once in the higher world and this lower one, it is never wholly absent from either.",
-    "source": "Enneads IV.8 — The Soul's Descent into Body",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"soul\",\"being\",\"ascent\"]",
-    "tier": "premium",
-    "quality_score": 0.94
-  },
-  {
-    "text": "The soul descended into this world not to be lost in it, but to illuminate it; and it is always up there with the divine, even as its shadow falls here below.",
-    "source": "Enneads IV.8 — The Soul's Descent into Body",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"soul\",\"light\",\"divine\",\"return\"]",
-    "tier": "premium",
-    "quality_score": 0.96
-  },
-  {
     "text": "When you see that you have become this, in that moment you have become sight itself. Be of good cheer; remaining here, you need not travel far; but wait, and the vision comes.",
     "source": "Enneads V.1 — The Three Primal Hypostases",
     "author_slug": "plotinus",
@@ -160,60 +219,6 @@
     "themes": "[\"contemplation\",\"soul\",\"the One\",\"wisdom\"]",
     "tier": "premium",
     "quality_score": 0.95
-  },
-  {
-    "text": "Beauty is rather a Light that plays over the symmetry of things. That is why the most perfectly symmetrical face may be not beautiful, while a lesser face, catching some gleam of radiance, is beautiful.",
-    "source": "Enneads I.6 — On Beauty",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"beauty\",\"light\",\"soul\"]",
-    "tier": "premium",
-    "quality_score": 0.95
-  },
-  {
-    "text": "The man who has turned away from the body and is established in wisdom has no further grief; body troubles will affect him only as they might affect another man.",
-    "source": "Enneads I.4 — On Well-Being",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"virtue\",\"wisdom\",\"soul\",\"equanimity\"]",
-    "tier": "premium",
-    "quality_score": 0.93
-  },
-  {
-    "text": "Those enquiring whence Evil enters into beings, or rather into a certain order of beings, would be making the best beginning if they established what exactly Evil is.",
-    "source": "Enneads I.8 — On the Nature and Source of Evil",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"wisdom\",\"virtue\",\"being\"]",
-    "tier": "premium",
-    "quality_score": 0.89
-  },
-  {
-    "text": "Our most important aim is to turn towards the highest, towards The Good, towards the One, and to remain orientated there.",
-    "source": "Enneads VI.9 — On the Good, or The One",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"the One\",\"goodness\",\"contemplation\",\"ascent\"]",
-    "tier": "premium",
-    "quality_score": 0.96
-  },
-  {
-    "text": "The good man is in pain at the trouble of those about him, but his true life is not touched by anything; his inner life is unshaken.",
-    "source": "Enneads I.4 — On Well-Being",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"virtue\",\"equanimity\",\"soul\",\"wisdom\"]",
-    "tier": "premium",
-    "quality_score": 0.94
-  },
-  {
-    "text": "The Sage draws nourishment from all that is about him, the beauty of the All and of the things in it; and this nourishment comes to him as a gift, without effort.",
-    "source": "Enneads I.2 — On Virtue",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"beauty\",\"wisdom\",\"contemplation\",\"soul\"]",
-    "tier": "premium",
-    "quality_score": 0.94
   },
   {
     "text": "To put it more plainly: if a man were to inquire of Nature why it produces, it would answer if it cared to listen and speak: You should not ask questions but should understand, in silence, even as I am silent and am not wont to speak.",
@@ -225,31 +230,22 @@
     "quality_score": 0.93
   },
   {
-    "text": "Knowledge has three degrees — opinion, science, illumination. The means or instrument of the first is sense; of the second, dialectic; of the third, intuition.",
-    "source": "Enneads V.3 — The Knowing Hypostases and the Transcendent",
-    "author_slug": "plotinus",
-    "tradition_id": 3,
-    "themes": "[\"knowledge\",\"intellect\",\"wisdom\",\"contemplation\"]",
-    "tier": "premium",
-    "quality_score": 0.97
-  },
-  {
-    "text": "Happiness is not to be laid up in outward things but in what is within, in that which is ours and our own. If a man holds happiness as something external to himself, he is far from the truth.",
+    "text": "The man who has turned away from the body and is established in wisdom has no further grief; body troubles will affect him only as they might affect another man.",
     "source": "Enneads I.4 — On Well-Being",
     "author_slug": "plotinus",
     "tradition_id": 3,
-    "themes": "[\"virtue\",\"wisdom\",\"soul\",\"goodness\"]",
+    "themes": "[\"virtue\",\"wisdom\",\"soul\",\"equanimity\"]",
     "tier": "premium",
-    "quality_score": 0.95
+    "quality_score": 0.93
   },
   {
-    "text": "Remember that you are not the body, but the immortal soul. The body is the instrument of the soul; the soul is the instrument of the Good.",
-    "source": "Enneads IV.3 — Problems of the Soul",
+    "text": "The Sage draws nourishment from all that is about him, the beauty of the All and of the things in it; and this nourishment comes to him as a gift, without effort.",
+    "source": "Enneads I.2 — On Virtue",
     "author_slug": "plotinus",
     "tradition_id": 3,
-    "themes": "[\"soul\",\"divine\",\"virtue\",\"wisdom\"]",
+    "themes": "[\"beauty\",\"wisdom\",\"contemplation\",\"soul\"]",
     "tier": "premium",
-    "quality_score": 0.95
+    "quality_score": 0.94
   },
   {
     "text": "The soul has a double life — the one in communion with the body, the other, its true life, in which it strives towards the divine and the eternal.",
@@ -261,6 +257,15 @@
     "quality_score": 0.94
   },
   {
+    "text": "Remember that you are not the body, but the immortal soul. The body is the instrument of the soul; the soul is the instrument of the Good.",
+    "source": "Enneads IV.3 — Problems of the Soul",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"soul\",\"divine\",\"virtue\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
     "text": "The One can never be an attribute of anything; it is the source of all attributes, yet itself beyond all attributes.",
     "source": "Enneads VI.9 — On the Good, or The One",
     "author_slug": "plotinus",
@@ -268,5 +273,14 @@
     "themes": "[\"the One\",\"divine\",\"unity\"]",
     "tier": "premium",
     "quality_score": 0.93
+  },
+  {
+    "text": "Those enquiring whence Evil enters into beings, or rather into a certain order of beings, would be making the best beginning if they established what exactly Evil is.",
+    "source": "Enneads I.8 — On the Nature and Source of Evil",
+    "author_slug": "plotinus",
+    "tradition_id": 3,
+    "themes": "[\"wisdom\",\"virtue\",\"being\"]",
+    "tier": "premium",
+    "quality_score": 0.89
   }
 ]

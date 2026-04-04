@@ -6,7 +6,9 @@
     "tradition_id": 9,
     "themes": "[\"inner_strength\",\"wisdom\",\"self_discipline\"]",
     "tier": "free",
-    "quality_score": 0.98
+    "quality_score": 0.98,
+    "context_full": "This is the central thesis of Montaigne's great essay on solitude, and it encodes a lifetime of self-examination. 'To belong to oneself' is not isolation or selfishness — it is the condition of genuine relationship with anything else. The person whose inner life is entirely governed by external expectations, social pressures, and other people's opinions belongs, in the decisive sense, to everyone but themselves. Montaigne spent the last decades of his life in his tower library, not to escape the world, but to establish the kind of inner sovereignty that alone makes meaningful engagement with it possible.",
+    "reflection_prompt": "To what degree do you belong to yourself right now — your own values, your own perceptions, your own deepest sense of what is true? And to what degree are you rented out — to obligations, expectations, or the need for approval? What would reclaiming one small piece of that sovereignty look like today?"
   },
   {
     "text": "To philosophize is to learn to die.",
@@ -15,7 +17,9 @@
     "tradition_id": 9,
     "themes": "[\"impermanence\",\"wisdom\",\"courage\"]",
     "tier": "free",
-    "quality_score": 0.98
+    "quality_score": 0.98,
+    "context_full": "Montaigne takes this formulation from Cicero, who took it from Plato — the idea that philosophy is fundamentally a preparation for death, an ongoing practice of loosening our grip on what is temporary. But Montaigne's version is warmer and more personal than the ancient one: he is not prescribing ascetic detachment but a quality of attention — living with full awareness that each moment will not recur, that each relationship is with someone who will die, that even your own thoughts are passing. This awareness, far from being morbid, makes life more vivid.",
+    "reflection_prompt": "Consider one relationship or experience in your life as if you knew it were nearly over — not from a place of anxiety, but of tender attention. What does it deserve from you that you have been withholding?"
   },
   {
     "text": "Not being able to govern events, I govern myself; and if they will not adapt to me, I adapt to them.",

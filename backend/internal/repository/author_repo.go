@@ -42,3 +42,22 @@ func (r *AuthorRepository) GetByTradition(traditionID uint) ([]models.Author, er
 	err := r.db.Where("tradition_id = ?", traditionID).Find(&authors).Error
 	return authors, err
 }
+
+// GetBySlugWithQuotes returns an author and all their quotes (with tradition preloaded).
+func (r *AuthorRepository) GetBySlugWithQuotes(slug string) (*models.Author, error) {
+	var author models.Author
+	err := r.db.Where("slug = ?", slug).First(&author).Error
+	if err != nil {
+		return nil, err
+	}
+	var quotes []models.Quote
+	err = r.db.Where("author_id = ?", author.ID).
+		Preload("Tradition").
+		Order("quality_score DESC").
+		Find(&quotes).Error
+	if err != nil {
+		return nil, err
+	}
+	author.Quotes = quotes
+	return &author, nil
+}

@@ -56,7 +56,9 @@ func SetupRoutes(
 
 	// Authors & Traditions (public)
 	api.GET("/authors", quoteHandler.ListAuthors)
+	api.GET("/authors/:slug", quoteHandler.GetAuthorBySlug)
 	api.GET("/traditions", quoteHandler.ListTraditions)
+	api.GET("/traditions/:slug", quoteHandler.GetTraditionBySlug)
 
 	// Protected routes (require auth)
 	protected := api.Group("/")
