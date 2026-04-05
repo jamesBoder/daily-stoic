@@ -1,0 +1,104 @@
+[
+  {
+    "text": "Once upon a time, I, Chuang Tzu, dreamt I was a butterfly, fluttering hither and thither, to all intents and purposes a butterfly. I was conscious only of my happiness as a butterfly, unaware that I was Chuang Tzu. Soon I awaked, and there lay Chuang Tzu on his couch. Now I do not know whether I was then a man dreaming I was a butterfly, or whether I am now a butterfly dreaming I am a man.",
+    "source": "Zhuangzi, Inner Chapter 2: The Adjustment of Controversies (trans. Herbert Giles)",
+    "author_slug": "zhuangzi",
+    "tradition_id": 12,
+    "themes": "[\"identity\",\"reality\",\"dream\",\"transformation\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "This is among the most famous passages in world philosophy, and its power lies in what it refuses to resolve. Zhuangzi does not say the butterfly was more real than the man, or the man more real than the butterfly. He leaves the question open — not from evasion but from genuine philosophical commitment. What we call 'waking' is simply the perspective we happen to be in right now. The self we take to be fixed — 'I am Chuang Tzu' — is as provisional as any other appearance. What Zhuangzi calls the 'transformation of things' is the flow of identity through forms, none of which are final.",
+    "reflection_prompt": "Which aspects of your current sense of self — your role, your beliefs, your fears, your certainties — do you hold most tightly as 'what you really are'? What would it mean to hold these the way you hold a dream: real while it lasts, but not ultimate?"
+  },
+  {
+    "text": "The fish trap exists because of the fish. Once you've gotten the fish, you can forget the trap. The rabbit snare exists because of the rabbit. Once you've gotten the rabbit, you can forget the snare. Words exist because of meaning. Once you've gotten the meaning, you can forget the words.",
+    "source": "Zhuangzi, Outer Chapter 26: External Things (trans. Burton Watson)",
+    "author_slug": "zhuangzi",
+    "tradition_id": 12,
+    "themes": "[\"meaning\",\"language\",\"understanding\",\"letting-go\"]",
+    "tier": "free",
+    "quality_score": 0.98,
+    "context_full": "This passage, from the end of the Outer Chapters, is Zhuangzi's most explicit statement about the relationship between language and meaning, teaching and understanding. Every teaching — including the Tao Te Ching, including Zhuangzi himself — is a trap designed to be forgotten once the fish has been caught. The conceptual mind that clings to the teaching has gotten the trap but lost the fish. Genuine understanding is wordless, immediate, lived. The danger is mistaking the pointing finger for the moon.",
+    "reflection_prompt": "Is there a teaching, framework, or idea you've absorbed that you're now carrying as a possession rather than as a living understanding? What would it mean to use it and then put it down?"
+  },
+  {
+    "text": "Cook Ding was cutting up an ox. At every blow of his chopper, every heave of his shoulders, every step of his feet, the whole operation was like a perfectly tuned piece of music. 'I work with my mind and not with my eye,' he replied. 'My mind works along without control of the senses.'",
+    "source": "Zhuangzi, Inner Chapter 3: Nourishing the Lord of Life (trans. Giles/Watson composite)",
+    "author_slug": "zhuangzi",
+    "tradition_id": 12,
+    "themes": "[\"mastery\",\"skill\",\"flow\",\"tao\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "The story of Cook Ding is Zhuangzi's central teaching on skill, Tao, and the state that psychologist Mihaly Csikszentmihalyi would later call 'flow.' The cook has practiced so long and so deeply that he no longer needs eyes or deliberate thought — his knife moves through the natural spaces in the ox, following the structure of things rather than forcing through them. He 'works with the mind and not the eye' — the conceptual mind of deliberation has given way to immediate, intuitive responsiveness. This is the practical face of wu wei: not doing nothing, but acting from something deeper than thinking.",
+    "reflection_prompt": "In what area of your life do you have this quality of mastery — where you act from intuition and attunement rather than deliberate thought? And what would it take to develop even a fraction of that quality in the area of your life you are currently struggling with most?"
+  },
+  {
+    "text": "The mushroom of a morning does not know the alternation of day and night.",
+    "source": "Zhuangzi, Inner Chapter 1: Free and Easy Wandering (trans. Burton Watson)",
+    "author_slug": "zhuangzi",
+    "tradition_id": 12,
+    "themes": "[\"perspective\",\"time\",\"humility\",\"limitation\"]",
+    "tier": "free",
+    "quality_score": 0.96,
+    "context_full": "The opening chapter of the Zhuangzi establishes the theme of perspective and its inherent limitation. A morning mushroom lives too briefly to know the cycle of day and night. The chrysalis doesn't know spring and autumn. A small understanding cannot hold a large one. Zhuangzi is not making an argument for pessimism — he is making an argument for humility about the scope of any particular perspective, including our own. What are we, in the scale of time, that we can be certain our understanding is complete?",
+    "reflection_prompt": "What are you certain of right now that history — either your personal history or history at large — might later reveal to be as limited as the mushroom's understanding of day and night? What certainty are you willing to hold a little more lightly?"
+  },
+  {
+    "text": "The man in whom Tao acts without impediment harms no other being by his actions yet he does not know himself to be kind and gentle.",
+    "source": "Zhuangzi, Inner Chapter 7: Fit for Emperors and Kings (trans. Thomas Merton)",
+    "author_slug": "zhuangzi",
+    "tradition_id": 12,
+    "themes": "[\"virtue\",\"spontaneity\",\"tao\",\"action\"]",
+    "tier": "free",
+    "quality_score": 0.96,
+    "context_full": "Thomas Merton — a Trappist monk who found deep resonance between Taoism and Christian mysticism — translated this passage with characteristic precision. The person through whom the Tao acts freely is not a moral achiever: they are not performing kindness, not monitoring themselves for virtue, not doing good in order to be good. They harm no one simply because their action flows from the source of things — the way water doesn't choose not to harm the rock it moves around, it simply flows. This is the 'virtue' (te) of the Tao Te Ching: not a quality you add to yourself but the natural quality of action when ego is not in the way.",
+    "reflection_prompt": "Think of the last genuinely kind or skillful action you took. Were you aware of doing it, monitoring yourself, intending to be good? Or did it arise naturally, without effort or self-consciousness? What is the difference in quality between those two modes of acting?"
+  },
+  {
+    "text": "Rewards and punishments are the lowest form of education.",
+    "source": "Zhuangzi, Outer Chapter 22 (trans. Burton Watson)",
+    "author_slug": "zhuangzi",
+    "tradition_id": 12,
+    "themes": "[\"education\",\"intrinsic-motivation\",\"freedom\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "The perfect man uses his mind as a mirror. It grasps nothing. It refuses nothing. It receives, but does not keep.",
+    "source": "Zhuangzi, Inner Chapter 7 (trans. Thomas Merton)",
+    "author_slug": "zhuangzi",
+    "tradition_id": 12,
+    "themes": "[\"mind\",\"non-attachment\",\"mirror\",\"awareness\"]",
+    "tier": "free",
+    "quality_score": 0.98,
+    "context_full": "The mirror image is one of the central metaphors of Chinese philosophy. A perfect mirror reflects everything without distortion — it neither adds nor subtracts, neither beautifies nor uglifies. The sage's mind is like this: it receives the full reality of each moment without grasping at what it likes or pushing away what it dislikes, without the need to possess what passes through it. 'Receives but does not keep' describes the natural flow of experience through an ungrasping mind. Nothing is lost because nothing was being held.",
+    "reflection_prompt": "When something pleasant happens to you — good news, a kind word, a beautiful moment — notice the impulse to grasp, to make it last, to repeat it. And when something unpleasant happens, notice the impulse to push it away. Can you, just for a moment, let both pass through without either grasping or rejection?"
+  },
+  {
+    "text": "The petty man sacrifices character for the sake of profit. The man of affairs sacrifices character for the sake of fame. The superior man sacrifices character in the face of the world. The sage does not sacrifice his character for anything.",
+    "source": "Zhuangzi, Miscellaneous Chapter 29 (trans. Legge/Watson composite)",
+    "author_slug": "zhuangzi",
+    "tradition_id": 12,
+    "themes": "[\"character\",\"integrity\",\"profit\",\"fame\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Do not seek fame. Do not make plans. Do not be absorbed by activities. Do not think that you know. Be aware of all that is and dwell in the infinite. Wander where there is no path.",
+    "source": "Zhuangzi, Inner Chapter 7 (trans. Thomas Merton)",
+    "author_slug": "zhuangzi",
+    "tradition_id": 12,
+    "themes": "[\"freedom\",\"wandering\",\"non-striving\",\"tao\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "I know that it is impossible for me to know what I know not. And yet — to see darkness is itself a form of vision.",
+    "source": "Zhuangzi, Inner Chapter 2 (trans. Burton Watson/composite)",
+    "author_slug": "zhuangzi",
+    "tradition_id": 12,
+    "themes": "[\"knowledge\",\"ignorance\",\"humility\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  }
+]

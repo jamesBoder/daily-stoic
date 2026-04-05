@@ -1,0 +1,82 @@
+[
+  {
+    "text": "One is not born, but rather becomes, a woman.",
+    "source": "The Second Sex (1949), trans. Constance Borde and Sheila Malovany-Chevallier",
+    "author_slug": "simone-de-beauvoir",
+    "tradition_id": 14,
+    "themes": "[\"freedom\",\"identity\",\"becoming\",\"society\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "Perhaps the most important sentence in twentieth-century feminist philosophy. De Beauvoir applies Sartrean existentialism — 'existence precedes essence' — to the question of gender. There is no eternal, natural, fixed 'woman'; what we call woman is a social construction, a set of behaviors, roles, and self-perceptions that are learned and enforced through culture, upbringing, and expectation. The same analysis applies to any identity that has been naturalized: race, class, nationality. If identity is constructed, it can be reconstructed — which is both frightening (nothing is given) and liberating (nothing is fixed).",
+    "reflection_prompt": "Which aspects of your own identity — your gender role, professional identity, family role, cultural belonging — do you treat as natural facts rather than as constructions that could look different? What would you change if you genuinely believed you could?"
+  },
+  {
+    "text": "To will oneself moral and to will oneself free are one and the same decision.",
+    "source": "The Ethics of Ambiguity (1947), trans. Bernard Frechtman",
+    "author_slug": "simone-de-beauvoir",
+    "tradition_id": 14,
+    "themes": "[\"freedom\",\"ethics\",\"will\",\"morality\"]",
+    "tier": "free",
+    "quality_score": 0.98,
+    "context_full": "The Ethics of Ambiguity is de Beauvoir's attempt to develop a positive existentialist ethics — to show that the same philosophy that strips away all given meaning can provide the basis for genuine moral commitment. Her key insight: freedom is not the value of the individual alone; the free person, in genuinely willing their own freedom, simultaneously wills the freedom of all others, because freedom cannot be partial without undermining itself. To be genuinely free is to refuse to be complicit in the unfreedom of others.",
+    "reflection_prompt": "Are there ways in which your own freedom depends on, or is indifferent to, the unfreedom of others? In your family, workplace, or community — where does your comfort rest on someone else's constraint? What would it look like to reckon with that honestly?"
+  },
+  {
+    "text": "Change your life today. Don't gamble on the future, act now, without delay.",
+    "source": "All Men Are Mortal (1946), trans. Leonard M. Friedman",
+    "author_slug": "simone-de-beauvoir",
+    "tradition_id": 14,
+    "themes": "[\"action\",\"present\",\"change\",\"urgency\"]",
+    "tier": "free",
+    "quality_score": 0.96,
+    "context_full": "This comes from de Beauvoir's novel about immortality — a story of a man who lives forever and progressively loses all motivation, relationship, and meaning, because nothing is ever final. The imperative 'act now' is rooted in the philosophical recognition that mortality is not only a fact but a value: it is the finitude of life that makes decisions matter, that makes love irreplaceable, that makes today non-deferrable. The gamble on the future is always a gamble against full presence in the present.",
+    "reflection_prompt": "What decision, change, or expression have you been deferring to 'the right time'? What is actually preventing you from taking even a first step today — not next year, not when conditions improve, but today?"
+  },
+  {
+    "text": "I am incapable of conceiving infinity, and yet I do not accept finity. I want this adventure that is the context of my life to go on without end.",
+    "source": "A Very Easy Death (1964), trans. Patrick O'Brian",
+    "author_slug": "simone-de-beauvoir",
+    "tradition_id": 14,
+    "themes": "[\"life\",\"death\",\"infinity\",\"finitude\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Self-knowledge is no guarantee of happiness, but it is on the side of happiness and can supply the courage to fight for it.",
+    "source": "All Said and Done (1972), trans. Patrick O'Brian",
+    "author_slug": "simone-de-beauvoir",
+    "tradition_id": 14,
+    "themes": "[\"self-knowledge\",\"happiness\",\"courage\",\"clarity\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "There is no justification for present existence other than its expansion into an indefinitely open future.",
+    "source": "The Ethics of Ambiguity (1947), trans. Bernard Frechtman",
+    "author_slug": "simone-de-beauvoir",
+    "tradition_id": 14,
+    "themes": "[\"freedom\",\"future\",\"existence\",\"becoming\"]",
+    "tier": "free",
+    "quality_score": 0.95,
+    "context_full": "De Beauvoir argues that the only justification for any moment of existence is that it opens out toward a larger future — that it contributes to the ongoing project of freedom, growth, and becoming. A life that closes in on itself, that stops risking, that settles into a fixed identity and refuses further becoming — this life has, in a real sense, already ended even if the biological process continues. What gives existence its dignity is its orientation toward openness.",
+    "reflection_prompt": "In what area of your life have you stopped projecting yourself into an open future — where you have settled into what you are and stopped imagining or working toward what you might become? Is that a choice you've made consciously, or one that happened while you weren't looking?"
+  },
+  {
+    "text": "It is not in giving life but in risking life that man is raised above the animal; that is why superiority has been accorded in humanity not to the sex that brings forth but to that which kills.",
+    "source": "The Second Sex (1949), trans. Constance Borde",
+    "author_slug": "simone-de-beauvoir",
+    "tradition_id": 14,
+    "themes": "[\"risk\",\"life\",\"gender\",\"freedom\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "If you live long enough, you'll see that every victory turns into a defeat.",
+    "source": "All Men Are Mortal (1946), trans. Leonard M. Friedman",
+    "author_slug": "simone-de-beauvoir",
+    "tradition_id": 14,
+    "themes": "[\"impermanence\",\"victory\",\"defeat\",\"time\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  }
+]

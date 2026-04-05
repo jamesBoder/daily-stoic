@@ -1,0 +1,108 @@
+[
+  {
+    "text": "Do not be proud and arrogant with your knowledge. Take counsel with the ignorant man as well as the wise. For the limit of skill has not been attained, and there is no craftsman who has fully acquired his mastery.",
+    "source": "The Maxims of Ptahhotep, Maxim 1 (trans. Miriam Lichtheim, Ancient Egyptian Literature Vol. I)",
+    "author_slug": "ptahhotep",
+    "tradition_id": 15,
+    "themes": "[\"humility\",\"wisdom\",\"learning\",\"counsel\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "The Maxims of Ptahhotep (c. 2400 BCE) opens with a remarkable act of epistemic humility: the first thing an old man of great learning instructs his son is not to be proud of his learning. The phrase 'the limit of skill has not been attained' is not false modesty; it is the recognition that any domain of knowledge is effectively infinite — no one has exhausted it. The 'ignorant man' (the untrained person, the one outside the formal tradition) may see what the learned man's categories prevent him from seeing. Wisdom begins with the acknowledgment that wisdom is never complete.",
+    "reflection_prompt": "In what area of your life or work do you carry the most confidence — where you feel most expert or assured? And within that area, what are the questions you are not asking, the perspectives you are not consulting, the limits of your knowledge that you have not yet mapped?"
+  },
+  {
+    "text": "If you meet a disputant in the heat of action, one who is your equal, on your level: silence is more excellent than riposte. How great is he who passes in silence over what he hears! He will be praised among the great.",
+    "source": "The Maxims of Ptahhotep, Maxim 3 (trans. Miriam Lichtheim)",
+    "author_slug": "ptahhotep",
+    "tradition_id": 15,
+    "themes": "[\"silence\",\"restraint\",\"wisdom\",\"speech\"]",
+    "tier": "free",
+    "quality_score": 0.98,
+    "context_full": "This maxim teaches what Ptahhotep calls the discipline of the tongue — the strategic and spiritual value of silence in the face of provocation. The distinction 'one who is your equal, on your level' is important: this is not about ignoring the powerless or avoiding accountability. It is specifically about the moment of heated debate with a peer, where the impulse to answer back immediately is strongest. Silence here is not defeat but a higher form of mastery — one that the ancient Egyptians connected directly with the practice of Ma'at (right order, truth, and balance).",
+    "reflection_prompt": "Think of a recent situation where you responded quickly and defensively when silence would have served better. What was driving the need to immediately reply? What might have been possible in that pause?"
+  },
+  {
+    "text": "How hard and painful are the last hours of an aged man! He grows weaker every day; his eyes become dim, his ears deaf; his strength fades; his heart has no rest; his mouth falls silent and he cannot speak. All good things are forgotten. Teach him therefore the love of deeds, not to let his heart sink.",
+    "source": "The Maxims of Ptahhotep, Prologue (trans. Miriam Lichtheim)",
+    "author_slug": "ptahhotep",
+    "tradition_id": 15,
+    "themes": "[\"age\",\"mortality\",\"deeds\",\"purpose\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "The Maxims opens not with instruction but with lament — a description of old age so honest and specific that it reads as contemporary observation. The aged man who composed these maxims knows exactly what he is losing and what remains. The phrase 'teach him the love of deeds' is the pivot: in the face of physical decline, the antidote to sinking is action, engagement, the continued sense that what you do matters. The maxims are framed as a father's gift to a son — an act of love in the face of impermanence. The ancient Egyptians were not ignorant of mortality; their whole philosophy was organized around it.",
+    "reflection_prompt": "What deeds — acts of love, creation, service, courage — would you most regret not having done if you could see your life from its end? And what is preventing you from beginning even a small version of one of them today?"
+  },
+  {
+    "text": "If you are a wise man, sit in the council of your lord. Bend your back to the one who is set over you, your superior in the king's administration. Your conduct will be good if you do not oppose him while he speaks.",
+    "source": "The Maxims of Ptahhotep, Maxim 7 (trans. Miriam Lichtheim)",
+    "author_slug": "ptahhotep",
+    "tradition_id": 15,
+    "themes": "[\"service\",\"hierarchy\",\"conduct\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "Be not greedy where it concerns food. One belly full is not greed. Greediness is an evil and shameful disease. It leads one astray. A cup of water quenches thirst; a mouthful of herbs strengthens the heart.",
+    "source": "The Maxims of Ptahhotep, Maxim 11 (trans. Miriam Lichtheim)",
+    "author_slug": "ptahhotep",
+    "tradition_id": 15,
+    "themes": "[\"greed\",\"moderation\",\"virtue\",\"sufficiency\"]",
+    "tier": "free",
+    "quality_score": 0.94,
+    "context_full": "The teaching on greed (avarice, excessive desire) appears in the very first surviving moral philosophy. The phrase 'one belly full is not greed' is a precise distinction: the satisfaction of genuine need is natural and good. Greed is the desire that extends beyond need — and Ptahhotep's characterization of it as a disease is a psychological observation: it leads one astray, it is not in the person's own interest, it corrupts the character and the judgment. The image of the cup of water and mouthful of herbs is the antidote: sufficiency is not poverty but wisdom.",
+    "reflection_prompt": "In what area of your life are you caught in 'greed' in Ptahhotep's sense — wanting more than is actually needed for your genuine wellbeing? What is actually driving that desire, if it is not genuine need?"
+  },
+  {
+    "text": "Do not talk overmuch. Be silent, since it is better, and your words will be more than enough. Do not speak in order to be heard; do not interrupt anyone who is speaking; speak only when you are asked.",
+    "source": "The Maxims of Ptahhotep, Maxim 22 (trans. Miriam Lichtheim)",
+    "author_slug": "ptahhotep",
+    "tradition_id": 15,
+    "themes": "[\"speech\",\"silence\",\"listening\",\"restraint\"]",
+    "tier": "free",
+    "quality_score": 0.96,
+    "context_full": "Four millennia before modern communication theory, Ptahhotep articulates the core principle: the value of speech is in what it conveys, not in its quantity. 'Your words will be more than enough' — the person who speaks carefully is more authoritative than the one who speaks constantly. 'Do not speak in order to be heard' is the ancient Egyptian critique of speech as performance: using words for status rather than for meaning. This tradition of disciplined speech is a foundation of Ma'at — the alignment of inner truth with outward expression.",
+    "reflection_prompt": "How much of what you say in a typical day is said for genuine communicative purpose, and how much is spoken to be seen, to fill silence, to perform expertise, or to manage others' impressions of you? What would conversations look like if you only spoke when you had something true and necessary to say?"
+  },
+  {
+    "text": "How good it is for a son to heed his father's words! For he who heeds them will achieve long life; but he who neglects them will know only misery.",
+    "source": "The Maxims of Ptahhotep, Maxim 37 (Conclusion) (trans. Miriam Lichtheim)",
+    "author_slug": "ptahhotep",
+    "tradition_id": 15,
+    "themes": "[\"wisdom\",\"transmission\",\"ancestors\",\"learning\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "If you are a leader, be patient when you listen to the plea of a petitioner. Do not cut him short, do not dismiss him before he has swept out his heart — what he has come to tell you. A man in distress wants to pour out his heart more than he wants his case to be won.",
+    "source": "The Maxims of Ptahhotep, Maxim 4 (trans. Miriam Lichtheim)",
+    "author_slug": "ptahhotep",
+    "tradition_id": 15,
+    "themes": "[\"listening\",\"leadership\",\"compassion\",\"patience\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "This maxim reveals a profound psychological insight from 4,400 years ago: people in distress often need to be heard more than they need to be helped. The phrase 'swept out his heart' (to pour out what is in the heart) suggests that the primary need of the distressed person is not resolution but attention — the experience of being fully received. The leader who dismisses the petitioner too quickly — who focuses on the practical solution before the human connection — misses what is most important. This is the ancient Egyptian foundation of what we would now call empathic leadership.",
+    "reflection_prompt": "In your relationships — as parent, partner, friend, leader — how often do you move quickly to solving the problem rather than first fully receiving the person? What would it look like to simply listen, without agenda, until the other person had truly emptied their heart?"
+  },
+  {
+    "text": "Ma'at is the rule of life; it is the food and drink of the heart. Whoever lives by it will endure; whoever abandons it will perish.",
+    "source": "Kemetic teaching tradition; cf. Book of Coming Forth by Day and Maxims of Ptahhotep (synthesis)",
+    "author_slug": "ptahhotep",
+    "tradition_id": 15,
+    "themes": "[\"maat\",\"truth\",\"justice\",\"cosmic-order\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "Ma'at is the central concept of ancient Egyptian philosophy: the principle of cosmic order, truth, justice, harmony, and balance. It is both a description of the structure of reality and a moral imperative. The universe is ordered; human life should be ordered in alignment with that order. The 'food and drink of the heart' is not metaphor — for the ancient Egyptians, Ma'at was the actual sustenance of a life well-lived. The heart that is aligned with truth and right relationship is nourished; the heart that abandons it starves. At death, in the Hall of Two Truths, the heart is weighed against the feather of Ma'at.",
+    "reflection_prompt": "What does 'right order' or 'truth' look like in your life right now — the alignment between how you live and what you most deeply value? And where is there the most significant gap between them? What would one step toward closing that gap look like today?"
+  },
+  {
+    "text": "Good speech is more hidden than malachite, yet it is found with the maidservants at the millstones.",
+    "source": "The Maxims of Ptahhotep, Maxim 2 (trans. Miriam Lichtheim)",
+    "author_slug": "ptahhotep",
+    "tradition_id": 15,
+    "themes": "[\"wisdom\",\"speech\",\"equality\",\"discernment\"]",
+    "tier": "free",
+    "quality_score": 0.95,
+    "context_full": "Malachite (a precious green stone used for royal cosmetics) represents rare and valuable things. Good speech — speech that is true, well-timed, and genuinely useful — is rarer than even this precious substance. And yet: it is found 'with the maidservants at the millstones' — among the lowest-ranked workers in the household. The teaching is a radical democratization of wisdom: genuine insight is not the exclusive possession of the educated or the powerful. It appears where it appears — in the words of those who have lived honestly and paid attention. True wisdom requires genuine ears, not merely high birth or formal training.",
+    "reflection_prompt": "From whom in your life have you received the most genuinely useful wisdom? Was it the person you expected — the official authority, the credentialed expert? Or did it come from somewhere unexpected, from someone whose life experience had given them something no training could?"
+  }
+]

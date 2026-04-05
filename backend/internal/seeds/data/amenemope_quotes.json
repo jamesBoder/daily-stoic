@@ -1,0 +1,84 @@
+[
+  {
+    "text": "Do not carry off the landmark at the boundaries of the arable land, nor disturb the position of the measuring-cord. Be not greedy after a cubit of land, nor encroach upon the boundaries of a widow.",
+    "source": "The Instruction of Amenemope, Chapter 6 (trans. E.A. Wallis Budge / Miriam Lichtheim)",
+    "author_slug": "amenemope",
+    "tradition_id": 15,
+    "themes": "[\"justice\",\"integrity\",\"property\",\"maat\"]",
+    "tier": "free",
+    "quality_score": 0.93,
+    "context_full": "The Instruction of Amenemope (c. 1100 BCE) is one of the most significant wisdom texts of ancient Egypt, notable for its direct parallels with the biblical Book of Proverbs. This chapter addresses the crime of moving property boundaries — literally altering the markers that defined land ownership. In ancient Egypt, the flooding of the Nile regularly erased markers, making re-establishment of boundaries a perpetual moral and legal challenge. The special emphasis on the widow's boundary is characteristic of Amenemope: the most vulnerable members of society deserve heightened protection, not exploitation. This is Ma'at made practical.",
+    "reflection_prompt": "Where in your life are you encroaching on a boundary that belongs to someone with less power than you — their time, their resources, their emotional capacity, their dignity? Even in small ways that seem normal?"
+  },
+  {
+    "text": "Better is poverty in the hand of the god than riches in a storehouse. Better is bread when the heart is joyous than riches with sorrow.",
+    "source": "The Instruction of Amenemope, Chapter 6 (trans. Miriam Lichtheim)",
+    "author_slug": "amenemope",
+    "tradition_id": 15,
+    "themes": "[\"wealth\",\"joy\",\"contentment\",\"sufficiency\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "This passage appears almost verbatim in the Hebrew Book of Proverbs (17:1 — 'Better a dry crust with peace than a house full of feasting with strife'). The comparison is not ascetic: Amenemope is not saying poverty is good. He is saying that the quality of inner life — peace with the divine order, joy of the heart — is the primary variable, and that riches without it are a form of poverty. The Kemetic concept of the 'joyous heart' (ib-ḥeryw) is specific: it is the heart that is in right relationship with Ma'at, untroubled by guilt, uncontracted by greed.",
+    "reflection_prompt": "By Amenemope's measure, how are you actually doing? Not by the external markers — income, possessions, status — but by the measure of the joyous heart. Is there peace in your chest when you are alone and quiet? If not, what is taking it?"
+  },
+  {
+    "text": "Do not spend the night fearful of tomorrow. When day breaks, what is tomorrow? Man does not know what tomorrow holds. God is always in his success, whereas man is always in his failure.",
+    "source": "The Instruction of Amenemope, Chapter 18 (trans. Miriam Lichtheim)",
+    "author_slug": "amenemope",
+    "tradition_id": 15,
+    "themes": "[\"anxiety\",\"tomorrow\",\"trust\",\"present\"]",
+    "tier": "free",
+    "quality_score": 0.98,
+    "context_full": "This is one of the most modern-feeling passages in ancient Egyptian literature — it reads as though written for an age of chronic anxiety. The question 'what is tomorrow?' is not rhetorical dismissal but genuine philosophical challenge: tomorrow, when it arrives, will be experienced as today. It is always the present moment that one actually inhabits. 'God is always in his success' — the divine order (Ma'at) unfolds correctly regardless of whether we can see the pattern from our vantage point. 'Man is always in his failure' — the tendency to catastrophize, to project failure onto the unknown future, is a specifically human trap.",
+    "reflection_prompt": "What are you spending energy fearing about tomorrow — specifically? Not in general, but name the actual feared outcome. And then ask: is that fear based on evidence of what tomorrow actually contains, or on a pattern of projection that has its own history?"
+  },
+  {
+    "text": "Do not associate with the heated man; do not approach him to converse. Leap not to hold to such an one; that thou harm not thine own heart.",
+    "source": "The Instruction of Amenemope, Chapter 9 (trans. E.A. Wallis Budge)",
+    "author_slug": "amenemope",
+    "tradition_id": 15,
+    "themes": "[\"anger\",\"association\",\"protection\",\"discernment\"]",
+    "tier": "free",
+    "quality_score": 0.93,
+    "context_full": "The 'heated man' (Egyptian: sḥm) is the person dominated by uncontrolled passion — hot-tempered, impulsive, without internal regulation. Amenemope's teaching here is both psychological and social: association with such a person is dangerous not because they are wicked but because their emotional state is contagious and their behavior unpredictable. 'That thou harm not thine own heart' is the key phrase: your heart — your own capacity for right relationship with Ma'at — can be damaged by persistent exposure to chaos and heat. Protecting your heart is a genuine spiritual responsibility.",
+    "reflection_prompt": "Is there someone in your life whose 'heat' — anger, drama, reactivity, or chaotic energy — regularly disturbs your own inner state? What is the appropriate level of distance or boundary that would protect your heart without becoming callousness?"
+  },
+  {
+    "text": "Give ears, hear the sayings of the wise. Set your heart to interpret them. To put them in your heart is worth while; but it is damaging to him who neglects them.",
+    "source": "The Instruction of Amenemope, Prologue (trans. E.A. Wallis Budge)",
+    "author_slug": "amenemope",
+    "tradition_id": 15,
+    "themes": "[\"wisdom\",\"listening\",\"heart\",\"teaching\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Do not carry away a man's possessions and give them to another. Let your heart be a stronghold. Guard against the destruction of truth.",
+    "source": "The Instruction of Amenemope, Chapter 14 (trans. Miriam Lichtheim)",
+    "author_slug": "amenemope",
+    "tradition_id": 15,
+    "themes": "[\"integrity\",\"truth\",\"justice\",\"heart\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Do not eat bread before a noble; lay not your hand to anything before a noble. Open your mouth only when he addresses you; speak only when he questions you.",
+    "source": "The Instruction of Amenemope, Chapter 23 (trans. E.A. Wallis Budge)",
+    "author_slug": "amenemope",
+    "tradition_id": 15,
+    "themes": "[\"respect\",\"restraint\",\"conduct\",\"social-order\"]",
+    "tier": "free",
+    "quality_score": 0.85
+  },
+  {
+    "text": "Fill yourself with silence; you will find life. Your body will flourish upon earth.",
+    "source": "The Instruction of Amenemope, Chapter 9 (trans. Miriam Lichtheim)",
+    "author_slug": "amenemope",
+    "tradition_id": 15,
+    "themes": "[\"silence\",\"stillness\",\"maat\",\"flourishing\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "The 'silent man' (Egyptian: gr) is the ideal human type in Amenemope's philosophy — the person whose inner life is still, undisturbed by desire, fear, or the need for recognition. This is the opposite of the 'heated man': while the heated man is driven by passion, the silent man acts from Ma'at. The claim that 'your body will flourish upon earth' is not merely metaphorical: Egyptian medicine understood that the state of the heart (ib) — the seat of will, emotion, and intelligence — directly affected physical health. Inner silence was understood as genuinely life-sustaining.",
+    "reflection_prompt": "What does 'filling yourself with silence' mean as a daily practice for you? Not the absence of noise, but the cultivation of inner stillness — the grounded, unhurried quality of attention that this tradition calls the 'silent man.' When in your day does that quality appear, and what could you do to extend it?"
+  }
+]

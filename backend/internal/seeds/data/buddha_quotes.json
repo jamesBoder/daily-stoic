@@ -1,0 +1,159 @@
+[
+  {
+    "text": "Mind is the forerunner of all actions. All deeds are led by mind, created by mind. If one speaks or acts with a corrupt mind, suffering follows, as the wheel follows the hoof of an ox.",
+    "source": "Dhammapada, verse 1 (trans. Buddharakkhita)",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"mind\",\"action\",\"suffering\",\"cause-and-effect\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "This is the first verse of the Dhammapada and perhaps the most important sentence in all of Buddhist teaching. The Pali word 'mano' (mind) here means not just intellect but the whole orientation of awareness — our intentions, our habitual patterns of reaction, the quality of attention we bring to every moment. The image of the wheel following the ox is precise: suffering is not punishment but consequence. The mind that acts from greed, hatred, or delusion leaves a groove in experience the way a wheel cuts into mud. The teaching is not fatalistic — it is the opposite. If mind is the source of suffering, then cultivating mind is the path out.",
+    "reflection_prompt": "Think of a recurring difficulty in your life. Can you trace it to a habitual pattern of thought, reaction, or intention that preceded it? What would it mean to address that pattern rather than the difficulty itself?"
+  },
+  {
+    "text": "If one speaks or acts with a serene mind, happiness follows, as a shadow that never departs.",
+    "source": "Dhammapada, verse 2 (trans. Buddharakkhita)",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"mind\",\"happiness\",\"serenity\",\"action\"]",
+    "tier": "free",
+    "quality_score": 0.98,
+    "context_full": "The second verse is the mirror of the first: the same causal logic, but in the direction of liberation. 'Serene mind' translates the Pali 'pasanna citta' — a mind that is clear, purified, open. Not a mind that has suppressed experience, but one that has learned to meet experience without grasping or rejection. The shadow metaphor is striking: happiness here is not a reward added from outside but something inseparable from the quality of mind itself. It follows not as prize but as property.",
+    "reflection_prompt": "When have you recently acted from a genuinely serene state — and what was the quality of the outcome? What conditions, practices, or choices tend to produce that serenity in you?"
+  },
+  {
+    "text": "Hatred is never appeased by hatred in this world. By non-hatred alone is hatred appeased. This is a law eternal.",
+    "source": "Dhammapada, verse 5 (trans. Buddharakkhita)",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"hatred\",\"compassion\",\"forgiveness\",\"peace\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "The word 'eternal' (sanantano) here marks this not as advice but as natural law — as fixed as gravity. The logic is empirical: hatred generates a corresponding arousal in the other, which generates a response, which generates counter-response. The cycle is self-sustaining because hatred seeks justification and finds it. Non-hatred (avera) is not passivity or defeat — it is the one force that can actually break the cycle, because it does not provide the fuel the cycle requires. The Buddha is describing the dynamics of mind with the precision of a scientist.",
+    "reflection_prompt": "Is there a conflict in your life — with a person, group, or memory — that you have been trying to resolve through force, argument, or resistance? What might genuinely releasing the hatred (not the grievance, just the hatred) change in how you hold it?"
+  },
+  {
+    "text": "Better than a thousand hollow words is one word that brings peace.",
+    "source": "Dhammapada, verse 100 (trans. Buddharakkhita)",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"speech\",\"wisdom\",\"peace\",\"silence\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "The context in the Dhammapada is a teaching on the value of words used with wisdom versus words used for display. 'Hollow words' translates 'pada anatthasañhita' — phrases without meaning, without benefit. The teaching is not against speech but against speech disconnected from intention and effect. One word spoken at the right moment, from genuine understanding, does more than volumes of learning that has not been integrated into how a person actually lives and relates.",
+    "reflection_prompt": "When have you recently said more than you needed to, or defended a position more than the situation required? What would it have looked like to say the one true, simple thing instead?"
+  },
+  {
+    "text": "It is better to conquer yourself than to win a thousand battles. Then the victory is yours. It cannot be taken from you, not by angels or by demons, heaven or hell.",
+    "source": "Dhammapada, verses 103–105 (trans. Buddharakkhita)",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"self-mastery\",\"victory\",\"discipline\",\"inner-work\"]",
+    "tier": "free",
+    "quality_score": 0.98,
+    "context_full": "The comparison to battle is deliberate — the culture of ancient India celebrated military victory as the highest form of human achievement. The Buddha inverts this completely: external conquest depends on circumstances, resources, fortune, and the cooperation of circumstances outside your control. Inner conquest — the overcoming of greed, hatred, and delusion — is the one domain in which genuine permanence is possible. No one can take what you have genuinely transformed in your own character.",
+    "reflection_prompt": "What is the 'battle' in your own nature that you keep avoiding — the habit, fear, or compulsion that you know needs addressing? What would it mean to dedicate even one week to working on that rather than on an external goal?"
+  },
+  {
+    "text": "Do not look for a sanctuary in anyone except your own self.",
+    "source": "Mahaparinibbana Sutta, Digha Nikaya 16 (trans. Walshe)",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"self-reliance\",\"refuge\",\"autonomy\",\"inner-work\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "These are among the Buddha's last words before his death, addressed to his closest disciple Ananda. The teaching 'atta dipa' (be an island unto yourself, be your own refuge) is the culmination of a life of instruction. It is easily misread as individualism, but in context it means something more precise: do not depend on any external authority — teacher, institution, tradition — to do the actual work of liberation for you. The teacher can point; only you can look. The practice must be your own.",
+    "reflection_prompt": "Is there an external source — a relationship, authority, or belief system — that you have been leaning on to provide a sense of security or direction that you have not yet found in yourself? What would taking fuller responsibility for your own orientation look like?"
+  },
+  {
+    "text": "If you find no one to support you on the spiritual path, walk alone. There is no companionship with the immature.",
+    "source": "Dhammapada, verse 61 (trans. Buddharakkhita)",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"solitude\",\"discernment\",\"practice\",\"companionship\"]",
+    "tier": "free",
+    "quality_score": 0.96,
+    "context_full": "The word translated 'immature' is 'bāla' — the fool, or more precisely, the person who has not yet woken up to the true nature of experience and therefore cannot be a genuine companion on the path. The verse is not misanthropic — the Buddha placed great importance on sangha (community of practitioners). But it is honest: poor company is actively corrosive. The person who has no understanding of impermanence, suffering, and liberation cannot accompany you into that understanding. Better to make the journey alone than to be repeatedly pulled back by someone who does not know where you are going.",
+    "reflection_prompt": "Are there relationships in your life that consistently pull you away from what you know to be most important? Not through malice, but through incompatibility of orientation? What would it look like to reconfigure those relationships, or your investment in them, honestly?"
+  },
+  {
+    "text": "All conditioned things are impermanent — when one sees this with wisdom, one turns away from suffering. This is the path to purification.",
+    "source": "Dhammapada, verse 277 (trans. Buddharakkhita)",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"impermanence\",\"wisdom\",\"suffering\",\"liberation\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "'Sabbe sankhara anicca' — all conditioned phenomena are impermanent — is one of the Three Marks of Existence and the cornerstone of Buddhist insight. The crucial phrase is 'sees this with wisdom': impermanence as an intellectual proposition changes nothing. What changes suffering is the direct, experiential, repeated recognition of impermanence in what you are clinging to right now. This recognition does not produce nihilism — it produces a turning, a release, the beginning of genuine freedom from the compulsive grasping at what cannot be held.",
+    "reflection_prompt": "What are you currently clinging to — a relationship, a self-image, a way of life, a belief — in a way that requires it to be permanent when it is not? Can you spend a few minutes genuinely contemplating its impermanence, not to produce sadness but to produce clarity?"
+  },
+  {
+    "text": "The whole secret of existence is to have no fear. Never fear what will become of you, depend on no one. Only the moment you reject all help are you freed.",
+    "source": "Attributed teachings, various collections",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"fearlessness\",\"freedom\",\"self-reliance\",\"liberation\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "You, yourself, as much as anybody in the entire universe, deserve your love and affection.",
+    "source": "Attributed teachings; cf. Metta Sutta, Sutta Nipata 1.8",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"self-compassion\",\"love\",\"metta\",\"worth\"]",
+    "tier": "free",
+    "quality_score": 0.90,
+    "context_full": "The Metta Sutta (Loving-Kindness Discourse) instructs practitioners to develop boundless goodwill toward all beings. The extension of this goodwill explicitly begins with the practitioner themselves — not as self-centeredness but as the recognition that you cannot authentically extend to others what you have withheld from yourself. The contempt or neglect of oneself is a form of delusion; genuine compassion has no exception clauses.",
+    "reflection_prompt": "In what specific way are you harder on yourself than you would be on a close friend in the same situation? What would it look like to apply to yourself the same standard of care and compassion you naturally extend to others?"
+  },
+  {
+    "text": "Peace comes from within. Do not seek it without.",
+    "source": "Attributed to the Buddha; cf. Majjhima Nikaya 36",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"peace\",\"inner-work\",\"mindfulness\",\"equanimity\"]",
+    "tier": "free",
+    "quality_score": 0.90
+  },
+  {
+    "text": "There is no path to happiness: happiness is the path.",
+    "source": "Attributed to the Buddha; widely cited in Theravada traditions",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"happiness\",\"path\",\"practice\",\"present-moment\"]",
+    "tier": "free",
+    "quality_score": 0.88,
+    "context_full": "This formulation inverts the ordinary relationship between means and ends. Most human effort treats happiness as a destination to be reached through the achievement of conditions — wealth, relationship, success, security. The Buddhist teaching is that happiness is a quality of the journey itself: of attention, of compassion, of presence. There is no arrival at happiness; there is only the quality of engagement with what is actually here.",
+    "reflection_prompt": "In what areas of your life are you treating a condition as the prerequisite for happiness — 'when X happens, then I'll be at peace'? What would it mean to bring that quality of peace to the present situation, as it is, right now?"
+  },
+  {
+    "text": "An insincere and evil friend is more to be feared than a wild beast; a wild beast may wound your body, but an evil friend will wound your mind.",
+    "source": "Dhammapada, verses 161–162 (attributed; cf. commentarial tradition)",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"friendship\",\"discernment\",\"mind\",\"protection\"]",
+    "tier": "free",
+    "quality_score": 0.91
+  },
+  {
+    "text": "Just as a solid rock is not shaken by the storm, even so the wise are not affected by praise or blame.",
+    "source": "Dhammapada, verse 81 (trans. Buddharakkhita)",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"equanimity\",\"praise\",\"blame\",\"wisdom\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "The eight worldly conditions (loka-dhamma) — gain and loss, fame and obscurity, praise and blame, pleasure and pain — are the conditions all human beings oscillate through, and most people's sense of self and wellbeing are entirely at the mercy of this oscillation. The image of the rock is not coldness but stability: the wise person is fully present, fully engaged, but their center of gravity is not located in the opinions or responses of others. This stability is the precondition for genuine helpfulness.",
+    "reflection_prompt": "Whose praise or blame most reliably moves your sense of self? Whose opinion causes you to doubt yourself most quickly, or inflate yourself most easily? What would it mean to locate your center of gravity somewhere that those forces cannot reach?"
+  },
+  {
+    "text": "To live a pure unselfish life, one must count nothing as one's own in the midst of abundance.",
+    "source": "Dhammapada, verse 406 (trans. Buddharakkhita)",
+    "author_slug": "siddhartha-gautama",
+    "tradition_id": 11,
+    "themes": "[\"non-attachment\",\"generosity\",\"purity\",\"abundance\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "text": "Brahman is real. The world is appearance. The individual self is none other than Brahman.",
+    "source": "Vivekachudamani (Crest Jewel of Discrimination), attr. Adi Shankaracharya, v. 20 (trans. Swami Madhavananda)",
+    "author_slug": "adi-shankaracharya",
+    "tradition_id": 13,
+    "themes": "[\"brahman\",\"reality\",\"non-duality\",\"vedanta\"]",
+    "tier": "premium",
+    "quality_score": 0.99,
+    "context_full": "This formulation — Brahma satyam, jagat mithya, jivo brahmaiva naparah — is the foundational thesis of Advaita Vedanta. Brahman (the infinite, self-luminous consciousness) is the only reality. The world as we ordinarily experience it — as a collection of separate, self-subsisting objects — is mithya: not nonexistent, but not independently real; it appears in and through Brahman the way a dream appears in and through the dreaming mind. The individual self, which takes itself to be a separate fragment, is in truth identical with Brahman. Liberation is not the acquisition of anything new but the removal of the fundamental misidentification.",
+    "reflection_prompt": "What is the most fundamental assumption you make about yourself — the bedrock belief about what kind of thing you are? Is it possible that this assumption, however apparently obvious, is something that was learned, something that could be examined, something that might not be the final word about your nature?"
+  },
+  {
+    "text": "This body, which is made up of skin, flesh, blood, arteries, veins, fat, marrow and bones — is not the Self. The Self is beyond the body, mind, senses, and intellect.",
+    "source": "Vivekachudamani, v. 154–155 (trans. Swami Madhavananda)",
+    "author_slug": "adi-shankaracharya",
+    "tradition_id": 13,
+    "themes": "[\"self\",\"body\",\"identity\",\"transcendence\"]",
+    "tier": "premium",
+    "quality_score": 0.97,
+    "context_full": "The Vivekachudamani proceeds systematically through the layers of apparent selfhood — the physical body, the energy body, the mental body, the intellectual body, the bliss body — showing that each is an object of awareness and therefore cannot be the subject that is aware. The practice this teaching enables is viveka — discrimination: the ability to distinguish between what you are and what you merely have. The body changes; the mind changes; emotions arise and pass; opinions shift. The witness of all these changes — the pure awareness in which they appear — is what Shankaracharya calls the Self.",
+    "reflection_prompt": "Right now, notice: you are aware of your body, your thoughts, and your emotions. The body, the thoughts, and the emotions are objects of your awareness. What is doing the being aware? Can you rest in that awareness itself — not in any of its contents — even for thirty seconds?"
+  },
+  {
+    "text": "The ignorant man is convinced he is the body. The learned man is convinced he is not the body. The wise man is simply the Self.",
+    "source": "Attributed to Shankaracharya; cf. commentaries on Mandukya Upanishad",
+    "author_slug": "adi-shankaracharya",
+    "tradition_id": 13,
+    "themes": "[\"ignorance\",\"learning\",\"wisdom\",\"self\"]",
+    "tier": "premium",
+    "quality_score": 0.97,
+    "context_full": "This formulation captures the three stages of Advaita understanding. The ignorant person identifies completely with the body — 'I am tired, I am hungry, I am old.' The student of philosophy has learned that the body is not the self and rehearses this as a belief: 'I am not the body.' But both the ordinary person and the scholar are relating to a concept. The wise person (jnani) has moved beyond concept into direct recognition — there is no longer a separate 'I' either affirming or denying the body. There is simply the Self, in which the body appears.",
+    "reflection_prompt": "In your daily life, which of these three stages describes your actual relationship to your body and its states? Not what you believe philosophically, but how you actually live — are you identified with the body's comfort and discomfort? Have you learned a detachment that still feels effortful? Or do you occasionally touch a stillness underneath both?"
+  },
+  {
+    "text": "The satisfaction of the human soul can be found only in the infinite.",
+    "source": "Aparokshanubhuti (Direct Experience of Reality), attr. Adi Shankaracharya (trans. Swami Vimuktananda)",
+    "author_slug": "adi-shankaracharya",
+    "tradition_id": 13,
+    "themes": "[\"satisfaction\",\"infinite\",\"seeking\",\"liberation\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "When the mind is established in itself and free from external distractions, then it reflects its true nature — pure consciousness.",
+    "source": "Vivekachudamani, v. 367 (paraphrase, trans. Swami Madhavananda)",
+    "author_slug": "adi-shankaracharya",
+    "tradition_id": 13,
+    "themes": "[\"mind\",\"consciousness\",\"meditation\",\"stillness\"]",
+    "tier": "premium",
+    "quality_score": 0.95,
+    "context_full": "Shankaracharya uses the metaphor of a still pond to describe the purified mind: in turbulent water you cannot see the bottom; in still water you can. The 'bottom' here is pure consciousness — always present, always luminous, always the ground of experience. The spiritual practice Shankaracharya prescribes is primarily this: stilling the fluctuations of the mind through viveka (discrimination), vairagya (dispassion), and shatsampat (the six virtues) — not to achieve consciousness but to reveal what was always already there.",
+    "reflection_prompt": "When your mind is most turbulent — anxious, scattered, reactive — what is it like to try to see yourself clearly? And when it is temporarily still — perhaps just after meditation or a walk in nature — what do you notice that is normally obscured? What is the quality of that stillness?"
+  },
+  {
+    "text": "Liberation cannot be achieved by yoga, or Sankhya, or rituals, or by learning — it is achieved only through the realization 'I am Brahman, I am nothing else.'",
+    "source": "Vivekachudamani, v. 56 (trans. Swami Madhavananda)",
+    "author_slug": "adi-shankaracharya",
+    "tradition_id": 13,
+    "themes": "[\"liberation\",\"self-knowledge\",\"brahman\",\"realization\"]",
+    "tier": "premium",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Just as the same fire assumes different shapes when it consumes things of different shapes, so does the Self take the shape of every being in whom it is present.",
+    "source": "Katha Upanishad 2.2.9, cited and explicated by Shankaracharya",
+    "author_slug": "adi-shankaracharya",
+    "tradition_id": 13,
+    "themes": "[\"self\",\"universal\",\"unity\",\"fire\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "Among all the means of liberation, devotion alone is supreme. The meditation on one's own Self is what is called devotion.",
+    "source": "Vivekachudamani, v. 31 (trans. Swami Madhavananda)",
+    "author_slug": "adi-shankaracharya",
+    "tradition_id": 13,
+    "themes": "[\"devotion\",\"self\",\"liberation\",\"meditation\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  }
+]

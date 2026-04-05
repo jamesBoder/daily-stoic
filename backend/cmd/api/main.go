@@ -55,7 +55,12 @@ func main() {
 		log.Printf("Warning: premium content seed failed: %v", err)
 	}
 
-	// 7. Patch author bios and quote commentary/practice prompts (idempotent)
+	// 7. Seed expansion traditions: Buddhism, Taoism, Vedanta, Existentialism, Kemetic Wisdom (idempotent)
+	if err := seeds.SeedNewTraditions(db); err != nil {
+		log.Printf("Warning: new traditions seed failed: %v", err)
+	}
+
+	// 8. Patch author bios and quote commentary/practice prompts (idempotent)
 	if err := seeds.UpdateAuthorBios(db); err != nil {
 		log.Printf("Warning: author bio update failed: %v", err)
 	}

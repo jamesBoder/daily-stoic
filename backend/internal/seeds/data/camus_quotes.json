@@ -1,0 +1,106 @@
+[
+  {
+    "text": "In the midst of winter, I found there was, within me, an invincible summer.",
+    "source": "Return to Tipasa (1952), trans. Ellen Conroy Kennedy",
+    "author_slug": "albert-camus",
+    "tradition_id": 14,
+    "themes": "[\"resilience\",\"inner-strength\",\"winter\",\"hope\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "This passage comes from Camus's essay 'Return to Tipasa,' written after years of the Algerian War and the long labor of The Rebel. It is his most personal statement of his response to the absurd: not the cheerful optimism that denies suffering, but the harder, harder-won recognition that something survives all of it. The 'invincible summer' is not a condition to be achieved but a discovery — it was there in the middle of winter, which means it was always there. Camus's absurdism is not pessimism dressed up; it is the determination to affirm what is affirmable in full sight of what is not.",
+    "reflection_prompt": "In your own experience of difficulty — the hardest period you can recall — was there anything that remained intact? Any quality of attention, humor, love, or clarity that the difficulty could not reach? What was it? And is it present now?"
+  },
+  {
+    "text": "One must imagine Sisyphus happy.",
+    "source": "The Myth of Sisyphus (1942), trans. Justin O'Brien",
+    "author_slug": "albert-camus",
+    "tradition_id": 14,
+    "themes": "[\"absurd\",\"revolt\",\"happiness\",\"meaning\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "The last sentence of The Myth of Sisyphus, and possibly the most compressed existentialist statement ever written. Sisyphus is condemned by the gods to roll a boulder to the top of a hill, watch it roll back, and repeat this forever. Camus's argument: in the moment of watching the stone roll back down — in the clarity of seeing his situation without illusion — Sisyphus owns it. He does not pretend the labor is meaningful in any cosmic sense; he does not despair; he continues. His revolt against the meaninglessness of his condition, his refusal of both false hope and despair, is itself the form of happiness available in an absurd universe.",
+    "reflection_prompt": "Is there a Sisyphean element in your own life — a recurring effort, a task that seems to reset, a situation that you keep having to address without final resolution? What would it mean to own that boulder — not to pretend it isn't heavy, but to find in the act of carrying it something that is genuinely yours?"
+  },
+  {
+    "text": "The absurd is born of the confrontation between the human call and the unreasonable silence of the world.",
+    "source": "The Myth of Sisyphus (1942), trans. Justin O'Brien",
+    "author_slug": "albert-camus",
+    "tradition_id": 14,
+    "themes": "[\"absurd\",\"meaning\",\"world\",\"silence\"]",
+    "tier": "free",
+    "quality_score": 0.98,
+    "context_full": "Camus's definition of the absurd is precise: it is not a quality of the world alone (which simply is what it is) or of the human being alone (who simply wants what they want). It is the friction between them — the clash between the human demand for clarity, justice, and meaning, and the world's total indifference to those demands. The absurd is a relationship, not a fact. The most honest philosophical move is to neither suppress the demand (bad faith on the human side) nor pretend the world is responsive (self-deception on the world side) but to live fully in the tension.",
+    "reflection_prompt": "Where in your life are you most acutely aware of the gap between what you demand and what the world provides — in terms of justice, meaning, recognition, or explanation? What are the ways you've been trying to close that gap, and what would it look like to live honestly within it instead?"
+  },
+  {
+    "text": "There is but one truly serious philosophical problem, and that is suicide. Judging whether life is or is not worth living amounts to answering the fundamental question of philosophy.",
+    "source": "The Myth of Sisyphus (1942), trans. Justin O'Brien",
+    "author_slug": "albert-camus",
+    "tradition_id": 14,
+    "themes": "[\"existence\",\"meaning\",\"philosophy\",\"absurd\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "The opening of The Myth of Sisyphus — one of the most arresting openings in the history of philosophy. Camus is not advocating suicide; he is establishing the stakes. If life has no inherent meaning — as he believes the honest examination of experience reveals — then the first serious question is why continue? His answer occupies the rest of the book: because revolt against the absurd is itself a form of meaning, because life's value is in its quantity of experience rather than its cosmic justification, because the fully conscious human response to absurdity is defiance rather than nihilism.",
+    "reflection_prompt": "If you had to answer from your own experience — not from any doctrine or received answer — what is the most honest reason you would give for continuing to engage fully with life? Not what you're supposed to say, but what actually motivates you at the deepest level?"
+  },
+  {
+    "text": "Man is the only creature who refuses to be what he is.",
+    "source": "The Rebel (1951), trans. Anthony Bower",
+    "author_slug": "albert-camus",
+    "tradition_id": 14,
+    "themes": "[\"rebellion\",\"humanity\",\"self\",\"freedom\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "This observation from The Rebel is the seed of Camus's entire political philosophy. Human beings alone have the capacity to refuse to accept their given condition — which makes both human dignity and human evil possible. The slave who says 'no' to the master is performing the first act of metaphysical rebellion: asserting that there is a limit, a value, a line that cannot be crossed. Camus traces the history of modern political violence to what happens when this impulse is systematized into ideology. The personal implication is different: the capacity to refuse what one is given is also the capacity to become what one chooses.",
+    "reflection_prompt": "In what specific way are you refusing to accept your given condition right now — in a life-giving way, or in a way that is causing suffering? Is your refusal a creative act of becoming, or a resistance to what is actually real?"
+  },
+  {
+    "text": "You will never be happy if you continue to search for what happiness consists of. You will never live if you are looking for the meaning of life.",
+    "source": "Summer in Algiers (1939), trans. Ellen Conroy Kennedy",
+    "author_slug": "albert-camus",
+    "tradition_id": 14,
+    "themes": "[\"happiness\",\"meaning\",\"living\",\"present\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "This early essay, written before The Myth of Sisyphus, shows Camus's position in embryo. The search for happiness as a concept — as a state to be achieved by first discovering its definition — defeats itself, because it places happiness in the future and therefore out of reach. The person who is actually happy is not reflecting on what happiness is; they are absorbed in living. The meaning of life is similarly not a formula to be found and then implemented — it is something that emerges from full engagement with existence, not from standing outside it and analyzing it.",
+    "reflection_prompt": "How much of your mental energy goes toward analyzing whether your life is meaningful or happy, versus simply engaging with it? What would 'simply living' look like for you today — fully present, not evaluating, just here?"
+  },
+  {
+    "text": "I rebel, therefore we exist.",
+    "source": "The Rebel (1951), trans. Anthony Bower",
+    "author_slug": "albert-camus",
+    "tradition_id": 14,
+    "themes": "[\"rebellion\",\"solidarity\",\"existence\",\"community\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "Camus's answer to Descartes' 'I think, therefore I am.' The rebel who says 'no' to injustice does not do so in purely personal terms — they speak for a value that transcends themselves. In their refusal, they implicitly appeal to a shared human dignity, a common baseline below which treatment of persons cannot fall. The shift from 'I' to 'we' is essential: individual rebellion that remains only individual becomes nihilism or power-seeking. Genuine revolt is always in solidarity with others — it recognizes that the boundary being defended is not only yours.",
+    "reflection_prompt": "When you stand up for something — a principle, a person, a way of treating people — do you experience it as a personal preference or as a recognition of something that extends beyond you? What is the 'we' that your deepest values actually serve?"
+  },
+  {
+    "text": "To be happy, we must not be too concerned with others.",
+    "source": "The Fall (1956), trans. Justin O'Brien",
+    "author_slug": "albert-camus",
+    "tradition_id": 14,
+    "themes": "[\"happiness\",\"concern\",\"self\",\"others\"]",
+    "tier": "free",
+    "quality_score": 0.88
+  },
+  {
+    "text": "The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion.",
+    "source": "Notebooks, 1945–1951 (trans. Justin O'Brien)",
+    "author_slug": "albert-camus",
+    "tradition_id": 14,
+    "themes": "[\"freedom\",\"rebellion\",\"existence\",\"authenticity\"]",
+    "tier": "free",
+    "quality_score": 0.95
+  },
+  {
+    "text": "The struggle itself toward the heights is enough to fill a man's heart.",
+    "source": "The Myth of Sisyphus (1942), trans. Justin O'Brien",
+    "author_slug": "albert-camus",
+    "tradition_id": 14,
+    "themes": "[\"struggle\",\"meaning\",\"effort\",\"absurd\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  }
+]

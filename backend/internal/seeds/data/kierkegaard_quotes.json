@@ -1,0 +1,104 @@
+[
+  {
+    "text": "Life can only be understood backwards; but it must be lived forwards.",
+    "source": "Journals, 1843 (trans. Alastair Hannay)",
+    "author_slug": "soren-kierkegaard",
+    "tradition_id": 14,
+    "themes": "[\"time\",\"understanding\",\"life\",\"reflection\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "This journal entry captures what Kierkegaard called the 'fundamental difficulty of existence.' We understand causation backwards — the meaning of past events becomes clear only from later vantage points. But existence moves in the other direction: we must make choices, form commitments, take leaps, without having the luxury of future understanding. The existential condition is one of irreducible forward movement under irreducible uncertainty. There is no algorithm that resolves this; there is only the willingness to commit to the next step.",
+    "reflection_prompt": "What decision in your past, which felt agonizing or unclear at the time, now makes complete sense in retrospect? And what is the equivalent decision facing you now that you are trying to understand as if from the future, when the only way forward is to simply move?"
+  },
+  {
+    "text": "The most common form of despair is not being who you are.",
+    "source": "The Sickness Unto Death (1849), attr. Anti-Climacus, trans. Howard V. Hong",
+    "author_slug": "soren-kierkegaard",
+    "tradition_id": 14,
+    "themes": "[\"despair\",\"authenticity\",\"self\",\"identity\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "The Sickness Unto Death is Kierkegaard's analysis of despair — what he calls the failure to be oneself. He distinguishes many forms: despair at not being oneself (rejecting who you are), despair at willing to be someone else (imitation), and the deepest despair of all — not even knowing that you are in despair, having adapted so thoroughly to a role or a performance of selfhood that you have lost contact with what is genuine. The 'sickness unto death' is not physical death but the spiritual death of the self that has never become itself.",
+    "reflection_prompt": "In what areas of your life are you performing a version of yourself that you know is not quite you — the professional role, the social persona, the identity that has been assigned to you? And what is underneath it, the version that hasn't yet had full permission to exist?"
+  },
+  {
+    "text": "Anxiety is the dizziness of freedom.",
+    "source": "The Concept of Anxiety (1844), attr. Vigilius Haufniensis, trans. Reidar Thomte",
+    "author_slug": "soren-kierkegaard",
+    "tradition_id": 14,
+    "themes": "[\"anxiety\",\"freedom\",\"possibility\",\"choice\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "Kierkegaard's analysis of anxiety is one of the most influential passages in the history of psychology and philosophy. Anxiety, he argues, is not primarily a response to known danger (that is fear). It is the response to the sheer openness of possibility — to freedom itself. The person standing at the edge of a high cliff experiences a specific vertigo: not the fear of falling, but the awareness of the freedom to jump. Anxiety is the dizziness of having a future that is genuinely open, genuinely up to you. It is the price of being a free being, not a mechanism.",
+    "reflection_prompt": "Think of a situation that is producing anxiety in you right now. Is it about a specific known danger — or is it about the openness, the not-yet-decided quality of the future? What would it mean to experience that openness as possibility rather than as threat?"
+  },
+  {
+    "text": "To dare is to lose one's footing momentarily. Not to dare is to lose oneself.",
+    "source": "The Sickness Unto Death (1849), trans. Howard V. Hong",
+    "author_slug": "soren-kierkegaard",
+    "tradition_id": 14,
+    "themes": "[\"courage\",\"risk\",\"authenticity\",\"self\"]",
+    "tier": "free",
+    "quality_score": 0.98,
+    "context_full": "The asymmetry in this sentence is precise: the risk of daring is temporary and recoverable (one loses one's footing, but can regain it). The risk of not daring is permanent and cumulative — over time, the self that was not risked atrophies. Kierkegaard is mapping the existential calculus with unusual honesty: safety is not neutral. The choice not to take the leap, not to make the commitment, not to be exposed — these are not the absence of risk but a different, slower, less visible risk. The self does not simply stay as it is; it either becomes itself or it doesn't.",
+    "reflection_prompt": "What is the thing you have been not-daring for the longest time — the declaration, the commitment, the step that would expose you to genuine risk? And can you feel the cost of that not-daring, not in some abstract future, but in who you are right now?"
+  },
+  {
+    "text": "Once you label me, you negate me.",
+    "source": "Attributed to Kierkegaard; cf. The Journals, widely cited",
+    "author_slug": "soren-kierkegaard",
+    "tradition_id": 14,
+    "themes": "[\"identity\",\"labels\",\"individuality\",\"freedom\"]",
+    "tier": "free",
+    "quality_score": 0.92,
+    "context_full": "Kierkegaard was one of the first philosophers to make the irreducible particularity of the individual a philosophical concern. Every general concept — every label, category, type, or system — gains its precision by abstraction: leaving out the individual features that make this person, this moment, this choice, unrepeatable. To label a person completely is to replace the person with the concept — to negate them. This is not only a warning about how we see others but about how we see ourselves: the identity categories we inhabit can become prisons.",
+    "reflection_prompt": "What are the labels you use most readily for yourself — the identity categories that feel most definitional? Are there ways in which they might be constraining your perception of who you actually are and could become?"
+  },
+  {
+    "text": "The function of prayer is not to influence God, but rather to change the nature of the one who prays.",
+    "source": "Journals, 1851 (trans. Ronald Gregor Smith)",
+    "author_slug": "soren-kierkegaard",
+    "tradition_id": 14,
+    "themes": "[\"prayer\",\"transformation\",\"inner-work\",\"self\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "Kierkegaard understood prayer as a technology of inwardness — not petitioning an external power but directing attention back toward the interior and allowing that attention to do its work. Whether one addresses God or simply attends to what is most ultimate, the transformation happens in the one who prays. This applies as much to contemplative practice as to prayer in any traditional sense: the value is not in the result obtained but in the quality of attention cultivated and the transformation of the person who practices.",
+    "reflection_prompt": "If you have any practice of prayer, meditation, or contemplation, what do you notice about what it actually does to you — not what you hope it will do, or think it should do, but what actually changes in your quality of attention and relationship to the day when you do it?"
+  },
+  {
+    "text": "It is perfectly true, as philosophers say, that life can only be understood backwards. But they forget the other proposition, that it must be lived forwards.",
+    "source": "Journals, 1843 (extended version, trans. Alastair Hannay)",
+    "author_slug": "soren-kierkegaard",
+    "tradition_id": 14,
+    "themes": "[\"time\",\"understanding\",\"life\",\"forward\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "The most painful state of being is remembering the future, particularly the one you'll never have.",
+    "source": "Either/Or: A Fragment of Life (1843), trans. Howard V. Hong",
+    "author_slug": "soren-kierkegaard",
+    "tradition_id": 14,
+    "themes": "[\"grief\",\"loss\",\"future\",\"longing\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  },
+  {
+    "text": "What is a poet? An unhappy person who conceals profound anguish in his heart but whose lips are so formed that when sighs and cries pass over them they sound like beautiful music.",
+    "source": "Either/Or (1843), trans. Howard V. Hong",
+    "author_slug": "soren-kierkegaard",
+    "tradition_id": 14,
+    "themes": "[\"art\",\"suffering\",\"beauty\",\"expression\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "People demand freedom of speech to make up for the freedom of thought which they avoid.",
+    "source": "Journals, 1854 (trans. Alastair Hannay)",
+    "author_slug": "soren-kierkegaard",
+    "tradition_id": 14,
+    "themes": "[\"thought\",\"freedom\",\"speech\",\"conformity\"]",
+    "tier": "free",
+    "quality_score": 0.93
+  }
+]
