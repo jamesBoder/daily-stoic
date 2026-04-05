@@ -203,7 +203,7 @@ export const TraditionBrowser = () => {
           <p className="font-display text-[10px] uppercase tracking-[0.3em] text-accent dark:text-[#d4a853] mb-2">
             Explore
           </p>
-          <h1 className="font-display text-3xl text-primary-800 dark:text-[#e8e0cc] mb-3">
+          <h1 className="font-display text-3xl text-primary-800 dark:text-[#e8e0cc] mb-3 title-glow-hover">
             Wisdom Traditions
           </h1>
           <p className="font-sans text-sm text-primary-600 dark:text-night-400 max-w-sm mx-auto leading-relaxed">

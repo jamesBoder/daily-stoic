@@ -102,7 +102,7 @@ export const Signup: React.FC = () => {
           <p className="font-display text-xs tracking-widest uppercase text-primary-400 mb-3">
             DailyXam
           </p>
-          <h1 className="font-serif text-3xl text-primary-800 leading-snug">
+          <h1 className="font-serif text-3xl text-primary-800 leading-snug title-glow-hover">
             Begin your practice
           </h1>
           <p className="font-sans text-sm text-primary-400 mt-2">

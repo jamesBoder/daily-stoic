@@ -14,7 +14,7 @@ export const About: React.FC = () => {
         <p className="font-display text-xs tracking-widest uppercase text-primary-600 mb-4">
           DailyXam
         </p>
-        <h1 className="font-serif text-5xl text-primary-800 leading-tight mb-6">
+        <h1 className="font-serif text-5xl text-primary-800 leading-tight mb-6 title-glow-hover">
           Ancient wisdom.<br />One card a day.
         </h1>
         <div className="w-12 border-t border-primary-400 mx-auto mb-6" />

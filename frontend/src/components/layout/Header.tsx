@@ -7,6 +7,7 @@ import { useStreak } from '../../hooks/useStreak'
 import { useSubscription } from '../../contexts/SubscriptionContext'
 import { useTheme } from '../../contexts/ThemeContext'
 import { UserMenu } from './UserMenu'
+import { WordMark } from '../common/WordMark'
 
 export const Header = () => {
   const { isAuthenticated, isGuest } = useAuth()
@@ -57,11 +58,11 @@ export const Header = () => {
         {/* Logo */}
         <Link
           to="/"
-          className="font-display text-lg tracking-wide transition-colors duration-300
-                     text-primary-800 hover:text-accent
-                     dark:text-[#e8e0cc] dark:hover:text-[#d4a853]"
+          className="font-display text-lg tracking-wide logo-glow-hover
+                     text-accent hover:text-accent-dark
+                     dark:text-[#d4a853] dark:hover:text-[#e8c96a]"
         >
-          DailyXam
+          <WordMark />
         </Link>
 
         {/* Desktop nav */}
@@ -109,10 +110,12 @@ export const Header = () => {
           <button
             onClick={toggleTheme}
             aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="w-8 h-8 flex items-center justify-center rounded-full transition-colors
-                       text-primary-500 hover:text-primary-800 hover:bg-primary-100
-                       dark:text-[#8892b8] dark:hover:text-[#d4a853] dark:hover:bg-[rgba(255,255,255,0.08)]
-                       focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1"
+            className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
+                       hover:bg-primary-100 dark:hover:bg-[rgba(255,255,255,0.08)]
+                       focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1
+                       ${isDarkMode
+                         ? 'text-[#d4a853] hover:text-[#e8c96a]'
+                         : 'text-primary-500 hover:text-primary-800'}`}
           >
             {isDarkMode ? (
               /* Sun — click to go light */

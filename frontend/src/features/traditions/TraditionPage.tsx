@@ -28,6 +28,7 @@ function Hero({
   isDark: boolean
 }) {
   const meta = META[tradition.slug]
+  const [iconHovered, setIconHovered] = useState(false)
 
   return (
     <div className="relative w-full overflow-hidden" style={{ minHeight: '68vh' }}>
@@ -80,10 +81,17 @@ function Hero({
 
         {/* Icon */}
         <div
-          className="text-6xl md:text-8xl mb-5 md:mb-7 select-none"
+          className="text-6xl md:text-8xl mb-5 md:mb-7 select-none cursor-default"
+          onMouseEnter={() => setIconHovered(true)}
+          onMouseLeave={() => setIconHovered(false)}
           style={{
             color,
-            filter: isDark ? `drop-shadow(0 0 32px ${color}55)` : 'none',
+            filter: iconHovered
+              ? `drop-shadow(0 0 20px ${color}cc) drop-shadow(0 0 48px ${color}66)`
+              : isDark
+                ? `drop-shadow(0 0 32px ${color}55)`
+                : 'none',
+            transition: 'filter 350ms ease',
           }}
         >
           {meta?.icon ?? '✦'}
@@ -101,8 +109,13 @@ function Hero({
 
         {/* Tradition name */}
         <h1
-          className="font-display text-5xl sm:text-6xl md:text-7xl text-primary-800 dark:text-[#ede8dc] mb-5 leading-tight"
-          style={{ textShadow: isDark ? `0 0 40px ${color}25` : 'none' }}
+          className="font-display text-4xl sm:text-6xl md:text-7xl text-primary-800 dark:text-[#ede8dc] mb-5 leading-tight break-words w-full"
+          style={{
+            textShadow: isDark ? `0 0 40px ${color}25` : 'none',
+            hyphens: 'auto',
+            wordBreak: 'break-word',
+          }}
+          lang="en"
         >
           {tradition.name}
         </h1>

@@ -298,7 +298,7 @@ export const FavoritesList: React.FC = () => {
         <div className="mb-8 flex flex-wrap items-start justify-between gap-3">
           <div>
             <p className="font-display text-xs tracking-widest uppercase text-primary-600 mb-1">Archive</p>
-            <h1 className="font-display text-2xl text-primary-800">{t('favorites.title')}</h1>
+            <h1 className="font-display text-2xl text-primary-800 title-glow-hover">{t('favorites.title')}</h1>
             <p className="font-sans text-sm text-primary-500 mt-1">
               {keyword.trim()
                 ? `${sortedFavorites.length} ${t('favorites.of')} ${favorites.length} ${favorites.length === 1 ? t('favorites.quote') : t('favorites.quotes')}`

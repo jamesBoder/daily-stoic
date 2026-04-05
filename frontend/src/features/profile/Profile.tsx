@@ -116,7 +116,7 @@ export const Profile: React.FC = () => {
       )}
 
       <div className="flex justify-between items-center">
-        <h1 className="font-display text-3xl text-primary-800 dark:text-[#e8e0cc]">{t("profile.title")}</h1>
+        <h1 className="font-display text-3xl text-primary-800 dark:text-[#e8e0cc] title-glow-hover">{t("profile.title")}</h1>
         <Button onClick={() => setIsEditing(!isEditing)}>
           {isEditing ? t("common.cancel") : t("profile.editProfile")}
         </Button>

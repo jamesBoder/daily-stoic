@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { WordMark } from '../common/WordMark'
 
 interface FooterProps {
   className?: string
@@ -29,10 +30,11 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
           {/* Brand */}
           <Link
             to="/"
-            className="font-display text-sm tracking-wider text-primary-600 hover:text-accent transition-colors
+            className="font-display text-sm tracking-wider logo-glow-hover
+                       text-primary-600 hover:text-accent
                        dark:text-[#8892b8] dark:hover:text-[#d4a853]"
           >
-            DailyXam
+            <WordMark />
           </Link>
 
           {/* Links */}

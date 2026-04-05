@@ -83,7 +83,7 @@ export const HistoryList = () => {
             <p className="font-display text-xs tracking-widest uppercase text-primary-600 mb-1">
               Archive
             </p>
-            <h1 className="font-display text-2xl text-primary-800">Reading History</h1>
+            <h1 className="font-display text-2xl text-primary-800 title-glow-hover">Reading History</h1>
           </div>
           {entries.length > 0 && (
             confirmClear ? (

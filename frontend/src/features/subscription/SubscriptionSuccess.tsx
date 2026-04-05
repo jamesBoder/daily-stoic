@@ -44,7 +44,7 @@ export const SubscriptionSuccess = () => {
           <p className="font-display text-[10px] uppercase tracking-[0.2em] text-accent mb-2">
             Welcome, Practitioner
           </p>
-          <h1 className="font-display text-2xl text-primary-900 mb-4">
+          <h1 className="font-display text-2xl text-primary-900 mb-4 title-glow-hover">
             Your practice has deepened
           </h1>
           <p className="font-sans text-sm text-primary-500 leading-relaxed mb-8">
@@ -64,7 +64,7 @@ export const SubscriptionSuccess = () => {
         </>
       ) : attempts >= 5 ? (
         <>
-          <h1 className="font-display text-xl text-primary-900 mb-3">
+          <h1 className="font-display text-xl text-primary-900 mb-3 title-glow-hover">
             Subscription processing
           </h1>
           <p className="font-sans text-sm text-primary-500 leading-relaxed mb-6">

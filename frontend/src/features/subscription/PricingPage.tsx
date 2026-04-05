@@ -28,7 +28,7 @@ export const PricingPage = () => {
       <p className="font-display text-[10px] uppercase tracking-[0.2em] text-accent mb-2">
         Practitioner
       </p>
-      <h1 className="font-display text-3xl text-primary-900 mb-3">
+      <h1 className="font-display text-3xl text-primary-900 mb-3 title-glow-hover">
         Ancient Wisdom, Unlocked
       </h1>
       <p className="font-sans text-sm text-primary-500 leading-relaxed mb-8">
