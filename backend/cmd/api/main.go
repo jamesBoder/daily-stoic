@@ -116,6 +116,7 @@ func main() {
 		emailSvc, emailValidSvc, streakSvc, validate,
 	)
 	settingsHandler     := handlers.NewSettingsHandler(settingsSvc)
+	onboardingHandler   := handlers.NewOnboardingHandler(settingsSvc)
 	subscriptionHandler := handlers.NewSubscriptionHandler(subscriptionRepo, stripeSvc, cfg)
 
 	_ = validate // used by profileHandler
@@ -139,7 +140,7 @@ func main() {
 	})
 
 	routes.SetupRoutes(r, authHandler, oauthHandler, quoteHandler, favoriteHandler,
-		historyHandler, commentHandler, profileHandler, settingsHandler,
+		historyHandler, commentHandler, profileHandler, settingsHandler, onboardingHandler,
 		subscriptionHandler, tokenSvc, subscriptionRepo)
 
 	// 9. Start server with graceful shutdown

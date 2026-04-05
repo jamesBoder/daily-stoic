@@ -12,6 +12,8 @@ import (
 func RunMigrations(db *gorm.DB) error {
 	// Migrate in dependency order: Tradition and Author first (Quote FKs depend on them)
 	if err := db.AutoMigrate(
+		&models.User{},
+		&models.UserSettings{},
 		&models.Tradition{},
 		&models.Author{},
 		&models.Quote{},

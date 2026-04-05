@@ -38,7 +38,7 @@ export const VerifyEmail: React.FC = () => {
       await loginWithToken(response.data.token);
       setStatus("success");
       showToast.success("Email verified! Welcome to DailyXam 🎉");
-      setTimeout(() => navigate("/"), 2000);
+      setTimeout(() => navigate("/onboarding"), 2000);
     } catch (err: any) {
       const msg =
         err.response?.data?.error ||

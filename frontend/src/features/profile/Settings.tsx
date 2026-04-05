@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "../../components/common/Card";
 import { Button } from "../../components/common/Button";
 import { AccountManagement } from "./AccountManagement";
@@ -11,6 +12,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { useTranslation } from "react-i18next";
 import { settingsService } from "../../services/api/settings";
+import { onboardingApi } from "../../services/api/onboarding";
 import { showToast } from "../../utils/toast";
 import { SettingsToggle } from "../../components/ui/SettingsToggle";
 
@@ -20,7 +22,7 @@ interface SettingsState {
   language: string;
 }
 
-type SectionId = "profile" | "appearance" | "notifications" | "language" | "account";
+type SectionId = "profile" | "practice" | "appearance" | "notifications" | "language" | "account";
 
 interface SectionDef {
   id: SectionId;
@@ -47,16 +49,33 @@ export const Settings: React.FC = () => {
   const [isSaving, setIsSaving] = useState(false);
 
   // Section refs for scroll-jump
+  const navigate = useNavigate();
+  const [isResettingOnboarding, setIsResettingOnboarding] = useState(false);
+
   const sectionRefs: Record<SectionId, React.RefObject<HTMLDivElement | null>> = {
     profile: useRef<HTMLDivElement>(null),
+    practice: useRef<HTMLDivElement>(null),
     appearance: useRef<HTMLDivElement>(null),
     notifications: useRef<HTMLDivElement>(null),
     language: useRef<HTMLDivElement>(null),
     account: useRef<HTMLDivElement>(null),
   };
 
+  const handleRevisitOnboarding = async () => {
+    setIsResettingOnboarding(true);
+    try {
+      await onboardingApi.reset();
+      navigate("/onboarding");
+    } catch {
+      showToast.error("Could not reset onboarding. Please try again.");
+    } finally {
+      setIsResettingOnboarding(false);
+    }
+  };
+
   const sections: SectionDef[] = [
     { id: "profile", label: t("settings.tabs.profile", "Profile"), authOnly: true },
+    { id: "practice", label: "Your Practice", authOnly: true },
     { id: "appearance", label: t("settings.appearance.title", "Appearance") },
     { id: "notifications", label: t("settings.notifications.title", "Notifications") },
     { id: "language", label: t("settings.language.title", "Language") },
@@ -144,7 +163,7 @@ export const Settings: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-display font-bold text-primary-600 dark:text-primary-400 mb-6 transition-all duration-300 hover:brightness-125 cursor-default">
+      <h1 className="text-3xl font-display font-bold text-primary-600 dark:text-primary-400 mb-6 title-glow-hover">
         {t("settings.title", "Settings")}
       </h1>
 
@@ -211,6 +230,27 @@ export const Settings: React.FC = () => {
                   )}
                 </>
               ) : null}
+            </Card>
+          </section>
+        )}
+
+        {/* ── Your Practice section ── */}
+        {!isGuest && (
+          <section ref={sectionRefs.practice} id="section-practice">
+            <h2 className="text-lg font-display font-semibold text-primary-700 dark:text-primary-300 mb-4 scroll-mt-20">
+              Your Practice
+            </h2>
+            <Card>
+              <p className="text-sm text-primary-600 dark:text-primary-400 mb-4">
+                Revisit your onboarding to update your traditions, goals, and notification preferences.
+              </p>
+              <Button
+                onClick={handleRevisitOnboarding}
+                disabled={isResettingOnboarding}
+                variant="secondary"
+              >
+                {isResettingOnboarding ? "Loading…" : "Revisit Onboarding"}
+              </Button>
             </Card>
           </section>
         )}

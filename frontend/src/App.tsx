@@ -27,6 +27,7 @@ import { AuthorPage } from './features/traditions/AuthorPage'
 import { ReadingPlansStub } from './features/reading-plans/ReadingPlansStub'
 import { PricingPage } from './features/subscription/PricingPage'
 import { SubscriptionSuccess } from './features/subscription/SubscriptionSuccess'
+import { OnboardingFlow } from './features/onboarding/OnboardingFlow'
 
 export default function App() {
   return (
@@ -60,6 +61,9 @@ export default function App() {
               }}
             />
             <Routes>
+              {/* Onboarding — full-screen, no nav */}
+              <Route path="onboarding" element={<OnboardingFlow />} />
+
               <Route element={<Layout />}>
                 {/* Public */}
                 <Route index element={<DailyQuote />} />

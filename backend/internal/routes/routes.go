@@ -18,6 +18,7 @@ func SetupRoutes(
 	commentHandler *handlers.CommentHandler,
 	profileHandler *handlers.ProfileHandler,
 	settingsHandler *handlers.SettingsHandler,
+	onboardingHandler *handlers.OnboardingHandler,
 	subscriptionHandler *handlers.SubscriptionHandler,
 	tokenService *services.TokenService,
 	subscriptionRepo *repository.SubscriptionRepository,
@@ -99,6 +100,10 @@ func SetupRoutes(
 		settings.PUT("", settingsHandler.UpdateSettings)
 		settings.GET("/language", settingsHandler.GetLanguage)
 		settings.PUT("/language", settingsHandler.UpdateLanguage)
+
+		// Onboarding
+		protected.POST("onboarding", onboardingHandler.CompleteOnboarding)
+		protected.DELETE("onboarding", onboardingHandler.ResetOnboarding)
 	}
 
 	// Subscription

@@ -25,4 +25,9 @@ type UserSettings struct {
     
     // Display preferences
     DarkMode bool `gorm:"default:false" json:"dark_mode"`
+
+    // Onboarding
+    OnboardingCompleted bool     `gorm:"default:false" json:"onboarding_completed"`
+    PreferredTraditions []string `gorm:"serializer:json;type:text;default:'[]'" json:"preferred_traditions"`
+    PreferredGoals      []string `gorm:"serializer:json;type:text;default:'[]'" json:"preferred_goals"`
 }
