@@ -292,14 +292,14 @@ export const FavoritesList: React.FC = () => {
   }
 
   return (
-    <main className="min-h-screen bg-surface-base py-16 px-4">
+    <main className="min-h-screen bg-surface-base page-utility py-16 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8 flex flex-wrap items-start justify-between gap-3">
           <div>
-            <p className="font-display text-xs tracking-widest uppercase text-primary-400 mb-1">Archive</p>
+            <p className="font-display text-xs tracking-widest uppercase text-primary-600 mb-1">Archive</p>
             <h1 className="font-display text-2xl text-primary-800">{t('favorites.title')}</h1>
-            <p className="font-sans text-sm text-primary-400 mt-1">
+            <p className="font-sans text-sm text-primary-500 mt-1">
               {keyword.trim()
                 ? `${sortedFavorites.length} ${t('favorites.of')} ${favorites.length} ${favorites.length === 1 ? t('favorites.quote') : t('favorites.quotes')}`
                 : `${favorites.length} ${favorites.length === 1 ? t('favorites.quote') : t('favorites.quotes')} ${t('favorites.saved')}`}
@@ -307,14 +307,14 @@ export const FavoritesList: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2 w-full sm:w-auto">
-            <label htmlFor="sort-field" className="font-sans text-sm text-primary-500 whitespace-nowrap">
+            <label htmlFor="sort-field" className="font-sans text-sm text-primary-600 whitespace-nowrap">
               {t('favorites.sortBy')}:
             </label>
             <select
               id="sort-field"
               value={sortField}
               onChange={(e) => setSortField(e.target.value as SortField)}
-              className="font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent/40 cursor-pointer"
+              className="font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer"
             >
               {SORT_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -324,7 +324,7 @@ export const FavoritesList: React.FC = () => {
             <button
               onClick={toggleDirection}
               title={sortDirection === "asc" ? t('favorites.ascending') : t('favorites.descending')}
-              className="flex items-center gap-1 px-3 py-2 font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-600 hover:bg-surface-elevated transition-colors focus:outline-none focus:ring-2 focus:ring-accent/40"
+              className="flex items-center gap-1 px-3 py-2 font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-600 hover:bg-surface-elevated active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-accent"
             >
               {sortDirection === "asc" ? (
                 <>
@@ -357,7 +357,7 @@ export const FavoritesList: React.FC = () => {
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
             placeholder={t('favorites.filterPlaceholder')}
-            className="w-full pl-9 pr-9 py-2 font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-800 placeholder-primary-300 focus:outline-none focus:ring-2 focus:ring-accent/40 transition-shadow"
+            className="w-full pl-9 pr-9 py-2 font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-800 placeholder:text-primary-400 focus:outline-none focus:ring-2 focus:ring-accent transition-shadow"
           />
           {keyword && (
             <button
@@ -422,13 +422,13 @@ export const FavoritesList: React.FC = () => {
                         {favorite.quote?.author?.name}
                       </p>
                       {favorite.quote?.source && (
-                        <p className="font-sans text-xs italic text-primary-400 mt-0.5">
+                        <p className="font-sans text-xs italic text-primary-500 mt-0.5">
                           {favorite.quote.source}
                         </p>
                       )}
                     </div>
 
-                    <p className="font-sans text-xs text-primary-400 mt-2">
+                    <p className="font-sans text-xs text-primary-500 mt-2">
                       {t('favorites.added')} {new Date(favorite.created_at).toLocaleDateString()}
                     </p>
 
@@ -449,7 +449,7 @@ export const FavoritesList: React.FC = () => {
                         )}
 
                         <div
-                          className="flex justify-end items-center gap-2 mt-3 pt-3 border-t border-primary-200"
+                          className="flex justify-end items-center gap-2 mt-3 pt-3 border-t border-primary-300"
                           onClick={(e) => e.stopPropagation()}
                         >
                           {confirmingRemoveId === favorite.id ? (

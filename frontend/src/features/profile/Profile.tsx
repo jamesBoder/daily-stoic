@@ -90,16 +90,16 @@ export const Profile: React.FC = () => {
 
       {/* Email verification banner */}
       {profile.email_verified === false && (
-        <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="bg-warning/10 dark:bg-warning/15 border border-warning/40 dark:border-warning/30 rounded-card px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="flex items-start gap-2">
-            <svg className="w-5 h-5 text-yellow-600 dark:text-yellow-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-warning dark:text-[#c49840] mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M12 3a9 9 0 100 18A9 9 0 0012 3z" />
             </svg>
             <div>
-              <p className="text-sm font-semibold text-yellow-800 dark:text-yellow-300">
+              <p className="font-display text-sm tracking-wide text-warning-dark dark:text-[#d4a853]">
                 Email not verified
               </p>
-              <p className="text-sm text-yellow-700 dark:text-yellow-400">
+              <p className="font-sans text-sm text-primary-600 dark:text-[#b0a898]">
                 Please verify your email address. Check your inbox for a verification link.
               </p>
             </div>
@@ -108,7 +108,7 @@ export const Profile: React.FC = () => {
             type="button"
             onClick={handleResendVerification}
             disabled={isResendingVerification}
-            className="text-sm font-medium text-yellow-800 dark:text-yellow-300 underline hover:no-underline disabled:opacity-50 whitespace-nowrap"
+            className="font-display text-xs tracking-wider uppercase text-warning dark:text-[#d4a853] underline hover:no-underline disabled:opacity-50 whitespace-nowrap transition-opacity"
           >
             {isResendingVerification ? "Sending..." : "Resend email"}
           </button>
@@ -116,7 +116,7 @@ export const Profile: React.FC = () => {
       )}
 
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold">{t("profile.title")}</h1>
+        <h1 className="font-display text-3xl text-primary-800 dark:text-[#e8e0cc]">{t("profile.title")}</h1>
         <Button onClick={() => setIsEditing(!isEditing)}>
           {isEditing ? t("common.cancel") : t("profile.editProfile")}
         </Button>
@@ -130,18 +130,18 @@ export const Profile: React.FC = () => {
         <Card>
           <div className="space-y-4">
             <div>
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-600">{t("profile.username")}</p>
-              <p className="text-lg dark:text-gray-200">{profile.username}</p>
+              <p className="font-display text-xs tracking-widest uppercase text-primary-500 dark:text-[#8892b8]">{t("profile.username")}</p>
+              <p className="font-sans text-base text-primary-800 dark:text-[#e0ddd4] mt-0.5">{profile.username}</p>
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-600">{t("profile.email")}</p>
-              <p className="text-lg dark:text-gray-200">{profile.email}</p>
+              <p className="font-display text-xs tracking-widest uppercase text-primary-500 dark:text-[#8892b8]">{t("profile.email")}</p>
+              <p className="font-sans text-base text-primary-800 dark:text-[#e0ddd4] mt-0.5">{profile.email}</p>
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-600">
+              <p className="font-display text-xs tracking-widest uppercase text-primary-500 dark:text-[#8892b8]">
                 {t("profile.memberSince")}
               </p>
-              <p className="text-lg dark:text-gray-200">
+              <p className="font-sans text-base text-primary-800 dark:text-[#e0ddd4] mt-0.5">
                 {new Date(profile.created_at).toLocaleDateString(i18n.language, { year: "numeric", month: "long", day: "numeric" })}
               </p>
             </div>

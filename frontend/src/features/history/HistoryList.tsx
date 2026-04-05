@@ -19,10 +19,10 @@ const HistoryEntryCard = ({ entry }: { entry: HistoryEntry }) => {
           <p className="font-serif text-base text-primary-800 leading-relaxed mb-2">
             &ldquo;{preview}&rdquo;
           </p>
-          <p className="font-display text-xs tracking-widest uppercase text-primary-500">
+          <p className="font-display text-xs tracking-widest uppercase text-primary-700">
             {quote.author.name}
             {quote.source && (
-              <span className="font-sans normal-case tracking-normal text-primary-400">
+              <span className="font-sans normal-case tracking-normal text-primary-500">
                 {' '}&mdash; {quote.source}
               </span>
             )}
@@ -34,7 +34,7 @@ const HistoryEntryCard = ({ entry }: { entry: HistoryEntry }) => {
           )}
         </div>
         <time
-          className="font-sans text-xs text-primary-400 whitespace-nowrap mt-0.5 flex-shrink-0"
+          className="font-sans text-xs text-primary-500 whitespace-nowrap mt-0.5 shrink-0"
           dateTime={entry.viewed_at}
         >
           {new Date(entry.viewed_at).toLocaleDateString('en-US', {
@@ -75,12 +75,12 @@ export const HistoryList = () => {
   const totalPages = pagination?.total_pages ?? 1
 
   return (
-    <main className="min-h-screen bg-surface-base py-16 px-4">
+    <main className="min-h-screen bg-surface-base page-utility py-16 px-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <p className="font-display text-xs tracking-widest uppercase text-primary-400 mb-1">
+            <p className="font-display text-xs tracking-widest uppercase text-primary-600 mb-1">
               Archive
             </p>
             <h1 className="font-display text-2xl text-primary-800">Reading History</h1>
@@ -106,7 +106,7 @@ export const HistoryList = () => {
             ) : (
               <button
                 onClick={() => setConfirmClear(true)}
-                className="font-sans text-sm text-primary-400 hover:text-red-500 transition-colors"
+                className="font-sans text-sm text-primary-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/10 rounded px-2 py-1 -mx-2 -my-1 transition-colors"
               >
                 Clear history
               </button>
@@ -169,17 +169,17 @@ export const HistoryList = () => {
                 <button
                   onClick={() => setPage(p => Math.max(1, p - 1))}
                   disabled={page === 1}
-                  className="font-sans text-sm text-primary-500 hover:text-primary-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors min-h-[44px] px-4"
+                  className="font-sans text-sm text-primary-500 hover:text-primary-800 disabled:text-primary-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[44px] px-4"
                 >
                   ← Previous
                 </button>
-                <span className="font-sans text-sm text-primary-400">
+                <span className="font-sans text-sm text-primary-500">
                   {page} / {totalPages}
                 </span>
                 <button
                   onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                   disabled={page === totalPages}
-                  className="font-sans text-sm text-primary-500 hover:text-primary-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors min-h-[44px] px-4"
+                  className="font-sans text-sm text-primary-500 hover:text-primary-800 disabled:text-primary-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[44px] px-4"
                 >
                   Next →
                 </button>

@@ -49,8 +49,8 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
             </Link>
             {quote.source && (
               <>
-                <span className="text-primary-300 dark:text-night-600 text-xs select-none">·</span>
-                <span className="font-sans text-[10px] italic text-primary-400 dark:text-night-500 break-words">
+                <span className="text-primary-400 dark:text-night-500 text-xs select-none">·</span>
+                <span className="font-sans text-[10px] italic text-primary-500 dark:text-night-400 break-words">
                   {quote.source}
                 </span>
               </>
@@ -60,10 +60,10 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
           {/* Save button — enlarged tap target */}
           <button
             onClick={() => isAuthenticated && toggleFavorite(quote.id)}
-            className={`flex-shrink-0 text-sm transition-colors py-1 px-1 -mr-1 min-h-[36px] min-w-[36px] flex items-center justify-center ${
+            className={`shrink-0 text-sm transition-all active:scale-90 py-1 px-1 -mr-1 min-h-[36px] min-w-[36px] flex items-center justify-center rounded focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 ${
               isFav
-                ? 'text-accent dark:text-star-gold'
-                : 'text-primary-300 dark:text-night-600 hover:text-primary-500 dark:hover:text-night-400'
+                ? 'text-accent dark:text-[#d4a853]'
+                : 'text-primary-400 dark:text-night-500 hover:text-primary-600 dark:hover:text-night-300'
             }`}
             aria-label={isFav ? 'Remove from saved' : 'Save passage'}
           >
@@ -76,11 +76,11 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
           <div className="mt-3 pt-3 border-t border-primary-100/80 dark:border-[rgba(255,255,255,0.05)]">
             <p
               className="font-display text-[9px] tracking-[0.2em] uppercase mb-1.5"
-              style={{ color: accentColor, opacity: 0.75 }}
+              style={{ color: accentColor }}
             >
               Commentary
             </p>
-            <p className="font-sans text-xs md:text-sm leading-relaxed text-primary-600 dark:text-night-400">
+            <p className="font-sans text-xs md:text-sm leading-relaxed text-primary-700 dark:text-night-400">
               {quote.context_full}
             </p>
           </div>
@@ -91,8 +91,8 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
           <div className="mt-3">
             <button
               onClick={() => setShowPractice(v => !v)}
-              className="flex items-center gap-1.5 font-display text-[9px] tracking-[0.2em] uppercase transition-opacity hover:opacity-100 py-2 -my-2"
-              style={{ color: accentColor, opacity: showPractice ? 1 : 0.65 }}
+              className="flex items-center gap-1.5 font-display text-[9px] tracking-[0.2em] uppercase transition-colors py-2 -my-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 rounded"
+              style={{ color: accentColor }}
             >
               <span
                 className="inline-block text-[10px] transition-transform duration-200"
@@ -106,7 +106,7 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
             {showPractice && (
               <div
                 className="mt-2 rounded-[6px] px-3 py-2.5"
-                style={{ background: `${accentColor}10`, border: `1px solid ${accentColor}25` }}
+                style={{ background: `${accentColor}18`, border: `1px solid ${accentColor}45` }}
               >
                 <p className="font-sans text-xs md:text-sm leading-relaxed text-primary-700 dark:text-night-300 italic">
                   {quote.reflection_prompt}

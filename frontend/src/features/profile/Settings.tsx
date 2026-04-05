@@ -154,7 +154,7 @@ export const Settings: React.FC = () => {
           <button
             key={section.id}
             onClick={() => scrollToSection(section.id)}
-            className="flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border border-primary-200 dark:border-primary-700 text-primary-600 dark:text-primary-400 hover:bg-accent hover:text-white hover:border-accent transition-all duration-150"
+            className="shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border border-primary-200 dark:border-primary-700 text-primary-600 dark:text-primary-400 hover:bg-accent hover:text-white hover:border-accent transition-all duration-150"
           >
             {section.label}
           </button>

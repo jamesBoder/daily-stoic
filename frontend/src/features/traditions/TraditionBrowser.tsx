@@ -17,13 +17,13 @@ function SectionHeader({ title, subtitle }: { title: string; subtitle: string })
   return (
     <div className="mb-4">
       <div className="flex items-center gap-3 mb-1">
-        <div className="h-px flex-1 bg-primary-200/70 dark:bg-night-700/60" />
-        <h2 className="font-display text-[10px] tracking-[0.25em] uppercase text-primary-500 dark:text-night-400 px-1">
+        <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
+        <h2 className="font-display text-[10px] tracking-[0.25em] uppercase text-primary-600 dark:text-night-400 px-1">
           {title}
         </h2>
-        <div className="h-px flex-1 bg-primary-200/70 dark:bg-night-700/60" />
+        <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
       </div>
-      <p className="font-sans text-xs text-primary-400 dark:text-night-500 text-center">{subtitle}</p>
+      <p className="font-sans text-xs text-primary-500 dark:text-night-500 text-center">{subtitle}</p>
     </div>
   )
 }
@@ -78,14 +78,14 @@ function TraditionCard({
                   bg-surface-card border-primary-200/60 shadow-card
                   dark:bg-[rgba(10,20,44,0.55)] dark:border-[rgba(255,255,255,0.07)]
                   dark:shadow-[0_2px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.04)]
-                  ${isLocked ? '' : 'cursor-pointer hover:-translate-y-0.5 hover:shadow-card-hover dark:hover:shadow-glass-hover'}`}
+                  ${isLocked ? 'opacity-70' : 'cursor-pointer hover:-translate-y-0.5 hover:shadow-card-hover hover:bg-surface-elevated dark:hover:bg-[rgba(15,28,60,0.70)]'}`}
       style={{ WebkitBackdropFilter: 'blur(16px)' }}
     >
       <div className="p-4">
         <div className="flex items-start gap-4">
           {/* Icon circle */}
           <div
-            className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-xl"
+            className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-xl"
             style={{ background: bgColor, color }}
           >
             {meta.icon}
@@ -97,51 +97,37 @@ function TraditionCard({
               <h3 className="font-display text-sm tracking-wider text-primary-800 dark:text-[#e0ddd4]">
                 {tradition.name}
               </h3>
-              {tradition.tier === 'premium' && (
-                <span
-                  className="font-display text-[8px] tracking-widest uppercase rounded-full px-1.5 py-0.5 flex-shrink-0"
-                  style={{
-                    color,
-                    background: bgColor,
-                    border: `1px solid ${color}40`,
-                  }}
-                >
-                  Practitioner
-                </span>
-              )}
             </div>
-            <p className="font-sans text-xs text-primary-500 dark:text-night-400 leading-relaxed line-clamp-2">
+            <p className="font-sans text-xs text-primary-600 dark:text-night-400 leading-relaxed line-clamp-2">
               {meta.description}
             </p>
           </div>
 
-          {/* Right side — Explore link + expand chevron */}
-          <div className="flex-shrink-0 flex flex-col items-end gap-1.5 mt-0.5">
-            {/* Explore link */}
-            {!isLocked && (
-              <Link
-                to={`/traditions/${tradition.slug}`}
-                onClick={e => e.stopPropagation()}
-                className="font-display text-[8px] tracking-[0.2em] uppercase transition-opacity hover:opacity-100 py-1 px-2 rounded-stone"
-                style={{
-                  color,
-                  opacity: 0.7,
-                  background: `${color}10`,
-                  border: `1px solid ${color}25`,
-                }}
-              >
-                Explore
-              </Link>
-            )}
-
-            {/* Expand chevron */}
-            {!isLocked && (
-              <span
-                className="text-primary-400 dark:text-night-500 text-sm transition-transform duration-200"
-                style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
-              >
-                ▾
-              </span>
+          {/* Right side — Explore link + expand chevron, or unlock badge */}
+          <div className="shrink-0 flex flex-col items-end gap-1.5 mt-0.5">
+            {isLocked ? (
+              <PremiumGate inline />
+            ) : (
+              <>
+                <Link
+                  to={`/traditions/${tradition.slug}`}
+                  onClick={e => e.stopPropagation()}
+                  className="font-display text-[8px] tracking-[0.2em] uppercase transition-all hover:scale-105 active:scale-95 py-1 px-2 rounded-stone"
+                  style={{
+                    color,
+                    background: `${color}18`,
+                    border: `1px solid ${color}45`,
+                  }}
+                >
+                  Explore
+                </Link>
+                <span
+                  className="text-primary-600 dark:text-night-400 text-sm transition-transform duration-200"
+                  style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                >
+                  ▾
+                </span>
+              </>
             )}
           </div>
         </div>
@@ -173,8 +159,8 @@ function TraditionCard({
             <div className="mt-6 text-center">
               <Link
                 to={`/traditions/${tradition.slug}`}
-                className="font-display text-[9px] tracking-[0.2em] uppercase transition-opacity hover:opacity-100"
-                style={{ color, opacity: 0.65 }}
+                className="font-display text-[9px] tracking-[0.2em] uppercase transition-all hover:underline"
+                style={{ color }}
                 onClick={e => e.stopPropagation()}
               >
                 Explore all passages →
@@ -186,9 +172,6 @@ function TraditionCard({
     </div>
   )
 
-  if (isLocked) {
-    return <PremiumGate>{cardContent}</PremiumGate>
-  }
   return cardContent
 }
 
@@ -212,18 +195,18 @@ export const TraditionBrowser = () => {
   const premium = traditions.filter(t => t.tier === 'premium')
 
   return (
-    <main className="min-h-screen bg-surface-base dark:bg-transparent py-16 px-4">
+    <main className="min-h-screen bg-surface-base page-utility py-16 px-4">
       <div className="max-w-lg md:max-w-2xl mx-auto">
 
         {/* Page header */}
         <header className="text-center mb-12">
-          <p className="font-display text-[10px] uppercase tracking-[0.3em] text-accent dark:text-star-gold mb-2">
+          <p className="font-display text-[10px] uppercase tracking-[0.3em] text-accent dark:text-[#d4a853] mb-2">
             Explore
           </p>
           <h1 className="font-display text-3xl text-primary-800 dark:text-[#e8e0cc] mb-3">
             Wisdom Traditions
           </h1>
-          <p className="font-sans text-sm text-primary-500 dark:text-night-400 max-w-sm mx-auto leading-relaxed">
+          <p className="font-sans text-sm text-primary-600 dark:text-night-400 max-w-sm mx-auto leading-relaxed">
             Ten schools of thought spanning three millennia.
             Tap any tradition to preview — or Explore for the full deep-dive.
           </p>

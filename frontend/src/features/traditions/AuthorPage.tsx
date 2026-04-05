@@ -41,7 +41,7 @@ export function AuthorPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-surface-base dark:bg-transparent py-20 px-4">
+      <main className="min-h-screen bg-surface-base page-utility py-20 px-4">
         <div className="max-w-lg mx-auto space-y-4">
           {[1, 2, 3].map(i => (
             <div key={i} className="h-20 rounded-card bg-primary-100/60 dark:bg-night-800/40 animate-pulse" />
@@ -53,7 +53,7 @@ export function AuthorPage() {
 
   if (error || !author) {
     return (
-      <main className="min-h-screen bg-surface-base dark:bg-transparent py-24 px-4 text-center">
+      <main className="min-h-screen bg-surface-base page-utility py-24 px-4 text-center">
         <p className="font-sans text-sm text-primary-400 dark:text-night-500">
           Author not found.{' '}
           <Link to="/traditions" className="underline hover:text-primary-600">
@@ -69,13 +69,13 @@ export function AuthorPage() {
   const traditionName = TRADITION_NAME[traditionId]
 
   return (
-    <main className="min-h-screen bg-surface-base dark:bg-transparent py-16 px-4">
+    <main className="min-h-screen bg-surface-base page-utility py-16 px-4">
       <div className="max-w-lg mx-auto">
 
         {/* Back link — to tradition page if we know the slug, else to /traditions */}
         <Link
           to={traditionSlug ? `/traditions/${traditionSlug}` : '/traditions'}
-          className="inline-flex items-center gap-1.5 font-display text-[10px] tracking-widest uppercase mb-8 transition-opacity hover:opacity-100 py-2 -my-2 opacity-60"
+          className="inline-flex items-center gap-1.5 font-display text-[10px] tracking-widest uppercase mb-8 transition-all hover:underline py-2 -my-2"
           style={{ color: accent }}
         >
           <span>←</span> {traditionName ?? 'Traditions'}
@@ -91,14 +91,14 @@ export function AuthorPage() {
                 src={author.image_url}
                 alt={author.name}
                 className="w-16 h-16 rounded-full object-cover"
-                style={{ border: `2px solid ${accent}40` }}
+                style={{ border: `2px solid ${accent}60` }}
               />
             ) : (
               <div
                 className="w-16 h-16 rounded-full flex items-center justify-center text-2xl"
                 style={{
                   background: `${accent}18`,
-                  border: `2px solid ${accent}30`,
+                  border: `2px solid ${accent}60`,
                   color: accent,
                 }}
               >
@@ -111,7 +111,7 @@ export function AuthorPage() {
           {traditionName && (
             <p
               className="font-display text-[9px] tracking-[0.28em] uppercase mb-2"
-              style={{ color: accent, opacity: 0.75 }}
+              style={{ color: accent }}
             >
               {traditionName}
             </p>
@@ -123,7 +123,7 @@ export function AuthorPage() {
 
           {/* Dates & nationality */}
           {(author.born || author.died || author.nationality) && (
-            <p className="font-sans text-xs text-primary-400 dark:text-night-500 mb-4">
+            <p className="font-sans text-xs text-primary-500 dark:text-night-500 mb-4">
               {[author.nationality, author.born && author.died
                 ? `${author.born} – ${author.died}`
                 : author.born ?? author.died
@@ -139,7 +139,7 @@ export function AuthorPage() {
 
           {/* Bio */}
           {author.bio ? (
-            <p className="font-sans text-sm text-primary-600 dark:text-night-400 leading-relaxed">
+            <p className="font-sans text-sm text-primary-700 dark:text-night-400 leading-relaxed">
               {author.bio}
             </p>
           ) : (
@@ -153,11 +153,11 @@ export function AuthorPage() {
         {(freeQuotes.length > 0 || premiumQuotes.length > 0) && (
           <section>
             <div className="flex items-center gap-3 mb-6">
-              <div className="h-px flex-1 bg-primary-200/70 dark:bg-night-700/60" />
-              <h2 className="font-display text-[10px] tracking-[0.25em] uppercase text-primary-500 dark:text-night-400 px-1">
+              <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
+              <h2 className="font-display text-[10px] tracking-[0.25em] uppercase text-primary-600 dark:text-night-400 px-1">
                 Works
               </h2>
-              <div className="h-px flex-1 bg-primary-200/70 dark:bg-night-700/60" />
+              <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
             </div>
 
             <div className="space-y-8">

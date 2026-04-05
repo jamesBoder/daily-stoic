@@ -58,7 +58,7 @@ function Hero({
         {/* Back link */}
         <Link
           to="/traditions"
-          className="absolute top-6 left-4 sm:left-8 inline-flex items-center gap-1.5 font-display text-[10px] md:text-xs tracking-widest uppercase transition-opacity hover:opacity-100 py-2 -my-2 opacity-60"
+          className="absolute top-6 left-4 sm:left-8 inline-flex items-center gap-1.5 font-display text-[10px] md:text-xs tracking-widest uppercase transition-all hover:underline py-2 -my-2"
           style={{ color }}
         >
           <span>←</span> All Traditions
@@ -93,7 +93,7 @@ function Hero({
         {meta?.era && (
           <p
             className="font-display text-[9px] md:text-[11px] tracking-[0.3em] uppercase mb-3"
-            style={{ color, opacity: 0.65 }}
+            style={{ color }}
           >
             {meta.era}
           </p>
@@ -108,7 +108,7 @@ function Hero({
         </h1>
 
         {/* Tagline */}
-        <p className="font-sans text-sm md:text-base text-primary-500 dark:text-night-400 max-w-md md:max-w-lg leading-relaxed mb-8">
+        <p className="font-sans text-sm md:text-base text-primary-600 dark:text-night-400 max-w-md md:max-w-lg leading-relaxed mb-8">
           {meta?.tagline ?? meta?.description}
         </p>
 
@@ -140,11 +140,11 @@ function CoreConceptsSection({
     <section className="max-w-2xl lg:max-w-4xl mx-auto px-4 mb-16">
       {/* Section header */}
       <div className="flex items-center gap-3 mb-8">
-        <div className="h-px flex-1 bg-primary-200/70 dark:bg-night-700/60" />
+        <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
         <h2 className="font-display text-[10px] md:text-xs tracking-[0.28em] uppercase text-primary-500 dark:text-night-400 px-1">
           Core Concepts
         </h2>
-        <div className="h-px flex-1 bg-primary-200/70 dark:bg-night-700/60" />
+        <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
@@ -160,14 +160,14 @@ function CoreConceptsSection({
             {/* Accent top border */}
             <div
               className="absolute top-0 left-0 right-0 h-[2px]"
-              style={{ background: `linear-gradient(90deg, ${color}80, ${color}20)` }}
+              style={{ background: `linear-gradient(90deg, ${color}cc, ${color}55)` }}
             />
 
             <div className="p-5 md:p-6 pt-6 md:pt-7">
               {/* Number */}
               <span
                 className="font-display text-3xl md:text-5xl font-bold leading-none mb-3 block select-none"
-                style={{ color, opacity: isDark ? 0.2 : 0.15 }}
+                style={{ color, opacity: isDark ? 0.35 : 0.28 }}
               >
                 {String(i + 1).padStart(2, '0')}
               </span>
@@ -178,7 +178,7 @@ function CoreConceptsSection({
               </h3>
 
               {/* Description */}
-              <p className="font-sans text-xs md:text-sm leading-relaxed text-primary-500 dark:text-night-400">
+              <p className="font-sans text-xs md:text-sm leading-relaxed text-primary-600 dark:text-night-400">
                 {concept.description}
               </p>
             </div>
@@ -213,11 +213,11 @@ function KeyFiguresSection({
       {/* Section header */}
       <div className="max-w-2xl lg:max-w-4xl mx-auto px-4">
         <div className="flex items-center gap-3 mb-8">
-          <div className="h-px flex-1 bg-primary-200/70 dark:bg-night-700/60" />
-          <h2 className="font-display text-[10px] md:text-xs tracking-[0.28em] uppercase text-primary-500 dark:text-night-400 px-1">
+          <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
+          <h2 className="font-display text-[10px] md:text-xs tracking-[0.28em] uppercase text-primary-600 dark:text-night-400 px-1">
             Philosophers
           </h2>
-          <div className="h-px flex-1 bg-primary-200/70 dark:bg-night-700/60" />
+          <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
         </div>
       </div>
 
@@ -228,7 +228,7 @@ function KeyFiguresSection({
             <Link
               key={author.id}
               to={`/authors/${author.slug}`}
-              className="flex flex-col items-center gap-2 flex-shrink-0 group w-20 md:w-24"
+              className="flex flex-col items-center gap-2 shrink-0 group w-20 md:w-24"
             >
               {/* Avatar */}
               <div className="relative">
@@ -237,14 +237,14 @@ function KeyFiguresSection({
                     src={author.image_url}
                     alt={author.name}
                     className="w-14 h-14 md:w-18 md:h-18 rounded-full object-cover transition-transform duration-200 group-hover:scale-105"
-                    style={{ border: `2px solid ${color}35` }}
+                    style={{ border: `2px solid ${color}60` }}
                   />
                 ) : (
                   <div
                     className="w-14 h-14 md:w-[72px] md:h-[72px] rounded-full flex items-center justify-center text-xl md:text-2xl transition-transform duration-200 group-hover:scale-105"
                     style={{
                       background: bgColor,
-                      border: `2px solid ${color}30`,
+                      border: `2px solid ${color}60`,
                       color,
                     }}
                   >
@@ -256,13 +256,12 @@ function KeyFiguresSection({
               {/* Name */}
               <div className="text-center">
                 <p
-                  className="font-display text-[9px] md:text-[11px] tracking-wide text-primary-700 dark:text-night-300 leading-snug text-center group-hover:opacity-100 transition-opacity"
-                  style={{ opacity: 0.85 }}
+                  className="font-display text-[9px] md:text-[11px] tracking-wide text-primary-700 dark:text-night-300 leading-snug text-center group-hover:text-accent dark:group-hover:text-[#d4a853] transition-colors"
                 >
                   {author.name}
                 </p>
                 {(author.born || author.died) && (
-                  <p className="font-sans text-[8px] md:text-[10px] text-primary-400 dark:text-night-600 mt-0.5">
+                  <p className="font-sans text-[8px] md:text-[10px] text-primary-500 dark:text-night-500 mt-0.5">
                     {author.born && author.died
                       ? `${author.born}–${author.died}`
                       : author.born ?? author.died}
@@ -325,15 +324,15 @@ function PassagesSection({
     <section className="max-w-2xl lg:max-w-3xl mx-auto px-4 mb-20">
       {/* Section header */}
       <div className="flex items-center gap-3 mb-2">
-        <div className="h-px flex-1 bg-primary-200/70 dark:bg-night-700/60" />
+        <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
         <h2 className="font-display text-[10px] md:text-xs tracking-[0.28em] uppercase text-primary-500 dark:text-night-400 px-1">
           Passages
         </h2>
-        <div className="h-px flex-1 bg-primary-200/70 dark:bg-night-700/60" />
+        <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
       </div>
 
       {!loading && (
-        <p className="font-sans text-[10px] md:text-xs text-primary-400 dark:text-night-600 text-center mb-8">
+        <p className="font-sans text-[10px] md:text-xs text-primary-500 dark:text-night-500 text-center mb-8">
           {total} passage{total !== 1 ? 's' : ''} in this tradition
         </p>
       )}
@@ -365,12 +364,11 @@ function PassagesSection({
               <button
                 onClick={loadMore}
                 disabled={loadingMore}
-                className="font-display text-[10px] tracking-[0.2em] uppercase px-6 py-2.5 rounded-stone transition-all"
+                className="font-display text-[10px] tracking-[0.2em] uppercase px-6 py-2.5 rounded-stone transition-all active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
                 style={{
                   color,
-                  border: `1px solid ${color}40`,
-                  background: `${color}08`,
-                  opacity: loadingMore ? 0.5 : 1,
+                  border: `1px solid ${color}60`,
+                  background: `${color}15`,
                 }}
               >
                 {loadingMore ? 'Loading…' : `Load more · ${total - quotes.length} remaining`}
@@ -406,7 +404,7 @@ export function TraditionPage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-surface-base dark:bg-transparent">
+      <main className="min-h-screen bg-surface-base page-utility">
         <div className="max-w-2xl mx-auto px-4 pt-32 space-y-6">
           <div className="h-8 w-48 mx-auto rounded bg-primary-100/60 dark:bg-night-800/40 animate-pulse" />
           <div className="h-16 w-72 mx-auto rounded bg-primary-100/60 dark:bg-night-800/40 animate-pulse" />
@@ -418,7 +416,7 @@ export function TraditionPage() {
 
   if (error || !tradition || !slug) {
     return (
-      <main className="min-h-screen bg-surface-base dark:bg-transparent flex items-center justify-center px-4">
+      <main className="min-h-screen bg-surface-base page-utility flex items-center justify-center px-4">
         <div className="text-center">
           <p className="font-sans text-sm text-primary-400 dark:text-night-500 mb-4">
             Tradition not found.
@@ -439,7 +437,7 @@ export function TraditionPage() {
     : ICON_COLOR[tradition.slug] ?? '#8b7355'
 
   return (
-    <main className="min-h-screen bg-surface-base dark:bg-transparent">
+    <main className="min-h-screen bg-surface-base page-utility">
 
       {/* Hero */}
       <Hero tradition={tradition} color={color} isDark={isDark} />

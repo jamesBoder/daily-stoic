@@ -7,41 +7,42 @@ export const About: React.FC = () => {
   const showCTA = !isAuthenticated || isGuest;
 
   return (
-    <div className="bg-surface-base min-h-screen">
+    <div className="bg-surface-base page-utility min-h-screen">
 
       {/* Hero */}
       <section className="max-w-2xl mx-auto px-6 pt-20 pb-14 text-center">
-        <p className="font-display text-xs tracking-widest uppercase text-primary-400 mb-4">
+        <p className="font-display text-xs tracking-widest uppercase text-primary-600 mb-4">
           DailyXam
         </p>
         <h1 className="font-serif text-5xl text-primary-800 leading-tight mb-6">
           Ancient wisdom.<br />One card a day.
         </h1>
-        <div className="w-12 border-t border-primary-300 mx-auto mb-6" />
-        <p className="font-sans text-base text-primary-500 leading-relaxed max-w-md mx-auto">
-          A daily practice built on the teachings of Marcus Aurelius, Seneca,
-          Epictetus, and the Stoic tradition — delivered as beautiful visual
-          cards, simply, without noise.
+        <div className="w-12 border-t border-primary-400 mx-auto mb-6" />
+        <p className="font-sans text-base text-primary-600 leading-relaxed max-w-md mx-auto">
+          Xam means knowledge. A daily practice drawing from ten wisdom
+          traditions — Stoicism, African philosophy, Hermeticism, Taoism,
+          and more — delivered as beautiful visual cards, without noise.
         </p>
       </section>
 
       {/* What it is */}
       <section className="max-w-2xl mx-auto px-6 py-12 border-t border-primary-200">
-        <h2 className="font-display text-xs tracking-widest uppercase text-primary-400 mb-6">
+        <h2 className="font-display text-xs tracking-widest uppercase text-primary-600 mb-6">
           The Practice
         </h2>
         <div className="space-y-8">
           <div>
             <h3 className="font-display text-base text-primary-700 mb-2">One card, every morning</h3>
-            <p className="font-sans text-sm text-primary-500 leading-relaxed">
-              Each day a single passage from the Stoic canon — drawn from the
-              Meditations, Letters to Lucilius, the Discourses, and beyond.
+            <p className="font-sans text-sm text-primary-600 leading-relaxed">
+              Each day a single passage drawn from across the philosophical
+              traditions — the Meditations, the Tao Te Ching, the Ubuntu
+              proverbs, the Hermetic Corpus, and beyond.
               Read it. Sit with it. Let it shape your day.
             </p>
           </div>
           <div>
             <h3 className="font-display text-base text-primary-700 mb-2">Beautiful visual cards</h3>
-            <p className="font-sans text-sm text-primary-500 leading-relaxed">
+            <p className="font-sans text-sm text-primary-600 leading-relaxed">
               Every quote is presented as a richly illustrated card with theme
               artwork. Swipe to save the ones that speak to you, or share them
               directly with anyone.
@@ -49,14 +50,14 @@ export const About: React.FC = () => {
           </div>
           <div>
             <h3 className="font-display text-base text-primary-700 mb-2">Save what resonates</h3>
-            <p className="font-sans text-sm text-primary-500 leading-relaxed">
+            <p className="font-sans text-sm text-primary-600 leading-relaxed">
               Bookmark quotes that speak to you. Build a personal library of
               wisdom you can return to.
             </p>
           </div>
           <div>
             <h3 className="font-display text-base text-primary-700 mb-2">Write your meditations</h3>
-            <p className="font-sans text-sm text-primary-500 leading-relaxed">
+            <p className="font-sans text-sm text-primary-600 leading-relaxed">
               Marcus Aurelius wrote the <em>Meditations</em> as private notes to
               himself — not for publication, but for practice. You can do the
               same. Attach your own meditation to any quote and build a record
@@ -65,9 +66,10 @@ export const About: React.FC = () => {
           </div>
           <div>
             <h3 className="font-display text-base text-primary-700 mb-2">Build a streak</h3>
-            <p className="font-sans text-sm text-primary-500 leading-relaxed">
-              The Stoics prized consistency above intensity. A daily practice —
-              even five minutes — compounds. Your streak tracks that continuity.
+            <p className="font-sans text-sm text-primary-600 leading-relaxed">
+              Consistency over intensity — a principle every wisdom tradition
+              holds in common. A daily practice, even five minutes, compounds.
+              Your streak tracks that continuity.
             </p>
           </div>
         </div>
@@ -102,15 +104,15 @@ export const About: React.FC = () => {
 
       {/* Contact */}
       <section className="max-w-2xl mx-auto px-6 py-12 border-t border-primary-200">
-        <h2 className="font-display text-xs tracking-widest uppercase text-primary-400 mb-6">
+        <h2 className="font-display text-xs tracking-widest uppercase text-primary-600 mb-6">
           Contact
         </h2>
-        <div className="space-y-3 font-sans text-sm text-primary-500">
+        <div className="space-y-3 font-sans text-sm text-primary-600">
           <p>
             Found a bug or have a suggestion?{' '}
             <a
               href="mailto:hello@dailyxam.app"
-              className="text-accent hover:text-accent-dark transition-colors"
+              className="text-accent hover:text-accent-dark hover:underline transition-colors"
             >
               hello@dailyxam.app
             </a>
@@ -121,7 +123,7 @@ export const About: React.FC = () => {
               href="https://instagram.com/dailyxamapp"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent hover:text-accent-dark transition-colors"
+              className="text-accent hover:text-accent-dark hover:underline transition-colors"
             >
               @dailyxamapp
             </a>

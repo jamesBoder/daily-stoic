@@ -92,6 +92,46 @@ export const META: Record<string, {
     accentDark: 'rgba(90,170,240,0.20)',
     era: '19th century CE',
   },
+  buddhism: {
+    description: 'The Four Noble Truths, the Eightfold Path, and the art of living without grasping.',
+    tagline: 'Suffering has a cause. The cause can end. The path is already within you.',
+    icon: '☸',
+    accent: 'rgba(130,80,160,0.18)',
+    accentDark: 'rgba(190,120,240,0.20)',
+    era: 'c. 6th century BCE – present',
+  },
+  taoism: {
+    description: 'The Tao that cannot be named — wu wei, effortless action, and returning to the root.',
+    tagline: 'Flow with what is. Act without forcing. Return always to the still center.',
+    icon: '☯',
+    accent: 'rgba(50,140,100,0.18)',
+    accentDark: 'rgba(70,200,140,0.20)',
+    era: 'c. 6th century BCE – present',
+  },
+  vedanta: {
+    description: 'Advaita — non-duality. Brahman is real, the world is appearance, the Self is unlimited.',
+    tagline: 'You are not the body, not the mind. You are the awareness in which all things arise.',
+    icon: '◉',
+    accent: 'rgba(180,120,40,0.18)',
+    accentDark: 'rgba(240,170,60,0.20)',
+    era: 'c. 800 BCE – present',
+  },
+  existentialism: {
+    description: 'Existence precedes essence — radical freedom, authentic choice, and the courage to become.',
+    tagline: 'There is no given meaning. There is only the meaning you make through how you live.',
+    icon: '∅',
+    accent: 'rgba(160,60,60,0.18)',
+    accentDark: 'rgba(220,90,90,0.20)',
+    era: '19th–20th century CE',
+  },
+  'kemetic-wisdom': {
+    description: 'Ma\'at, the Maxims of Ptahhotep, and the ancient Egyptian science of the heart.',
+    tagline: 'Ma\'at is the rule of life. Truth, balance, and right order are the food of the heart.',
+    icon: '𓂀',
+    accent: 'rgba(180,130,40,0.18)',
+    accentDark: 'rgba(240,185,70,0.20)',
+    era: 'c. 3100–30 BCE',
+  },
 }
 
 // ── Accent colors by slug ─────────────────────────────────────────────────────
@@ -107,6 +147,11 @@ export const ICON_COLOR: Record<string, string> = {
   'african-philosophy':   '#d08040',
   'renaissance-philosophy':'#48a048',
   transcendentalism:      '#4898d8',
+  buddhism:               '#8250a0',
+  taoism:                 '#328c64',
+  vedanta:                '#b47828',
+  existentialism:         '#a03c3c',
+  'kemetic-wisdom':       '#b48228',
 }
 
 export const ICON_COLOR_DARK: Record<string, string> = {
@@ -120,6 +165,11 @@ export const ICON_COLOR_DARK: Record<string, string> = {
   'african-philosophy':   '#e8a060',
   'renaissance-philosophy':'#70c870',
   transcendentalism:      '#70c0ff',
+  buddhism:               '#be78f0',
+  taoism:                 '#46c88c',
+  vedanta:                '#f0aa40',
+  existentialism:         '#e05858',
+  'kemetic-wisdom':       '#f0c046',
 }
 
 // ── ID-keyed lookups (AuthorPage) ─────────────────────────────────────────────
@@ -127,6 +177,7 @@ export const ICON_COLOR_DARK: Record<string, string> = {
 export const TRADITION_ICON: Record<number, string> = {
   1:  '⊕', 2:  '✦', 3:  '◎', 4:  '✧', 5:  '✡',
   6:  '△', 7:  '∞', 8:  '◇', 9:  '☿', 10: '☀',
+  11: '☸', 12: '☯', 13: '◉', 14: '∅', 15: '𓂀',
 }
 
 export const TRADITION_NAME: Record<number, string> = {
@@ -134,6 +185,8 @@ export const TRADITION_NAME: Record<number, string> = {
   4:  'Gnosticism',      5:  'Kabbalah',          6:  'Pythagoreanism',
   7:  'Pre-Socratic',    8:  'African Philosophy', 9:  'Renaissance Philosophy',
   10: 'Transcendentalism',
+  11: 'Buddhism',        12: 'Taoism',            13: 'Vedanta',
+  14: 'Existentialism',  15: 'Kemetic Wisdom',
 }
 
 export const TRADITION_SLUG: Record<number, string> = {
@@ -141,6 +194,8 @@ export const TRADITION_SLUG: Record<number, string> = {
   4:  'gnosticism',      5:  'kabbalah',           6:  'pythagoreanism',
   7:  'pre-socratic',    8:  'african-philosophy', 9:  'renaissance-philosophy',
   10: 'transcendentalism',
+  11: 'buddhism',        12: 'taoism',             13: 'vedanta',
+  14: 'existentialism',  15: 'kemetic-wisdom',
 }
 
 export const TRADITION_ACCENT: Record<number, { light: string; dark: string }> = {
@@ -154,6 +209,11 @@ export const TRADITION_ACCENT: Record<number, { light: string; dark: string }> =
   8:  { light: '#d08040', dark: '#e8a060' },
   9:  { light: '#48a048', dark: '#70c870' },
   10: { light: '#4898d8', dark: '#70c0ff' },
+  11: { light: '#8250a0', dark: '#be78f0' },
+  12: { light: '#328c64', dark: '#46c88c' },
+  13: { light: '#b47828', dark: '#f0aa40' },
+  14: { light: '#a03c3c', dark: '#e05858' },
+  15: { light: '#b48228', dark: '#f0c046' },
 }
 
 // ── Core Concepts per tradition ───────────────────────────────────────────────
@@ -377,6 +437,116 @@ export const CORE_CONCEPTS: Record<string, Array<{ name: string; description: st
     {
       name: 'Correspondence',
       description: 'Borrowed from Swedenborg and Hermeticism: the natural world corresponds to and reveals spiritual truths. Every natural fact is a symbol of a spiritual fact. Inner and outer reality are one.',
+    },
+  ],
+  buddhism: [
+    {
+      name: 'The Four Noble Truths',
+      description: 'The foundation of all Buddhist teaching: (1) suffering exists; (2) suffering has a cause — craving and clinging; (3) there is an end to suffering; (4) the Eightfold Path leads to that end. Not pessimism — a diagnosis followed by a cure.',
+    },
+    {
+      name: 'The Eightfold Path',
+      description: 'Right view, intention, speech, action, livelihood, effort, mindfulness, and concentration. Not sequential but simultaneous — eight dimensions of a single way of living that reduces suffering and increases understanding.',
+    },
+    {
+      name: 'Impermanence — Anicca',
+      description: 'All conditioned things arise and pass. Nothing that appears is permanent. The suffering caused by grasping at what cannot be held is eliminated not by denial but by the direct perception of impermanence as a fact of experience.',
+    },
+    {
+      name: 'Non-Self — Anatta',
+      description: 'There is no fixed, permanent, independent self. What we call "I" is a constantly changing process — a stream of sensations, thoughts, and perceptions with no unchanging core. Seeing this directly dissolves a fundamental source of suffering.',
+    },
+    {
+      name: 'Mindfulness — Sati',
+      description: 'Bare, non-judgmental attention to present-moment experience — the body, feelings, mind states, and phenomena as they actually are. The central meditative practice, and also the quality of attention that can be brought to every moment of ordinary life.',
+    },
+  ],
+  taoism: [
+    {
+      name: 'The Tao — The Way',
+      description: 'The nameless source and ground of all things — prior to heaven and earth, inexhaustible, giving rise to everything without effort. It cannot be fully grasped by the conceptual mind, but it can be aligned with through stillness, simplicity, and non-striving.',
+    },
+    {
+      name: 'Wu Wei — Non-Action',
+      description: 'Not passivity but effortless action: moving with the natural flow of things rather than against it. The sage acts without forcing, achieves without striving, leads without dominating. Water is the model: soft, yielding, unstoppable.',
+    },
+    {
+      name: 'Te — Virtue and Power',
+      description: 'The particular expression of the Tao in each thing — its essential nature and natural power. Human Te is the quality that emerges when a person acts in full alignment with their nature: not a moral ideal imposed from outside, but authenticity itself.',
+    },
+    {
+      name: 'Ziran — Naturalness',
+      description: '"Self-so-ness" — the quality of being exactly what one is without pretense, effort, or performance. The infant, the master craftsman, the sage: all act from the same rootedness in their own nature. Civilization often teaches us away from this; wisdom is the return.',
+    },
+    {
+      name: 'The Return — Fu',
+      description: 'All things return to the root. The cycle of emanation and return runs through all of nature and human life. The Taoist sage embraces this: each ending is a returning, each stillness a gathering. To know the constant is the beginning of wisdom.',
+    },
+  ],
+  vedanta: [
+    {
+      name: 'Brahman — The Absolute',
+      description: 'The one infinite, self-luminous consciousness that is the ground and substance of all reality. Not a deity in the ordinary sense but the very being in which all things appear — eternal, unchanging, self-aware, without a second.',
+    },
+    {
+      name: 'Atman — The True Self',
+      description: 'The individual self, at its deepest level, is identical with Brahman. The sense of being a separate, limited entity is the fundamental illusion (maya). Liberation is the direct recognition — not as a concept but as living experience — of this identity.',
+    },
+    {
+      name: 'Maya — Appearance',
+      description: 'The world as ordinarily experienced — as a collection of separate, self-subsisting objects — is not unreal but not independently real: it appears within and through Brahman, like a dream within the dreaming mind. The error is taking it to be ultimate.',
+    },
+    {
+      name: 'Self-Inquiry — Atma Vichara',
+      description: 'The practice of directing attention back to the source of the sense of "I": who is it that is aware? Following this question inward, not seeking a conceptual answer but a direct recognition, is the central method of Advaita Vedanta.',
+    },
+    {
+      name: 'The Four Yogas',
+      description: 'Paths suited to different temperaments: Jnana (knowledge), Bhakti (devotion), Karma (action), and Raja (meditation). Each leads to the same recognition through different doors. The integration of all four is the fullest expression of the teaching.',
+    },
+  ],
+  existentialism: [
+    {
+      name: 'Existence Precedes Essence',
+      description: 'Human beings have no fixed, given nature. We exist first — thrown into a world we did not choose — and then we create ourselves through choices, commitments, and actions. There is no blueprint for a human being; there is only the life one lives.',
+    },
+    {
+      name: 'Radical Freedom',
+      description: 'We are "condemned to be free": there is no escaping the burden of choice. Every moment is a choice, including the choice not to choose. Freedom is not a gift but a condition — and with it comes absolute responsibility for what one makes of it.',
+    },
+    {
+      name: 'Authentic Existence',
+      description: 'Most people live inauthentically — conforming to social roles, deferring to convention, fleeing from the anxiety of genuine choice. Authenticity means owning one\'s freedom, making choices as genuinely one\'s own, and accepting the full weight of that responsibility.',
+    },
+    {
+      name: 'The Absurd',
+      description: 'The clash between the human demand for meaning and the universe\'s silence. Camus\'s insight: the honest response is neither despair nor false faith, but revolt — continuing to live fully, consciously, and in defiance of the meaninglessness, finding value in the act itself.',
+    },
+    {
+      name: 'Bad Faith',
+      description: 'Sartre\'s term for the self-deception by which people deny their freedom — pretending they had no choice, hiding behind roles, treating themselves as determined objects rather than free subjects. The first step toward authenticity is recognizing bad faith in oneself.',
+    },
+  ],
+  'kemetic-wisdom': [
+    {
+      name: 'Ma\'at — Cosmic Order',
+      description: 'The foundational principle of ancient Egyptian civilization: truth, justice, balance, and right order. Ma\'at is both the structure of the cosmos and the standard for human conduct. To live in alignment with Ma\'at is the purpose of human existence; at death, the heart is weighed against Ma\'at\'s feather.',
+    },
+    {
+      name: 'The Silent Man',
+      description: 'The ideal of Kemetic wisdom: the person whose inner life is so ordered, so free from reactive passion, that they speak and act from Ma\'at alone. Silence here is not passivity but the quality of a still mind that receives truth without distortion and acts without compulsion.',
+    },
+    {
+      name: 'The Heart — Ib',
+      description: 'The heart (ib) is the seat of intelligence, will, conscience, and character in ancient Egyptian thought. It is not the physical organ but the whole inner person — what we might call the self or soul. Its health, its alignment with Ma\'at, is the central concern of Kemetic philosophy.',
+    },
+    {
+      name: 'The Ancestors and the Living Dead',
+      description: 'Those who lived in Ma\'at do not simply vanish at death — they continue as a moral presence, an ethical inheritance. The wisdom of the ancestors, embodied in texts like the Maxims of Ptahhotep, is a living transmission from those who have already navigated the challenges of human existence.',
+    },
+    {
+      name: 'Thoth — Divine Wisdom',
+      description: 'The ibis-headed divine principle of wisdom, writing, and the ordering of knowledge. Thoth represents the intelligence that structures reality — the cognitive aspect of Ma\'at. To align with Thoth is to seek genuine understanding and to record and transmit truth faithfully.',
     },
   ],
 }

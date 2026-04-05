@@ -25,7 +25,7 @@ export const Header = () => {
     `font-sans text-sm transition-colors duration-200 ${
       isActive
         ? 'text-accent dark:text-[#d4a853]'
-        : 'text-primary-500 hover:text-primary-800 dark:text-[#8892b8] dark:hover:text-[#e0ddd4]'
+        : 'text-primary-600 hover:text-primary-900 hover:underline dark:text-[#8892b8] dark:hover:text-[#e0ddd4]'
     }`
 
   return (
@@ -85,11 +85,11 @@ export const Header = () => {
             </Link>
           )}
 
-          {/* Upgrade CTA */}
+          {/* Upgrade CTA — hidden on mobile to avoid crowding the logo */}
           {isAuthenticated && !isGuest && !isPremium && (
             <Link
               to="/upgrade"
-              className="font-display text-xs tracking-wider uppercase rounded-full px-3 py-1 transition-colors
+              className="hidden sm:inline-flex font-display text-xs tracking-wider uppercase rounded-full px-3 py-1 transition-colors
                          text-accent border border-accent/30 hover:bg-accent hover:text-white
                          dark:text-[#d4a853] dark:border-[rgba(212,168,83,0.30)] dark:hover:bg-[#d4a853] dark:hover:text-[#040810]"
             >
@@ -100,7 +100,7 @@ export const Header = () => {
           {/* Practitioner badge */}
           {isPremium && (
             <span className="font-display text-xs tracking-widest uppercase select-none
-                             text-primary-400 dark:text-[rgba(212,168,83,0.65)]">
+                             text-primary-600 dark:text-[#d4a853]">
               ✦ Practitioner
             </span>
           )}
@@ -110,8 +110,9 @@ export const Header = () => {
             onClick={toggleTheme}
             aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             className="w-8 h-8 flex items-center justify-center rounded-full transition-colors
-                       text-primary-400 hover:text-primary-700 hover:bg-primary-100
-                       dark:text-[#6070a0] dark:hover:text-[#d4a853] dark:hover:bg-[rgba(255,255,255,0.06)]"
+                       text-primary-500 hover:text-primary-800 hover:bg-primary-100
+                       dark:text-[#8892b8] dark:hover:text-[#d4a853] dark:hover:bg-[rgba(255,255,255,0.08)]
+                       focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1"
           >
             {isDarkMode ? (
               /* Sun — click to go light */

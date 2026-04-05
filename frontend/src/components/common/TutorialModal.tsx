@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 
 export interface TutorialStep {
@@ -85,9 +86,9 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stepIdx]);
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm px-4"
+      className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm px-4"
       style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
       onClick={handleBackdropClick}
       role="dialog"
@@ -97,7 +98,7 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({
       <div
         ref={panelRef}
         className="relative w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden"
-        style={{ background: 'var(--surface-card, #ece9e1)' }}
+        style={{ background: 'var(--modal-bg, #f5f0e6)', border: '1px solid var(--modal-border, rgba(200,192,172,0.6))' }}
       >
         {/* Decorative top accent — warm bronze gradient */}
         <div className="h-1 w-full bg-gradient-to-r from-accent via-accent-dark to-accent" />
@@ -120,7 +121,7 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({
             {title}
           </h2>
           {subtitle && stepIdx === 0 && (
-            <p className="mt-0.5 text-xs text-primary-500 dark:text-primary-400 leading-relaxed">
+            <p className="mt-0.5 text-xs text-primary-600 dark:text-primary-400 leading-relaxed">
               {subtitle}
             </p>
           )}
@@ -128,15 +129,15 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({
 
         {/* Single step */}
         <div className="px-5 pb-2">
-          <div className="flex gap-3 items-start p-3 rounded-xl bg-primary-50 dark:bg-primary-800/60">
-            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-base" aria-hidden>
+          <div className="flex gap-3 items-start p-3 rounded-xl bg-primary-100 dark:bg-primary-800/60">
+            <div className="shrink-0 w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center text-base" aria-hidden>
               {step.emoji}
             </div>
             <div>
               <p className="text-sm font-semibold text-primary-800 dark:text-primary-200 leading-tight">
                 {step.title}
               </p>
-              <p className="text-xs text-primary-500 dark:text-primary-400 leading-relaxed mt-0.5">
+              <p className="text-xs text-primary-600 dark:text-primary-400 leading-relaxed mt-0.5">
                 {step.body}
               </p>
             </div>
@@ -151,8 +152,8 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({
                 key={i}
                 className={`rounded-full transition-all duration-200 ${
                   i === stepIdx
-                    ? 'w-4 h-1.5 bg-accent'
-                    : 'w-1.5 h-1.5 bg-primary-300 dark:bg-primary-600'
+                    ? 'w-4 h-2 bg-accent'
+                    : 'w-2 h-2 bg-primary-400 dark:bg-primary-500'
                 }`}
               />
             ))}
@@ -168,12 +169,13 @@ export const TutorialModal: React.FC<TutorialModalProps> = ({
             {isLast ? (ctaLabel ?? t('tutorial.gotIt', 'Got it!')) : t('tutorial.next', 'Next')}
           </button>
           {reopenHint && isLast && (
-            <p className="mt-2 text-center text-xs text-primary-400 dark:text-primary-500">
+            <p className="mt-2 text-center text-xs text-primary-500 dark:text-primary-400">
               {reopenHint}
             </p>
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
