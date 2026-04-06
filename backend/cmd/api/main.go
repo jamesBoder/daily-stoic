@@ -15,6 +15,7 @@ import (
 	"github.com/jamesBoder/daily-stoic/internal/config"
 	"github.com/jamesBoder/daily-stoic/internal/database"
 	"github.com/jamesBoder/daily-stoic/internal/handlers"
+	"github.com/jamesBoder/daily-stoic/internal/jobs"
 	"github.com/jamesBoder/daily-stoic/internal/middleware"
 	"github.com/jamesBoder/daily-stoic/internal/repository"
 	"github.com/jamesBoder/daily-stoic/internal/routes"
@@ -68,7 +69,12 @@ func main() {
 		log.Printf("Warning: quote content update failed: %v", err)
 	}
 
-	// 9. Repositories
+	// 9. Seed reading plans (idempotent)
+	if err := seeds.SeedReadingPlans(db); err != nil {
+		log.Printf("Warning: reading plan seed failed: %v", err)
+	}
+
+	// 11. Repositories
 	userRepo            := repository.NewUserRepository(db)
 	quoteRepo           := repository.NewQuoteRepository(db)
 	authorRepo          := repository.NewAuthorRepository(db)
@@ -79,6 +85,8 @@ func main() {
 	streakRepo          := repository.NewStreakRepository(db)
 	passwordHistoryRepo := repository.NewPasswordHistoryRepository(db)
 	subscriptionRepo    := repository.NewSubscriptionRepository(db)
+	readingPlanRepo     := repository.NewReadingPlanRepository(db)
+	weekRepo            := repository.NewWeekRepository(db)
 
 	// 5. Services
 	tokenSvc      := services.NewTokenService(cfg)
@@ -106,7 +114,7 @@ func main() {
 	// 7. Handlers
 	authHandler     := handlers.NewAuthHandler(userRepo, tokenSvc, emailValidSvc, emailSvc, passwordHistoryRepo)
 	oauthHandler    := handlers.NewOAuthHandler(oauthSvc)
-	quoteHandler    := handlers.NewQuoteHandler(quoteRepo, authorRepo, traditionRepo, dailyQuoteSvc, streakSvc)
+	quoteHandler    := handlers.NewQuoteHandler(quoteRepo, authorRepo, traditionRepo, weekRepo, dailyQuoteSvc, streakSvc)
 	favoriteHandler := handlers.NewFavoriteHandler(favoriteSvc)
 	historyHandler  := handlers.NewHistoryHandler(historySvc)
 	commentHandler  := handlers.NewCommentHandler(commentSvc)
@@ -118,6 +126,10 @@ func main() {
 	settingsHandler     := handlers.NewSettingsHandler(settingsSvc)
 	onboardingHandler   := handlers.NewOnboardingHandler(settingsSvc)
 	subscriptionHandler := handlers.NewSubscriptionHandler(subscriptionRepo, stripeSvc, cfg)
+	readingPlanHandler  := handlers.NewReadingPlanHandler(readingPlanRepo)
+
+	// Start weekly theme scheduler (runs immediately + every 6h)
+	jobs.StartWeeklyThemeScheduler(db, weekRepo, quoteRepo)
 
 	_ = validate // used by profileHandler
 
@@ -141,7 +153,7 @@ func main() {
 
 	routes.SetupRoutes(r, authHandler, oauthHandler, quoteHandler, favoriteHandler,
 		historyHandler, commentHandler, profileHandler, settingsHandler, onboardingHandler,
-		subscriptionHandler, tokenSvc, subscriptionRepo)
+		subscriptionHandler, readingPlanHandler, tokenSvc, subscriptionRepo)
 
 	// 9. Start server with graceful shutdown
 	port := cfg.Port

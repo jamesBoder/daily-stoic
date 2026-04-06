@@ -23,6 +23,10 @@ func RunMigrations(db *gorm.DB) error {
 		&models.UserStreak{},
 		&models.Achievement{},
 		&models.Subscription{},
+		&models.ReadingPlan{},
+		&models.ReadingPlanEntry{},
+		&models.UserReadingPlanProgress{},
+		&models.Week{},
 	); err != nil {
 		return err
 	}

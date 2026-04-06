@@ -2,6 +2,7 @@
 
 import apiClient from './api'
 import type { DailyQuoteResponse, Quote } from '../../types/quote'
+import type { Week } from '../../types/week'
 
 export const quotesApi = {
   getDaily: (): Promise<DailyQuoteResponse> =>
@@ -20,4 +21,7 @@ export const quotesApi = {
     tier?: string
   }): Promise<Quote[]> =>
     apiClient.get('/api/quotes/search', { params }).then(r => r.data),
+
+  getWeek: (): Promise<{ week: Week | null }> =>
+    apiClient.get('/api/quotes/week').then(r => r.data),
 }

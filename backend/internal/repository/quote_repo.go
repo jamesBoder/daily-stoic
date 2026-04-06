@@ -156,3 +156,34 @@ func (r *QuoteRepository) CountAll() (int64, error) {
 	err := r.db.Model(&models.Quote{}).Count(&count).Error
 	return count, err
 }
+
+// GetByTheme returns up to limit quotes whose themes JSON contains the given tag,
+// ordered by quality_score descending, excluding any IDs in excludeIDs.
+func (r *QuoteRepository) GetByTheme(themeTag string, limit int, excludeIDs []uint) ([]models.Quote, error) {
+	var quotes []models.Quote
+	query := r.db.
+		Where("themes ILIKE ?", "%"+themeTag+"%").
+		Preload("Author").Preload("Tradition").
+		Order("quality_score DESC").
+		Limit(limit)
+	if len(excludeIDs) > 0 {
+		query = query.Not("id IN ?", excludeIDs)
+	}
+	err := query.Find(&quotes).Error
+	return quotes, err
+}
+
+// GetTopByQuality returns the top N quotes by quality_score, excluding any IDs in excludeIDs.
+// Used as a fallback when a theme has too few quotes.
+func (r *QuoteRepository) GetTopByQuality(limit int, excludeIDs []uint) ([]models.Quote, error) {
+	var quotes []models.Quote
+	query := r.db.
+		Preload("Author").Preload("Tradition").
+		Order("quality_score DESC").
+		Limit(limit)
+	if len(excludeIDs) > 0 {
+		query = query.Not("id IN ?", excludeIDs)
+	}
+	err := query.Find(&quotes).Error
+	return quotes, err
+}

@@ -20,6 +20,7 @@ func SetupRoutes(
 	settingsHandler *handlers.SettingsHandler,
 	onboardingHandler *handlers.OnboardingHandler,
 	subscriptionHandler *handlers.SubscriptionHandler,
+	readingPlanHandler *handlers.ReadingPlanHandler,
 	tokenService *services.TokenService,
 	subscriptionRepo *repository.SubscriptionRepository,
 ) {
@@ -50,6 +51,7 @@ func SetupRoutes(
 	quotes.Use(optionalAuthMW)
 	{
 		quotes.GET("/daily", quoteHandler.GetDailyQuote)
+		quotes.GET("/week", quoteHandler.GetWeek)
 		quotes.GET("/search", quoteHandler.SearchQuotes)
 		quotes.GET("/by-author/:authorId", quoteHandler.GetQuotesByAuthor)
 		quotes.GET("/:id", quoteHandler.GetQuoteByID)
@@ -112,5 +114,15 @@ func SetupRoutes(
 		sub.GET("", optionalAuthMW, subscriptionHandler.GetStatus)
 		sub.POST("/checkout", authMW, subscriptionHandler.CreateCheckout)
 		sub.POST("/webhook", subscriptionHandler.HandleWebhook) // no auth — Stripe-signed
+	}
+
+	// Reading plans — list and detail are public (optional auth for gating); progress routes require auth
+	rp := api.Group("/reading-plans")
+	{
+		rp.GET("", readingPlanHandler.ListPlans)
+		rp.GET("/:slug", optionalAuthMW, readingPlanHandler.GetPlan)
+		rp.GET("/:slug/progress", authMW, readingPlanHandler.GetProgress)
+		rp.POST("/:slug/start", authMW, readingPlanHandler.StartPlan)
+		rp.POST("/:slug/advance", authMW, readingPlanHandler.AdvanceDay)
 	}
 }

@@ -1,5 +1,6 @@
 // src/App.tsx — updated route structure
 
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
 import { SubscriptionProvider } from './contexts/SubscriptionContext'
@@ -7,27 +8,31 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { Toaster } from 'react-hot-toast'
 import { Layout } from './components/layout/Layout'
-import { DailyQuote } from './features/quote/DailyQuote'
-import { FavoritesList } from './features/favorites/FavoritesList'
-import { HistoryList } from './features/history/HistoryList'
-import { Profile } from './features/profile/Profile'
-import { Login } from './features/auth/Login'
-import { Signup } from './features/auth/Signup'
-import { VerifyEmail } from './features/auth/VerifyEmail'
-import { VerifyEmailPending } from './features/auth/VerifyEmailPending'
-import { ForgotPassword } from './features/auth/ForgotPassword'
-import { ResetPassword } from './features/auth/ResetPassword'
-import { GoogleCallback } from './features/auth/GoogleCallback'
 import { ProtectedRoute } from './components/common/ProtectedRoute'
-import { About } from './features/about/About'
-import { Settings } from './features/profile/Settings'
-import { TraditionBrowser } from './features/traditions/TraditionBrowser'
-import { TraditionPage } from './features/traditions/TraditionPage'
-import { AuthorPage } from './features/traditions/AuthorPage'
-import { ReadingPlansStub } from './features/reading-plans/ReadingPlansStub'
-import { PricingPage } from './features/subscription/PricingPage'
-import { SubscriptionSuccess } from './features/subscription/SubscriptionSuccess'
-import { OnboardingFlow } from './features/onboarding/OnboardingFlow'
+// Home page loaded eagerly — it's the LCP element
+import { DailyQuote } from './features/quote/DailyQuote'
+
+// All other routes lazy-loaded to keep the initial bundle small
+const FavoritesList = lazy(() => import('./features/favorites/FavoritesList').then(m => ({ default: m.FavoritesList })))
+const HistoryList = lazy(() => import('./features/history/HistoryList').then(m => ({ default: m.HistoryList })))
+const Profile = lazy(() => import('./features/profile/Profile').then(m => ({ default: m.Profile })))
+const Login = lazy(() => import('./features/auth/Login').then(m => ({ default: m.Login })))
+const Signup = lazy(() => import('./features/auth/Signup').then(m => ({ default: m.Signup })))
+const VerifyEmail = lazy(() => import('./features/auth/VerifyEmail').then(m => ({ default: m.VerifyEmail })))
+const VerifyEmailPending = lazy(() => import('./features/auth/VerifyEmailPending').then(m => ({ default: m.VerifyEmailPending })))
+const ForgotPassword = lazy(() => import('./features/auth/ForgotPassword').then(m => ({ default: m.ForgotPassword })))
+const ResetPassword = lazy(() => import('./features/auth/ResetPassword').then(m => ({ default: m.ResetPassword })))
+const GoogleCallback = lazy(() => import('./features/auth/GoogleCallback').then(m => ({ default: m.GoogleCallback })))
+const About = lazy(() => import('./features/about/About').then(m => ({ default: m.About })))
+const Settings = lazy(() => import('./features/profile/Settings').then(m => ({ default: m.Settings })))
+const TraditionBrowser = lazy(() => import('./features/traditions/TraditionBrowser').then(m => ({ default: m.TraditionBrowser })))
+const TraditionPage = lazy(() => import('./features/traditions/TraditionPage').then(m => ({ default: m.TraditionPage })))
+const AuthorPage = lazy(() => import('./features/traditions/AuthorPage').then(m => ({ default: m.AuthorPage })))
+const ReadingPlanList = lazy(() => import('./features/reading-plans/ReadingPlanList').then(m => ({ default: m.ReadingPlanList })))
+const ReadingPlanDetail = lazy(() => import('./features/reading-plans/ReadingPlanDetail').then(m => ({ default: m.ReadingPlanDetail })))
+const PricingPage = lazy(() => import('./features/subscription/PricingPage').then(m => ({ default: m.PricingPage })))
+const SubscriptionSuccess = lazy(() => import('./features/subscription/SubscriptionSuccess').then(m => ({ default: m.SubscriptionSuccess })))
+const OnboardingFlow = lazy(() => import('./features/onboarding/OnboardingFlow').then(m => ({ default: m.OnboardingFlow })))
 
 export default function App() {
   return (
@@ -60,6 +65,7 @@ export default function App() {
                 },
               }}
             />
+            <Suspense fallback={null}>
             <Routes>
               {/* Onboarding — full-screen, no nav */}
               <Route path="onboarding" element={<OnboardingFlow />} />
@@ -71,7 +77,8 @@ export default function App() {
                 <Route path="traditions" element={<TraditionBrowser />} />
                 <Route path="traditions/:slug" element={<TraditionPage />} />
                 <Route path="authors/:slug" element={<AuthorPage />} />
-                <Route path="reading-plans" element={<ReadingPlansStub />} />
+                <Route path="reading-plans" element={<ReadingPlanList />} />
+                <Route path="reading-plans/:slug" element={<ReadingPlanDetail />} />
 
                 {/* Auth */}
                 <Route path="auth">
@@ -95,6 +102,7 @@ export default function App() {
                 <Route path="subscription/success" element={<ProtectedRoute><SubscriptionSuccess /></ProtectedRoute>} />
               </Route>
             </Routes>
+            </Suspense>
           </LanguageProvider>
           </SubscriptionProvider>
         </AuthProvider>
