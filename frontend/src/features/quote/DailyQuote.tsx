@@ -1,18 +1,21 @@
 // src/features/quote/DailyQuote.tsx
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
-import { QuoteCard } from './QuoteCard'
 import { QuoteCardSkeleton } from './QuoteCardSkeleton'
+
+const QuoteCard = lazy(() => import('./QuoteCard').then(m => ({ default: m.QuoteCard })))
 import { useDailyQuote } from '../../hooks/useQuote'
 import { useStreak } from '../../hooks/useStreak'
-import { MilestoneModal } from '../gamification/MilestoneModal'
 import { useMilestone } from '../../hooks/useMilestone'
 import { useAuth } from '../../hooks/useAuth'
 import { Link } from 'react-router-dom'
 import { usePullToRefresh } from '../../hooks/usePullToRefresh'
 import PullRefreshIndicator from '../../components/common/PullRefreshIndicator'
 import { AdBannerTop, AdBannerBottom, AdRail } from './AdBanner'
+
+const WeeklyTheme = lazy(() => import('./WeeklyTheme').then(m => ({ default: m.WeeklyTheme })))
+const MilestoneModal = lazy(() => import('../gamification/MilestoneModal').then(m => ({ default: m.MilestoneModal })))
 
 export const DailyQuote = () => {
   const [scrollY, setScrollY] = useState(0)
@@ -46,8 +49,6 @@ export const DailyQuote = () => {
       queryClient.invalidateQueries({ queryKey: ['streak'] })
     }
   }, [data?.quote?.id, isRealUser])
-
-  if (isLoading) return <QuoteCardSkeleton />
 
   if (isError) return (
     <div className="text-center py-24 text-primary-400 font-sans">
@@ -88,13 +89,12 @@ export const DailyQuote = () => {
         <AdRail side="left" />
 
         <div className="flex-1 min-w-0">
-          {data?.quote && (
-            <QuoteCard
-              quote={data.quote}
-              showStreak
-              streakCount={streak?.current_streak}
-            />
-          )}
+          <Suspense fallback={<QuoteCardSkeleton />}>
+            {data?.quote
+              ? <QuoteCard quote={data.quote} showStreak streakCount={streak?.current_streak} />
+              : <QuoteCardSkeleton />
+            }
+          </Suspense>
         </div>
 
         <AdRail side="right" />
@@ -123,12 +123,19 @@ export const DailyQuote = () => {
         </div>
       ) : null}
 
-      {milestone && (
-        <MilestoneModal
-          milestone={milestone}
-          onClose={dismissMilestone}
-        />
-      )}
+      {/* Weekly theme — 7 curated passages for this week's focus */}
+      <Suspense fallback={null}>
+        <WeeklyTheme />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        {milestone && (
+          <MilestoneModal
+            milestone={milestone}
+            onClose={dismissMilestone}
+          />
+        )}
+      </Suspense>
     </main>
   )
 }
