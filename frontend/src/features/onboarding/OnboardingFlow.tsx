@@ -218,31 +218,73 @@ function ToggleCard({ icon, label, desc, checked, onChange, index }: {
 
 // ── Step content wrappers ─────────────────────────────────────────────────────
 
-function StepOne({ traditions, selected, onToggle }: {
-  traditions: Tradition[]; selected: string[]; onToggle: (slug: string) => void
+const ONBOARDING_PREMIUM_TEASER = 2
+
+function StepOne({ traditions, selected, onToggle, showAllPremium, onShowAllPremium }: {
+  traditions: Tradition[]
+  selected: string[]
+  onToggle: (slug: string) => void
+  showAllPremium: boolean
+  onShowAllPremium: () => void
 }) {
-  const sorted = [...traditions].sort((a, b) => {
-    if (a.tier === b.tier) return 0
-    return a.tier === 'free' ? -1 : 1
-  })
+  if (traditions.length === 0) {
+    return <>{Array.from({ length: 5 }, (_, i) => <CardSkeleton key={i} />)}</>
+  }
+
+  const free    = traditions.filter(t => t.tier === 'free')
+  const premium = traditions.filter(t => t.tier === 'premium')
+
+  const visiblePremium = showAllPremium ? premium : premium.slice(0, ONBOARDING_PREMIUM_TEASER)
+  const hiddenCount    = showAllPremium ? 0 : Math.max(0, premium.length - ONBOARDING_PREMIUM_TEASER)
+
+  const visible = [...free, ...visiblePremium]
 
   return (
     <>
-      {traditions.length === 0
-        ? Array.from({ length: 5 }, (_, i) => <CardSkeleton key={i} />)
-        : sorted.map((t, i) => {
-            const meta  = META[t.slug]
-            const color = ICON_COLOR_DARK[t.slug] ?? '#d4a853'
-            const bg    = meta?.accentDark ?? 'rgba(212,168,83,0.15)'
-            return (
-              <SelectCard key={t.slug} index={i}
-                selected={selected.includes(t.slug)} onClick={() => onToggle(t.slug)}
-                icon={meta?.icon ?? '✦'} iconColor={color} iconBg={bg}
-                label={t.name} desc={meta?.description ?? ''}
-                badge={t.tier === 'premium' ? 'Premium' : undefined}
-              />
-            )
-          })}
+      {visible.map((t, i) => {
+        const meta  = META[t.slug]
+        const color = ICON_COLOR_DARK[t.slug] ?? '#d4a853'
+        const bg    = meta?.accentDark ?? 'rgba(212,168,83,0.15)'
+        return (
+          <SelectCard key={t.slug} index={i}
+            selected={selected.includes(t.slug)} onClick={() => onToggle(t.slug)}
+            icon={meta?.icon ?? '✦'} iconColor={color} iconBg={bg}
+            label={t.name} desc={meta?.description ?? ''}
+            badge={t.tier === 'premium' ? 'Premium' : undefined}
+          />
+        )
+      })}
+
+      {/* "More premium traditions" reveal row */}
+      {hiddenCount > 0 && (
+        <button
+          onClick={onShowAllPremium}
+          className="w-full flex items-center gap-4 p-4 rounded-xl border text-left transition-all"
+          style={{
+            background:  'rgba(212,168,83,0.04)',
+            borderColor: 'rgba(212,168,83,0.22)',
+            borderStyle: 'dashed',
+          }}
+        >
+          <div
+            className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-lg"
+            style={{ background: 'rgba(212,168,83,0.12)', color: '#d4a853' }}
+          >
+            ✦
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="font-display text-sm tracking-wider text-[#d4a853]" style={{ fontVariant: 'small-caps' }}>
+              {hiddenCount} more Practitioner tradition{hiddenCount !== 1 ? 's' : ''}
+            </p>
+            <p className="text-xs text-[#7a7060] leading-relaxed">
+              Hermeticism, Neoplatonism, Vedanta &amp; more — unlock with lifetime access
+            </p>
+          </div>
+          <span className="shrink-0 text-[10px] uppercase tracking-widest text-[#d4a853]">
+            Show all
+          </span>
+        </button>
+      )}
     </>
   )
 }
@@ -321,11 +363,12 @@ export function OnboardingFlow() {
   const navigate  = useNavigate()
 
   // Data
-  const [traditions,     setTraditions]     = useState<Tradition[]>([])
-  const [selectedTraditions, setSelectedTraditions] = useState<string[]>([])
-  const [selectedGoals,  setSelectedGoals]  = useState<string[]>([])
-  const [dailyReminder,  setDailyReminder]  = useState(true)
-  const [emailNotif,     setEmailNotif]     = useState(true)
+  const [traditions,          setTraditions]          = useState<Tradition[]>([])
+  const [selectedTraditions,  setSelectedTraditions]  = useState<string[]>([])
+  const [selectedGoals,       setSelectedGoals]       = useState<string[]>([])
+  const [dailyReminder,       setDailyReminder]       = useState(true)
+  const [emailNotif,          setEmailNotif]          = useState(true)
+  const [showAllPremium,      setShowAllPremium]      = useState(false)
 
   // Step transition
   const [step,           setStep]           = useState(1)
@@ -494,7 +537,13 @@ export function OnboardingFlow() {
         {/* Cards */}
         <div ref={scrollRef} className="flex-1 overflow-y-auto space-y-2.5 pb-2" style={contentStyle}>
           {displayStep === 1 && (
-            <StepOne traditions={traditions} selected={selectedTraditions} onToggle={toggleTradition} />
+            <StepOne
+              traditions={traditions}
+              selected={selectedTraditions}
+              onToggle={toggleTradition}
+              showAllPremium={showAllPremium}
+              onShowAllPremium={() => setShowAllPremium(true)}
+            />
           )}
           {displayStep === 2 && (
             <StepTwo selected={selectedGoals} onToggle={toggleGoal} />

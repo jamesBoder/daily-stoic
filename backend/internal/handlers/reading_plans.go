@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"errors"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -54,6 +55,17 @@ func (h *ReadingPlanHandler) GetPlan(c *gin.Context) {
 		return
 	}
 
+	// Mask premium quote fields within entries for free users.
+	if isPremium != true {
+		for i := range plan.Entries {
+			if plan.Entries[i].Quote != nil && plan.Entries[i].Quote.Tier == "premium" {
+				plan.Entries[i].Quote.Text = ""
+				plan.Entries[i].Quote.ContextFull = ""
+				plan.Entries[i].Quote.ReflectionPrompt = ""
+			}
+		}
+	}
+
 	c.JSON(http.StatusOK, gin.H{"reading_plan": plan})
 }
 
@@ -62,13 +74,13 @@ func (h *ReadingPlanHandler) GetProgress(c *gin.Context) {
 	userID := c.MustGet("userID").(uint)
 	slug := c.Param("slug")
 
-	plan, err := h.planRepo.GetBySlug(slug)
+	planID, err := h.planRepo.GetIDBySlug(slug)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Reading plan not found"})
 		return
 	}
 
-	progress, err := h.planRepo.GetProgress(userID, plan.ID)
+	progress, err := h.planRepo.GetProgress(userID, planID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not retrieve progress"})
 		return
@@ -116,8 +128,18 @@ func (h *ReadingPlanHandler) AdvanceDay(c *gin.Context) {
 		return
 	}
 
+	isPremium, _ := c.Get("isPremium")
+	if plan.Tier == "premium" && isPremium != true {
+		c.JSON(http.StatusForbidden, gin.H{"error": "Practitioner membership required"})
+		return
+	}
+
 	progress, err := h.planRepo.AdvanceDay(userID, plan.ID, plan.DurationDays)
 	if err != nil {
+		if errors.Is(err, repository.ErrPlanNotStarted) {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Plan not started — call /start first"})
+			return
+		}
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not advance progress"})
 		return
 	}

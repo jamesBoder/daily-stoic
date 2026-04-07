@@ -1,11 +1,15 @@
 package repository
 
 import (
+	"errors"
 	"time"
 
 	"github.com/jamesBoder/daily-stoic/internal/models"
 	"gorm.io/gorm"
 )
+
+// ErrPlanNotStarted is returned by AdvanceDay when the user has no active progress record.
+var ErrPlanNotStarted = errors.New("plan not started")
 
 type ReadingPlanRepository struct {
 	db *gorm.DB
@@ -13,6 +17,16 @@ type ReadingPlanRepository struct {
 
 func NewReadingPlanRepository(db *gorm.DB) *ReadingPlanRepository {
 	return &ReadingPlanRepository{db: db}
+}
+
+// GetIDBySlug returns only the plan ID for a given slug — cheap lookup for progress queries.
+func (r *ReadingPlanRepository) GetIDBySlug(slug string) (uint, error) {
+	var plan struct{ ID uint }
+	err := r.db.Model(&models.ReadingPlan{}).Select("id").Where("slug = ?", slug).First(&plan).Error
+	if err != nil {
+		return 0, err
+	}
+	return plan.ID, nil
 }
 
 // GetAll returns all reading plans without entries (for list view).
@@ -66,6 +80,7 @@ func (r *ReadingPlanRepository) StartPlan(userID, planID uint) (*models.UserRead
 		ReadingPlanID: planID,
 		CurrentDay:    1,
 		IsActive:      true,
+		StartedAt:     time.Now(),
 	}
 	if err := r.db.Create(progress).Error; err != nil {
 		return nil, err
@@ -80,7 +95,7 @@ func (r *ReadingPlanRepository) AdvanceDay(userID, planID uint, durationDays int
 		return nil, err
 	}
 	if progress == nil {
-		return r.StartPlan(userID, planID)
+		return nil, ErrPlanNotStarted
 	}
 	if progress.CurrentDay < durationDays {
 		progress.CurrentDay++

@@ -11,6 +11,9 @@ import { PremiumGate } from '../../components/common/PremiumGate'
 import { PassageCard } from './PassageCard'
 import { META, ICON_COLOR, ICON_COLOR_DARK } from './constants'
 
+// How many premium traditions to show as teasers before the "more" card
+const PREMIUM_TEASER = 2
+
 // ── Section divider ───────────────────────────────────────────────────────────
 
 function SectionHeader({ title, subtitle }: { title: string; subtitle: string }) {
@@ -28,6 +31,71 @@ function SectionHeader({ title, subtitle }: { title: string; subtitle: string })
   )
 }
 
+// ── "N more traditions" reveal card ──────────────────────────────────────────
+
+function MorePremiumTeaser({
+  count,
+  names,
+  onReveal,
+}: {
+  count: number
+  names: string[]
+  onReveal: () => void
+}) {
+  const preview = names.slice(0, 3).join(', ')
+  const extra   = names.length > 3 ? ` +${names.length - 3} more` : ''
+
+  return (
+    <div className="relative mt-3">
+      {/* Stacked-card illusion — a ghost layer behind */}
+      <div
+        className="absolute inset-x-3 -bottom-1.5 h-10 rounded-card border
+                   bg-surface-card border-primary-200/40
+                   dark:bg-[rgba(10,20,44,0.30)] dark:border-[rgba(255,255,255,0.04)]"
+      />
+
+      <button
+        onClick={onReveal}
+        className="relative w-full text-left rounded-card border p-4 transition-all duration-200 group
+                   bg-surface-card border-primary-200/60 hover:border-accent/40 hover:shadow-card-hover
+                   dark:bg-[rgba(10,20,44,0.55)] dark:border-[rgba(255,255,255,0.07)]
+                   dark:hover:border-[rgba(212,168,83,0.25)] dark:hover:bg-[rgba(15,28,60,0.65)]"
+        style={{ WebkitBackdropFilter: 'blur(16px)' }}
+      >
+        <div className="flex items-center gap-4">
+          {/* Icon */}
+          <div
+            className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-lg
+                       bg-accent/10 dark:bg-[rgba(212,168,83,0.10)]
+                       text-accent dark:text-[#d4a853]"
+          >
+            ✦
+          </div>
+
+          {/* Text */}
+          <div className="flex-1 min-w-0">
+            <p className="font-display text-sm tracking-wide text-primary-800 dark:text-[#e0ddd4] mb-0.5">
+              {count} more tradition{count !== 1 ? 's' : ''}
+            </p>
+            <p className="font-sans text-xs text-primary-500 dark:text-night-500 truncate">
+              {preview}{extra}
+            </p>
+          </div>
+
+          {/* CTA */}
+          <span
+            className="shrink-0 font-display text-[10px] tracking-[0.2em] uppercase
+                       text-accent dark:text-[#d4a853]
+                       group-hover:underline transition-all"
+          >
+            Show all →
+          </span>
+        </div>
+      </button>
+    </div>
+  )
+}
+
 // ── Individual tradition card ─────────────────────────────────────────────────
 
 function TraditionCard({
@@ -40,8 +108,8 @@ function TraditionCard({
   isDark: boolean
 }) {
   const [expanded, setExpanded] = useState(false)
-  const [quotes, setQuotes] = useState<Quote[]>([])
-  const [loading, setLoading] = useState(false)
+  const [quotes, setQuotes]     = useState<Quote[]>([])
+  const [loading, setLoading]   = useState(false)
   const isLocked = tradition.tier === 'premium' && !isPremium
 
   const meta = META[tradition.slug] ?? {
@@ -72,7 +140,7 @@ function TraditionCard({
     setExpanded(v => !v)
   }
 
-  const cardContent = (
+  return (
     <div
       className={`rounded-card border transition-all duration-300 overflow-hidden
                   bg-surface-card border-primary-200/60 shadow-card
@@ -80,6 +148,7 @@ function TraditionCard({
                   dark:shadow-[0_2px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.04)]
                   ${isLocked ? 'opacity-70' : 'cursor-pointer hover:-translate-y-0.5 hover:shadow-card-hover hover:bg-surface-elevated dark:hover:bg-[rgba(15,28,60,0.70)]'}`}
       style={{ WebkitBackdropFilter: 'blur(16px)' }}
+      onClick={toggle}
     >
       <div className="p-4">
         <div className="flex items-start gap-4">
@@ -103,7 +172,7 @@ function TraditionCard({
             </p>
           </div>
 
-          {/* Right side — Explore link + expand chevron, or unlock badge */}
+          {/* Right side */}
           <div className="shrink-0 flex flex-col items-end gap-1.5 mt-0.5">
             {isLocked ? (
               <PremiumGate inline />
@@ -155,7 +224,6 @@ function TraditionCard({
               </div>
             )}
 
-            {/* Link to full tradition page */}
             <div className="mt-6 text-center">
               <Link
                 to={`/traditions/${tradition.slug}`}
@@ -171,18 +239,19 @@ function TraditionCard({
       </div>
     </div>
   )
-
-  return cardContent
 }
 
 // ── Main TraditionBrowser ─────────────────────────────────────────────────────
 
 export const TraditionBrowser = () => {
   const [traditions, setTraditions] = useState<Tradition[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
-  const { isPremium } = useSubscription()
-  const isDark = useIsDark()
+  const [loading, setLoading]       = useState(true)
+  const [error, setError]           = useState(false)
+  const { isPremium }               = useSubscription()
+  const isDark                      = useIsDark()
+
+  // Premium users see all traditions immediately; free users see a teaser
+  const [showAllPremium, setShowAllPremium] = useState(false)
 
   useEffect(() => {
     traditionsApi.list()
@@ -193,6 +262,11 @@ export const TraditionBrowser = () => {
 
   const free    = traditions.filter(t => t.tier === 'free')
   const premium = traditions.filter(t => t.tier === 'premium')
+
+  const showAll       = isPremium || showAllPremium
+  const visiblePremium = showAll ? premium : premium.slice(0, PREMIUM_TEASER)
+  const hiddenCount    = showAll ? 0 : Math.max(0, premium.length - PREMIUM_TEASER)
+  const hiddenNames    = premium.slice(PREMIUM_TEASER).map(t => t.name)
 
   return (
     <main className="min-h-screen bg-surface-base page-utility py-16 px-4">
@@ -234,6 +308,8 @@ export const TraditionBrowser = () => {
         {/* Grouped lists */}
         {!loading && !error && (
           <div className="space-y-8">
+
+            {/* Free traditions — always shown in full */}
             {free.length > 0 && (
               <section>
                 <SectionHeader
@@ -248,19 +324,32 @@ export const TraditionBrowser = () => {
               </section>
             )}
 
+            {/* Premium traditions — limited for free users */}
             {premium.length > 0 && (
               <section>
                 <SectionHeader
                   title="Practitioner Traditions"
-                  subtitle="Hermetic, Neoplatonic, and esoteric wisdom"
+                  subtitle={isPremium
+                    ? 'Hermetic, Neoplatonic, and esoteric wisdom'
+                    : 'Unlock with lifetime access'}
                 />
                 <div className="space-y-3">
-                  {premium.map(t => (
+                  {visiblePremium.map(t => (
                     <TraditionCard key={t.id} tradition={t} isPremium={isPremium} isDark={isDark} />
                   ))}
                 </div>
+
+                {/* Teaser card — only for free users with hidden traditions */}
+                {hiddenCount > 0 && (
+                  <MorePremiumTeaser
+                    count={hiddenCount}
+                    names={hiddenNames}
+                    onReveal={() => setShowAllPremium(true)}
+                  />
+                )}
               </section>
             )}
+
           </div>
         )}
       </div>

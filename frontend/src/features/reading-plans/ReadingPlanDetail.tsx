@@ -1,6 +1,6 @@
 // src/features/reading-plans/ReadingPlanDetail.tsx
 
-import { useEffect, useState, useCallback, useRef } from 'react'
+import { useEffect, useLayoutEffect, useState, useCallback, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { readingPlansApi } from '../../services/api/readingPlans'
 import type { ReadingPlan, ReadingPlanEntry, ReadingPlanProgress, GatedPlanResponse } from '../../types/readingPlan'
@@ -33,8 +33,8 @@ function EntryCard({
   const [open, setOpen] = useState(isCurrentDay)
   const cardRef = useRef<HTMLDivElement>(null)
 
-  // Auto-scroll current day into view on first render
-  useEffect(() => {
+  // Auto-scroll current day into view before paint to avoid jank on long lists
+  useLayoutEffect(() => {
     if (isCurrentDay && cardRef.current) {
       cardRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
@@ -523,21 +523,27 @@ export function ReadingPlanDetail() {
 
           {/* Entry list with group labels */}
           <div>
-            {entries.map(entry => {
-              const label = groupLabelFor(plan.slug, entry.day_number)
-              return (
-                <div key={entry.id}>
-                  {label && <GroupLabel label={label} accentColor={accentColor} />}
-                  <EntryCard
-                    entry={entry}
-                    isCurrentDay={isStarted && !isCompleted && entry.day_number === currentDay}
-                    isDone={isStarted && entry.day_number < currentDay}
-                    isLocked={!isStarted && entry.day_number > 1}
-                    accentColor={accentColor}
-                  />
-                </div>
-              )
-            })}
+            {entries.length === 0 ? (
+              <p className="text-center font-sans text-sm text-primary-500 dark:text-night-500 py-12">
+                No passages available yet.
+              </p>
+            ) : (
+              entries.map(entry => {
+                const label = groupLabelFor(plan.slug, entry.day_number)
+                return (
+                  <div key={entry.id}>
+                    {label && <GroupLabel label={label} accentColor={accentColor} />}
+                    <EntryCard
+                      entry={entry}
+                      isCurrentDay={isStarted && !isCompleted && entry.day_number === currentDay}
+                      isDone={isStarted && entry.day_number < currentDay}
+                      isLocked={!isStarted && entry.day_number > 1}
+                      accentColor={accentColor}
+                    />
+                  </div>
+                )
+              })
+            )}
           </div>
         </div>
       </main>
