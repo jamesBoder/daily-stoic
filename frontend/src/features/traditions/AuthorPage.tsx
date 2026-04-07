@@ -8,6 +8,7 @@ import { PassageCard } from './PassageCard'
 import { useSubscription } from '../../contexts/SubscriptionContext'
 import { useIsDark } from '../../hooks/useIsDark'
 import { PremiumGate } from '../../components/common/PremiumGate'
+import { AskPhilosopherModal } from '../ai/AskPhilosopherModal'
 import {
   TRADITION_ICON,
   TRADITION_NAME,
@@ -17,9 +18,10 @@ import {
 
 export function AuthorPage() {
   const { slug } = useParams<{ slug: string }>()
-  const [author, setAuthor] = useState<Author | null>(null)
+  const [author, setAuthor]   = useState<Author | null>(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+  const [error, setError]     = useState(false)
+  const [askOpen, setAskOpen] = useState(false)
   const { isPremium } = useSubscription()
   const isDark = useIsDark()
 
@@ -139,15 +141,34 @@ export function AuthorPage() {
 
           {/* Bio */}
           {author.bio ? (
-            <p className="font-sans text-sm text-primary-700 dark:text-night-400 leading-relaxed">
+            <p className="font-sans text-sm text-primary-700 dark:text-night-400 leading-relaxed mb-5">
               {author.bio}
             </p>
           ) : (
-            <p className="font-sans text-xs italic text-primary-400 dark:text-night-600">
+            <p className="font-sans text-xs italic text-primary-400 dark:text-night-600 mb-5">
               No biography available yet.
             </p>
           )}
+
+          {/* Speak with button */}
+          <button
+            onClick={() => setAskOpen(true)}
+            className="inline-flex items-center gap-2 font-display text-xs tracking-wider uppercase
+                       px-4 py-2 rounded-full transition-all hover:opacity-85 active:scale-95"
+            style={{ color: accent, background: `${accent}14`, border: `1px solid ${accent}40` }}
+          >
+            <span>✦</span>
+            <span>Speak with {author.name.split(' ')[0]}</span>
+          </button>
         </header>
+
+        {askOpen && (
+          <AskPhilosopherModal
+            author={author}
+            accentColor={accent}
+            onClose={() => setAskOpen(false)}
+          />
+        )}
 
         {/* Quotes */}
         {(freeQuotes.length > 0 || premiumQuotes.length > 0) && (

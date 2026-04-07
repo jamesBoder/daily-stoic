@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import type { Quote } from '../../types/quote'
 import { useFavorites } from '../../hooks/useFavorites'
 import { useAuth } from '../../hooks/useAuth'
+import { AskPhilosopherModal } from '../ai/AskPhilosopherModal'
 
 interface Props {
   quote: Quote
@@ -15,6 +16,7 @@ interface Props {
 
 export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
   const [showPractice, setShowPractice] = useState(false)
+  const [askOpen, setAskOpen]           = useState(false)
   const { isFavorited, toggleFavorite } = useFavorites()
   const { isAuthenticated } = useAuth()
   const isFav = isAuthenticated && isFavorited(quote.id)
@@ -39,14 +41,23 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
         {/* Attribution row */}
         <footer className="flex items-start justify-between gap-2 mb-3">
           <div className="flex items-center gap-1.5 flex-wrap min-w-0">
-            <Link
-              to={`/authors/${quote.author.slug}`}
-              className="font-display text-[10px] tracking-[0.18em] uppercase transition-colors"
-              style={{ color: accentColor }}
-              onClick={e => e.stopPropagation()}
-            >
-              {quote.author.name}
-            </Link>
+            {quote.author?.slug ? (
+              <Link
+                to={`/authors/${quote.author.slug}`}
+                className="font-display text-[10px] tracking-[0.18em] uppercase transition-colors"
+                style={{ color: accentColor }}
+                onClick={e => e.stopPropagation()}
+              >
+                {quote.author.name}
+              </Link>
+            ) : (
+              <span
+                className="font-display text-[10px] tracking-[0.18em] uppercase"
+                style={{ color: accentColor }}
+              >
+                {quote.author?.name ?? 'Unknown'}
+              </span>
+            )}
             {quote.source && (
               <>
                 <span className="text-primary-400 dark:text-night-500 text-xs select-none">·</span>
@@ -57,19 +68,40 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
             )}
           </div>
 
-          {/* Save button — enlarged tap target */}
-          <button
-            onClick={() => isAuthenticated && toggleFavorite(quote.id)}
-            className={`shrink-0 text-sm transition-all active:scale-90 py-1 px-1 -mr-1 min-h-[36px] min-w-[36px] flex items-center justify-center rounded focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 ${
-              isFav
-                ? 'text-accent dark:text-[#d4a853]'
-                : 'text-primary-400 dark:text-night-500 hover:text-primary-600 dark:hover:text-night-300'
-            }`}
-            aria-label={isFav ? 'Remove from saved' : 'Save passage'}
-          >
-            {isFav ? '♥' : '♡'}
-          </button>
+          {/* Action buttons */}
+          <div className="shrink-0 flex items-center gap-1 -mr-1">
+            <button
+              onClick={() => setAskOpen(true)}
+              className="font-display text-[9px] tracking-[0.18em] uppercase px-2 py-1 rounded transition-all
+                         hover:opacity-80 active:scale-95 min-h-[36px]"
+              style={{ color: accentColor, background: `${accentColor}14`, border: `1px solid ${accentColor}30` }}
+              aria-label={`Ask ${quote.author?.name ?? 'philosopher'}`}
+              title={`Ask ${quote.author?.name ?? 'the philosopher'}`}
+            >
+              ✦ Ask
+            </button>
+
+            <button
+              onClick={() => isAuthenticated && toggleFavorite(quote.id)}
+              className={`text-sm transition-all active:scale-90 py-1 px-1 min-h-[36px] min-w-[36px] flex items-center justify-center rounded focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 ${
+                isFav
+                  ? 'text-accent dark:text-[#d4a853]'
+                  : 'text-primary-400 dark:text-night-500 hover:text-primary-600 dark:hover:text-night-300'
+              }`}
+              aria-label={isFav ? 'Remove from saved' : 'Save passage'}
+            >
+              {isFav ? '♥' : '♡'}
+            </button>
+          </div>
         </footer>
+
+        {askOpen && (
+          <AskPhilosopherModal
+            quote={quote}
+            accentColor={accentColor}
+            onClose={() => setAskOpen(false)}
+          />
+        )}
 
         {/* Commentary block */}
         {hasCommentary && (

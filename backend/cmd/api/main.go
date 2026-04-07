@@ -87,6 +87,7 @@ func main() {
 	subscriptionRepo    := repository.NewSubscriptionRepository(db)
 	readingPlanRepo     := repository.NewReadingPlanRepository(db)
 	weekRepo            := repository.NewWeekRepository(db)
+	aiUsageRepo         := repository.NewAIUsageRepository(db)
 
 	// 5. Services
 	tokenSvc      := services.NewTokenService(cfg)
@@ -103,6 +104,7 @@ func main() {
 	_ = services.NewPhilosophyAPIService(cfg.PhilosophyAPIBaseURL, cfg.PhilosophyAPIKey)
 
 	stripeSvc := services.NewStripeService(cfg, subscriptionRepo)
+	aiSvc     := services.NewAiService(cfg.AnthropicAPIKey, quoteRepo)
 
 	// OAuth service
 	oauthCfg    := config.GoogleOAuthConfig()
@@ -127,6 +129,7 @@ func main() {
 	onboardingHandler   := handlers.NewOnboardingHandler(settingsSvc)
 	subscriptionHandler := handlers.NewSubscriptionHandler(subscriptionRepo, stripeSvc, cfg)
 	readingPlanHandler  := handlers.NewReadingPlanHandler(readingPlanRepo)
+	aiHandler           := handlers.NewAiHandler(aiSvc, aiUsageRepo, quoteRepo, authorRepo)
 
 	// Start weekly theme scheduler (runs immediately + every 6h)
 	jobs.StartWeeklyThemeScheduler(db, weekRepo, quoteRepo)
@@ -153,7 +156,7 @@ func main() {
 
 	routes.SetupRoutes(r, authHandler, oauthHandler, quoteHandler, favoriteHandler,
 		historyHandler, commentHandler, profileHandler, settingsHandler, onboardingHandler,
-		subscriptionHandler, readingPlanHandler, tokenSvc, subscriptionRepo)
+		subscriptionHandler, readingPlanHandler, aiHandler, tokenSvc, subscriptionRepo)
 
 	// 9. Start server with graceful shutdown
 	port := cfg.Port

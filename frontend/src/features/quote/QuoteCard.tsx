@@ -10,6 +10,7 @@ import { useFavorites } from '../../hooks/useFavorites'
 import { useAuth } from '../../hooks/useAuth'
 import { useSwipe } from '../../hooks/useSwipe'
 import { LoginPromptModal } from '../../components/common/LoginPromptModal'
+import { AskPhilosopherModal } from '../ai/AskPhilosopherModal'
 
 interface Props {
   quote: Quote
@@ -30,6 +31,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
   const [shareOpen, setShareOpen] = useState(false)
   const [commentsOpen, setCommentsOpen] = useState(false)
   const [showLoginPrompt, setShowLoginPrompt] = useState(false)
+  const [askOpen, setAskOpen] = useState(false)
   const [loginPromptAction, setLoginPromptAction] = useState('')
   const [localFav, setLocalFav] = useState(false)
   const { isFavorited, toggleFavorite } = useFavorites()
@@ -213,12 +215,14 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
         </div>
       </article>
 
-      {/* Action row — sits below the card, outside the frame */}
+      {/* Action row — sits below the card, outside the frame.
+          On xs screens: icon-only pills (4 fit comfortably at px-3).
+          On sm+: icons + text labels. */}
       {!compact && (
-        <div className="flex items-center justify-center gap-2 mt-4">
+        <div className="flex items-center justify-center gap-1.5 mt-4">
           <button
             onClick={handleSave}
-            className={`flex items-center gap-1.5 text-sm font-sans rounded-full px-4 py-2 transition-colors ${
+            className={`flex items-center gap-1 sm:gap-1.5 text-sm font-sans rounded-full px-3 sm:px-4 py-2 transition-colors ${
               isFav
                 ? 'bg-accent text-white dark:bg-star-gold dark:text-night-950'
                 : 'bg-primary-100 text-primary-700 hover:bg-primary-200 dark:bg-night-800/60 dark:text-night-200 dark:hover:bg-night-700/60 dark:border dark:border-white/[0.06]'
@@ -226,27 +230,40 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
             aria-label={isFav ? 'Remove from saved' : 'Save quote'}
           >
             <span>{isFav ? '♥' : '♡'}</span>
-            <span>Save</span>
+            <span className="hidden sm:inline">Save</span>
           </button>
 
           <button
             onClick={() => setCommentsOpen(!commentsOpen)}
-            className="flex items-center gap-1.5 text-sm font-sans rounded-full px-4 py-2 transition-colors
+            className="flex items-center gap-1 sm:gap-1.5 text-sm font-sans rounded-full px-3 sm:px-4 py-2 transition-colors
                        bg-primary-100 text-primary-700 hover:bg-primary-200
                        dark:bg-night-800/60 dark:text-night-200 dark:hover:bg-night-700/60 dark:border dark:border-white/[0.06]"
+            aria-label="Write reflection"
           >
             <span>💬</span>
-            <span>Reflect</span>
+            <span className="hidden sm:inline">Reflect</span>
           </button>
 
           <button
             onClick={() => setShareOpen(true)}
-            className="flex items-center gap-1.5 text-sm font-sans rounded-full px-4 py-2 transition-colors
+            className="flex items-center gap-1 sm:gap-1.5 text-sm font-sans rounded-full px-3 sm:px-4 py-2 transition-colors
                        bg-primary-100 text-primary-700 hover:bg-primary-200
                        dark:bg-night-800/60 dark:text-night-200 dark:hover:bg-night-700/60 dark:border dark:border-white/[0.06]"
+            aria-label="Share quote"
           >
             <span>↗</span>
-            <span>Share</span>
+            <span className="hidden sm:inline">Share</span>
+          </button>
+
+          <button
+            onClick={() => setAskOpen(true)}
+            className="flex items-center gap-1 sm:gap-1.5 text-sm font-sans rounded-full px-3 sm:px-4 py-2 transition-colors
+                       bg-primary-100 text-primary-700 hover:bg-primary-200
+                       dark:bg-night-800/60 dark:text-night-200 dark:hover:bg-night-700/60 dark:border dark:border-white/[0.06]"
+            aria-label={`Ask ${quote.author.name}`}
+          >
+            <span>✦</span>
+            <span className="hidden sm:inline">Ask</span>
           </button>
         </div>
       )}
@@ -272,6 +289,10 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
 
       {shareOpen && (
         <SharePanel quote={quote} onClose={() => setShareOpen(false)} />
+      )}
+
+      {askOpen && (
+        <AskPhilosopherModal quote={quote} onClose={() => setAskOpen(false)} />
       )}
 
       {showLoginPrompt && (

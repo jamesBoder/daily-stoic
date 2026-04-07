@@ -57,9 +57,11 @@ export const UserMenu = () => {
             }
           `}</style>
           <div className="user-menu-dropdown">
-            <Link to="/profile"  className={itemClass} onClick={() => setIsOpen(false)}>Profile</Link>
-            <Link to="/saved"    className={itemClass} onClick={() => setIsOpen(false)}>Saved Quotes</Link>
-            <Link to="/history"  className={itemClass} onClick={() => setIsOpen(false)}>Reading History</Link>
+            <Link to="/profile"   className={itemClass} onClick={() => setIsOpen(false)}>Profile</Link>
+            <Link to="/saved"     className={itemClass} onClick={() => setIsOpen(false)}>Saved Quotes</Link>
+            <Link to="/history"   className={itemClass} onClick={() => setIsOpen(false)}>Reading History</Link>
+            <Link to="/converse"  className={itemClass} onClick={() => setIsOpen(false)}>Converse</Link>
+            <Link to="/settings"  className={itemClass} onClick={() => setIsOpen(false)}>Settings</Link>
             <hr className="my-1 border-primary-200 dark:border-[rgba(255,255,255,0.07)]" />
             <button
               onClick={() => { logout(); setIsOpen(false); navigate('/') }}

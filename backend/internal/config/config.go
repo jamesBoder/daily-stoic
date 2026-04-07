@@ -34,6 +34,9 @@ type Config struct {
 	StripeSecretKey       string
 	StripeWebhookSecret   string
 	StripeLifetimePriceID string
+
+	// Anthropic (Ask the Philosopher feature — backend only, never expose to frontend)
+	AnthropicAPIKey string
 }
 
 func Load() (*Config, error) {
@@ -60,6 +63,7 @@ func Load() (*Config, error) {
 		StripeSecretKey:       os.Getenv("STRIPE_SECRET_KEY"),
 		StripeWebhookSecret:   os.Getenv("STRIPE_WEBHOOK_SECRET"),
 		StripeLifetimePriceID: os.Getenv("STRIPE_LIFETIME_PRICE_ID"),
+		AnthropicAPIKey:       os.Getenv("ANTHROPIC_API_KEY"),
 	}, nil
 }
 

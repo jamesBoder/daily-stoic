@@ -29,6 +29,7 @@ const TraditionBrowser = lazy(() => import('./features/traditions/TraditionBrows
 const TraditionPage = lazy(() => import('./features/traditions/TraditionPage').then(m => ({ default: m.TraditionPage })))
 const AuthorPage = lazy(() => import('./features/traditions/AuthorPage').then(m => ({ default: m.AuthorPage })))
 const ReadingPlanList = lazy(() => import('./features/reading-plans/ReadingPlanList').then(m => ({ default: m.ReadingPlanList })))
+const ConversePage = lazy(() => import('./features/ai/ConversePage').then(m => ({ default: m.ConversePage })))
 const ReadingPlanDetail = lazy(() => import('./features/reading-plans/ReadingPlanDetail').then(m => ({ default: m.ReadingPlanDetail })))
 const PricingPage = lazy(() => import('./features/subscription/PricingPage').then(m => ({ default: m.PricingPage })))
 const SubscriptionSuccess = lazy(() => import('./features/subscription/SubscriptionSuccess').then(m => ({ default: m.SubscriptionSuccess })))
@@ -79,6 +80,7 @@ export default function App() {
                 <Route path="authors/:slug" element={<AuthorPage />} />
                 <Route path="reading-plans" element={<ReadingPlanList />} />
                 <Route path="reading-plans/:slug" element={<ReadingPlanDetail />} />
+                <Route path="converse" element={<ConversePage />} />
 
                 {/* Auth */}
                 <Route path="auth">

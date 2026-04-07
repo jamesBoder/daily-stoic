@@ -12,7 +12,7 @@ import { WordMark } from '../common/WordMark'
 export const Header = () => {
   const { isAuthenticated, isGuest } = useAuth()
   const { data: streak } = useStreak()
-  const { isPremium } = useSubscription()
+  const { isPremium, isLoading: subLoading } = useSubscription()
   const { isDarkMode, toggleTheme } = useTheme()
   const [scrolled, setScrolled] = useState(false)
 
@@ -69,6 +69,10 @@ export const Header = () => {
         <nav className="hidden md:flex items-center gap-6">
           <NavLink to="/traditions"    className={navLinkClass}>Traditions</NavLink>
           <NavLink to="/reading-plans" className={navLinkClass}>Reading Plans</NavLink>
+          <NavLink to="/converse"      className={navLinkClass}>Converse</NavLink>
+          {isAuthenticated && !isGuest && (
+            <NavLink to="/settings" className={navLinkClass}>Settings</NavLink>
+          )}
         </nav>
 
         {/* Right side */}
@@ -86,8 +90,8 @@ export const Header = () => {
             </Link>
           )}
 
-          {/* Upgrade CTA — hidden on mobile to avoid crowding the logo */}
-          {isAuthenticated && !isGuest && !isPremium && (
+          {/* Upgrade CTA — hidden on mobile, hidden while subscription is loading or already premium */}
+          {isAuthenticated && !isGuest && !subLoading && !isPremium && (
             <Link
               to="/upgrade"
               className="hidden sm:inline-flex font-display text-xs tracking-wider uppercase rounded-full px-3 py-1 transition-colors

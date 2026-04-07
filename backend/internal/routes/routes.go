@@ -21,6 +21,7 @@ func SetupRoutes(
 	onboardingHandler *handlers.OnboardingHandler,
 	subscriptionHandler *handlers.SubscriptionHandler,
 	readingPlanHandler *handlers.ReadingPlanHandler,
+	aiHandler *handlers.AiHandler,
 	tokenService *services.TokenService,
 	subscriptionRepo *repository.SubscriptionRepository,
 ) {
@@ -106,6 +107,11 @@ func SetupRoutes(
 		// Onboarding
 		protected.POST("onboarding", onboardingHandler.CompleteOnboarding)
 		protected.DELETE("onboarding", onboardingHandler.ResetOnboarding)
+
+		// Ask the Philosopher — AI voice feature (free: 3/day, premium: unlimited)
+		protected.POST("quotes/:id/ask", aiHandler.AskByQuote)
+		protected.POST("authors/:slug/ask", aiHandler.AskByAuthor)
+		protected.GET("ai/usage", aiHandler.GetAiUsage)
 	}
 
 	// Subscription
