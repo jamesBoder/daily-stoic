@@ -7,7 +7,7 @@ import {
   Home,
   Bookmark,
   ScrollText,
-  User,
+  MessageCircle,
   Menu,
   X,
   Settings,
@@ -106,12 +106,12 @@ const BottomNav: React.FC = () => {
             )}
           </NavLink>
 
-          {/* Profile */}
-          <NavLink to="/profile" className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Profile">
+          {/* Converse */}
+          <NavLink to="/converse" className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Converse">
             {({ isActive }) => (
               <>
-                <User size={22} strokeWidth={isActive ? 2.5 : 1.75} fill={isActive ? 'currentColor' : 'none'} />
-                <span className="truncate w-full text-center">Profile</span>
+                <MessageCircle size={22} strokeWidth={isActive ? 2.5 : 1.75} fill={isActive ? 'currentColor' : 'none'} />
+                <span className="truncate w-full text-center">Converse</span>
               </>
             )}
           </NavLink>

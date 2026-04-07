@@ -2,6 +2,7 @@
 // Shared modal used from QuoteCard, PassageCard, AuthorPage, and ConversePage.
 
 import { useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 import { useAskByQuote, useAskByAuthor, is429 } from '../../hooks/useAskPhilosopher'
@@ -66,32 +67,33 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
     setTimeout(() => textareaRef.current?.focus(), 50)
   }
 
-  return (
+  return createPortal(
     /* Backdrop */
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
+      className="fixed inset-x-0 bottom-0 z-[9999] flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm p-0 sm:p-4"
+      style={{ top: 0, height: '100dvh' }}
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
       role="dialog"
       aria-modal="true"
       aria-label={`Ask ${displayAuthor?.name ?? 'the philosopher'}`}
     >
-      {/* Glass overlay */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-
-      {/* Modal panel — slides up from bottom on mobile, centred on sm+.
-          max-h prevents it being hidden behind the virtual keyboard. */}
+      {/* Modal panel */}
       <div
-        className="relative w-full sm:max-w-lg rounded-t-2xl sm:rounded-2xl border overflow-hidden
-                   flex flex-col max-h-[85vh]
+        className="animate-modal-rise relative w-full sm:max-w-lg rounded-t-2xl sm:rounded-2xl border overflow-hidden
+                   flex flex-col
                    bg-[rgba(250,247,240,0.97)] border-primary-200/60
                    dark:bg-[rgba(4,8,22,0.95)] dark:border-[rgba(212,168,83,0.18)]"
-        style={{ boxShadow: '0 24px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,168,83,0.08)' }}
+        style={{
+          boxShadow: '0 24px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,168,83,0.08)',
+          minHeight: '60dvh',
+          maxHeight: '85dvh',
+        }}
       >
         {/* Top accent bar */}
         <div className="h-0.5 w-full shrink-0" style={{ background: accentColor }} />
 
         {/* Scrollable content */}
-        <div className="overflow-y-auto flex-1 p-5 sm:p-6">
+        <div className="overflow-y-auto flex-1 flex flex-col p-5 sm:p-6">
 
           {/* Header */}
           <div className="flex items-start justify-between mb-5">
@@ -117,7 +119,7 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
           {/* Focal quote preview */}
           {quote && !lastResponse && (
             <div
-              className="mb-4 rounded-[6px] px-3 py-2.5 text-xs italic font-sans leading-relaxed line-clamp-3
+              className="mb-4 rounded-[6px] px-3 py-2.5 text-xs italic font-sans leading-relaxed
                          text-primary-600 dark:text-night-400"
               style={{ background: `${accentColor}10`, borderLeft: `2px solid ${accentColor}40` }}
             >
@@ -194,40 +196,37 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
 
           {/* Question input */}
           {isAuthenticated && !isAtLimit && !lastResponse && (
-            <div>
-              <div className="relative">
+            <div className="flex-1 flex flex-col">
+              <div className="relative flex-1 flex flex-col">
                 <textarea
                   ref={textareaRef}
                   value={question}
                   onChange={e => setQuestion(e.target.value)}
                   onKeyDown={e => {
-                    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) handleSubmit()
+                    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit() }
                   }}
                   placeholder={`Ask ${displayAuthor?.name ?? 'them'} anything…`}
-                  rows={3}
                   maxLength={MAX_CHARS}
-                  className="w-full rounded-[8px] px-3 py-2.5 text-sm font-sans resize-none transition-colors
+                  className="flex-1 w-full rounded-[8px] px-3 py-2.5 text-sm font-sans resize-none transition-colors
                              bg-primary-50 border border-primary-200/80 text-primary-800 placeholder-primary-400
                              focus:outline-none focus:ring-2 focus:border-transparent
                              dark:bg-[rgba(255,255,255,0.05)] dark:border-[rgba(255,255,255,0.10)]
                              dark:text-[#e0ddd4] dark:placeholder-night-600"
                   style={{ '--tw-ring-color': accentColor } as React.CSSProperties}
                 />
-                {/* Character counter — visible only when approaching limit */}
-                {nearLimit && (
-                  <span
-                    className={`absolute bottom-2 right-2 font-sans text-[10px] transition-colors ${
-                      charsLeft <= 20 ? 'text-red-500' : 'text-primary-400 dark:text-night-600'
-                    }`}
-                  >
-                    {charsLeft}
-                  </span>
-                )}
+                {/* Character counter */}
+                <span
+                  className={`absolute bottom-2 right-2 font-sans text-[10px] transition-colors ${
+                    charsLeft <= 20 ? 'text-red-500' : nearLimit ? 'text-primary-400 dark:text-night-600' : 'text-primary-300 dark:text-night-700'
+                  }`}
+                >
+                  {charsLeft}
+                </span>
               </div>
 
               <div className="flex items-center justify-between mt-3">
                 <span className="font-sans text-[10px] text-primary-400 dark:text-night-600">
-                  ⌘↵ to submit
+                  ↵ to submit · ⇧↵ for newline
                 </span>
                 <button
                   onClick={handleSubmit}
@@ -242,7 +241,7 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
 
               {mutation.isError && !isAtLimit && (
                 <p className="font-sans text-xs text-red-500 mt-2">
-                  Something went wrong. Please try again.
+                  The philosopher could not be reached. Please try again.
                 </p>
               )}
             </div>
@@ -250,6 +249,7 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
 
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }

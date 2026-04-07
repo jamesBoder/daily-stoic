@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"log"
 	"net/http"
 	"strconv"
 
@@ -83,6 +84,7 @@ func (h *AiHandler) AskByQuote(c *gin.Context) {
 
 	response, err := h.aiSvc.Ask(quote, req.Question)
 	if err != nil {
+		log.Printf("AskByQuote error: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "the philosopher is unavailable right now"})
 		return
 	}
@@ -129,6 +131,7 @@ func (h *AiHandler) AskByAuthor(c *gin.Context) {
 
 	response, err := h.aiSvc.AskByAuthor(author, req.Question)
 	if err != nil {
+		log.Printf("AskByAuthor error: %v", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "the philosopher is unavailable right now"})
 		return
 	}

@@ -72,7 +72,7 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
           <div className="shrink-0 flex items-center gap-1 -mr-1">
             <button
               onClick={() => setAskOpen(true)}
-              className="font-display text-[9px] tracking-[0.18em] uppercase px-2 py-1 rounded transition-all
+              className="font-display text-xs tracking-[0.18em] uppercase px-2 py-1 rounded transition-all
                          hover:opacity-80 active:scale-95 min-h-[36px]"
               style={{ color: accentColor, background: `${accentColor}14`, border: `1px solid ${accentColor}30` }}
               aria-label={`Ask ${quote.author?.name ?? 'philosopher'}`}
@@ -107,12 +107,12 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
         {hasCommentary && (
           <div className="mt-3 pt-3 border-t border-primary-100/80 dark:border-[rgba(255,255,255,0.05)]">
             <p
-              className="font-display text-[9px] tracking-[0.2em] uppercase mb-1.5"
+              className="font-display text-[10px] tracking-[0.2em] uppercase mb-1.5"
               style={{ color: accentColor }}
             >
               Commentary
             </p>
-            <p className="font-sans text-xs md:text-sm leading-relaxed text-primary-700 dark:text-night-400">
+            <p className="font-sans text-sm md:text-base leading-relaxed text-primary-700 dark:text-night-400">
               {quote.context_full}
             </p>
           </div>
@@ -123,7 +123,7 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
           <div className="mt-3">
             <button
               onClick={() => setShowPractice(v => !v)}
-              className="flex items-center gap-1.5 font-display text-[9px] tracking-[0.2em] uppercase transition-colors py-2 -my-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 rounded"
+              className="flex items-center gap-1.5 font-display text-[10px] tracking-[0.2em] uppercase transition-colors py-2 -my-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 rounded"
               style={{ color: accentColor }}
             >
               <span
@@ -140,7 +140,7 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
                 className="mt-2 rounded-[6px] px-3 py-2.5"
                 style={{ background: `${accentColor}18`, border: `1px solid ${accentColor}45` }}
               >
-                <p className="font-sans text-xs md:text-sm leading-relaxed text-primary-700 dark:text-night-300 italic">
+                <p className="font-sans text-sm md:text-base leading-relaxed text-primary-700 dark:text-night-300 italic">
                   {quote.reflection_prompt}
                 </p>
               </div>

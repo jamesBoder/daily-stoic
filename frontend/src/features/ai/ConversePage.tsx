@@ -2,7 +2,7 @@
 // Dedicated page for conversing with any philosopher in the app.
 // Free users: 3 questions/day. Practitioner: unlimited.
 
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import apiClient from '../../services/api/api'
 import type { Author } from '../../types/quote'
@@ -128,17 +128,20 @@ function ConversationPanel({
     textareaRef.current?.focus()
   }, [author.id])
 
-  // Stable reset callback — wrapped so the effect dep array is satisfied.
-  const resetConversation = useCallback(() => {
+  // Keep a ref to the latest reset logic so the effect below can call it
+  // without re-running every time clearResponse/reset get new references.
+  const resetRef = useRef<() => void>(() => {})
+  resetRef.current = () => {
     clearResponse()
     reset()
     setQuestion('')
-  }, [clearResponse, reset])
+  }
 
-  // Reset conversation when the selected philosopher changes.
+  // Reset conversation only when the selected philosopher actually changes.
   useEffect(() => {
-    resetConversation()
-  }, [author.id, resetConversation])
+    resetRef.current()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [author.id])
 
   const handleSubmit = () => {
     if (!question.trim() || isPending || !author.slug) return
@@ -271,7 +274,7 @@ function ConversationPanel({
               value={question}
               onChange={e => setQuestion(e.target.value)}
               onKeyDown={e => {
-                if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) handleSubmit()
+                if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit() }
               }}
               placeholder={`Ask ${author.name} anything…`}
               rows={3}
@@ -286,11 +289,11 @@ function ConversationPanel({
 
             <div className="flex items-center justify-between mt-3">
               <span className="font-sans text-[10px] text-primary-400 dark:text-night-600">
-                ⌘↵ to send
+                ↵ to send · ⇧↵ for newline
               </span>
               <button
                 onClick={handleSubmit}
-                disabled={!question.trim() || isPending}
+                disabled={question.trim().length < 3 || isPending}
                 className="font-display text-xs tracking-wider uppercase px-5 py-2 rounded-full transition-all
                            disabled:opacity-40 disabled:cursor-not-allowed active:scale-95 text-white"
                 style={{ background: accent }}
@@ -301,7 +304,7 @@ function ConversationPanel({
 
             {isError && !isAtLimit && (
               <p className="font-sans text-xs text-red-500 mt-2">
-                Something went wrong. Please try again.
+                The philosopher could not be reached. Please try again.
               </p>
             )}
           </div>
