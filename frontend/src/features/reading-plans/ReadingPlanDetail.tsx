@@ -343,6 +343,19 @@ export function ReadingPlanDetail() {
 
   useEffect(() => { load() }, [load])
 
+  // Persist the active plan so the home page can show a "Resume" CTA
+  useEffect(() => {
+    if (!slug || !plan || !progress?.is_active) return
+    try {
+      localStorage.setItem('rp-resume', JSON.stringify({
+        slug,
+        title: plan.title,
+        currentDay: progress.current_day,
+        totalDays: plan.duration_days,
+      }))
+    } catch { /* ignore quota errors */ }
+  }, [slug, plan, progress])
+
   const handleStart = async () => {
     if (!slug) return
     setStarting(true)

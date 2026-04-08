@@ -48,9 +48,11 @@ const BottomNav: React.FC = () => {
   };
 
   const tabBase =
-    'flex flex-col items-center justify-center gap-0.5 flex-1 h-full text-[11px] font-medium transition-all duration-150 active:scale-90 select-none focus:outline-none min-w-0 overflow-hidden';
+    'relative flex flex-col items-center justify-center gap-0.5 flex-1 h-full text-[11px] font-medium transition-all duration-150 active:scale-90 select-none focus:outline-none min-w-0 overflow-hidden';
   const tabActive   = 'text-accent dark:text-star-gold';
   const tabInactive = 'text-primary-400 dark:text-night-400';
+  const tabIndicator = (active: boolean) =>
+    `absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-b-full transition-all duration-200 ${active ? 'bg-accent dark:bg-star-gold opacity-100' : 'opacity-0'}`;
 
   const sheetItemBase =
     'flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors';
@@ -80,6 +82,7 @@ const BottomNav: React.FC = () => {
           <NavLink to="/" end className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Home">
             {({ isActive }) => (
               <>
+                <span className={tabIndicator(isActive)} />
                 <Home size={22} strokeWidth={isActive ? 2.5 : 1.75} />
                 <span className="truncate w-full text-center">Home</span>
               </>
@@ -90,6 +93,7 @@ const BottomNav: React.FC = () => {
           <NavLink to="/saved" className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Saved">
             {({ isActive }) => (
               <>
+                <span className={tabIndicator(isActive)} />
                 <Bookmark size={22} strokeWidth={isActive ? 2.5 : 1.75} fill={isActive ? 'currentColor' : 'none'} />
                 <span className="truncate w-full text-center">Saved</span>
               </>
@@ -100,6 +104,7 @@ const BottomNav: React.FC = () => {
           <NavLink to="/traditions" className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Traditions">
             {({ isActive }) => (
               <>
+                <span className={tabIndicator(isActive)} />
                 <ScrollText size={22} strokeWidth={isActive ? 2.5 : 1.75} />
                 <span className="truncate w-full text-center">Traditions</span>
               </>
@@ -110,6 +115,7 @@ const BottomNav: React.FC = () => {
           <NavLink to="/converse" className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Converse">
             {({ isActive }) => (
               <>
+                <span className={tabIndicator(isActive)} />
                 <MessageCircle size={22} strokeWidth={isActive ? 2.5 : 1.75} fill={isActive ? 'currentColor' : 'none'} />
                 <span className="truncate w-full text-center">Converse</span>
               </>
@@ -124,6 +130,7 @@ const BottomNav: React.FC = () => {
             aria-haspopup="dialog"
             aria-expanded={sheetOpen}
           >
+            <span className={tabIndicator(sheetOpen)} />
             <Menu size={22} strokeWidth={sheetOpen ? 2.5 : 1.75} />
             <span className="truncate w-full text-center">More</span>
           </button>

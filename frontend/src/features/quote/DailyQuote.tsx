@@ -17,6 +17,56 @@ import { AdBannerTop, AdBannerBottom, AdRail } from './AdBanner'
 const WeeklyTheme = lazy(() => import('./WeeklyTheme').then(m => ({ default: m.WeeklyTheme })))
 const MilestoneModal = lazy(() => import('../gamification/MilestoneModal').then(m => ({ default: m.MilestoneModal })))
 
+interface ResumeData {
+  slug: string
+  title: string
+  currentDay: number
+  totalDays: number
+}
+
+function readResumeData(): ResumeData | null {
+  try {
+    const raw = localStorage.getItem('rp-resume')
+    return raw ? (JSON.parse(raw) as ResumeData) : null
+  } catch {
+    return null
+  }
+}
+
+function ReadingPlanResumeCTA({ resume }: { resume: ResumeData }) {
+  const pct = Math.round((resume.currentDay / resume.totalDays) * 100)
+  return (
+    <Link
+      to={`/reading-plans/${resume.slug}`}
+      className="max-w-2xl mx-auto mt-8 flex items-center gap-4 rounded-2xl px-4 py-3.5
+                 border border-primary-200 dark:border-[rgba(255,255,255,0.07)]
+                 bg-surface-card hover:border-accent/40 dark:hover:border-star-gold/30
+                 transition-colors group"
+    >
+      <div className="flex-1 min-w-0">
+        <p className="font-display text-[10px] tracking-[0.15em] uppercase text-primary-400 dark:text-night-400 mb-0.5">
+          Continue reading plan
+        </p>
+        <p className="font-display text-sm text-primary-800 dark:text-primary-800 truncate">
+          {resume.title}
+        </p>
+        <div className="flex items-center gap-2 mt-2">
+          <div className="flex-1 h-1 rounded-full bg-primary-100 dark:bg-primary-100 overflow-hidden">
+            <div
+              className="h-full rounded-full bg-accent dark:bg-star-gold transition-all"
+              style={{ width: `${pct}%` }}
+            />
+          </div>
+          <span className="font-sans text-[10px] text-primary-400 dark:text-night-400 shrink-0">
+            Day {resume.currentDay}/{resume.totalDays}
+          </span>
+        </div>
+      </div>
+      <span className="text-primary-300 dark:text-night-500 group-hover:text-accent dark:group-hover:text-star-gold transition-colors text-lg leading-none">›</span>
+    </Link>
+  )
+}
+
 export const DailyQuote = () => {
   const [scrollY, setScrollY] = useState(0)
   const queryClient = useQueryClient()
@@ -31,6 +81,7 @@ export const DailyQuote = () => {
   const { milestone, dismissMilestone } = useMilestone(streak?.current_streak)
   const { isAuthenticated, isGuest } = useAuth()
   const isRealUser = isAuthenticated && !isGuest
+  const [resumeData] = useState<ResumeData | null>(readResumeData)
 
   const handleRefresh = useCallback(async () => {
     await refetch()
@@ -50,7 +101,8 @@ export const DailyQuote = () => {
     }
   }, [data?.quote?.id, isRealUser])
 
-  if (isError) return (
+  // Only show the hard error screen if we have no cached data to fall back on
+  if (isError && !data) return (
     <div className="text-center py-24 text-primary-400 font-sans">
       <p className="text-lg mb-2">The scroll is unavailable.</p>
       <p className="text-sm">Check your connection and try again.</p>
@@ -65,6 +117,14 @@ export const DailyQuote = () => {
       onTouchEnd={onTouchEnd}
     >
       <PullRefreshIndicator progress={pullProgress} isRefreshing={isRefreshing} />
+
+      {/* Offline banner — shown when network failed but cached quote is available */}
+      {isError && data && (
+        <div className="flex items-center justify-center gap-1.5 mb-3 text-primary-400 dark:text-night-500 font-sans text-[11px]">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-300 dark:bg-night-600" />
+          Offline · showing last saved quote
+        </div>
+      )}
 
       {/* Date header — parallax drifts slower than page scroll */}
       <header
@@ -122,6 +182,11 @@ export const DailyQuote = () => {
           </Link>
         </div>
       ) : null}
+
+      {/* Reading plan resume — only shown for authenticated users with an active plan */}
+      {isRealUser && resumeData && (
+        <ReadingPlanResumeCTA resume={resumeData} />
+      )}
 
       {/* Weekly theme — 7 curated passages for this week's focus */}
       <Suspense fallback={null}>

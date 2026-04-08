@@ -1,10 +1,10 @@
 // import toast library
 import { toast } from "react-hot-toast";
 
-// create a utility function to show success toast  
 export const showToast = {
-    success: (message: string) => {
+    success: (message: string, id?: string) => {
         toast.success(message, {
+            id,
             duration: 3000,
             style: {
                 background: '#4BB543',
@@ -16,10 +16,10 @@ export const showToast = {
             },
         });
     },
-    
-    // create a utility function to show error toast
-    error: (message: string) => {
+
+    error: (message: string, id?: string) => {
         toast.error(message, {
+            id,
             duration: 4000,
             style: {
                 background: '#FF3333',
@@ -31,26 +31,25 @@ export const showToast = {
             },
         });
     },
-    // loading toast
-    loading: (message: string) => {
-        return toast.loading(message)
+
+    loading: (message: string, id?: string) => {
+        return toast.loading(message, { id });
     },
 
-    // promist
     promise: <T,>(
         promise: Promise<T>,
-        messages: { 
-            loading: string; 
-            success: string; 
-            error: string; 
+        messages: {
+            loading: string;
+            success: string;
+            error: string;
         }
     ) => {
         return toast.promise(promise, messages);
     },
 
-    // info toast
-    info: (message: string) => {
+    info: (message: string, id?: string) => {
         toast(message, {
+            id,
             duration: 3000,
             icon: 'ℹ️',
             style: {
@@ -60,9 +59,7 @@ export const showToast = {
         });
     },
 
-    // dismiss toast
     dismiss: (toastId?: string) => {
         toast.dismiss(toastId);
     }
-
 }

@@ -2,6 +2,7 @@
 
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { PageLoader } from './components/common/Loading'
 import { AuthProvider } from './contexts/AuthContext'
 import { SubscriptionProvider } from './contexts/SubscriptionContext'
 import { ThemeProvider } from './contexts/ThemeContext'
@@ -66,7 +67,7 @@ export default function App() {
                 },
               }}
             />
-            <Suspense fallback={null}>
+            <Suspense fallback={<PageLoader />}>
             <Routes>
               {/* Onboarding — full-screen, no nav */}
               <Route path="onboarding" element={<OnboardingFlow />} />
