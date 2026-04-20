@@ -93,7 +93,7 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
         <div className="h-0.5 w-full shrink-0" style={{ background: accentColor }} />
 
         {/* Scrollable content */}
-        <div className="overflow-y-auto flex-1 flex flex-col p-5 sm:p-6">
+        <div className="overflow-y-auto flex-1 flex flex-col p-5 sm:p-6 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
 
           {/* Header */}
           <div className="flex items-start justify-between mb-5">
@@ -207,7 +207,7 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
                   }}
                   placeholder={`Ask ${displayAuthor?.name ?? 'them'} anything…`}
                   maxLength={MAX_CHARS}
-                  className="flex-1 w-full rounded-[8px] px-3 py-2.5 text-sm font-sans resize-none transition-colors
+                  className="flex-1 w-full rounded-[8px] px-3 py-2.5 text-[16px] md:text-sm font-sans resize-none transition-colors
                              bg-primary-50 border border-primary-200/80 text-primary-800 placeholder-primary-400
                              focus:outline-none focus:ring-2 focus:border-transparent
                              dark:bg-[rgba(255,255,255,0.05)] dark:border-[rgba(255,255,255,0.10)]

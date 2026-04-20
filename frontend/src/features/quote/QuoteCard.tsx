@@ -219,7 +219,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
           On xs screens: icon-only pills (4 fit comfortably at px-3).
           On sm+: icons + text labels. */}
       {!compact && (
-        <div className="flex items-center justify-center gap-1.5 mt-4">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 mt-4">
           <button
             onClick={handleSave}
             className={`flex items-center gap-1 sm:gap-1.5 text-sm font-sans rounded-full px-3 sm:px-4 py-2 transition-colors ${

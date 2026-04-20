@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { Button } from '../../components/common/Button'
 import { commentService } from '../../services/api/comment'
 import { useAuth } from '../../hooks/useAuth'
+import { showToast } from '../../utils/toast'
 import type { Comment } from '../../types/comment'
 
 interface Props {
@@ -36,6 +37,7 @@ export const CommentSection = ({ quoteId, onAuthRequired }: Props) => {
     } catch {
       setComment(null)
       setCommentText('')
+      showToast.error('Could not load your meditation. Please try again.')
     }
   }, [quoteId, isAuthenticated])
 
@@ -204,7 +206,7 @@ export const CommentSection = ({ quoteId, onAuthRequired }: Props) => {
               value={commentText}
               onChange={e => setCommentText(e.target.value)}
               placeholder="Write your meditation on this quote..."
-              className="w-full px-4 py-3 font-sans text-sm text-primary-800 bg-surface-elevated border border-primary-200 rounded-card focus:ring-2 focus:ring-accent/40 focus:border-accent resize-none outline-none"
+              className="w-full px-4 py-3 font-sans text-[16px] md:text-sm text-primary-800 bg-surface-elevated border border-primary-200 rounded-card focus:ring-2 focus:ring-accent/40 focus:border-accent resize-none outline-none"
               rows={4}
               maxLength={1000}
               autoFocus

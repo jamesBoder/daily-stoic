@@ -105,7 +105,13 @@ export const DailyQuote = () => {
   if (isError && !data) return (
     <div className="text-center py-24 text-primary-400 font-sans">
       <p className="text-lg mb-2">The scroll is unavailable.</p>
-      <p className="text-sm">Check your connection and try again.</p>
+      <p className="text-sm mb-6">Check your connection and try again.</p>
+      <button
+        onClick={() => refetch()}
+        className="font-sans text-sm text-accent border border-accent/40 rounded-full px-5 py-2 hover:bg-accent hover:text-white transition-colors"
+      >
+        Try again
+      </button>
     </div>
   )
 

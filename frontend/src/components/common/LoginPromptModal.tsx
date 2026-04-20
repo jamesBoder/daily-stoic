@@ -14,6 +14,12 @@ export const LoginPromptModal = ({ action, onClose }: { action: string; onClose:
     return () => document.removeEventListener('keydown', handler)
   }, [onClose])
 
+  useEffect(() => {
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = prev }
+  }, [])
+
   return createPortal(
     <div
       ref={backdropRef}

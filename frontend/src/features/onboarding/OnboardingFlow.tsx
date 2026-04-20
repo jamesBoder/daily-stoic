@@ -517,7 +517,7 @@ export function OnboardingFlow() {
           <p className="font-display text-[10px] uppercase tracking-[0.35em] text-[#d4a853] text-center mb-3">
             {meta.eyebrow}
           </p>
-          <h1 className="font-display text-[2.6rem] leading-tight text-center text-[#ede5d0] mb-4"
+          <h1 className="font-display text-[1.9rem] sm:text-[2.6rem] leading-tight text-center text-[#ede5d0] mb-4"
             style={{ fontVariant: 'small-caps' }}>
             {meta.title[0]}<br />{meta.title[1]}
           </h1>

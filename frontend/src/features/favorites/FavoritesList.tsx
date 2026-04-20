@@ -194,7 +194,9 @@ export const FavoritesList: React.FC = () => {
       await navigator.clipboard.writeText(buildShareText(quote));
       setCopiedId(id);
       setTimeout(() => setCopiedId(null), 2000);
-    } catch {}
+    } catch {
+      showToast.error(t('favorites.copyFailed', 'Could not copy to clipboard'));
+    }
   };
 
   const handleTwitterShare = (quote: Quote, e: React.MouseEvent) => {
@@ -218,7 +220,9 @@ export const FavoritesList: React.FC = () => {
       await navigator.clipboard.writeText(buildShareText(quote));
       setCopiedId(id);
       setTimeout(() => setCopiedId(null), 2000);
-    } catch {}
+    } catch {
+      showToast.error(t('favorites.copyFailed', 'Could not copy to clipboard'));
+    }
     window.open("https://www.instagram.com/", "_blank", "noopener,noreferrer");
   };
 
@@ -226,7 +230,11 @@ export const FavoritesList: React.FC = () => {
     e.stopPropagation();
     try {
       await navigator.share({ title: "Stoic Quote", text: buildShareText(quote) });
-    } catch {}
+    } catch (err) {
+      if (err instanceof Error && err.name !== 'AbortError') {
+        showToast.error(t('favorites.shareFailed', 'Could not share quote'));
+      }
+    }
   };
 
   const toggleDirection = () =>
@@ -306,15 +314,16 @@ export const FavoritesList: React.FC = () => {
             </p>
           </div>
 
-          <div className="flex items-center gap-2 w-full sm:w-auto">
+          <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
             <label htmlFor="sort-field" className="font-sans text-sm text-primary-600 whitespace-nowrap">
               {t('favorites.sortBy')}:
             </label>
+            <div className="flex items-center gap-2 flex-1 sm:flex-none min-w-0">
             <select
               id="sort-field"
               value={sortField}
               onChange={(e) => setSortField(e.target.value as SortField)}
-              className="font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer"
+              className="font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent cursor-pointer flex-1 sm:flex-none min-w-0"
             >
               {SORT_OPTIONS.map((opt) => (
                 <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -324,7 +333,7 @@ export const FavoritesList: React.FC = () => {
             <button
               onClick={toggleDirection}
               title={sortDirection === "asc" ? t('favorites.ascending') : t('favorites.descending')}
-              className="flex items-center gap-1 px-3 py-2 font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-600 hover:bg-surface-elevated active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-accent"
+              className="flex items-center gap-1 px-3 py-2 font-sans text-sm rounded-stone border border-primary-200 bg-surface-card text-primary-600 hover:bg-surface-elevated active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-accent shrink-0"
             >
               {sortDirection === "asc" ? (
                 <>

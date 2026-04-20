@@ -31,8 +31,8 @@ export const Profile: React.FC = () => {
       setIsLoading(true);
       const data = await profileService.getProfile(); // ✅ No userId
       setProfile(data);
-    } catch (err: any) {
-      setError(err.message || t("profile.failedToLoad"));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : t("profile.failedToLoad"));
     } finally {
       setIsLoading(false);
     }

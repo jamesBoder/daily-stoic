@@ -27,7 +27,7 @@ export const Login: React.FC = () => {
 
     try {
       await login({ email, password, rememberMe })
-      const from = (location.state as any)?.from?.pathname || '/'
+      const from = (location.state as { from?: { pathname: string } } | null)?.from?.pathname || '/'
       navigate(from, { replace: true })
     } catch (err: any) {
       const errorMessage = err.response?.data?.error ||
