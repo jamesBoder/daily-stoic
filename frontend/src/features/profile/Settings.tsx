@@ -7,6 +7,7 @@ import { GuestAccountManagement } from "./GuestAccountManagement";
 import { ProfileEditForm } from "./ProfileEditForm";
 import { profileService } from "../../services/api/profile";
 import { UserProfile } from "../../types/profile";
+import { formatDate } from "../../utils/date";
 import { useTheme } from "../../contexts/ThemeContext";
 import { useAuth } from "../../hooks/useAuth";
 import { useLanguage } from "../../contexts/LanguageContext";
@@ -121,6 +122,7 @@ export const Settings: React.FC = () => {
           });
         } catch (error) {
           console.error("Failed to load settings:", error);
+          showToast.error(t("settings.loadFailed", "Failed to load settings"));
         }
       }
     };
@@ -221,9 +223,7 @@ export const Settings: React.FC = () => {
                       <div>
                         <p className="text-xs font-medium text-primary-400 dark:text-primary-500">{t("profile.memberSince", "Member since")}</p>
                         <p className="text-base text-primary-800 dark:text-primary-100">
-                          {new Date(profile.created_at).toLocaleDateString(i18n.language, {
-                            year: "numeric", month: "long", day: "numeric",
-                          })}
+                          {formatDate(profile.created_at)}
                         </p>
                       </div>
                     </div>

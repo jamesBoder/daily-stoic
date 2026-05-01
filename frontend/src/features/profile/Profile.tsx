@@ -8,6 +8,7 @@ import { ProfileEditForm } from "./ProfileEditForm";
 import { Card } from "../../components/common/Card";
 import { Button } from "../../components/common/Button";
 import { VerseCardSkeleton } from "../../components/common/Skeleton";
+import { formatDate } from "../../utils/date";
 import JourneyStats from "./JourneyStats";
 import NextMilestoneBar from "./NextMilestoneBar";
 import { useStreak } from "../../hooks/useStreak";
@@ -142,7 +143,7 @@ export const Profile: React.FC = () => {
                 {t("profile.memberSince")}
               </p>
               <p className="font-sans text-base text-primary-800 dark:text-[#e0ddd4] mt-0.5">
-                {new Date(profile.created_at).toLocaleDateString(i18n.language, { year: "numeric", month: "long", day: "numeric" })}
+                {formatDate(profile.created_at)}
               </p>
             </div>
           </div>

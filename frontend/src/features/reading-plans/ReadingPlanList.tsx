@@ -99,7 +99,7 @@ function PlanCard({ plan, isPremium }: { plan: ReadingPlan; isPremium: boolean }
         </div>
 
         {/* Title */}
-        <h2 className="font-display text-lg leading-snug text-primary-800 dark:text-primary-800 mb-1.5 group-hover:text-accent dark:group-hover:text-accent transition-colors">
+        <h2 className="font-display text-lg leading-snug text-primary-800 dark:text-[#e0ddd4] mb-1.5 group-hover:text-accent dark:group-hover:text-star-gold transition-colors">
           {plan.title}
         </h2>
 
@@ -114,7 +114,7 @@ function PlanCard({ plan, isPremium }: { plan: ReadingPlan; isPremium: boolean }
         )}
 
         {/* Description */}
-        <p className="font-sans text-sm text-primary-500 dark:text-primary-500 leading-relaxed line-clamp-2">
+        <p className="font-sans text-sm text-primary-500 dark:text-night-400 leading-relaxed line-clamp-2">
           {plan.description}
         </p>
 
@@ -147,14 +147,14 @@ function PlanSkeleton() {
   return (
     <div className="rounded-2xl border border-primary-200 dark:border-[rgba(255,255,255,0.07)] bg-surface-card p-5 space-y-3 animate-pulse">
       <div className="flex items-start gap-3">
-        <div className="w-11 h-11 rounded-xl bg-primary-200 dark:bg-primary-200" />
+        <div className="w-11 h-11 rounded-xl bg-primary-200 dark:bg-night-700/50" />
         <div className="flex-1 space-y-2 pt-1">
-          <div className="h-3 w-20 rounded bg-primary-200 dark:bg-primary-200" />
-          <div className="h-5 w-3/4 rounded bg-primary-200 dark:bg-primary-200" />
+          <div className="h-3 w-20 rounded bg-primary-200 dark:bg-night-700/50" />
+          <div className="h-5 w-3/4 rounded bg-primary-200 dark:bg-night-700/50" />
         </div>
       </div>
-      <div className="h-3 rounded bg-primary-200 dark:bg-primary-200" />
-      <div className="h-3 w-2/3 rounded bg-primary-200 dark:bg-primary-200" />
+      <div className="h-3 rounded bg-primary-200 dark:bg-night-700/50" />
+      <div className="h-3 w-2/3 rounded bg-primary-200 dark:bg-night-700/50" />
     </div>
   )
 }
@@ -182,10 +182,10 @@ export function ReadingPlanList() {
         <p className="font-display text-[10px] tracking-[0.3em] uppercase text-accent mb-3">
           Curated Journeys
         </p>
-        <h1 className="font-display text-3xl text-primary-800 dark:text-primary-800 mb-4 title-glow-hover">
+        <h1 className="font-display text-3xl text-primary-800 dark:text-[#e8e0cc] mb-4 title-glow-hover">
           Reading Plans
         </h1>
-        <p className="font-sans text-sm text-primary-500 dark:text-primary-500 max-w-xs mx-auto leading-relaxed">
+        <p className="font-sans text-sm text-primary-500 dark:text-night-400 max-w-xs mx-auto leading-relaxed">
           Multi-week immersions through the great wisdom traditions, one passage at a time.
         </p>
       </div>
@@ -224,11 +224,11 @@ export function ReadingPlanList() {
 function SectionLabel({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3 mb-4">
-      <div className="h-px flex-1 bg-primary-200 dark:bg-primary-200" />
-      <span className="font-display text-[9px] tracking-[0.25em] uppercase text-primary-400 dark:text-primary-400">
+      <div className="h-px flex-1 bg-primary-200 dark:bg-[rgba(255,255,255,0.08)]" />
+      <span className="font-display text-[9px] tracking-[0.25em] uppercase text-primary-400 dark:text-night-400">
         {label}
       </span>
-      <div className="h-px flex-1 bg-primary-200 dark:bg-primary-200" />
+      <div className="h-px flex-1 bg-primary-200 dark:bg-[rgba(255,255,255,0.08)]" />
     </div>
   )
 }

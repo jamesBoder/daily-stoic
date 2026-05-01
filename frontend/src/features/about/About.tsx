@@ -40,7 +40,7 @@ function TraditionPill({ name, icon, tier }: { name: string; icon: string; tier:
     <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-sans ${
       isPremium
         ? 'border-accent/30 text-accent/70 dark:text-accent bg-accent/5'
-        : 'border-primary-200 dark:border-[rgba(255,255,255,0.08)] text-primary-600 dark:text-primary-600 bg-surface-card'
+        : 'border-primary-200 dark:border-[rgba(255,255,255,0.08)] text-primary-600 dark:text-night-300 bg-surface-card'
     }`}>
       <span className="text-[11px] select-none">{icon}</span>
       {name}
@@ -58,8 +58,8 @@ function Feature({ icon, title, description }: { icon: string; title: string; de
         {icon}
       </div>
       <div>
-        <h3 className="font-display text-sm text-primary-800 dark:text-primary-800 mb-1">{title}</h3>
-        <p className="font-sans text-sm text-primary-500 dark:text-primary-500 leading-relaxed">{description}</p>
+        <h3 className="font-display text-sm text-primary-800 dark:text-[#e0ddd4] mb-1">{title}</h3>
+        <p className="font-sans text-sm text-primary-500 dark:text-night-400 leading-relaxed">{description}</p>
       </div>
     </div>
   )
@@ -80,11 +80,11 @@ export const About: React.FC = () => {
         <div className="font-display text-3xl text-accent dark:text-accent mb-6 select-none logo-glow-hover">
           <WordMark />
         </div>
-        <h1 className="font-serif text-4xl md:text-5xl text-primary-900 dark:text-primary-900 leading-tight mb-5 title-glow-hover">
+        <h1 className="font-serif text-4xl md:text-5xl text-primary-900 dark:text-[#e8e0cc] leading-tight mb-5 title-glow-hover">
           Ancient wisdom.<br />One passage a day.
         </h1>
         <div className="w-10 border-t border-accent/40 mx-auto mb-6" />
-        <p className="font-sans text-base text-primary-500 dark:text-primary-500 leading-relaxed max-w-md mx-auto">
+        <p className="font-sans text-base text-primary-500 dark:text-night-400 leading-relaxed max-w-md mx-auto">
           A daily reading practice drawing from fifteen philosophical traditions — Stoicism,
           Hermeticism, Buddhism, Vedanta, and beyond — presented as beautiful oracle-deck cards,
           with reading plans, author profiles, and weekly themes to deepen the practice.
@@ -100,7 +100,7 @@ export const About: React.FC = () => {
             </Link>
             <Link
               to="/auth/login"
-              className="font-sans text-sm text-primary-500 dark:text-primary-500 hover:text-accent transition-colors"
+              className="font-sans text-sm text-primary-500 dark:text-night-400 hover:text-accent transition-colors"
             >
               Sign in
             </Link>
@@ -158,7 +158,7 @@ export const About: React.FC = () => {
       {/* ── Traditions ── */}
       <section className="max-w-2xl mx-auto px-5 py-12 border-t border-primary-200 dark:border-[rgba(255,255,255,0.07)]">
         <SectionLabel label="Traditions" />
-        <p className="font-sans text-sm text-primary-500 dark:text-primary-500 leading-relaxed mb-6">
+        <p className="font-sans text-sm text-primary-500 dark:text-night-400 leading-relaxed mb-6">
           Content spans fifteen philosophical traditions. Free-tier traditions are available immediately.
           Traditions marked <span className="text-accent">✦</span> require Practitioner access.
         </p>
@@ -187,10 +187,10 @@ export const About: React.FC = () => {
                 ✦
               </div>
               <div>
-                <h3 className="font-display text-base text-primary-800 dark:text-primary-800 mb-1">
+                <h3 className="font-display text-base text-primary-800 dark:text-[#e0ddd4] mb-1">
                   Practitioner — $14.99 lifetime
                 </h3>
-                <p className="font-sans text-sm text-primary-500 dark:text-primary-500 leading-relaxed">
+                <p className="font-sans text-sm text-primary-500 dark:text-night-400 leading-relaxed">
                   One payment. Permanent access. No subscription.
                 </p>
               </div>
@@ -202,7 +202,7 @@ export const About: React.FC = () => {
                 'Extended commentaries and practice prompts on all passages',
                 'Ad-free experience',
               ].map(item => (
-                <li key={item} className="flex items-start gap-2.5 font-sans text-sm text-primary-600 dark:text-primary-600">
+                <li key={item} className="flex items-start gap-2.5 font-sans text-sm text-primary-600 dark:text-night-300">
                   <span className="flex-shrink-0 text-accent mt-0.5 text-xs">✓</span>
                   {item}
                 </li>
@@ -221,7 +221,7 @@ export const About: React.FC = () => {
       {/* ── Philosophy ── */}
       <section className="max-w-2xl mx-auto px-5 py-12 border-t border-primary-200 dark:border-[rgba(255,255,255,0.07)]">
         <SectionLabel label="Why this app exists" />
-        <div className="space-y-4 font-sans text-sm text-primary-600 dark:text-primary-600 leading-relaxed">
+        <div className="space-y-4 font-sans text-sm text-primary-600 dark:text-night-300 leading-relaxed">
           <p>
             Most of the wisdom in these texts is not hidden — it is simply unread.
             The <em>Meditations</em> are available for free in a dozen translations.
@@ -247,7 +247,7 @@ export const About: React.FC = () => {
       {/* ── Contact ── */}
       <section className="max-w-2xl mx-auto px-5 py-12 border-t border-primary-200 dark:border-[rgba(255,255,255,0.07)]">
         <SectionLabel label="Contact" />
-        <div className="space-y-3 font-sans text-sm text-primary-500 dark:text-primary-500">
+        <div className="space-y-3 font-sans text-sm text-primary-500 dark:text-night-400">
           <p>
             Found a bug or have a suggestion?{' '}
             <a

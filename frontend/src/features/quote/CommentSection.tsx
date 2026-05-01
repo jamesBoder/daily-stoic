@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Button } from '../../components/common/Button'
 import { commentService } from '../../services/api/comment'
+import { formatDate } from '../../utils/date'
 import { useAuth } from '../../hooks/useAuth'
 import { showToast } from '../../utils/toast'
 import type { Comment } from '../../types/comment'
@@ -135,7 +136,7 @@ export const CommentSection = ({ quoteId, onAuthRequired }: Props) => {
       </div>
 
       <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
-        isVisible ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+        isVisible ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
       }`}>
         {error && (
           <div className="mb-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm font-sans">
@@ -194,7 +195,7 @@ export const CommentSection = ({ quoteId, onAuthRequired }: Props) => {
               )}
             </div>
             <p className="font-sans text-xs text-primary-400 mt-2">
-              Last updated {new Date(comment.updated_at).toLocaleDateString()}
+              Last updated {formatDate(comment.updated_at)}
             </p>
           </div>
         )}
@@ -206,7 +207,7 @@ export const CommentSection = ({ quoteId, onAuthRequired }: Props) => {
               value={commentText}
               onChange={e => setCommentText(e.target.value)}
               placeholder="Write your meditation on this quote..."
-              className="w-full px-4 py-3 font-sans text-[16px] md:text-sm text-primary-800 bg-surface-elevated border border-primary-200 rounded-card focus:ring-2 focus:ring-accent/40 focus:border-accent resize-none outline-none"
+              className="w-full px-4 py-3 font-sans text-[16px] md:text-sm text-primary-800 bg-surface-elevated border border-primary-200 rounded-card focus:ring-2 focus:ring-accent/40 focus:border-accent resize-none outline-none min-h-[96px] max-h-[200px] overflow-y-auto"
               rows={4}
               maxLength={1000}
               autoFocus

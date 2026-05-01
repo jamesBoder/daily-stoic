@@ -2,6 +2,7 @@ import React, { useMemo, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFavorites } from "../../hooks/useFavorites";
 import { Card } from "../../components/common/Card";
+import { formatDate } from "../../utils/date";
 import { Button } from "../../components/common/Button";
 import { CommentSection } from "../quote/CommentSection";
 import { useTranslation } from "react-i18next";
@@ -352,6 +353,7 @@ export const FavoritesList: React.FC = () => {
               )}
             </button>
           </div>
+          </div>
         </div>
 
         {/* Keyword filter */}
@@ -438,7 +440,7 @@ export const FavoritesList: React.FC = () => {
                     </div>
 
                     <p className="font-sans text-xs text-primary-500 mt-2">
-                      {t('favorites.added')} {new Date(favorite.created_at).toLocaleDateString()}
+                      {t('favorites.added')} {formatDate(favorite.created_at)}
                     </p>
 
                     {isSelected && (

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { historyService } from '../../services/api/history'
 import type { HistoryEntry } from '../../types/history'
+import { formatDateShort } from '../../utils/date'
 
 const PAGE_SIZE = 20
 
@@ -37,10 +38,7 @@ const HistoryEntryCard = ({ entry }: { entry: HistoryEntry }) => {
           className="font-sans text-xs text-primary-500 whitespace-nowrap mt-0.5 shrink-0"
           dateTime={entry.viewed_at}
         >
-          {new Date(entry.viewed_at).toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-          })}
+          {formatDateShort(entry.viewed_at)}
         </time>
       </div>
     </article>

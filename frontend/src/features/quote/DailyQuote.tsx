@@ -12,6 +12,7 @@ import { useAuth } from '../../hooks/useAuth'
 import { Link } from 'react-router-dom'
 import { usePullToRefresh } from '../../hooks/usePullToRefresh'
 import PullRefreshIndicator from '../../components/common/PullRefreshIndicator'
+import { todayDisplay } from '../../utils/date'
 import { AdBannerTop, AdBannerBottom, AdRail } from './AdBanner'
 
 const WeeklyTheme = lazy(() => import('./WeeklyTheme').then(m => ({ default: m.WeeklyTheme })))
@@ -47,11 +48,11 @@ function ReadingPlanResumeCTA({ resume }: { resume: ResumeData }) {
         <p className="font-display text-[10px] tracking-[0.15em] uppercase text-primary-400 dark:text-night-400 mb-0.5">
           Continue reading plan
         </p>
-        <p className="font-display text-sm text-primary-800 dark:text-primary-800 truncate">
+        <p className="font-display text-sm text-primary-800 dark:text-[#e0ddd4] truncate">
           {resume.title}
         </p>
         <div className="flex items-center gap-2 mt-2">
-          <div className="flex-1 h-1 rounded-full bg-primary-100 dark:bg-primary-100 overflow-hidden">
+          <div className="flex-1 h-1 rounded-full bg-primary-100 dark:bg-night-700/50 overflow-hidden">
             <div
               className="h-full rounded-full bg-accent dark:bg-star-gold transition-all"
               style={{ width: `${pct}%` }}
@@ -138,9 +139,7 @@ export const DailyQuote = () => {
         style={{ transform: `translateY(${scrollY * 0.18}px)`, willChange: 'transform' }}
       >
         <p className="font-display text-xs tracking-widest uppercase text-primary-400">
-          {new Date().toLocaleDateString('en-US', {
-            weekday: 'long', month: 'long', day: 'numeric'
-          })}
+          {todayDisplay()}
         </p>
         <h1 className="font-display text-2xl text-primary-800 mt-1 cursor-default animate-title-glow transition-all duration-400 hover:tracking-widest hover:text-accent-dark dark:hover:text-star-gold">
           Daily Meditation

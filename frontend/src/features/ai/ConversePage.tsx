@@ -152,7 +152,8 @@ function ConversationPanel({
     clearResponse()
     reset()
     setQuestion('')
-    setTimeout(() => textareaRef.current?.focus(), 50)
+    const t = setTimeout(() => textareaRef.current?.focus(), 50)
+    return () => clearTimeout(t)
   }
 
   return (
@@ -317,7 +318,7 @@ function ConversationPanel({
 // ── Main ConversePage ─────────────────────────────────────────────────────────
 
 export function ConversePage() {
-  const { data: authors = [], isLoading } = useAuthors()
+  const { data: authors = [], isLoading, isError } = useAuthors()
   const [selectedId, setSelectedId]       = useState<number | null>(null)
   const isDark                            = useIsDark()
 
@@ -356,7 +357,13 @@ export function ConversePage() {
           </div>
         )}
 
-        {!isLoading && (
+        {isError && (
+          <p className="font-sans text-sm text-primary-400 dark:text-night-500 text-center py-16">
+            Could not load philosophers. Is the backend running?
+          </p>
+        )}
+
+        {!isLoading && !isError && (
           <div className="flex flex-col lg:flex-row gap-6">
 
             {/* Left: philosopher grid */}

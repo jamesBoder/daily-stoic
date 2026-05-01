@@ -8,6 +8,7 @@ import { quotesApi } from '../../services/api/quotes'
 import type { Week } from '../../types/week'
 import type { Quote } from '../../types/quote'
 import { useSubscription } from '../../contexts/SubscriptionContext'
+import { formatDateShort } from '../../utils/date'
 
 // ── Single quote row ──────────────────────────────────────────────────────────
 
@@ -32,7 +33,7 @@ function QuoteRow({ quote, isPremium }: { quote: Quote; isPremium: boolean }) {
 
   return (
     <div className="py-3 border-b border-primary-100 dark:border-[rgba(255,255,255,0.06)] last:border-0">
-      <p className="font-serif text-sm leading-relaxed text-primary-800 dark:text-primary-800 italic mb-1.5">
+      <p className="font-serif text-sm leading-relaxed text-primary-800 dark:text-[#e0ddd4] italic mb-1.5">
         "{quote.text}"
       </p>
       <div className="flex items-center gap-1.5 flex-wrap">
@@ -60,25 +61,25 @@ export function WeeklyTheme() {
   const [week, setWeek] = useState<Week | null>(null)
   const [expanded, setExpanded] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [fetchError, setFetchError] = useState(false)
   const { isPremium } = useSubscription()
 
   useEffect(() => {
     quotesApi.getWeek()
       .then(r => setWeek(r.week))
+      .catch(() => setFetchError(true))
       .finally(() => setLoading(false))
   }, [])
 
-  if (loading || !week) return null
+  if (loading) return null
+  if (fetchError || !week || (week.quotes ?? []).length === 0) return null
 
   const quotes   = week.quotes ?? []
   const first    = quotes[0]
   const rest     = quotes.slice(1)
   const hasMore  = rest.length > 0
 
-  // Day range display
-  const fmt = (d: string) =>
-    new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-  const dateRange = `${fmt(week.start_date)} – ${fmt(week.end_date)}`
+  const dateRange = `${formatDateShort(week.start_date)} – ${formatDateShort(week.end_date)}`
 
   return (
     <section className="max-w-2xl mx-auto mt-12 px-4">
@@ -87,7 +88,7 @@ export function WeeklyTheme() {
         <div className="h-px flex-1 bg-primary-200 dark:bg-[rgba(255,255,255,0.08)]" />
         <div className="flex items-center gap-2">
           <span className="text-accent text-[10px] select-none">✦</span>
-          <span className="font-display text-[9px] tracking-[0.25em] uppercase text-primary-500 dark:text-primary-500">
+          <span className="font-display text-[9px] tracking-[0.25em] uppercase text-primary-500 dark:text-night-400">
             {week.title}
           </span>
           <span className="text-accent text-[10px] select-none">✦</span>
@@ -100,7 +101,7 @@ export function WeeklyTheme() {
         {/* Description header */}
         {week.description && (
           <div className="px-5 pt-5 pb-4 border-b border-primary-100 dark:border-[rgba(255,255,255,0.06)]">
-            <p className="font-sans text-sm text-primary-500 dark:text-primary-500 leading-relaxed">
+            <p className="font-sans text-sm text-primary-500 dark:text-night-400 leading-relaxed">
               {week.description}
             </p>
             <p className="font-sans text-[10px] text-primary-300 dark:text-primary-300 mt-2">

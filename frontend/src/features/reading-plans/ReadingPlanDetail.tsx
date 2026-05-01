@@ -49,7 +49,7 @@ function EntryCard({
         >
           ✓
         </div>
-        <p className="font-sans text-xs text-primary-400 dark:text-primary-400 line-through">
+        <p className="font-sans text-xs text-primary-400 dark:text-night-400 line-through">
           Day {entry.day_number} · {entry.title}
         </p>
       </div>
@@ -93,12 +93,12 @@ function EntryCard({
 
         <div className="flex-1 min-w-0">
           <p className={`font-display text-sm leading-snug ${
-            isCurrentDay ? 'text-primary-800 dark:text-primary-800' : 'text-primary-700 dark:text-primary-700'
+            isCurrentDay ? 'text-primary-800 dark:text-[#e0ddd4]' : 'text-primary-700 dark:text-[#e0ddd4]'
           }`}>
             {entry.title}
           </p>
           {entry.quote?.author && (
-            <p className="font-sans text-[11px] text-primary-400 dark:text-primary-400 mt-0.5 truncate">
+            <p className="font-sans text-[11px] text-primary-400 dark:text-night-500 mt-0.5 truncate">
               {entry.quote.author.name}
             </p>
           )}
@@ -121,7 +121,7 @@ function EntryCard({
       {open && !isLocked && (
         <div className="bg-surface-card border-t border-primary-100 dark:border-[rgba(255,255,255,0.06)] px-4 pb-5 pt-4">
           {entry.intro_text && (
-            <p className="font-sans text-sm text-primary-500 dark:text-primary-500 leading-relaxed mb-4">
+            <p className="font-sans text-sm text-primary-500 dark:text-night-400 leading-relaxed mb-4">
               {entry.intro_text}
             </p>
           )}
@@ -134,7 +134,7 @@ function EntryCard({
                 style={{ background: accentColor, opacity: 0.6 }}
               />
 
-              <blockquote className="font-serif text-base leading-relaxed text-primary-900 dark:text-primary-900 italic mb-3">
+              <blockquote className="font-serif text-base leading-relaxed text-primary-900 dark:text-[#ede8dc] italic mb-3">
                 "{entry.quote.text}"
               </blockquote>
 
@@ -149,7 +149,7 @@ function EntryCard({
                   </Link>
                 )}
                 {entry.quote.source && (
-                  <span className="font-sans text-[10px] italic text-primary-400 dark:text-primary-400">
+                  <span className="font-sans text-[10px] italic text-primary-400 dark:text-night-500">
                     · {entry.quote.source}
                   </span>
                 )}
@@ -163,7 +163,7 @@ function EntryCard({
                   >
                     Commentary
                   </p>
-                  <p className="font-sans text-sm text-primary-600 dark:text-primary-600 leading-relaxed">
+                  <p className="font-sans text-sm text-primary-600 dark:text-night-400 leading-relaxed">
                     {entry.quote.context_full}
                   </p>
                 </div>
@@ -204,14 +204,14 @@ function ProgressBar({ currentDay, totalDays, accentColor }: { currentDay: numbe
   return (
     <div>
       <div className="flex justify-between items-center mb-1.5">
-        <span className="font-sans text-xs text-primary-500 dark:text-primary-500">
+        <span className="font-sans text-xs text-primary-500 dark:text-night-400">
           Day {currentDay} of {totalDays}
         </span>
         <span className="font-sans text-xs font-medium" style={{ color: accentColor }}>
           {pct}%
         </span>
       </div>
-      <div className="h-1.5 rounded-full bg-primary-100 dark:bg-primary-100 overflow-hidden">
+      <div className="h-1.5 rounded-full bg-primary-100 dark:bg-night-800/60 overflow-hidden">
         <div
           className="h-full rounded-full transition-all duration-700 ease-out"
           style={{ width: `${pct}%`, background: accentColor }}
@@ -244,14 +244,14 @@ function StickyProgressBar({
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 px-4 pb-[env(safe-area-inset-bottom)] pt-3 bg-surface-base/90 dark:bg-[rgba(4,8,22,0.92)] backdrop-blur-md border-t border-primary-200 dark:border-[rgba(255,255,255,0.07)]">
       {/* Thin progress track */}
-      <div className="h-0.5 rounded-full bg-primary-200 dark:bg-primary-200 overflow-hidden mb-3">
+      <div className="h-0.5 rounded-full bg-primary-200 dark:bg-night-700/50 overflow-hidden mb-3">
         <div
           className="h-full rounded-full transition-all duration-700"
           style={{ width: `${pct}%`, background: accentColor }}
         />
       </div>
       <div className="flex items-center gap-3">
-        <span className="font-sans text-xs text-primary-500 dark:text-primary-500 shrink-0">
+        <span className="font-sans text-xs text-primary-500 dark:text-night-400 shrink-0">
           Day {currentDay}/{totalDays}
         </span>
         <button
@@ -383,12 +383,12 @@ export function ReadingPlanDetail() {
     return (
       <main className="min-h-screen bg-surface-base page-utility py-16 px-4">
         <div className="max-w-lg mx-auto space-y-3 animate-pulse">
-          <div className="h-6 w-24 rounded bg-primary-200 dark:bg-primary-200" />
-          <div className="h-8 w-3/4 rounded bg-primary-200 dark:bg-primary-200" />
-          <div className="h-4 rounded bg-primary-200 dark:bg-primary-200" />
-          <div className="h-4 w-2/3 rounded bg-primary-200 dark:bg-primary-200" />
+          <div className="h-6 w-24 rounded bg-primary-200 dark:bg-night-700/50" />
+          <div className="h-8 w-3/4 rounded bg-primary-200 dark:bg-night-700/50" />
+          <div className="h-4 rounded bg-primary-200 dark:bg-night-700/50" />
+          <div className="h-4 w-2/3 rounded bg-primary-200 dark:bg-night-700/50" />
           {[1,2,3,4].map(i => (
-            <div key={i} className="h-14 rounded-xl bg-primary-100 dark:bg-primary-100" />
+            <div key={i} className="h-14 rounded-xl bg-primary-100 dark:bg-night-800/40" />
           ))}
         </div>
       </main>
@@ -402,7 +402,7 @@ export function ReadingPlanDetail() {
         <div className="max-w-lg mx-auto">
           <Link
             to="/reading-plans"
-            className="inline-flex items-center gap-1 font-sans text-xs text-primary-400 dark:text-primary-400 hover:text-accent mb-10"
+            className="inline-flex items-center gap-1 font-sans text-xs text-primary-400 dark:text-night-500 hover:text-accent mb-10"
           >
             ← Reading Plans
           </Link>
@@ -419,10 +419,10 @@ export function ReadingPlanDetail() {
             >
               Practitioner
             </p>
-            <h1 className="font-display text-2xl text-primary-800 dark:text-primary-800 mb-4 px-4">
+            <h1 className="font-display text-2xl text-primary-800 dark:text-[#e0ddd4] mb-4 px-4">
               {gated.reading_plan.title}
             </h1>
-            <p className="font-sans text-sm text-primary-500 dark:text-primary-500 max-w-xs mx-auto leading-relaxed mb-8">
+            <p className="font-sans text-sm text-primary-500 dark:text-night-400 max-w-xs mx-auto leading-relaxed mb-8">
               {gated.reading_plan.description}
             </p>
             <Link
@@ -432,7 +432,7 @@ export function ReadingPlanDetail() {
             >
               Unlock · Practitioner $14.99
             </Link>
-            <p className="mt-3 font-sans text-xs text-primary-400 dark:text-primary-400">
+            <p className="mt-3 font-sans text-xs text-primary-400 dark:text-night-500">
               One-time · Lifetime access
             </p>
           </div>
@@ -455,7 +455,7 @@ export function ReadingPlanDetail() {
           {/* Back link */}
           <Link
             to="/reading-plans"
-            className="inline-flex items-center gap-1 font-sans text-xs text-primary-400 dark:text-primary-400 hover:text-accent mb-6"
+            className="inline-flex items-center gap-1 font-sans text-xs text-primary-400 dark:text-night-500 hover:text-accent mb-6"
           >
             ← Reading Plans
           </Link>
@@ -480,10 +480,10 @@ export function ReadingPlanDetail() {
                 </span>
               )}
             </div>
-            <h1 className="font-display text-2xl text-primary-800 dark:text-primary-800 mb-3 title-glow-hover">
+            <h1 className="font-display text-2xl text-primary-800 dark:text-[#e0ddd4] mb-3 title-glow-hover">
               {plan.title}
             </h1>
-            <p className="font-sans text-sm text-primary-500 dark:text-primary-500 leading-relaxed">
+            <p className="font-sans text-sm text-primary-500 dark:text-night-400 leading-relaxed">
               {plan.description}
             </p>
           </div>
@@ -493,7 +493,7 @@ export function ReadingPlanDetail() {
             <div className="mb-8 rounded-2xl border border-primary-200 dark:border-[rgba(255,255,255,0.07)] bg-surface-card p-5">
               {user ? (
                 <div className="text-center">
-                  <p className="font-sans text-sm text-primary-500 dark:text-primary-500 mb-4">
+                  <p className="font-sans text-sm text-primary-500 dark:text-night-400 mb-4">
                     Begin your {plan.duration_days}-day journey.
                   </p>
                   <button
@@ -507,7 +507,7 @@ export function ReadingPlanDetail() {
                 </div>
               ) : (
                 <div className="text-center">
-                  <p className="font-sans text-sm text-primary-500 dark:text-primary-500 mb-3">
+                  <p className="font-sans text-sm text-primary-500 dark:text-night-400 mb-3">
                     Sign in to track your progress.
                   </p>
                   <Link to="/auth/login" className="font-sans text-sm hover:underline" style={{ color: accentColor }}>
@@ -521,8 +521,8 @@ export function ReadingPlanDetail() {
           {isCompleted && (
             <div className="mb-8 rounded-2xl border border-primary-200 dark:border-[rgba(255,255,255,0.07)] bg-surface-card p-5 text-center">
               <div className="text-2xl mb-2">✦</div>
-              <p className="font-display text-base text-primary-700 dark:text-primary-700">Journey complete</p>
-              <p className="font-sans text-xs text-primary-400 dark:text-primary-400 mt-1">
+              <p className="font-display text-base text-primary-700 dark:text-[#e0ddd4]">Journey complete</p>
+              <p className="font-sans text-xs text-primary-400 dark:text-night-500 mt-1">
                 All {plan.duration_days} days completed.
               </p>
             </div>
