@@ -138,6 +138,14 @@ export const profileService = {
         }
     },
 
+    deleteAccount: async (password?: string): Promise<{ message: string }> => {
+        const response = await apiClient.delete<{ message: string }>(
+            `${API_ENDPOINTS.PROFILE}`,
+            { data: password ? { password } : {} }
+        );
+        return response.data;
+    },
+
     // resendVerification — protected route (requires JWT); for already-logged-in unverified users
     resendVerification: async (): Promise<{ message: string }> => {
         try {

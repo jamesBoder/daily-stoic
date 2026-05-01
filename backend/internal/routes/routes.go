@@ -96,6 +96,7 @@ func SetupRoutes(
 		profile.POST("/password/set", profileHandler.SetPassword)
 		profile.PUT("/password", profileHandler.UpdatePassword)
 		profile.POST("/resend-verification", profileHandler.ResendVerification)
+		profile.DELETE("", profileHandler.DeleteAccount)
 
 		// Settings
 		settings := protected.Group("settings")

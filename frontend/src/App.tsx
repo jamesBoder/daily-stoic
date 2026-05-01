@@ -29,6 +29,7 @@ const Settings = lazy(() => import('./features/profile/Settings').then(m => ({ d
 const TraditionBrowser = lazy(() => import('./features/traditions/TraditionBrowser').then(m => ({ default: m.TraditionBrowser })))
 const TraditionPage = lazy(() => import('./features/traditions/TraditionPage').then(m => ({ default: m.TraditionPage })))
 const AuthorPage = lazy(() => import('./features/traditions/AuthorPage').then(m => ({ default: m.AuthorPage })))
+const PhilosopherTimeline = lazy(() => import('./features/traditions/PhilosopherTimeline').then(m => ({ default: m.PhilosopherTimeline })))
 const ReadingPlanList = lazy(() => import('./features/reading-plans/ReadingPlanList').then(m => ({ default: m.ReadingPlanList })))
 const ConversePage = lazy(() => import('./features/ai/ConversePage').then(m => ({ default: m.ConversePage })))
 const ReadingPlanDetail = lazy(() => import('./features/reading-plans/ReadingPlanDetail').then(m => ({ default: m.ReadingPlanDetail })))
@@ -77,6 +78,7 @@ export default function App() {
                 <Route index element={<DailyQuote />} />
                 <Route path="about" element={<About />} />
                 <Route path="traditions" element={<TraditionBrowser />} />
+                <Route path="traditions/timeline" element={<PhilosopherTimeline />} />
                 <Route path="traditions/:slug" element={<TraditionPage />} />
                 <Route path="authors/:slug" element={<AuthorPage />} />
                 <Route path="reading-plans" element={<ReadingPlanList />} />

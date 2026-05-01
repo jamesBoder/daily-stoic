@@ -1,6 +1,6 @@
 // src/features/traditions/TraditionPage.tsx
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { traditionsApi } from '../../services/api/traditions'
 import apiClient from '../../services/api/api'
@@ -14,6 +14,7 @@ import {
   ICON_COLOR,
   ICON_COLOR_DARK,
   CORE_CONCEPTS,
+  GLOSSARY,
 } from './constants'
 
 // ── Hero ─────────────────────────────────────────────────────────────────────
@@ -198,6 +199,156 @@ function CoreConceptsSection({
           </div>
         ))}
       </div>
+    </section>
+  )
+}
+
+// ── Glossary ──────────────────────────────────────────────────────────────────
+
+function GlossarySection({
+  slug,
+  color,
+  isDark,
+}: {
+  slug: string
+  color: string
+  isDark: boolean
+}) {
+  const [query, setQuery]       = useState('')
+  const [expanded, setExpanded] = useState<string | null>(null)
+  const [isFocused, setIsFocused] = useState(false)
+
+  const terms = GLOSSARY[slug] ?? []
+
+  const filtered = useMemo(() =>
+    query.trim()
+      ? terms.filter(t =>
+          t.term.toLowerCase().includes(query.toLowerCase()) ||
+          t.definition.toLowerCase().includes(query.toLowerCase()),
+        )
+      : terms,
+    [terms, query],
+  )
+
+  if (!terms.length) return null
+
+  return (
+    <section className="max-w-2xl lg:max-w-4xl mx-auto px-4 mb-16">
+      {/* Section header */}
+      <div className="flex items-center gap-3 mb-6">
+        <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
+        <h2 className="font-display text-[10px] md:text-xs tracking-[0.28em] uppercase text-primary-500 dark:text-night-400 px-1">
+          Glossary
+        </h2>
+        <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
+      </div>
+
+      {/* Search */}
+      <div className="relative mb-6 max-w-xs">
+        <span
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-[11px] pointer-events-none select-none"
+          style={{ color, opacity: 0.6 }}
+        >
+          ⌕
+        </span>
+        <input
+          type="text"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          placeholder="Search terms…"
+          className="w-full pl-7 pr-3 py-2 rounded-stone font-sans text-xs
+                     bg-transparent border
+                     text-primary-800 dark:text-night-200
+                     placeholder:text-primary-400 dark:placeholder:text-night-500
+                     focus:outline-none"
+          style={{ borderColor: isFocused ? `${color}80` : `${color}40` }}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+        />
+        {query && (
+          <button
+            onClick={() => setQuery('')}
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 text-primary-400 dark:text-night-500 hover:text-primary-600 dark:hover:text-night-300 text-xs leading-none"
+            aria-label="Clear search"
+          >
+            ✕
+          </button>
+        )}
+      </div>
+
+      {filtered.length === 0 ? (
+        <p className="font-sans text-xs text-primary-400 dark:text-night-500 text-center py-6">
+          No terms match &ldquo;{query}&rdquo;
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {filtered.map(item => {
+            const isOpen = expanded === item.term
+            const defId = `glossary-def-${slug}-${item.term.replace(/\s+/g, '-').toLowerCase()}`
+            return (
+              <div
+                key={item.term}
+                className="rounded-card overflow-hidden"
+                style={{
+                  background: isDark ? 'rgba(10,20,44,0.45)' : 'rgba(255,255,255,0.7)',
+                  border: `1px solid ${isOpen ? color + '55' : color + '22'}`,
+                  boxShadow: isOpen
+                    ? isDark
+                      ? `0 0 0 1px ${color}25, 0 4px 20px rgba(0,0,0,0.3)`
+                      : `0 0 0 1px ${color}18, 0 2px 12px ${color}10`
+                    : undefined,
+                }}
+              >
+                {/* Top accent strip */}
+                {isOpen && (
+                  <div
+                    className="h-[2px]"
+                    style={{ background: `linear-gradient(90deg, ${color}cc, ${color}44)` }}
+                  />
+                )}
+
+                {/* Trigger — only the term row is the interactive button */}
+                <button
+                  aria-expanded={isOpen}
+                  aria-controls={defId}
+                  onClick={() => setExpanded(isOpen ? null : item.term)}
+                  className="w-full text-left px-4 pt-3.5 pb-2 flex items-center justify-between gap-2
+                             focus:outline-none focus:ring-1 active:scale-[0.995] transition-transform duration-100"
+                  style={{ ['--tw-ring-color' as string]: `${color}60` }}
+                >
+                  <h3
+                    className="font-display text-xs md:text-[13px] tracking-wide leading-snug"
+                    style={{ color }}
+                  >
+                    {item.term}
+                  </h3>
+                  <span
+                    className="text-[9px] shrink-0 transition-transform duration-200 select-none"
+                    style={{
+                      color,
+                      opacity: 0.5,
+                      transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+                    }}
+                  >
+                    ▶
+                  </span>
+                </button>
+
+                {/* Definition — separate from trigger so screen readers don't read it as label */}
+                <div
+                  id={defId}
+                  hidden={!isOpen}
+                  className="px-4 pb-3.5"
+                >
+                  <p className="font-sans text-xs md:text-sm leading-relaxed text-primary-700 dark:text-night-400">
+                    {item.definition}
+                  </p>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )}
     </section>
   )
 }
@@ -457,6 +608,9 @@ export function TraditionPage() {
 
       {/* Core Concepts */}
       <CoreConceptsSection slug={tradition.slug} color={color} isDark={isDark} />
+
+      {/* Glossary */}
+      <GlossarySection slug={tradition.slug} color={color} isDark={isDark} />
 
       {/* Key Figures */}
       <KeyFiguresSection

@@ -513,6 +513,47 @@ func (h *ProfileHandler) UpdatePassword(c *gin.Context) {
 	})
 }
 
+// DeleteAccount permanently deletes the authenticated user's account.
+// Requires password confirmation (or skips it for OAuth-only accounts).
+func (h *ProfileHandler) DeleteAccount(c *gin.Context) {
+	userID, exists := c.Get("userID")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+		return
+	}
+
+	var req struct {
+		Password string `json:"password"`
+	}
+	// Best-effort parse — password may be empty for OAuth-only accounts
+	_ = c.ShouldBindJSON(&req)
+
+	user, err := h.userRepo.GetByID(userID.(uint))
+	if err != nil || user == nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
+		return
+	}
+
+	// If the account has a password set, require it for confirmation.
+	if user.Password != "" {
+		if req.Password == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Password is required to delete your account"})
+			return
+		}
+		if !user.CheckPassword(req.Password) {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Incorrect password"})
+			return
+		}
+	}
+
+	if err := h.userRepo.Delete(userID.(uint)); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete account"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Account deleted successfully"})
+}
+
 // ResendVerificationFromProfile sends a new verification email for the currently
 // authenticated user. Protected route — requires valid JWT.
 func (h *ProfileHandler) ResendVerificationFromProfile(c *gin.Context) {

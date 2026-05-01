@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { formatDate } from "../../utils/date";
 import { useTranslation } from "react-i18next";
 import { Card } from "../../components/common/Card";
 import { Button } from "../../components/common/Button";
@@ -182,18 +183,18 @@ export const AccountManagement: React.FC = () => {
   const handleDeleteAccount = async () => {
     setDeleteError(null);
 
-    if (!deletePassword) {
+    if (hasPassword && !deletePassword) {
       setDeleteError(t('account.enterPasswordConfirm'));
       return;
     }
 
     try {
-      // Implement delete account API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await profileService.deleteAccount(deletePassword || undefined);
       await logout();
       navigate("/signup");
     } catch (error: any) {
-      setDeleteError(error.message || t('account.failedToDeleteAccount'));
+      const msg = error.response?.data?.error || error.message || t('account.failedToDeleteAccount');
+      setDeleteError(msg);
     }
   };
 
@@ -201,15 +202,19 @@ export const AccountManagement: React.FC = () => {
   const handleExportData = async () => {
     setIsExporting(true);
     try {
-      // Implement export data API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const [profile, stats] = await Promise.all([
+        profileService.getProfile(),
+        profileService.getStats(),
+      ]);
 
-      // Create mock data for now
       const data = {
-        profile: { username: "user", email: "user@example.com" },
-        favorites: [],
-        history: [],
-        comments: [],
+        exported_at: new Date().toISOString(),
+        profile: {
+          username: profile.username,
+          email: profile.email,
+          created_at: profile.created_at,
+        },
+        stats,
       };
 
       const blob = new Blob([JSON.stringify(data, null, 2)], {
@@ -218,11 +223,11 @@ export const AccountManagement: React.FC = () => {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `daily-bible-data-${new Date().toISOString()}.json`;
+      a.download = `daily-stoic-data-${new Date().toISOString().slice(0, 10)}.json`;
       a.click();
       URL.revokeObjectURL(url);
     } catch (error) {
-      console.error("Failed to export data:", error);
+      showToast.error(t('account.exportFailed', 'Failed to export data'));
     } finally {
       setIsExporting(false);
     }
@@ -437,7 +442,7 @@ export const AccountManagement: React.FC = () => {
                     {user.google_email || user.email}
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                    {t('account.connectedOn')} {user.created_at ? new Date(user.created_at).toLocaleDateString() : t('account.recently')}
+                    {t('account.connectedOn')} {formatDate(user.created_at) || t('account.recently')}
                   </p>
                 </div>
               </div>

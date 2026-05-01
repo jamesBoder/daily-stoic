@@ -107,9 +107,10 @@ function TraditionCard({
   isPremium: boolean
   isDark: boolean
 }) {
-  const [expanded, setExpanded] = useState(false)
-  const [quotes, setQuotes]     = useState<Quote[]>([])
-  const [loading, setLoading]   = useState(false)
+  const [expanded, setExpanded]   = useState(false)
+  const [quotes, setQuotes]       = useState<Quote[]>([])
+  const [loading, setLoading]     = useState(false)
+  const [fetchError, setFetchError] = useState(false)
   const isLocked = tradition.tier === 'premium' && !isPremium
 
   const meta = META[tradition.slug] ?? {
@@ -128,14 +129,20 @@ function TraditionCard({
     if (isLocked) return
     if (!expanded && quotes.length === 0) {
       setLoading(true)
+      setFetchError(false)
       try {
         const res = await apiClient.get('/api/quotes/search', {
           params: { tradition: tradition.slug, limit: 10 },
         })
         setQuotes(res.data.quotes ?? [])
+        setExpanded(true)
+      } catch {
+        setFetchError(true)
+        // Don't expand — error is shown at card level after user re-taps
       } finally {
         setLoading(false)
       }
+      return
     }
     setExpanded(v => !v)
   }
@@ -208,6 +215,22 @@ function TraditionCard({
               <p className="font-sans text-xs text-primary-400 dark:text-night-500 text-center py-4">
                 Loading passages…
               </p>
+            ) : fetchError ? (
+              <div className="text-center py-4">
+                <p className="font-sans text-xs text-primary-400 dark:text-night-500 mb-2">
+                  Could not load passages.
+                </p>
+                <button
+                  onClick={e => {
+                    e.stopPropagation()
+                    setFetchError(false)
+                    setExpanded(false)
+                  }}
+                  className="font-sans text-xs text-accent hover:underline"
+                >
+                  Try again
+                </button>
+              </div>
             ) : quotes.length === 0 ? (
               <p className="font-sans text-xs text-primary-400 dark:text-night-500 text-center py-4">
                 No passages found.
@@ -284,6 +307,20 @@ export const TraditionBrowser = () => {
             Ten schools of thought spanning three millennia.
             Tap any tradition to preview — or Explore for the full deep-dive.
           </p>
+          <div className="mt-5">
+            <Link
+              to="/traditions/timeline"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-stone border font-display text-[10px] tracking-[0.18em] uppercase transition-all duration-150 hover:scale-105 active:scale-95"
+              style={{
+                color:      isDark ? '#d4a853' : '#8b7355',
+                background: isDark ? 'rgba(212,168,83,0.10)' : 'rgba(139,115,85,0.08)',
+                border:     `1px solid ${isDark ? 'rgba(212,168,83,0.28)' : 'rgba(139,115,85,0.3)'}`,
+              }}
+            >
+              <span style={{ fontSize: 13 }}>◈</span>
+              Philosopher Timeline
+            </Link>
+          </div>
         </header>
 
         {/* Loading skeletons */}
