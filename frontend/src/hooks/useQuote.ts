@@ -15,12 +15,22 @@ export const useQuote = (id?: number) => {
 }
 
 const LS_KEY = 'dq-cache'
-const LS_TS_KEY = 'dq-cache-ts'
+
+// Today's date in UTC — the same reference the backend uses.
+function utcDateString(): string {
+  return new Date().toISOString().slice(0, 10)
+}
 
 function readCache(): DailyQuoteResponse | undefined {
   try {
     const raw = localStorage.getItem(LS_KEY)
-    return raw ? (JSON.parse(raw) as DailyQuoteResponse) : undefined
+    if (!raw) return undefined
+    const cached = JSON.parse(raw) as DailyQuoteResponse
+    // Only use the cache if it's for today's UTC date.
+    // This ensures every user sees the same quote the moment UTC midnight rolls over,
+    // regardless of their local timezone.
+    if (cached.quote.daily_date !== utcDateString()) return undefined
+    return cached
   } catch {
     return undefined
   }
@@ -30,14 +40,12 @@ export const useDailyQuote = () => {
   const result = useQuery({
     queryKey: ['daily-quote'],
     queryFn: quotesApi.getDaily,
-    staleTime: 60 * 60 * 1000,   // 1 hour — the daily quote doesn't change mid-day
-    gcTime: 24 * 60 * 60 * 1000, // keep in cache all day
-    // Seed from localStorage so the quote renders before the API responds
+    // Once we have today's quote it won't change — but the date check in readCache
+    // ensures we refetch the moment a new UTC day starts.
+    staleTime: Infinity,
+    gcTime: 24 * 60 * 60 * 1000,
     initialData: readCache,
-    initialDataUpdatedAt: () => {
-      const ts = localStorage.getItem(LS_TS_KEY)
-      return ts ? parseInt(ts, 10) : 0
-    },
+    initialDataUpdatedAt: () => readCache() ? Date.now() : 0,
   })
 
   // Persist fresh API data back to localStorage for the next visit
@@ -45,7 +53,6 @@ export const useDailyQuote = () => {
     if (result.data && !result.isFetching) {
       try {
         localStorage.setItem(LS_KEY, JSON.stringify(result.data))
-        localStorage.setItem(LS_TS_KEY, Date.now().toString())
       } catch { /* ignore quota errors */ }
     }
   }, [result.data, result.isFetching])
