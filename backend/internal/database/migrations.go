@@ -28,9 +28,23 @@ func RunMigrations(db *gorm.DB) error {
 		&models.UserReadingPlanProgress{},
 		&models.Week{},
 		&models.AIUsage{},
+		&models.WisdomConcept{},
+		&models.ConfluencePuzzle{},
+		&models.ConfluenceGroup{},
+		&models.ConfluenceCard{},
+		&models.ConfluenceGameSession{},
+		&models.UserLibraryCard{},
 	); err != nil {
 		return err
 	}
+
+	// Unique indexes for Confluence — one session per user per puzzle, one library entry per user per concept.
+	db.Exec(`CREATE UNIQUE INDEX IF NOT EXISTS idx_confluence_session_user_puzzle
+	         ON confluence_game_sessions(user_id, puzzle_id)
+	         WHERE deleted_at IS NULL`)
+	db.Exec(`CREATE UNIQUE INDEX IF NOT EXISTS idx_user_library_card
+	         ON user_library_cards(user_id, concept_id)
+	         WHERE deleted_at IS NULL`)
 
 	// pgvector extension + embedding column — Phase 4+ only, not available on all Postgres hosts.
 	// Log and skip if unavailable rather than crashing.

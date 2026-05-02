@@ -22,6 +22,7 @@ func SetupRoutes(
 	subscriptionHandler *handlers.SubscriptionHandler,
 	readingPlanHandler *handlers.ReadingPlanHandler,
 	aiHandler *handlers.AiHandler,
+	confluenceHandler *handlers.ConfluenceHandler,
 	tokenService *services.TokenService,
 	subscriptionRepo *repository.SubscriptionRepository,
 ) {
@@ -121,6 +122,23 @@ func SetupRoutes(
 		sub.GET("", optionalAuthMW, subscriptionHandler.GetStatus)
 		sub.POST("/checkout", authMW, subscriptionHandler.CreateCheckout)
 		sub.POST("/webhook", subscriptionHandler.HandleWebhook) // no auth — Stripe-signed
+	}
+
+	// Confluence — public puzzle fetch; session + guess require auth
+	games := api.Group("/games")
+	{
+		confluence := games.Group("/confluence")
+		{
+			confluence.GET("/today",      confluenceHandler.GetToday)
+			confluence.GET("/date/:date", confluenceHandler.GetByDate)
+
+			confAuth := confluence.Group("")
+			confAuth.Use(authMW)
+			{
+				confAuth.GET("/:id/session", confluenceHandler.GetSession)
+				confAuth.POST("/:id/guess",  confluenceHandler.SubmitGuess)
+			}
+		}
 	}
 
 	// Reading plans — list and detail are public (optional auth for gating); progress routes require auth

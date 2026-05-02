@@ -74,7 +74,11 @@ func main() {
 		log.Printf("Warning: reading plan seed failed: %v", err)
 	}
 
+	// 10. Seed Confluence puzzles (idempotent)
+	seeds.SeedConfluencePuzzles(db)
+
 	// 11. Repositories
+	confluenceRepo      := repository.NewConfluenceRepository(db)
 	userRepo            := repository.NewUserRepository(db)
 	quoteRepo           := repository.NewQuoteRepository(db)
 	authorRepo          := repository.NewAuthorRepository(db)
@@ -130,6 +134,8 @@ func main() {
 	subscriptionHandler := handlers.NewSubscriptionHandler(subscriptionRepo, stripeSvc, cfg)
 	readingPlanHandler  := handlers.NewReadingPlanHandler(readingPlanRepo)
 	aiHandler           := handlers.NewAiHandler(aiSvc, aiUsageRepo, quoteRepo, authorRepo)
+	confluenceSvc      := services.NewConfluenceService(confluenceRepo, nil)
+	confluenceHandler  := handlers.NewConfluenceHandler(confluenceSvc)
 
 	// Start weekly theme scheduler (runs immediately + every 6h)
 	jobs.StartWeeklyThemeScheduler(db, weekRepo, quoteRepo)
@@ -156,7 +162,7 @@ func main() {
 
 	routes.SetupRoutes(r, authHandler, oauthHandler, quoteHandler, favoriteHandler,
 		historyHandler, commentHandler, profileHandler, settingsHandler, onboardingHandler,
-		subscriptionHandler, readingPlanHandler, aiHandler, tokenSvc, subscriptionRepo)
+		subscriptionHandler, readingPlanHandler, aiHandler, confluenceHandler, tokenSvc, subscriptionRepo)
 
 	// 9. Start server with graceful shutdown
 	port := cfg.Port
