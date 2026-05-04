@@ -140,6 +140,22 @@ module.exports = {
           '0%, 100%': { textShadow: '0 0 8px rgba(212,168,83,0.4), 0 0 20px rgba(212,168,83,0.15)' },
           '50%':      { textShadow: '0 0 16px rgba(212,168,83,0.7), 0 0 40px rgba(212,168,83,0.3)' },
         },
+        // ── Confluence game ───────────────────────────────────────────
+        'shake': {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '20%':      { transform: 'translateX(-6px)' },
+          '40%':      { transform: 'translateX(6px)' },
+          '60%':      { transform: 'translateX(-4px)' },
+          '80%':      { transform: 'translateX(4px)' },
+        },
+        'convergence-drift': {
+          '0%':   { opacity: '0', transform: 'scale(0.8) translateY(20px)' },
+          '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+        },
+        'border-pulse': {
+          '0%, 100%': { opacity: '0.6' },
+          '50%':      { opacity: '1' },
+        },
       },
 
       animation: {
@@ -153,7 +169,10 @@ module.exports = {
         'float':           'float 5s ease-in-out infinite',
         'title-glow':      'title-glow 4s ease-in-out infinite',
         'star-twinkle':    'star-twinkle 3s ease-in-out infinite',
-        'gold-glow-pulse': 'gold-glow-pulse 3.5s ease-in-out infinite',
+        'gold-glow-pulse':    'gold-glow-pulse 3.5s ease-in-out infinite',
+        'shake':              'shake 0.45s ease-in-out',
+        'convergence-drift':  'convergence-drift 0.6s ease-out forwards',
+        'border-pulse':       'border-pulse 0.8s ease-in-out 3',
       },
     },
   },

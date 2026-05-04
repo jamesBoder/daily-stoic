@@ -36,6 +36,7 @@ const ReadingPlanDetail = lazy(() => import('./features/reading-plans/ReadingPla
 const PricingPage = lazy(() => import('./features/subscription/PricingPage').then(m => ({ default: m.PricingPage })))
 const SubscriptionSuccess = lazy(() => import('./features/subscription/SubscriptionSuccess').then(m => ({ default: m.SubscriptionSuccess })))
 const OnboardingFlow = lazy(() => import('./features/onboarding/OnboardingFlow').then(m => ({ default: m.OnboardingFlow })))
+const ConfluencePage = lazy(() => import('./features/games/confluence/ConfluencePage').then(m => ({ default: m.ConfluencePage })))
 
 export default function App() {
   return (
@@ -84,6 +85,7 @@ export default function App() {
                 <Route path="reading-plans" element={<ReadingPlanList />} />
                 <Route path="reading-plans/:slug" element={<ReadingPlanDetail />} />
                 <Route path="converse" element={<ConversePage />} />
+                <Route path="games/confluence" element={<ConfluencePage />} />
 
                 {/* Auth */}
                 <Route path="auth">
