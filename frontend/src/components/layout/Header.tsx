@@ -70,6 +70,7 @@ export const Header = () => {
           <NavLink to="/traditions"    className={navLinkClass}>Traditions</NavLink>
           <NavLink to="/reading-plans" className={navLinkClass}>Reading Plans</NavLink>
           <NavLink to="/converse"      className={navLinkClass}>Converse</NavLink>
+          <NavLink to="/games"         className={navLinkClass}>Agora</NavLink>
           {isAuthenticated && !isGuest && (
             <NavLink to="/settings" className={navLinkClass}>Settings</NavLink>
           )}

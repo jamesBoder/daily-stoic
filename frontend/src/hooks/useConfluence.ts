@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { useCallback, useEffect, useReducer } from 'react'
+import { useCallback, useEffect, useReducer, useState } from 'react'
 import { confluenceService } from '../services/api/confluence'
 import { useAuth } from './useAuth'
 import type {
@@ -11,6 +11,7 @@ import type {
 type Action =
   | { type: 'SELECT_CARD';    id: number }
   | { type: 'DESELECT_CARD';  id: number }
+  | { type: 'DESELECT_ALL' }
   | { type: 'GUESS_CORRECT';  group: ConfluenceGroup; result: GuessResult }
   | { type: 'GUESS_WRONG';    result: GuessResult }
   | { type: 'RESTORE';        session: import('../types/confluence').ConfluenceSession; puzzle: ConfluencePuzzle }
@@ -48,6 +49,8 @@ function reducer(state: LocalGameState, action: Action): LocalGameState {
       return { ...state, selectedCardIds: next }
       // Note: card stays flipped even after deselecting
     }
+    case 'DESELECT_ALL':
+      return { ...state, selectedCardIds: new Set() }
     case 'GUESS_CORRECT': {
       const group = { ...action.group, convergence_teaching: action.result.convergence_teaching }
       return {
@@ -72,18 +75,18 @@ function reducer(state: LocalGameState, action: Action): LocalGameState {
       }
     }
     case 'RESTORE': {
-      const foundGroups = action.session.groups_found
+      const foundGroups = (action.session.groups_found ?? [])
         .map(id => action.puzzle.groups.find(g => g.id === id))
         .filter(Boolean) as ConfluenceGroup[]
-      const allGuessedIds = action.session.attempts.flatMap(a => a.card_ids)
+      const allGuessedIds = (action.session.attempts ?? []).flatMap(a => a.card_ids)
       return {
         ...state,
         puzzleId: action.session.puzzle_id,
         flippedCardIds: new Set(allGuessedIds),
         selectedCardIds: new Set(),
-        foundGroupIds: action.session.groups_found,
+        foundGroupIds: action.session.groups_found ?? [],
         foundGroups,
-        attempts: action.session.attempts,
+        attempts: action.session.attempts ?? [],
         attemptsRemaining: 4 - action.session.attempts_used,
         status: action.session.status,
         purpleFirstTry: action.session.purple_first_try,
@@ -136,13 +139,27 @@ export function useConfluence() {
     queryKey: ['confluence', 'session', puzzle?.id],
     queryFn: () => confluenceService.getSession(puzzle!.id),
     enabled: isAuthenticated && !!puzzle,
+    retry: false,  // 404 = no session yet; don't add 7s of retry backoff
   })
+
+  // True once we've either restored from a server session or confirmed none exists.
+  // Prevents the grid flashing empty when navigating back with cached session data
+  // (TanStack cache makes isSessionLoading=false before RESTORE has dispatched).
+  const [sessionSettled, setSessionSettled] = useState(false)
 
   useEffect(() => {
     if (serverSession && puzzle) {
       dispatch({ type: 'RESTORE', session: serverSession, puzzle })
+      setSessionSettled(true)
     }
   }, [serverSession?.id, puzzle?.id])
+
+  // Settle without RESTORE when the session query completes with no session (404)
+  useEffect(() => {
+    if (isAuthenticated && !isSessionLoading && !serverSession) {
+      setSessionSettled(true)
+    }
+  }, [isAuthenticated, isSessionLoading, serverSession])
 
   useEffect(() => {
     if (puzzle && !isAuthenticated) {
@@ -228,6 +245,10 @@ export function useConfluence() {
     }
   }, [gameState.selectedCardIds])
 
+  const deselectAll = useCallback(() => {
+    dispatch({ type: 'DESELECT_ALL' })
+  }, [])
+
   const submitGuess = useCallback(() => {
     if (gameState.selectedCardIds.size !== 4) return
     if (isAuthenticated) {
@@ -243,6 +264,11 @@ export function useConfluence() {
     return lastAttempt.card_ids
   })()
 
+  // Counters let ActionBar detect each new wrong guess and classify it,
+  // even when consecutive guesses have the same one_away value.
+  const oneAwayCount = gameState.attempts.filter(a => !a.correct && a.one_away).length
+  const wrongCount   = gameState.attempts.filter(a => !a.correct).length
+
   return {
     puzzle,
     gameState,
@@ -250,14 +276,13 @@ export function useConfluence() {
     error,
     refetch,
     toggleCard,
+    deselectAll,
     submitGuess,
     isPending: guessMutation.isPending,
     lastResult: guessMutation.data,
-    oneAway: guessMutation.data?.one_away ??
-      (gameState.attempts.length > 0 && !gameState.attempts[gameState.attempts.length - 1].correct
-        ? gameState.attempts[gameState.attempts.length - 1].one_away ?? false
-        : false),
-    isSessionLoading: isAuthenticated ? isSessionLoading : false,
+    oneAwayCount,
+    wrongCount,
+    isSessionLoading: isAuthenticated ? !sessionSettled : false,
     lastWrongCardIds,
   }
 }

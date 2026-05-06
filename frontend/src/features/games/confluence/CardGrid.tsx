@@ -7,6 +7,7 @@ interface CardGridProps {
   gameState: LocalGameState
   onTap: (id: number) => void
   lastWrongCardIds: number[]
+  gameOver?: boolean
 }
 
 export function CardGridSkeleton() {
@@ -22,9 +23,10 @@ export function CardGridSkeleton() {
   )
 }
 
-export function CardGrid({ puzzle, gameState, onTap, lastWrongCardIds }: CardGridProps) {
+export function CardGrid({ puzzle, gameState, onTap, lastWrongCardIds, gameOver = false }: CardGridProps) {
   const [shakingIds, setShakingIds] = useState<Set<number>>(new Set())
   const prevWrongKey = useRef('')
+  const shakeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     if (lastWrongCardIds.length > 0) {
@@ -32,9 +34,11 @@ export function CardGrid({ puzzle, gameState, onTap, lastWrongCardIds }: CardGri
       if (key !== prevWrongKey.current) {
         prevWrongKey.current = key
         setShakingIds(new Set(lastWrongCardIds))
-        setTimeout(() => setShakingIds(new Set()), 450)
+        if (shakeTimer.current) clearTimeout(shakeTimer.current)
+        shakeTimer.current = setTimeout(() => setShakingIds(new Set()), 450)
       }
     }
+    return () => { if (shakeTimer.current) clearTimeout(shakeTimer.current) }
   }, [lastWrongCardIds])
 
   // Flatten all cards from all groups, excluding already-found groups
@@ -61,7 +65,7 @@ export function CardGrid({ puzzle, gameState, onTap, lastWrongCardIds }: CardGri
           isFlipped={gameState.flippedCardIds.has(card.id)}
           isSelected={gameState.selectedCardIds.has(card.id)}
           isShaking={shakingIds.has(card.id)}
-          isLocked={false}
+          isLocked={gameOver}
           onTap={onTap}
         />
       ))}

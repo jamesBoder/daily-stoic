@@ -1,7 +1,7 @@
 // src/App.tsx — updated route structure
 
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { PageLoader } from './components/common/Loading'
 import { AuthProvider } from './contexts/AuthContext'
 import { SubscriptionProvider } from './contexts/SubscriptionContext'
@@ -85,6 +85,7 @@ export default function App() {
                 <Route path="reading-plans" element={<ReadingPlanList />} />
                 <Route path="reading-plans/:slug" element={<ReadingPlanDetail />} />
                 <Route path="converse" element={<ConversePage />} />
+                <Route path="games" element={<Navigate to="/games/confluence" replace />} />
                 <Route path="games/confluence" element={<ConfluencePage />} />
 
                 {/* Auth */}

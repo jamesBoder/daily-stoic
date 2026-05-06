@@ -18,6 +18,7 @@ import {
   Clock,
   Sun,
   Moon,
+  Swords,
 } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 
@@ -187,6 +188,16 @@ const BottomNav: React.FC = () => {
               Create a free account to save quotes, track your streak, and build a practice.
             </p>
             <div className="flex flex-col gap-2">
+              <NavLink
+                to="/games"
+                className={({ isActive }) =>
+                  `${sheetItemBase} ${isActive ? sheetItemActive : sheetItemInactive}`
+                }
+              >
+                <Swords size={20} />
+                Agora
+              </NavLink>
+
               <button
                 onClick={() => { setSheetOpen(false); navigate('/auth/register'); }}
                 className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold
@@ -226,6 +237,17 @@ const BottomNav: React.FC = () => {
             </p>
 
             <div className="flex flex-col gap-1">
+              {/* Agora */}
+              <NavLink
+                to="/games"
+                className={({ isActive }) =>
+                  `${sheetItemBase} ${isActive ? sheetItemActive : sheetItemInactive}`
+                }
+              >
+                <Swords size={20} />
+                Agora
+              </NavLink>
+
               {/* Reading History */}
               <NavLink
                 to="/history"

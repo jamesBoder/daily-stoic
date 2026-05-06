@@ -1,6 +1,10 @@
+import { useEffect, useRef, useState } from 'react'
 import { useConfluence } from '../../../hooks/useConfluence'
 import { CardGrid, CardGridSkeleton } from './CardGrid'
-import type { PuzzleArchetype } from '../../../types/confluence'
+import { FoundGroupsRow } from './FoundGroupsRow'
+import { ActionBar } from './ActionBar'
+import { ConvergenceReveal } from './ConvergenceReveal'
+import type { ConfluenceGroup, PuzzleArchetype } from '../../../types/confluence'
 
 const ARCHETYPE_LABEL: Record<PuzzleArchetype, string> = {
   convergence: 'Convergence',
@@ -11,12 +15,49 @@ const ARCHETYPE_LABEL: Record<PuzzleArchetype, string> = {
 }
 
 export function ConfluencePage() {
-  const { puzzle, gameState, isLoading, isSessionLoading, error, toggleCard, refetch, lastWrongCardIds } = useConfluence()
+  const {
+    puzzle,
+    gameState,
+    isLoading,
+    isSessionLoading,
+    error,
+    toggleCard,
+    deselectAll,
+    submitGuess,
+    isPending,
+    oneAwayCount,
+    wrongCount,
+    refetch,
+    lastWrongCardIds,
+  } = useConfluence()
 
-  if (isLoading || isSessionLoading) {
+  // ── Convergence Reveal (purple group) ────────────────────────────
+  const [convergenceGroup, setConvergenceGroup] = useState<ConfluenceGroup | null>(null)
+  const prevGroupCountRef = useRef(0)
+
+  useEffect(() => {
+    const count = gameState.foundGroupIds.length
+    if (count > prevGroupCountRef.current) {
+      const added = count - prevGroupCountRef.current
+      prevGroupCountRef.current = count
+      // Only trigger on a single new group — bulk additions are session restores
+      if (added === 1) {
+        // Check the NEWLY ADDED group — not any purple in foundGroups.
+        // Once purple is found it stays in foundGroups forever; searching
+        // the whole array would re-trigger the reveal on every subsequent guess.
+        const newGroupId = gameState.foundGroupIds[gameState.foundGroupIds.length - 1]
+        const newGroup = gameState.foundGroups.find(g => g.id === newGroupId)
+        if (newGroup?.tier === 'purple') {
+          setConvergenceGroup(newGroup)
+        }
+      }
+    }
+  }, [gameState.foundGroupIds, gameState.foundGroups])
+
+  // Puzzle not yet loaded — show full page skeleton
+  if (isLoading) {
     return (
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-8">
-        {/* Desktop: side-by-side skeleton */}
         <div className="flex flex-col lg:flex-row lg:gap-12 lg:items-start">
           <div className="lg:w-72 lg:flex-shrink-0 mb-6 lg:mb-0">
             <div className="h-3 w-28 bg-stone-800 rounded animate-pulse mb-3" />
@@ -53,7 +94,10 @@ export function ConfluencePage() {
     month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC',
   })
 
+  const gameOver = gameState.status === 'complete' || gameState.status === 'failed'
+
   return (
+    <>
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-6 lg:py-10">
       <div className="flex flex-col lg:flex-row lg:gap-12 lg:items-start">
 
@@ -85,19 +129,67 @@ export function ConfluencePage() {
               ✦ Major Arcana
             </p>
           )}
+
+          {/* Game over message — desktop only (mobile shows inline) */}
+          {gameOver && (
+            <p className="hidden lg:block mt-6 font-serif text-sm italic text-stone-400">
+              {gameState.status === 'complete'
+                ? 'Confluence achieved.'
+                : 'The philosophers remain divided.'}
+            </p>
+          )}
         </div>
 
-        {/* ── Card grid ── */}
+        {/* ── Game area ──
+            While the server session loads (isSessionLoading), the info panel above is
+            already visible. Only the grid area skeletons — consistent with the spec. */}
         <div className="flex-1 min-w-0">
-          <CardGrid
-            puzzle={puzzle}
-            gameState={gameState}
-            onTap={toggleCard}
-            lastWrongCardIds={lastWrongCardIds}
-          />
+
+          {isSessionLoading ? (
+            <CardGridSkeleton />
+          ) : (
+            <>
+              <FoundGroupsRow foundGroups={gameState.foundGroups} />
+
+              <CardGrid
+                puzzle={puzzle}
+                gameState={gameState}
+                onTap={toggleCard}
+                lastWrongCardIds={lastWrongCardIds}
+                gameOver={gameOver}
+              />
+
+              <ActionBar
+                selectedCount={gameState.selectedCardIds.size}
+                attemptsRemaining={gameState.attemptsRemaining}
+                isPending={isPending}
+                oneAwayCount={oneAwayCount}
+                wrongCount={wrongCount}
+                gameOver={gameOver}
+                onSubmit={submitGuess}
+                onDeselect={deselectAll}
+              />
+
+              {/* Game over message — mobile */}
+              {gameOver && (
+                <p className="lg:hidden mt-6 text-center font-serif text-sm italic text-stone-400">
+                  {gameState.status === 'complete'
+                    ? 'Confluence achieved.'
+                    : 'The philosophers remain divided.'}
+                </p>
+              )}
+            </>
+          )}
         </div>
 
       </div>
     </div>
+
+    <ConvergenceReveal
+      group={convergenceGroup}
+      isOpen={!!convergenceGroup}
+      onClose={() => setConvergenceGroup(null)}
+    />
+    </>
   )
 }
