@@ -91,7 +91,12 @@ func (h *ConfluenceHandler) GetSession(c *gin.Context) {
 	}
 	session, err := h.svc.GetSession(userID, puzzleID)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "could not load session"})
+		switch err {
+		case services.ErrSessionNotFound:
+			c.JSON(http.StatusNotFound, gin.H{"error": "no session for this puzzle"})
+		default:
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "could not load session"})
+		}
 		return
 	}
 	c.JSON(http.StatusOK, session)

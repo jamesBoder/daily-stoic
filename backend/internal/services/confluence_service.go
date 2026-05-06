@@ -7,6 +7,7 @@ import (
 
 	"github.com/jamesBoder/daily-stoic/internal/models"
 	"github.com/jamesBoder/daily-stoic/internal/repository"
+	"gorm.io/gorm"
 )
 
 const maxAttempts = 4
@@ -25,9 +26,10 @@ func NewConfluenceService(repo *repository.ConfluenceRepository, library Library
 	return &ConfluenceService{repo: repo, library: library}
 }
 
-var ErrPuzzleNotFound  = errors.New("no puzzle for this date")
-var ErrSessionComplete = errors.New("session already complete")
-var ErrDuplicateCards  = errors.New("duplicate card ids in guess")
+var ErrPuzzleNotFound   = errors.New("no puzzle for this date")
+var ErrSessionComplete  = errors.New("session already complete")
+var ErrDuplicateCards   = errors.New("duplicate card ids in guess")
+var ErrSessionNotFound  = errors.New("no session for this puzzle")
 
 // Note: no ErrAttemptsExhausted — the service returns a normal GuessResult on the
 // final wrong guess and marks the session "failed". Subsequent calls hit ErrSessionComplete.
@@ -54,7 +56,10 @@ func (s *ConfluenceService) GetPuzzleByDate(date time.Time) (*models.ConfluenceP
 }
 
 func (s *ConfluenceService) GetSession(userID, puzzleID uint) (*models.ConfluenceGameSession, error) {
-	session, _, err := s.repo.GetOrCreateSession(userID, puzzleID)
+	session, err := s.repo.GetSession(userID, puzzleID)
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil, ErrSessionNotFound
+	}
 	return session, err
 }
 

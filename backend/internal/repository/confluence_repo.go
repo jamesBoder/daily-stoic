@@ -59,9 +59,11 @@ func (r *ConfluenceRepository) GetOrCreateSession(userID, puzzleID uint) (*model
 		First(&session).Error
 	if err == gorm.ErrRecordNotFound {
 		session = models.ConfluenceGameSession{
-			UserID:   userID,
-			PuzzleID: puzzleID,
-			Status:   "in_progress",
+			UserID:      userID,
+			PuzzleID:    puzzleID,
+			Status:      "in_progress",
+			GroupsFound: models.UintSlice{},
+			Attempts:    models.GuessLog{},
 		}
 		if err = r.db.Create(&session).Error; err != nil {
 			return nil, false, err
