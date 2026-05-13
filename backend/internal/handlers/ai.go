@@ -43,7 +43,11 @@ type askResponse struct {
 // AskByQuote handles POST /api/quotes/:id/ask
 // The quote provides context (author, source, text). Free users: 3/day. Premium: unlimited.
 func (h *AiHandler) AskByQuote(c *gin.Context) {
-	userID, isPremium := authContext(c)
+	userID, isPremium, ok := authContext(c)
+	if !ok {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
+		return
+	}
 
 	quoteID, err := parseUint(c.Param("id"))
 	if err != nil {
@@ -95,7 +99,11 @@ func (h *AiHandler) AskByQuote(c *gin.Context) {
 // AskByAuthor handles POST /api/authors/:slug/ask
 // Used from the ConversePage and AuthorPage when no specific quote is selected.
 func (h *AiHandler) AskByAuthor(c *gin.Context) {
-	userID, isPremium := authContext(c)
+	userID, isPremium, ok := authContext(c)
+	if !ok {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
+		return
+	}
 	slug := c.Param("slug")
 
 	var req askRequest
@@ -141,7 +149,11 @@ func (h *AiHandler) AskByAuthor(c *gin.Context) {
 
 // GetAiUsage handles GET /api/ai/usage — returns today's question count for the current user.
 func (h *AiHandler) GetAiUsage(c *gin.Context) {
-	userID, isPremium := authContext(c)
+	userID, isPremium, ok := authContext(c)
+	if !ok {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
+		return
+	}
 
 	if isPremium {
 		c.JSON(http.StatusOK, gin.H{
@@ -172,18 +184,24 @@ func (h *AiHandler) GetAiUsage(c *gin.Context) {
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
-func authContext(c *gin.Context) (userID uint, isPremium bool) {
-	if uid, ok := c.Get("userID"); ok {
-		if v, ok := uid.(uint); ok {
-			userID = v
-		}
+// authContext extracts userID and isPremium from the Gin context set by auth
+// middleware. Returns false if userID is missing or the wrong type — callers
+// must abort the request in that case.
+func authContext(c *gin.Context) (userID uint, isPremium bool, ok bool) {
+	uid, exists := c.Get("userID")
+	if !exists {
+		return 0, false, false
 	}
-	if p, ok := c.Get("isPremium"); ok {
+	userID, ok = uid.(uint)
+	if !ok {
+		return 0, false, false
+	}
+	if p, exists := c.Get("isPremium"); exists {
 		if v, ok := p.(bool); ok {
 			isPremium = v
 		}
 	}
-	return
+	return userID, isPremium, true
 }
 
 func parseUint(s string) (uint, error) {

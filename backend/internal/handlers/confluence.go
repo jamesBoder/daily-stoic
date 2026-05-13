@@ -48,7 +48,11 @@ type guessRequest struct {
 
 // POST /api/games/confluence/:id/guess  (auth required)
 func (h *ConfluenceHandler) SubmitGuess(c *gin.Context) {
-	userID, _ := authContext(c)
+	userID, _, ok := authContext(c)
+	if !ok {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
+		return
+	}
 
 	puzzleID, err := parseUint(c.Param("id"))
 	if err != nil {
@@ -83,7 +87,11 @@ func (h *ConfluenceHandler) SubmitGuess(c *gin.Context) {
 
 // GET /api/games/confluence/:id/session  (auth required)
 func (h *ConfluenceHandler) GetSession(c *gin.Context) {
-	userID, _ := authContext(c)
+	userID, _, ok := authContext(c)
+	if !ok {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "unauthorized"})
+		return
+	}
 	puzzleID, err := parseUint(c.Param("id"))
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid puzzle id"})

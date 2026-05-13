@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"strings"
 	"time"
@@ -42,7 +43,10 @@ func NewAiService(apiKey string, quoteRepo *repository.QuoteRepository) *AiServi
 // The focal quote is the one the user is reading; we fetch 3 more by the same author for voice grounding.
 func (s *AiService) Ask(quote *models.Quote, question string) (string, error) {
 	// Fetch supporting quotes by same author for voice grounding (exclude the focal quote)
-	supporting, _ := s.quoteRepo.GetByAuthor(quote.AuthorID)
+	supporting, err := s.quoteRepo.GetByAuthor(quote.AuthorID)
+	if err != nil {
+		log.Printf("ai: GetByAuthor(%d): %v", quote.AuthorID, err)
+	}
 	var voiceQuotes []models.Quote
 	for _, q := range supporting {
 		if q.ID != quote.ID {
@@ -60,7 +64,10 @@ func (s *AiService) Ask(quote *models.Quote, question string) (string, error) {
 // AskByAuthor generates a philosopher-voiced response without a specific quote context.
 // Used from the ConversePage and AuthorPage where no quote is pre-selected.
 func (s *AiService) AskByAuthor(author *models.Author, question string) (string, error) {
-	quotes, _ := s.quoteRepo.GetByAuthor(author.ID)
+	quotes, err := s.quoteRepo.GetByAuthor(author.ID)
+	if err != nil {
+		log.Printf("ai: GetByAuthor(%d): %v", author.ID, err)
+	}
 	var voiceQuotes []models.Quote
 	if len(quotes) > 4 {
 		voiceQuotes = quotes[:4]
