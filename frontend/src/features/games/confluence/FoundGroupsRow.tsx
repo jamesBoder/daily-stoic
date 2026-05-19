@@ -40,7 +40,7 @@ export function FoundGroupsRow({ foundGroups }: FoundGroupsRowProps) {
               {group.label}
             </p>
             <p className="font-serif text-xs text-stone-300 italic leading-relaxed">
-              {group.cards.map(c => c.concept.name).join(' · ')}
+              {group.cards.map(c => c.concept?.name ?? '').filter(Boolean).join(' · ')}
             </p>
           </div>
         )

@@ -51,7 +51,7 @@ export function CardGrid({ puzzle, gameState, onTap, lastWrongCardIds, gameOver 
 
   // Show only unfound cards — compact grid after each correct guess
   const visibleCards = allCards.filter(c => !lockedCardIds.has(c.id))
-  const cols = visibleCards.length <= 4 ? visibleCards.length : 4
+  const cols = Math.max(1, visibleCards.length <= 4 ? visibleCards.length : 4)
 
   return (
     <div

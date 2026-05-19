@@ -4,6 +4,7 @@ interface ActionBarProps {
   selectedCount: number
   attemptsRemaining: number
   isPending: boolean
+  guessError: string | null
   oneAwayCount: number
   wrongCount: number
   gameOver: boolean
@@ -15,6 +16,7 @@ export function ActionBar({
   selectedCount,
   attemptsRemaining,
   isPending,
+  guessError,
   oneAwayCount,
   wrongCount,
   gameOver,
@@ -66,18 +68,24 @@ export function ActionBar({
   return (
     <div className="mt-4 flex flex-col items-center gap-3">
 
-      {/* Wrong-guess toast */}
+      {/* Wrong-guess toast / network error */}
       <div
         aria-live="polite"
         className={`transition-all duration-300 overflow-hidden ${
-          showToast ? 'max-h-10 opacity-100' : 'max-h-0 opacity-0'
+          (showToast || !!guessError) ? 'max-h-10 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="px-4 py-1.5 rounded-md bg-stone-800 border border-stone-700">
+        <div className={`px-4 py-1.5 rounded-md border ${
+          guessError
+            ? 'bg-red-950/60 border-red-800/50'
+            : 'bg-stone-800 border-stone-700'
+        }`}>
           <span className={`font-display text-xs tracking-wider ${
-            toastKind === 'one-away' ? 'text-amber-300' : 'text-stone-400'
+            guessError
+              ? 'text-red-300'
+              : toastKind === 'one-away' ? 'text-amber-300' : 'text-stone-400'
           }`}>
-            {toastKind === 'one-away' ? 'One away...' : 'Not quite.'}
+            {guessError ?? (toastKind === 'one-away' ? 'One away...' : 'Not quite.')}
           </span>
         </div>
       </div>

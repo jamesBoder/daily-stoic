@@ -25,6 +25,7 @@ export function ConfluencePage() {
     deselectAll,
     submitGuess,
     isPending,
+    guessError,
     oneAwayCount,
     wrongCount,
     refetch,
@@ -163,6 +164,7 @@ export function ConfluencePage() {
                 selectedCount={gameState.selectedCardIds.size}
                 attemptsRemaining={gameState.attemptsRemaining}
                 isPending={isPending}
+                guessError={guessError}
                 oneAwayCount={oneAwayCount}
                 wrongCount={wrongCount}
                 gameOver={gameOver}

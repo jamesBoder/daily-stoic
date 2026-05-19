@@ -220,9 +220,12 @@ export function useConfluence() {
     }})
   }, [puzzle, gameState])
 
+  const [guessError, setGuessError] = useState<string | null>(null)
+
   const guessMutation = useMutation({
     mutationFn: (cardIds: number[]) => confluenceService.submitGuess(puzzle!.id, cardIds),
     onSuccess: (result) => {
+      setGuessError(null)
       if (result.correct) {
         const group = puzzle!.groups.find(
           g => g.tier === result.tier && !gameState.foundGroupIds.includes(g.id)
@@ -234,6 +237,9 @@ export function useConfluence() {
       } else {
         dispatch({ type: 'GUESS_WRONG', result })
       }
+    },
+    onError: () => {
+      setGuessError('Could not submit — check your connection and try again.')
     },
   })
 
@@ -280,6 +286,7 @@ export function useConfluence() {
     submitGuess,
     isPending: guessMutation.isPending,
     lastResult: guessMutation.data,
+    guessError,
     oneAwayCount,
     wrongCount,
     isSessionLoading: isAuthenticated ? !sessionSettled : false,
