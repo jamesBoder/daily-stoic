@@ -72,7 +72,7 @@ export const SharePanel = ({ quote, onClose }: Props) => {
               href={ch.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 font-sans text-sm text-primary-700 bg-surface-card border border-primary-200 rounded-stone px-3 py-2 hover:border-accent hover:text-accent hover:bg-primary-100 dark:hover:bg-[rgba(255,255,255,0.04)] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1"
+              className="flex items-center gap-2 font-sans text-sm text-primary-700 bg-surface-card border border-primary-200 rounded-stone px-3 py-2 hover:border-accent hover:text-accent hover:bg-primary-100 dark:hover:bg-[var(--color-surface-hi)] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1"
             >
               <span>{ch.icon}</span>
               <span>{ch.label}</span>
@@ -81,7 +81,7 @@ export const SharePanel = ({ quote, onClose }: Props) => {
             <button
               key={ch.label}
               onClick={ch.action}
-              className="flex items-center gap-2 font-sans text-sm text-primary-700 bg-surface-card border border-primary-200 rounded-stone px-3 py-2 hover:border-accent hover:text-accent hover:bg-primary-100 dark:hover:bg-[rgba(255,255,255,0.04)] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1"
+              className="flex items-center gap-2 font-sans text-sm text-primary-700 bg-surface-card border border-primary-200 rounded-stone px-3 py-2 hover:border-accent hover:text-accent hover:bg-primary-100 dark:hover:bg-[var(--color-surface-hi)] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1"
             >
               <span>{ch.icon}</span>
               <span>{ch.label}</span>

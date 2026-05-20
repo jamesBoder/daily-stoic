@@ -2,10 +2,10 @@ import { useRef } from 'react'
 import type { ConfluenceGroup, GroupTier } from '../../../types/confluence'
 
 const TIER_STYLE: Record<GroupTier, { bg: string; text: string; border: string }> = {
-  yellow: { bg: 'bg-amber-900/60',   text: 'text-amber-200',   border: 'border-amber-600/50' },
-  green:  { bg: 'bg-emerald-900/60', text: 'text-emerald-200', border: 'border-emerald-600/50' },
-  blue:   { bg: 'bg-blue-900/60',    text: 'text-blue-200',    border: 'border-blue-600/50' },
-  purple: { bg: 'bg-violet-900/60',  text: 'text-violet-200',  border: 'border-violet-600/50' },
+  yellow: { bg: 'bg-[var(--color-tier-1-bg)]', text: 'text-[var(--color-tier-1)]', border: 'border-[var(--color-tier-1-border)]' },
+  green:  { bg: 'bg-[var(--color-tier-2-bg)]', text: 'text-[var(--color-tier-2)]', border: 'border-[var(--color-tier-2-border)]' },
+  blue:   { bg: 'bg-[var(--color-tier-3-bg)]', text: 'text-[var(--color-tier-3)]', border: 'border-[var(--color-tier-3-border)]' },
+  purple: { bg: 'bg-[var(--color-tier-4-bg)]', text: 'text-[var(--color-tier-4)]', border: 'border-[var(--color-tier-4-border)]' },
 }
 
 interface FoundGroupsRowProps {
@@ -39,7 +39,7 @@ export function FoundGroupsRow({ foundGroups }: FoundGroupsRowProps) {
             <p className={`font-display text-[10px] tracking-widest uppercase mb-1 ${style.text}`}>
               {group.label}
             </p>
-            <p className="font-serif text-xs text-stone-300 italic leading-relaxed">
+            <p className="font-serif text-xs text-[var(--color-game-fg-muted)] italic leading-relaxed">
               {group.cards.map(c => c.concept?.name ?? '').filter(Boolean).join(' · ')}
             </p>
           </div>

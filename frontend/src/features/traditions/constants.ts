@@ -136,40 +136,47 @@ export const META: Record<string, {
 
 // ── Accent colors by slug ─────────────────────────────────────────────────────
 
-export const ICON_COLOR: Record<string, string> = {
-  stoicism:               '#8b7355',
-  hermeticism:            '#9a6fd0',
-  neoplatonism:           '#c8a83a',
-  gnosticism:             '#c04060',
-  kabbalah:               '#4080e0',
-  pythagoreanism:         '#28c8b8',
-  'pre-socratic':         '#e07830',
-  'african-philosophy':   '#d08040',
-  'renaissance-philosophy':'#48a048',
-  transcendentalism:      '#4898d8',
-  buddhism:               '#8250a0',
-  taoism:                 '#328c64',
-  vedanta:                '#b47828',
-  existentialism:         '#a03c3c',
-  'kemetic-wisdom':       '#b48228',
+export const TRADITION_COLORS: Record<string, { light: string; dark: string }> = {
+  stoicism:                { light: '#8b7355', dark: '#d4a853' },
+  hermeticism:             { light: '#9a6fd0', dark: '#c090ff' },
+  neoplatonism:            { light: '#c8a83a', dark: '#f0c840' },
+  gnosticism:              { light: '#c04060', dark: '#f06080' },
+  kabbalah:                { light: '#4080e0', dark: '#70b0ff' },
+  pythagoreanism:          { light: '#28c8b8', dark: '#50e8d8' },
+  'pre-socratic':          { light: '#e07830', dark: '#f0a060' },
+  'african-philosophy':    { light: '#d08040', dark: '#e8a060' },
+  'renaissance-philosophy':{ light: '#48a048', dark: '#70c870' },
+  transcendentalism:       { light: '#4898d8', dark: '#70c0ff' },
+  buddhism:                { light: '#8250a0', dark: '#be78f0' },
+  taoism:                  { light: '#328c64', dark: '#46c88c' },
+  vedanta:                 { light: '#b47828', dark: '#f0aa40' },
+  existentialism:          { light: '#a03c3c', dark: '#e05858' },
+  'kemetic-wisdom':        { light: '#b48228', dark: '#f0c046' },
 }
 
-export const ICON_COLOR_DARK: Record<string, string> = {
-  stoicism:               '#d4a853',
-  hermeticism:            '#c090ff',
-  neoplatonism:           '#f0c840',
-  gnosticism:             '#f06080',
-  kabbalah:               '#70b0ff',
-  pythagoreanism:         '#50e8d8',
-  'pre-socratic':         '#f0a060',
-  'african-philosophy':   '#e8a060',
-  'renaissance-philosophy':'#70c870',
-  transcendentalism:      '#70c0ff',
-  buddhism:               '#be78f0',
-  taoism:                 '#46c88c',
-  vedanta:                '#f0aa40',
-  existentialism:         '#e05858',
-  'kemetic-wisdom':       '#f0c046',
+// Fallback color when a tradition slug is not found in TRADITION_COLORS
+export const TRADITION_DEFAULT_COLORS = { light: '#8b7355', dark: '#d4a853' } as const
+export const TRADITION_NEUTRAL_COLORS = { light: '#888888', dark: '#888888' } as const
+
+// Per-tradition card surface colors — used for the card body background in
+// PhilosopherTimeline via --trad-surface / --trad-surface-dk CSS vars.
+// Raw hex/rgba here is intentional: this is the constants (raw values) layer.
+export const TRADITION_CARD_THEMES: Record<string, { surface: string; surfaceDk: string }> = {
+  stoicism:                 { surface: '#f5f0e6', surfaceDk: 'rgba(20,16,6,0.98)'   }, // warm parchment
+  hermeticism:              { surface: '#f2eeff', surfaceDk: 'rgba(10,4,22,0.98)'   }, // violet mist
+  neoplatonism:             { surface: '#f7f3e0', surfaceDk: 'rgba(20,16,2,0.98)'   }, // gilded parchment
+  gnosticism:               { surface: '#fff0f2', surfaceDk: 'rgba(20,2,6,0.98)'    }, // blood-rose shadow
+  kabbalah:                 { surface: '#edf3ff', surfaceDk: 'rgba(2,6,24,0.98)'    }, // deep sapphire
+  pythagoreanism:           { surface: '#edfaf8', surfaceDk: 'rgba(2,16,14,0.98)'   }, // aqua-teal depths
+  'pre-socratic':           { surface: '#fff4eb', surfaceDk: 'rgba(22,10,2,0.98)'   }, // ember-terracotta
+  'african-philosophy':     { surface: '#fff3ea', surfaceDk: 'rgba(22,10,2,0.98)'   }, // warm earth
+  'renaissance-philosophy': { surface: '#eef8ee', surfaceDk: 'rgba(4,14,4,0.98)'   }, // sage forest
+  transcendentalism:        { surface: '#eef5ff', surfaceDk: 'rgba(2,8,20,0.98)'   }, // sky-midnight
+  buddhism:                 { surface: '#f4eeff', surfaceDk: 'rgba(14,4,22,0.98)'   }, // amethyst dusk
+  taoism:                   { surface: '#edf9f4', surfaceDk: 'rgba(2,14,8,0.98)'    }, // jade depths
+  vedanta:                  { surface: '#fdf7e8', surfaceDk: 'rgba(20,12,2,0.98)'   }, // saffron warmth
+  existentialism:           { surface: '#fff0f0', surfaceDk: 'rgba(18,2,2,0.98)'    }, // void crimson
+  'kemetic-wisdom':         { surface: '#fdf8e0', surfaceDk: 'rgba(20,14,0,0.98)'   }, // papyrus-gold
 }
 
 // ── ID-keyed lookups (AuthorPage) ─────────────────────────────────────────────
@@ -196,24 +203,6 @@ export const TRADITION_SLUG: Record<number, string> = {
   10: 'transcendentalism',
   11: 'buddhism',        12: 'taoism',             13: 'vedanta',
   14: 'existentialism',  15: 'kemetic-wisdom',
-}
-
-export const TRADITION_ACCENT: Record<number, { light: string; dark: string }> = {
-  1:  { light: '#8b7355', dark: '#d4a853' },
-  2:  { light: '#9a6fd0', dark: '#c090ff' },
-  3:  { light: '#c8a83a', dark: '#f0c840' },
-  4:  { light: '#c04060', dark: '#f06080' },
-  5:  { light: '#4080e0', dark: '#70b0ff' },
-  6:  { light: '#28c8b8', dark: '#50e8d8' },
-  7:  { light: '#e07830', dark: '#f0a060' },
-  8:  { light: '#d08040', dark: '#e8a060' },
-  9:  { light: '#48a048', dark: '#70c870' },
-  10: { light: '#4898d8', dark: '#70c0ff' },
-  11: { light: '#8250a0', dark: '#be78f0' },
-  12: { light: '#328c64', dark: '#46c88c' },
-  13: { light: '#b47828', dark: '#f0aa40' },
-  14: { light: '#a03c3c', dark: '#e05858' },
-  15: { light: '#b48228', dark: '#f0c046' },
 }
 
 // ── Concept Glossary per tradition ───────────────────────────────────────────

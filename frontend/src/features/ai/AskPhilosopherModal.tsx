@@ -12,14 +12,14 @@ interface Props {
   // Provide one of: quote (has author embedded) or author (no specific quote)
   quote?: Quote
   author?: Author
-  accentColor?: string
+  tradColors?: { light: string; dark: string }
   onClose: () => void
 }
 
 const FREE_LIMIT = 3
 const MAX_CHARS  = 500
 
-export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', onClose }: Props) {
+export function AskPhilosopherModal({ quote, author, tradColors, onClose }: Props) {
   const { isAuthenticated } = useAuth()
   const [question, setQuestion] = useState('')
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -40,7 +40,6 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
   const nearLimit = charsLeft <= 60
 
   useEffect(() => {
-    // Small delay so the browser finishes rendering the modal before focusing.
     const t = setTimeout(() => textareaRef.current?.focus(), 80)
     return () => clearTimeout(t)
   }, [])
@@ -70,27 +69,29 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
   return createPortal(
     /* Backdrop */
     <div
-      className="fixed inset-x-0 bottom-0 z-[9999] flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm p-0 sm:p-4"
+      className="fixed inset-x-0 bottom-0 z-[9999] flex items-end sm:items-center justify-center bg-[var(--color-overlay)] backdrop-blur-sm p-0 sm:p-4"
       style={{ top: 0, height: '100dvh' }}
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
       role="dialog"
       aria-modal="true"
       aria-label={`Ask ${displayAuthor?.name ?? 'the philosopher'}`}
     >
-      {/* Modal panel */}
+      {/* Modal panel — sets per-tradition CSS vars for portal context */}
       <div
         className="animate-modal-rise relative w-full sm:max-w-lg rounded-t-2xl sm:rounded-2xl border overflow-hidden
                    flex flex-col
-                   bg-[rgba(250,247,240,0.97)] border-primary-200/60
-                   dark:bg-[rgba(4,8,22,0.95)] dark:border-[rgba(212,168,83,0.18)]"
+                   bg-surface-modal border-border
+                   dark:border-[var(--color-accent-20)]"
         style={{
-          boxShadow: '0 24px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(212,168,83,0.08)',
-          minHeight: '60dvh',
-          maxHeight: '85dvh',
-        }}
+          boxShadow:         'var(--shadow-ask-modal)',
+          minHeight:         '60dvh',
+          maxHeight:         '85dvh',
+          '--trad-color':    tradColors?.light ?? 'var(--color-accent)',
+          '--trad-color-dk': tradColors?.dark  ?? 'var(--color-accent)',
+        } as React.CSSProperties}
       >
         {/* Top accent bar */}
-        <div className="h-0.5 w-full shrink-0" style={{ background: accentColor }} />
+        <div className="h-0.5 w-full shrink-0" style={{ background: 'var(--trad-color-active)' }} />
 
         {/* Scrollable content */}
         <div className="overflow-y-auto flex-1 flex flex-col p-5 sm:p-6 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
@@ -98,17 +99,19 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
           {/* Header */}
           <div className="flex items-start justify-between mb-5">
             <div>
-              <p className="font-display text-[9px] tracking-[0.28em] uppercase mb-1" style={{ color: accentColor }}>
+              <p
+                className="font-display text-[9px] tracking-[0.28em] uppercase mb-1"
+                style={{ color: 'var(--trad-color-active)' }}
+              >
                 Ask the Philosopher
               </p>
-              <h2 className="font-display text-xl text-primary-800 dark:text-[#e8e0cc]">
+              <h2 className="font-display text-xl text-fg-muted">
                 {displayAuthor?.name ?? 'Unknown'}
               </h2>
             </div>
             <button
               onClick={onClose}
-              className="text-primary-400 hover:text-primary-600 dark:text-night-500 dark:hover:text-night-300
-                         transition-colors p-2 -mr-2 rounded-full
+              className="text-fg-subtle hover:text-fg transition-colors p-2 -mr-2 rounded-full
                          focus:outline-none focus:ring-2 focus:ring-accent"
               aria-label="Close"
             >
@@ -119,9 +122,11 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
           {/* Focal quote preview */}
           {quote && !lastResponse && (
             <div
-              className="mb-4 rounded-[6px] px-3 py-2.5 text-xs italic font-sans leading-relaxed
-                         text-primary-600 dark:text-night-400"
-              style={{ background: `${accentColor}10`, borderLeft: `2px solid ${accentColor}40` }}
+              className="mb-4 rounded-[6px] px-3 py-2.5 text-xs italic font-sans leading-relaxed text-fg-muted"
+              style={{
+                background:  'color-mix(in srgb, var(--trad-color-active) 6%, transparent)',
+                borderLeft:  '2px solid color-mix(in srgb, var(--trad-color-active) 25%, transparent)',
+              }}
             >
               "{quote.text}"
             </div>
@@ -130,13 +135,13 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
           {/* Unauthenticated */}
           {!isAuthenticated && (
             <div className="text-center py-6">
-              <p className="font-sans text-sm text-primary-600 dark:text-night-400 mb-4">
+              <p className="font-sans text-sm text-fg-muted mb-4">
                 Sign in to converse with {displayAuthor?.name ?? 'the philosopher'}.
               </p>
               <Link
                 to="/auth/login"
-                className="font-display text-xs tracking-wider uppercase px-4 py-2 rounded-full text-white transition-all hover:opacity-90"
-                style={{ background: accentColor }}
+                className="font-display text-xs tracking-wider uppercase px-4 py-2 rounded-full text-accent-text transition-all hover:opacity-90"
+                style={{ background: 'var(--trad-color-active)' }}
                 onClick={onClose}
               >
                 Sign in
@@ -148,10 +153,10 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
           {isAuthenticated && isAtLimit && (
             <div className="text-center py-6">
               <p className="text-3xl mb-3">⧖</p>
-              <p className="font-display text-sm text-primary-700 dark:text-[#e0ddd4] mb-1">
+              <p className="font-display text-sm text-fg mb-1">
                 Today's questions are spent.
               </p>
-              <p className="font-sans text-xs text-primary-500 dark:text-night-500">
+              <p className="font-sans text-xs text-fg-subtle">
                 {displayAuthor?.name ?? 'The philosopher'} will await your return tomorrow.
               </p>
             </div>
@@ -162,21 +167,24 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
             <div>
               <div
                 className="rounded-[8px] p-4 mb-4"
-                style={{ background: `${accentColor}0d`, border: `1px solid ${accentColor}30` }}
+                style={{
+                  background: 'color-mix(in srgb, var(--trad-color-active) 5%, transparent)',
+                  border:     '1px solid color-mix(in srgb, var(--trad-color-active) 19%, transparent)',
+                }}
               >
                 <p
                   className="font-display text-[9px] tracking-[0.2em] uppercase mb-2"
-                  style={{ color: accentColor }}
+                  style={{ color: 'var(--trad-color-active)' }}
                 >
                   {displayAuthor?.name ?? 'Response'}
                 </p>
-                <p className="font-serif text-sm md:text-base leading-relaxed text-primary-800 dark:text-[#e8e0cc]">
+                <p className="font-serif text-sm md:text-base leading-relaxed text-fg-muted">
                   {lastResponse.response}
                 </p>
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="font-sans text-[10px] text-primary-400 dark:text-night-600">
+                <span className="font-sans text-[10px] text-fg-subtle">
                   {remaining != null
                     ? remaining > 0
                       ? `${remaining} of ${FREE_LIMIT} questions remaining today`
@@ -186,7 +194,7 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
                 <button
                   onClick={handleAskAnother}
                   className="font-display text-[10px] tracking-[0.2em] uppercase transition-all hover:underline"
-                  style={{ color: accentColor }}
+                  style={{ color: 'var(--trad-color-active)' }}
                 >
                   Ask another →
                 </button>
@@ -208,16 +216,14 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
                   placeholder={`Ask ${displayAuthor?.name ?? 'them'} anything…`}
                   maxLength={MAX_CHARS}
                   className="flex-1 w-full rounded-[8px] px-3 py-2.5 text-[16px] md:text-sm font-sans resize-none transition-colors
-                             bg-primary-50 border border-primary-200/80 text-primary-800 placeholder-primary-400
-                             focus:outline-none focus:ring-2 focus:border-transparent
-                             dark:bg-[rgba(255,255,255,0.05)] dark:border-[rgba(255,255,255,0.10)]
-                             dark:text-[#e0ddd4] dark:placeholder-night-600"
-                  style={{ '--tw-ring-color': accentColor } as React.CSSProperties}
+                             bg-surface-input border border-border text-fg placeholder:text-fg-subtle
+                             focus:outline-none focus:ring-2 focus:border-transparent"
+                  style={{ '--tw-ring-color': 'var(--trad-color-active)' } as React.CSSProperties}
                 />
                 {/* Character counter */}
                 <span
                   className={`absolute bottom-2 right-2 font-sans text-[10px] transition-colors ${
-                    charsLeft <= 20 ? 'text-red-500' : nearLimit ? 'text-primary-400 dark:text-night-600' : 'text-primary-300 dark:text-night-700'
+                    charsLeft <= 20 ? 'text-danger' : nearLimit ? 'text-fg-subtle' : 'text-fg-dim'
                   }`}
                 >
                   {charsLeft}
@@ -225,22 +231,22 @@ export function AskPhilosopherModal({ quote, author, accentColor = '#8b7355', on
               </div>
 
               <div className="flex items-center justify-between mt-3">
-                <span className="font-sans text-[10px] text-primary-400 dark:text-night-600">
+                <span className="font-sans text-[10px] text-fg-subtle">
                   ↵ to submit · ⇧↵ for newline
                 </span>
                 <button
                   onClick={handleSubmit}
                   disabled={question.trim().length < 3 || isPending}
                   className="font-display text-xs tracking-wider uppercase px-4 py-2 rounded-full transition-all
-                             disabled:opacity-40 disabled:cursor-not-allowed active:scale-95 text-white"
-                  style={{ background: accentColor }}
+                             disabled:opacity-40 disabled:cursor-not-allowed active:scale-95 text-accent-text"
+                  style={{ background: 'var(--trad-color-active)' }}
                 >
                   {isPending ? 'Asking…' : 'Ask'}
                 </button>
               </div>
 
               {mutation.isError && !isAtLimit && (
-                <p className="font-sans text-xs text-red-500 mt-2">
+                <p className="font-sans text-xs text-danger mt-2">
                   The philosopher could not be reached. Please try again.
                 </p>
               )}

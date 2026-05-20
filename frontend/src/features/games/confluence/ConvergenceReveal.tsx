@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { ConfluenceGroup } from '../../../types/confluence'
 import { useAuth } from '../../../hooks/useAuth'
+import { TRADITION_COLORS } from '../../traditions/constants'
 
 type RevealPhase = 'hidden' | 'backdrop' | 'drift' | 'pulse' | 'merge' | 'text' | 'actions'
 
@@ -10,27 +11,27 @@ const PHASE_ORDER: RevealPhase[] = ['hidden', 'backdrop', 'drift', 'pulse', 'mer
 const atLeast = (current: RevealPhase, target: RevealPhase) =>
   PHASE_ORDER.indexOf(current) >= PHASE_ORDER.indexOf(target)
 
-// Per-tradition border color (hex) + sigil — mirrors ConfluenceCard's TRADITION_CONFIG
-const TRAD: Record<string, { color: string; sigil: string }> = {
-  stoicism:                 { color: '#64748b', sigil: 'Λ' },
-  hermeticism:              { color: '#ca8a04', sigil: '☿' },
-  neoplatonism:             { color: '#8b5cf6', sigil: '◎' },
-  gnosticism:               { color: '#dc2626', sigil: '⊕' },
-  kabbalah:                 { color: '#2563eb', sigil: '✡' },
-  pythagoreanism:           { color: '#059669', sigil: '△' },
-  'pre-socratic':           { color: '#d97706', sigil: '≋' },
-  'african-philosophy':     { color: '#ea580c', sigil: '☽' },
-  'renaissance-philosophy': { color: '#be185d', sigil: 'Φ' },
-  transcendentalism:        { color: '#16a34a', sigil: '☀' },
-  buddhism:                 { color: '#f59e0b', sigil: '☸' },
-  taoism:                   { color: '#0d9488', sigil: '☯' },
-  vedanta:                  { color: '#f97316', sigil: 'ॐ' },
-  existentialism:           { color: '#71717a', sigil: '∅' },
-  'kemetic-wisdom':         { color: '#eab308', sigil: '𓂀' },
+// Per-tradition sigils — mirrors ConfluenceCard. Colors derive from TRADITION_COLORS[slug].dark.
+const TRAD: Record<string, { sigil: string }> = {
+  stoicism:                 { sigil: 'Λ' },
+  hermeticism:              { sigil: '☿' },
+  neoplatonism:             { sigil: '◎' },
+  gnosticism:               { sigil: '⊕' },
+  kabbalah:                 { sigil: '✡' },
+  pythagoreanism:           { sigil: '△' },
+  'pre-socratic':           { sigil: '≋' },
+  'african-philosophy':     { sigil: '☽' },
+  'renaissance-philosophy': { sigil: 'Φ' },
+  transcendentalism:        { sigil: '☀' },
+  buddhism:                 { sigil: '☸' },
+  taoism:                   { sigil: '☯' },
+  vedanta:                  { sigil: 'ॐ' },
+  existentialism:           { sigil: '∅' },
+  'kemetic-wisdom':         { sigil: '𓂀' },
 }
-const FALLBACK = { color: '#78716c', sigil: '✦' }
-const PURPLE_COLOR = '#7c3aed'
-const PURPLE_GLOW  = '0 0 16px 4px rgba(124, 58, 237, 0.45)'
+const FALLBACK = { sigil: '✦' }
+const PURPLE_COLOR = 'var(--color-tier-4)'
+const PURPLE_GLOW  = 'var(--color-convergence-glow)'
 
 interface Props {
   group: ConfluenceGroup | null
@@ -111,17 +112,18 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
         {/* The 4 concept mini-cards */}
         <div className="flex justify-center gap-2.5 mb-10">
           {group.cards.map((card, i) => {
-            const slug = card.concept.tradition?.slug ?? ''
-            const cfg  = TRAD[slug] ?? FALLBACK
-            const borderColor = merged ? PURPLE_COLOR : cfg.color
-            const sigilColor  = merged ? '#a78bfa' : cfg.color
+            const slug        = card.concept.tradition?.slug ?? ''
+            const cfg         = TRAD[slug] ?? FALLBACK
+            const tradColor   = TRADITION_COLORS[slug]?.dark ?? 'var(--color-game-fg-muted)'
+            const borderColor = merged ? PURPLE_COLOR : tradColor
+            const sigilColor  = merged ? PURPLE_COLOR : tradColor
 
             return (
               <div
                 key={card.id}
                 className={[
                   'w-[3.25rem] rounded-lg border-2 flex flex-col items-center justify-center py-3 gap-1',
-                  'bg-stone-900/90',
+                  'bg-[var(--color-game-surface)]',
                   showDrift ? 'animate-convergence-drift' : 'opacity-0',
                   isPulsing ? 'animate-border-pulse' : '',
                 ].filter(Boolean).join(' ')}
@@ -135,7 +137,7 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
                 <span className="text-lg leading-none" style={{ color: sigilColor, transition: 'color 0.6s ease' }}>
                   {cfg.sigil}
                 </span>
-                <p className="font-serif text-[7px] text-stone-400 italic px-1 text-center leading-tight line-clamp-3">
+                <p className="font-serif text-[7px] text-[var(--color-game-fg-muted)] italic px-1 text-center leading-tight line-clamp-3">
                   {card.concept.name}
                 </p>
               </div>
@@ -148,10 +150,10 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
           className="transition-opacity duration-700"
           style={{ opacity: showText ? 1 : 0 }}
         >
-          <p className="font-display text-[10px] tracking-widest uppercase text-violet-400 mb-2">
+          <p className="font-display text-[10px] tracking-widest uppercase text-[var(--color-tier-4)] mb-2">
             {group.label}
           </p>
-          <div className="w-8 h-px bg-violet-700/50 mx-auto mb-5" />
+          <div className="w-8 h-px bg-[var(--color-tier-4-border)] mx-auto mb-5" />
         </div>
 
         {/* Convergence teaching (or anonymous CTA) */}
@@ -161,20 +163,20 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
         >
           {group.convergence_teaching ? (
             isAuthenticated ? (
-              <p className="font-serif text-sm text-stone-300 italic leading-relaxed">
+              <p className="font-serif text-sm text-[var(--color-game-fg-muted)] italic leading-relaxed">
                 {group.convergence_teaching}
               </p>
             ) : (
               <div className="space-y-4">
-                <p className="font-serif text-sm text-stone-400 italic leading-relaxed">
+                <p className="font-serif text-sm text-[var(--color-game-fg-muted)] italic leading-relaxed">
                   Sign in to read the full cross-tradition teaching.
                 </p>
                 <Link
                   to="/auth/login"
                   onClick={onClose}
                   className="inline-block font-display text-[10px] tracking-widest uppercase
-                             px-4 py-1.5 rounded border border-violet-700/50 text-violet-400
-                             hover:border-violet-600 hover:text-violet-300 transition-colors"
+                             px-4 py-1.5 rounded border border-[var(--color-tier-4-border)] text-[var(--color-tier-4)]
+                             hover:border-[var(--color-tier-4)] hover:text-[var(--color-tier-4)] transition-colors"
                 >
                   Sign in
                 </Link>
@@ -182,7 +184,7 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
             )
           ) : (
             // Fallback if teaching text is missing (shouldn't happen in normal data)
-            <p className="font-serif text-sm text-stone-500 italic">
+            <p className="font-serif text-sm text-[var(--color-game-fg-dim)] italic">
               The traditions converge.
             </p>
           )}
@@ -197,7 +199,7 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
             disabled={!showActions}
             onClick={onClose}
             className="font-display text-xs tracking-widest uppercase px-7 py-2.5 rounded-full
-                       bg-stone-100 text-stone-900 hover:bg-white transition-colors
+                       bg-[var(--color-game-fg)] text-[var(--color-game-bg)] hover:bg-[var(--color-game-fg)] transition-colors
                        disabled:pointer-events-none"
           >
             Continue

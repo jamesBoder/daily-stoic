@@ -60,7 +60,7 @@ export const VerifyEmail: React.FC = () => {
           <Card>
             <div className="text-center space-y-4 py-4">
               <Loading />
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-fg-muted">
                 Verifying your email...
               </p>
             </div>
@@ -77,10 +77,10 @@ export const VerifyEmail: React.FC = () => {
           <Card>
             <div className="text-center space-y-4">
               <div className="text-6xl">✅</div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <h2 className="text-2xl font-bold text-fg">
                 Email Verified!
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-fg-muted">
                 Your account is now active. Redirecting you to the app...
               </p>
             </div>
@@ -97,11 +97,11 @@ export const VerifyEmail: React.FC = () => {
           <Card>
             <div className="text-center space-y-4">
               <div className="text-6xl">⏰</div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <h2 className="text-2xl font-bold text-fg">
                 Link Expired
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">{errorMessage}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-fg-muted">{errorMessage}</p>
+              <p className="text-sm text-fg-subtle">
                 Verification links expire after 24 hours.
               </p>
               <Button onClick={() => navigate("/login")} className="w-full">
@@ -121,10 +121,10 @@ export const VerifyEmail: React.FC = () => {
         <Card>
           <div className="text-center space-y-4">
             <div className="text-6xl">❌</div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <h2 className="text-2xl font-bold text-fg">
               Verification Failed
             </h2>
-            <p className="text-gray-600 dark:text-gray-400">{errorMessage}</p>
+            <p className="text-fg-muted">{errorMessage}</p>
             <Button onClick={() => navigate("/login")} className="w-full">
               Back to Login
             </Button>

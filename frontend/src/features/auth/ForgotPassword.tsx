@@ -35,12 +35,12 @@ export const ForgotPassword: React.FC = () => {
           <Card>
             <div className="text-center space-y-4">
               <div className="text-6xl">📬</div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <h2 className="text-2xl font-bold text-fg">
                 Check your email
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-fg-muted">
                 If an account with{" "}
-                <strong className="text-gray-900 dark:text-gray-100">
+                <strong className="text-fg">
                   {email}
                 </strong>{" "}
                 exists, we've sent a password reset link. The link expires in 1
@@ -48,7 +48,7 @@ export const ForgotPassword: React.FC = () => {
               </p>
               <Link
                 to="/login"
-                className="block text-sm text-primary-600 dark:text-primary-400 hover:underline"
+                className="block text-sm text-fg-muted hover:underline"
               >
                 Back to login
               </Link>
@@ -63,17 +63,17 @@ export const ForgotPassword: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl font-bold text-fg">
             Forgot Password
           </h2>
-          <p className="mt-2 text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-fg-muted">
             Enter your email and we'll send you a reset link.
           </p>
         </div>
         <Card>
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
-              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 px-4 py-3 rounded-lg text-sm">
+              <div className="bg-danger-bg border border-[var(--color-danger)] text-danger px-4 py-3 rounded-lg text-sm">
                 {error}
               </div>
             )}
@@ -101,7 +101,7 @@ export const ForgotPassword: React.FC = () => {
           <div className="mt-6 text-center">
             <Link
               to="/login"
-              className="text-sm text-primary-600 dark:text-primary-400 hover:underline"
+              className="text-sm text-fg-muted hover:underline"
             >
               Back to login
             </Link>

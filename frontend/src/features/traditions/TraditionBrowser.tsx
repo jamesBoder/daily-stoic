@@ -6,10 +6,9 @@ import { traditionsApi } from '../../services/api/traditions'
 import apiClient from '../../services/api/api'
 import type { Tradition, Quote } from '../../types/quote'
 import { useSubscription } from '../../contexts/SubscriptionContext'
-import { useIsDark } from '../../hooks/useIsDark'
 import { PremiumGate } from '../../components/common/PremiumGate'
 import { PassageCard } from './PassageCard'
-import { META, ICON_COLOR, ICON_COLOR_DARK } from './constants'
+import { META, TRADITION_COLORS, TRADITION_DEFAULT_COLORS } from './constants'
 
 // How many premium traditions to show as teasers before the "more" card
 const PREMIUM_TEASER = 2
@@ -20,13 +19,13 @@ function SectionHeader({ title, subtitle }: { title: string; subtitle: string })
   return (
     <div className="mb-4">
       <div className="flex items-center gap-3 mb-1">
-        <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
-        <h2 className="font-display text-[10px] tracking-[0.25em] uppercase text-primary-600 dark:text-night-400 px-1">
+        <div className="h-px flex-1 bg-border-hi" />
+        <h2 className="font-display text-[10px] tracking-[0.25em] uppercase text-fg-muted px-1">
           {title}
         </h2>
-        <div className="h-px flex-1 bg-primary-300 dark:bg-[rgba(255,255,255,0.12)]" />
+        <div className="h-px flex-1 bg-border-hi" />
       </div>
-      <p className="font-sans text-xs text-primary-500 dark:text-night-500 text-center">{subtitle}</p>
+      <p className="font-sans text-xs text-fg-subtle text-center">{subtitle}</p>
     </div>
   )
 }
@@ -50,34 +49,31 @@ function MorePremiumTeaser({
       {/* Stacked-card illusion — a ghost layer behind */}
       <div
         className="absolute inset-x-3 -bottom-1.5 h-10 rounded-card border
-                   bg-surface-card border-primary-200/40
-                   dark:bg-[rgba(10,20,44,0.30)] dark:border-[rgba(255,255,255,0.04)]"
+                   bg-surface border-border-subtle"
       />
 
       <button
         onClick={onReveal}
         className="relative w-full text-left rounded-card border p-4 transition-all duration-200 group
-                   bg-surface-card border-primary-200/60 hover:border-accent/40 hover:shadow-card-hover
-                   dark:bg-[rgba(10,20,44,0.55)] dark:border-[rgba(255,255,255,0.07)]
-                   dark:hover:border-[rgba(212,168,83,0.25)] dark:hover:bg-[rgba(15,28,60,0.65)]"
+                   bg-surface border-border hover:border-accent/40 hover:shadow-card-hover
+                   dark:hover:border-[var(--color-accent-25)] dark:hover:bg-surface-elevated"
         style={{ WebkitBackdropFilter: 'blur(16px)' }}
       >
         <div className="flex items-center gap-4">
           {/* Icon */}
           <div
             className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-lg
-                       bg-accent/10 dark:bg-[rgba(212,168,83,0.10)]
-                       text-accent dark:text-[#d4a853]"
+                       bg-[var(--color-accent-10)] text-accent"
           >
             ✦
           </div>
 
           {/* Text */}
           <div className="flex-1 min-w-0">
-            <p className="font-display text-sm tracking-wide text-primary-800 dark:text-[#e0ddd4] mb-0.5">
+            <p className="font-display text-sm tracking-wide text-fg mb-0.5">
               {count} more tradition{count !== 1 ? 's' : ''}
             </p>
-            <p className="font-sans text-xs text-primary-500 dark:text-night-500 truncate">
+            <p className="font-sans text-xs text-fg-subtle truncate">
               {preview}{extra}
             </p>
           </div>
@@ -85,8 +81,7 @@ function MorePremiumTeaser({
           {/* CTA */}
           <span
             className="shrink-0 font-display text-[10px] tracking-[0.2em] uppercase
-                       text-accent dark:text-[#d4a853]
-                       group-hover:underline transition-all"
+                       text-accent group-hover:underline transition-all"
           >
             Show all →
           </span>
@@ -101,11 +96,9 @@ function MorePremiumTeaser({
 function TraditionCard({
   tradition,
   isPremium,
-  isDark,
 }: {
   tradition: Tradition
   isPremium: boolean
-  isDark: boolean
 }) {
   const [expanded, setExpanded]   = useState(false)
   const [quotes, setQuotes]       = useState<Quote[]>([])
@@ -117,13 +110,10 @@ function TraditionCard({
     description: '',
     tagline: '',
     icon: '✦',
-    accent: 'rgba(139,115,85,0.15)',
-    accentDark: 'rgba(212,168,83,0.15)',
     era: '',
   }
 
-  const color   = (isDark ? ICON_COLOR_DARK : ICON_COLOR)[tradition.slug] ?? '#8b7355'
-  const bgColor = isDark ? meta.accentDark : meta.accent
+  const colors = TRADITION_COLORS[tradition.slug] ?? TRADITION_DEFAULT_COLORS
 
   const toggle = async () => {
     if (isLocked) return
@@ -138,7 +128,6 @@ function TraditionCard({
         setExpanded(true)
       } catch {
         setFetchError(true)
-        // Don't expand — error is shown at card level after user re-taps
       } finally {
         setLoading(false)
       }
@@ -150,11 +139,13 @@ function TraditionCard({
   return (
     <div
       className={`rounded-card border transition-all duration-300 overflow-hidden
-                  bg-surface-card border-primary-200/60 shadow-card
-                  dark:bg-[rgba(10,20,44,0.55)] dark:border-[rgba(255,255,255,0.07)]
-                  dark:shadow-[0_2px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.04)]
-                  ${isLocked ? 'opacity-70' : 'cursor-pointer hover:-translate-y-0.5 hover:shadow-card-hover hover:bg-surface-elevated dark:hover:bg-[rgba(15,28,60,0.70)]'}`}
-      style={{ WebkitBackdropFilter: 'blur(16px)' }}
+                  bg-surface border-border shadow-card dark:shadow-[var(--shadow-card-dark)]
+                  ${isLocked ? 'opacity-70' : 'cursor-pointer hover:-translate-y-0.5 hover:shadow-card-hover hover:bg-surface-elevated dark:hover:bg-surface-elevated'}`}
+      style={{
+        WebkitBackdropFilter: 'blur(16px)',
+        '--trad-color':    colors.light,
+        '--trad-color-dk': colors.dark,
+      } as React.CSSProperties}
       onClick={toggle}
     >
       <div className="p-4">
@@ -162,7 +153,10 @@ function TraditionCard({
           {/* Icon circle */}
           <div
             className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-xl"
-            style={{ background: bgColor, color }}
+            style={{
+              background: 'color-mix(in srgb, var(--trad-color-active) 18%, transparent)',
+              color: 'var(--trad-color-active)',
+            }}
           >
             {meta.icon}
           </div>
@@ -170,11 +164,11 @@ function TraditionCard({
           {/* Text */}
           <div className="flex-1 min-w-0 pt-0.5">
             <div className="flex items-center gap-2 mb-0.5">
-              <h3 className="font-display text-sm tracking-wider text-primary-800 dark:text-[#e0ddd4]">
+              <h3 className="font-display text-sm tracking-wider text-fg">
                 {tradition.name}
               </h3>
             </div>
-            <p className="font-sans text-xs text-primary-600 dark:text-night-400 leading-relaxed line-clamp-2">
+            <p className="font-sans text-xs text-fg-muted leading-relaxed line-clamp-2">
               {meta.description}
             </p>
           </div>
@@ -190,15 +184,15 @@ function TraditionCard({
                   onClick={e => e.stopPropagation()}
                   className="font-display text-[8px] tracking-[0.2em] uppercase transition-all hover:scale-105 active:scale-95 py-1 px-2 rounded-stone"
                   style={{
-                    color,
-                    background: `${color}18`,
-                    border: `1px solid ${color}45`,
+                    color: 'var(--trad-color-active)',
+                    background: 'color-mix(in srgb, var(--trad-color-active) 9%, transparent)',
+                    border: '1px solid color-mix(in srgb, var(--trad-color-active) 27%, transparent)',
                   }}
                 >
                   Explore
                 </Link>
                 <span
-                  className="text-primary-600 dark:text-night-400 text-sm transition-transform duration-200"
+                  className="text-fg-muted text-sm transition-transform duration-200"
                   style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
                 >
                   ▾
@@ -210,14 +204,14 @@ function TraditionCard({
 
         {/* Expanded passages */}
         {expanded && (
-          <div className="mt-4 border-t border-primary-200/50 dark:border-[rgba(255,255,255,0.06)] pt-4">
+          <div className="mt-4 border-t border-border-subtle pt-4">
             {loading ? (
-              <p className="font-sans text-xs text-primary-400 dark:text-night-500 text-center py-4">
+              <p className="font-sans text-xs text-fg-subtle text-center py-4">
                 Loading passages…
               </p>
             ) : fetchError ? (
               <div className="text-center py-4">
-                <p className="font-sans text-xs text-primary-400 dark:text-night-500 mb-2">
+                <p className="font-sans text-xs text-fg-subtle mb-2">
                   Could not load passages.
                 </p>
                 <button
@@ -232,17 +226,13 @@ function TraditionCard({
                 </button>
               </div>
             ) : quotes.length === 0 ? (
-              <p className="font-sans text-xs text-primary-400 dark:text-night-500 text-center py-4">
+              <p className="font-sans text-xs text-fg-subtle text-center py-4">
                 No passages found.
               </p>
             ) : (
               <div className="space-y-7">
                 {quotes.map(q => (
-                  <PassageCard
-                    key={q.id}
-                    quote={q}
-                    accentColor={isDark ? ICON_COLOR_DARK[tradition.slug] : ICON_COLOR[tradition.slug]}
-                  />
+                  <PassageCard key={q.id} quote={q} tradColors={colors} />
                 ))}
               </div>
             )}
@@ -251,7 +241,7 @@ function TraditionCard({
               <Link
                 to={`/traditions/${tradition.slug}`}
                 className="font-display text-[9px] tracking-[0.2em] uppercase transition-all hover:underline"
-                style={{ color }}
+                style={{ color: 'var(--trad-color-active)' }}
                 onClick={e => e.stopPropagation()}
               >
                 Explore all passages →
@@ -271,7 +261,6 @@ export const TraditionBrowser = () => {
   const [loading, setLoading]       = useState(true)
   const [error, setError]           = useState(false)
   const { isPremium }               = useSubscription()
-  const isDark                      = useIsDark()
 
   // Premium users see all traditions immediately; free users see a teaser
   const [showAllPremium, setShowAllPremium] = useState(false)
@@ -297,13 +286,13 @@ export const TraditionBrowser = () => {
 
         {/* Page header */}
         <header className="text-center mb-12">
-          <p className="font-display text-[10px] uppercase tracking-[0.3em] text-accent dark:text-[#d4a853] mb-2">
+          <p className="font-display text-[10px] uppercase tracking-[0.3em] text-accent mb-2">
             Explore
           </p>
-          <h1 className="font-display text-3xl text-primary-800 dark:text-[#e8e0cc] mb-3 title-glow-hover">
+          <h1 className="font-display text-3xl text-fg mb-3 title-glow-hover">
             Wisdom Traditions
           </h1>
-          <p className="font-sans text-sm text-primary-600 dark:text-night-400 max-w-sm mx-auto leading-relaxed">
+          <p className="font-sans text-sm text-fg-muted max-w-sm mx-auto leading-relaxed">
             Ten schools of thought spanning three millennia.
             Tap any tradition to preview — or Explore for the full deep-dive.
           </p>
@@ -312,9 +301,9 @@ export const TraditionBrowser = () => {
               to="/traditions/timeline"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-stone border font-display text-[10px] tracking-[0.18em] uppercase transition-all duration-150 hover:scale-105 active:scale-95"
               style={{
-                color:      isDark ? '#d4a853' : '#8b7355',
-                background: isDark ? 'rgba(212,168,83,0.10)' : 'rgba(139,115,85,0.08)',
-                border:     `1px solid ${isDark ? 'rgba(212,168,83,0.28)' : 'rgba(139,115,85,0.3)'}`,
+                color:      'var(--color-accent)',
+                background: 'var(--color-accent-10)',
+                border:     '1px solid var(--color-accent-30)',
               }}
             >
               <span style={{ fontSize: 13 }}>◈</span>
@@ -329,7 +318,7 @@ export const TraditionBrowser = () => {
             {[1, 2, 3, 4].map(i => (
               <div
                 key={i}
-                className="h-[72px] rounded-card bg-primary-100/60 dark:bg-night-800/40 animate-pulse"
+                className="h-[72px] rounded-card bg-surface animate-pulse"
               />
             ))}
           </div>
@@ -337,7 +326,7 @@ export const TraditionBrowser = () => {
 
         {/* Error */}
         {error && (
-          <p className="font-sans text-sm text-primary-400 dark:text-night-500 text-center py-8">
+          <p className="font-sans text-sm text-fg-subtle text-center py-8">
             Could not load traditions. Is the backend running?
           </p>
         )}
@@ -355,7 +344,7 @@ export const TraditionBrowser = () => {
                 />
                 <div className="space-y-3">
                   {free.map(t => (
-                    <TraditionCard key={t.id} tradition={t} isPremium={isPremium} isDark={isDark} />
+                    <TraditionCard key={t.id} tradition={t} isPremium={isPremium} />
                   ))}
                 </div>
               </section>
@@ -372,7 +361,7 @@ export const TraditionBrowser = () => {
                 />
                 <div className="space-y-3">
                   {visiblePremium.map(t => (
-                    <TraditionCard key={t.id} tradition={t} isPremium={isPremium} isDark={isDark} />
+                    <TraditionCard key={t.id} tradition={t} isPremium={isPremium} />
                   ))}
                 </div>
 

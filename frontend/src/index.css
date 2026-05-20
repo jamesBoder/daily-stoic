@@ -17,18 +17,47 @@
 
   /* ── Colors: accent ── */
   --color-accent:       #8b7355;
-  --color-accent-light: #c4a882;
-  --color-accent-dark:  #5c4a2a;
+  --color-accent-light: #c4a882;  /* legacy alias — use accent-hi in new code */
+  --color-accent-hi:    #c4a882;
+  --color-accent-dark:  #5c4a2a;  /* codebase token name; same value as accent-lo */
+  --color-accent-lo:    #5c4a2a;
+  --color-accent-text:  #ffffff;
 
   /* ── Colors: surface ── */
-  --color-surface-base:     #eae6db;
+  --color-surface-base:     #eae6db;  /* legacy alias — use bg-bg in new code */
   --color-surface-card:     #e4e0d5;
-  --color-surface-elevated: #dedad0;
+  --color-surface-elevated: #dedad0;  /* legacy alias — use surface-hi in new code */
 
-  /* ── Colors: semantic ── */
+  /* ── Colors: semantic tokens (Phase 0) ── */
+  /* Foreground */
+  --color-fg:            #4d4839;
+  --color-fg-muted:      #7d7560;
+  --color-fg-subtle:     #9c9480;
+  --color-fg-dim:        #7a7060;
+  --color-fg-inverse:    #f5f5f0;
+  /* Background & surface */
+  --color-bg:            #eae6db;
+  --color-surface:       rgba(228,224,213,1);
+  --color-surface-hi:    rgba(222,218,208,1);
+  --color-surface-input: rgba(232,230,223,1);
+  --color-surface-modal: rgba(244,241,235,0.98);
+  --color-overlay:       rgba(38,35,28,0.4);
+  /* Border */
+  --color-border:        #d4d0c4;
+  --color-border-hi:     #b8b2a0;
+  --color-border-subtle: rgba(212,208,196,0.5);
+  /* Semantic */
   --color-success: #5a7a5a;
   --color-warning: #a07840;
   --color-danger:  #8a4a3a;
+  --color-info:    #4d6a8a;
+  --color-danger-bg:  color-mix(in srgb, var(--color-danger)  10%, transparent);
+  --color-success-bg: color-mix(in srgb, var(--color-success) 10%, transparent);
+  /* Game difficulty tiers (always dark — same value in both modes) */
+  --color-tier-1: #d4a853;
+  --color-tier-2: #46c88c;
+  --color-tier-3: #70b0ff;
+  --color-tier-4: #c090ff;
 
   /* ── Font families ── */
   --font-serif:   "Cormorant Garamond", Georgia, Cambria, serif;
@@ -62,6 +91,7 @@
   --shadow-card:          0 2px 8px rgba(38,35,28,0.14), 0 8px 32px rgba(38,35,28,0.10);
   --shadow-card-hover:    0 4px 16px rgba(38,35,28,0.18), 0 16px 48px rgba(38,35,28,0.14);
   --shadow-modal:         0 8px 48px rgba(38,35,28,0.18);
+  --shadow-ask-modal:     0 24px 80px rgba(38,35,28,0.18), 0 0 0 1px var(--color-accent-10);
   --shadow-elevated:      0 2px 8px rgba(38,35,28,0.10);
   --shadow-header-scroll: 0 2px 20px rgba(38,35,28,0.14), 0 4px 12px rgba(38,35,28,0.08);
 
@@ -81,6 +111,199 @@
   --animate-twinkle:         twinkle var(--twinkle-dur,3s) ease-in-out infinite var(--twinkle-delay,0s);
   --animate-dot-fill:        dot-fill 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards;
   --animate-overlay-in:      overlay-in 0.55s ease forwards;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   Phase 0 runtime CSS variables
+   @theme handles Tailwind utility generation (light-mode defaults).
+   These blocks handle: dark-mode overrides, alpha variants, shadows,
+   gradients, layout, toast, game, and brand tokens.
+   ───────────────────────────────────────────────────────────────── */
+
+/* Light-mode runtime extras (alpha variants, shadows, gradients, layout) */
+:root {
+  /* Accent alpha variants — always reference via var(), no Tailwind shorthand */
+  --color-accent-4:  color-mix(in srgb, var(--color-accent)  4%, transparent);
+  --color-accent-10: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  --color-accent-12: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  --color-accent-15: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  --color-accent-20: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  --color-accent-30: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  --color-accent-35: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  --color-accent-40: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  --color-accent-50: color-mix(in srgb, var(--color-accent) 50%, transparent);
+  /* Derived glow variants — auto-adapt via var(--color-accent/info) */
+  --color-accent-glow: color-mix(in srgb, var(--color-accent) 50%, transparent);
+  --color-info-glow:   color-mix(in srgb, var(--color-info)   35%, transparent);
+
+  /* Shadows (light-mode and mode-agnostic) */
+  --shadow-accent-glow: 0 0 0 2px var(--color-accent), 0 0 24px 8px var(--color-accent-30);
+  --shadow-medallion:   inset 0 2px 6px rgba(38,35,28,0.18), inset 0 0 0 1px rgba(38,35,28,0.06);
+
+  /* Gradients */
+  --gradient-onboarding-bg: linear-gradient(160deg,#060b16 0%,#0b1528 55%,#080f1e 100%);
+  --gradient-progress:      linear-gradient(90deg,var(--color-accent),var(--color-accent-hi));
+  --gradient-accent-btn:    linear-gradient(135deg,var(--color-accent) 0%,var(--color-accent-lo) 100%);
+
+  /* Layout tokens (enables injected <style> tag deletion in Phase 7) */
+  --header-bg:       rgba(234,230,219,0.92);
+  --header-border:   rgba(212,208,196,0.7);
+  --shadow-header:   none;
+  --footer-bg:       rgba(234,230,219,0.80);
+  --footer-border:   rgba(212,208,196,0.55);
+  --dropdown-bg:     rgba(244,241,235,0.98);
+  --dropdown-border: rgba(212,208,196,0.7);
+  --dropdown-shadow: 0 8px 32px rgba(38,35,28,0.14), 0 0 0 1px rgba(212,208,196,0.5);
+
+  /* Toast tokens */
+  --color-toast-bg:      #ffffff;
+  --color-toast-fg:      #1c1917;
+  --color-toast-success: #10b981;
+  --color-toast-error:   #ef4444;
+  --color-toast-info:    #3b82f6;
+
+  /* Social brand colors — fixed, never vary by theme */
+  --color-brand-whatsapp:        #25D366;
+  --color-brand-whatsapp-hover:  #1ebe5d;
+  --color-brand-facebook:        #1877F2;
+  --color-brand-facebook-hover:  #166fe5;
+  --color-brand-x:               #000000;
+  --color-brand-x-hover:         #1a1a1a;
+  --color-brand-instagram-from:  #f9ce34;
+  --color-brand-instagram-via:   #ee2a7b;
+  --color-brand-instagram-to:    #6228d7;
+
+  /* Per-tradition active color — set --trad-color/--trad-color-dk on the container */
+  --trad-color-active: var(--trad-color, var(--color-accent));
+  /* Per-tradition card surface — set --trad-surface/--trad-surface-dk on the card */
+  --trad-surface-active: var(--trad-surface, var(--color-surface));
+
+  /* Era fill bands for PhilosopherTimeline (light mode) */
+  --era-fill-0: rgba(180,140,60,0.08);
+  --era-fill-1: rgba(80,120,200,0.08);
+  --era-fill-2: rgba(140,80,180,0.08);
+  --era-fill-3: rgba(60,160,80,0.08);
+  --era-fill-4: rgba(180,90,50,0.08);
+
+  /* SVG UI tokens for PhilosopherTimeline (light mode) */
+  --svg-fg-subtle: rgba(0,0,0,0.38);
+  --svg-fg-dim:    rgba(0,0,0,0.28);
+  --svg-fg-faint:  rgba(0,0,0,0.16);
+  --svg-grid:      rgba(0,0,0,0.05);
+  --svg-grid-hi:   rgba(0,0,0,0.12);
+  --svg-grid-sep:  rgba(0,0,0,0.04);
+  --svg-axis:      rgba(0,0,0,0.20);
+  --svg-axis-tick: rgba(0,0,0,0.28);
+  --svg-axis-text: rgba(0,0,0,0.38);
+  --svg-era-text:  rgba(0,0,0,0.16);
+  --svg-node-ring: rgba(255,255,255,0.9);
+  --svg-fg:        rgba(0,0,0,0.52);
+}
+
+/* Game and tier tokens — always dark regardless of user preference */
+:root, .dark {
+  --color-game-bg:            #0d1117;
+  --color-game-card-back:     #0d1117;
+  --color-game-surface:       rgba(30,30,35,0.9);
+  --color-game-border:        rgba(255,255,255,0.08);
+  --color-game-fg:            #e0ddd4;
+  --color-game-fg-muted:      #a0a090;
+  --color-game-fg-dim:        #6b6b5a;
+  --color-game-filled:        rgba(255,255,255,0.18);
+  --color-game-empty:         rgba(255,255,255,0.08);
+  --color-game-selected-ring: rgba(255,255,255,0.9);
+  --color-convergence-glow:   0 0 16px 4px color-mix(in srgb, var(--color-tier-4) 45%, transparent);
+
+  /* Tier alpha variants */
+  --color-tier-1-bg:     color-mix(in srgb, var(--color-tier-1) 20%, transparent);
+  --color-tier-1-border: color-mix(in srgb, var(--color-tier-1) 40%, transparent);
+  --color-tier-2-bg:     color-mix(in srgb, var(--color-tier-2) 20%, transparent);
+  --color-tier-2-border: color-mix(in srgb, var(--color-tier-2) 40%, transparent);
+  --color-tier-3-bg:     color-mix(in srgb, var(--color-tier-3) 20%, transparent);
+  --color-tier-3-border: color-mix(in srgb, var(--color-tier-3) 40%, transparent);
+  --color-tier-4-bg:     color-mix(in srgb, var(--color-tier-4) 20%, transparent);
+  --color-tier-4-border: color-mix(in srgb, var(--color-tier-4) 40%, transparent);
+}
+
+/* Dark-mode semantic token overrides — higher specificity than @theme layer */
+.dark {
+  /* Foreground */
+  --color-fg:            #ccc8bc;
+  --color-fg-muted:      #8892b8;
+  --color-fg-subtle:     #6070a0;
+  --color-fg-dim:        #7a7060;
+  --color-fg-inverse:    #040810;
+  /* Background & surface */
+  --color-bg:            transparent;
+  --color-surface:       rgba(10,20,44,0.62);
+  --color-surface-hi:    rgba(15,28,60,0.68);
+  --color-surface-input: rgba(15,24,48,0.50);
+  --color-surface-modal: rgba(8,14,36,0.98);
+  --color-surface-card:  rgba(255,255,255,0.06);
+  --color-overlay:       rgba(0,0,12,0.6);
+  /* Border */
+  --color-border:        rgba(255,255,255,0.08);
+  --color-border-hi:     rgba(255,255,255,0.14);
+  --color-border-subtle: rgba(255,255,255,0.05);
+  /* Accent */
+  --color-accent:        #d4a853;
+  --color-accent-hi:     #e8c96a;
+  --color-accent-dark:   #9a7030;  /* fixes hover regression (2g): pressed gold not brown */
+  --color-accent-lo:     #9a7030;
+  --color-accent-text:   #040810;
+  /* Semantic */
+  --color-success:       #6a9a6a;
+  --color-danger:        #c46050;
+  --color-warning:       #d4a853;
+  --color-info:          #6080aa;
+  /* Dark-only shadows (no :root value) */
+  --shadow-card-dark:       0 4px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04);
+  --shadow-card-hover-dark: 0 8px 48px rgba(0,0,0,0.65), inset 0 1px 0 var(--color-accent-10);
+  --shadow-modal:           0 8px 48px rgba(0,0,0,0.5), 0 0 0 1px var(--color-accent-10);
+  --shadow-ask-modal:       0 24px 80px rgba(0,0,0,0.4), 0 0 0 1px var(--color-accent-10);
+  --shadow-medallion:       inset 0 2px 6px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.04);
+  /* Layout */
+  --footer-bg:            rgba(3,6,18,0.75);
+  --footer-border:        rgba(212,168,83,0.12);
+  --header-bg:            rgba(3,6,18,0.82);
+  --header-border:        rgba(212,168,83,0.14);
+  --shadow-header:        0 1px 0 rgba(212,168,83,0.08), 0 4px 24px rgba(0,0,0,0.5);
+  --shadow-header-scroll: 0 1px 0 rgba(212,168,83,0.10), 0 4px 32px rgba(0,0,0,0.70);
+  --dropdown-bg:          rgba(4,8,22,0.90);
+  --dropdown-border:      rgba(212,168,83,0.12);
+  --dropdown-shadow:      0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,168,83,0.10);
+  /* Toast */
+  --color-toast-bg:      #363636;
+  --color-toast-fg:      #f5f5f4;
+  --color-toast-success: #34d399;
+  --color-toast-error:   #f87171;
+  --color-toast-info:    #60a5fa;
+
+  /* Per-tradition active color override for dark mode */
+  --trad-color-active: var(--trad-color-dk, var(--color-accent));
+  /* Per-tradition card surface override for dark mode */
+  --trad-surface-active: var(--trad-surface-dk, var(--color-surface-modal));
+
+  /* Era fill bands for PhilosopherTimeline (dark mode) */
+  --era-fill-0: rgba(200,160,80,0.055);
+  --era-fill-1: rgba(100,150,250,0.055);
+  --era-fill-2: rgba(180,100,230,0.055);
+  --era-fill-3: rgba(80,200,100,0.055);
+  --era-fill-4: rgba(240,130,70,0.055);
+
+  /* SVG UI tokens for PhilosopherTimeline (dark mode) */
+  --svg-fg-subtle: rgba(255,255,255,0.42);
+  --svg-fg-dim:    rgba(255,255,255,0.28);
+  --svg-fg-faint:  rgba(255,255,255,0.17);
+  --svg-grid:      rgba(255,255,255,0.05);
+  --svg-grid-hi:   rgba(255,255,255,0.13);
+  --svg-grid-sep:  rgba(255,255,255,0.04);
+  --svg-axis:      rgba(255,255,255,0.20);
+  --svg-axis-tick: rgba(255,255,255,0.28);
+  --svg-axis-text: rgba(255,255,255,0.38);
+  --svg-era-text:  rgba(255,255,255,0.17);
+  --svg-node-ring: rgba(255,255,255,0.25);
+  --svg-fg:        rgba(255,255,255,0.60);
 }
 
 @keyframes quote-enter {
@@ -117,8 +340,8 @@
   50%      { transform: translateY(-3px); }
 }
 @keyframes title-glow {
-  0%, 100% { text-shadow: 0 0 0px rgba(139,115,85,0); }
-  50%      { text-shadow: 0 0 18px rgba(139,115,85,0.35), 0 0 36px rgba(139,115,85,0.15); }
+  0%, 100% { text-shadow: 0 0 0px transparent; }
+  50%      { text-shadow: 0 0 18px var(--color-accent-35), 0 0 36px var(--color-accent-15); }
 }
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(10px); }
@@ -168,10 +391,10 @@
   transition: filter 350ms ease, color 300ms ease;
 }
 .logo-glow-hover:hover {
-  filter: drop-shadow(0 0 7px rgba(139,115,85,0.6));
+  filter: drop-shadow(0 0 7px var(--color-accent-50));
 }
 .dark .logo-glow-hover:hover {
-  filter: drop-shadow(0 0 8px rgba(212,168,83,0.75)) drop-shadow(0 0 20px rgba(212,168,83,0.3));
+  filter: drop-shadow(0 0 8px var(--color-accent-50)) drop-shadow(0 0 20px var(--color-accent-30));
 }
 
 /* ── Title hover glow — apply to any page/section heading ── */
@@ -181,18 +404,29 @@
 }
 .title-glow-hover:hover {
   text-shadow:
-    0 0 18px rgba(139,115,85,0.55),
-    0 0 40px rgba(139,115,85,0.22);
+    0 0 18px var(--color-accent-50),
+    0 0 40px var(--color-accent-20);
 }
-.dark .title-glow-hover:hover {
-  text-shadow:
-    0 0 20px rgba(212,168,83,0.65),
-    0 0 48px rgba(212,168,83,0.28);
+
+/* ── Tradition page: dark-only title glow using per-tradition color ── */
+.tradition-title-shadow {
+  text-shadow: none;
+}
+.dark .tradition-title-shadow {
+  text-shadow: 0 0 40px color-mix(in srgb, var(--trad-color-active) 15%, transparent);
+}
+
+/* ── Tradition page: dark-only outer ring glow ── */
+.tradition-outer-ring {
+  display: none;
+}
+.dark .tradition-outer-ring {
+  display: block;
 }
 
 @layer base {
   body {
-    @apply text-primary-700 bg-surface-base;
+    @apply text-fg bg-surface-base;
     font-size: 16px;
     min-height: 100vh;
     transition: none;
@@ -204,7 +438,7 @@
 
   /* ── Dark mode: starry night desert sky ────────────────────────── */
   .dark body {
-    color: #e0ddd4;
+    color: var(--color-fg);
     background-color: #040810;
     background-image:
       /* ── Milky Way / nebula haze ── */
@@ -285,13 +519,9 @@
 
   .quote-text { @apply font-serif; }
 
-  .text-muted     { @apply text-primary-400; }
-  .text-secondary { @apply text-primary-600; }
-  .text-tertiary  { @apply text-primary-500; }
-
-  .dark .text-muted     { color: #8892b8; }
-  .dark .text-secondary { color: #b0b8d0; }
-  .dark .text-tertiary  { color: #8892b8; }
+  .text-muted     { @apply text-fg-subtle; }
+  .text-secondary { @apply text-fg-muted; }
+  .text-tertiary  { @apply text-fg-muted; }
 }
 
 @layer utilities {
@@ -318,64 +548,33 @@
 
   /* Modals: solid dark background so overlays are never see-through */
   .dark {
-    --modal-bg:             rgba(8, 14, 36, 0.98);
-    --modal-border:         rgba(212, 168, 83, 0.18);
-    --upgrade-modal-bg:     rgba(8, 14, 36, 0.98);
-    --upgrade-modal-border: rgba(212, 168, 83, 0.18);
+    --modal-bg:             var(--color-surface-modal);
+    --modal-border:         var(--color-accent-20);
+    --upgrade-modal-bg:     var(--color-surface-modal);
+    --upgrade-modal-border: var(--color-accent-20);
   }
 
   /* Utility pages (Traditions, Saved, History, etc.) get a near-opaque overlay
    * so the star background recedes. The home screen intentionally skips this class. */
-  .dark .page-utility { background-color: rgba(4, 8, 22, 0.92) !important; }
+  .dark .page-utility { background-color: var(--color-surface-modal) !important; }
   .dark .bg-surface-card    {
-    background-color: rgba(10, 20, 44, 0.62);
+    background-color: var(--color-surface);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
   .dark .bg-surface-elevated {
-    background-color: rgba(15, 28, 60, 0.68);
+    background-color: var(--color-surface-hi);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
   }
 
-  /* Primary background shades */
-  .dark .bg-primary-50  { background-color: rgba(8, 12, 28, 0.50); }
-  .dark .bg-primary-100 { background-color: rgba(12, 20, 44, 0.55); }
-  .dark .bg-primary-200 { background-color: rgba(18, 30, 60, 0.60); }
-  .dark .bg-primary-800 { background-color: rgba(8, 15, 34, 0.70); }
-  .dark .bg-primary-900 { background-color: rgba(4, 8, 20, 0.85); }
+  /* Primary background shades — legacy utilities, vars auto-adapt */
+  .dark .bg-primary-50  { background-color: var(--color-surface); }
+  .dark .bg-primary-100 { background-color: var(--color-surface); }
+  .dark .bg-primary-200 { background-color: var(--color-surface-hi); }
+  .dark .bg-primary-800 { background-color: var(--color-surface-hi); }
+  .dark .bg-primary-900 { background-color: var(--color-surface-modal); }
 
-  /* Text: remap primary scale → warm off-whites and night blues */
-  .dark .text-primary-900 { color: #ede8dc; }
-  .dark .text-primary-800 { color: #e0ddd4; }
-  .dark .text-primary-700 { color: #ccc8bc; }
-  .dark .text-primary-600 { color: #b0a898; }
-  .dark .text-primary-500 { color: #8892b8; }
-  .dark .text-primary-400 { color: #6070a0; }
-  .dark .text-primary-300 { color: #4a5888; }
-
-  /* Borders */
-  .dark .border-primary-100 { border-color: rgba(255, 255, 255, 0.05); }
-  .dark .border-primary-200 { border-color: rgba(255, 255, 255, 0.08); }
-  .dark .border-primary-300 { border-color: rgba(255, 255, 255, 0.12); }
-
-  /* Accent */
-  .dark .text-accent        { color: #d4a853; }
-  .dark .border-accent      { border-color: #d4a853; }
-  .dark .bg-accent          { background-color: #d4a853; }
-
-  /* Placeholder text */
-  .dark .placeholder-primary-300::placeholder { color: #4a5888; }
-  .dark .placeholder-primary-400::placeholder { color: #4a5888; }
-
-  /* ── Tradition page undefined dark-mode colors ───────────────── */
-  .dark .text-night-300 { color: #d8dce8; }
-  .dark .text-night-400 { color: #b0b8d0; }
-  .dark .text-night-500 { color: #8892b8; }
-  .dark .text-night-600 { color: #6070a0; }
-  .dark .bg-night-700   { background-color: rgba(96, 112, 160, 0.15); }
-  .dark .bg-night-800   { background-color: rgba(8, 14, 40, 0.50); }
-  .dark .text-star-gold { color: #d4a853; }
 
   /* Glass utility class */
   .glass {
@@ -416,16 +615,11 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-accent text-white px-4 py-2 rounded-stone
+    @apply bg-accent text-accent-text px-4 py-2 rounded-stone
            hover:bg-accent-dark active:scale-95 transition-all duration-200
            shadow-card hover:shadow-modal
            focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
   }
-  .dark .btn-primary {
-    background-color: #d4a853;
-    color: #040810;
-  }
-  .dark .btn-primary:hover { background-color: #9a7030; }
 
   .btn-secondary {
     @apply bg-surface-card text-primary-700 px-4 py-2 rounded-stone
@@ -434,11 +628,11 @@
            focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
   }
   .dark .btn-secondary {
-    background-color: rgba(15, 24, 48, 0.6);
-    color: #d8dce8;
-    border-color: rgba(42, 54, 96, 0.4);
+    background-color: var(--color-surface);
+    color: var(--color-fg);
+    border-color: var(--color-border);
   }
-  .dark .btn-secondary:hover { background-color: rgba(26, 36, 68, 0.6); }
+  .dark .btn-secondary:hover { background-color: var(--color-surface-hi); }
 
   .input-field {
     @apply w-full px-4 py-3 border border-primary-200 rounded-stone
@@ -447,27 +641,27 @@
            placeholder:text-primary-400;
   }
   .dark .input-field {
-    background-color: rgba(15, 24, 48, 0.5);
-    border-color: rgba(42, 54, 96, 0.4);
-    color: #d8dce8;
+    background-color: var(--color-surface-input);
+    border-color: var(--color-border);
+    color: var(--color-fg);
   }
-  .dark .input-field::placeholder { color: #5c6a96; }
-  .dark .input-field:focus { --tw-ring-color: #d4a853; }
+  .dark .input-field::placeholder { color: var(--color-fg-subtle); }
+  .dark .input-field:focus { --tw-ring-color: var(--color-accent); }
 
   .card {
     @apply bg-surface-card rounded-card shadow-card p-6 border border-primary-100;
   }
   .dark .card {
-    background-color: rgba(15, 24, 48, 0.6);
-    border-color: rgba(42, 54, 96, 0.3);
-    box-shadow: 0 4px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04);
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-card-dark);
   }
 
   .card-selected-glow {
-    box-shadow: 0 0 0 2px #8b7355, 0 0 18px 5px rgba(139,115,85,0.35), 0 20px 40px -8px rgba(38,35,28,0.15);
+    box-shadow: var(--shadow-accent-glow), 0 20px 40px -8px rgba(38,35,28,0.15);
   }
   .dark .card-selected-glow {
-    box-shadow: 0 0 0 2px #d4a853, 0 0 24px 8px rgba(212,168,83,0.45), 0 20px 40px -8px rgba(0,0,0,0.6);
+    box-shadow: var(--shadow-accent-glow), 0 20px 40px -8px rgba(0,0,0,0.6);
   }
 
   .stat-card-success-glow,
@@ -486,8 +680,8 @@
   .dark .stat-card-info-glow:hover    { box-shadow: 0 0 0 2px #7d7560, 0 0 28px 10px rgba(125,117,96,0.55); }
 
   .nav-arrow-glow { @apply transition-all duration-300; }
-  .nav-arrow-glow:hover       { box-shadow: 0 0 0 2px #8b7355, 0 0 18px 6px rgba(139,115,85,0.30); transform: scale(1.1); }
-  .dark .nav-arrow-glow:hover { box-shadow: 0 0 0 2px #d4a853, 0 0 24px 8px rgba(212,168,83,0.50); transform: scale(1.1); }
+  .nav-arrow-glow:hover       { box-shadow: 0 0 0 2px var(--color-accent), 0 0 18px 6px var(--color-accent-30); transform: scale(1.1); }
+  .dark .nav-arrow-glow:hover { box-shadow: 0 0 0 2px var(--color-accent), 0 0 24px 8px var(--color-accent-50); transform: scale(1.1); }
   .nav-arrow-glow:active      { transform: scale(0.95); }
 
   .brand-text {
@@ -496,17 +690,61 @@
     text-shadow: 0 2px 4px rgba(38, 35, 28, 0.1);
     transition: all 0.3s ease;
   }
-  .dark .brand-text { text-shadow: 0 2px 12px rgba(212,168,83,0.30), 0 0 30px rgba(212,168,83,0.12); }
+  .dark .brand-text { text-shadow: 0 2px 12px var(--color-accent-30), 0 0 30px var(--color-accent-12); }
 
   .quote-text   { @apply font-serif text-quote-md text-primary-900; line-height: 1.6; }
-  .dark .quote-text { color: #ede8dc; }
+  .dark .quote-text { color: var(--color-fg); }
 
   .quote-author { @apply font-display text-primary-600; letter-spacing: 0.05em; }
-  .dark .quote-author { color: #c8b89a; }
+  .dark .quote-author { color: var(--color-fg); }
 
   /* ── Reusable section divider label ─────────────────────────── */
   .section-label {
     @apply font-display text-[10px] tracking-[0.25em] uppercase text-primary-600;
   }
-  .dark .section-label { color: #b0b8d0; }
+  .dark .section-label { color: var(--color-fg-muted); }
+
+  /* ── PhilosopherTimeline card interactions ───────────────────── */
+  .timeline-philosopher-card {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .timeline-philosopher-card:hover {
+    transform: translateY(-3px);
+  }
+  .timeline-philosopher-card:active {
+    transform: scale(0.98);
+    transition: transform 0.06s;
+  }
+
+  /* Per-tradition card tokens — direct values, no var() chain */
+  .trad-card-stoicism                   { --trad-color-active: #8b7355; --trad-surface-active: #f5f0e6; }
+  .dark .trad-card-stoicism             { --trad-color-active: #d4a853; --trad-surface-active: rgba(20,16,6,0.98); }
+  .trad-card-hermeticism                { --trad-color-active: #9a6fd0; --trad-surface-active: #f2eeff; }
+  .dark .trad-card-hermeticism          { --trad-color-active: #c090ff; --trad-surface-active: rgba(10,4,22,0.98); }
+  .trad-card-neoplatonism               { --trad-color-active: #c8a83a; --trad-surface-active: #f7f3e0; }
+  .dark .trad-card-neoplatonism         { --trad-color-active: #f0c840; --trad-surface-active: rgba(20,16,2,0.98); }
+  .trad-card-gnosticism                 { --trad-color-active: #c04060; --trad-surface-active: #fff0f2; }
+  .dark .trad-card-gnosticism           { --trad-color-active: #f06080; --trad-surface-active: rgba(20,2,6,0.98); }
+  .trad-card-kabbalah                   { --trad-color-active: #4080e0; --trad-surface-active: #edf3ff; }
+  .dark .trad-card-kabbalah             { --trad-color-active: #70b0ff; --trad-surface-active: rgba(2,6,24,0.98); }
+  .trad-card-pythagoreanism             { --trad-color-active: #28c8b8; --trad-surface-active: #edfaf8; }
+  .dark .trad-card-pythagoreanism       { --trad-color-active: #50e8d8; --trad-surface-active: rgba(2,16,14,0.98); }
+  .trad-card-pre-socratic               { --trad-color-active: #e07830; --trad-surface-active: #fff4eb; }
+  .dark .trad-card-pre-socratic         { --trad-color-active: #f0a060; --trad-surface-active: rgba(22,10,2,0.98); }
+  .trad-card-african-philosophy         { --trad-color-active: #d08040; --trad-surface-active: #fff3ea; }
+  .dark .trad-card-african-philosophy   { --trad-color-active: #e8a060; --trad-surface-active: rgba(22,10,2,0.98); }
+  .trad-card-renaissance-philosophy     { --trad-color-active: #48a048; --trad-surface-active: #eef8ee; }
+  .dark .trad-card-renaissance-philosophy { --trad-color-active: #70c870; --trad-surface-active: rgba(4,14,4,0.98); }
+  .trad-card-transcendentalism          { --trad-color-active: #4898d8; --trad-surface-active: #eef5ff; }
+  .dark .trad-card-transcendentalism    { --trad-color-active: #70c0ff; --trad-surface-active: rgba(2,8,20,0.98); }
+  .trad-card-buddhism                   { --trad-color-active: #8250a0; --trad-surface-active: #f4eeff; }
+  .dark .trad-card-buddhism             { --trad-color-active: #be78f0; --trad-surface-active: rgba(14,4,22,0.98); }
+  .trad-card-taoism                     { --trad-color-active: #328c64; --trad-surface-active: #edf9f4; }
+  .dark .trad-card-taoism               { --trad-color-active: #46c88c; --trad-surface-active: rgba(2,14,8,0.98); }
+  .trad-card-vedanta                    { --trad-color-active: #b47828; --trad-surface-active: #fdf7e8; }
+  .dark .trad-card-vedanta              { --trad-color-active: #f0aa40; --trad-surface-active: rgba(20,12,2,0.98); }
+  .trad-card-existentialism             { --trad-color-active: #a03c3c; --trad-surface-active: #fff0f0; }
+  .dark .trad-card-existentialism       { --trad-color-active: #e05858; --trad-surface-active: rgba(18,2,2,0.98); }
+  .trad-card-kemetic-wisdom             { --trad-color-active: #b48228; --trad-surface-active: #fdf8e0; }
+  .dark .trad-card-kemetic-wisdom       { --trad-color-active: #f0c046; --trad-surface-active: rgba(20,14,0,0.98); }
 }

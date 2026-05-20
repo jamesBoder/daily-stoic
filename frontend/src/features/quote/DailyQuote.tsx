@@ -40,30 +40,30 @@ function ReadingPlanResumeCTA({ resume }: { resume: ResumeData }) {
     <Link
       to={`/reading-plans/${resume.slug}`}
       className="max-w-2xl mx-auto mt-8 flex items-center gap-4 rounded-2xl px-4 py-3.5
-                 border border-primary-200 dark:border-[rgba(255,255,255,0.07)]
-                 bg-surface-card hover:border-accent/40 dark:hover:border-star-gold/30
+                 border border-primary-200 dark:border-[var(--color-border)]
+                 bg-surface-card hover:border-accent/40 dark:hover:border-accent/30
                  transition-colors group"
     >
       <div className="flex-1 min-w-0">
-        <p className="font-display text-[10px] tracking-[0.15em] uppercase text-primary-400 dark:text-night-400 mb-0.5">
+        <p className="font-display text-[10px] tracking-[0.15em] uppercase text-primary-400 dark:text-fg-muted mb-0.5">
           Continue reading plan
         </p>
-        <p className="font-display text-sm text-primary-800 dark:text-[#e0ddd4] truncate">
+        <p className="font-display text-sm text-primary-800 dark:text-fg truncate">
           {resume.title}
         </p>
         <div className="flex items-center gap-2 mt-2">
-          <div className="flex-1 h-1 rounded-full bg-primary-100 dark:bg-night-700/50 overflow-hidden">
+          <div className="flex-1 h-1 rounded-full bg-primary-100 dark:bg-surface-hi overflow-hidden">
             <div
-              className="h-full rounded-full bg-accent dark:bg-star-gold transition-all"
+              className="h-full rounded-full bg-accent transition-all"
               style={{ width: `${pct}%` }}
             />
           </div>
-          <span className="font-sans text-[10px] text-primary-400 dark:text-night-400 shrink-0">
+          <span className="font-sans text-[10px] text-primary-400 dark:text-fg-muted shrink-0">
             Day {resume.currentDay}/{resume.totalDays}
           </span>
         </div>
       </div>
-      <span className="text-primary-300 dark:text-night-500 group-hover:text-accent dark:group-hover:text-star-gold transition-colors text-lg leading-none">›</span>
+      <span className="text-primary-300 dark:text-fg-subtle group-hover:text-accent dark:group-hover:text-accent transition-colors text-lg leading-none">›</span>
     </Link>
   )
 }
@@ -109,7 +109,7 @@ export const DailyQuote = () => {
       <p className="text-sm mb-6">Check your connection and try again.</p>
       <button
         onClick={() => refetch()}
-        className="font-sans text-sm text-accent border border-accent/40 rounded-full px-5 py-2 hover:bg-accent hover:text-white transition-colors"
+        className="font-sans text-sm text-accent border border-accent/40 rounded-full px-5 py-2 hover:bg-accent hover:text-accent-text transition-colors"
       >
         Try again
       </button>
@@ -127,8 +127,8 @@ export const DailyQuote = () => {
 
       {/* Offline banner — shown when network failed but cached quote is available */}
       {isError && data && (
-        <div className="flex items-center justify-center gap-1.5 mb-3 text-primary-400 dark:text-night-500 font-sans text-[11px]">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-300 dark:bg-night-600" />
+        <div className="flex items-center justify-center gap-1.5 mb-3 text-primary-400 dark:text-fg-subtle font-sans text-[11px]">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary-300 dark:bg-surface-hi" />
           Offline · showing last saved quote
         </div>
       )}
@@ -141,7 +141,7 @@ export const DailyQuote = () => {
         <p className="font-display text-xs tracking-widest uppercase text-primary-400">
           {todayDisplay()}
         </p>
-        <h1 className="font-display text-2xl text-primary-800 mt-1 cursor-default animate-title-glow transition-all duration-400 hover:tracking-widest hover:text-accent-dark dark:hover:text-star-gold">
+        <h1 className="font-display text-2xl text-primary-800 mt-1 cursor-default animate-title-glow transition-all duration-400 hover:tracking-widest hover:text-accent-dark dark:hover:text-accent">
           Daily Meditation
         </h1>
       </header>
@@ -181,7 +181,7 @@ export const DailyQuote = () => {
           </p>
           <Link
             to="/auth/register"
-            className="inline-block font-sans text-sm text-accent border border-accent/40 rounded-full px-5 py-2 hover:bg-accent hover:text-white transition-colors"
+            className="inline-block font-sans text-sm text-accent border border-accent/40 rounded-full px-5 py-2 hover:bg-accent hover:text-accent-text transition-colors"
           >
             Start your practice
           </Link>

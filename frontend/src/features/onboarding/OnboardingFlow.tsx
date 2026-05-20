@@ -4,7 +4,7 @@ import { traditionsApi } from '../../services/api/traditions'
 import { onboardingApi } from '../../services/api/onboarding'
 import { showToast } from '../../utils/toast'
 import type { Tradition } from '../../types/quote'
-import { META, ICON_COLOR_DARK } from '../traditions/constants'
+import { META, TRADITION_COLORS } from '../traditions/constants'
 import { WordMark } from '../../components/common/WordMark'
 
 // ── Goals ─────────────────────────────────────────────────────────────────────
@@ -66,7 +66,7 @@ function ProgressDots({ step }: { step: number }) {
           style={{
             width:      n === step ? 24 : 8,
             height:     8,
-            background: n <= step ? '#d4a853' : 'rgba(255,255,255,0.18)',
+            background: n <= step ? 'var(--color-accent)' : 'rgba(255,255,255,0.18)',
             animation:  n === step ? 'dot-fill 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards' : 'none',
           }}
         />
@@ -113,9 +113,9 @@ function SelectCard({
       onClick={handleClick}
       className="w-full flex items-center gap-4 p-4 rounded-xl border text-left focus-visible:outline-none focus-visible:ring-2"
       style={{
-        background:   selected ? 'rgba(212,168,83,0.09)' : 'rgba(255,255,255,0.04)',
-        borderColor:  selected ? 'rgba(212,168,83,0.65)' : 'rgba(255,255,255,0.09)',
-        boxShadow:    selected ? '0 0 0 1px rgba(212,168,83,0.25), 0 4px 16px rgba(0,0,0,0.3)' : '0 2px 8px rgba(0,0,0,0.2)',
+        background:   selected ? 'var(--color-accent-10)' : 'rgba(255,255,255,0.04)',
+        borderColor:  selected ? 'var(--color-accent)' : 'rgba(255,255,255,0.09)',
+        boxShadow:    selected ? '0 0 0 1px var(--color-accent-20), 0 4px 16px rgba(0,0,0,0.3)' : '0 2px 8px rgba(0,0,0,0.2)',
         transform:    popped ? 'scale(0.97)' : 'scale(1)',
         transition:   'background 200ms ease, border-color 200ms ease, box-shadow 200ms ease, transform 280ms cubic-bezier(0.34,1.56,0.64,1)',
         // stagger in on mount
@@ -137,30 +137,30 @@ function SelectCard({
       {/* Text */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-0.5">
-          <span className="font-display text-sm tracking-wider text-[#e0ddd4]" style={{ fontVariant: 'small-caps' }}>
+          <span className="font-display text-sm tracking-wider text-fg" style={{ fontVariant: 'small-caps' }}>
             {label}
           </span>
           {badge && (
-            <span className="text-[9px] uppercase tracking-widest px-1.5 py-0.5 rounded border border-[#d4a853]/50 text-[#d4a853]">
+            <span className="text-[9px] uppercase tracking-widest px-1.5 py-0.5 rounded border border-accent/50 text-accent">
               {badge}
             </span>
           )}
         </div>
-        <p className="text-xs text-[#7a7060] leading-relaxed line-clamp-2">{desc}</p>
+        <p className="text-xs text-fg-muted leading-relaxed line-clamp-2">{desc}</p>
       </div>
 
       {/* Checkbox */}
       <div
         className="shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center"
         style={{
-          borderColor: selected ? '#d4a853' : 'rgba(255,255,255,0.2)',
-          background:  selected ? '#d4a853' : 'transparent',
+          borderColor: selected ? 'var(--color-accent)' : 'rgba(255,255,255,0.2)',
+          background:  selected ? 'var(--color-accent)' : 'transparent',
           transition:  'border-color 180ms ease, background 180ms ease',
         }}
       >
         {selected && (
           <svg viewBox="0 0 12 10" className="w-3 h-2.5" fill="none">
-            <path d="M1 5l3.5 3.5L11 1" stroke="#080d1a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M1 5l3.5 3.5L11 1" stroke="var(--color-accent-text)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         )}
       </div>
@@ -185,22 +185,22 @@ function ToggleCard({ icon, label, desc, checked, onChange, index }: {
       }}
     >
       <div className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-xl"
-        style={{ background: 'rgba(212,168,83,0.15)', color: '#d4a853' }}>
+        style={{ background: 'var(--color-accent-15)', color: 'var(--color-accent)' }}>
         {icon}
       </div>
       <div className="flex-1">
-        <p className="font-display text-sm tracking-wider text-[#e0ddd4]" style={{ fontVariant: 'small-caps' }}>
+        <p className="font-display text-sm tracking-wider text-fg" style={{ fontVariant: 'small-caps' }}>
           {label}
         </p>
-        <p className="text-xs text-[#7a7060] leading-relaxed">{desc}</p>
+        <p className="text-xs text-fg-muted leading-relaxed">{desc}</p>
       </div>
       <button
         onClick={onChange}
         role="switch"
         aria-checked={checked}
-        className="shrink-0 relative w-11 h-6 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d4a853]"
+        className="shrink-0 relative w-11 h-6 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         style={{
-          background: checked ? '#d4a853' : 'rgba(255,255,255,0.15)',
+          background: checked ? 'var(--color-accent)' : 'rgba(255,255,255,0.15)',
           transition: 'background 220ms ease',
         }}
       >
@@ -243,8 +243,8 @@ function StepOne({ traditions, selected, onToggle, showAllPremium, onShowAllPrem
     <>
       {visible.map((t, i) => {
         const meta  = META[t.slug]
-        const color = ICON_COLOR_DARK[t.slug] ?? '#d4a853'
-        const bg    = meta?.accentDark ?? 'rgba(212,168,83,0.15)'
+        const color = TRADITION_COLORS[t.slug]?.dark ?? 'var(--color-accent)'
+        const bg    = meta?.accentDark ?? 'var(--color-accent-15)'
         return (
           <SelectCard key={t.slug} index={i}
             selected={selected.includes(t.slug)} onClick={() => onToggle(t.slug)}
@@ -261,26 +261,26 @@ function StepOne({ traditions, selected, onToggle, showAllPremium, onShowAllPrem
           onClick={onShowAllPremium}
           className="w-full flex items-center gap-4 p-4 rounded-xl border text-left transition-all"
           style={{
-            background:  'rgba(212,168,83,0.04)',
-            borderColor: 'rgba(212,168,83,0.22)',
+            background:  'var(--color-accent-4)',
+            borderColor: 'var(--color-accent-20)',
             borderStyle: 'dashed',
           }}
         >
           <div
             className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-lg"
-            style={{ background: 'rgba(212,168,83,0.12)', color: '#d4a853' }}
+            style={{ background: 'var(--color-accent-12)', color: 'var(--color-accent)' }}
           >
             ✦
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-display text-sm tracking-wider text-[#d4a853]" style={{ fontVariant: 'small-caps' }}>
+            <p className="font-display text-sm tracking-wider text-accent" style={{ fontVariant: 'small-caps' }}>
               {hiddenCount} more Practitioner tradition{hiddenCount !== 1 ? 's' : ''}
             </p>
-            <p className="text-xs text-[#7a7060] leading-relaxed">
+            <p className="text-xs text-fg-muted leading-relaxed">
               Hermeticism, Neoplatonism, Vedanta &amp; more — unlock with lifetime access
             </p>
           </div>
-          <span className="shrink-0 text-[10px] uppercase tracking-widest text-[#d4a853]">
+          <span className="shrink-0 text-[10px] uppercase tracking-widest text-accent">
             Show all
           </span>
         </button>
@@ -295,7 +295,7 @@ function StepTwo({ selected, onToggle }: { selected: string[]; onToggle: (key: s
       {GOALS.map((g, i) => (
         <SelectCard key={g.key} index={i}
           selected={selected.includes(g.key)} onClick={() => onToggle(g.key)}
-          icon={g.icon} iconColor="#d4a853" iconBg="rgba(212,168,83,0.15)"
+          icon={g.icon} iconColor="var(--color-accent)" iconBg="var(--color-accent-15)"
           label={g.label} desc={g.desc}
         />
       ))}
@@ -461,7 +461,7 @@ export function OnboardingFlow() {
   return (
     <div
       className="min-h-screen relative flex flex-col select-none"
-      style={{ background: 'linear-gradient(160deg, #060b16 0%, #0b1528 55%, #080f1e 100%)' }}
+      style={{ background: 'var(--gradient-onboarding-bg)' }}
     >
       <Starfield />
 
@@ -480,7 +480,7 @@ export function OnboardingFlow() {
           {step > 1 ? (
             <button
               onClick={goBack}
-              className="text-[#7a7060] hover:text-[#d4a853] transition-colors duration-200 flex items-center gap-1.5 text-sm"
+              className="text-fg-subtle hover:text-accent transition-colors duration-200 flex items-center gap-1.5 text-sm"
               disabled={phase !== 'idle'}
             >
               <svg viewBox="0 0 16 16" className="w-4 h-4" fill="none">
@@ -489,7 +489,7 @@ export function OnboardingFlow() {
               Back
             </button>
           ) : (
-            <span className="font-display text-sm tracking-[0.2em] uppercase text-[#d4a853]">
+            <span className="font-display text-sm tracking-[0.2em] uppercase text-accent">
               <WordMark />
             </span>
           )}
@@ -500,7 +500,7 @@ export function OnboardingFlow() {
 
         {/* Right spacer */}
         <div className="w-20 flex justify-end">
-          <span className="text-[10px] text-[#4a4438] tracking-widest uppercase">
+          <span className="text-[10px] text-fg-subtle tracking-widest uppercase">
             {step} / 3
           </span>
         </div>
@@ -514,22 +514,22 @@ export function OnboardingFlow() {
 
         {/* Header block */}
         <div style={contentStyle}>
-          <p className="font-display text-[10px] uppercase tracking-[0.35em] text-[#d4a853] text-center mb-3">
+          <p className="font-display text-[10px] uppercase tracking-[0.35em] text-accent text-center mb-3">
             {meta.eyebrow}
           </p>
-          <h1 className="font-display text-[1.9rem] sm:text-[2.6rem] leading-tight text-center text-[#ede5d0] mb-4"
+          <h1 className="font-display text-[1.9rem] sm:text-[2.6rem] leading-tight text-center text-fg mb-4"
             style={{ fontVariant: 'small-caps' }}>
             {meta.title[0]}<br />{meta.title[1]}
           </h1>
-          <p className="text-sm text-[#7a7060] text-center italic mb-5 leading-relaxed px-3">
+          <p className="text-sm text-fg-muted text-center italic mb-5 leading-relaxed px-3">
             {meta.subtitle}
           </p>
           <div className="flex items-center gap-3 mb-4">
             <div className="flex-1 h-px" style={{ background: 'rgba(255,255,255,0.06)' }} />
-            <span style={{ color: '#d4a853', fontSize: 10 }}>◆</span>
+            <span className="text-accent text-[10px]">◆</span>
             <div className="flex-1 h-px" style={{ background: 'rgba(255,255,255,0.06)' }} />
           </div>
-          <p className="text-[10px] uppercase tracking-widest text-[#4a4438] text-center italic mb-5">
+          <p className="text-[10px] uppercase tracking-widest text-fg-subtle text-center italic mb-5">
             {meta.hint}
           </p>
         </div>
@@ -564,11 +564,11 @@ export function OnboardingFlow() {
             disabled={submitting || phase !== 'idle'}
             className="w-full py-4 rounded-xl font-display tracking-widest uppercase text-sm relative overflow-hidden"
             style={{
-              background: 'linear-gradient(135deg, #d4a853 0%, #b8903d 100%)',
-              color:      '#080d1a',
+              background: 'var(--gradient-accent-btn)',
+              color:      'var(--color-accent-text)',
               opacity:    submitting ? 0.7 : 1,
               transition: 'opacity 200ms ease, transform 120ms ease',
-              boxShadow:  '0 4px 24px rgba(212,168,83,0.25), 0 1px 0 rgba(255,255,255,0.15) inset',
+              boxShadow:  '0 4px 24px var(--color-accent-20), 0 1px 0 rgba(255,255,255,0.15) inset',
             }}
             onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.985)')}
             onMouseUp={e => (e.currentTarget.style.transform = 'scale(1)')}
@@ -591,7 +591,7 @@ export function OnboardingFlow() {
           <button
             onClick={() => submit(true)}
             disabled={submitting}
-            className="w-full text-center text-xs text-[#4a4438] hover:text-[#d4a853] transition-colors duration-200 py-1"
+            className="w-full text-center text-xs text-fg-subtle hover:text-accent transition-colors duration-200 py-1"
           >
             • I'll explore on my own →
           </button>

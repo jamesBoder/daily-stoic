@@ -40,7 +40,7 @@ export const GoogleCallback: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <p className="text-gray-700 dark:text-gray-300">
+      <p className="text-fg-muted">
         Processing Google login...
       </p>
     </div>

@@ -183,23 +183,23 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
       <article
         className="animate-quote-enter rounded-card border transition-all duration-500
                    bg-surface-card shadow-card border-primary-200/60
-                   hover:shadow-[0_8px_32px_rgba(38,35,28,0.22),0_24px_64px_rgba(38,35,28,0.16)] hover:-translate-y-2
-                   dark:bg-[rgba(10,20,44,0.62)] dark:backdrop-blur-glass dark:border-[rgba(255,255,255,0.07)]
-                   dark:shadow-[0_4px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.06)]
-                   dark:hover:shadow-[0_8px_48px_rgba(0,0,0,0.65),inset_0_1px_0_rgba(212,168,83,0.10)] dark:hover:-translate-y-2"
+                   hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-2
+                   dark:bg-surface dark:backdrop-blur-glass dark:border-[var(--color-border)]
+                   dark:shadow-[var(--shadow-card-dark)]
+                   dark:hover:shadow-[var(--shadow-card-hover-dark)] dark:hover:-translate-y-2"
         style={{ WebkitBackdropFilter: 'blur(20px)' }}
         {...swipe}
       >
         <div className="p-4 sm:p-5">
 
           {/* Inner frame */}
-          <div className="border border-primary-300/50 dark:border-[rgba(255,255,255,0.07)] rounded-[3px] p-4 relative">
+          <div className="border border-primary-300/50 dark:border-[var(--color-border)] rounded-[3px] p-4 relative">
 
             {/* Corner ornaments */}
-            <span className="absolute top-1.5 left-2 text-primary-300 dark:text-star-gold/50 text-[10px] select-none leading-none">✦</span>
-            <span className="absolute top-1.5 right-2 text-primary-300 dark:text-star-gold/50 text-[10px] select-none leading-none">✦</span>
-            <span className="absolute bottom-1.5 left-2 text-primary-300 dark:text-star-gold/50 text-[10px] select-none leading-none">✦</span>
-            <span className="absolute bottom-1.5 right-2 text-primary-300 dark:text-star-gold/50 text-[10px] select-none leading-none">✦</span>
+            <span className="absolute top-1.5 left-2 text-primary-300 text-[var(--color-accent-50)] text-[10px] select-none leading-none">✦</span>
+            <span className="absolute top-1.5 right-2 text-primary-300 text-[var(--color-accent-50)] text-[10px] select-none leading-none">✦</span>
+            <span className="absolute bottom-1.5 left-2 text-primary-300 text-[var(--color-accent-50)] text-[10px] select-none leading-none">✦</span>
+            <span className="absolute bottom-1.5 right-2 text-primary-300 text-[var(--color-accent-50)] text-[10px] select-none leading-none">✦</span>
 
             {/* Header — tradition badge + streak centered */}
             <div className="flex items-center justify-center gap-3 mb-1">
@@ -220,7 +220,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
                   style={{
                     willChange: 'transform',
                     transform: 'translateZ(0)',
-                    boxShadow: 'inset 0 2px 6px rgba(38,35,28,0.18), inset 0 0 0 1px rgba(38,35,28,0.06)',
+                    boxShadow: 'var(--shadow-medallion)',
                   }}
                 >
                   <LazyImage
@@ -241,7 +241,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
             <OrnamentDivider />
 
             {/* Quote text */}
-            <blockquote className={`font-serif ${quoteFontClass} text-primary-900 dark:text-[#ede8dc] leading-relaxed text-center my-5`}>
+            <blockquote className={`font-serif ${quoteFontClass} text-primary-900 dark:text-fg leading-relaxed text-center my-5`}>
               &ldquo;{quote.text}&rdquo;
             </blockquote>
 
@@ -250,13 +250,11 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
             {/* Attribution */}
             <footer className="text-center mt-4">
               <p
-                className="font-display text-xs tracking-widest uppercase text-primary-600 dark:text-[#c8b89a] cursor-default transition-colors duration-300 hover:text-primary-800 dark:hover:text-star-gold"
-                onMouseEnter={e => (e.currentTarget.style.textShadow = '0 0 8px rgba(139,115,85,0.5)')}
-                onMouseLeave={e => (e.currentTarget.style.textShadow = '')}
+                className="font-display text-xs tracking-widest uppercase text-primary-600 dark:text-fg-muted cursor-default transition-colors duration-300 hover:text-accent hover:drop-shadow-[0_0_8px_var(--color-accent-glow)]"
               >
                 {quote.author.name}
               </p>
-              <p className="font-sans text-xs italic text-primary-400 dark:text-night-400 mt-0.5">
+              <p className="font-sans text-xs italic text-primary-400 dark:text-fg-muted mt-0.5">
                 {quote.source}
               </p>
             </footer>
@@ -265,7 +263,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
 
           {/* Context note — below inner frame, inside outer padding */}
           {!compact && quote.context_note && (
-            <p className="font-sans text-xs text-primary-500 dark:text-night-400 leading-relaxed text-center mt-4 px-1">
+            <p className="font-sans text-xs text-primary-500 dark:text-fg-muted leading-relaxed text-center mt-4 px-1">
               {quote.context_note}
             </p>
           )}
@@ -282,8 +280,8 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
             onClick={handleSave}
             className={`flex items-center gap-1 sm:gap-1.5 text-sm font-sans rounded-full px-3 sm:px-4 py-2 transition-colors ${
               isFav
-                ? 'bg-accent text-white dark:bg-star-gold dark:text-night-950'
-                : 'bg-primary-100 text-primary-700 hover:bg-primary-200 dark:bg-night-800/60 dark:text-night-200 dark:hover:bg-night-700/60 dark:border dark:border-white/[0.06]'
+                ? 'bg-accent text-accent-text'
+                : 'bg-surface text-fg hover:bg-surface-hi border border-border'
             }`}
             aria-label={isFav ? 'Remove from saved' : 'Save quote'}
           >
@@ -294,8 +292,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
           <button
             onClick={() => setCommentsOpen(!commentsOpen)}
             className="flex items-center gap-1 sm:gap-1.5 text-sm font-sans rounded-full px-3 sm:px-4 py-2 transition-colors
-                       bg-primary-100 text-primary-700 hover:bg-primary-200
-                       dark:bg-night-800/60 dark:text-night-200 dark:hover:bg-night-700/60 dark:border dark:border-white/[0.06]"
+                       bg-surface text-fg hover:bg-surface-hi border border-border"
             aria-label="Write reflection"
           >
             <span>💬</span>
@@ -305,8 +302,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
           <button
             onClick={() => setShareOpen(true)}
             className="flex items-center gap-1 sm:gap-1.5 text-sm font-sans rounded-full px-3 sm:px-4 py-2 transition-colors
-                       bg-primary-100 text-primary-700 hover:bg-primary-200
-                       dark:bg-night-800/60 dark:text-night-200 dark:hover:bg-night-700/60 dark:border dark:border-white/[0.06]"
+                       bg-surface text-fg hover:bg-surface-hi border border-border"
             aria-label="Share quote"
           >
             <span>↗</span>
@@ -316,8 +312,7 @@ export const QuoteCard = ({ quote, showStreak, streakCount, compact }: Props) =>
           <button
             onClick={() => setAskOpen(true)}
             className="flex items-center gap-1 sm:gap-1.5 text-sm font-sans rounded-full px-3 sm:px-4 py-2 transition-colors
-                       bg-primary-100 text-primary-700 hover:bg-primary-200
-                       dark:bg-night-800/60 dark:text-night-200 dark:hover:bg-night-700/60 dark:border dark:border-white/[0.06]"
+                       bg-surface text-fg hover:bg-surface-hi border border-border"
             aria-label={`Ask ${quote.author.name}`}
           >
             <span>✦</span>

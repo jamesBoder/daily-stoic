@@ -50,20 +50,20 @@ export default function App() {
               toastOptions={{
                 duration: 3000,
                 style: {
-                  background: '#363636',
-                  color: '#fff',
+                  background: 'var(--color-toast-bg)',
+                  color: 'var(--color-toast-fg)',
                 },
                 success: {
                   duration: 3000,
                   iconTheme: {
-                    primary: '#10b981',
+                    primary: 'var(--color-toast-success)',
                     secondary: '#fff',
                   },
                 },
                 error: {
                   duration: 4000,
                   iconTheme: {
-                    primary: '#ef4444',
+                    primary: 'var(--color-toast-error)',
                     secondary: '#fff',
                   },
                 },

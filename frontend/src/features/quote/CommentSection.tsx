@@ -139,7 +139,7 @@ export const CommentSection = ({ quoteId, onAuthRequired }: Props) => {
         isVisible ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
       }`}>
         {error && (
-          <div className="mb-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm font-sans">
+          <div className="mb-4 bg-danger-bg border border-[var(--color-danger)] text-danger px-4 py-3 rounded-lg text-sm font-sans">
             {error}
           </div>
         )}
@@ -174,7 +174,7 @@ export const CommentSection = ({ quoteId, onAuthRequired }: Props) => {
                   <button
                     onClick={handleDelete}
                     disabled={isSaving}
-                    className="font-sans text-sm text-red-600 hover:text-red-700 font-medium disabled:opacity-50"
+                    className="font-sans text-sm text-danger hover:text-danger font-medium disabled:opacity-50"
                   >
                     Confirm
                   </button>
@@ -188,7 +188,7 @@ export const CommentSection = ({ quoteId, onAuthRequired }: Props) => {
               ) : (
                 <button
                   onClick={() => setConfirmingDelete(true)}
-                  className="font-sans text-sm text-red-500 hover:text-red-700 transition-colors"
+                  className="font-sans text-sm text-danger hover:text-danger transition-colors"
                 >
                   Delete
                 </button>

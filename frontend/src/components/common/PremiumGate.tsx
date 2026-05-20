@@ -45,7 +45,7 @@ export const PremiumGate = ({ children, inline = false }: Props) => {
           </p>
           <button
             onClick={() => setModalOpen(true)}
-            className="font-display text-xs tracking-wider uppercase bg-accent text-white rounded-stone px-5 py-2 hover:bg-accent-dark transition-colors"
+            className="font-display text-xs tracking-wider uppercase bg-accent text-accent-text rounded-stone px-5 py-2 hover:bg-accent-dark transition-colors"
           >
             Unlock Wisdom
           </button>

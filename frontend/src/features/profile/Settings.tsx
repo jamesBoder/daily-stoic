@@ -175,7 +175,7 @@ export const Settings: React.FC = () => {
           <button
             key={section.id}
             onClick={() => scrollToSection(section.id)}
-            className="shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border border-primary-200 dark:border-primary-700 text-primary-600 dark:text-primary-400 hover:bg-accent hover:text-white hover:border-accent transition-all duration-150"
+            className="shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border border-primary-200 dark:border-primary-700 text-primary-600 dark:text-primary-400 hover:bg-accent hover:text-fg-inverse hover:border-accent transition-all duration-150"
           >
             {section.label}
           </button>
@@ -196,7 +196,7 @@ export const Settings: React.FC = () => {
                   <div className="text-primary-400">{t("common.loading", "Loading…")}</div>
                 </div>
               ) : profileError ? (
-                <div className="text-red-600 dark:text-red-400 py-4">Error: {profileError}</div>
+                <div className="text-danger py-4">Error: {profileError}</div>
               ) : profile ? (
                 <>
                   <div className="flex justify-between items-center mb-4">

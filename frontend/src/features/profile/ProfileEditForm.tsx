@@ -63,10 +63,10 @@ export const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {error && <div className="text-red-500 dark:text-red-400">{error}</div>}
+      {error && <div className="text-danger">{error}</div>}
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label className="block text-sm font-medium text-fg-muted">
           Username
         </label>
         <input
@@ -74,23 +74,23 @@ export const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
           name="username"
           value={profileData.username || ""}
           onChange={handleChange}
-          className="mt-1 block w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 rounded-md p-2"
+          className="mt-1 block w-full border border-border bg-surface-input text-fg rounded-md p-2"
           required
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+        <label className="block text-sm font-medium text-fg-muted">Email</label>
         <input
           type="email"
           name="email"
           value={profileData.email || ""}
           onChange={handleChange}
-          className="mt-1 block w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 rounded-md p-2"
+          className="mt-1 block w-full border border-border bg-surface-input text-fg rounded-md p-2"
           required
         />
         {emailChanged && (
-          <p className="mt-1 text-xs text-yellow-600 dark:text-yellow-400">
+          <p className="mt-1 text-xs text-warning">
             ⚠ Changing your email will require re-verification. A new verification email will be sent.
           </p>
         )}

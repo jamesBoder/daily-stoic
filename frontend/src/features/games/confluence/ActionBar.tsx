@@ -77,13 +77,13 @@ export function ActionBar({
       >
         <div className={`px-4 py-1.5 rounded-md border ${
           guessError
-            ? 'bg-red-950/60 border-red-800/50'
-            : 'bg-stone-800 border-stone-700'
+            ? 'bg-danger-bg border-[var(--color-danger)]'
+            : 'bg-[var(--color-game-bg)] border-[var(--color-game-border)]'
         }`}>
           <span className={`font-display text-xs tracking-wider ${
             guessError
-              ? 'text-red-300'
-              : toastKind === 'one-away' ? 'text-amber-300' : 'text-stone-400'
+              ? 'text-danger'
+              : toastKind === 'one-away' ? 'text-[var(--color-tier-1)]' : 'text-[var(--color-game-fg-muted)]'
           }`}>
             {guessError ?? (toastKind === 'one-away' ? 'One away...' : 'Not quite.')}
           </span>
@@ -92,15 +92,15 @@ export function ActionBar({
 
       {/* Attempt circles */}
       <div className="flex items-center gap-2">
-        <span className="font-display text-[10px] tracking-widest text-stone-500 uppercase mr-1">Attempts</span>
+        <span className="font-display text-[10px] tracking-widest text-[var(--color-game-fg-dim)] uppercase mr-1">Attempts</span>
         {Array.from({ length: 4 }).map((_, i) => (
           <span
             key={i}
             className={[
               'w-3 h-3 rounded-full transition-colors duration-300',
               i < attemptsRemaining
-                ? 'bg-stone-300'
-                : 'border border-stone-600 bg-transparent',
+                ? 'bg-[var(--color-game-filled)]'
+                : 'border border-[var(--color-game-empty)] bg-transparent',
             ].join(' ')}
           />
         ))}
@@ -112,7 +112,7 @@ export function ActionBar({
           onClick={onDeselect}
           disabled={selectedCount === 0 || gameOver}
           className="font-display text-xs tracking-widest uppercase px-4 py-2 rounded-full border
-                     border-stone-700 text-stone-400 hover:border-stone-500 hover:text-stone-200
+                     border-[var(--color-game-border)] text-[var(--color-game-fg-muted)] hover:border-[var(--color-game-fg-dim)] hover:text-[var(--color-game-fg)]
                      transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
         >
           Deselect all
@@ -125,8 +125,8 @@ export function ActionBar({
             'font-display text-xs tracking-widest uppercase px-5 py-2 rounded-full transition-colors',
             shakeSubmit ? 'animate-shake' : '',
             canSubmit
-              ? 'bg-stone-200 text-stone-900 hover:bg-white'
-              : 'bg-stone-800 text-stone-500 border border-stone-700',
+              ? 'bg-[var(--color-game-fg)] text-[var(--color-game-bg)] hover:bg-[var(--color-game-fg)]'
+              : 'bg-[var(--color-game-bg)] text-[var(--color-game-fg-dim)] border border-[var(--color-game-border)]',
             'disabled:cursor-not-allowed',
           ].join(' ')}
         >
@@ -136,7 +136,7 @@ export function ActionBar({
 
       {/* Selected count hint */}
       {selectedCount > 0 && selectedCount < 4 && !gameOver && (
-        <p className="font-display text-[10px] tracking-widest text-stone-600 uppercase">
+        <p className="font-display text-[10px] tracking-widest text-[var(--color-game-fg-dim)] uppercase">
           {4 - selectedCount} more to select
         </p>
       )}

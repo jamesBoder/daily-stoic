@@ -38,7 +38,7 @@ export const MilestoneModal = ({ milestone, onClose }: Props) => {
   return createPortal(
     <div
       ref={backdropRef}
-      className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm px-4 pb-4 sm:pb-0"
+      className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center bg-[var(--color-overlay)] backdrop-blur-sm px-4 pb-4 sm:pb-0"
       onMouseDown={e => { if (e.target === backdropRef.current) onClose() }}
     >
       {/* Confetti layer */}
@@ -61,30 +61,29 @@ export const MilestoneModal = ({ milestone, onClose }: Props) => {
       <div
         className="animate-milestone-burst relative w-full max-w-sm rounded-modal shadow-modal text-center p-10"
         style={{
-          background: 'var(--modal-bg, #f5f0e6)',
-          border: '1px solid var(--modal-border, rgba(200,192,172,0.6))',
+          background: 'var(--color-surface-modal)',
+          border: '1px solid var(--color-border)',
         }}
       >
         <div className="text-5xl mb-6 animate-flame-pulse inline-block">
           {config.icon}
         </div>
 
-        <h2 className="font-display text-2xl tracking-wide mb-1 text-primary-800 dark:text-[#e8e0cc]">
+        <h2 className="font-display text-2xl tracking-wide mb-1 text-fg">
           {config.heading}
         </h2>
-        <p className="font-display text-sm uppercase tracking-widest text-accent dark:text-[#d4a853] mb-6">
+        <p className="font-display text-sm uppercase tracking-widest text-accent dark:text-accent mb-6">
           {config.subheading}
         </p>
 
-        <p className="font-serif text-base leading-relaxed mb-8 italic text-primary-700 dark:text-[#b0bcd4]">
+        <p className="font-serif text-base leading-relaxed mb-8 italic text-fg-muted">
           &ldquo;{config.body}&rdquo;
         </p>
 
         <button
           onClick={onClose}
           className="w-full font-sans text-sm font-semibold rounded-stone px-8 py-3 transition-colors
-                     text-white bg-accent hover:bg-accent-dark
-                     dark:bg-[#d4a853] dark:hover:bg-[#c49840] dark:text-[#040810]"
+                     text-accent-text bg-accent hover:bg-accent-dark"
         >
           {config.cta}
         </button>

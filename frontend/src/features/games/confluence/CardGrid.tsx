@@ -16,7 +16,7 @@ export function CardGridSkeleton() {
       {Array.from({ length: 16 }).map((_, i) => (
         <div
           key={i}
-          className="aspect-[11/19] rounded-lg bg-stone-800 animate-pulse"
+          className="aspect-[11/19] rounded-lg bg-[var(--color-game-bg)] animate-pulse"
         />
       ))}
     </div>

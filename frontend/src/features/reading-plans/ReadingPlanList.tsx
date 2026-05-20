@@ -5,38 +5,23 @@ import { Link } from 'react-router-dom'
 import { readingPlansApi } from '../../services/api/readingPlans'
 import type { ReadingPlan } from '../../types/readingPlan'
 import { useSubscription } from '../../contexts/SubscriptionContext'
+import { TRADITION_COLORS, TRADITION_DEFAULT_COLORS } from '../traditions/constants'
 
-// ── Per-plan visual config ────────────────────────────────────────────────────
+// ── Plan slug → tradition slug lookup ────────────────────────────────────────
 
-const PLAN_META: Record<string, {
-  icon: string
-  color: string
-  colorDark: string
-  bg: string
-  bgDark: string
-}> = {
-  'stoic-virtues-30-days': {
-    icon: '⊕',
-    color: '#8b7355',
-    colorDark: '#d4a853',
-    bg: 'rgba(139,115,85,0.12)',
-    bgDark: 'rgba(212,168,83,0.12)',
-  },
-  'hermetic-principles-49-days': {
-    icon: '✦',
-    color: '#7a4fb5',
-    colorDark: '#b07aff',
-    bg: 'rgba(122,79,181,0.12)',
-    bgDark: 'rgba(176,122,255,0.12)',
-  },
+const PLAN_TRAD_SLUG: Record<string, string> = {
+  'stoic-virtues-30-days':       'stoicism',
+  'hermetic-principles-49-days': 'hermeticism',
 }
 
-const DEFAULT_META = PLAN_META['stoic-virtues-30-days']
+const PLAN_ICON: Record<string, string> = {
+  'stoic-virtues-30-days':       '⊕',
+  'hermetic-principles-49-days': '✦',
+}
 
 // ── Day pip strip ─────────────────────────────────────────────────────────────
 
 function DurationPips({ days }: { days: number }) {
-  // Show up to 12 pips; last pip becomes "..." if truncated
   const max = 12
   const count = Math.min(days, max)
   return (
@@ -44,11 +29,11 @@ function DurationPips({ days }: { days: number }) {
       {Array.from({ length: count }).map((_, i) => (
         <div
           key={i}
-          className="h-[3px] flex-1 rounded-full bg-primary-300 dark:bg-primary-300 opacity-50"
+          className="h-[3px] flex-1 rounded-full bg-primary-300 opacity-50"
         />
       ))}
       {days > max && (
-        <span className="font-sans text-[10px] text-primary-400 ml-1">···</span>
+        <span className="font-sans text-[10px] text-fg-subtle ml-1">···</span>
       )}
     </div>
   )
@@ -57,19 +42,25 @@ function DurationPips({ days }: { days: number }) {
 // ── Plan card ─────────────────────────────────────────────────────────────────
 
 function PlanCard({ plan, isPremium }: { plan: ReadingPlan; isPremium: boolean }) {
-  const meta = PLAN_META[plan.slug] ?? DEFAULT_META
+  const tradSlug = PLAN_TRAD_SLUG[plan.slug] ?? 'stoicism'
+  const colors   = TRADITION_COLORS[tradSlug] ?? TRADITION_DEFAULT_COLORS
+  const icon     = PLAN_ICON[plan.slug] ?? '✦'
   const isLocked = plan.tier === 'premium' && !isPremium
 
   return (
     <Link
       to={`/reading-plans/${plan.slug}`}
-      className="group block relative overflow-hidden rounded-2xl border border-primary-200 dark:border-[rgba(255,255,255,0.07)] bg-surface-card active:scale-[0.98] transition-transform duration-150 touch-manipulation"
-      style={{ WebkitTapHighlightColor: 'transparent' }}
+      className="group block relative overflow-hidden rounded-2xl border border-primary-200 dark:border-[var(--color-border)] bg-surface-card active:scale-[0.98] transition-transform duration-150 touch-manipulation"
+      style={{
+        WebkitTapHighlightColor: 'transparent',
+        '--trad-color':    colors.light,
+        '--trad-color-dk': colors.dark,
+      } as React.CSSProperties}
     >
-      {/* Atmospheric glow in the top-left corner */}
+      {/* Atmospheric glow — adaptive, no longer always-dark */}
       <div
         className="pointer-events-none absolute -top-8 -left-8 w-40 h-40 rounded-full opacity-60 blur-2xl transition-opacity duration-300 group-hover:opacity-80"
-        style={{ background: meta.bgDark }}
+        style={{ background: 'color-mix(in srgb, var(--trad-color-active) 12%, transparent)' }}
       />
 
       <div className="relative p-5">
@@ -78,28 +69,35 @@ function PlanCard({ plan, isPremium }: { plan: ReadingPlan; isPremium: boolean }
           {/* Icon circle */}
           <div
             className="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center text-xl font-display transition-transform duration-300 group-hover:scale-110"
-            style={{ background: meta.bg, color: meta.color }}
+            style={{
+              background: 'color-mix(in srgb, var(--trad-color-active) 12%, transparent)',
+              color:      'var(--trad-color-active)',
+            }}
           >
-            {meta.icon}
+            {icon}
           </div>
 
           <div className="flex flex-wrap items-center gap-1.5 justify-end">
             {isLocked && (
               <span
                 className="font-display text-[9px] tracking-[0.2em] uppercase px-2 py-0.5 rounded-full"
-                style={{ color: meta.color, background: meta.bg, border: `1px solid ${meta.color}40` }}
+                style={{
+                  color:      'var(--trad-color-active)',
+                  background: 'color-mix(in srgb, var(--trad-color-active) 12%, transparent)',
+                  border:     '1px solid color-mix(in srgb, var(--trad-color-active) 25%, transparent)',
+                }}
               >
                 Practitioner
               </span>
             )}
-            <span className="font-sans text-[10px] text-primary-400 dark:text-primary-400">
+            <span className="font-sans text-[10px] text-fg-subtle">
               {plan.duration_days} days
             </span>
           </div>
         </div>
 
         {/* Title */}
-        <h2 className="font-display text-lg leading-snug text-primary-800 dark:text-[#e0ddd4] mb-1.5 group-hover:text-accent dark:group-hover:text-star-gold transition-colors">
+        <h2 className="font-display text-lg leading-snug text-primary-800 dark:text-fg mb-1.5 group-hover:text-accent transition-colors">
           {plan.title}
         </h2>
 
@@ -107,14 +105,14 @@ function PlanCard({ plan, isPremium }: { plan: ReadingPlan; isPremium: boolean }
         {plan.tradition && (
           <p
             className="font-display text-[9px] tracking-[0.2em] uppercase mb-2"
-            style={{ color: meta.color }}
+            style={{ color: 'var(--trad-color-active)' }}
           >
             {plan.tradition.name}
           </p>
         )}
 
         {/* Description */}
-        <p className="font-sans text-sm text-primary-500 dark:text-night-400 leading-relaxed line-clamp-2">
+        <p className="font-sans text-sm text-fg-muted leading-relaxed line-clamp-2">
           {plan.description}
         </p>
 
@@ -125,7 +123,7 @@ function PlanCard({ plan, isPremium }: { plan: ReadingPlan; isPremium: boolean }
         <div className="flex items-center justify-end mt-4">
           <span
             className="font-sans text-xs flex items-center gap-1 transition-transform duration-200 group-hover:translate-x-0.5"
-            style={{ color: meta.color }}
+            style={{ color: 'var(--trad-color-active)' }}
           >
             {isLocked ? 'Preview' : 'Begin journey'} →
           </span>
@@ -135,7 +133,7 @@ function PlanCard({ plan, isPremium }: { plan: ReadingPlan; isPremium: boolean }
       {/* Bottom accent line */}
       <div
         className="absolute bottom-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: `linear-gradient(to right, transparent, ${meta.color}80, transparent)` }}
+        style={{ background: 'linear-gradient(to right, transparent, color-mix(in srgb, var(--trad-color-active) 50%, transparent), transparent)' }}
       />
     </Link>
   )
@@ -145,16 +143,16 @@ function PlanCard({ plan, isPremium }: { plan: ReadingPlan; isPremium: boolean }
 
 function PlanSkeleton() {
   return (
-    <div className="rounded-2xl border border-primary-200 dark:border-[rgba(255,255,255,0.07)] bg-surface-card p-5 space-y-3 animate-pulse">
+    <div className="rounded-2xl border border-primary-200 dark:border-[var(--color-border)] bg-surface-card p-5 space-y-3 animate-pulse">
       <div className="flex items-start gap-3">
-        <div className="w-11 h-11 rounded-xl bg-primary-200 dark:bg-night-700/50" />
+        <div className="w-11 h-11 rounded-xl bg-primary-200 dark:bg-surface-hi" />
         <div className="flex-1 space-y-2 pt-1">
-          <div className="h-3 w-20 rounded bg-primary-200 dark:bg-night-700/50" />
-          <div className="h-5 w-3/4 rounded bg-primary-200 dark:bg-night-700/50" />
+          <div className="h-3 w-20 rounded bg-primary-200 dark:bg-surface-hi" />
+          <div className="h-5 w-3/4 rounded bg-primary-200 dark:bg-surface-hi" />
         </div>
       </div>
-      <div className="h-3 rounded bg-primary-200 dark:bg-night-700/50" />
-      <div className="h-3 w-2/3 rounded bg-primary-200 dark:bg-night-700/50" />
+      <div className="h-3 rounded bg-primary-200 dark:bg-surface-hi" />
+      <div className="h-3 w-2/3 rounded bg-primary-200 dark:bg-surface-hi" />
     </div>
   )
 }
@@ -182,10 +180,10 @@ export function ReadingPlanList() {
         <p className="font-display text-[10px] tracking-[0.3em] uppercase text-accent mb-3">
           Curated Journeys
         </p>
-        <h1 className="font-display text-3xl text-primary-800 dark:text-[#e8e0cc] mb-4 title-glow-hover">
+        <h1 className="font-display text-3xl text-primary-800 dark:text-fg-muted mb-4 title-glow-hover">
           Reading Plans
         </h1>
-        <p className="font-sans text-sm text-primary-500 dark:text-night-400 max-w-xs mx-auto leading-relaxed">
+        <p className="font-sans text-sm text-fg-muted max-w-xs mx-auto leading-relaxed">
           Multi-week immersions through the great wisdom traditions, one passage at a time.
         </p>
       </div>
@@ -224,11 +222,11 @@ export function ReadingPlanList() {
 function SectionLabel({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-3 mb-4">
-      <div className="h-px flex-1 bg-primary-200 dark:bg-[rgba(255,255,255,0.08)]" />
-      <span className="font-display text-[9px] tracking-[0.25em] uppercase text-primary-400 dark:text-night-400">
+      <div className="h-px flex-1 bg-primary-200 dark:bg-[var(--color-border)]" />
+      <span className="font-display text-[9px] tracking-[0.25em] uppercase text-fg-subtle">
         {label}
       </span>
-      <div className="h-px flex-1 bg-primary-200 dark:bg-[rgba(255,255,255,0.08)]" />
+      <div className="h-px flex-1 bg-primary-200 dark:bg-[var(--color-border)]" />
     </div>
   )
 }

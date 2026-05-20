@@ -1,17 +1,17 @@
 // src/features/traditions/PhilosopherTimeline.tsx
 
 import { useEffect, useState, useMemo } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import apiClient from '../../services/api/api'
 import type { Author } from '../../types/quote'
 import {
-  ICON_COLOR,
-  ICON_COLOR_DARK,
+  TRADITION_COLORS,
+  TRADITION_CARD_THEMES,
   TRADITION_SLUG,
   TRADITION_NAME,
   TRADITION_ICON,
+  TRADITION_NEUTRAL_COLORS,
 } from './constants'
-import { useIsDark } from '../../hooks/useIsDark'
 
 // ── Date parsing ──────────────────────────────────────────────────────────────
 
@@ -20,7 +20,6 @@ function parseYear(s: string | undefined): number | null {
   const t = s.trim().toLowerCase()
   if (t === 'unknown' || t === '') return null
 
-  // "6th century BCE" / "c. 1st century ce"
   const centuryMatch = t.match(/(\d+)(?:st|nd|rd|th)\s+century\s*(bce?|bc|ad|ce)?/)
   if (centuryMatch) {
     const n   = parseInt(centuryMatch[1])
@@ -29,17 +28,14 @@ function parseYear(s: string | undefined): number | null {
     return era.startsWith('b') ? -mid : mid
   }
 
-  // Strip "c. " prefix
   const clean = t.replace(/^c\.\s*/, '').trim()
-
-  // Match number + optional era keyword
   const m = clean.match(/^(\d+)\s*(bce?|bc|ad|ce)?$/)
   if (!m) return null
 
   const year = parseInt(m[1])
   const era  = m[2] ?? ''
   if (era === 'bc' || era === 'bce') return -year
-  return year  // "ad", "ce", or bare modern year — all positive
+  return year
 }
 
 function fmtYear(y: number): string {
@@ -53,66 +49,32 @@ function dateLabel(born: string | undefined, died: string | undefined): string {
   return `${born} – ${died}`
 }
 
-// ── SVG layout constants ──────────────────────────────────────────────────────
-
-const T_START = -2650   // just before oldest philosopher (~2400 BCE)
-const T_END   = 2040
-const SVG_W   = 2200
-const L_PAD   = 160     // left column for tradition labels
-const R_PAD   = 30
-const PLOT_W  = SVG_W - L_PAD - R_PAD
-const ROW_H   = 72
-const BAR_H   = 10
-const BAR_CY  = 36      // bar vertical center within row
-const AXIS_H  = 44
-const ERA_H   = 20      // era-label strip above rows
-
-function toX(year: number): number {
-  return L_PAD + ((year - T_START) / (T_END - T_START)) * PLOT_W
-}
+// ── Era config — purely year-range driven, scales to any philosopher added ───
 
 const ERAS = [
-  { label: 'Ancient',     start: -2650, end:  -500 },
-  { label: 'Classical',   start:  -500, end:   500 },
-  { label: 'Medieval',    start:   500, end:  1400 },
-  { label: 'Renaissance', start:  1400, end:  1800 },
-  { label: 'Modern',      start:  1800, end:  2040 },
-]
+  { label: 'Ancient',     range: 'Before 500 BCE',      start: -9999, end: -500 },
+  { label: 'Classical',   range: '500 BCE – 500 CE',    start: -500,  end:  500 },
+  { label: 'Medieval',    range: '500 – 1400 CE',        start:  500,  end: 1400 },
+  { label: 'Renaissance', range: '1400 – 1800 CE',       start: 1400,  end: 1800 },
+  { label: 'Modern',      range: '1800 CE – Present',    start: 1800,  end: 9999 },
+] as const
 
-const ERA_FILL_LIGHT = [
-  'rgba(180,140,60,0.08)',
-  'rgba(80,120,200,0.08)',
-  'rgba(140,80,180,0.08)',
-  'rgba(60,160,80,0.08)',
-  'rgba(180,90,50,0.08)',
-]
-const ERA_FILL_DARK = [
-  'rgba(200,160,80,0.055)',
-  'rgba(100,150,250,0.055)',
-  'rgba(180,100,230,0.055)',
-  'rgba(80,200,100,0.055)',
-  'rgba(240,130,70,0.055)',
-]
-
-const AXIS_TICKS = [-2500, -2000, -1500, -1000, -500, 0, 500, 1000, 1500, 2000]
-
-// Roughly chronological by tradition origin
+// Filter chip display order — add new tradition IDs here when new traditions
+// are introduced. Cards appear automatically from API data.
 const TRAD_ORDER = [15, 7, 6, 12, 11, 8, 1, 2, 3, 4, 5, 13, 9, 10, 14]
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
-interface PhiloNode {
-  author:   Author
-  bornY:    number | null
-  diedY:    number | null
-  color:    string
-}
-
-interface TooltipState {
-  author:   Author
-  tradName: string
-  x:        number
-  y:        number
+interface PhiloEntry {
+  author:    Author
+  bornY:     number | null
+  diedY:     number | null
+  sortY:     number
+  tradId:    number
+  slug:      string
+  colors:    { light: string; dark: string }
+  surface:   string
+  surfaceDk: string
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -121,10 +83,8 @@ export const PhilosopherTimeline = () => {
   const [authors,    setAuthors]    = useState<Author[]>([])
   const [loading,    setLoading]    = useState(true)
   const [error,      setError]      = useState(false)
-  const [tooltip,    setTooltip]    = useState<TooltipState | null>(null)
   const [activeTrad, setActiveTrad] = useState<number | null>(null)
   const navigate = useNavigate()
-  const isDark   = useIsDark()
 
   useEffect(() => {
     apiClient.get('/api/authors')
@@ -133,61 +93,81 @@ export const PhilosopherTimeline = () => {
       .finally(() => setLoading(false))
   }, [])
 
-  const byTradition = useMemo(() => {
-    const map = new Map<number, PhiloNode[]>()
+  // Flat chronological list of all datable philosophers
+  const allEntries = useMemo<PhiloEntry[]>(() => {
+    const entries: PhiloEntry[] = []
     for (const a of authors) {
       const tid = a.tradition_id
       if (!tid) continue
       const bornY = parseYear(a.born)
       const diedY = parseYear(a.died)
-      if (bornY === null && diedY === null) continue   // no usable date — skip
+      const sortY = bornY ?? diedY
+      if (sortY === null) continue
       const slug  = TRADITION_SLUG[tid] ?? ''
-      const color = (isDark ? ICON_COLOR_DARK : ICON_COLOR)[slug] ?? '#888888'
-      if (!map.has(tid)) map.set(tid, [])
-      map.get(tid)!.push({ author: a, bornY, diedY, color })
+      const theme = TRADITION_CARD_THEMES[slug]
+      entries.push({
+        author: a,
+        bornY,
+        diedY,
+        sortY,
+        tradId: tid,
+        slug,
+        colors:    TRADITION_COLORS[slug] ?? TRADITION_NEUTRAL_COLORS,
+        surface:   theme?.surface   ?? 'var(--color-surface)',
+        surfaceDk: theme?.surfaceDk ?? 'var(--color-surface-modal)',
+      })
     }
-    for (const nodes of map.values()) {
-      nodes.sort((a, b) => (a.bornY ?? a.diedY ?? 0) - (b.bornY ?? b.diedY ?? 0))
-    }
-    return map
-  }, [authors, isDark])
+    return entries.sort((a, b) => a.sortY - b.sortY)
+  }, [authors])
 
-  const rows     = TRAD_ORDER.filter(id => byTradition.has(id))
-  const svgH     = ERA_H + rows.length * ROW_H + AXIS_H
-  const eraFills = isDark ? ERA_FILL_DARK : ERA_FILL_LIGHT
+  // Tradition IDs present in data, in TRAD_ORDER sequence
+  const tradIds = useMemo(() => {
+    const present = new Set(allEntries.map(e => e.tradId))
+    return TRAD_ORDER.filter(id => present.has(id))
+  }, [allEntries])
+
+  // Era groups — empty eras are omitted automatically
+  const eraGroups = useMemo(() => {
+    return ERAS.map(era => ({
+      ...era,
+      entries: allEntries.filter(e => e.sortY >= era.start && e.sortY < era.end),
+    })).filter(g => g.entries.length > 0)
+  }, [allEntries])
+
+  const isVisible = (e: PhiloEntry) =>
+    activeTrad === null || e.tradId === activeTrad
 
   return (
     <main className="min-h-screen bg-surface-base page-utility py-16 px-4">
 
       {/* ── Page header ── */}
       <header className="text-center mb-10 max-w-2xl mx-auto">
-        <p className="font-display text-[10px] uppercase tracking-[0.3em] text-accent dark:text-[#d4a853] mb-2">
+        <p className="font-display text-[10px] uppercase tracking-[0.3em] text-accent mb-2">
           Traditions
         </p>
-        <h1 className="font-display text-3xl text-primary-800 dark:text-[#e8e0cc] mb-3 title-glow-hover">
+        <h1 className="font-display text-3xl text-fg mb-3 title-glow-hover">
           Philosopher Timeline
         </h1>
-        <p className="font-sans text-sm text-primary-600 dark:text-night-400 leading-relaxed">
-          2,600 years of thought — when each philosopher lived, tradition by tradition.
-          <span className="hidden sm:inline"> Hover to preview. Click to visit their page.</span>
+        <p className="font-sans text-sm text-fg-muted leading-relaxed">
+          2,600 years of thought — every philosopher in the age they walked.
         </p>
         <div className="mt-4">
           <Link
             to="/traditions"
-            className="font-display text-[9px] tracking-[0.2em] uppercase text-accent dark:text-[#d4a853] hover:underline"
+            className="font-display text-[9px] tracking-[0.2em] uppercase text-accent hover:underline"
           >
             ← Back to Traditions
           </Link>
         </div>
       </header>
 
-      {/* ── Tradition filter legend ── */}
-      {!loading && rows.length > 0 && (
-        <div className="flex flex-wrap justify-center gap-2 mb-8 px-4">
-          {rows.map(tid => {
-            const slug    = TRADITION_SLUG[tid] ?? ''
-            const color   = (isDark ? ICON_COLOR_DARK : ICON_COLOR)[slug] ?? '#888'
-            const active  = activeTrad === null || activeTrad === tid
+      {/* ── Tradition filter chips ── */}
+      {!loading && tradIds.length > 0 && (
+        <div className="flex flex-wrap justify-center gap-2 mb-10 px-4">
+          {tradIds.map(tid => {
+            const slug   = TRADITION_SLUG[tid] ?? ''
+            const colors = TRADITION_COLORS[slug] ?? TRADITION_NEUTRAL_COLORS
+            const active = activeTrad === null || activeTrad === tid
             return (
               <button
                 key={tid}
@@ -195,12 +175,16 @@ export const PhilosopherTimeline = () => {
                 className="flex items-center gap-1.5 px-3 py-1 rounded-full font-display tracking-wider transition-all duration-150"
                 style={{
                   fontSize:   10,
-                  background: active ? `${color}22` : 'transparent',
-                  border:     `1px solid ${color}${active ? '55' : '1a'}`,
-                  color:      active
-                    ? color
-                    : isDark ? 'rgba(255,255,255,0.28)' : 'rgba(0,0,0,0.28)',
-                }}
+                  '--trad-color':    colors.light,
+                  '--trad-color-dk': colors.dark,
+                  background: active
+                    ? 'color-mix(in srgb, var(--trad-color-active) 13%, transparent)'
+                    : 'transparent',
+                  border: `1px solid ${active
+                    ? 'color-mix(in srgb, var(--trad-color-active) 33%, transparent)'
+                    : 'color-mix(in srgb, var(--color-fg) 12%, transparent)'}`,
+                  color: active ? 'var(--trad-color-active)' : 'var(--color-fg-subtle)',
+                } as React.CSSProperties}
               >
                 <span style={{ fontSize: 11 }}>{TRADITION_ICON[tid]}</span>
                 {TRADITION_NAME[tid]}
@@ -210,7 +194,7 @@ export const PhilosopherTimeline = () => {
         </div>
       )}
 
-      {/* ── Loading spinner ── */}
+      {/* ── Loading ── */}
       {loading && (
         <div className="flex justify-center py-24">
           <div className="w-8 h-8 rounded-full border-2 border-accent/30 border-t-accent animate-spin" />
@@ -219,304 +203,269 @@ export const PhilosopherTimeline = () => {
 
       {/* ── Error ── */}
       {error && (
-        <p className="font-sans text-sm text-primary-400 dark:text-night-500 text-center py-16">
+        <p className="font-sans text-sm text-fg-subtle text-center py-16">
           Could not load philosophers. Is the backend running?
         </p>
       )}
 
       {/* ── Empty ── */}
-      {!loading && !error && rows.length === 0 && (
-        <p className="font-sans text-sm text-primary-400 dark:text-night-500 text-center py-16">
+      {!loading && !error && allEntries.length === 0 && (
+        <p className="font-sans text-sm text-fg-subtle text-center py-16">
           No philosopher date data available.
         </p>
       )}
 
       {/* ── Timeline ── */}
-      {!loading && !error && rows.length > 0 && (
-        <div>
-          <p className="text-center font-sans text-[10px] text-primary-400 dark:text-night-600 mb-3 xl:hidden">
-            ← Scroll to explore →
-          </p>
+      {!loading && !error && allEntries.length > 0 && (
+        <div className="max-w-xl mx-auto">
+          {eraGroups.map(era => {
+            const visibleCount = era.entries.filter(isVisible).length
+            if (activeTrad !== null && visibleCount === 0) return null
 
-          <div
-            className="overflow-x-auto rounded-card border
-                       border-primary-200/40 dark:border-[rgba(255,255,255,0.06)]
-                       bg-surface-card dark:bg-[rgba(8,16,38,0.75)]
-                       shadow-card"
-          >
-            <svg
-              width={SVG_W}
-              height={svgH}
-              style={{ display: 'block' }}
-            >
-              {/* ── Era background bands ── */}
-              {ERAS.map((era, i) => (
-                <rect
-                  key={era.label}
-                  x={toX(era.start)}
-                  y={ERA_H}
-                  width={toX(era.end) - toX(era.start)}
-                  height={rows.length * ROW_H}
-                  fill={eraFills[i]}
+            return (
+              <section key={era.label}>
+                <EraHeader
+                  label={era.label}
+                  range={era.range}
+                  tradIds={[...new Set(era.entries.map(e => e.tradId))]}
+                  count={visibleCount}
                 />
-              ))}
 
-              {/* ── Era labels ── */}
-              {ERAS.map(era => (
-                <text
-                  key={era.label}
-                  x={(toX(era.start) + toX(era.end)) / 2}
-                  y={ERA_H - 5}
-                  textAnchor="middle"
-                  fontSize={7.5}
-                  fill={isDark ? 'rgba(255,255,255,0.17)' : 'rgba(0,0,0,0.16)'}
-                  fontFamily="Cinzel, Georgia, serif"
-                  letterSpacing="0.14em"
-                >
-                  {era.label.toUpperCase()}
-                </text>
-              ))}
+                {/* Cards with vertical spine */}
+                <div className="relative">
+                  {/* Spine line (desktop) */}
+                  <div
+                    className="hidden sm:block absolute top-0 bottom-0 left-[88px]"
+                    style={{
+                      width: '1px',
+                      borderLeft: '1px dashed color-mix(in srgb, var(--color-accent) 22%, transparent)',
+                    }}
+                  />
 
-              {/* ── Vertical grid lines at axis ticks ── */}
-              {AXIS_TICKS.map(year => (
-                <line
-                  key={year}
-                  x1={toX(year)} y1={ERA_H}
-                  x2={toX(year)} y2={ERA_H + rows.length * ROW_H}
-                  stroke={isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'}
-                  strokeWidth={1}
-                />
-              ))}
+                  {era.entries.map(entry => {
+                    const visible = isVisible(entry)
 
-              {/* ── BCE / CE boundary ── */}
-              <line
-                x1={toX(0)} y1={ERA_H}
-                x2={toX(0)} y2={ERA_H + rows.length * ROW_H}
-                stroke={isDark ? 'rgba(255,255,255,0.13)' : 'rgba(0,0,0,0.12)'}
-                strokeWidth={1}
-              />
+                    return (
+                      <div
+                        key={entry.author.id}
+                        className={`relative mb-5 sm:mb-7 transition-opacity duration-200 trad-card-${entry.slug}`}
+                        style={{
+                          opacity:       visible ? 1 : 0.1,
+                          pointerEvents: visible ? 'auto' : 'none',
+                        }}
+                      >
+                        {/* Year stamp (desktop) */}
+                        <div className="hidden sm:flex absolute top-[14px] left-0 w-[80px] justify-end pr-3">
+                          <span className="font-display text-[9px] tracking-widest text-fg-dim whitespace-nowrap leading-none">
+                            {fmtYear(entry.sortY)}
+                          </span>
+                        </div>
 
-              {/* ── Tradition rows ── */}
-              {rows.map((tradId, rowIdx) => {
-                const nodes    = byTradition.get(tradId)!
-                const slug     = TRADITION_SLUG[tradId] ?? ''
-                const rowColor = (isDark ? ICON_COLOR_DARK : ICON_COLOR)[slug] ?? '#888'
-                const icon     = TRADITION_ICON[tradId] ?? ''
-                const name     = TRADITION_NAME[tradId] ?? ''
-                const rowY     = ERA_H + rowIdx * ROW_H
-                const fade     = activeTrad !== null && activeTrad !== tradId
+                        {/* Spine dot (desktop) */}
+                        <div
+                          className="hidden sm:block absolute top-[15px] left-[88px] -translate-x-1/2
+                                     w-[9px] h-[9px] rounded-full border"
+                          style={{
+                            background:  'color-mix(in srgb, var(--trad-color-active) 40%, var(--color-surface))',
+                            borderColor: 'color-mix(in srgb, var(--trad-color-active) 65%, transparent)',
+                          }}
+                        />
 
-                return (
-                  <g key={tradId} opacity={fade ? 0.15 : 1} style={{ transition: 'opacity 0.2s' }}>
-
-                    {/* Row separator */}
-                    <line
-                      x1={0} y1={rowY}
-                      x2={SVG_W} y2={rowY}
-                      stroke={isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)'}
-                      strokeWidth={1}
-                    />
-
-                    {/* Tradition icon + name label */}
-                    <text
-                      x={8}
-                      y={rowY + 15}
-                      fontSize={12}
-                      fill={rowColor}
-                      fontFamily="Cinzel, Georgia, serif"
-                    >
-                      {icon}
-                    </text>
-                    <text
-                      x={26}
-                      y={rowY + 15}
-                      fontSize={7}
-                      fill={isDark ? 'rgba(255,255,255,0.42)' : 'rgba(0,0,0,0.38)'}
-                      fontFamily="Cinzel, Georgia, serif"
-                      letterSpacing="0.08em"
-                    >
-                      {name.toUpperCase()}
-                    </text>
-
-                    {/* Philosopher bars */}
-                    {nodes.map((node, nIdx) => {
-                      const born   = node.bornY
-                      const died   = node.diedY
-                      const hasBar = born !== null && died !== null
-                      const ptX    = toX(born ?? died!)
-                      const barX   = hasBar ? toX(born!) : ptX
-                      const barW   = hasBar ? Math.max(toX(died!) - toX(born!), 8) : 0
-                      const barCY  = rowY + BAR_CY
-
-                      // Alternate label above / below to reduce name collisions
-                      const above  = nIdx % 2 === 0
-                      const labelX = hasBar ? barX + barW / 2 : ptX
-                      const labelY = above
-                        ? barCY - BAR_H / 2 - 6
-                        : barCY + BAR_H / 2 + 12
-
-                      return (
-                        <g
-                          key={node.author.id}
-                          style={{ cursor: 'pointer' }}
-                          onMouseEnter={e => setTooltip({
-                            author: node.author,
-                            tradName: name,
-                            x: e.clientX,
-                            y: e.clientY,
-                          })}
-                          onMouseMove={e => setTooltip(prev =>
-                            prev ? { ...prev, x: e.clientX, y: e.clientY } : null
-                          )}
-                          onMouseLeave={() => setTooltip(null)}
-                          onClick={() => navigate(`/authors/${node.author.slug}`)}
-                        >
-                          {hasBar ? (
-                            <>
-                              <rect
-                                x={barX}
-                                y={barCY - BAR_H / 2}
-                                width={barW}
-                                height={BAR_H}
-                                rx={BAR_H / 2}
-                                fill={rowColor}
-                                opacity={0.78}
-                              />
-                              {/* Invisible enlarged hit area */}
-                              <rect
-                                x={barX - 3}
-                                y={barCY - 14}
-                                width={barW + 6}
-                                height={28}
-                                fill="transparent"
-                              />
-                            </>
-                          ) : (
-                            <>
-                              <circle
-                                cx={ptX}
-                                cy={barCY}
-                                r={5}
-                                fill={rowColor}
-                                opacity={0.72}
-                                stroke={isDark ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.9)'}
-                                strokeWidth={1.5}
-                              />
-                              <circle cx={ptX} cy={barCY} r={14} fill="transparent" />
-                            </>
-                          )}
-
-                          {/* Philosopher name */}
-                          <text
-                            x={labelX}
-                            y={labelY}
-                            textAnchor="middle"
-                            fontSize={7.5}
-                            fill={isDark ? 'rgba(255,255,255,0.60)' : 'rgba(0,0,0,0.52)'}
-                            fontFamily="Cinzel, Georgia, serif"
-                            letterSpacing="0.03em"
-                          >
-                            {node.author.name}
-                          </text>
-                        </g>
-                      )
-                    })}
-                  </g>
-                )
-              })}
-
-              {/* ── Time axis ── */}
-              <g transform={`translate(0, ${ERA_H + rows.length * ROW_H})`}>
-                <line
-                  x1={L_PAD}
-                  y1={0}
-                  x2={SVG_W - R_PAD}
-                  y2={0}
-                  stroke={isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)'}
-                  strokeWidth={1}
-                />
-                {AXIS_TICKS.map(year => (
-                  <g key={year}>
-                    <line
-                      x1={toX(year)} y1={0}
-                      x2={toX(year)} y2={7}
-                      stroke={isDark ? 'rgba(255,255,255,0.28)' : 'rgba(0,0,0,0.28)'}
-                      strokeWidth={1}
-                    />
-                    <text
-                      x={toX(year)}
-                      y={22}
-                      textAnchor="middle"
-                      fontSize={9}
-                      fill={isDark ? 'rgba(255,255,255,0.38)' : 'rgba(0,0,0,0.38)'}
-                      fontFamily="Cinzel, Georgia, serif"
-                      letterSpacing="0.04em"
-                    >
-                      {fmtYear(year)}
-                    </text>
-                  </g>
-                ))}
-
-                {/* Label for 0 CE / 1 CE boundary */}
-                <text
-                  x={toX(0) + 6}
-                  y={22}
-                  textAnchor="start"
-                  fontSize={7.5}
-                  fill={isDark ? 'rgba(255,255,255,0.22)' : 'rgba(0,0,0,0.2)'}
-                  fontFamily="Cinzel, Georgia, serif"
-                  letterSpacing="0.06em"
-                >
-                  CE →
-                </text>
-              </g>
-            </svg>
-          </div>
-
-          <p className="text-center font-sans text-[10px] text-primary-400 dark:text-night-600 mt-3">
-            Bars show lifespan. Dots mark a single known date. Approximate dates prefixed "c." in source data.
-          </p>
-        </div>
-      )}
-
-      {/* ── Floating tooltip ── */}
-      {tooltip && (
-        <div
-          className="fixed z-[9999] pointer-events-none"
-          style={{
-            left: Math.max(8, Math.min(tooltip.x + 18, window.innerWidth - 260)),
-            top:  Math.max(tooltip.y - 80, 8),
-          }}
-        >
-          <div
-            className="rounded-card border shadow-lg px-4 py-3 min-w-[160px] max-w-[240px]
-                       bg-surface-card border-primary-200/70
-                       dark:bg-[rgba(8,16,40,0.96)] dark:border-[rgba(255,255,255,0.13)]"
-            style={{ backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
-          >
-            <p className="font-display text-[13px] tracking-wide text-primary-800 dark:text-[#e0ddd4] leading-snug">
-              {tooltip.author.name}
-            </p>
-            <p className="font-sans text-[10px] text-primary-500 dark:text-night-400 mt-1">
-              {dateLabel(tooltip.author.born, tooltip.author.died)}
-            </p>
-            <p
-              className="font-display text-[9px] tracking-[0.12em] uppercase mt-2"
-              style={{
-                color: (isDark ? ICON_COLOR_DARK : ICON_COLOR)[
-                  TRADITION_SLUG[tooltip.author.tradition_id ?? 0] ?? ''
-                ] ?? '#888',
-              }}
-            >
-              {TRADITION_ICON[tooltip.author.tradition_id ?? 0]}{' '}
-              {tooltip.tradName}
-            </p>
-            <p className="font-sans text-[9px] text-primary-400 dark:text-night-600 mt-2 italic">
-              Click to visit →
-            </p>
-          </div>
+                        {/* Card */}
+                        <div className="sm:ml-[108px]">
+                          <PhilosopherCard entry={entry} onNavigate={() => navigate(`/authors/${entry.author.slug}`)} />
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </section>
+            )
+          })}
         </div>
       )}
     </main>
+  )
+}
+
+// ── Philosopher card — card-game aesthetic ────────────────────────────────────
+
+interface PhilosopherCardProps {
+  entry:      PhiloEntry
+  onNavigate: () => void
+}
+
+function PhilosopherCard({ entry, onNavigate }: PhilosopherCardProps) {
+  const { author, tradId } = entry
+  const icon = TRADITION_ICON[tradId] ?? '◈'
+  const name = TRADITION_NAME[tradId] ?? ''
+
+  return (
+    <div
+      className="timeline-philosopher-card relative rounded-[10px] overflow-hidden cursor-pointer"
+      style={{
+        border: '2px solid color-mix(in srgb, var(--trad-color-active) 55%, transparent)',
+        boxShadow: `
+          4px 4px 0 color-mix(in srgb, var(--trad-color-active) 20%, transparent),
+          8px 8px 0 color-mix(in srgb, var(--trad-color-active) 10%, transparent),
+          0 20px 48px color-mix(in srgb, var(--color-overlay) 40%, transparent)
+        `,
+      }}
+      onClick={onNavigate}
+      role="button"
+      tabIndex={0}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') onNavigate() }}
+      aria-label={`${author.name} — ${name}`}
+    >
+      {/* Inner mat border overlay */}
+      <div
+        className="absolute inset-[5px] rounded-[7px] pointer-events-none z-10"
+        style={{ border: '1px solid color-mix(in srgb, var(--trad-color-active) 22%, transparent)' }}
+      />
+
+      {/* Corner ornaments */}
+      <span className="absolute top-[9px] left-[9px] z-20 select-none text-[8px]"
+            style={{ color: 'var(--trad-color-active)', opacity: 0.45 }}>✦</span>
+      <span className="absolute top-[9px] right-[9px] z-20 select-none text-[8px]"
+            style={{ color: 'var(--trad-color-active)', opacity: 0.45 }}>✦</span>
+      <span className="absolute bottom-[9px] left-[9px] z-20 select-none text-[8px]"
+            style={{ color: 'var(--trad-color-active)', opacity: 0.45 }}>✦</span>
+      <span className="absolute bottom-[9px] right-[9px] z-20 select-none text-[8px]"
+            style={{ color: 'var(--trad-color-active)', opacity: 0.45 }}>✦</span>
+
+      {/* ── Banner zone — philosopher name + tradition icon ── */}
+      <div
+        className="px-5 pt-4 pb-3 flex items-start justify-between gap-3"
+        style={{ background: 'color-mix(in srgb, var(--trad-color-active) 22%, var(--trad-surface-active))' }}
+      >
+        <h3 className="font-display text-xl sm:text-2xl text-fg leading-tight">
+          {author.name}
+        </h3>
+        <span
+          className="text-2xl sm:text-3xl leading-none shrink-0 mt-0.5"
+          style={{ color: 'var(--trad-color-active)', opacity: 0.8 }}
+        >
+          {icon}
+        </span>
+      </div>
+
+      {/* Zone divider */}
+      <div className="h-px" style={{ background: 'color-mix(in srgb, var(--trad-color-active) 30%, transparent)' }} />
+
+      {/* ── Art zone — large tradition sigil on radial spotlight ── */}
+      <div
+        className="flex items-center justify-center py-8 sm:py-10"
+        style={{
+          background: `radial-gradient(ellipse at center,
+            color-mix(in srgb, var(--trad-color-active) 16%, var(--trad-surface-active)) 0%,
+            color-mix(in srgb, var(--trad-color-active) 5%, var(--trad-surface-active)) 70%)`,
+        }}
+      >
+        <span
+          className="select-none leading-none"
+          style={{
+            fontSize:  '80px',
+            color:     'color-mix(in srgb, var(--trad-color-active) 28%, transparent)',
+          }}
+        >
+          {icon}
+        </span>
+      </div>
+
+      {/* Zone divider */}
+      <div className="h-px" style={{ background: 'color-mix(in srgb, var(--trad-color-active) 30%, transparent)' }} />
+
+      {/* ── Type line — tradition + dates ── */}
+      <div
+        className="px-5 py-2 flex items-center justify-between gap-2"
+        style={{ background: 'color-mix(in srgb, var(--trad-color-active) 14%, var(--trad-surface-active))' }}
+      >
+        <span
+          className="font-display text-[9px] tracking-[0.22em] uppercase"
+          style={{ color: 'var(--trad-color-active)' }}
+        >
+          {icon} {name}
+        </span>
+        <span className="font-sans text-[9px] text-fg-subtle whitespace-nowrap">
+          {dateLabel(author.born, author.died)}
+        </span>
+      </div>
+
+      {/* Zone divider */}
+      <div className="h-px" style={{ background: 'color-mix(in srgb, var(--trad-color-active) 20%, transparent)' }} />
+
+      {/* ── Flavor text zone — bio excerpt ── */}
+      <div
+        className="px-5 py-3"
+        style={{ background: 'var(--trad-surface-active)' }}
+      >
+        {author.bio ? (
+          <p className="font-serif text-[11px] sm:text-xs text-fg-muted leading-relaxed italic line-clamp-3">
+            {author.bio}
+          </p>
+        ) : (
+          <p className="font-serif text-[11px] text-fg-dim leading-relaxed italic text-center tracking-wide">
+            — {name} —
+          </p>
+        )}
+      </div>
+
+      {/* Mobile year — shown at bottom, below flavor text */}
+      <div
+        className="sm:hidden px-5 py-2 flex items-center justify-end"
+        style={{ background: 'color-mix(in srgb, var(--trad-color-active) 8%, var(--trad-surface-active))' }}
+      >
+        <span className="font-display text-[9px] tracking-widest text-fg-dim">
+          {fmtYear(entry.sortY)}
+        </span>
+      </div>
+    </div>
+  )
+}
+
+// ── Era section header ────────────────────────────────────────────────────────
+
+interface EraHeaderProps {
+  label:   string
+  range:   string
+  tradIds: number[]
+  count:   number
+}
+
+function EraHeader({ label, range, tradIds, count }: EraHeaderProps) {
+  return (
+    <div className="flex items-center gap-3 my-10 sm:my-14" aria-label={`${label} era — ${range}`}>
+      <div
+        className="flex-1 h-px"
+        style={{ background: 'color-mix(in srgb, var(--color-accent) 20%, transparent)' }}
+      />
+
+      <div className="flex flex-col items-center gap-1 shrink-0 px-3 text-center">
+        {/* Tradition sigils present in this era */}
+        <div
+          className="flex gap-1.5 text-[12px]"
+          style={{ color: 'var(--color-fg-subtle)', opacity: 0.55 }}
+        >
+          {tradIds.slice(0, 8).map(tid => (
+            <span key={tid} title={TRADITION_NAME[tid]}>
+              {TRADITION_ICON[tid]}
+            </span>
+          ))}
+        </div>
+
+        <span className="font-display text-[11px] tracking-[0.38em] uppercase text-fg-muted mt-0.5">
+          {label}
+        </span>
+        <span className="font-sans text-[9px] text-fg-subtle">{range}</span>
+        <span className="font-display text-[8px] tracking-[0.1em] text-fg-dim mt-0.5">
+          {count} {count === 1 ? 'philosopher' : 'philosophers'}
+        </span>
+      </div>
+
+      <div
+        className="flex-1 h-px"
+        style={{ background: 'color-mix(in srgb, var(--color-accent) 20%, transparent)' }}
+      />
+    </div>
   )
 }

@@ -8,9 +8,8 @@ import apiClient from '../../services/api/api'
 import type { Author } from '../../types/quote'
 import { useAuth } from '../../hooks/useAuth'
 import { useSubscription } from '../../contexts/SubscriptionContext'
-import { useIsDark } from '../../hooks/useIsDark'
 import { useAskByAuthor, useAiUsage, is429 } from '../../hooks/useAskPhilosopher'
-import { TRADITION_ACCENT, TRADITION_ICON, TRADITION_NAME } from '../traditions/constants'
+import { TRADITION_ICON, TRADITION_NAME, TRADITION_SLUG, TRADITION_COLORS, TRADITION_DEFAULT_COLORS } from '../traditions/constants'
 import { Link } from 'react-router-dom'
 
 const FREE_LIMIT = 3
@@ -30,18 +29,15 @@ function useAuthors() {
 function PhilosopherCard({
   author,
   isSelected,
-  isDark,
   onClick,
 }: {
   author: Author
   isSelected: boolean
-  isDark: boolean
   onClick: () => void
 }) {
   const traditionId = author.tradition_id ?? 1
-  const accent      = isDark
-    ? (TRADITION_ACCENT[traditionId]?.dark ?? '#d4a853')
-    : (TRADITION_ACCENT[traditionId]?.light ?? '#8b7355')
+  const slug        = TRADITION_SLUG[traditionId] ?? ''
+  const colors      = TRADITION_COLORS[slug] ?? TRADITION_DEFAULT_COLORS
   const icon        = TRADITION_ICON[traditionId] ?? '✦'
   const tradition   = TRADITION_NAME[traditionId] ?? ''
 
@@ -51,12 +47,20 @@ function PhilosopherCard({
       aria-pressed={isSelected}
       className={`w-full text-left rounded-card border p-3 transition-all duration-200 group
                   ${isSelected
-                    ? 'dark:border-[rgba(212,168,83,0.50)]'
-                    : 'border-primary-200/60 hover:border-primary-300 dark:border-[rgba(255,255,255,0.07)] dark:hover:border-[rgba(255,255,255,0.15)]'}
-                  bg-surface-card dark:bg-[rgba(10,20,44,0.55)]`}
+                    ? ''
+                    : 'border-border hover:border-border-hi'}
+                  bg-surface`}
       style={isSelected
-        ? { boxShadow: `0 0 0 2px ${accent}60, 0 4px 16px ${accent}20`, borderColor: `${accent}60` }
-        : undefined}
+        ? {
+            boxShadow: 'var(--shadow-accent-glow)',
+            borderColor: 'color-mix(in srgb, var(--trad-color-active) 38%, transparent)',
+            '--trad-color':    colors.light,
+            '--trad-color-dk': colors.dark,
+          } as React.CSSProperties
+        : {
+            '--trad-color':    colors.light,
+            '--trad-color-dk': colors.dark,
+          } as React.CSSProperties}
     >
       <div className="flex items-center gap-3">
         {/* Avatar / icon */}
@@ -65,12 +69,16 @@ function PhilosopherCard({
             src={author.image_url}
             alt={author.name}
             className="w-10 h-10 rounded-full object-cover shrink-0"
-            style={{ border: `1.5px solid ${accent}50` }}
+            style={{ border: '1.5px solid color-mix(in srgb, var(--trad-color-active) 31%, transparent)' }}
           />
         ) : (
           <div
             className="w-10 h-10 rounded-full flex items-center justify-center text-base shrink-0"
-            style={{ background: `${accent}18`, color: accent, border: `1.5px solid ${accent}40` }}
+            style={{
+              background: 'color-mix(in srgb, var(--trad-color-active) 9%, transparent)',
+              color: 'var(--trad-color-active)',
+              border: '1.5px solid color-mix(in srgb, var(--trad-color-active) 25%, transparent)',
+            }}
           >
             {icon}
           </div>
@@ -78,11 +86,14 @@ function PhilosopherCard({
 
         {/* Name + tradition */}
         <div className="min-w-0">
-          <p className="font-display text-sm tracking-wide text-primary-800 dark:text-[#e0ddd4] truncate">
+          <p className="font-display text-sm tracking-wide text-fg truncate">
             {author.name}
           </p>
           {tradition && (
-            <p className="font-sans text-[10px] truncate" style={{ color: `${accent}cc` }}>
+            <p
+              className="font-sans text-[10px] truncate opacity-80"
+              style={{ color: 'var(--trad-color-active)' }}
+            >
               {tradition}
             </p>
           )}
@@ -90,7 +101,7 @@ function PhilosopherCard({
 
         {/* Selected indicator */}
         {isSelected && (
-          <span className="shrink-0 ml-auto text-sm" style={{ color: accent }}>✦</span>
+          <span className="shrink-0 ml-auto text-sm" style={{ color: 'var(--trad-color-active)' }}>✦</span>
         )}
       </div>
     </button>
@@ -99,13 +110,7 @@ function PhilosopherCard({
 
 // ── Inline conversation panel ─────────────────────────────────────────────────
 
-function ConversationPanel({
-  author,
-  isDark,
-}: {
-  author: Author
-  isDark: boolean
-}) {
+function ConversationPanel({ author }: { author: Author }) {
   const { isAuthenticated } = useAuth()
   const { isPremium } = useSubscription()
   const { data: usage } = useAiUsage()
@@ -115,9 +120,8 @@ function ConversationPanel({
   const panelRef    = useRef<HTMLDivElement>(null)
 
   const traditionId = author.tradition_id ?? 1
-  const accent      = isDark
-    ? (TRADITION_ACCENT[traditionId]?.dark ?? '#d4a853')
-    : (TRADITION_ACCENT[traditionId]?.light ?? '#8b7355')
+  const slug        = TRADITION_SLUG[traditionId] ?? ''
+  const colors      = TRADITION_COLORS[slug] ?? TRADITION_DEFAULT_COLORS
 
   const isAtLimit = !isPremium && is429(error)
   const remaining = lastResponse?.questions_remaining
@@ -128,8 +132,6 @@ function ConversationPanel({
     textareaRef.current?.focus()
   }, [author.id])
 
-  // Keep a ref to the latest reset logic so the effect below can call it
-  // without re-running every time clearResponse/reset get new references.
   const resetRef = useRef<() => void>(() => {})
   resetRef.current = () => {
     clearResponse()
@@ -137,7 +139,6 @@ function ConversationPanel({
     setQuestion('')
   }
 
-  // Reset conversation only when the selected philosopher actually changes.
   useEffect(() => {
     resetRef.current()
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -159,23 +160,29 @@ function ConversationPanel({
   return (
     <div
       ref={panelRef}
-      className="rounded-card border bg-surface-card dark:bg-[rgba(10,20,44,0.55)]
-                 border-primary-200/60 dark:border-[rgba(255,255,255,0.07)] overflow-hidden"
+      className="rounded-card border bg-surface border-border overflow-hidden"
+      style={{
+        '--trad-color':    colors.light,
+        '--trad-color-dk': colors.dark,
+      } as React.CSSProperties}
     >
       {/* Panel header */}
-      <div className="h-0.5" style={{ background: accent }} />
-      <div className="px-5 py-4 border-b border-primary-100/80 dark:border-[rgba(255,255,255,0.06)]">
-        <p className="font-display text-[9px] tracking-[0.28em] uppercase mb-0.5" style={{ color: accent }}>
+      <div className="h-0.5" style={{ background: 'var(--trad-color-active)' }} />
+      <div className="px-5 py-4 border-b border-border-subtle">
+        <p
+          className="font-display text-[9px] tracking-[0.28em] uppercase mb-0.5"
+          style={{ color: 'var(--trad-color-active)' }}
+        >
           Conversing with
         </p>
         <div className="flex items-center justify-between">
-          <h2 className="font-display text-lg text-primary-800 dark:text-[#e8e0cc]">
+          <h2 className="font-display text-lg text-fg">
             {author.name}
           </h2>
           <Link
             to={`/authors/${author.slug}`}
             className="font-display text-[9px] tracking-[0.2em] uppercase transition-all hover:underline"
-            style={{ color: accent }}
+            style={{ color: 'var(--trad-color-active)' }}
           >
             View passages →
           </Link>
@@ -183,7 +190,7 @@ function ConversationPanel({
 
         {/* Usage counter — free users only */}
         {isAuthenticated && !isPremium && usage && !usage.is_unlimited && (
-          <p className="font-sans text-[10px] text-primary-400 dark:text-night-600 mt-1">
+          <p className="font-sans text-[10px] text-fg-subtle mt-1">
             {usage.questions_remaining !== null && usage.questions_remaining > 0
               ? `${usage.questions_remaining} of ${FREE_LIMIT} questions remaining today`
               : usage.questions_remaining === 0
@@ -198,13 +205,13 @@ function ConversationPanel({
         {/* Not signed in */}
         {!isAuthenticated && (
           <div className="text-center py-8">
-            <p className="font-sans text-sm text-primary-600 dark:text-night-400 mb-4">
+            <p className="font-sans text-sm text-fg-muted mb-4">
               Sign in to begin conversing with {author.name}.
             </p>
             <Link
               to="/auth/login"
-              className="font-display text-xs tracking-wider uppercase px-5 py-2 rounded-full text-white transition-all hover:opacity-90"
-              style={{ background: accent }}
+              className="font-display text-xs tracking-wider uppercase px-5 py-2 rounded-full text-fg-inverse transition-all hover:opacity-90"
+              style={{ background: 'var(--trad-color-active)' }}
             >
               Sign in
             </Link>
@@ -215,17 +222,17 @@ function ConversationPanel({
         {isAuthenticated && isAtLimit && (
           <div className="text-center py-8">
             <p className="text-3xl mb-3">⧖</p>
-            <p className="font-display text-sm text-primary-700 dark:text-[#e0ddd4] mb-1">
+            <p className="font-display text-sm text-fg mb-1">
               Today's questions are spent.
             </p>
-            <p className="font-sans text-xs text-primary-500 dark:text-night-500 mb-4">
+            <p className="font-sans text-xs text-fg-subtle mb-4">
               {author.name} will await your return tomorrow.
             </p>
             {!isPremium && (
               <Link
                 to="/upgrade"
                 className="font-display text-[10px] tracking-[0.2em] uppercase transition-all hover:underline"
-                style={{ color: accent }}
+                style={{ color: 'var(--trad-color-active)' }}
               >
                 Upgrade for unlimited →
               </Link>
@@ -238,18 +245,24 @@ function ConversationPanel({
           <div>
             <div
               className="rounded-[8px] p-4 mb-5"
-              style={{ background: `${accent}0d`, border: `1px solid ${accent}30` }}
+              style={{
+                background: 'color-mix(in srgb, var(--trad-color-active) 5%, transparent)',
+                border: '1px solid color-mix(in srgb, var(--trad-color-active) 19%, transparent)',
+              }}
             >
-              <p className="font-display text-[9px] tracking-[0.2em] uppercase mb-2" style={{ color: accent }}>
+              <p
+                className="font-display text-[9px] tracking-[0.2em] uppercase mb-2"
+                style={{ color: 'var(--trad-color-active)' }}
+              >
                 {author.name} responds
               </p>
-              <p className="font-serif text-base leading-relaxed text-primary-800 dark:text-[#e8e0cc]">
+              <p className="font-serif text-base leading-relaxed text-fg">
                 {lastResponse.response}
               </p>
             </div>
 
             <div className="flex items-center justify-between">
-              <span className="font-sans text-[10px] text-primary-400 dark:text-night-600">
+              <span className="font-sans text-[10px] text-fg-subtle">
                 {remaining != null && remaining > 0
                   ? `${remaining} of ${FREE_LIMIT} questions remaining today`
                   : remaining === 0
@@ -259,7 +272,7 @@ function ConversationPanel({
               <button
                 onClick={handleAskAnother}
                 className="font-display text-[10px] tracking-[0.2em] uppercase transition-all hover:underline"
-                style={{ color: accent }}
+                style={{ color: 'var(--trad-color-active)' }}
               >
                 Ask another →
               </button>
@@ -281,30 +294,28 @@ function ConversationPanel({
               rows={3}
               maxLength={500}
               className="w-full rounded-[8px] px-3 py-2.5 text-sm font-sans resize-none transition-colors
-                         bg-primary-50 border border-primary-200/80 text-primary-800 placeholder-primary-400
-                         focus:outline-none focus:ring-2 focus:border-transparent
-                         dark:bg-[rgba(255,255,255,0.05)] dark:border-[rgba(255,255,255,0.10)]
-                         dark:text-[#e0ddd4] dark:placeholder-night-600"
-              style={{ '--tw-ring-color': accent } as React.CSSProperties}
+                         bg-surface-input border border-border text-fg placeholder:text-fg-subtle
+                         focus:outline-none focus:ring-2 focus:border-transparent"
+              style={{ '--tw-ring-color': 'var(--trad-color-active)' } as React.CSSProperties}
             />
 
             <div className="flex items-center justify-between mt-3">
-              <span className="font-sans text-[10px] text-primary-400 dark:text-night-600">
+              <span className="font-sans text-[10px] text-fg-subtle">
                 ↵ to send · ⇧↵ for newline
               </span>
               <button
                 onClick={handleSubmit}
                 disabled={question.trim().length < 3 || isPending}
                 className="font-display text-xs tracking-wider uppercase px-5 py-2 rounded-full transition-all
-                           disabled:opacity-40 disabled:cursor-not-allowed active:scale-95 text-white"
-                style={{ background: accent }}
+                           disabled:opacity-40 disabled:cursor-not-allowed active:scale-95 text-fg-inverse"
+                style={{ background: 'var(--trad-color-active)' }}
               >
                 {isPending ? 'Asking…' : 'Ask'}
               </button>
             </div>
 
             {isError && !isAtLimit && (
-              <p className="font-sans text-xs text-red-500 mt-2">
+              <p className="font-sans text-xs text-danger mt-2">
                 The philosopher could not be reached. Please try again.
               </p>
             )}
@@ -319,8 +330,7 @@ function ConversationPanel({
 
 export function ConversePage() {
   const { data: authors = [], isLoading, isError } = useAuthors()
-  const [selectedId, setSelectedId]       = useState<number | null>(null)
-  const isDark                            = useIsDark()
+  const [selectedId, setSelectedId] = useState<number | null>(null)
 
   const selectedAuthor = authors.find(a => a.id === selectedId) ?? null
 
@@ -337,13 +347,13 @@ export function ConversePage() {
 
         {/* Page header */}
         <header className="text-center mb-10">
-          <p className="font-display text-[10px] uppercase tracking-[0.3em] text-accent dark:text-[#d4a853] mb-2">
+          <p className="font-display text-[10px] uppercase tracking-[0.3em] text-accent mb-2">
             Ask the Philosopher
           </p>
-          <h1 className="font-display text-3xl text-primary-800 dark:text-[#e8e0cc] mb-3 title-glow-hover">
+          <h1 className="font-display text-3xl text-fg mb-3 title-glow-hover">
             Converse
           </h1>
-          <p className="font-sans text-sm text-primary-600 dark:text-night-400 max-w-sm mx-auto leading-relaxed">
+          <p className="font-sans text-sm text-fg-muted max-w-sm mx-auto leading-relaxed">
             Select a philosopher and ask them anything. Their answers draw only from
             their actual writings.
           </p>
@@ -352,13 +362,13 @@ export function ConversePage() {
         {isLoading && (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-8">
             {[1,2,3,4,5,6,7,8].map(i => (
-              <div key={i} className="h-16 rounded-card bg-primary-100/60 dark:bg-night-800/40 animate-pulse" />
+              <div key={i} className="h-16 rounded-card bg-surface animate-pulse" />
             ))}
           </div>
         )}
 
         {isError && (
-          <p className="font-sans text-sm text-primary-400 dark:text-night-500 text-center py-16">
+          <p className="font-sans text-sm text-fg-subtle text-center py-16">
             Could not load philosophers. Is the backend running?
           </p>
         )}
@@ -368,7 +378,7 @@ export function ConversePage() {
 
             {/* Left: philosopher grid */}
             <div className="lg:w-72 shrink-0">
-              <p className="font-display text-[9px] tracking-[0.25em] uppercase text-primary-500 dark:text-night-500 mb-3">
+              <p className="font-display text-[9px] tracking-[0.25em] uppercase text-fg-subtle mb-3">
                 Choose a philosopher
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-1 gap-2">
@@ -377,7 +387,6 @@ export function ConversePage() {
                     key={author.id}
                     author={author}
                     isSelected={author.id === selectedId}
-                    isDark={isDark}
                     onClick={() => setSelectedId(author.id)}
                   />
                 ))}
@@ -387,11 +396,11 @@ export function ConversePage() {
             {/* Right: conversation panel */}
             <div className="flex-1 min-w-0">
               {selectedAuthor ? (
-                <ConversationPanel author={selectedAuthor} isDark={isDark} />
+                <ConversationPanel author={selectedAuthor} />
               ) : (
-                <div className="rounded-card border border-primary-200/60 dark:border-[rgba(255,255,255,0.07)]
-                                bg-surface-card dark:bg-[rgba(10,20,44,0.55)] p-10 text-center">
-                  <p className="font-sans text-sm text-primary-400 dark:text-night-600">
+                <div className="rounded-card border border-border
+                                bg-surface p-10 text-center">
+                  <p className="font-sans text-sm text-fg-subtle">
                     Select a philosopher to begin.
                   </p>
                 </div>

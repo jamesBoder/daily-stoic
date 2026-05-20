@@ -99,13 +99,13 @@ export const Signup: React.FC = () => {
 
         {/* Wordmark */}
         <div className="text-center mb-10">
-          <p className="font-display text-xs tracking-widest uppercase text-primary-400 mb-3">
+          <p className="font-display text-xs tracking-widest uppercase text-fg-subtle mb-3">
             DailyXam
           </p>
-          <h1 className="font-serif text-3xl text-primary-800 leading-snug title-glow-hover">
+          <h1 className="font-serif text-3xl text-fg leading-snug title-glow-hover">
             Begin your practice
           </h1>
-          <p className="font-sans text-sm text-primary-400 mt-2">
+          <p className="font-sans text-sm text-fg-subtle mt-2">
             One quote. Every morning. A better mind.
           </p>
         </div>
@@ -119,13 +119,13 @@ export const Signup: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-3 mb-6">
-          <div className="flex-1 border-t border-primary-200" />
-          <span className="font-sans text-xs text-primary-400 tracking-wider">or sign up with email</span>
-          <div className="flex-1 border-t border-primary-200" />
+          <div className="flex-1 border-t border-border" />
+          <span className="font-sans text-xs text-fg-subtle tracking-wider">or sign up with email</span>
+          <div className="flex-1 border-t border-border" />
         </div>
 
         {/* Form container */}
-        <div className="bg-surface-card rounded-card shadow-card border border-primary-200 px-8 py-8">
+        <div className="bg-surface-card rounded-card shadow-card border border-border px-8 py-8">
 
           {errors.general && (
             <div className="mb-5 px-4 py-3 rounded-stone border border-danger/30 bg-danger/5 text-danger font-sans text-sm">
@@ -135,7 +135,7 @@ export const Signup: React.FC = () => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block font-sans text-xs tracking-widest uppercase text-primary-500 mb-1.5">
+              <label className="block font-sans text-xs tracking-widest uppercase text-fg-muted mb-1.5">
                 Email
               </label>
               <input
@@ -150,7 +150,7 @@ export const Signup: React.FC = () => {
               />
               {errors.email && <p className="mt-1 font-sans text-xs text-danger">{errors.email}</p>}
               {suggestions.email && (
-                <p className="mt-1 font-sans text-xs text-primary-500">
+                <p className="mt-1 font-sans text-xs text-fg-muted">
                   Did you mean{' '}
                   <button
                     type="button"
@@ -165,7 +165,7 @@ export const Signup: React.FC = () => {
             </div>
 
             <div>
-              <label className="block font-sans text-xs tracking-widest uppercase text-primary-500 mb-1.5">
+              <label className="block font-sans text-xs tracking-widest uppercase text-fg-muted mb-1.5">
                 Username
               </label>
               <input
@@ -182,8 +182,8 @@ export const Signup: React.FC = () => {
             </div>
 
             <div>
-              <label className="block font-sans text-xs tracking-widest uppercase text-primary-500 mb-1.5">
-                Name <span className="normal-case tracking-normal text-primary-400">(optional)</span>
+              <label className="block font-sans text-xs tracking-widest uppercase text-fg-muted mb-1.5">
+                Name <span className="normal-case tracking-normal text-fg-subtle">(optional)</span>
               </label>
               <input
                 type="text"
@@ -229,7 +229,7 @@ export const Signup: React.FC = () => {
           </form>
         </div>
 
-        <p className="text-center font-sans text-sm text-primary-400 mt-6">
+        <p className="text-center font-sans text-sm text-fg-subtle mt-6">
           Already practicing?{' '}
           <Link to="/auth/login" className="text-accent hover:text-accent-dark transition-colors">
             Sign in

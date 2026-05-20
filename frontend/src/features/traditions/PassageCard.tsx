@@ -11,10 +11,10 @@ import { AskPhilosopherModal } from '../ai/AskPhilosopherModal'
 
 interface Props {
   quote: Quote
-  accentColor?: string
+  tradColors?: { light: string; dark: string }
 }
 
-export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
+export function PassageCard({ quote, tradColors }: Props) {
   const [showPractice, setShowPractice] = useState(false)
   const [askOpen, setAskOpen]           = useState(false)
   const { isFavorited, toggleFavorite } = useFavorites()
@@ -29,12 +29,12 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
       {/* Thin accent bar on the left */}
       <div
         className="absolute left-0 top-0 bottom-0 w-0.5 rounded-full opacity-60"
-        style={{ background: accentColor }}
+        style={{ background: 'var(--trad-color-active)' }}
       />
 
       <div className="pl-4">
         {/* Passage text */}
-        <blockquote className="font-serif text-base md:text-lg leading-relaxed text-primary-900 dark:text-[#ede8dc] mb-3">
+        <blockquote className="font-serif text-base md:text-lg leading-relaxed text-fg mb-3">
           &ldquo;{quote.text}&rdquo;
         </blockquote>
 
@@ -45,7 +45,7 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
               <Link
                 to={`/authors/${quote.author.slug}`}
                 className="font-display text-[10px] tracking-[0.18em] uppercase transition-colors"
-                style={{ color: accentColor }}
+                style={{ color: 'var(--trad-color-active)' }}
                 onClick={e => e.stopPropagation()}
               >
                 {quote.author.name}
@@ -53,15 +53,15 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
             ) : (
               <span
                 className="font-display text-[10px] tracking-[0.18em] uppercase"
-                style={{ color: accentColor }}
+                style={{ color: 'var(--trad-color-active)' }}
               >
                 {quote.author?.name ?? 'Unknown'}
               </span>
             )}
             {quote.source && (
               <>
-                <span className="text-primary-400 dark:text-night-500 text-xs select-none">·</span>
-                <span className="font-sans text-[10px] italic text-primary-500 dark:text-night-400 break-words">
+                <span className="text-fg-subtle text-xs select-none">·</span>
+                <span className="font-sans text-[10px] italic text-fg-muted break-words">
                   {quote.source}
                 </span>
               </>
@@ -74,7 +74,11 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
               onClick={() => setAskOpen(true)}
               className="font-display text-xs tracking-[0.18em] uppercase px-2 py-1 rounded transition-all
                          hover:opacity-80 active:scale-95 min-h-[36px]"
-              style={{ color: accentColor, background: `${accentColor}14`, border: `1px solid ${accentColor}30` }}
+              style={{
+                color:      'var(--trad-color-active)',
+                background: 'color-mix(in srgb, var(--trad-color-active) 8%, transparent)',
+                border:     '1px solid color-mix(in srgb, var(--trad-color-active) 19%, transparent)',
+              }}
               aria-label={`Ask ${quote.author?.name ?? 'philosopher'}`}
               title={`Ask ${quote.author?.name ?? 'the philosopher'}`}
             >
@@ -85,8 +89,8 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
               onClick={() => isAuthenticated && toggleFavorite(quote.id)}
               className={`text-sm transition-all active:scale-90 py-1 px-1 min-h-[36px] min-w-[36px] flex items-center justify-center rounded focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 ${
                 isFav
-                  ? 'text-accent dark:text-[#d4a853]'
-                  : 'text-primary-400 dark:text-night-500 hover:text-primary-600 dark:hover:text-night-300'
+                  ? 'text-accent'
+                  : 'text-fg-subtle hover:text-fg'
               }`}
               aria-label={isFav ? 'Remove from saved' : 'Save passage'}
             >
@@ -98,21 +102,21 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
         {askOpen && (
           <AskPhilosopherModal
             quote={quote}
-            accentColor={accentColor}
+            tradColors={tradColors}
             onClose={() => setAskOpen(false)}
           />
         )}
 
         {/* Commentary block */}
         {hasCommentary && (
-          <div className="mt-3 pt-3 border-t border-primary-100/80 dark:border-[rgba(255,255,255,0.05)]">
+          <div className="mt-3 pt-3 border-t border-primary-100/80 dark:border-[var(--color-border)]">
             <p
               className="font-display text-[10px] tracking-[0.2em] uppercase mb-1.5"
-              style={{ color: accentColor }}
+              style={{ color: 'var(--trad-color-active)' }}
             >
               Commentary
             </p>
-            <p className="font-sans text-sm md:text-base leading-relaxed text-primary-700 dark:text-night-400">
+            <p className="font-sans text-sm md:text-base leading-relaxed text-fg-muted">
               {quote.context_full}
             </p>
           </div>
@@ -124,7 +128,7 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
             <button
               onClick={() => setShowPractice(v => !v)}
               className="flex items-center gap-1.5 font-display text-[10px] tracking-[0.2em] uppercase transition-colors py-2 -my-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 rounded"
-              style={{ color: accentColor }}
+              style={{ color: 'var(--trad-color-active)' }}
             >
               <span
                 className="inline-block text-[10px] transition-transform duration-200"
@@ -138,9 +142,12 @@ export function PassageCard({ quote, accentColor = '#8b7355' }: Props) {
             {showPractice && (
               <div
                 className="mt-2 rounded-[6px] px-3 py-2.5"
-                style={{ background: `${accentColor}18`, border: `1px solid ${accentColor}45` }}
+                style={{
+                  background: 'color-mix(in srgb, var(--trad-color-active) 9%, transparent)',
+                  border:     '1px solid color-mix(in srgb, var(--trad-color-active) 27%, transparent)',
+                }}
               >
-                <p className="font-sans text-sm md:text-base leading-relaxed text-primary-700 dark:text-night-300 italic">
+                <p className="font-sans text-sm md:text-base leading-relaxed text-fg italic">
                   {quote.reflection_prompt}
                 </p>
               </div>

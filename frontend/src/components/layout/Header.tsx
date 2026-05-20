@@ -25,42 +25,27 @@ export const Header = () => {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `font-sans text-sm transition-colors duration-200 ${
       isActive
-        ? 'text-accent dark:text-[#d4a853]'
-        : 'text-primary-600 hover:text-primary-900 hover:underline dark:text-[#8892b8] dark:hover:text-[#e0ddd4]'
+        ? 'text-accent'
+        : 'text-primary-600 hover:text-primary-900 hover:underline dark:text-fg-muted dark:hover:text-fg'
     }`
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${scrolled ? 'shadow-header-scroll dark:shadow-[0_4px_32px_rgba(0,0,0,0.7)]' : ''}`}
+      className={`sticky top-0 z-40 transition-all duration-300 ${scrolled ? 'shadow-header-scroll' : ''}`}
       style={{
-        /* Light mode */
-        background: 'var(--header-bg, rgba(234,230,219,0.92))',
-        borderBottom: '1px solid var(--header-border, rgba(212,208,196,0.7))',
+        background: 'var(--header-bg)',
+        borderBottom: '1px solid var(--header-border)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
+        boxShadow: scrolled ? undefined : 'var(--shadow-header)',
       }}
     >
-      {/* Dark mode styles via a data attribute driven by the .dark class on <html>.
-          We inject a small style tag rather than fighting Tailwind specificity. */}
-      <style>{`
-        .dark header {
-          background: rgba(3, 6, 18, 0.82) !important;
-          border-bottom: 1px solid rgba(212, 168, 83, 0.14) !important;
-          box-shadow: 0 1px 0 rgba(212,168,83,0.08), 0 4px 24px rgba(0,0,0,0.5);
-        }
-        .dark header.scrolled {
-          box-shadow: 0 1px 0 rgba(212,168,83,0.10), 0 4px 32px rgba(0,0,0,0.70);
-        }
-      `}</style>
-
       <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
 
         {/* Logo */}
         <Link
           to="/"
-          className="font-display text-lg tracking-wide logo-glow-hover
-                     text-accent hover:text-accent-dark
-                     dark:text-[#d4a853] dark:hover:text-[#e8c96a]"
+          className="font-display text-lg tracking-wide logo-glow-hover text-accent hover:text-accent-dark"
         >
           <WordMark />
         </Link>
@@ -83,7 +68,7 @@ export const Header = () => {
           {isAuthenticated && streak && streak.current_streak > 0 && (
             <Link
               to="/profile"
-              className="flex items-center gap-1.5 font-display text-sm text-accent dark:text-[#d4a853]"
+              className="flex items-center gap-1.5 font-display text-sm text-accent"
               title={`${streak.current_streak}-day streak`}
             >
               <span className="animate-flame-pulse inline-block">🔥</span>
@@ -96,8 +81,7 @@ export const Header = () => {
             <Link
               to="/upgrade"
               className="hidden sm:inline-flex font-display text-xs tracking-wider uppercase rounded-full px-3 py-1 transition-colors
-                         text-accent border border-accent/30 hover:bg-accent hover:text-white
-                         dark:text-[#d4a853] dark:border-[rgba(212,168,83,0.30)] dark:hover:bg-[#d4a853] dark:hover:text-[#040810]"
+                         text-accent border border-accent/30 hover:bg-accent hover:text-accent-text"
             >
               Upgrade
             </Link>
@@ -105,8 +89,7 @@ export const Header = () => {
 
           {/* Practitioner badge */}
           {isPremium && (
-            <span className="font-display text-xs tracking-widest uppercase select-none
-                             text-primary-600 dark:text-[#d4a853]">
+            <span className="font-display text-xs tracking-widest uppercase select-none text-accent">
               ✦ Practitioner
             </span>
           )}
@@ -115,12 +98,10 @@ export const Header = () => {
           <button
             onClick={toggleTheme}
             aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-            className={`w-8 h-8 flex items-center justify-center rounded-full transition-colors
-                       hover:bg-primary-100 dark:hover:bg-[rgba(255,255,255,0.08)]
+            className="w-8 h-8 flex items-center justify-center rounded-full transition-colors
+                       hover:bg-primary-100 dark:hover:bg-[var(--color-surface-hi)]
                        focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1
-                       ${isDarkMode
-                         ? 'text-[#d4a853] hover:text-[#e8c96a]'
-                         : 'text-primary-500 hover:text-primary-800'}`}
+                       text-accent hover:text-accent-hi"
           >
             {isDarkMode ? (
               /* Sun — click to go light */
@@ -146,7 +127,7 @@ export const Header = () => {
               to="/auth/login"
               className="font-sans text-sm transition-colors
                          text-primary-500 hover:text-primary-800
-                         dark:text-[#8892b8] dark:hover:text-[#e0ddd4]"
+                         dark:text-fg-muted dark:hover:text-fg"
             >
               Sign in
             </Link>

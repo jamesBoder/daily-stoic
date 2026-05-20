@@ -41,7 +41,7 @@ export const Layout: React.FC = () => {
   }, [location.pathname, navType]);
 
   return (
-    <div className="min-h-screen flex flex-col dark:text-[#e0ddd4]">
+    <div className="min-h-screen flex flex-col text-fg">
       <Header />
       <OfflineBanner />
       {/* pb-16 on mobile reserves space above the fixed BottomNav */}

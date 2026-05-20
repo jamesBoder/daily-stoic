@@ -57,7 +57,7 @@ export const SubscriptionSuccess = () => {
           </div>
           <Link
             to="/"
-            className="font-display text-sm tracking-wider uppercase bg-accent text-white rounded-stone px-6 py-3 hover:bg-accent-dark transition-colors"
+            className="font-display text-sm tracking-wider uppercase bg-accent text-accent-text rounded-stone px-6 py-3 hover:bg-accent-dark transition-colors"
           >
             Return to today's quote
           </Link>

@@ -50,25 +50,25 @@ const BottomNav: React.FC = () => {
 
   const tabBase =
     'relative flex flex-col items-center justify-center gap-0.5 flex-1 h-full text-[11px] font-medium transition-all duration-150 active:scale-90 select-none focus:outline-none min-w-0 overflow-hidden';
-  const tabActive   = 'text-accent dark:text-star-gold';
-  const tabInactive = 'text-primary-400 dark:text-night-400';
+  const tabActive   = 'text-accent';
+  const tabInactive = 'text-primary-400 dark:text-fg-muted';
   const tabIndicator = (active: boolean) =>
-    `absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-b-full transition-all duration-200 ${active ? 'bg-accent dark:bg-star-gold opacity-100' : 'opacity-0'}`;
+    `absolute top-0 left-1/2 -translate-x-1/2 w-8 h-0.5 rounded-b-full transition-all duration-200 ${active ? 'bg-accent opacity-100' : 'opacity-0'}`;
 
   const sheetItemBase =
     'flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors';
   const sheetItemActive =
-    'bg-accent/10 text-accent dark:bg-star-gold/15 dark:text-star-gold';
+    'bg-accent/10 text-accent';
   const sheetItemInactive =
-    'text-primary-700 hover:bg-primary-100 dark:text-night-200 dark:hover:bg-night-700/60';
+    'text-primary-700 hover:bg-primary-100 dark:text-fg-muted dark:hover:bg-surface-hi';
 
   return (
     <>
       {/* ── Tab bar ─────────────────────────────────────────────────── */}
       <nav
         className="md:hidden fixed bottom-0 inset-x-0 z-30
-                   border-t border-primary-200/60 dark:border-white/[0.06]
-                   bg-surface-base/95 dark:bg-night-950/75 backdrop-blur-sm dark:backdrop-blur-glass"
+                   border-t border-primary-200/60 dark:border-[var(--color-border)]
+                   bg-surface-base/95 dark:bg-[var(--color-overlay)] backdrop-blur-sm dark:backdrop-blur-glass"
         style={{
           paddingBottom: 'env(safe-area-inset-bottom)',
           WebkitBackdropFilter: 'blur(20px)',
@@ -141,7 +141,7 @@ const BottomNav: React.FC = () => {
 
       {/* ── Backdrop ─────────────────────────────────────────────────── */}
       <div
-        className={`md:hidden fixed inset-0 z-40 bg-black/40 dark:bg-night-950/60 transition-opacity duration-200 ${
+        className={`md:hidden fixed inset-0 z-40 bg-[var(--color-overlay)] transition-opacity duration-200 ${
           sheetOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden="true"
@@ -155,8 +155,8 @@ const BottomNav: React.FC = () => {
         aria-modal="true"
         aria-label="More options"
         className={`md:hidden fixed inset-x-0 bottom-0 z-50 rounded-t-2xl
-                   border-t border-primary-200/60 dark:border-white/[0.07]
-                   bg-surface-base/98 dark:bg-night-900/85 backdrop-blur-sm dark:backdrop-blur-glass
+                   border-t border-primary-200/60 dark:border-[var(--color-border)]
+                   bg-surface-base/98 dark:bg-[var(--color-surface-modal)] backdrop-blur-sm dark:backdrop-blur-glass
                    transition-transform duration-300 ease-out ${
                      sheetOpen ? 'translate-y-0' : 'translate-y-full'
                    }`}
@@ -165,13 +165,13 @@ const BottomNav: React.FC = () => {
       >
         {/* Drag handle */}
         <div className="flex justify-center pt-3 pb-1">
-          <div className="w-10 h-1 rounded-full bg-primary-300 dark:bg-night-600" />
+          <div className="w-10 h-1 rounded-full bg-primary-300 dark:bg-surface-hi" />
         </div>
 
         {/* Close */}
         <button
-          className="absolute top-3 right-4 p-2 rounded-full text-primary-400 dark:text-night-400
-                     hover:bg-primary-100 dark:hover:bg-night-700/60 transition-colors"
+          className="absolute top-3 right-4 p-2 rounded-full text-primary-400 dark:text-fg-muted
+                     hover:bg-primary-100 dark:hover:bg-surface-hi transition-colors"
           onClick={() => setSheetOpen(false)}
           aria-label="Close"
         >
@@ -181,10 +181,10 @@ const BottomNav: React.FC = () => {
         {isGuest || !isAuthenticated ? (
           /* ── Guest sheet ──────────────────────────────────────────── */
           <div className="px-4 pb-6 pt-2">
-            <p className="text-xs font-semibold text-primary-400 dark:text-night-400 uppercase tracking-wider mb-3 px-1">
+            <p className="text-xs font-semibold text-primary-400 dark:text-fg-muted uppercase tracking-wider mb-3 px-1">
               More
             </p>
-            <p className="text-sm text-primary-500 dark:text-night-300 mb-5 px-1">
+            <p className="text-sm text-primary-500 dark:text-fg-muted mb-5 px-1">
               Create a free account to save quotes, track your streak, and build a practice.
             </p>
             <div className="flex flex-col gap-2">
@@ -201,8 +201,8 @@ const BottomNav: React.FC = () => {
               <button
                 onClick={() => { setSheetOpen(false); navigate('/auth/register'); }}
                 className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold
-                           text-white bg-accent dark:bg-star-gold dark:text-night-950
-                           hover:bg-accent-dark dark:hover:bg-star-gold-dark transition-colors w-full"
+                           text-accent-text bg-accent
+                           hover:bg-accent-dark transition-colors w-full"
               >
                 <UserPlus size={20} />
                 Sign Up Free
@@ -211,7 +211,7 @@ const BottomNav: React.FC = () => {
                 onClick={() => { setSheetOpen(false); navigate('/auth/login'); }}
                 className="flex items-center gap-3 px-4 py-3 rounded-xl font-medium
                            text-primary-700 bg-primary-100 hover:bg-primary-200
-                           dark:text-night-200 dark:bg-night-700/60 dark:hover:bg-night-600/60
+                           dark:text-fg-muted dark:bg-surface-hi dark:hover:brightness-95
                            transition-colors w-full"
               >
                 <LogIn size={20} />
@@ -221,7 +221,7 @@ const BottomNav: React.FC = () => {
                 onClick={toggleTheme}
                 className="flex items-center gap-3 px-4 py-3 rounded-xl font-medium
                            text-primary-700 bg-primary-100 hover:bg-primary-200
-                           dark:text-night-200 dark:bg-night-700/60 dark:hover:bg-night-600/60
+                           dark:text-fg-muted dark:bg-surface-hi dark:hover:brightness-95
                            transition-colors w-full"
               >
                 {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -232,7 +232,7 @@ const BottomNav: React.FC = () => {
         ) : (
           /* ── Authenticated sheet ──────────────────────────────────── */
           <div className="px-4 pb-4 pt-2">
-            <p className="text-xs font-semibold text-primary-400 dark:text-night-400 uppercase tracking-wider mb-3 px-1">
+            <p className="text-xs font-semibold text-primary-400 dark:text-fg-muted uppercase tracking-wider mb-3 px-1">
               More
             </p>
 
@@ -287,12 +287,12 @@ const BottomNav: React.FC = () => {
                 {isDarkMode ? 'Light mode' : 'Dark mode'}
               </button>
 
-              <div className="h-px bg-primary-200 dark:bg-night-700/60 my-1" />
+              <div className="h-px bg-primary-200 dark:bg-surface-hi my-1" />
 
               <button
                 onClick={handleLogout}
                 className="flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors
-                           text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 w-full text-left"
+                           text-danger hover:bg-danger-bg w-full text-left"
               >
                 <LogOut size={20} />
                 {t('nav.logout', 'Sign out')}

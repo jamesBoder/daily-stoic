@@ -24,7 +24,7 @@ export const UserMenu = () => {
   const itemClass =
     'block px-4 py-2 font-sans text-sm transition-colors ' +
     'text-primary-600 hover:text-primary-800 hover:bg-surface-card ' +
-    'dark:text-[#b0b8d0] dark:hover:text-[#e0ddd4] dark:hover:bg-[rgba(255,255,255,0.05)]'
+    'dark:text-fg-muted dark:hover:text-fg dark:hover:bg-[var(--color-surface-hi)]'
 
   return (
     <div className="relative" ref={menuRef}>
@@ -32,7 +32,7 @@ export const UserMenu = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1.5 font-sans text-sm transition-colors
                    text-primary-600 hover:text-primary-800
-                   dark:text-[#b0b8d0] dark:hover:text-[#e0ddd4]"
+                   dark:text-fg-muted dark:hover:text-fg"
       >
         <span className="max-w-[96px] truncate">{user?.username || user?.email}</span>
         <span className={`text-[10px] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>▼</span>
@@ -40,36 +40,27 @@ export const UserMenu = () => {
 
       {isOpen && (
         <div
-          className="absolute right-0 mt-2 w-48 rounded-card border py-1 z-50
-                     bg-surface-elevated shadow-elevated border-primary-200
-                     dark:border-[rgba(255,255,255,0.08)]"
+          className="absolute right-0 mt-2 w-48 rounded-card border py-1 z-50"
           style={{
-            /* Dark: deep glass dropdown */
+            background: 'var(--dropdown-bg)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            boxShadow: 'var(--dropdown-shadow)',
+            borderColor: 'var(--dropdown-border)',
           }}
         >
-          <style>{`
-            .dark .user-menu-dropdown {
-              background: rgba(4, 8, 22, 0.90) !important;
-              backdrop-filter: blur(20px);
-              -webkit-backdrop-filter: blur(20px);
-              box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,168,83,0.10);
-              border-color: rgba(212,168,83,0.12) !important;
-            }
-          `}</style>
-          <div className="user-menu-dropdown">
-            <Link to="/profile"   className={itemClass} onClick={() => setIsOpen(false)}>Profile</Link>
-            <Link to="/saved"     className={itemClass} onClick={() => setIsOpen(false)}>Saved Quotes</Link>
-            <Link to="/history"   className={itemClass} onClick={() => setIsOpen(false)}>Reading History</Link>
-            <Link to="/converse"  className={itemClass} onClick={() => setIsOpen(false)}>Converse</Link>
-            <Link to="/settings"  className={itemClass} onClick={() => setIsOpen(false)}>Settings</Link>
-            <hr className="my-1 border-primary-200 dark:border-[rgba(255,255,255,0.07)]" />
-            <button
-              onClick={() => { logout(); setIsOpen(false); navigate('/') }}
-              className={`w-full text-left ${itemClass} text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300`}
-            >
-              Sign Out
-            </button>
-          </div>
+          <Link to="/profile"   className={itemClass} onClick={() => setIsOpen(false)}>Profile</Link>
+          <Link to="/saved"     className={itemClass} onClick={() => setIsOpen(false)}>Saved Quotes</Link>
+          <Link to="/history"   className={itemClass} onClick={() => setIsOpen(false)}>Reading History</Link>
+          <Link to="/converse"  className={itemClass} onClick={() => setIsOpen(false)}>Converse</Link>
+          <Link to="/settings"  className={itemClass} onClick={() => setIsOpen(false)}>Settings</Link>
+          <hr className="my-1 border-primary-200 dark:border-[var(--color-border)]" />
+          <button
+            onClick={() => { logout(); setIsOpen(false); navigate('/') }}
+            className={`w-full text-left ${itemClass} text-danger hover:text-danger`}
+          >
+            Sign Out
+          </button>
         </div>
       )}
     </div>

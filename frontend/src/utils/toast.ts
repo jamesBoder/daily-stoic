@@ -7,12 +7,12 @@ export const showToast = {
             id,
             duration: 3000,
             style: {
-                background: '#4BB543',
+                background: 'var(--color-toast-success)',
                 color: '#fff',
             },
             iconTheme: {
                 primary: '#fff',
-                secondary: '#4BB543',
+                secondary: 'var(--color-toast-success)',
             },
         });
     },
@@ -22,12 +22,12 @@ export const showToast = {
             id,
             duration: 4000,
             style: {
-                background: '#FF3333',
+                background: 'var(--color-toast-error)',
                 color: '#fff',
             },
             iconTheme: {
                 primary: '#fff',
-                secondary: '#FF3333',
+                secondary: 'var(--color-toast-error)',
             },
         });
     },
@@ -53,7 +53,7 @@ export const showToast = {
             duration: 3000,
             icon: 'ℹ️',
             style: {
-                background: '#3b82f6',
+                background: 'var(--color-toast-info)',
                 color: '#fff',
             },
         });

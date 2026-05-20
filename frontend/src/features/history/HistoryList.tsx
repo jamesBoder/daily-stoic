@@ -14,16 +14,16 @@ const HistoryEntryCard = ({ entry }: { entry: HistoryEntry }) => {
     quote.text.length > 120 ? quote.text.slice(0, 120).trimEnd() + '…' : quote.text
 
   return (
-    <article className="bg-surface-card rounded-card border border-primary-100 px-6 py-5">
+    <article className="bg-surface-card rounded-card border border-border-subtle px-6 py-5">
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1 min-w-0">
-          <p className="font-serif text-base text-primary-800 leading-relaxed mb-2">
+          <p className="font-serif text-base text-fg leading-relaxed mb-2">
             &ldquo;{preview}&rdquo;
           </p>
-          <p className="font-display text-xs tracking-widest uppercase text-primary-700">
+          <p className="font-display text-xs tracking-widest uppercase text-fg">
             {quote.author.name}
             {quote.source && (
-              <span className="font-sans normal-case tracking-normal text-primary-500">
+              <span className="font-sans normal-case tracking-normal text-fg-muted">
                 {' '}&mdash; {quote.source}
               </span>
             )}
@@ -35,7 +35,7 @@ const HistoryEntryCard = ({ entry }: { entry: HistoryEntry }) => {
           )}
         </div>
         <time
-          className="font-sans text-xs text-primary-500 whitespace-nowrap mt-0.5 shrink-0"
+          className="font-sans text-xs text-fg-muted whitespace-nowrap mt-0.5 shrink-0"
           dateTime={entry.viewed_at}
         >
           {formatDateShort(entry.viewed_at)}
@@ -78,25 +78,25 @@ export const HistoryList = () => {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <p className="font-display text-xs tracking-widest uppercase text-primary-600 mb-1">
+            <p className="font-display text-xs tracking-widest uppercase text-fg-muted mb-1">
               Archive
             </p>
-            <h1 className="font-display text-2xl text-primary-800 title-glow-hover">Reading History</h1>
+            <h1 className="font-display text-2xl text-fg title-glow-hover">Reading History</h1>
           </div>
           {entries.length > 0 && (
             confirmClear ? (
               <div className="flex items-center gap-3">
-                <span className="font-sans text-sm text-primary-500">Clear all history?</span>
+                <span className="font-sans text-sm text-fg-muted">Clear all history?</span>
                 <button
                   onClick={handleClearHistory}
                   disabled={clearing}
-                  className="font-sans text-sm text-red-600 hover:text-red-700 font-medium disabled:opacity-50"
+                  className="font-sans text-sm text-danger hover:text-danger font-medium disabled:opacity-50"
                 >
                   {clearing ? 'Clearing…' : 'Confirm'}
                 </button>
                 <button
                   onClick={() => setConfirmClear(false)}
-                  className="font-sans text-sm text-primary-500 hover:text-primary-700"
+                  className="font-sans text-sm text-fg-muted hover:text-fg"
                 >
                   Cancel
                 </button>
@@ -104,7 +104,7 @@ export const HistoryList = () => {
             ) : (
               <button
                 onClick={() => setConfirmClear(true)}
-                className="font-sans text-sm text-primary-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/10 rounded px-2 py-1 -mx-2 -my-1 transition-colors"
+                className="font-sans text-sm text-fg-muted hover:text-danger hover:bg-danger-bg rounded px-2 py-1 -mx-2 -my-1 transition-colors"
               >
                 Clear history
               </button>
@@ -118,10 +118,10 @@ export const HistoryList = () => {
             {Array.from({ length: 5 }).map((_, i) => (
               <div
                 key={i}
-                className="bg-surface-card rounded-card border border-primary-100 px-6 py-5 animate-pulse"
+                className="bg-surface-card rounded-card border border-border-subtle px-6 py-5 animate-pulse"
               >
-                <div className="h-4 bg-primary-100 rounded w-3/4 mb-3" />
-                <div className="h-3 bg-primary-100 rounded w-1/2" />
+                <div className="h-4 bg-surface rounded w-3/4 mb-3" />
+                <div className="h-3 bg-surface rounded w-1/2" />
               </div>
             ))}
           </div>
@@ -129,7 +129,7 @@ export const HistoryList = () => {
 
         {/* Error */}
         {isError && (
-          <div className="text-center py-16 text-primary-400 font-sans">
+          <div className="text-center py-16 text-fg-subtle font-sans">
             <p className="text-lg mb-2">Failed to load history.</p>
             <button
               onClick={() => refetch()}
@@ -143,10 +143,10 @@ export const HistoryList = () => {
         {/* Empty */}
         {!isLoading && !isError && entries.length === 0 && (
           <div className="text-center py-24">
-            <p className="font-serif text-xl text-primary-400 italic mb-2">
+            <p className="font-serif text-xl text-fg-subtle italic mb-2">
               &ldquo;Begin the journey.&rdquo;
             </p>
-            <p className="font-sans text-sm text-primary-400">
+            <p className="font-sans text-sm text-fg-subtle">
               Quotes you read will appear here.
             </p>
           </div>
@@ -167,17 +167,17 @@ export const HistoryList = () => {
                 <button
                   onClick={() => setPage(p => Math.max(1, p - 1))}
                   disabled={page === 1}
-                  className="font-sans text-sm text-primary-500 hover:text-primary-800 disabled:text-primary-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[44px] px-4"
+                  className="font-sans text-sm text-fg-muted hover:text-fg disabled:text-fg-subtle disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[44px] px-4"
                 >
                   ← Previous
                 </button>
-                <span className="font-sans text-sm text-primary-500">
+                <span className="font-sans text-sm text-fg-muted">
                   {page} / {totalPages}
                 </span>
                 <button
                   onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                   disabled={page === totalPages}
-                  className="font-sans text-sm text-primary-500 hover:text-primary-800 disabled:text-primary-300 disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[44px] px-4"
+                  className="font-sans text-sm text-fg-muted hover:text-fg disabled:text-fg-subtle disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[44px] px-4"
                 >
                   Next →
                 </button>
