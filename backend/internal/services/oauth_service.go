@@ -144,7 +144,7 @@ func (s *OAuthService) LinkGoogleAccount(userID uint, googleID string, googleEma
 		return fmt.Errorf("failed to check existing Google ID: %w", err)
 	}
 	if existingUser != nil && existingUser.ID != userID {
-		return fmt.Errorf("Google account already linked to another user")
+		return fmt.Errorf("google account already linked to another user")
 	}
 
 	// Path 4: Link Google account to existing user — mark as verified

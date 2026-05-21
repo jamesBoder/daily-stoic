@@ -1,7 +1,6 @@
 package password
 
 import (
-	"errors"
 	"fmt"
 
 	"golang.org/x/crypto/bcrypt"
@@ -32,7 +31,7 @@ func CheckPasswordHash(password, hash string) bool {
 func ValidatePasswordStrength(password string) (bool, error) {
 	// checks for minimum length
 	if len(password) < MinPasswordLength {
-		return false, errors.New(fmt.Sprintf("Password must be at least %d characters long", MinPasswordLength))
+		return false, fmt.Errorf("password must be at least %d characters long", MinPasswordLength)
 	}
 
 	// checks for uppercase, lowercase, digit, special character
@@ -53,7 +52,7 @@ func ValidatePasswordStrength(password string) (bool, error) {
 	}
 
 	if !hasUpper || !hasLower || !hasDigit || !hasSpecial {
-		return false, errors.New("Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character")
+		return false, fmt.Errorf("password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character")
 	}
 
 	return true, nil
