@@ -36,6 +36,11 @@ postgres_data/
 
 # Any file or folder with test in its name
 *test*
+!**/__tests__/
+!**/*.test.ts
+!**/*.test.tsx
+!**/*.spec.ts
+!**/*.spec.tsx
  
 
 # sh files
