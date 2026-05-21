@@ -1,7 +1,7 @@
 package services
 
 import (
-	"crypto/md5"
+	"crypto/sha256"
 	"fmt"
 	"time"
 
@@ -20,8 +20,8 @@ func NewDailyQuoteService(quoteRepo *repository.QuoteRepository) *DailyQuoteServ
 // GetDailyQuote returns today's assigned quote, or selects and assigns one if not yet set.
 //
 // Selection algorithm:
-//  1. MD5 hash of date → pick a free tradition (ensures equal rotation across traditions).
-//  2. MD5 hash of date+"q" → deterministic index into that tradition's available quotes.
+//  1. SHA256 hash of date → pick a free tradition (ensures equal rotation across traditions).
+//  2. SHA256 hash of date+"q" → deterministic index into that tradition's available quotes.
 //  3. Excludes quotes used in the last 90 days; falls back to full tradition pool if exhausted.
 //  4. If a tradition has no quotes at all, falls back to the global free-quote pool.
 func (s *DailyQuoteService) GetDailyQuote() (*models.Quote, error) {
@@ -48,7 +48,7 @@ func (s *DailyQuoteService) GetDailyQuote() (*models.Quote, error) {
 	if err != nil || len(traditions) == 0 {
 		return nil, fmt.Errorf("no free traditions available")
 	}
-	hashT := md5.Sum([]byte(today + "t"))
+	hashT := sha256.Sum256([]byte(today + "t"))
 	traditionIdx := (int(hashT[0])<<8 | int(hashT[1])) % len(traditions)
 	chosenTradition := traditions[traditionIdx]
 
@@ -74,8 +74,8 @@ func (s *DailyQuoteService) GetDailyQuote() (*models.Quote, error) {
 		}
 	}
 
-	// MD5-based deterministic index — same date always picks the same quote
-	hashQ := md5.Sum([]byte(today + "q"))
+	// Deterministic index — same date always picks the same quote
+	hashQ := sha256.Sum256([]byte(today + "q"))
 	index := (int(hashQ[0])<<8 | int(hashQ[1])) % len(filtered)
 	selected := filtered[index]
 
