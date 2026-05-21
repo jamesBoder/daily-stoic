@@ -19,7 +19,7 @@ type AuthHandler struct {
 	userRepo            repository.UserRepository
 	tokenService        *services.TokenService
 	emailValidator      *services.EmailValidationService
-	emailService        *services.EmailService
+	emailService        services.EmailSender
 	passwordHistoryRepo repository.PasswordHistoryRepository
 	validator           *validator.Validate
 }
@@ -29,7 +29,7 @@ func NewAuthHandler(
 	userRepo repository.UserRepository,
 	tokenService *services.TokenService,
 	emailValidator *services.EmailValidationService,
-	emailService *services.EmailService,
+	emailService services.EmailSender,
 	passwordHistoryRepo repository.PasswordHistoryRepository,
 ) *AuthHandler {
 	return &AuthHandler{

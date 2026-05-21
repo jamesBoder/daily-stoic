@@ -93,9 +93,10 @@ func (h *SubscriptionHandler) HandleWebhook(c *gin.Context) {
 	sigHeader := c.GetHeader("Stripe-Signature")
 
 	if err := h.stripeSvc.HandleWebhook(payload, sigHeader); err != nil {
-		// Log but still return 200 for unknown/unverifiable events
-		// Return 400 only for signature failures so Stripe knows the secret is wrong
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		// Always return 200 — Stripe retries on any non-2xx, which would
+		// flood the endpoint on a bad signature or unhandled event type.
+		// Errors are logged server-side; Stripe dashboard shows delivery status.
+		c.Status(http.StatusOK)
 		return
 	}
 

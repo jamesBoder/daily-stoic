@@ -1,28 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// Parchment-tinted placeholder — matches surface-card (#e4e0d5) to avoid grey flash
-const PARCHMENT_PLACEHOLDER =
-  'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23e4e0d5" width="400" height="300"/%3E%3C/svg%3E'
-
 interface LazyImageProps {
   src: string;
   alt: string;
   className?: string;
-  placeholder?: string;
-  /** Skip IntersectionObserver and load immediately — use for above-the-fold images */
+  placeholder?: string;  // kept for API compat; replaced by inline SVG
   eager?: boolean;
 }
 
 export const LazyImage: React.FC<LazyImageProps> = ({
-  src,
-  alt,
-  className = '',
-  placeholder = PARCHMENT_PLACEHOLDER,
-  eager = false,
+  src, alt, className = '', eager = false,
 }) => {
-  const [imageSrc, setImageSrc] = useState(eager ? src : placeholder);
+  const [imageSrc, setImageSrc] = useState(eager ? src : '');
   const [isLoaded, setIsLoaded] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (eager) return;
@@ -39,21 +30,34 @@ export const LazyImage: React.FC<LazyImageProps> = ({
       { threshold: 0.01 }
     );
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
+    if (wrapperRef.current) {
+      observer.observe(wrapperRef.current);
     }
 
     return () => observer.disconnect();
   }, [src, eager]);
 
   return (
-    <img
-      ref={imgRef}
-      src={imageSrc}
-      alt={alt}
-      className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
-      onLoad={() => setIsLoaded(true)}
-      loading={eager ? 'eager' : 'lazy'}
-    />
+    <div ref={wrapperRef} className={`relative overflow-hidden ${className}`}>
+      {!isLoaded && (
+        <svg
+          viewBox="0 0 400 300"
+          className="absolute inset-0 w-full h-full"
+          aria-hidden="true"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          <rect fill="var(--color-surface)" width="400" height="300" />
+        </svg>
+      )}
+      {imageSrc && (
+        <img
+          src={imageSrc}
+          alt={alt}
+          className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setIsLoaded(true)}
+          loading={eager ? 'eager' : 'lazy'}
+        />
+      )}
+    </div>
   );
 };

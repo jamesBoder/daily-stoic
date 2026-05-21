@@ -1,0 +1,97 @@
+[
+  {
+    "text": "Everything can be taken from a man but one thing: the last of the human freedoms — to choose one's attitude in any given set of circumstances, to choose one's own way.",
+    "source": "Man's Search for Meaning (1946), trans. Ilse Lasch",
+    "author_slug": "viktor-frankl",
+    "tradition_id": 14,
+    "themes": "[\"freedom\",\"attitude\",\"suffering\",\"choice\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "Frankl arrived at this insight in the most extreme possible circumstances — the death camps of Auschwitz, Dachau, and two other Nazi concentration camps. He watched people in conditions of total physical helplessness — starving, brutalized, with no control over any external circumstance — and noticed that something persisted: the freedom to choose one's response. Some prisoners maintained human dignity; others lost it. The difference was not in their conditions but in the inner orientation they chose. This observation became the foundation of logotherapy: freedom is not the freedom of circumstance but the freedom of the human spirit to take a stand toward any circumstance.",
+    "reflection_prompt": "In the most difficult circumstance you are currently facing — where you have little or no control over the situation itself — what is the attitude you are choosing toward it? Not what you feel automatically, but what you are choosing? Are these the same thing?"
+  },
+  {
+    "text": "When we are no longer able to change a situation, we are challenged to change ourselves.",
+    "source": "Man's Search for Meaning (1946), trans. Ilse Lasch",
+    "author_slug": "viktor-frankl",
+    "tradition_id": 14,
+    "themes": "[\"change\",\"acceptance\",\"inner-work\",\"challenge\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "This sentence contains the core of Frankl's therapeutic philosophy. Human beings naturally expend most of their energy trying to change the situation they find themselves in. When change of the situation is genuinely impossible, this energy becomes the source of frustration, rage, and despair. But the situation is never the only variable: the self who encounters the situation is also a variable, and in many cases the more transformable one. The 'challenge to change oneself' is not defeat — it is the recognition of where agency actually lives.",
+    "reflection_prompt": "Is there a situation in your life that you have been trying to change for a long time without success? What if you redirected even half that energy toward changing something in your own perception, attitude, or response to the situation? What might shift?"
+  },
+  {
+    "text": "Between stimulus and response there is a space. In that space is our power to choose our response. In our response lies our growth and our freedom.",
+    "source": "Attributed to Viktor Frankl; widely cited in relation to his work",
+    "author_slug": "viktor-frankl",
+    "tradition_id": 14,
+    "themes": "[\"response\",\"freedom\",\"choice\",\"growth\"]",
+    "tier": "free",
+    "quality_score": 0.98,
+    "context_full": "Whether or not Frankl wrote this exact formulation, it perfectly captures his central insight about the structure of human freedom. The stimulus happens — the difficult email arrives, the person says the hurtful thing, the body sends a signal of fear. The ordinary response is immediate: the stimulus triggers the reaction directly, as if by reflex. What Frankl observed — first in himself, then in thousands of patients — is that between the stimulus and the response there is a space, however small. In that space lies everything: the capacity to pause, to choose, to respond from values rather than react from habit.",
+    "reflection_prompt": "The next time something triggers a strong automatic reaction in you — anger, fear, defensiveness — try to notice the moment before the reaction fires. Even half a second of noticing is the beginning of that space. What do you find in it?"
+  },
+  {
+    "text": "He who has a why to live can bear almost any how.",
+    "source": "Man's Search for Meaning, citing Nietzsche (1946)",
+    "author_slug": "viktor-frankl",
+    "tradition_id": 14,
+    "themes": "[\"meaning\",\"purpose\",\"suffering\",\"resilience\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "Frankl cites Nietzsche's aphorism and then demonstrates it through the most extreme evidence: in the death camps, the prisoners who survived longest were not necessarily the strongest or youngest, but those who maintained a sense that their life had an unrepeatable purpose — something still undone, someone still to love, a work still to complete. Meaning, Frankl discovered, is not something added to life to make it tolerable; it is the very substrate of human resilience. Without it, even the physically robust deteriorate quickly. With it, the weak endure conditions that destroy others.",
+    "reflection_prompt": "What is your deepest 'why' right now — the thing that, if you lost it, would make the difficulties of your current life feel genuinely unbearable? If that thing is unclear, what would it take to find or renew it?"
+  },
+  {
+    "text": "Life is never made unbearable by circumstances, but only by lack of meaning and purpose.",
+    "source": "Man's Search for Meaning (1946), trans. Ilse Lasch",
+    "author_slug": "viktor-frankl",
+    "tradition_id": 14,
+    "themes": "[\"meaning\",\"suffering\",\"purpose\",\"resilience\"]",
+    "tier": "free",
+    "quality_score": 0.98
+  },
+  {
+    "text": "Ultimately, man should not ask what the meaning of his life is, but rather must recognize that it is he who is asked. In a word, each man is questioned by life; and he can only answer to life by answering for his own life.",
+    "source": "Man's Search for Meaning (1946), trans. Ilse Lasch",
+    "author_slug": "viktor-frankl",
+    "tradition_id": 14,
+    "themes": "[\"meaning\",\"responsibility\",\"life\",\"answer\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "Frankl inverts the ordinary philosophical question. Most people experience 'what is the meaning of life?' as a demand they make of the universe — a demand for a justification. Frankl argues that the question runs the other way: life is the interrogator, and you are the one being questioned. What are you going to do with your specific gifts, your specific circumstances, your specific unrepeatable existence? The answer is not verbal but practical: it is lived. Each person is not a spectator of the question but the respondent. This transforms passivity into responsibility.",
+    "reflection_prompt": "If life is asking you a question right now — not what does it mean, but what are you going to do with it — what is the question it is asking? And what is your honest answer, in terms of what you are actually doing, not what you intend to do?"
+  },
+  {
+    "text": "Don't aim at success. The more you aim at it and make it a target, the more you are going to miss it.",
+    "source": "Man's Search for Meaning, Preface (1962 edition)",
+    "author_slug": "viktor-frankl",
+    "tradition_id": 14,
+    "themes": "[\"success\",\"meaning\",\"purpose\",\"paradox\"]",
+    "tier": "free",
+    "quality_score": 0.96,
+    "context_full": "Frankl is here describing what he called the 'hyperintentional' problem: success, like happiness, is the by-product of something else — it cannot be aimed at directly. The person who makes success the goal becomes strategic, self-monitoring, anxious about image. The person who has a genuine purpose and commits to it fully tends to find success (in the deepest sense) appearing as a consequence. The direct pursuit of success produces its own obstacles.",
+    "reflection_prompt": "Is there something in your life you are pursuing so directly that the pursuit itself is getting in the way? What would it mean to shift your focus from the outcome to the quality of your engagement with the work itself?"
+  },
+  {
+    "text": "The last of human freedoms is the attitude we take toward what happens to us.",
+    "source": "Man's Search for Meaning (1946), trans. Ilse Lasch",
+    "author_slug": "viktor-frankl",
+    "tradition_id": 14,
+    "themes": "[\"freedom\",\"attitude\",\"response\",\"dignity\"]",
+    "tier": "free",
+    "quality_score": 0.97
+  },
+  {
+    "text": "For the first time in my life I saw the truth as it is set into song by so many poets, proclaimed as the final wisdom by so many thinkers. The truth — that Love is the ultimate and the highest goal to which man can aspire.",
+    "source": "Man's Search for Meaning (1946), trans. Ilse Lasch",
+    "author_slug": "viktor-frankl",
+    "tradition_id": 14,
+    "themes": "[\"love\",\"truth\",\"meaning\",\"transcendence\"]",
+    "tier": "free",
+    "quality_score": 0.96,
+    "context_full": "This passage describes a moment of insight Frankl had while marching in the dark before dawn, in near-total physical collapse, thinking of his wife. The insight was not sentimental: it was structural. Love is not merely a feeling but a form of meaning — a relationship between the self and another that makes the self's existence matter to something beyond itself. In the worst conditions imaginable, love for another person was sufficient to make existence meaningful. This is the empirical basis for Frankl's logotherapy, not just a poetic observation.",
+    "reflection_prompt": "Who or what do you love in a way that, if you were completely stripped of everything else, would still make your existence feel worth something? Have you told them, or allowed yourself to feel that fully?"
+  }
+]

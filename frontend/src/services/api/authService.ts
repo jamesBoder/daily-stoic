@@ -51,7 +51,7 @@ export const authService = {
         localStorage.setItem(TOKEN_EXPIRY_KEY, expiryDate.toISOString());
       }
       
-      showToast.success('Welcome back!');
+      showToast.success('Welcome back!', 'welcome-back');
       return response.data;
     } catch (error: any) {
       // throw error
@@ -78,7 +78,7 @@ export const authService = {
   logout: async (): Promise<void> => {
     try {
       await apiClient.post('/api/auth/logout');
-      showToast.success('Logged out successfully');
+      showToast.success('Logged out successfully', 'logged-out');
     } finally {
       // Clear local storage regardless of API response
       localStorage.removeItem(TOKEN_KEY);

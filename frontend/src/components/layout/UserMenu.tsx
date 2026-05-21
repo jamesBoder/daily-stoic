@@ -11,62 +11,53 @@ export const UserMenu = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+    if (!isOpen) return
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setIsOpen(false)
       }
     }
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside)
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [isOpen])
+
+  const itemClass =
+    'block px-4 py-2 font-sans text-sm transition-colors ' +
+    'text-primary-600 hover:text-primary-800 hover:bg-surface-card ' +
+    'dark:text-fg-muted dark:hover:text-fg dark:hover:bg-[var(--color-surface-hi)]'
 
   return (
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 font-sans text-sm text-primary-600 hover:text-primary-800 transition-colors"
+        className="flex items-center gap-1.5 font-sans text-sm transition-colors
+                   text-primary-600 hover:text-primary-800
+                   dark:text-fg-muted dark:hover:text-fg"
       >
-        <span>{user?.username || user?.email}</span>
-        <span className="text-xs">▼</span>
+        <span className="max-w-[96px] truncate">{user?.username || user?.email}</span>
+        <span className={`text-[10px] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>▼</span>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-surface-elevated rounded-card shadow-elevated border border-primary-200 py-2">
-          <Link
-            to="/profile"
-            className="block px-4 py-2 text-sm text-primary-600 hover:bg-surface-card transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            Profile
-          </Link>
-          <Link
-            to="/saved"
-            className="block px-4 py-2 text-sm text-primary-600 hover:bg-surface-card transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            Saved Quotes
-          </Link>
-          <Link
-            to="/history"
-            className="block px-4 py-2 text-sm text-primary-600 hover:bg-surface-card transition-colors"
-            onClick={() => setIsOpen(false)}
-          >
-            Reading History
-          </Link>
-          <hr className="my-2 border-primary-200" />
+        <div
+          className="absolute right-0 mt-2 w-48 rounded-card border py-1 z-50"
+          style={{
+            background: 'var(--dropdown-bg)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            boxShadow: 'var(--dropdown-shadow)',
+            borderColor: 'var(--dropdown-border)',
+          }}
+        >
+          <Link to="/profile"   className={itemClass} onClick={() => setIsOpen(false)}>Profile</Link>
+          <Link to="/saved"     className={itemClass} onClick={() => setIsOpen(false)}>Saved Quotes</Link>
+          <Link to="/history"   className={itemClass} onClick={() => setIsOpen(false)}>Reading History</Link>
+          <Link to="/converse"  className={itemClass} onClick={() => setIsOpen(false)}>Converse</Link>
+          <Link to="/settings"  className={itemClass} onClick={() => setIsOpen(false)}>Settings</Link>
+          <hr className="my-1 border-primary-200 dark:border-[var(--color-border)]" />
           <button
-            onClick={() => {
-              logout()
-              setIsOpen(false)
-              navigate('/')
-            }}
-            className="block w-full text-left px-4 py-2 text-sm text-primary-600 hover:bg-surface-card transition-colors"
+            onClick={() => { logout(); setIsOpen(false); navigate('/') }}
+            className={`w-full text-left ${itemClass} text-danger hover:text-danger`}
           >
             Sign Out
           </button>

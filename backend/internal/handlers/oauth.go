@@ -1,14 +1,13 @@
 package handlers
 
 import (
-	"net/http"
 	"fmt"
+	"net/http"
 
-	"os"
+	"github.com/gin-gonic/gin"
 	"github.com/jamesBoder/daily-stoic/internal/services"
 	"github.com/jamesBoder/daily-stoic/internal/utils"
-	"github.com/gin-gonic/gin"
-
+	"os"
 )
 
 // OAuthHandler handles OAuth-related requests
@@ -34,7 +33,7 @@ func (h *OAuthHandler) GoogleLogin(c *gin.Context) {
 
 	// Store state token for validation
 	utils.StoreState(state)
-	
+
 	// Get Google OAuth URL
 	url := h.oauthService.GetGoogleLoginURL(state)
 
@@ -44,7 +43,7 @@ func (h *OAuthHandler) GoogleLogin(c *gin.Context) {
 
 // GoogleCallback - handle Google OAuth callback. endpoint: /api/auth/google/callback
 func (h *OAuthHandler) GoogleCallback(c *gin.Context) {
-	// Get state from query params  
+	// Get state from query params
 	state := c.Query("state")
 	code := c.Query("code")
 
@@ -80,7 +79,7 @@ func (h *OAuthHandler) GoogleCallback(c *gin.Context) {
 
 // LinkGoogle - link Google account to existing user. endpoint: /api/auth/google/link requires authentication
 func (h *OAuthHandler) LinkGoogle(c *gin.Context) {
-	// Get authenticated user ID from context 
+	// Get authenticated user ID from context
 	userID, exists := c.Get("userID")
 	if !exists {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
@@ -105,9 +104,9 @@ func (h *OAuthHandler) LinkGoogle(c *gin.Context) {
 
 	// Link Google account to the authenticated user
 	err = h.oauthService.LinkGoogleAccount(
-		userID.(uint), 
-		getStringValue(googleUser.GoogleID), 
-		getStringValue(googleUser.GoogleEmail), 
+		userID.(uint),
+		getStringValue(googleUser.GoogleID),
+		getStringValue(googleUser.GoogleEmail),
 		getStringValue(googleUser.GooglePicture),
 	)
 	if err != nil {
@@ -142,4 +141,3 @@ func (h *OAuthHandler) UnlinkGoogle(c *gin.Context) {
 		"message": "Google account unlinked successfully",
 	})
 }
-

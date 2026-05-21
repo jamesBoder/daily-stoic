@@ -69,7 +69,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
 
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+      <label className="block text-sm font-medium text-fg-muted">
         {label}
       </label>
       <div className="relative mt-1">
@@ -83,15 +83,15 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
           autoComplete={props.autoComplete}
           className={`block w-full px-3 py-2 pr-10 border ${
             error
-              ? 'border-red-500'
-              : 'border-gray-300 dark:border-gray-600'
-          } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100`}
+              ? 'border-[var(--color-danger)]'
+              : 'border-border'
+          } rounded-md shadow-sm placeholder:text-fg-subtle focus:outline-none focus:ring-accent focus:border-accent sm:text-sm bg-surface text-fg`}
           {...props}
         />
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+          className="absolute inset-y-0 right-0 flex items-center pr-3 text-fg-subtle hover:text-fg-muted"
           aria-label={showPassword ? 'Hide password' : 'Show password'}
         >
           {showPassword ? (
@@ -107,12 +107,12 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
         </button>
       </div>
       {error && (
-        <p className="mt-2 text-sm text-red-600 dark:text-red-400">{error}</p>
+        <p className="mt-2 text-sm text-danger">{error}</p>
       )}
 
       {showRequirements && (
         <div className="mt-3">
-          <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <p className="text-sm font-medium text-fg-muted mb-1">
             Password Requirements:
           </p>
           <ul className="list-disc list-inside space-y-1">
@@ -121,8 +121,8 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
                 key={index}
                 className={`text-sm ${
                   req.met
-                    ? 'text-green-600 dark:text-green-400'
-                    : 'text-gray-600 dark:text-gray-400'
+                    ? 'text-success'
+                    : 'text-fg-muted'
                 }`}
               >
                 {req.met ? '✔️' : '❌'} {req.label}
@@ -135,4 +135,3 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   );
 };
 
-  

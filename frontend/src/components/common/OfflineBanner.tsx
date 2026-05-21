@@ -7,7 +7,7 @@ export const OfflineBanner: React.FC = () => {
   if (isOnline) return null;
 
   return (
-    <div className="bg-yellow-500 text-white px-4 py-2 text-center">
+    <div className="bg-warning text-accent-text px-4 py-2 text-center">
       <p className="text-sm font-medium">
         ⚠️ You're offline. Some features may not be available.
       </p>

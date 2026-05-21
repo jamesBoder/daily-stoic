@@ -6,7 +6,9 @@
     "tradition_id": 1,
     "themes": "[\"control\",\"resilience\",\"virtue\"]",
     "tier": "free",
-    "quality_score": 0.95
+    "quality_score": 0.95,
+    "context_full": "This is perhaps the most compressed formulation of the Stoic dichotomy: between what is 'up to us' (prohairesis — our judgments, intentions, and responses) and what is not (our body, reputation, external events). Marcus was writing to himself as Emperor — a man with more external power than almost anyone in history — and he kept redirecting himself to this single insight. The power he prized most was over his own mind. Not because external events don't matter, but because our interpretation of them and response to them is the only domain in which we are truly sovereign.",
+    "reflection_prompt": "Name one circumstance in your life you've been treating as the problem. What is your own interpretation or habit of reaction that is actually within your control? What would shift if you focused exclusively on that?"
   },
   {
     "text": "The impediment to action advances action. What stands in the way becomes the way.",
@@ -15,7 +17,9 @@
     "tradition_id": 1,
     "themes": "[\"resilience\",\"virtue\",\"reason\"]",
     "tier": "free",
-    "quality_score": 0.97
+    "quality_score": 0.97,
+    "context_full": "This captures a specifically Stoic insight about obstacles. The Stoics taught that the virtuous person, when blocked, does not simply give up — they use the obstacle itself as the material for virtue. The block becomes the path not by magic but because engaging an obstacle seriously — honestly, creatively, without complaint — is the exercise of patience, ingenuity, and courage. Every difficulty is simultaneously an opportunity to practice exactly the quality the difficulty seems to be preventing. This is what Marcus meant by the 'reserve clause': act with full commitment, accepting whatever happens as the next material to work with.",
+    "reflection_prompt": "What obstacle are you currently treating as the end of the road? How might this same obstacle be the precise material through which you develop what you most need right now? What would it look like to use it instead of fight it?"
   },
   {
     "text": "Waste no more time arguing about what a good man should be. Be one.",
@@ -24,7 +28,9 @@
     "tradition_id": 1,
     "themes": "[\"virtue\",\"duty\",\"reason\"]",
     "tier": "free",
-    "quality_score": 0.96
+    "quality_score": 0.96,
+    "context_full": "Marcus wrote the Meditations as a private journal of self-improvement — not a philosophical treatise for publication but arguments made to himself to close the gap between what he knew and how he lived. This maxim cuts against the intellectual vanity that substitutes philosophical discussion for moral effort. The Stoics were, above all, practical. They distrusted the philosopher who could lecture about virtue but was short-tempered in private. Philosophy that does not change behavior is, for Marcus, empty.",
+    "reflection_prompt": "Name one quality you spend more time admiring, discussing, or theorizing about than actually practicing. What would it look like to practice it instead — today, in a specific situation you will face?"
   },
   {
     "text": "Never let the future disturb you. You will meet it, if you have to, with the same weapons of reason which today arm you against the present.",
@@ -33,7 +39,9 @@
     "tradition_id": 1,
     "themes": "[\"control\",\"equanimity\",\"reason\"]",
     "tier": "free",
-    "quality_score": 0.93
+    "quality_score": 0.93,
+    "context_full": "Anxiety about the future is a form of imagination pretending to be foresight. Marcus observes that the tools we would need to handle future difficulties are exactly the tools we are developing now: reason, equanimity, patience, courage. The anticipated difficulty, if it arrives, will find us better equipped than if we had not practiced. And most anticipated difficulties never arrive at all — we suffer them doubly: once in imagination, and (rarely) once in fact.",
+    "reflection_prompt": "What future scenario are you anxious about right now? Consider: the qualities you would need to handle it well are the same qualities you can practice today. What would it mean to invest that anxious energy into developing those qualities instead?"
   },
   {
     "text": "Make the best use of what is in your power, and take the rest as it happens.",
@@ -42,7 +50,9 @@
     "tradition_id": 1,
     "themes": "[\"control\",\"equanimity\",\"virtue\"]",
     "tier": "free",
-    "quality_score": 0.94
+    "quality_score": 0.94,
+    "context_full": "The first line of the Enchiridion states the entire Epictetan program. Epictetus spent his life teaching the dichotomy of control — the distinction between what is 'up to us' (our will, our judgments, our moral purpose) and what is 'not up to us' (everything else: body, property, reputation, other people's actions). This is not passivity; it is the most concentrated form of engagement. To make the best use of what is in your power requires enormous attention, discipline, and skill. The 'rest' — what you cannot control — is to be accepted as the given material, not resisted as injustice.",
+    "reflection_prompt": "In your most pressing challenge right now, draw a clean line: what is genuinely in your power (your attitude, your effort, your choices), and what is not? Have you fully used what is in your power? Have you truly accepted what is not?"
   },
   {
     "text": "He is a wise man who does not grieve for the things which he has not, but rejoices for those which he has.",
@@ -60,7 +70,9 @@
     "tradition_id": 1,
     "themes": "[\"virtue\",\"control\",\"reason\"]",
     "tier": "free",
-    "quality_score": 0.92
+    "quality_score": 0.92,
+    "context_full": "Epictetus is insistent on this point throughout the Discourses: the good that matters — the only good that cannot be taken from you — is the good of your own character and judgment. Wealth, pleasure, reputation, and even health are 'preferred indifferents' — things that may be useful but are not themselves good. The person who places the good in external things is perpetually at the mercy of Fortune. The person who places it within themselves is, in the most important sense, free.",
+    "reflection_prompt": "Where have you been placing the good lately? In an outcome, an approval, an achievement, an external condition? What would it mean today to redirect that placement — to find the good in how you are meeting your circumstances rather than in what they produce?"
   },
   {
     "text": "It is not that I am brave, but that I value other things more than I fear danger.",
@@ -78,7 +90,9 @@
     "tradition_id": 1,
     "themes": "[\"gratitude\",\"equanimity\",\"virtue\"]",
     "tier": "free",
-    "quality_score": 0.93
+    "quality_score": 0.93,
+    "context_full": "Seneca redefines poverty as a state of mind rather than an economic condition. The man with abundant resources but insatiable craving is poorer, in the only way that matters, than the man with little who is content. This is not an argument against having things — Seneca was himself a wealthy man — but against the interior posture of perpetual insufficiency, the feeling that what you have is never enough. That feeling is independent of how much you have; only a change in orientation can address it.",
+    "reflection_prompt": "In what area of your life do you most often feel the ache of 'not enough'? Is that feeling tracking something real, or is it a posture of the mind that more would not resolve? What would sufficiency feel like in that area?"
   },
   {
     "text": "Begin at once to live, and count each separate day as a separate life.",
@@ -87,7 +101,9 @@
     "tradition_id": 1,
     "themes": "[\"time\",\"impermanence\",\"virtue\"]",
     "tier": "free",
-    "quality_score": 0.95
+    "quality_score": 0.95,
+    "context_full": "Seneca opens his collected letters with an urgent warning about time: it is the one resource we are already spending, whether we attend to it or not. The instruction to 'count each separate day as a separate life' is a meditation practice — treating today as complete in itself, not as a corridor toward some future arrival. This is Stoic mindfulness: not passive acceptance but full engagement with what is actually before you, not deferred to tomorrow.",
+    "reflection_prompt": "If today were a complete life — not a preparation for some future day — what would you do differently? What would you stop waiting for? What would you begin immediately?"
   },
   {
     "text": "We suffer more often in imagination than in reality.",
@@ -96,7 +112,9 @@
     "tradition_id": 1,
     "themes": "[\"control\",\"equanimity\",\"reason\"]",
     "tier": "free",
-    "quality_score": 0.96
+    "quality_score": 0.96,
+    "context_full": "Seneca is writing about fear and anticipatory anxiety — a form of suffering that is entirely self-generated. Most of what we dread either never happens, or arrives in a form far more manageable than our imagination produced. And even when the anticipated difficulty does arrive, we face it with the same basic resources we have now. The imagination is uniquely skilled at producing worst cases; wisdom is the ability to notice this tendency and not be governed by it.",
+    "reflection_prompt": "Identify one specific fear or worry you are carrying right now. How much of your suffering from it is happening in reality, and how much in imagination? What would you do today if the imagined catastrophe were simply removed from the picture?"
   },
   {
     "text": "Omnia aliena sunt, tempus tantum nostrum est. All things are alien to us; time alone is ours.",
@@ -132,6 +150,8 @@
     "tradition_id": 1,
     "themes": "[\"nature\",\"virtue\",\"reason\"]",
     "tier": "free",
-    "quality_score": 0.87
+    "quality_score": 0.87,
+    "context_full": "This is the foundational Stoic ethical principle, stated in its most direct form by Zeno himself. 'Nature' here means several things simultaneously: the nature of the cosmos (rational, providential, ordered), the nature of the human being (a rational animal, capable of virtue), and the nature of one's particular role and circumstances. To live in agreement with nature is to align all three: to act rationally in accordance with the cosmic order, to exercise one's distinctively human capacities, and to fulfill one's roles as family member, citizen, and philosophical seeker.",
+    "reflection_prompt": "What does it mean to live 'in agreement with your nature' — not your desires or habits, but your deepest capacities? What would it look like today to act from your most distinctively human gifts: reason, compassion, responsibility?"
   }
 ]

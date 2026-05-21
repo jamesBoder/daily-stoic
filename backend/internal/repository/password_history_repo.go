@@ -44,7 +44,7 @@ func (r *passwordHistoryRepo) DeleteOldestForUser(userID uint, keepCount int) er
 	err := r.db.Where("user_id = ?", userID).
 		Order("changed_at DESC").
 		Find(&histories).Error
-	
+
 	if err != nil {
 		return err
 	}

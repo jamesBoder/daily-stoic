@@ -18,7 +18,11 @@ func SetupRoutes(
 	commentHandler *handlers.CommentHandler,
 	profileHandler *handlers.ProfileHandler,
 	settingsHandler *handlers.SettingsHandler,
+	onboardingHandler *handlers.OnboardingHandler,
 	subscriptionHandler *handlers.SubscriptionHandler,
+	readingPlanHandler *handlers.ReadingPlanHandler,
+	aiHandler *handlers.AiHandler,
+	confluenceHandler *handlers.ConfluenceHandler,
 	tokenService *services.TokenService,
 	subscriptionRepo *repository.SubscriptionRepository,
 ) {
@@ -49,6 +53,7 @@ func SetupRoutes(
 	quotes.Use(optionalAuthMW)
 	{
 		quotes.GET("/daily", quoteHandler.GetDailyQuote)
+		quotes.GET("/week", quoteHandler.GetWeek)
 		quotes.GET("/search", quoteHandler.SearchQuotes)
 		quotes.GET("/by-author/:authorId", quoteHandler.GetQuotesByAuthor)
 		quotes.GET("/:id", quoteHandler.GetQuoteByID)
@@ -56,7 +61,9 @@ func SetupRoutes(
 
 	// Authors & Traditions (public)
 	api.GET("/authors", quoteHandler.ListAuthors)
+	api.GET("/authors/:slug", quoteHandler.GetAuthorBySlug)
 	api.GET("/traditions", quoteHandler.ListTraditions)
+	api.GET("/traditions/:slug", quoteHandler.GetTraditionBySlug)
 
 	// Protected routes (require auth)
 	protected := api.Group("/")
@@ -90,6 +97,7 @@ func SetupRoutes(
 		profile.POST("/password/set", profileHandler.SetPassword)
 		profile.PUT("/password", profileHandler.UpdatePassword)
 		profile.POST("/resend-verification", profileHandler.ResendVerification)
+		profile.DELETE("", profileHandler.DeleteAccount)
 
 		// Settings
 		settings := protected.Group("settings")
@@ -97,6 +105,15 @@ func SetupRoutes(
 		settings.PUT("", settingsHandler.UpdateSettings)
 		settings.GET("/language", settingsHandler.GetLanguage)
 		settings.PUT("/language", settingsHandler.UpdateLanguage)
+
+		// Onboarding
+		protected.POST("onboarding", onboardingHandler.CompleteOnboarding)
+		protected.DELETE("onboarding", onboardingHandler.ResetOnboarding)
+
+		// Ask the Philosopher — AI voice feature (free: 3/day, premium: unlimited)
+		protected.POST("quotes/:id/ask", aiHandler.AskByQuote)
+		protected.POST("authors/:slug/ask", aiHandler.AskByAuthor)
+		protected.GET("ai/usage", aiHandler.GetAiUsage)
 	}
 
 	// Subscription
@@ -105,5 +122,32 @@ func SetupRoutes(
 		sub.GET("", optionalAuthMW, subscriptionHandler.GetStatus)
 		sub.POST("/checkout", authMW, subscriptionHandler.CreateCheckout)
 		sub.POST("/webhook", subscriptionHandler.HandleWebhook) // no auth — Stripe-signed
+	}
+
+	// Confluence — public puzzle fetch; session + guess require auth
+	games := api.Group("/games")
+	{
+		confluence := games.Group("/confluence")
+		{
+			confluence.GET("/today", confluenceHandler.GetToday)
+			confluence.GET("/date/:date", confluenceHandler.GetByDate)
+
+			confAuth := confluence.Group("")
+			confAuth.Use(authMW)
+			{
+				confAuth.GET("/:id/session", confluenceHandler.GetSession)
+				confAuth.POST("/:id/guess", confluenceHandler.SubmitGuess)
+			}
+		}
+	}
+
+	// Reading plans — list and detail are public (optional auth for gating); progress routes require auth
+	rp := api.Group("/reading-plans")
+	{
+		rp.GET("", readingPlanHandler.ListPlans)
+		rp.GET("/:slug", optionalAuthMW, readingPlanHandler.GetPlan)
+		rp.GET("/:slug/progress", authMW, readingPlanHandler.GetProgress)
+		rp.POST("/:slug/start", authMW, readingPlanHandler.StartPlan)
+		rp.POST("/:slug/advance", authMW, readingPlanHandler.AdvanceDay)
 	}
 }

@@ -42,18 +42,16 @@ interface StatTileProps {
   value: number;
   label: string;
   icon: string;
-  accentColor: string;
   format?: (n: number) => string;
 }
 
-const StatTile: React.FC<StatTileProps> = ({ value, label, icon, accentColor, format }) => {
+const StatTile: React.FC<StatTileProps> = ({ value, label, icon, format }) => {
   const animatedValue = useCountUp(value);
   const displayValue = format ? format(animatedValue) : String(animatedValue);
 
   return (
     <div
-      className="flex-1 flex flex-col items-center justify-center gap-1.5 py-4 sm:py-5 px-2 sm:px-3 rounded-xl bg-primary-50 dark:bg-primary-800/50"
-      style={{ borderBottom: `3px solid ${accentColor}` }}
+      className="flex-1 flex flex-col items-center justify-center gap-1.5 py-4 sm:py-5 px-2 sm:px-3 rounded-xl bg-primary-50 dark:bg-primary-800/50 border-b-[3px] border-accent"
     >
       <span className="text-2xl sm:text-3xl leading-none" role="img" aria-hidden>{icon}</span>
       <span className="text-2xl sm:text-3xl font-bold text-primary-900 dark:text-primary-100 tabular-nums leading-none">
@@ -79,19 +77,16 @@ const JourneyStats: React.FC<JourneyStatsProps> = ({
         value={currentStreak}
         label={t('profile.dayStreak', 'Day Streak')}
         icon="🕯"
-        accentColor="#8b7355"
       />
       <StatTile
         value={longestStreak}
         label={t('profile.longest', 'Longest')}
         icon="🔥"
-        accentColor="#9ca3af"
       />
       <StatTile
         value={totalReads}
         label={t('profile.totalReads', 'Total Reads')}
         icon="📖"
-        accentColor="#c4a882"
         format={n => n.toLocaleString()}
       />
     </div>

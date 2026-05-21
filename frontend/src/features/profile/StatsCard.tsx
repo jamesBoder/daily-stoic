@@ -115,7 +115,7 @@ export const StatsCard: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6">
+      <div className="bg-surface shadow-md rounded-xl p-6">
         <VerseCardSkeleton />
       </div>
     );
@@ -123,8 +123,8 @@ export const StatsCard: React.FC = () => {
 
   if (error) {
     return (
-      <div className="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6">
-        <div className="text-red-500">Error: {error}</div>
+      <div className="bg-surface shadow-md rounded-xl p-6">
+        <div className="text-danger">Error: {error}</div>
       </div>
     );
   }
@@ -189,11 +189,11 @@ export const StatsCard: React.FC = () => {
   ];
 
   return (
-    <div className="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6">
+    <div className="bg-surface shadow-md rounded-xl p-6">
       {/* Glowing gradient title */}
       <h2 className="text-2xl font-semibold mb-6 text-center">
         <span
-          className="bg-gradient-to-r from-blue-600 to-primary-500 dark:from-blue-300 dark:to-primary-400 bg-clip-text text-transparent drop-shadow-[0_0_6px_rgba(14,165,233,0.35)] dark:drop-shadow-[0_0_10px_rgba(56,189,248,0.55)]"
+          className="bg-gradient-to-r from-[var(--color-info)] to-accent bg-clip-text text-transparent drop-shadow-[0_0_6px_var(--color-info-glow)]"
         >
           {t("profile.yourStatistics")}
         </span>
@@ -206,7 +206,7 @@ export const StatsCard: React.FC = () => {
           ))}
         </div>
       ) : (
-        <p className="text-gray-600 dark:text-gray-400 text-center">
+        <p className="text-fg-muted text-center">
           {t("profile.noStats")}
         </p>
       )}

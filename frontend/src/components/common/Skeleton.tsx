@@ -13,7 +13,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   width,
   height,
 }) => {
-  const baseClasses = 'animate-pulse bg-gray-300 dark:bg-gray-700';
+  const baseClasses = 'animate-pulse bg-surface-hi';
   
   const variantClasses = {
     text: 'rounded',
@@ -37,7 +37,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
 // Verse Card Skeleton
 export const VerseCardSkeleton: React.FC = () => {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 space-y-4">
+    <div className="bg-surface rounded-lg shadow-md p-6 space-y-4">
       <Skeleton height={24} width="60%" />
       <Skeleton height={16} />
       <Skeleton height={16} />
@@ -54,7 +54,7 @@ export const VerseCardSkeleton: React.FC = () => {
 // List Item Skeleton
 export const ListItemSkeleton: React.FC = () => {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 space-y-2">
+    <div className="bg-surface rounded-lg shadow p-4 space-y-2">
       <Skeleton height={20} width="40%" />
       <Skeleton height={16} />
       <Skeleton height={16} width="90%" />

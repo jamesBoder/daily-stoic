@@ -4,7 +4,7 @@ export const ReadingPlansStub = () => (
     <p className="font-display text-xs uppercase tracking-widest text-accent mb-3">
       Coming Soon
     </p>
-    <h1 className="font-display text-3xl text-primary-800 mb-4">Reading Plans</h1>
+    <h1 className="font-display text-3xl text-primary-800 mb-4 title-glow-hover">Reading Plans</h1>
     <p className="font-sans text-sm text-primary-400 max-w-sm mx-auto">
       Curated multi-week journeys through Stoic and ancient wisdom — arriving soon.
     </p>

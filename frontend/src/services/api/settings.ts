@@ -8,6 +8,9 @@ export interface UserSettings {
   email_notifications: boolean;
   daily_verse_reminder: boolean;
   dark_mode: boolean;
+  onboarding_completed: boolean;
+  preferred_traditions: string[];
+  preferred_goals: string[];
   created_at: string;
   updated_at: string;
 }

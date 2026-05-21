@@ -48,10 +48,12 @@ export const SharePanel = ({ quote, onClose }: Props) => {
 
   const channels: Array<{ label: string; icon: string; action?: () => void; href?: string }> = [
     { label: 'Copy link',   icon: '📋', action: handleCopy },
+    ...('share' in navigator ? [{ label: 'Share',   icon: '↗', action: handleNativeShare }] : []),
     { label: 'Twitter / X', icon: '𝕏',  href: `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}` },
     { label: 'WhatsApp',    icon: '💬', href: `https://wa.me/?text=${encodedText}%20${encodedUrl}` },
+    { label: 'Telegram',    icon: '✈',  href: `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}` },
+    { label: 'LinkedIn',    icon: 'in', href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}` },
     { label: 'Facebook',    icon: 'f',  href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}` },
-    ...('share' in navigator ? [{ label: 'More',    icon: '↗', action: handleNativeShare }] : []),
   ]
 
   return (
@@ -59,7 +61,7 @@ export const SharePanel = ({ quote, onClose }: Props) => {
       ref={panelRef}
       className="animate-modal-rise mt-6 bg-surface-elevated rounded-card border border-primary-200 p-4"
     >
-      <p className="font-display text-xs tracking-widest uppercase text-primary-400 mb-3">
+      <p className="font-display text-xs tracking-widest uppercase text-primary-600 mb-3">
         Share this quote
       </p>
       <div className="flex flex-wrap gap-2">
@@ -70,7 +72,7 @@ export const SharePanel = ({ quote, onClose }: Props) => {
               href={ch.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 font-sans text-sm text-primary-600 bg-surface-card border border-primary-200 rounded-stone px-3 py-2 hover:border-accent hover:text-accent transition-colors"
+              className="flex items-center gap-2 font-sans text-sm text-primary-700 bg-surface-card border border-primary-200 rounded-stone px-3 py-2 hover:border-accent hover:text-accent hover:bg-primary-100 dark:hover:bg-[var(--color-surface-hi)] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1"
             >
               <span>{ch.icon}</span>
               <span>{ch.label}</span>
@@ -79,7 +81,7 @@ export const SharePanel = ({ quote, onClose }: Props) => {
             <button
               key={ch.label}
               onClick={ch.action}
-              className="flex items-center gap-2 font-sans text-sm text-primary-600 bg-surface-card border border-primary-200 rounded-stone px-3 py-2 hover:border-accent hover:text-accent transition-colors"
+              className="flex items-center gap-2 font-sans text-sm text-primary-700 bg-surface-card border border-primary-200 rounded-stone px-3 py-2 hover:border-accent hover:text-accent hover:bg-primary-100 dark:hover:bg-[var(--color-surface-hi)] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1"
             >
               <span>{ch.icon}</span>
               <span>{ch.label}</span>

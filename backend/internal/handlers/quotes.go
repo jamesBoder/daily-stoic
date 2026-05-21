@@ -3,24 +3,27 @@ package handlers
 import (
 	"net/http"
 	"strconv"
+	"time"
 
+	"github.com/gin-gonic/gin"
 	"github.com/jamesBoder/daily-stoic/internal/repository"
 	"github.com/jamesBoder/daily-stoic/internal/services"
-	"github.com/gin-gonic/gin"
 )
 
 type QuoteHandler struct {
-	quoteRepo      *repository.QuoteRepository
-	authorRepo     *repository.AuthorRepository
-	traditionRepo  *repository.TraditionRepository
-	dailyQuoteSvc  *services.DailyQuoteService
-	streakSvc      *services.StreakService
+	quoteRepo     *repository.QuoteRepository
+	authorRepo    *repository.AuthorRepository
+	traditionRepo *repository.TraditionRepository
+	weekRepo      *repository.WeekRepository
+	dailyQuoteSvc *services.DailyQuoteService
+	streakSvc     *services.StreakService
 }
 
 func NewQuoteHandler(
 	quoteRepo *repository.QuoteRepository,
 	authorRepo *repository.AuthorRepository,
 	traditionRepo *repository.TraditionRepository,
+	weekRepo *repository.WeekRepository,
 	dailyQuoteSvc *services.DailyQuoteService,
 	streakSvc *services.StreakService,
 ) *QuoteHandler {
@@ -28,6 +31,7 @@ func NewQuoteHandler(
 		quoteRepo:     quoteRepo,
 		authorRepo:    authorRepo,
 		traditionRepo: traditionRepo,
+		weekRepo:      weekRepo,
 		dailyQuoteSvc: dailyQuoteSvc,
 		streakSvc:     streakSvc,
 	}
@@ -131,6 +135,17 @@ func (h *QuoteHandler) ListAuthors(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"authors": authors})
 }
 
+// GET /api/authors/:slug
+func (h *QuoteHandler) GetAuthorBySlug(c *gin.Context) {
+	slug := c.Param("slug")
+	author, err := h.authorRepo.GetBySlugWithQuotes(slug)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Author not found"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"author": author})
+}
+
 // GET /api/traditions
 func (h *QuoteHandler) ListTraditions(c *gin.Context) {
 	traditions, err := h.traditionRepo.GetAll()
@@ -139,4 +154,43 @@ func (h *QuoteHandler) ListTraditions(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"traditions": traditions})
+}
+
+// GET /api/quotes/week
+func (h *QuoteHandler) GetWeek(c *gin.Context) {
+	today := time.Now().UTC().Format("2006-01-02")
+	week, err := h.weekRepo.GetCurrent(today)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not retrieve weekly theme"})
+		return
+	}
+	if week == nil {
+		c.JSON(http.StatusOK, gin.H{"week": nil})
+		return
+	}
+
+	// Gate premium quotes within the week for free users
+	isPremium, _ := c.Get("isPremium")
+	if isPremium != true {
+		for i := range week.Quotes {
+			if week.Quotes[i].Tier == "premium" {
+				week.Quotes[i].Text = ""
+				week.Quotes[i].ContextFull = ""
+				week.Quotes[i].ReflectionPrompt = ""
+			}
+		}
+	}
+
+	c.JSON(http.StatusOK, gin.H{"week": week})
+}
+
+// GET /api/traditions/:slug
+func (h *QuoteHandler) GetTraditionBySlug(c *gin.Context) {
+	slug := c.Param("slug")
+	tradition, err := h.traditionRepo.GetBySlug(slug)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Tradition not found"})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"tradition": tradition})
 }

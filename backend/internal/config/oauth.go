@@ -1,15 +1,12 @@
 package config
 
 import (
-	"os"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
-	
+	"os"
 )
 
-
-
-func GoogleOAuthConfig () *oauth2.Config {
+func GoogleOAuthConfig() *oauth2.Config {
 	return &oauth2.Config{
 		ClientID:     os.Getenv("GOOGLE_CLIENT_ID"),
 		ClientSecret: os.Getenv("GOOGLE_CLIENT_SECRET"),

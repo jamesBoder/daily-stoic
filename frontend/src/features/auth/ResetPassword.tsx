@@ -26,15 +26,15 @@ export const ResetPassword: React.FC = () => {
           <Card>
             <div className="text-center space-y-4">
               <div className="text-6xl">❌</div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <h2 className="text-2xl font-bold text-fg">
                 Invalid Link
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-fg-muted">
                 This password reset link is invalid or missing.
               </p>
               <Link
                 to="/forgot-password"
-                className="block text-sm text-primary-600 dark:text-primary-400 hover:underline"
+                className="block text-sm text-fg-muted hover:underline"
               >
                 Request a new reset link
               </Link>
@@ -81,10 +81,10 @@ export const ResetPassword: React.FC = () => {
           <Card>
             <div className="text-center space-y-4">
               <div className="text-6xl">✅</div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+              <h2 className="text-2xl font-bold text-fg">
                 Password Reset!
               </h2>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-fg-muted">
                 Your password has been updated. Redirecting to login...
               </p>
             </div>
@@ -98,17 +98,17 @@ export const ResetPassword: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+          <h2 className="text-3xl font-bold text-fg">
             Reset Password
           </h2>
-          <p className="mt-2 text-gray-600 dark:text-gray-400">
+          <p className="mt-2 text-fg-muted">
             Enter your new password below.
           </p>
         </div>
         <Card>
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
-              <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 px-4 py-3 rounded-lg text-sm">
+              <div className="bg-danger-bg border border-[var(--color-danger)] text-danger px-4 py-3 rounded-lg text-sm">
                 {error}
               </div>
             )}
@@ -147,7 +147,7 @@ export const ResetPassword: React.FC = () => {
           <div className="mt-6 text-center">
             <Link
               to="/login"
-              className="text-sm text-primary-600 dark:text-primary-400 hover:underline"
+              className="text-sm text-fg-muted hover:underline"
             >
               Back to login
             </Link>

@@ -16,10 +16,10 @@ export const GuestAccountManagement: React.FC = () => {
       <Card>
         <div className="text-center py-4">
           <div className="text-5xl mb-4">👤</div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+          <h2 className="text-2xl font-bold text-fg mb-2">
             You're browsing as a Guest
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
+          <p className="text-fg-muted mb-6 max-w-md mx-auto">
             Guest sessions are temporary — nothing is saved when you leave.
             Create a free account to unlock the full experience.
           </p>
@@ -33,7 +33,7 @@ export const GuestAccountManagement: React.FC = () => {
               { icon: "🔔", text: "Daily quote reminders" },
               { icon: "👤", text: "Personalized profile" },
             ].map(({ icon, text }) => (
-              <li key={text} className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+              <li key={text} className="flex items-center gap-3 text-fg-muted">
                 <span className="text-xl">{icon}</span>
                 <span>{text}</span>
               </li>
@@ -67,10 +67,10 @@ export const GuestAccountManagement: React.FC = () => {
         <div className="flex items-start gap-3">
           <span className="text-2xl mt-0.5">🔒</span>
           <div>
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-1">
+            <h3 className="font-semibold text-fg mb-1">
               Guest Privacy
             </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-fg-muted">
               As a guest, no personal data is collected or stored. Your session
               exists only in this browser tab and will be cleared when you exit
               guest mode or close the tab.

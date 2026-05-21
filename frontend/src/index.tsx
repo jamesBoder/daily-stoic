@@ -6,6 +6,32 @@ import { ErrorBoundary } from './components/common/ErrorBoundary'
 import './i18n'
 import './index.css'
 import App from './App'
+import { quotesApi } from './services/api/quotes'
+
+// Seed the cache from localStorage so the quote is available synchronously
+// before React even renders (eliminates the skeleton flash for returning visitors).
+try {
+  const raw = localStorage.getItem('dq-cache')
+  const ts = localStorage.getItem('dq-cache-ts')
+  if (raw) {
+    queryClient.setQueryData(['daily-quote'], JSON.parse(raw), {
+      updatedAt: ts ? parseInt(ts, 10) : 0,
+    })
+  }
+} catch { /* ignore */ }
+
+// Pre-warm the QuoteCard chunk so it downloads in parallel with the API call.
+// By the time the API responds, the chunk is likely already parsed.
+import('./features/quote/QuoteCard')
+
+// Kick off the daily quote fetch immediately — before React initialises —
+// so the API response is in-flight (or even resolved) by the time
+// DailyQuote mounts and calls useDailyQuote().
+queryClient.prefetchQuery({
+  queryKey: ['daily-quote'],
+  queryFn: quotesApi.getDaily,
+  staleTime: 60 * 60 * 1000,
+})
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

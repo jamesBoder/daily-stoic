@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "../../components/common/Card";
 import { Button } from "../../components/common/Button";
 import { AccountManagement } from "./AccountManagement";
@@ -6,11 +7,13 @@ import { GuestAccountManagement } from "./GuestAccountManagement";
 import { ProfileEditForm } from "./ProfileEditForm";
 import { profileService } from "../../services/api/profile";
 import { UserProfile } from "../../types/profile";
+import { formatDate } from "../../utils/date";
 import { useTheme } from "../../contexts/ThemeContext";
 import { useAuth } from "../../hooks/useAuth";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { useTranslation } from "react-i18next";
 import { settingsService } from "../../services/api/settings";
+import { onboardingApi } from "../../services/api/onboarding";
 import { showToast } from "../../utils/toast";
 import { SettingsToggle } from "../../components/ui/SettingsToggle";
 
@@ -20,7 +23,7 @@ interface SettingsState {
   language: string;
 }
 
-type SectionId = "profile" | "appearance" | "notifications" | "language" | "account";
+type SectionId = "profile" | "practice" | "appearance" | "notifications" | "language" | "account";
 
 interface SectionDef {
   id: SectionId;
@@ -47,16 +50,33 @@ export const Settings: React.FC = () => {
   const [isSaving, setIsSaving] = useState(false);
 
   // Section refs for scroll-jump
+  const navigate = useNavigate();
+  const [isResettingOnboarding, setIsResettingOnboarding] = useState(false);
+
   const sectionRefs: Record<SectionId, React.RefObject<HTMLDivElement | null>> = {
     profile: useRef<HTMLDivElement>(null),
+    practice: useRef<HTMLDivElement>(null),
     appearance: useRef<HTMLDivElement>(null),
     notifications: useRef<HTMLDivElement>(null),
     language: useRef<HTMLDivElement>(null),
     account: useRef<HTMLDivElement>(null),
   };
 
+  const handleRevisitOnboarding = async () => {
+    setIsResettingOnboarding(true);
+    try {
+      await onboardingApi.reset();
+      navigate("/onboarding");
+    } catch {
+      showToast.error("Could not reset onboarding. Please try again.");
+    } finally {
+      setIsResettingOnboarding(false);
+    }
+  };
+
   const sections: SectionDef[] = [
     { id: "profile", label: t("settings.tabs.profile", "Profile"), authOnly: true },
+    { id: "practice", label: "Your Practice", authOnly: true },
     { id: "appearance", label: t("settings.appearance.title", "Appearance") },
     { id: "notifications", label: t("settings.notifications.title", "Notifications") },
     { id: "language", label: t("settings.language.title", "Language") },
@@ -102,6 +122,7 @@ export const Settings: React.FC = () => {
           });
         } catch (error) {
           console.error("Failed to load settings:", error);
+          showToast.error(t("settings.loadFailed", "Failed to load settings"));
         }
       }
     };
@@ -144,7 +165,7 @@ export const Settings: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-display font-bold text-primary-600 dark:text-primary-400 mb-6 transition-all duration-300 hover:brightness-125 cursor-default">
+      <h1 className="text-3xl font-display font-bold text-primary-600 dark:text-primary-400 mb-6 title-glow-hover">
         {t("settings.title", "Settings")}
       </h1>
 
@@ -154,7 +175,7 @@ export const Settings: React.FC = () => {
           <button
             key={section.id}
             onClick={() => scrollToSection(section.id)}
-            className="flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border border-primary-200 dark:border-primary-700 text-primary-600 dark:text-primary-400 hover:bg-accent hover:text-white hover:border-accent transition-all duration-150"
+            className="shrink-0 px-4 py-1.5 rounded-full text-sm font-medium border border-primary-200 dark:border-primary-700 text-primary-600 dark:text-primary-400 hover:bg-accent hover:text-fg-inverse hover:border-accent transition-all duration-150"
           >
             {section.label}
           </button>
@@ -175,7 +196,7 @@ export const Settings: React.FC = () => {
                   <div className="text-primary-400">{t("common.loading", "Loading…")}</div>
                 </div>
               ) : profileError ? (
-                <div className="text-red-600 dark:text-red-400 py-4">Error: {profileError}</div>
+                <div className="text-danger py-4">Error: {profileError}</div>
               ) : profile ? (
                 <>
                   <div className="flex justify-between items-center mb-4">
@@ -202,15 +223,34 @@ export const Settings: React.FC = () => {
                       <div>
                         <p className="text-xs font-medium text-primary-400 dark:text-primary-500">{t("profile.memberSince", "Member since")}</p>
                         <p className="text-base text-primary-800 dark:text-primary-100">
-                          {new Date(profile.created_at).toLocaleDateString(i18n.language, {
-                            year: "numeric", month: "long", day: "numeric",
-                          })}
+                          {formatDate(profile.created_at)}
                         </p>
                       </div>
                     </div>
                   )}
                 </>
               ) : null}
+            </Card>
+          </section>
+        )}
+
+        {/* ── Your Practice section ── */}
+        {!isGuest && (
+          <section ref={sectionRefs.practice} id="section-practice">
+            <h2 className="text-lg font-display font-semibold text-primary-700 dark:text-primary-300 mb-4 scroll-mt-20">
+              Your Practice
+            </h2>
+            <Card>
+              <p className="text-sm text-primary-600 dark:text-primary-400 mb-4">
+                Revisit your onboarding to update your traditions, goals, and notification preferences.
+              </p>
+              <Button
+                onClick={handleRevisitOnboarding}
+                disabled={isResettingOnboarding}
+                variant="secondary"
+              >
+                {isResettingOnboarding ? "Loading…" : "Revisit Onboarding"}
+              </Button>
             </Card>
           </section>
         )}

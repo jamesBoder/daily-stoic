@@ -14,15 +14,15 @@ export const Input: React.FC<InputProps> = ({
   return (
     <div className="mb-4">
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-sm font-medium text-fg-muted mb-2">
           {label}
         </label>
       )}
       <input
-        className={`input-field ${error ? "border-red-500" : ""} ${className}`}
+        className={`input-field ${error ? "border-[var(--color-danger)]" : ""} ${className}`}
         {...props}
       />
-      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-1 text-sm text-danger">{error}</p>}
     </div>
   );
 };

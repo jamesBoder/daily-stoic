@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/jamesBoder/daily-stoic/internal/services"
 	"github.com/gin-gonic/gin"
+	"github.com/jamesBoder/daily-stoic/internal/services"
 )
 
 type HistoryHandler struct {

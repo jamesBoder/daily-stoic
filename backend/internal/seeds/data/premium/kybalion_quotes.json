@@ -1,0 +1,230 @@
+[
+  {
+    "text": "THE ALL is MIND; The Universe is Mental.",
+    "source": "The Kybalion, Ch. 1 — The Principle of Mentalism",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"unity\",\"law\"]",
+    "tier": "premium",
+    "quality_score": 0.99,
+    "context_full": "The first and most fundamental of the seven Hermetic Principles: everything that exists is, at its root, a mental phenomenon. This does not mean reality is imaginary or that thoughts cause physical events by magic — it means that Mind (understood as the infinite, creative intelligence of THE ALL) is the substance from which the universe is made. Modern physics, in its stranger formulations, gestures at something similar: that what we call 'matter' is a configuration of information and energy, not a solid thing. For the Hermeticist, this points to a path of liberation: if all is Mind, then the cultivation of mind is the most fundamental work a person can do.",
+    "reflection_prompt": "What would change in how you approach a current struggle if you treated it as primarily a mental phenomenon — a pattern of thought, belief, and interpretation — rather than an external obstacle? What mental shift might dissolve what no physical effort can?"
+  },
+  {
+    "text": "As above, so below; as below, so above. As within, so without; as without, so within.",
+    "source": "The Kybalion, Ch. 2 — The Principle of Correspondence",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"correspondence\",\"unity\",\"law\"]",
+    "tier": "premium",
+    "quality_score": 0.99,
+    "context_full": "The Kybalion's formulation of the Principle of Correspondence extends the Emerald Tablet's axiom in every direction. The macro and the micro, the inner and the outer, are not separate domains but interlocking mirrors. The student of this principle learns to read their outer circumstances as reliable information about their inner state — and their inner state as the key to transforming their outer circumstances. This is not superstition but a disciplined practice of attention.",
+    "reflection_prompt": "Pick one area of your outer life that feels stuck or unsatisfying. Without judging yourself, look for its precise inner counterpart — a belief, a fear, an expectation, or a habit of mind. What would need to shift inside for the outside to change?"
+  },
+  {
+    "text": "Every Cause has its Effect; every Effect has its Cause; everything happens according to Law; Chance is but a name for Law not recognized.",
+    "source": "The Kybalion, Ch. 7 — The Principle of Cause and Effect",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"causation\",\"law\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.97,
+    "context_full": "The Hermetic view of causation leaves no room for randomness as a fundamental feature of reality. What appears as chance is simply Law operating beyond the observer's field of vision. This is not fatalism — the advanced Hermeticist learns to function as a Cause rather than remain an Effect, to act from understanding rather than react from conditioning. Mastery is not the elimination of Law but its conscious use: rising to a higher plane of causation so that one is less subject to the lower.",
+    "reflection_prompt": "In one area of your life, are you functioning as a Cause — deliberately initiating — or as an Effect, reacting to circumstances? What single deliberate action could you take this week that would place you more firmly in the role of Cause?"
+  },
+  {
+    "text": "The lips of wisdom are closed, except to the ears of Understanding.",
+    "source": "The Kybalion, Introduction",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"knowledge\",\"silence\"]",
+    "tier": "premium",
+    "quality_score": 0.98,
+    "context_full": "The Hermetic tradition has always been transmitted selectively — not out of elitism, but because the same words mean entirely different things to different levels of preparation. An unprepared ear hears the same teaching as a prepared ear but understands something shallow or even harmful by it. This is why the tradition speaks of initiation: not a ritual, but a state of readiness in the student. The 'ears of Understanding' are cultivated through lived experience, honest self-examination, and genuine philosophical effort — not mere reading.",
+    "reflection_prompt": "Name a teaching you have heard many times but only recently truly understood — where the words finally connected to lived experience. What changed in you that made the understanding possible?"
+  },
+  {
+    "text": "Nothing rests; everything moves; everything vibrates.",
+    "source": "The Kybalion, Ch. 4 — The Principle of Vibration",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"vibration\",\"law\",\"nature\"]",
+    "tier": "premium",
+    "quality_score": 0.97,
+    "context_full": "The Principle of Vibration holds that all phenomena — matter, energy, mind, and spirit — are in constant motion, differentiated only by their rate of vibration. Dense matter vibrates slowly; pure consciousness vibrates at rates so high they appear still. The Hermetic practitioner learns that the quality of their mental and emotional life has a corresponding vibrational frequency, and that deliberately elevating their inner state is not merely metaphorical but a real change in what they are and what they attract.",
+    "reflection_prompt": "Where in your life are you dwelling at a low vibration — in resentment, anxiety, or stagnation? What one deliberate shift in where you place your attention might begin to raise it?"
+  },
+  {
+    "text": "Everything is Dual; everything has poles; everything has its pair of opposites; like and unlike are the same; opposites are identical in nature, but different in degree.",
+    "source": "The Kybalion, Ch. 5 — The Principle of Polarity",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"polarity\",\"law\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.97
+  },
+  {
+    "text": "Everything flows, out and in; everything has its tides; all things rise and fall; the pendulum-swing manifests in everything.",
+    "source": "The Kybalion, Ch. 6 — The Principle of Rhythm",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"rhythm\",\"law\",\"nature\"]",
+    "tier": "premium",
+    "quality_score": 0.96,
+    "context_full": "The Principle of Rhythm describes how all systems oscillate — emotions rise and fall, societies expand and contract, attention concentrates and disperses. The ordinary person is swept along by this rhythm unconsciously, elated in the upswing and despairing in the downswing. The Hermetic teaching is not to eliminate rhythm (impossible) but to learn to stand at the still point above it — recognizing the swing without being identified with it — what the Stoics called equanimity.",
+    "reflection_prompt": "You are currently in some upswing or downswing in some domain of your life. Can you name the rhythm? And can you observe it with some detachment — knowing that this particular movement is not the whole of your reality?"
+  },
+  {
+    "text": "Good and Evil are but the poles of the same thing, and the Master transmutes the undesirable into the desirable by changing its polarity.",
+    "source": "The Kybalion, Ch. 10",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"polarity\",\"wisdom\",\"transformation\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "Mind, as well as metals and elements, may be transmuted from state to state, degree to degree, condition to condition, pole to pole, vibration to vibration. True Hermetic Transmutation is a Mental Art.",
+    "source": "The Kybalion, Ch. 9",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"transformation\",\"mind\",\"vibration\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "THE ALL dwells within all things; yet all things dwell within THE ALL.",
+    "source": "The Kybalion, Ch. 3",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"unity\",\"divine\",\"correspondence\"]",
+    "tier": "premium",
+    "quality_score": 0.97
+  },
+  {
+    "text": "All truths are but half-truths; all paradoxes may be reconciled.",
+    "source": "The Kybalion, Introduction",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"polarity\",\"truth\"]",
+    "tier": "premium",
+    "quality_score": 0.96
+  },
+  {
+    "text": "He who grasps the truth of the Mental Nature of the Universe is well advanced on the Path to Mastery.",
+    "source": "The Kybalion, Ch. 1",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"wisdom\",\"mastery\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "To change your mood or mental state — change your vibration.",
+    "source": "The Kybalion, Ch. 9",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"vibration\",\"transformation\"]",
+    "tier": "premium",
+    "quality_score": 0.95
+  },
+  {
+    "text": "The Masters apply the Principle of Polarity in their work, transmuting evil into good by the use of the Art.",
+    "source": "The Kybalion, Ch. 10",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"polarity\",\"transformation\",\"mastery\"]",
+    "tier": "premium",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Transmutation, not presumptuous denial, is the weapon of the Master.",
+    "source": "The Kybalion, Ch. 10",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"transformation\",\"mastery\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "The half-wise, recognizing the comparative unreality of the Universe, imagine that they may defy its Laws — such are vain and presumptuous fools.",
+    "source": "The Kybalion, Ch. 3",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"law\",\"wisdom\",\"humility\"]",
+    "tier": "premium",
+    "quality_score": 0.93
+  },
+  {
+    "text": "Where fall the footsteps of the Master, the ears of those ready for his Teaching open wide.",
+    "source": "The Kybalion, Introduction",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"teaching\",\"readiness\"]",
+    "tier": "premium",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The Principle of Correspondence enables man to reason intelligently from the Known to the Unknown.",
+    "source": "The Kybalion, Ch. 2",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"correspondence\",\"reason\",\"knowledge\"]",
+    "tier": "premium",
+    "quality_score": 0.92
+  },
+  {
+    "text": "The Universe is a Mental Creation of THE ALL, subject to the Laws of Created Things, yet these laws are all within the Mind of THE ALL.",
+    "source": "The Kybalion, Ch. 3",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"creation\",\"law\",\"divine\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Everything is, and yet is not; all is becoming.",
+    "source": "The Kybalion, Ch. 4",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"polarity\",\"vibration\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.91
+  },
+  {
+    "text": "The Principle of Rhythm explains how the pendulum swings in all things — and the Master learns to neutralize its effects.",
+    "source": "The Kybalion, Ch. 11",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"rhythm\",\"mastery\",\"wisdom\"]",
+    "tier": "premium",
+    "quality_score": 0.91
+  },
+  {
+    "text": "The truly wise man, knowing the nature of the Universe, uses Law against laws, the higher against the lower, and by the Art of Alchemy transmutes all that is undesirable into gold.",
+    "source": "The Kybalion, Ch. 16",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"wisdom\",\"law\",\"transformation\",\"mastery\"]",
+    "tier": "premium",
+    "quality_score": 0.94
+  },
+  {
+    "text": "The Principle of Mentalism explains the true nature of Energy, Power, and Matter, and why and how all these are subordinate to the Mastery of Mind.",
+    "source": "The Kybalion, Ch. 1",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"mind\",\"mastery\",\"law\"]",
+    "tier": "premium",
+    "quality_score": 0.92
+  },
+  {
+    "text": "Gender manifests in everything as the tendency to generate and create. Every male thing has a female element; every female thing has a male element.",
+    "source": "The Kybalion, Ch. 8",
+    "author_slug": "three-initiates",
+    "tradition_id": 2,
+    "themes": "[\"gender\",\"creation\",\"unity\"]",
+    "tier": "premium",
+    "quality_score": 0.90
+  }
+]

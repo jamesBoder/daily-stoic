@@ -1,7 +1,8 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, useState, useEffect, useRef, ReactNode } from "react";
 import { User, LoginCredentials, SignupCredentials } from "../types/user";
 import { authService } from "../services/api/authService";
 import { queryClient } from "../lib/queryClient";
+import { showToast } from "../utils/toast";
 
 const GUEST_SESSION_KEY = "is_guest";
 
@@ -39,6 +40,8 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const userRef = useRef<User | null>(null);
+  userRef.current = user;
 
   // Check if user is authenticated on mount
   useEffect(() => {
@@ -69,6 +72,35 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     };
 
     initAuth();
+  }, []);
+
+  // Revalidate session when the user returns to the tab after being away
+  useEffect(() => {
+    const handleVisibilityChange = async () => {
+      if (document.visibilityState !== "visible") return;
+      const currentUser = userRef.current;
+      if (!currentUser || currentUser.is_guest) return;
+
+      if (!authService.isAuthenticated()) {
+        // Token expired while away — log out and notify
+        await authService.logout();
+        setUser(null);
+        queryClient.clear();
+        showToast.error("Your session has expired. Please sign in again.", "session-expired");
+        return;
+      }
+
+      // Token still valid — silently refresh user data in background
+      try {
+        const refreshed = await authService.getCurrentUser(true);
+        setUser(refreshed);
+      } catch {
+        // 401 will be caught by the axios interceptor which handles logout
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, []);
 
   const loginAsGuest = () => {

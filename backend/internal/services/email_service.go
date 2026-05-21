@@ -9,6 +9,13 @@ import (
 	"github.com/resend/resend-go/v2"
 )
 
+// EmailSender is the interface used by handlers that need to send email.
+// The concrete EmailService satisfies this interface; tests use a no-op stub.
+type EmailSender interface {
+	SendVerificationEmail(toEmail, username, token string) error
+	SendPasswordResetEmail(toEmail, username, token string) error
+}
+
 // EmailService handles sending transactional emails via Resend
 type EmailService struct {
 	client      *resend.Client

@@ -28,7 +28,7 @@ export const PricingPage = () => {
       <p className="font-display text-[10px] uppercase tracking-[0.2em] text-accent mb-2">
         Practitioner
       </p>
-      <h1 className="font-display text-3xl text-primary-900 mb-3">
+      <h1 className="font-display text-3xl text-primary-900 mb-3 title-glow-hover">
         Ancient Wisdom, Unlocked
       </h1>
       <p className="font-sans text-sm text-primary-500 leading-relaxed mb-8">
@@ -97,7 +97,7 @@ export const PricingPage = () => {
               <div className="space-y-2">
                 <Link
                   to="/auth/register"
-                  className="block w-full font-display text-sm tracking-wider uppercase bg-accent text-white rounded-stone px-6 py-3 hover:bg-accent-dark transition-colors"
+                  className="block w-full font-display text-sm tracking-wider uppercase bg-accent text-accent-text rounded-stone px-6 py-3 hover:bg-accent-dark transition-colors"
                 >
                   Create account to unlock
                 </Link>
@@ -109,7 +109,7 @@ export const PricingPage = () => {
               <button
                 onClick={handleUpgrade}
                 disabled={loading}
-                className="w-full font-display text-sm tracking-wider uppercase bg-accent text-white rounded-stone px-6 py-3 hover:bg-accent-dark transition-colors disabled:opacity-60"
+                className="w-full font-display text-sm tracking-wider uppercase bg-accent text-accent-text rounded-stone px-6 py-3 hover:bg-accent-dark transition-colors disabled:opacity-60"
               >
                 {loading ? 'Redirecting…' : 'Unlock Wisdom — $14.99'}
               </button>

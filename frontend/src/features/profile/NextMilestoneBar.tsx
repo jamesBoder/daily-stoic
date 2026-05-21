@@ -72,7 +72,7 @@ const NextMilestoneBar: React.FC<NextMilestoneBarProps> = ({ currentStreak }) =>
           className="h-full rounded-full"
           style={{
             width: `${barWidth}%`,
-            background: 'linear-gradient(90deg, #8b7355, #c4a882)',
+            background: 'var(--gradient-progress)',
             transition: 'width 1s ease-out',
             willChange: 'width',
           }}

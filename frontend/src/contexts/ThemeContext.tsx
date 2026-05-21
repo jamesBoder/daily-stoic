@@ -26,11 +26,13 @@ interface ThemeProviderProps {
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
-  // Load theme preference from localStorage on mount
+  // Load theme preference from localStorage on mount; fall back to OS preference
   useEffect(() => {
     const storedTheme = localStorage.getItem("isDarkMode");
-    if (storedTheme) {
+    if (storedTheme !== null) {
       setIsDarkMode(JSON.parse(storedTheme));
+    } else {
+      setIsDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
     }
   }, []);
 
@@ -45,11 +47,15 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   // Toggle theme and save preference to localStorage
   const toggleTheme = () => {
+    document.documentElement.classList.add('theme-transitioning');
     setIsDarkMode((prevMode) => {
       const newMode = !prevMode;
       localStorage.setItem("isDarkMode", JSON.stringify(newMode));
       return newMode;
     });
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-transitioning');
+    }, 500);
   };
 
   const theme = isDarkMode ? 'dark' : 'light';

@@ -15,6 +15,7 @@ import (
 	"github.com/jamesBoder/daily-stoic/internal/config"
 	"github.com/jamesBoder/daily-stoic/internal/database"
 	"github.com/jamesBoder/daily-stoic/internal/handlers"
+	"github.com/jamesBoder/daily-stoic/internal/jobs"
 	"github.com/jamesBoder/daily-stoic/internal/middleware"
 	"github.com/jamesBoder/daily-stoic/internal/repository"
 	"github.com/jamesBoder/daily-stoic/internal/routes"
@@ -45,7 +46,39 @@ func main() {
 		log.Printf("Warning: seeding failed: %v", err)
 	}
 
-	// 5. Repositories
+	// 5. Upsert dev account with lifetime access (idempotent, local only)
+	if err := seeds.SeedDevUser(db); err != nil {
+		log.Printf("Warning: dev user seed failed: %v", err)
+	}
+
+	// 6. Seed premium Hermetic + Neoplatonic content (idempotent)
+	if err := seeds.SeedPremiumContent(db); err != nil {
+		log.Printf("Warning: premium content seed failed: %v", err)
+	}
+
+	// 7. Seed expansion traditions: Buddhism, Taoism, Vedanta, Existentialism, Kemetic Wisdom (idempotent)
+	if err := seeds.SeedNewTraditions(db); err != nil {
+		log.Printf("Warning: new traditions seed failed: %v", err)
+	}
+
+	// 8. Patch author bios and quote commentary/practice prompts (idempotent)
+	if err := seeds.UpdateAuthorBios(db); err != nil {
+		log.Printf("Warning: author bio update failed: %v", err)
+	}
+	if err := seeds.UpdateQuoteContent(db); err != nil {
+		log.Printf("Warning: quote content update failed: %v", err)
+	}
+
+	// 9. Seed reading plans (idempotent)
+	if err := seeds.SeedReadingPlans(db); err != nil {
+		log.Printf("Warning: reading plan seed failed: %v", err)
+	}
+
+	// 10. Seed Confluence puzzles (idempotent)
+	seeds.SeedConfluencePuzzles(db)
+
+	// 11. Repositories
+	confluenceRepo      := repository.NewConfluenceRepository(db)
 	userRepo            := repository.NewUserRepository(db)
 	quoteRepo           := repository.NewQuoteRepository(db)
 	authorRepo          := repository.NewAuthorRepository(db)
@@ -56,6 +89,9 @@ func main() {
 	streakRepo          := repository.NewStreakRepository(db)
 	passwordHistoryRepo := repository.NewPasswordHistoryRepository(db)
 	subscriptionRepo    := repository.NewSubscriptionRepository(db)
+	readingPlanRepo     := repository.NewReadingPlanRepository(db)
+	weekRepo            := repository.NewWeekRepository(db)
+	aiUsageRepo         := repository.NewAIUsageRepository(db)
 
 	// 5. Services
 	tokenSvc      := services.NewTokenService(cfg)
@@ -72,6 +108,7 @@ func main() {
 	_ = services.NewPhilosophyAPIService(cfg.PhilosophyAPIBaseURL, cfg.PhilosophyAPIKey)
 
 	stripeSvc := services.NewStripeService(cfg, subscriptionRepo)
+	aiSvc     := services.NewAiService(cfg.AnthropicAPIKey, quoteRepo)
 
 	// OAuth service
 	oauthCfg    := config.GoogleOAuthConfig()
@@ -83,7 +120,7 @@ func main() {
 	// 7. Handlers
 	authHandler     := handlers.NewAuthHandler(userRepo, tokenSvc, emailValidSvc, emailSvc, passwordHistoryRepo)
 	oauthHandler    := handlers.NewOAuthHandler(oauthSvc)
-	quoteHandler    := handlers.NewQuoteHandler(quoteRepo, authorRepo, traditionRepo, dailyQuoteSvc, streakSvc)
+	quoteHandler    := handlers.NewQuoteHandler(quoteRepo, authorRepo, traditionRepo, weekRepo, dailyQuoteSvc, streakSvc)
 	favoriteHandler := handlers.NewFavoriteHandler(favoriteSvc)
 	historyHandler  := handlers.NewHistoryHandler(historySvc)
 	commentHandler  := handlers.NewCommentHandler(commentSvc)
@@ -93,7 +130,15 @@ func main() {
 		emailSvc, emailValidSvc, streakSvc, validate,
 	)
 	settingsHandler     := handlers.NewSettingsHandler(settingsSvc)
+	onboardingHandler   := handlers.NewOnboardingHandler(settingsSvc)
 	subscriptionHandler := handlers.NewSubscriptionHandler(subscriptionRepo, stripeSvc, cfg)
+	readingPlanHandler  := handlers.NewReadingPlanHandler(readingPlanRepo)
+	aiHandler           := handlers.NewAiHandler(aiSvc, aiUsageRepo, quoteRepo, authorRepo)
+	confluenceSvc      := services.NewConfluenceService(confluenceRepo, nil)
+	confluenceHandler  := handlers.NewConfluenceHandler(confluenceSvc)
+
+	// Start weekly theme scheduler (runs immediately + every 6h)
+	jobs.StartWeeklyThemeScheduler(db, weekRepo, quoteRepo)
 
 	_ = validate // used by profileHandler
 
@@ -116,8 +161,8 @@ func main() {
 	})
 
 	routes.SetupRoutes(r, authHandler, oauthHandler, quoteHandler, favoriteHandler,
-		historyHandler, commentHandler, profileHandler, settingsHandler,
-		subscriptionHandler, tokenSvc, subscriptionRepo)
+		historyHandler, commentHandler, profileHandler, settingsHandler, onboardingHandler,
+		subscriptionHandler, readingPlanHandler, aiHandler, confluenceHandler, tokenSvc, subscriptionRepo)
 
 	// 9. Start server with graceful shutdown
 	port := cfg.Port

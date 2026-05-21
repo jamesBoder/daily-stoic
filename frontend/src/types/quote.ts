@@ -5,8 +5,11 @@ export interface Author {
   slug: string
   born?: string
   died?: string
+  nationality?: string
   bio?: string
   image_url?: string
+  tradition_id?: number
+  quotes?: Quote[]
 }
 
 export interface Tradition {

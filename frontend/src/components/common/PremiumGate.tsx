@@ -3,7 +3,7 @@ import { useSubscription } from '../../contexts/SubscriptionContext'
 import { UpgradeModal } from '../../features/subscription/UpgradeModal'
 
 interface Props {
-  children: ReactNode
+  children?: ReactNode
   /** inline=true renders a compact lock badge instead of a full overlay */
   inline?: boolean
 }
@@ -21,8 +21,8 @@ export const PremiumGate = ({ children, inline = false }: Props) => {
           onClick={() => setModalOpen(true)}
           className="inline-flex items-center gap-1 font-sans text-xs text-accent border border-accent/30 rounded-full px-2.5 py-1 hover:bg-accent/10 transition-colors"
         >
-          <span>✦</span>
-          <span>Practitioner</span>
+          <span>🔒</span>
+          <span>Unlock</span>
         </button>
         {modalOpen && <UpgradeModal onClose={() => setModalOpen(false)} />}
       </>
@@ -45,7 +45,7 @@ export const PremiumGate = ({ children, inline = false }: Props) => {
           </p>
           <button
             onClick={() => setModalOpen(true)}
-            className="font-display text-xs tracking-wider uppercase bg-accent text-white rounded-stone px-5 py-2 hover:bg-accent-dark transition-colors"
+            className="font-display text-xs tracking-wider uppercase bg-accent text-accent-text rounded-stone px-5 py-2 hover:bg-accent-dark transition-colors"
           >
             Unlock Wisdom
           </button>

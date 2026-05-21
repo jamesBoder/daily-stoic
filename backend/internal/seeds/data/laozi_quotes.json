@@ -1,0 +1,130 @@
+[
+  {
+    "text": "Knowing others is wisdom, knowing yourself is enlightenment.",
+    "source": "Tao Te Ching, chapter 33 (trans. Stephen Mitchell)",
+    "author_slug": "laozi",
+    "tradition_id": 12,
+    "themes": "[\"self-knowledge\",\"wisdom\",\"enlightenment\",\"knowing\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "Chapter 33 of the Tao Te Ching distinguishes between outer competence and inner mastery. To know others requires acuity — the ability to read people, understand motives, navigate the social world. This is wisdom. But to know yourself — to understand the nature of your own desires, fears, habitual reactions, and the deeper stillness underneath them — is something else entirely: it is the beginning of liberation. The Chinese word translated 'enlightenment' here is 'ming' — brightness, clarity, illumination. To see oneself clearly is to be inwardly lit.",
+    "reflection_prompt": "What do you know about yourself that most people in your life do not know? And what do you suspect about yourself that you have not yet fully acknowledged? Sit with the second question for a few minutes."
+  },
+  {
+    "text": "The journey of a thousand miles begins with one step.",
+    "source": "Tao Te Ching, chapter 64 (trans. Stephen Mitchell)",
+    "author_slug": "laozi",
+    "tradition_id": 12,
+    "themes": "[\"beginning\",\"action\",\"journey\",\"patience\"]",
+    "tier": "free",
+    "quality_score": 0.98,
+    "context_full": "Chapter 64 is about the wisdom of beginning — acting before things become difficult, tending before things deteriorate, starting before the task feels overwhelming. The famous final line contains this: the largest transformation is made up of the smallest steps, and each of those steps is taken in the present moment. The failure to begin is often more painful than the difficulty of the journey. This is the Taoist understanding of wu wei applied to action: move with things at the moment of ease rather than struggle against them at the moment of crisis.",
+    "reflection_prompt": "What is the one step — the single first action — of a journey you have been postponing? Not planning the whole route, not preparing completely — just identifying and taking the first step. What is it?"
+  },
+  {
+    "text": "Nature does not hurry, yet everything is accomplished.",
+    "source": "Attributed to Laozi; cf. Tao Te Ching chapters 17, 37",
+    "author_slug": "laozi",
+    "tradition_id": 12,
+    "themes": "[\"nature\",\"wu-wei\",\"patience\",\"trust\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "This is perhaps the clearest expression of wu wei — non-striving, effortless action in harmony with the natural flow of things. A river does not force its way to the sea; a seed does not strain to become a tree; spring does not hurry summer. Everything in nature accomplishes what it accomplishes through what Laozi calls ziran — self-so-ness, naturalness. The teaching for human life is not laziness but the release of anxious, effortful forcing in favor of action that is attuned, responsive, and timed correctly.",
+    "reflection_prompt": "Where in your life are you forcing — pushing, straining, demanding results on a schedule that the situation itself hasn't endorsed? What would it mean to align your pace with the natural unfolding of that situation rather than imposing your timeline on it?"
+  },
+  {
+    "text": "When I let go of what I am, I become what I might be.",
+    "source": "Tao Te Ching, chapter 15 (paraphrase, widely attributed)",
+    "author_slug": "laozi",
+    "tradition_id": 12,
+    "themes": "[\"letting-go\",\"transformation\",\"identity\",\"possibility\"]",
+    "tier": "free",
+    "quality_score": 0.96,
+    "context_full": "Chapter 15 describes the ancient masters as people who were porous, provisional, open — like a valley, like muddy water that has not yet cleared. Clinging to a fixed identity — 'I am this kind of person, I do things this way, this is what I believe' — is the primary obstacle to growth. The Taoist sage holds themselves loosely, not from lack of character but from recognition that character is a living process, not a fixed object. What we are is not what we might become; the latter requires releasing the grip on the former.",
+    "reflection_prompt": "What definition of yourself are you holding most tightly right now? What would become possible if you held it a little more loosely — not abandoning it, but releasing the grip enough to see what else might want to emerge?"
+  },
+  {
+    "text": "Simplicity, patience, compassion. These three are your greatest treasures.",
+    "source": "Tao Te Ching, chapter 67 (trans. Stephen Mitchell)",
+    "author_slug": "laozi",
+    "tradition_id": 12,
+    "themes": "[\"simplicity\",\"patience\",\"compassion\",\"virtue\"]",
+    "tier": "free",
+    "quality_score": 0.98,
+    "context_full": "Chapter 67 presents what Laozi calls his 'three treasures' — the qualities that flow naturally from alignment with the Tao. Simplicity (jian) means not grasping, not complicating, not accumulating unnecessarily. Patience (jian again in a different sense — perseverance, frugality) means living within natural limits and not forcing. Compassion (ci) means treating all things with the care one gives to one's own children. Each of these, Laozi says, leads directly to courage, effectiveness, and leadership — they are not weak but the source of genuine power.",
+    "reflection_prompt": "Which of these three — simplicity, patience, compassion — are you most lacking right now? And in which area of your life is that lack most costly? What would one concrete change in service of that quality look like?"
+  },
+  {
+    "text": "The Tao that can be named is not the eternal Tao.",
+    "source": "Tao Te Ching, chapter 1 (trans. D.C. Lau)",
+    "author_slug": "laozi",
+    "tradition_id": 12,
+    "themes": "[\"tao\",\"ineffability\",\"mystery\",\"knowledge\"]",
+    "tier": "free",
+    "quality_score": 0.99,
+    "context_full": "The Tao Te Ching opens by undermining itself: whatever it is about to teach, 'it' cannot be captured in language. The Tao is the source, ground, and substance of all things — including the capacity to speak about it. Every name, every concept, is a finite pointing at an infinite. This is not mystical obscurantism but a precise epistemological claim: the deepest reality can be approached, aligned with, even lived from — but not fully grasped by the conceptual mind. The sage acts from the nameless rather than from concept.",
+    "reflection_prompt": "Is there an aspect of your life — a decision, a relationship, an inner sense of direction — that you know but cannot yet name? Can you sit with that knowing without immediately forcing it into words or a plan? What does it tell you when you listen to it quietly?"
+  },
+  {
+    "text": "A good traveler has no fixed plans and is not intent on arriving.",
+    "source": "Tao Te Ching, chapter 27 (trans. Stephen Mitchell)",
+    "author_slug": "laozi",
+    "tradition_id": 12,
+    "themes": "[\"journey\",\"non-attachment\",\"presence\",\"wu-wei\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "Chapter 27 is about skillfulness — the quality of action that leaves no trace because it is perfectly fitted to its moment. The good traveler is responsive, not driven. Fixed plans and intent on arriving both locate the mind in the future rather than in the terrain being navigated now. Taoist skillfulness means holding the destination lightly enough to actually notice what the present moment requires — to respond to what is, not to what was planned for.",
+    "reflection_prompt": "In your most important current project or relationship, how tightly are you holding your plans? Is there anything the present situation is trying to tell you that your fixed intent is preventing you from hearing?"
+  },
+  {
+    "text": "When you realize there is nothing lacking, the whole world belongs to you.",
+    "source": "Tao Te Ching, chapter 44 (trans. Stephen Mitchell)",
+    "author_slug": "laozi",
+    "tradition_id": 12,
+    "themes": "[\"contentment\",\"sufficiency\",\"non-attachment\",\"abundance\"]",
+    "tier": "free",
+    "quality_score": 0.97,
+    "context_full": "Chapter 44 asks directly: which matters more — your reputation or your self? your possessions or your peace? The answer Laozi gives is not asceticism but the end of compulsive wanting. The sense of lacking is the problem — not any particular condition. When that sense dissolves, what remains is the recognition that what is present is sufficient. This is the Taoist version of sufficiency: not having everything, but needing nothing beyond what is.",
+    "reflection_prompt": "Make a list of three things you currently have — concrete things, present in your life right now — that you would deeply miss if they were taken away. Then spend a few minutes with genuine appreciation for the fact that they are here, now."
+  },
+  {
+    "text": "Act without expectation.",
+    "source": "Tao Te Ching, chapter 2 (trans. Stephen Mitchell)",
+    "author_slug": "laozi",
+    "tradition_id": 12,
+    "themes": "[\"action\",\"non-attachment\",\"wu-wei\",\"outcome\"]",
+    "tier": "free",
+    "quality_score": 0.95,
+    "context_full": "The second chapter establishes the Taoist understanding of wu wei — not inaction but action free from attachment to results. The sage acts fully, completely, without holding back — but does not cling to outcomes. This is not indifference to consequences but the recognition that the quality of action is what is in your control; the outcome depends on a thousand factors you do not govern. Expectation is a form of suffering — the gap between what you anticipated and what arrived.",
+    "reflection_prompt": "Think of an action you need to take — a difficult conversation, a creative project, a decision. Can you identify the specific expectation attached to it that makes it feel risky or burdensome? What would the action look like if you released that expectation and simply did the thing?"
+  },
+  {
+    "text": "The sage does not compete, and therefore no one can compete with him.",
+    "source": "Tao Te Ching, chapter 8 (trans. Stephen Mitchell)",
+    "author_slug": "laozi",
+    "tradition_id": 12,
+    "themes": "[\"non-competition\",\"wu-wei\",\"effectiveness\",\"water\"]",
+    "tier": "free",
+    "quality_score": 0.96
+  },
+  {
+    "text": "To the mind that is still, the whole universe surrenders.",
+    "source": "Attributed to Laozi; cf. Tao Te Ching chapter 16",
+    "author_slug": "laozi",
+    "tradition_id": 12,
+    "themes": "[\"stillness\",\"meditation\",\"mind\",\"surrender\"]",
+    "tier": "free",
+    "quality_score": 0.94
+  },
+  {
+    "text": "Life is a series of natural and spontaneous changes. Don't resist them; that only creates sorrow.",
+    "source": "Attributed to Laozi; cf. Tao Te Ching chapters 16, 40",
+    "author_slug": "laozi",
+    "tradition_id": 12,
+    "themes": "[\"change\",\"impermanence\",\"acceptance\",\"flow\"]",
+    "tier": "free",
+    "quality_score": 0.92,
+    "context_full": "Chapter 16 returns to the great natural cycle: all things flourish and return to the root. The image Laozi uses is plants in summer returning to the root in winter. This is the nature of all things. The suffering of resistance is real — not because resistance is immoral but because it is futile, and the energy spent fighting what is makes it harder to move skillfully with what comes next. The Taoist path is not passive; it is the art of moving with change rather than against it.",
+    "reflection_prompt": "What change — in your circumstances, relationships, or body — are you currently resisting most? What would it mean to stop resisting it and instead ask: given that this is so, what is the wisest next move?"
+  }
+]

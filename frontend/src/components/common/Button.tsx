@@ -21,10 +21,11 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variantStyles = {
     primary:
-      "bg-stoic-stone-600 dark:bg-stoic-stone-500 text-stoic-surface-base hover:bg-stoic-stone-700 dark:hover:bg-stoic-stone-600 shadow-paper hover:shadow-paper-lg",
+      "bg-accent text-fg-inverse hover:bg-accent-dark shadow-sm hover:shadow-md",
     secondary:
-      "bg-stoic-surface-raised dark:bg-stoic-dark-surface-raised text-stoic-text-primary dark:text-stoic-dark-text-primary hover:bg-stoic-surface-overlay dark:hover:bg-stoic-dark-surface-overlay border border-stoic-stone-200 dark:border-stoic-stone-700",
-    danger: "bg-stoic-accent-ember text-white hover:bg-red-700 dark:hover:bg-red-500 shadow-paper hover:shadow-paper-lg",
+      "bg-surface text-fg hover:bg-surface-hi border border-border",
+    danger:
+      "bg-danger text-fg-inverse hover:brightness-90 shadow-sm hover:shadow-md",
   };
 
   const sizeClasses = {

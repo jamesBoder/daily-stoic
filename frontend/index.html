@@ -4,24 +4,38 @@
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
-    <meta name="description" content="A daily Stoic quote for reflection and practice." />
-    <meta name="theme-color" content="#8b7355" />
+    <meta name="description" content="Daily wisdom from ten philosophical traditions — Stoicism, African philosophy, Hermeticism, and more. One beautifully illustrated card every morning." />
+    <meta name="theme-color" content="#8b7355" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#d4a853" media="(prefers-color-scheme: dark)">
 
     <!-- Apple -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Daily Stoic" />
+    <meta name="apple-mobile-web-app-title" content="DailyXam" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Daily Stoic — Ancient Wisdom, Every Morning" />
-    <meta property="og:description" content="A daily Stoic quote for reflection and practice." />
+    <meta property="og:title" content="DailyXam — Ancient Wisdom, Every Morning" />
+    <meta property="og:description" content="Daily wisdom from ten philosophical traditions — Stoicism, African philosophy, Hermeticism, and more. One beautifully illustrated card every morning." />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Daily Stoic" />
+    <meta property="og:site_name" content="DailyXam" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Daily Stoic — Ancient Wisdom, Every Morning" />
-    <meta name="twitter:description" content="A daily Stoic quote for reflection and practice." />
+    <meta name="twitter:title" content="DailyXam — Ancient Wisdom, Every Morning" />
+    <meta name="twitter:description" content="Daily wisdom from ten philosophical traditions — Stoicism, African philosophy, Hermeticism, and more. One beautifully illustrated card every morning." />
+
+    <!-- FOUC prevention: apply dark class before first paint -->
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('isDarkMode');
+          var dark = stored !== null
+            ? JSON.parse(stored)
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (_) {}
+      })();
+    </script>
 
     <!-- Google Fonts — loaded async to avoid render-blocking -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +44,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 
-    <title>Daily Stoic</title>
+    <title>DailyXam</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

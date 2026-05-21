@@ -3,13 +3,17 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Button } from '../../components/common/Button'
 import { commentService } from '../../services/api/comment'
+import { formatDate } from '../../utils/date'
+import { useAuth } from '../../hooks/useAuth'
+import { showToast } from '../../utils/toast'
 import type { Comment } from '../../types/comment'
 
 interface Props {
   quoteId: number
+  onAuthRequired?: () => void
 }
 
-export const CommentSection = ({ quoteId }: Props) => {
+export const CommentSection = ({ quoteId, onAuthRequired }: Props) => {
   const [comment, setComment] = useState<Comment | null>(null)
   const [commentText, setCommentText] = useState('')
   const [isEditing, setIsEditing] = useState(false)
@@ -18,8 +22,10 @@ export const CommentSection = ({ quoteId }: Props) => {
   const [isVisible, setIsVisible] = useState(false)
   const [confirmingDelete, setConfirmingDelete] = useState(false)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const { isAuthenticated } = useAuth()
 
   const loadComment = useCallback(async () => {
+    if (!isAuthenticated) return
     try {
       const existing = await commentService.getCommentForQuote(quoteId)
       if (existing) {
@@ -32,16 +38,21 @@ export const CommentSection = ({ quoteId }: Props) => {
     } catch {
       setComment(null)
       setCommentText('')
+      showToast.error('Could not load your meditation. Please try again.')
     }
-  }, [quoteId])
+  }, [quoteId, isAuthenticated])
 
   useEffect(() => {
     setComment(null)
     setCommentText('')
     setIsEditing(false)
     setError('')
-    loadComment()
-  }, [loadComment])
+    if (isAuthenticated) {
+      loadComment()
+    } else {
+      setIsEditing(true)
+    }
+  }, [loadComment, isAuthenticated])
 
   const handleSave = async () => {
     if (!commentText.trim()) {
@@ -50,6 +61,10 @@ export const CommentSection = ({ quoteId }: Props) => {
     }
     if (commentText.length > 1000) {
       setError('Meditation must be 1000 characters or fewer.')
+      return
+    }
+    if (!isAuthenticated) {
+      onAuthRequired?.()
       return
     }
     setIsSaving(true)
@@ -121,10 +136,10 @@ export const CommentSection = ({ quoteId }: Props) => {
       </div>
 
       <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
-        isVisible ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+        isVisible ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
       }`}>
         {error && (
-          <div className="mb-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm font-sans">
+          <div className="mb-4 bg-danger-bg border border-[var(--color-danger)] text-danger px-4 py-3 rounded-lg text-sm font-sans">
             {error}
           </div>
         )}
@@ -159,7 +174,7 @@ export const CommentSection = ({ quoteId }: Props) => {
                   <button
                     onClick={handleDelete}
                     disabled={isSaving}
-                    className="font-sans text-sm text-red-600 hover:text-red-700 font-medium disabled:opacity-50"
+                    className="font-sans text-sm text-danger hover:text-danger font-medium disabled:opacity-50"
                   >
                     Confirm
                   </button>
@@ -173,14 +188,14 @@ export const CommentSection = ({ quoteId }: Props) => {
               ) : (
                 <button
                   onClick={() => setConfirmingDelete(true)}
-                  className="font-sans text-sm text-red-500 hover:text-red-700 transition-colors"
+                  className="font-sans text-sm text-danger hover:text-danger transition-colors"
                 >
                   Delete
                 </button>
               )}
             </div>
             <p className="font-sans text-xs text-primary-400 mt-2">
-              Last updated {new Date(comment.updated_at).toLocaleDateString()}
+              Last updated {formatDate(comment.updated_at)}
             </p>
           </div>
         )}
@@ -192,7 +207,7 @@ export const CommentSection = ({ quoteId }: Props) => {
               value={commentText}
               onChange={e => setCommentText(e.target.value)}
               placeholder="Write your meditation on this quote..."
-              className="w-full px-4 py-3 font-sans text-sm text-primary-800 bg-surface-elevated border border-primary-200 rounded-card focus:ring-2 focus:ring-accent/40 focus:border-accent resize-none outline-none"
+              className="w-full px-4 py-3 font-sans text-[16px] md:text-sm text-primary-800 bg-surface-elevated border border-primary-200 rounded-card focus:ring-2 focus:ring-accent/40 focus:border-accent resize-none outline-none min-h-[96px] max-h-[200px] overflow-y-auto"
               rows={4}
               maxLength={1000}
               autoFocus
