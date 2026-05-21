@@ -8,11 +8,11 @@ import (
 )
 
 type StreakService struct {
-	streakRepo  *repository.StreakRepository
+	streakRepo  repository.StreakRepository
 	historyRepo repository.HistoryRepository
 }
 
-func NewStreakService(streakRepo *repository.StreakRepository, historyRepo repository.HistoryRepository) *StreakService {
+func NewStreakService(streakRepo repository.StreakRepository, historyRepo repository.HistoryRepository) *StreakService {
 	return &StreakService{
 		streakRepo:  streakRepo,
 		historyRepo: historyRepo,

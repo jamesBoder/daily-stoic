@@ -24,8 +24,8 @@ type ProfileHandler struct {
 	historyRepo         repository.HistoryRepository
 	commentRepo         *repository.CommentRepository
 	passwordHistoryRepo repository.PasswordHistoryRepository
-	streakRepo          *repository.StreakRepository
-	emailService        *services.EmailService
+	streakRepo          repository.StreakRepository
+	emailService        services.EmailSender
 	emailValidator      *services.EmailValidationService
 	streakSvc           *services.StreakService
 	validator           *validator.Validate
@@ -39,8 +39,8 @@ func NewProfileHandler(
 	historyRepo repository.HistoryRepository,
 	commentRepo *repository.CommentRepository,
 	passwordHistoryRepo repository.PasswordHistoryRepository,
-	streakRepo *repository.StreakRepository,
-	emailService *services.EmailService,
+	streakRepo repository.StreakRepository,
+	emailService services.EmailSender,
 	emailValidator *services.EmailValidationService,
 	streakSvc *services.StreakService,
 	validator *validator.Validate,

@@ -7,15 +7,22 @@ import (
 	"gorm.io/gorm"
 )
 
-type StreakRepository struct {
+type StreakRepository interface {
+	GetByUserID(userID uint) (*models.UserStreak, error)
+	Upsert(streak *models.UserStreak) error
+	GetAchievements(userID uint) ([]models.Achievement, error)
+	AwardAchievement(userID uint, badgeSlug string) error
+}
+
+type streakRepository struct {
 	db *gorm.DB
 }
 
-func NewStreakRepository(db *gorm.DB) *StreakRepository {
-	return &StreakRepository{db: db}
+func NewStreakRepository(db *gorm.DB) StreakRepository {
+	return &streakRepository{db: db}
 }
 
-func (r *StreakRepository) GetByUserID(userID uint) (*models.UserStreak, error) {
+func (r *streakRepository) GetByUserID(userID uint) (*models.UserStreak, error) {
 	var streak models.UserStreak
 	err := r.db.Where("user_id = ?", userID).First(&streak).Error
 	if err != nil {
@@ -24,11 +31,11 @@ func (r *StreakRepository) GetByUserID(userID uint) (*models.UserStreak, error) 
 	return &streak, nil
 }
 
-func (r *StreakRepository) Upsert(streak *models.UserStreak) error {
+func (r *streakRepository) Upsert(streak *models.UserStreak) error {
 	return r.db.Save(streak).Error
 }
 
-func (r *StreakRepository) GetAchievements(userID uint) ([]models.Achievement, error) {
+func (r *streakRepository) GetAchievements(userID uint) ([]models.Achievement, error) {
 	var achievements []models.Achievement
 	err := r.db.Where("user_id = ?", userID).Order("earned_at DESC").Find(&achievements).Error
 	return achievements, err
@@ -36,7 +43,7 @@ func (r *StreakRepository) GetAchievements(userID uint) ([]models.Achievement, e
 
 // AwardAchievement creates a new achievement record only if the badge hasn't been earned yet.
 // Idempotent — safe to call multiple times.
-func (r *StreakRepository) AwardAchievement(userID uint, badgeSlug string) error {
+func (r *streakRepository) AwardAchievement(userID uint, badgeSlug string) error {
 	var count int64
 	r.db.Model(&models.Achievement{}).
 		Where("user_id = ? AND badge_slug = ?", userID, badgeSlug).
