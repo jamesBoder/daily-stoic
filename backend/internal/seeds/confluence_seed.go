@@ -103,8 +103,8 @@ func SeedConfluencePuzzles(db *gorm.DB) {
 					RarityTier:  cs.RarityTier,
 				}
 				// rarity_tier intentionally excluded — first-seeded value is canonical;
-			// re-seeding must not downgrade a concept that already exists at a higher tier.
-			db.Clauses(clause.OnConflict{
+				// re-seeding must not downgrade a concept that already exists at a higher tier.
+				db.Clauses(clause.OnConflict{
 					Columns:   []clause.Column{{Name: "name"}},
 					DoUpdates: clause.AssignmentColumns([]string{"short_phrase"}),
 				}).Create(&concept)

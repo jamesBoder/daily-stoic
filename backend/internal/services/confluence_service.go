@@ -26,10 +26,10 @@ func NewConfluenceService(repo *repository.ConfluenceRepository, library Library
 	return &ConfluenceService{repo: repo, library: library}
 }
 
-var ErrPuzzleNotFound   = errors.New("no puzzle for this date")
-var ErrSessionComplete  = errors.New("session already complete")
-var ErrDuplicateCards   = errors.New("duplicate card ids in guess")
-var ErrSessionNotFound  = errors.New("no session for this puzzle")
+var ErrPuzzleNotFound = errors.New("no puzzle for this date")
+var ErrSessionComplete = errors.New("session already complete")
+var ErrDuplicateCards = errors.New("duplicate card ids in guess")
+var ErrSessionNotFound = errors.New("no session for this puzzle")
 
 // Note: no ErrAttemptsExhausted — the service returns a normal GuessResult on the
 // final wrong guess and marks the session "failed". Subsequent calls hit ErrSessionComplete.

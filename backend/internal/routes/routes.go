@@ -129,14 +129,14 @@ func SetupRoutes(
 	{
 		confluence := games.Group("/confluence")
 		{
-			confluence.GET("/today",      confluenceHandler.GetToday)
+			confluence.GET("/today", confluenceHandler.GetToday)
 			confluence.GET("/date/:date", confluenceHandler.GetByDate)
 
 			confAuth := confluence.Group("")
 			confAuth.Use(authMW)
 			{
 				confAuth.GET("/:id/session", confluenceHandler.GetSession)
-				confAuth.POST("/:id/guess",  confluenceHandler.SubmitGuess)
+				confAuth.POST("/:id/guess", confluenceHandler.SubmitGuess)
 			}
 		}
 	}

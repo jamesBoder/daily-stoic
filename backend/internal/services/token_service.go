@@ -3,18 +3,17 @@ package services
 // TokenService handles token generation and validation
 
 import (
-	"time"
 	"fmt"
-	
-	"github.com/jamesBoder/daily-stoic/internal/config"
-	"github.com/golang-jwt/jwt/v5"
+	"time"
 
+	"github.com/golang-jwt/jwt/v5"
+	"github.com/jamesBoder/daily-stoic/internal/config"
 )
 
 // define TokenClaims struct
 type TokenClaims struct {
-	UserID    uint
-	Email	  string
+	UserID uint
+	Email  string
 	jwt.RegisteredClaims
 }
 
@@ -23,18 +22,16 @@ type TokenService struct {
 	config *config.Config
 }
 
-
 // create NewTokenService constructor
 func NewTokenService(cfg *config.Config) *TokenService {
 	return &TokenService{config: cfg}
 }
 
-
 // create GenerateToken method
 func (tc *TokenService) GenerateToken(userid uint, email string) (string, error) {
-	
+
 	// Set the token expiration time
-	expirationTime := time.Now().Add(168 * time.Hour) 
+	expirationTime := time.Now().Add(168 * time.Hour)
 
 	// Create the JWT claims, which includes the user ID and expiry time
 	claims := &TokenClaims{
@@ -45,7 +42,7 @@ func (tc *TokenService) GenerateToken(userid uint, email string) (string, error)
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
 		},
 	}
-	
+
 	// Declare the token with the algorithm used for signing, and the claims
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
@@ -88,8 +85,3 @@ func (tc *TokenService) RefreshToken(tokenString string) (string, error) {
 	// Create a new token for the user with a renewed expiration time
 	return tc.GenerateToken(claims.UserID, claims.Email)
 }
-
-
-
-
-

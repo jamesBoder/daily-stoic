@@ -1,12 +1,10 @@
 package utils
 
-// helper functions for pagination 
+// helper functions for pagination
 
 import (
 	"math"
-	
 )
-
 
 // init PaginationParams Struct
 type PaginationParams struct {
@@ -16,24 +14,24 @@ type PaginationParams struct {
 
 // PaginationMeta holds pagination metadata
 type PaginationMeta struct {
-    Page       int   `json:"page"`
-    PageSize   int   `json:"page_size"`
-    Total      int64 `json:"total"`
-    TotalPages int   `json:"total_pages"`
+	Page       int   `json:"page"`
+	PageSize   int   `json:"page_size"`
+	Total      int64 `json:"total"`
+	TotalPages int   `json:"total_pages"`
 }
 
 // NewPaginationParams creates a new PaginationParams with default values
 func NewPaginationParams(page, pageSize int) PaginationParams {
-    if page < 1 {
-        page = 1
-    }
-    if pageSize < 1 || pageSize > 100 {
-        pageSize = 20
-    }
-    return PaginationParams{
-        Page:     page,
-        PageSize: pageSize,
-    }
+	if page < 1 {
+		page = 1
+	}
+	if pageSize < 1 || pageSize > 100 {
+		pageSize = 20
+	}
+	return PaginationParams{
+		Page:     page,
+		PageSize: pageSize,
+	}
 }
 
 // CalculatePaginationMeta calculates pagination metadata

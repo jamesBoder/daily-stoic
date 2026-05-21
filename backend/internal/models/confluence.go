@@ -22,24 +22,24 @@ type WisdomConcept struct {
 	Quote           *Quote    `gorm:"foreignKey:QuoteID" json:"quote,omitempty"`
 	RarityTier      string    `gorm:"type:varchar(20);not null;default:'common'" json:"rarity_tier"`
 	// Codex fields — the card's back-side teaching
-	CodexInTradition string `gorm:"type:text" json:"codex_in_tradition,omitempty"`
-	CodexEchoes      string `gorm:"type:text" json:"codex_echoes,omitempty"`
-	CodexQuestion    string `gorm:"type:text" json:"codex_question,omitempty"`
-	CodexPractice    string `gorm:"type:text" json:"codex_practice,omitempty"`
+	CodexInTradition string    `gorm:"type:text" json:"codex_in_tradition,omitempty"`
+	CodexEchoes      string    `gorm:"type:text" json:"codex_echoes,omitempty"`
+	CodexQuestion    string    `gorm:"type:text" json:"codex_question,omitempty"`
+	CodexPractice    string    `gorm:"type:text" json:"codex_practice,omitempty"`
 	CreatedAt        time.Time `json:"created_at"`
 	UpdatedAt        time.Time `json:"updated_at"`
 }
 
 type ConfluencePuzzle struct {
-	ID            uint             `gorm:"primaryKey" json:"id"`
-	Date          time.Time        `gorm:"type:date;not null;uniqueIndex" json:"date"`
-	Title         string           `gorm:"type:varchar(120);not null" json:"title"`
-	Archetype     string           `gorm:"type:varchar(30);not null;default:'convergence'" json:"archetype"`
-	IsMajorArcana bool             `gorm:"not null;default:false" json:"is_major_arcana"`
-	MajorArcanaID *int             `json:"major_arcana_id,omitempty"`
+	ID            uint              `gorm:"primaryKey" json:"id"`
+	Date          time.Time         `gorm:"type:date;not null;uniqueIndex" json:"date"`
+	Title         string            `gorm:"type:varchar(120);not null" json:"title"`
+	Archetype     string            `gorm:"type:varchar(30);not null;default:'convergence'" json:"archetype"`
+	IsMajorArcana bool              `gorm:"not null;default:false" json:"is_major_arcana"`
+	MajorArcanaID *int              `json:"major_arcana_id,omitempty"`
 	Groups        []ConfluenceGroup `gorm:"foreignKey:PuzzleID" json:"groups,omitempty"`
-	CreatedAt     time.Time        `json:"created_at"`
-	UpdatedAt     time.Time        `json:"updated_at"`
+	CreatedAt     time.Time         `json:"created_at"`
+	UpdatedAt     time.Time         `json:"updated_at"`
 }
 
 type ConfluenceGroup struct {
@@ -62,27 +62,27 @@ type ConfluenceCard struct {
 
 // ConfluenceGameSession tracks a user's play of a specific puzzle.
 type ConfluenceGameSession struct {
-	ID           uint             `gorm:"primaryKey" json:"id"`
-	UserID       uint             `gorm:"not null;index" json:"user_id"`
-	PuzzleID     uint             `gorm:"not null;index" json:"puzzle_id"`
-	Puzzle       ConfluencePuzzle `gorm:"foreignKey:PuzzleID" json:"puzzle,omitempty"`
-	Status       string           `gorm:"type:varchar(20);not null;default:'in_progress'" json:"status"` // in_progress|complete|failed
-	AttemptsUsed int              `gorm:"not null;default:0" json:"attempts_used"`
-	Attempts     GuessLog         `gorm:"type:jsonb" json:"attempts"`
-	GroupsFound  UintSlice        `gorm:"type:jsonb" json:"groups_found"` // group IDs found
-	PurpleFirstTry bool           `gorm:"not null;default:false" json:"purple_first_try"`
-	NoMistakes   bool             `gorm:"not null;default:false" json:"no_mistakes"`
-	CompletedAt  *time.Time       `json:"completed_at,omitempty"`
-	CreatedAt    time.Time        `json:"created_at"`
-	UpdatedAt    time.Time        `json:"updated_at"`
-	DeletedAt    gorm.DeletedAt   `gorm:"index" json:"-"`
+	ID             uint             `gorm:"primaryKey" json:"id"`
+	UserID         uint             `gorm:"not null;index" json:"user_id"`
+	PuzzleID       uint             `gorm:"not null;index" json:"puzzle_id"`
+	Puzzle         ConfluencePuzzle `gorm:"foreignKey:PuzzleID" json:"puzzle,omitempty"`
+	Status         string           `gorm:"type:varchar(20);not null;default:'in_progress'" json:"status"` // in_progress|complete|failed
+	AttemptsUsed   int              `gorm:"not null;default:0" json:"attempts_used"`
+	Attempts       GuessLog         `gorm:"type:jsonb" json:"attempts"`
+	GroupsFound    UintSlice        `gorm:"type:jsonb" json:"groups_found"` // group IDs found
+	PurpleFirstTry bool             `gorm:"not null;default:false" json:"purple_first_try"`
+	NoMistakes     bool             `gorm:"not null;default:false" json:"no_mistakes"`
+	CompletedAt    *time.Time       `json:"completed_at,omitempty"`
+	CreatedAt      time.Time        `json:"created_at"`
+	UpdatedAt      time.Time        `json:"updated_at"`
+	DeletedAt      gorm.DeletedAt   `gorm:"index" json:"-"`
 }
 
 // GuessLog stores the sequence of guess attempts as JSONB.
 type GuessAttempt struct {
 	CardIDs []uint `json:"card_ids"`
 	Correct bool   `json:"correct"`
-	Tier    string `json:"tier,omitempty"`    // set only when correct
+	Tier    string `json:"tier,omitempty"` // set only when correct
 	OneAway bool   `json:"one_away,omitempty"`
 }
 

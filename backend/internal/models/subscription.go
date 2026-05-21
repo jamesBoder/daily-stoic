@@ -10,10 +10,10 @@ import (
 // Lifetime-only model — no recurring subscription fields needed.
 // A canceled/refunded row stays in the DB with tier='free'.
 type Subscription struct {
-	ID               uint           `gorm:"primaryKey" json:"id"`
-	CreatedAt        time.Time      `json:"created_at"`
-	UpdatedAt        time.Time      `json:"updated_at"`
-	DeletedAt        gorm.DeletedAt `gorm:"index" json:"-"`
+	ID        uint           `gorm:"primaryKey" json:"id"`
+	CreatedAt time.Time      `json:"created_at"`
+	UpdatedAt time.Time      `json:"updated_at"`
+	DeletedAt gorm.DeletedAt `gorm:"index" json:"-"`
 
 	UserID           uint   `gorm:"not null;uniqueIndex" json:"user_id"`
 	StripeCustomerID string `gorm:"size:100" json:"stripe_customer_id,omitempty"`

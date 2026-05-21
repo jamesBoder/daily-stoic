@@ -10,12 +10,12 @@ import (
 )
 
 type readingPlanJSON struct {
-	Slug         string           `json:"slug"`
-	Title        string           `json:"title"`
-	Description  string           `json:"description"`
-	Tier         string           `json:"tier"`
+	Slug          string          `json:"slug"`
+	Title         string          `json:"title"`
+	Description   string          `json:"description"`
+	Tier          string          `json:"tier"`
 	TraditionSlug string          `json:"tradition_slug"`
-	Entries      []planEntryJSON  `json:"entries"`
+	Entries       []planEntryJSON `json:"entries"`
 }
 
 type planEntryJSON struct {

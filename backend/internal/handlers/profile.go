@@ -9,11 +9,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	"github.com/go-playground/validator/v10"
 	"github.com/jamesBoder/daily-stoic/internal/models"
 	"github.com/jamesBoder/daily-stoic/internal/password"
 	"github.com/jamesBoder/daily-stoic/internal/repository"
 	"github.com/jamesBoder/daily-stoic/internal/services"
-	"github.com/go-playground/validator/v10"
 )
 
 // ProfileHandler struct
@@ -88,10 +88,10 @@ func (h *ProfileHandler) ResendVerification(c *gin.Context) {
 	h.ResendVerificationFromProfile(c)
 }
 
-// GetProfile handler 
+// GetProfile handler
 func (h *ProfileHandler) GetProfile(c *gin.Context) {
 	// extract userID from context (set by auth middleware)
-	userID, exists := c.Get("userID") 
+	userID, exists := c.Get("userID")
 	if !exists {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
 		return
@@ -125,7 +125,7 @@ func (h *ProfileHandler) GetProfile(c *gin.Context) {
 // UpdateProfile handler
 func (h *ProfileHandler) UpdateProfile(c *gin.Context) {
 	// extract userID from context (set by auth middleware)
-	userID, exists := c.Get("userID") 
+	userID, exists := c.Get("userID")
 	if !exists {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
 		return
@@ -162,7 +162,7 @@ func (h *ProfileHandler) UpdateProfile(c *gin.Context) {
 	}
 
 	// check if user exists
-	user, err := h.userRepo.GetByID(userID.(uint)) 
+	user, err := h.userRepo.GetByID(userID.(uint))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch user"})
 		return
@@ -246,10 +246,10 @@ func (h *ProfileHandler) UpdateProfile(c *gin.Context) {
 	})
 }
 
-// GetStats handler 
+// GetStats handler
 func (h *ProfileHandler) GetStats(c *gin.Context) {
 	// extract userID from context (set by auth middleware)
-	userID, exists := c.Get("userID") 
+	userID, exists := c.Get("userID")
 	if !exists {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
 		return
@@ -258,7 +258,6 @@ func (h *ProfileHandler) GetStats(c *gin.Context) {
 	// count favorite favoriteRepo.CountByUserID
 	favCount, err := h.favoriteRepo.CountByUserID(userID.(uint))
 
-
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch favorite count"})
 		return
@@ -266,7 +265,6 @@ func (h *ProfileHandler) GetStats(c *gin.Context) {
 
 	// count history: historyRepo.CountByUserID
 	histCount, err := h.historyRepo.CountByUserID(userID.(uint))
-
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch history count"})
@@ -281,7 +279,7 @@ func (h *ProfileHandler) GetStats(c *gin.Context) {
 	}
 
 	// calculate account age: time.Since(user.CreatedAt)
-	user, err := h.userRepo.GetByID(userID.(uint)) 
+	user, err := h.userRepo.GetByID(userID.(uint))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch user"})
 		return
@@ -295,9 +293,9 @@ func (h *ProfileHandler) GetStats(c *gin.Context) {
 
 	// respond with stats
 	c.JSON(http.StatusOK, gin.H{
-		"favorite_count": favCount,
-		"history_count":  histCount,
-		"comment_count":  commentCount,
+		"favorite_count":   favCount,
+		"history_count":    histCount,
+		"comment_count":    commentCount,
 		"account_age_days": accountAge,
 	})
 }
@@ -347,7 +345,7 @@ func (h *ProfileHandler) SetPassword(c *gin.Context) {
 	// check if user already has a password
 	if user.Password != "" {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Password already set",
+			"error":   "Password already set",
 			"details": "Use the change password feature to update your existing password",
 		})
 		return
@@ -357,7 +355,7 @@ func (h *ProfileHandler) SetPassword(c *gin.Context) {
 	validPassword, err := password.ValidatePasswordStrength(req.NewPassword)
 	if !validPassword {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Password does not meet requirements",
+			"error":   "Password does not meet requirements",
 			"details": err.Error(),
 		})
 		return
@@ -431,7 +429,7 @@ func (h *ProfileHandler) UpdatePassword(c *gin.Context) {
 	// check if user is OAuth-only (no password set)
 	if user.Password == "" {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Cannot change password for OAuth-only accounts",
+			"error":   "Cannot change password for OAuth-only accounts",
 			"details": "Please set a password first or continue using Google login",
 		})
 		return
@@ -447,7 +445,7 @@ func (h *ProfileHandler) UpdatePassword(c *gin.Context) {
 	validPassword, err := password.ValidatePasswordStrength(req.NewPassword)
 	if !validPassword {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "New password does not meet requirements",
+			"error":   "New password does not meet requirements",
 			"details": err.Error(),
 		})
 		return
@@ -471,7 +469,7 @@ func (h *ProfileHandler) UpdatePassword(c *gin.Context) {
 	for _, historyEntry := range recentPasswords {
 		if password.CheckPasswordHash(req.NewPassword, historyEntry.PasswordHash) {
 			c.JSON(http.StatusBadRequest, gin.H{
-				"error": "Cannot reuse recent passwords",
+				"error":   "Cannot reuse recent passwords",
 				"details": "This password was used recently. Please choose a different password.",
 			})
 			return

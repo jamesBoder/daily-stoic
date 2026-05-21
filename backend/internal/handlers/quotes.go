@@ -5,18 +5,18 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	"github.com/jamesBoder/daily-stoic/internal/repository"
 	"github.com/jamesBoder/daily-stoic/internal/services"
-	"github.com/gin-gonic/gin"
 )
 
 type QuoteHandler struct {
-	quoteRepo      *repository.QuoteRepository
-	authorRepo     *repository.AuthorRepository
-	traditionRepo  *repository.TraditionRepository
-	weekRepo       *repository.WeekRepository
-	dailyQuoteSvc  *services.DailyQuoteService
-	streakSvc      *services.StreakService
+	quoteRepo     *repository.QuoteRepository
+	authorRepo    *repository.AuthorRepository
+	traditionRepo *repository.TraditionRepository
+	weekRepo      *repository.WeekRepository
+	dailyQuoteSvc *services.DailyQuoteService
+	streakSvc     *services.StreakService
 }
 
 func NewQuoteHandler(

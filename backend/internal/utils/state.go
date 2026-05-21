@@ -1,4 +1,4 @@
-package utils 
+package utils
 
 import (
 	"crypto/rand"
@@ -21,7 +21,7 @@ func GenerateStateToken() (string, error) {
 var stateStore = make(map[string]time.Time)
 
 // StoreState saves a token with an expiration time
-func StoreState(state string)  {
+func StoreState(state string) {
 	stateStore[state] = time.Now().Add(10 * time.Minute) // valid for 10 minutes
 }
 

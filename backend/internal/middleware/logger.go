@@ -1,9 +1,9 @@
 package middleware
 
 import (
+	"github.com/gin-gonic/gin"
 	"log"
 	"time"
-	"github.com/gin-gonic/gin"
 )
 
 // implement logger middleware to - Log every incoming request

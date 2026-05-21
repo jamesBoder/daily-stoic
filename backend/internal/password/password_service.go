@@ -1,9 +1,8 @@
 package password
 
 import (
-
-	"fmt"
 	"errors"
+	"fmt"
 
 	"golang.org/x/crypto/bcrypt"
 )
@@ -11,7 +10,7 @@ import (
 const (
 	// Define any password policy constants here
 	MinPasswordLength = 8
-	BcryptCost       = 12
+	BcryptCost        = 12
 )
 
 // password hashing function
@@ -58,6 +57,5 @@ func ValidatePasswordStrength(password string) (bool, error) {
 	}
 
 	return true, nil
-	
-}
 
+}

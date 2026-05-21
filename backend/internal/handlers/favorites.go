@@ -5,9 +5,9 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/gin-gonic/gin"
 	"github.com/jamesBoder/daily-stoic/internal/services"
 	"github.com/jamesBoder/daily-stoic/internal/utils"
-	"github.com/gin-gonic/gin"
 )
 
 type FavoriteHandler struct {

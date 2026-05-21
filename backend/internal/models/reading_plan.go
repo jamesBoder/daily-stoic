@@ -4,15 +4,15 @@ import "time"
 
 // ReadingPlan is a curated multi-day journey through a tradition or theme.
 type ReadingPlan struct {
-	ID          uint   `gorm:"primaryKey" json:"id"`
-	Slug        string `gorm:"size:100;uniqueIndex;not null" json:"slug"`
-	Title       string `gorm:"size:255;not null" json:"title"`
-	Description string `gorm:"type:text" json:"description"`
-	Tier        string `gorm:"size:20;default:'free'" json:"tier"` // "free" | "premium"
-	DurationDays int   `gorm:"not null" json:"duration_days"`
-	TraditionID  *uint `gorm:"index" json:"tradition_id,omitempty"`
+	ID           uint   `gorm:"primaryKey" json:"id"`
+	Slug         string `gorm:"size:100;uniqueIndex;not null" json:"slug"`
+	Title        string `gorm:"size:255;not null" json:"title"`
+	Description  string `gorm:"type:text" json:"description"`
+	Tier         string `gorm:"size:20;default:'free'" json:"tier"` // "free" | "premium"
+	DurationDays int    `gorm:"not null" json:"duration_days"`
+	TraditionID  *uint  `gorm:"index" json:"tradition_id,omitempty"`
 
-	Tradition *Tradition        `gorm:"foreignKey:TraditionID" json:"tradition,omitempty"`
+	Tradition *Tradition         `gorm:"foreignKey:TraditionID" json:"tradition,omitempty"`
 	Entries   []ReadingPlanEntry `gorm:"foreignKey:ReadingPlanID;constraint:OnDelete:CASCADE" json:"entries,omitempty"`
 }
 

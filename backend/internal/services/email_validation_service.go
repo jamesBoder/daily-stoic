@@ -15,19 +15,19 @@ type EmailValidationService struct {
 func NewEmailValidationService() *EmailValidationService {
 	// Read configuration from environment
 	allowTestEmails := os.Getenv("ALLOW_TEST_EMAILS") == "true"
-	
+
 	// Parse test domains from environment
 	testDomainsStr := os.Getenv("TEST_EMAIL_DOMAINS")
 	if testDomainsStr == "" {
 		testDomainsStr = "test.local,example.com,test.com"
 	}
 	testDomains := strings.Split(testDomainsStr, ",")
-	
+
 	// Trim whitespace from domains
 	for i := range testDomains {
 		testDomains[i] = strings.TrimSpace(testDomains[i])
 	}
-	
+
 	return &EmailValidationService{
 		allowTestEmails: allowTestEmails,
 		testDomains:     testDomains,
@@ -38,30 +38,30 @@ func NewEmailValidationService() *EmailValidationService {
 // Returns (isValid bool, suggestion string, error string)
 func (s *EmailValidationService) ValidateEmail(email string) (bool, string, string) {
 	email = strings.ToLower(strings.TrimSpace(email))
-	
+
 	// Extract domain from email
 	parts := strings.Split(email, "@")
 	if len(parts) != 2 {
 		return false, "", "Invalid email format"
 	}
-	
+
 	domain := parts[1]
-	
+
 	// Check if it's a test email (allowed in dev mode)
 	if s.allowTestEmails && s.isTestDomain(domain) {
 		return true, "", ""
 	}
-	
+
 	// Check for disposable email domains
 	if s.isDisposableDomain(domain) {
 		return false, "", "Please use a valid, non-disposable email address"
 	}
-	
+
 	// Check for common typos and suggest corrections
 	if suggestion := s.suggestDomainCorrection(domain); suggestion != "" {
 		return false, suggestion, "Did you mean " + suggestion + "?"
 	}
-	
+
 	return true, "", ""
 }
 
@@ -156,13 +156,13 @@ func (s *EmailValidationService) isDisposableDomain(domain string) bool {
 		"zehnminuten.de", "zehnminutenmail.de", "zippymail.info",
 		"zoemail.com", "zoemail.net", "zoemail.org",
 	}
-	
+
 	for _, disposable := range disposableDomains {
 		if domain == disposable {
 			return true
 		}
 	}
-	
+
 	return false
 }
 
@@ -171,28 +171,28 @@ func (s *EmailValidationService) suggestDomainCorrection(domain string) string {
 	// Map of common typos to correct domains
 	corrections := map[string]string{
 		// Gmail typos
-		"gmial.com":     "gmail.com",
-		"gmai.com":      "gmail.com",
-		"gmil.com":      "gmail.com",
-		"gmaill.com":    "gmail.com",
-		"gmailcom":      "gmail.com",
-		"gnail.com":     "gmail.com",
-		"gmal.com":      "gmail.com",
-		
+		"gmial.com":  "gmail.com",
+		"gmai.com":   "gmail.com",
+		"gmil.com":   "gmail.com",
+		"gmaill.com": "gmail.com",
+		"gmailcom":   "gmail.com",
+		"gnail.com":  "gmail.com",
+		"gmal.com":   "gmail.com",
+
 		// Yahoo typos
-		"yaho.com":      "yahoo.com",
-		"yahooo.com":    "yahoo.com",
-		"yahoocom":      "yahoo.com",
-		"ymail.com":     "yahoo.com",
-		
+		"yaho.com":   "yahoo.com",
+		"yahooo.com": "yahoo.com",
+		"yahoocom":   "yahoo.com",
+		"ymail.com":  "yahoo.com",
+
 		// Outlook/Hotmail typos
-		"hotmial.com":   "hotmail.com",
-		"hotmai.com":    "hotmail.com",
-		"hotmailcom":    "hotmail.com",
-		"outlok.com":    "outlook.com",
-		"outloo.com":    "outlook.com",
-		"outlookcom":    "outlook.com",
-		
+		"hotmial.com": "hotmail.com",
+		"hotmai.com":  "hotmail.com",
+		"hotmailcom":  "hotmail.com",
+		"outlok.com":  "outlook.com",
+		"outloo.com":  "outlook.com",
+		"outlookcom":  "outlook.com",
+
 		// Other common providers
 		"aol.co":        "aol.com",
 		"aolcom":        "aol.com",
@@ -201,10 +201,10 @@ func (s *EmailValidationService) suggestDomainCorrection(domain string) string {
 		"protonmai.com": "protonmail.com",
 		"protonmailcom": "protonmail.com",
 	}
-	
+
 	if correction, exists := corrections[domain]; exists {
 		return correction
 	}
-	
+
 	return ""
 }
