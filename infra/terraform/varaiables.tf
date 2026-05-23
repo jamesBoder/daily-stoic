@@ -4,7 +4,7 @@ variable "aws_region" {
 
 variable "github_repo" {
   description = "GitHub owner/repo — scopes the IAM role trust policy to this repo's main branch only"
-  default     = "jamesboder/daily-stoic"
+  default     = "jamesBoder/daily-stoic"
 }
 
 variable "backend_url" {

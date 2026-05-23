@@ -2,6 +2,7 @@ package config
 
 import (
 	"os"
+	"strings"
 
 	"github.com/joho/godotenv"
 )
@@ -21,6 +22,7 @@ type Config struct {
 	GoogleClientSecret string
 	GoogleRedirectURL  string
 	FrontendURL        string
+	AllowedOrigins     []string
 
 	// Email
 	ResendAPIKey string
@@ -56,6 +58,7 @@ func Load() (*Config, error) {
 		GoogleClientSecret:    os.Getenv("GOOGLE_CLIENT_SECRET"),
 		GoogleRedirectURL:     os.Getenv("GOOGLE_REDIRECT_URL"),
 		FrontendURL:           getEnvOrDefault("FRONTEND_URL", "http://localhost"),
+		AllowedOrigins:        parseAllowedOrigins(),
 		ResendAPIKey:          os.Getenv("RESEND_API_KEY"),
 		FromEmail:             getEnvOrDefault("FROM_EMAIL", "noreply@dailystoic.app"),
 		PhilosophyAPIKey:      os.Getenv("PHILOSOPHY_API_KEY"),
@@ -65,6 +68,21 @@ func Load() (*Config, error) {
 		StripeLifetimePriceID: os.Getenv("STRIPE_LIFETIME_PRICE_ID"),
 		AnthropicAPIKey:       os.Getenv("ANTHROPIC_API_KEY"),
 	}, nil
+}
+
+// parseAllowedOrigins reads ALLOWED_ORIGINS (comma-separated) and falls back
+// to FRONTEND_URL so existing deployments need no immediate config change.
+func parseAllowedOrigins() []string {
+	if v := os.Getenv("ALLOWED_ORIGINS"); v != "" {
+		var origins []string
+		for _, o := range strings.Split(v, ",") {
+			if trimmed := strings.TrimSpace(o); trimmed != "" {
+				origins = append(origins, trimmed)
+			}
+		}
+		return origins
+	}
+	return []string{getEnvOrDefault("FRONTEND_URL", "http://localhost")}
 }
 
 func getEnvOrDefault(key, defaultValue string) string {
