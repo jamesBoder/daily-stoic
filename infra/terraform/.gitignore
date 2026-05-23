@@ -1,0 +1,15 @@
+# Provider binaries (~50 MB) — re-downloaded by terraform init
+.terraform/
+
+# Local state files — we use remote state in S3, never local
+*.tfstate
+*.tfstate.backup
+
+# Crash log
+crash.log
+
+# Variable files that might contain secrets
+*.tfvars
+*.tfvars.json
+
+# .terraform.lock.hcl is intentionally NOT excluded — commit it to lock provider versions
