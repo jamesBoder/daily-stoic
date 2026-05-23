@@ -130,3 +130,20 @@ jobs:
       - name: Run staticcheck
         working-directory: backend
         run: staticcheck ./internal/...
+
+  # Always-run gate job required by branch protection.
+  # Passes when all jobs passed or were skipped (no backend changes).
+  # Fails when any job actually failed.
+  ci-backend-ok:
+    name: CI Backend
+    runs-on: ubuntu-latest
+    needs: [test, security, style]
+    if: always()
+    steps:
+      - name: Check results
+        run: |
+          if [[ "${{ needs.test.result }}"     == "failure" || \
+                "${{ needs.security.result }}" == "failure" || \
+                "${{ needs.style.result }}"    == "failure" ]]; then
+            exit 1
+          fi

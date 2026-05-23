@@ -72,3 +72,18 @@ jobs:
       # - name: Check bundle size
       #   working-directory: frontend
       #   run: npx size-limit --json | tee size-output.json && npx size-limit
+
+  # Always-run gate job required by branch protection.
+  # Passes when the check job passed or was skipped (no frontend changes).
+  # Fails when the check job actually failed.
+  ci-frontend-ok:
+    name: CI Frontend
+    runs-on: ubuntu-latest
+    needs: [check]
+    if: always()
+    steps:
+      - name: Check results
+        run: |
+          if [[ "${{ needs.check.result }}" == "failure" ]]; then
+            exit 1
+          fi
