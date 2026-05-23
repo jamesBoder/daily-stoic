@@ -52,7 +52,12 @@ func (h *SubscriptionHandler) GetStatus(c *gin.Context) {
 // POST /api/subscription/checkout
 // Creates a Stripe checkout session and returns { url } to redirect the user to.
 func (h *SubscriptionHandler) CreateCheckout(c *gin.Context) {
-	userID := c.MustGet("userID").(uint)
+	raw, exists := c.Get("userID")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+		return
+	}
+	userID := raw.(uint)
 
 	// Look up existing Stripe customer ID so Stripe reuses their billing profile
 	existingSub, err := h.subscriptionRepo.GetByUserID(userID)

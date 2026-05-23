@@ -25,7 +25,7 @@ type EmailService struct {
 
 func NewEmailService(apiKey, fromEmail, frontendURL string) *EmailService {
 	if apiKey == "" {
-		log.Println("WARNING: RESEND_API_KEY is not set — all email sending will fail silently")
+		log.Println("WARNING: RESEND_API_KEY is not set — email send calls will return API errors to callers")
 	} else {
 		log.Printf("EmailService: RESEND_API_KEY is set (length=%d)", len(apiKey))
 	}

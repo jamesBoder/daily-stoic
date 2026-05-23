@@ -15,8 +15,11 @@ type SortDirection = "asc" | "desc";
 const SORT_FIELDS: SortField[] = ["date", "author", "source", "tradition"];
 
 // ── Share helpers ─────────────────────────────────────────────────────────────
-const buildShareText = (quote: Quote): string =>
-  `"${quote.text}" — ${quote.author.name}, ${quote.source}\n\nvia DailyXam`;
+const buildShareText = (quote: Quote): string => {
+  const author = quote.author?.name ?? 'Unknown'
+  const source = quote.source ? `, ${quote.source}` : ''
+  return `"${quote.text}" — ${author}${source}\n\nvia DailyXam`
+}
 
 // ── Share Panel Component ─────────────────────────────────────────────────────
 interface SharePanelProps {

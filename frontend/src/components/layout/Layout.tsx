@@ -44,8 +44,8 @@ export const Layout: React.FC = () => {
     <div className="min-h-screen flex flex-col text-fg">
       <Header />
       <OfflineBanner />
-      {/* pb-16 on mobile reserves space above the fixed BottomNav */}
-      <main key={location.pathname} className="flex-1 pt-4 pb-20 md:pb-8 animate-fade-in">
+      {/* pb accounts for fixed BottomNav (h-14) plus safe-area-inset-bottom on notched phones */}
+      <main key={location.pathname} className="flex-1 pt-4 pb-[calc(5rem+env(safe-area-inset-bottom))] md:pb-8 animate-fade-in">
         <Outlet />
       </main>
       <Footer className="hidden md:block" />

@@ -382,7 +382,9 @@ export function OnboardingFlow() {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    traditionsApi.list().then(setTraditions).catch(() => {})
+    traditionsApi.list().then(setTraditions).catch((err) => {
+      console.error('Failed to load traditions:', err)
+    })
   }, [])
 
   // Keyboard shortcuts
