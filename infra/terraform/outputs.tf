@@ -21,3 +21,13 @@ output "github_deploy_role_arn" {
 output "aws_region" {
   value = var.aws_region
 }
+
+output "route53_nameservers" {
+  description = "Paste all four into Namecheap → Domains → Nameservers → Custom DNS"
+  value       = aws_route53_zone.main.name_servers
+}
+
+output "custom_domain" {
+  description = "Live domain once nameservers propagate and cert validates"
+  value       = "https://${var.domain_name}"
+}

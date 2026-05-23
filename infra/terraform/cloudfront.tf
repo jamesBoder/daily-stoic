@@ -96,14 +96,16 @@ resource "aws_cloudfront_distribution" "frontend" {
     response_page_path = "/index.html"
   }
 
+  aliases = [var.domain_name, "www.${var.domain_name}"]
+
   restrictions {
     geo_restriction { restriction_type = "none" }
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true  # *.cloudfront.net HTTPS, no cost
-    # When a custom domain is added: replace with acm_certificate_arn + ssl_support_method = "sni-only"
-    # The ACM certificate MUST be in us-east-1 regardless of the app's region — CloudFront requirement
+    acm_certificate_arn      = aws_acm_certificate_validation.frontend.certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 
   tags = {

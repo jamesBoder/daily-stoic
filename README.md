@@ -9,6 +9,8 @@
 
 Ancient wisdom from across the philosophical world — one passage a day, seven traditions, zero algorithmic noise.
 
+**Live at [dailyxam.com](https://dailyxam.com)**
+
 ## Stack
 
 | Layer | Tech |
@@ -17,7 +19,7 @@ Ancient wisdom from across the philosophical world — one passage a day, seven 
 | Frontend | React · TypeScript · Vite · Tailwind CSS |
 | Auth | JWT · Google OAuth |
 | Payments | Stripe |
-| Deploy | Fly.io (backend + frontend) |
+| Deploy | Fly.io (backend + DB) · AWS S3 + CloudFront (frontend) |
 
 ## Running Locally
 
