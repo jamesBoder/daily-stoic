@@ -11,3 +11,8 @@ variable "backend_url" {
   description = "Fly.io backend URL — used in the CloudFront CSP header"
   default     = "https://dailystoic-backend.fly.dev"
 }
+
+variable "domain_name" {
+  description = "Custom domain registered on Namecheap — nameservers must point to Route 53 after first apply"
+  default     = "dailyxam.com"
+}
