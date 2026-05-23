@@ -16,7 +16,7 @@ jobs:
       contents: read  # minimum needed to checkout the repo; no id-token needed here
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: superfly/flyctl-actions/setup-flyctl@master  # TODO: pin to a specific tag e.g. @v1.5
 
@@ -44,7 +44,7 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: actions/setup-node@v4
         with:
