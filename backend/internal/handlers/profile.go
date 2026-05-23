@@ -62,7 +62,12 @@ func NewProfileHandler(
 // GetUserStreak returns the current streak and points for the authenticated user.
 // GET /api/profile/streak
 func (h *ProfileHandler) GetUserStreak(c *gin.Context) {
-	userID := c.MustGet("userID").(uint)
+	raw, exists := c.Get("userID")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+		return
+	}
+	userID := raw.(uint)
 	streak, err := h.streakSvc.GetStreak(userID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not retrieve streak"})
@@ -74,7 +79,12 @@ func (h *ProfileHandler) GetUserStreak(c *gin.Context) {
 // GetUserAchievements returns all earned achievement badges for the authenticated user.
 // GET /api/profile/achievements
 func (h *ProfileHandler) GetUserAchievements(c *gin.Context) {
-	userID := c.MustGet("userID").(uint)
+	raw, exists := c.Get("userID")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+		return
+	}
+	userID := raw.(uint)
 	achievements, err := h.streakRepo.GetAchievements(userID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not retrieve achievements"})

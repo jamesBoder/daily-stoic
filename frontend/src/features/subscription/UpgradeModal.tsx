@@ -23,6 +23,7 @@ export const UpgradeModal = ({ onClose }: Props) => {
     setError('')
     try {
       const { url } = await createCheckoutSession()
+      if (!url) throw new Error('No checkout URL returned')
       window.location.href = url
     } catch {
       setError('Could not start checkout. Please try again.')

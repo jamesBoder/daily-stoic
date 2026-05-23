@@ -71,7 +71,12 @@ func (h *ReadingPlanHandler) GetPlan(c *gin.Context) {
 
 // GET /api/reading-plans/:slug/progress
 func (h *ReadingPlanHandler) GetProgress(c *gin.Context) {
-	userID := c.MustGet("userID").(uint)
+	raw, exists := c.Get("userID")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+		return
+	}
+	userID := raw.(uint)
 	slug := c.Param("slug")
 
 	planID, err := h.planRepo.GetIDBySlug(slug)
@@ -94,7 +99,12 @@ func (h *ReadingPlanHandler) GetProgress(c *gin.Context) {
 
 // POST /api/reading-plans/:slug/start
 func (h *ReadingPlanHandler) StartPlan(c *gin.Context) {
-	userID := c.MustGet("userID").(uint)
+	raw, exists := c.Get("userID")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+		return
+	}
+	userID := raw.(uint)
 	slug := c.Param("slug")
 
 	plan, err := h.planRepo.GetBySlug(slug)
@@ -119,7 +129,12 @@ func (h *ReadingPlanHandler) StartPlan(c *gin.Context) {
 
 // POST /api/reading-plans/:slug/advance
 func (h *ReadingPlanHandler) AdvanceDay(c *gin.Context) {
-	userID := c.MustGet("userID").(uint)
+	raw, exists := c.Get("userID")
+	if !exists {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+		return
+	}
+	userID := raw.(uint)
 	slug := c.Param("slug")
 
 	plan, err := h.planRepo.GetBySlug(slug)

@@ -10,6 +10,7 @@ import { LanguageProvider } from './contexts/LanguageContext'
 import { Toaster } from 'react-hot-toast'
 import { Layout } from './components/layout/Layout'
 import { ProtectedRoute } from './components/common/ProtectedRoute'
+import { ErrorBoundary } from './components/common/ErrorBoundary'
 // Home page loaded eagerly — it's the LCP element
 import { DailyQuote } from './features/quote/DailyQuote'
 
@@ -69,6 +70,7 @@ export default function App() {
                 },
               }}
             />
+            <ErrorBoundary>
             <Suspense fallback={<PageLoader />}>
             <Routes>
               {/* Onboarding — full-screen, no nav */}
@@ -111,6 +113,7 @@ export default function App() {
               </Route>
             </Routes>
             </Suspense>
+            </ErrorBoundary>
           </LanguageProvider>
           </SubscriptionProvider>
         </AuthProvider>

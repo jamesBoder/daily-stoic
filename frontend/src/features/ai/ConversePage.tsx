@@ -70,6 +70,7 @@ function PhilosopherCard({
             alt={author.name}
             className="w-10 h-10 rounded-full object-cover shrink-0"
             style={{ border: '1.5px solid color-mix(in srgb, var(--trad-color-active) 31%, transparent)' }}
+            onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
           />
         ) : (
           <div
