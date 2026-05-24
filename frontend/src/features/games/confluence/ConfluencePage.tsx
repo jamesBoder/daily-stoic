@@ -4,6 +4,7 @@ import { CardGrid, CardGridSkeleton } from './CardGrid'
 import { FoundGroupsRow } from './FoundGroupsRow'
 import { ActionBar } from './ActionBar'
 import { ConvergenceReveal } from './ConvergenceReveal'
+import { ResultModal } from './ResultModal'
 import type { ConfluenceGroup, PuzzleArchetype } from '../../../types/confluence'
 
 const ARCHETYPE_LABEL: Record<PuzzleArchetype, string> = {
@@ -32,6 +33,9 @@ export function ConfluencePage() {
     lastWrongCardIds,
   } = useConfluence()
 
+  // ── Result Modal ─────────────────────────────────────────────────
+  const [showResult, setShowResult] = useState(false)
+
   // ── Convergence Reveal (purple group) ────────────────────────────
   const [convergenceGroup, setConvergenceGroup] = useState<ConfluenceGroup | null>(null)
   const prevGroupCountRef = useRef(0)
@@ -54,6 +58,17 @@ export function ConfluencePage() {
       }
     }
   }, [gameState.foundGroupIds, gameState.foundGroups])
+
+  // Auto-open ResultModal after game ends.
+  // If ConvergenceReveal is still animating, wait for it to close first.
+  useEffect(() => {
+    const gameOver = gameState.status === 'complete' || gameState.status === 'failed'
+    if (!gameOver) return
+    if (convergenceGroup) return  // ConvergenceReveal.onClose will trigger this instead
+    const delay = gameState.status === 'complete' ? 1200 : 400
+    const t = setTimeout(() => setShowResult(true), delay)
+    return () => clearTimeout(t)
+  }, [gameState.status, convergenceGroup])
 
   // Puzzle not yet loaded — show full page skeleton
   if (isLoading) {
@@ -97,6 +112,11 @@ export function ConfluencePage() {
 
   const gameOver = gameState.status === 'complete' || gameState.status === 'failed'
 
+  const seeResultsBtn =
+    'font-display text-[10px] tracking-widest uppercase px-4 py-1.5 rounded border ' +
+    'border-[var(--color-game-border)] text-[var(--color-game-fg-dim)] ' +
+    'hover:border-[var(--color-game-fg-dim)] hover:text-[var(--color-game-fg-muted)] transition-colors'
+
   return (
     <>
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-6 lg:py-10">
@@ -131,13 +151,18 @@ export function ConfluencePage() {
             </p>
           )}
 
-          {/* Game over message — desktop only (mobile shows inline) */}
+          {/* Game over message + reopen button — desktop only (mobile shows inline) */}
           {gameOver && (
-            <p className="hidden lg:block mt-6 font-serif text-sm italic text-[var(--color-game-fg-muted)]">
-              {gameState.status === 'complete'
-                ? 'Confluence achieved.'
-                : 'The philosophers remain divided.'}
-            </p>
+            <div className="hidden lg:block mt-6">
+              <p className="font-serif text-sm italic text-[var(--color-game-fg-muted)] mb-3">
+                {gameState.status === 'complete'
+                  ? 'Confluence achieved.'
+                  : 'The philosophers remain divided.'}
+              </p>
+              <button onClick={() => setShowResult(true)} className={seeResultsBtn}>
+                See results
+              </button>
+            </div>
           )}
         </div>
 
@@ -172,13 +197,18 @@ export function ConfluencePage() {
                 onDeselect={deselectAll}
               />
 
-              {/* Game over message — mobile */}
+              {/* Game over message + reopen button — mobile */}
               {gameOver && (
-                <p className="lg:hidden mt-6 text-center font-serif text-sm italic text-[var(--color-game-fg-muted)]">
-                  {gameState.status === 'complete'
-                    ? 'Confluence achieved.'
-                    : 'The philosophers remain divided.'}
-                </p>
+                <div className="lg:hidden mt-6 flex flex-col items-center gap-3">
+                  <p className="text-center font-serif text-sm italic text-[var(--color-game-fg-muted)]">
+                    {gameState.status === 'complete'
+                      ? 'Confluence achieved.'
+                      : 'The philosophers remain divided.'}
+                  </p>
+                  <button onClick={() => setShowResult(true)} className={seeResultsBtn}>
+                    See results
+                  </button>
+                </div>
               )}
             </>
           )}
@@ -190,7 +220,20 @@ export function ConfluencePage() {
     <ConvergenceReveal
       group={convergenceGroup}
       isOpen={!!convergenceGroup}
-      onClose={() => setConvergenceGroup(null)}
+      onClose={() => {
+        setConvergenceGroup(null)
+        const gameOver = gameState.status === 'complete' || gameState.status === 'failed'
+        if (gameOver) {
+          setTimeout(() => setShowResult(true), 400)
+        }
+      }}
+    />
+
+    <ResultModal
+      puzzle={puzzle}
+      gameState={gameState}
+      isOpen={showResult}
+      onClose={() => setShowResult(false)}
     />
     </>
   )

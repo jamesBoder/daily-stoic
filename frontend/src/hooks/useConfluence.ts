@@ -21,7 +21,6 @@ type Action =
 function initState(puzzleId: number): LocalGameState {
   return {
     puzzleId,
-    flippedCardIds: new Set(),
     selectedCardIds: new Set(),
     foundGroupIds: [],
     foundGroups: [],
@@ -37,11 +36,9 @@ function reducer(state: LocalGameState, action: Action): LocalGameState {
   switch (action.type) {
     case 'SELECT_CARD': {
       if (state.selectedCardIds.size >= 4) return state
-      const flipped = new Set(state.flippedCardIds)
-      flipped.add(action.id)
       const selected = new Set(state.selectedCardIds)
       selected.add(action.id)
-      return { ...state, flippedCardIds: flipped, selectedCardIds: selected }
+      return { ...state, selectedCardIds: selected }
     }
     case 'DESELECT_CARD': {
       const next = new Set(state.selectedCardIds)
@@ -78,11 +75,9 @@ function reducer(state: LocalGameState, action: Action): LocalGameState {
       const foundGroups = (action.session.groups_found ?? [])
         .map(id => action.puzzle.groups.find(g => g.id === id))
         .filter(Boolean) as ConfluenceGroup[]
-      const allGuessedIds = (action.session.attempts ?? []).flatMap(a => a.card_ids)
       return {
         ...state,
         puzzleId: action.session.puzzle_id,
-        flippedCardIds: new Set(allGuessedIds),
         selectedCardIds: new Set(),
         foundGroupIds: action.session.groups_found ?? [],
         foundGroups,
@@ -106,7 +101,6 @@ function reducer(state: LocalGameState, action: Action): LocalGameState {
 function serializeGameState(s: LocalGameState) {
   return JSON.stringify({
     ...s,
-    flippedCardIds: [...s.flippedCardIds],
     selectedCardIds: [...s.selectedCardIds],
   })
 }
@@ -115,7 +109,6 @@ function deserializeGameState(raw: string): LocalGameState {
   const parsed = JSON.parse(raw)
   return {
     ...parsed,
-    flippedCardIds: new Set(parsed.flippedCardIds ?? []),
     selectedCardIds: new Set(),  // always reset selection on restore
   }
 }

@@ -134,7 +134,8 @@ func main() {
 	subscriptionHandler := handlers.NewSubscriptionHandler(subscriptionRepo, stripeSvc, cfg)
 	readingPlanHandler  := handlers.NewReadingPlanHandler(readingPlanRepo)
 	aiHandler           := handlers.NewAiHandler(aiSvc, aiUsageRepo, quoteRepo, authorRepo)
-	confluenceSvc      := services.NewConfluenceService(confluenceRepo, nil)
+	librarySvc         := services.NewLibraryService(db)
+	confluenceSvc      := services.NewConfluenceService(confluenceRepo, librarySvc)
 	confluenceHandler  := handlers.NewConfluenceHandler(confluenceSvc)
 
 	// Start weekly theme scheduler (runs immediately + every 6h)
