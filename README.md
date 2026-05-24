@@ -1,4 +1,4 @@
-# Daily Stoic
+# Daily Xam
 
 [![CI Backend](https://github.com/jamesBoder/daily-stoic/actions/workflows/ci-backend.yml/badge.svg)](https://github.com/jamesBoder/daily-stoic/actions/workflows/ci-backend.yml)
 [![CI Frontend](https://github.com/jamesBoder/daily-stoic/actions/workflows/ci-frontend.yml/badge.svg)](https://github.com/jamesBoder/daily-stoic/actions/workflows/ci-frontend.yml)
@@ -48,7 +48,7 @@ cd frontend && npm install && npm start
 - Each quote rendered as an esoteric oracle card — woodcut-style illustration, inner frame, corner ornaments, thematic medallion
 - Swipe left to save; lazy-loaded with a parchment-tint placeholder
 
-**Ask the Philosopher** *(powered by Claude)*
+**Ask the Philosopher** 
 - Pose a question and receive a response in the authentic voice of the philosopher you're reading — grounded in their actual writings
 - Free users: 3 questions/day. Practitioner: unlimited
 - Available on the daily quote, any passage card, author pages, and the dedicated `/converse` page

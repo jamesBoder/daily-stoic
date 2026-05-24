@@ -16,3 +16,8 @@ variable "domain_name" {
   description = "Custom domain registered on Namecheap — nameservers must point to Route 53 after first apply"
   default     = "dailyxam.com"
 }
+
+variable "alert_email" {
+  description = "Email address that receives CloudWatch alarm notifications. Must confirm the SNS subscription after first apply."
+  default     = "james.macean08@gmail.com"
+}
