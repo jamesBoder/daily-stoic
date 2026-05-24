@@ -17,6 +17,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
 
   useEffect(() => {
     if (eager) return;
+    setIsLoaded(false);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -56,6 +57,7 @@ export const LazyImage: React.FC<LazyImageProps> = ({
           className={`w-full h-full object-cover transition-opacity duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={() => setIsLoaded(true)}
           loading={eager ? 'eager' : 'lazy'}
+          fetchPriority={eager ? 'high' : 'auto'}
         />
       )}
     </div>
