@@ -22,34 +22,39 @@ const TRADITION_CONFIG: Record<string, { sigil: string; bgClass: string }> = {
   'kemetic-wisdom':       { sigil: '𓂀', bgClass: 'bg-yellow-950' },
 }
 
-const FALLBACK_CONFIG = { sigil: '✦', bgClass: 'bg-[var(--color-game-bg)]' }
-
 interface ConfluenceCardProps {
   card: ConfluenceCardType
-  isFlipped: boolean
   isSelected: boolean
+  isAnySelected: boolean
   isShaking: boolean
   isLocked: boolean
   lockedTier?: GroupTier
   onTap: (id: number) => void
 }
 
-export function ConfluenceCard({ card, isFlipped, isSelected, isShaking, isLocked, onTap }: ConfluenceCardProps) {
+export function ConfluenceCard({ card, isSelected, isAnySelected, isShaking, isLocked, onTap }: ConfluenceCardProps) {
   const tradSlug  = card.concept.tradition?.slug ?? ''
-  const cfg       = TRADITION_CONFIG[tradSlug] ?? FALLBACK_CONFIG
   const tradColor = TRADITION_COLORS[tradSlug]?.dark ?? 'var(--color-game-fg-muted)'
+  // Unique art color per card — golden-angle hue distribution is independent of tradition groupings,
+  // so players cannot use color as a grouping signal.
+  const artHue = (card.id * 137) % 360
+  const artBg  = `hsl(${artHue}, 42%, 11%)`
 
   return (
     <div
       role="button"
       tabIndex={isLocked ? -1 : 0}
       aria-pressed={isSelected}
-      aria-label={isFlipped ? `${card.concept.name} — ${card.concept.tradition?.name ?? 'Unknown'}` : 'Face-down card'}
+      aria-label={`${card.concept.name} — ${card.concept.tradition?.name ?? 'Unknown'}`}
       aria-disabled={isLocked}
       className={[
-        'relative aspect-[11/19] cursor-pointer select-none',
-        'transition-transform duration-150',
-        isSelected && !isLocked ? 'scale-[1.04] -translate-y-1' : '',
+        'relative aspect-[5/7] cursor-pointer select-none',
+        'transition-[transform,opacity] duration-200',
+        isSelected && !isLocked
+          ? 'scale-[1.1] -translate-y-2 z-10'
+          : !isSelected && isAnySelected && !isLocked
+          ? 'opacity-60 scale-[0.97]'
+          : '',
         isShaking ? 'animate-shake' : '',
         isLocked ? 'opacity-40 pointer-events-none' : '',
       ].filter(Boolean).join(' ')}
@@ -62,74 +67,99 @@ export function ConfluenceCard({ card, isFlipped, isSelected, isShaking, isLocke
         }
       }}
     >
-      {/* 3D flip container */}
-      <div
-        className={[
-          'relative w-full h-full transition-transform duration-300 ease-in-out',
-          '[transform-style:preserve-3d]',
-          isFlipped ? '[transform:rotateY(180deg)]' : '',
-        ].join(' ')}
-      >
-        {/* Card Back */}
-        <div className="absolute inset-0 [backface-visibility:hidden] rounded-lg overflow-hidden bg-[var(--color-game-card-back)] border border-[var(--color-game-border)]">
-          <CardBack />
+      {/* Card face — tradition hidden in grid; revealed only in FoundGroupsRow and ConvergenceReveal */}
+      <div className={[
+        'w-full h-full rounded-xl overflow-hidden border-2 flex flex-col',
+        'border-[var(--color-game-border)] bg-[var(--color-game-card-back)]',
+        isSelected ? 'ring-2 ring-offset-1 ring-[var(--color-game-selected-ring)] shadow-lg' : '',
+      ].join(' ')}>
+
+        {/* Art area — upper 33% on mobile, 38% on sm+ */}
+        <div className="h-[33%] sm:h-[38%] flex-shrink-0 relative overflow-hidden" style={{ backgroundColor: artBg }}>
+          {card.concept.illustration_url
+            ? <img src={card.concept.illustration_url} alt="" className="w-full h-full object-cover opacity-90" />
+            : <NeutralPlaceholderArt variant={card.id % 6} />
+          }
         </div>
 
-        {/* Card Front */}
-        <div className={[
-          'absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]',
-          'rounded-lg overflow-hidden border-2 flex flex-col',
-          'border-[var(--trad-color)]',
-          cfg.bgClass,
-          isSelected ? 'ring-2 ring-offset-1 ring-[var(--color-game-selected-ring)] shadow-[0_0_16px_4px_var(--trad-color)]' : '',
-        ].join(' ')}>
-          {/* Tradition sigil — top right only; name lives in aria-label */}
-          <div className="flex justify-end items-center px-1.5 pt-1.5 pb-0.5">
-            <span className="text-sm leading-none opacity-70 flex-shrink-0">
-              {isFlipped ? cfg.sigil : ''}
-            </span>
-          </div>
+        {/* Divider */}
+        <div className="h-px w-full bg-[var(--color-game-border)] opacity-50 flex-shrink-0" />
 
-          {/* Illustration */}
-          <div className="flex-1 mx-1.5 rounded overflow-hidden bg-[var(--color-game-surface)] flex items-center justify-center">
-            {card.concept.illustration_url
-              ? <img src={card.concept.illustration_url} alt="" className="w-full h-full object-cover opacity-90" />
-              : <ConceptPlaceholderArt slug={tradSlug} />
-            }
-          </div>
-
-          {/* Concept name + phrase — overflow-safe */}
-          <div className="px-1.5 pt-1 pb-2 text-center overflow-hidden">
-            <p className="font-display text-[10px] tracking-wide text-[var(--color-game-fg)] uppercase leading-tight break-words">
-              {card.concept.name}
-            </p>
-            <p className="font-serif text-[8px] text-[var(--color-game-fg-muted)] italic mt-0.5 leading-tight line-clamp-2 overflow-hidden">
-              {card.concept.short_phrase}
-            </p>
-          </div>
+        {/* Text area — lower 62%, vertically centered */}
+        <div className="flex-1 flex flex-col items-center justify-center px-2 py-1.5 sm:py-2 lg:px-3 lg:py-3 text-center gap-1 sm:gap-1.5 lg:gap-2 min-h-0 overflow-hidden">
+          <p className="font-display text-[11px] sm:text-[13px] lg:text-[14px] tracking-wide text-[var(--color-game-fg)] uppercase leading-tight break-words w-full">
+            {card.concept.name}
+          </p>
+          <div className="w-6 h-px bg-[var(--color-game-fg-dim)] opacity-30 flex-shrink-0" />
+          <p className="font-serif text-[10px] sm:text-[11px] lg:text-[12px] text-[var(--color-game-fg-muted)] italic leading-snug line-clamp-2 sm:line-clamp-3 w-full">
+            {card.concept.short_phrase}
+          </p>
         </div>
       </div>
     </div>
   )
 }
 
-function CardBack() {
+// Central symbols — all abstract geometry, none tied to a specific tradition
+const VARIANT_SYMBOLS = ['✦', '✧', '◇', '◈', '⬡', '⁕'] as const
+
+function NeutralPlaceholderArt({ variant }: { variant: number }) {
+  const v = variant % 6
   return (
-    <div className="w-full h-full flex items-center justify-center bg-[var(--color-game-card-back)] relative">
-      {/* Concentric rings — suggest the Stoic/Neoplatonic emanating cosmos */}
-      <div className="absolute w-[68%] aspect-square rounded-full border border-[var(--color-game-border)]" />
-      <div className="absolute w-[46%] aspect-square rounded-full border border-[var(--color-game-border)]" />
-      <div className="absolute w-[26%] aspect-square rounded-full border border-[var(--color-game-border)]" />
-      <span className="relative text-[var(--color-game-fg-dim)] text-xs select-none">✦</span>
+    <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
+      {v === 0 && <Rings />}
+      {v === 1 && <Rays count={6} step={30} />}
+      {v === 2 && <NestedSquares />}
+      {v === 3 && <Diamonds />}
+      {v === 4 && <CrossCircle />}
+      {v === 5 && <Rays count={4} step={45} />}
+      <span className="relative text-xl opacity-30 select-none text-[var(--color-game-fg-dim)]">
+        {VARIANT_SYMBOLS[v]}
+      </span>
     </div>
   )
 }
 
-function ConceptPlaceholderArt({ slug }: { slug: string }) {
-  const cfg = TRADITION_CONFIG[slug] ?? FALLBACK_CONFIG
-  return (
-    <div className="w-full h-full flex items-center justify-center">
-      <span className="text-3xl opacity-25 select-none">{cfg.sigil}</span>
-    </div>
-  )
+function Rings() {
+  return <>
+    <div className="absolute w-[76%] aspect-square rounded-full border border-[var(--color-game-border)] opacity-30" />
+    <div className="absolute w-[52%] aspect-square rounded-full border border-[var(--color-game-border)] opacity-25" />
+    <div className="absolute w-[28%] aspect-square rounded-full border border-[var(--color-game-border)] opacity-20" />
+  </>
+}
+
+function Rays({ count, step }: { count: number; step: number }) {
+  return <>
+    {Array.from({ length: count }, (_, i) => (
+      <div
+        key={i}
+        className="absolute h-px w-full bg-[var(--color-game-border)] opacity-20"
+        style={{ top: '50%', left: 0, transform: `rotate(${i * step}deg)` }}
+      />
+    ))}
+  </>
+}
+
+function NestedSquares() {
+  return <>
+    <div className="absolute w-[70%] aspect-square border border-[var(--color-game-border)] opacity-30" />
+    <div className="absolute w-[48%] aspect-square border border-[var(--color-game-border)] opacity-25" />
+    <div className="absolute w-[26%] aspect-square border border-[var(--color-game-border)] opacity-20" />
+  </>
+}
+
+function Diamonds() {
+  return <>
+    <div className="absolute w-[65%] aspect-square border border-[var(--color-game-border)] opacity-30 rotate-45" />
+    <div className="absolute w-[43%] aspect-square border border-[var(--color-game-border)] opacity-25 rotate-45" />
+    <div className="absolute w-[22%] aspect-square border border-[var(--color-game-border)] opacity-20 rotate-45" />
+  </>
+}
+
+function CrossCircle() {
+  return <>
+    <div className="absolute w-[68%] aspect-square rounded-full border border-[var(--color-game-border)] opacity-25" />
+    <div className="absolute h-px w-full bg-[var(--color-game-border)] opacity-20" style={{ top: '50%', left: 0 }} />
+    <div className="absolute w-px h-full bg-[var(--color-game-border)] opacity-20" style={{ top: 0, left: '50%' }} />
+  </>
 }
