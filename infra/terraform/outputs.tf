@@ -31,3 +31,13 @@ output "custom_domain" {
   description = "Live domain once nameservers propagate and cert validates"
   value       = "https://${var.domain_name}"
 }
+
+output "sns_alerts_topic_arn" {
+  description = "SNS topic ARN for alarm notifications — confirm the subscription email before alarms will deliver"
+  value       = aws_sns_topic.alerts.arn
+}
+
+output "backend_health_check_id" {
+  description = "Route 53 health check ID for the Fly.io backend"
+  value       = aws_route53_health_check.backend.id
+}
