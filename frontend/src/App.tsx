@@ -1,7 +1,7 @@
 // src/App.tsx — updated route structure
 
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { PageLoader } from './components/common/Loading'
 import { AuthProvider } from './contexts/AuthContext'
 import { SubscriptionProvider } from './contexts/SubscriptionContext'
@@ -38,6 +38,7 @@ const PricingPage = lazy(() => import('./features/subscription/PricingPage').the
 const SubscriptionSuccess = lazy(() => import('./features/subscription/SubscriptionSuccess').then(m => ({ default: m.SubscriptionSuccess })))
 const OnboardingFlow = lazy(() => import('./features/onboarding/OnboardingFlow').then(m => ({ default: m.OnboardingFlow })))
 const ConfluencePage = lazy(() => import('./features/games/confluence/ConfluencePage').then(m => ({ default: m.ConfluencePage })))
+const AgoraPage = lazy(() => import('./features/games/AgoraPage').then(m => ({ default: m.AgoraPage })))
 
 export default function App() {
   return (
@@ -87,7 +88,7 @@ export default function App() {
                 <Route path="reading-plans" element={<ReadingPlanList />} />
                 <Route path="reading-plans/:slug" element={<ReadingPlanDetail />} />
                 <Route path="converse" element={<ConversePage />} />
-                <Route path="games" element={<Navigate to="/games/confluence" replace />} />
+                <Route path="games" element={<AgoraPage />} />
                 <Route path="games/confluence" element={<ConfluencePage />} />
 
                 {/* Auth */}

@@ -90,17 +90,6 @@ const BottomNav: React.FC = () => {
             )}
           </NavLink>
 
-          {/* Saved */}
-          <NavLink to="/saved" className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Saved">
-            {({ isActive }) => (
-              <>
-                <span className={tabIndicator(isActive)} />
-                <Bookmark size={22} strokeWidth={isActive ? 2.5 : 1.75} fill={isActive ? 'currentColor' : 'none'} />
-                <span className="truncate w-full text-center">Saved</span>
-              </>
-            )}
-          </NavLink>
-
           {/* Traditions */}
           <NavLink to="/traditions" className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Traditions">
             {({ isActive }) => (
@@ -108,6 +97,17 @@ const BottomNav: React.FC = () => {
                 <span className={tabIndicator(isActive)} />
                 <ScrollText size={22} strokeWidth={isActive ? 2.5 : 1.75} />
                 <span className="truncate w-full text-center">Traditions</span>
+              </>
+            )}
+          </NavLink>
+
+          {/* Agora */}
+          <NavLink to="/games" className={({ isActive }) => `${tabBase} ${isActive ? tabActive : tabInactive}`} aria-label="Agora">
+            {({ isActive }) => (
+              <>
+                <span className={tabIndicator(isActive)} />
+                <Swords size={22} strokeWidth={isActive ? 2.5 : 1.75} />
+                <span className="truncate w-full text-center">Agora</span>
               </>
             )}
           </NavLink>
@@ -189,13 +189,13 @@ const BottomNav: React.FC = () => {
             </p>
             <div className="flex flex-col gap-2">
               <NavLink
-                to="/games"
+                to="/saved"
                 className={({ isActive }) =>
                   `${sheetItemBase} ${isActive ? sheetItemActive : sheetItemInactive}`
                 }
               >
-                <Swords size={20} />
-                Agora
+                <Bookmark size={20} />
+                Saved
               </NavLink>
 
               <button
@@ -237,15 +237,15 @@ const BottomNav: React.FC = () => {
             </p>
 
             <div className="flex flex-col gap-1">
-              {/* Agora */}
+              {/* Saved */}
               <NavLink
-                to="/games"
+                to="/saved"
                 className={({ isActive }) =>
                   `${sheetItemBase} ${isActive ? sheetItemActive : sheetItemInactive}`
                 }
               >
-                <Swords size={20} />
-                Agora
+                <Bookmark size={20} />
+                Saved
               </NavLink>
 
               {/* Reading History */}
