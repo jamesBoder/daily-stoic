@@ -1,6 +1,19 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { ConfluenceCard } from './ConfluenceCard'
-import type { ConfluencePuzzle, LocalGameState } from '../../../types/confluence'
+import type { ConfluencePuzzle, LocalGameState, ConfluenceCard as ConfluenceCardType } from '../../../types/confluence'
+
+// Deterministic Fisher-Yates shuffle seeded by puzzle ID.
+// Same puzzle always produces the same card order — safe for session restore.
+function seededShuffle<T>(arr: T[], seed: number): T[] {
+  const result = [...arr]
+  let s = seed
+  for (let i = result.length - 1; i > 0; i--) {
+    s = (Math.imul(s, 1664525) + 1013904223) >>> 0  // LCG
+    const j = s % (i + 1)
+    ;[result[i], result[j]] = [result[j], result[i]]
+  }
+  return result
+}
 
 interface CardGridProps {
   puzzle: ConfluencePuzzle
@@ -16,7 +29,7 @@ export function CardGridSkeleton() {
       {Array.from({ length: 16 }).map((_, i) => (
         <div
           key={i}
-          className="aspect-[11/19] rounded-lg bg-[var(--color-game-bg)] animate-pulse"
+          className="aspect-[5/7] rounded-xl bg-[var(--color-game-bg)] animate-pulse"
         />
       ))}
     </div>
@@ -41,8 +54,12 @@ export function CardGrid({ puzzle, gameState, onTap, lastWrongCardIds, gameOver 
     return () => { if (shakeTimer.current) clearTimeout(shakeTimer.current) }
   }, [lastWrongCardIds])
 
-  // Flatten all cards from all groups, excluding already-found groups
-  const allCards = puzzle.groups.flatMap(g => g.cards)
+  // Flatten all cards and shuffle once per puzzle — same order on every render.
+  const allCards = useMemo<ConfluenceCardType[]>(
+    () => seededShuffle(puzzle.groups.flatMap(g => g.cards), puzzle.id),
+    [puzzle.id]  // eslint-disable-line react-hooks/exhaustive-deps
+  )
+
   const lockedCardIds = new Set(
     puzzle.groups
       .filter(g => gameState.foundGroupIds.includes(g.id))
@@ -52,6 +69,7 @@ export function CardGrid({ puzzle, gameState, onTap, lastWrongCardIds, gameOver 
   // Show only unfound cards — compact grid after each correct guess
   const visibleCards = allCards.filter(c => !lockedCardIds.has(c.id))
   const cols = Math.max(1, visibleCards.length <= 4 ? visibleCards.length : 4)
+  const anySelected = gameState.selectedCardIds.size > 0
 
   return (
     <div
@@ -62,8 +80,8 @@ export function CardGrid({ puzzle, gameState, onTap, lastWrongCardIds, gameOver 
         <ConfluenceCard
           key={card.id}
           card={card}
-          isFlipped={gameState.flippedCardIds.has(card.id)}
           isSelected={gameState.selectedCardIds.has(card.id)}
+          isAnySelected={anySelected}
           isShaking={shakingIds.has(card.id)}
           isLocked={gameOver}
           onTap={onTap}

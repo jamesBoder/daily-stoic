@@ -18,6 +18,8 @@ func NewConfluenceRepository(db *gorm.DB) *ConfluenceRepository {
 func (r *ConfluenceRepository) GetPuzzleForDate(date time.Time) (*models.ConfluencePuzzle, error) {
 	var puzzle models.ConfluencePuzzle
 	dateOnly := date.Truncate(24 * time.Hour)
+
+	// Try exact date match first.
 	err := r.db.
 		Preload("Groups", func(db *gorm.DB) *gorm.DB {
 			return db.Order("display_order ASC")
@@ -29,10 +31,29 @@ func (r *ConfluenceRepository) GetPuzzleForDate(date time.Time) (*models.Conflue
 		Preload("Groups.Cards.Concept.Tradition").
 		Where("DATE(date) = DATE(?)", dateOnly).
 		First(&puzzle).Error
-	if err != nil {
+
+	if err == nil {
+		return &puzzle, nil
+	}
+	if err != gorm.ErrRecordNotFound {
 		return nil, err
 	}
-	return &puzzle, nil
+
+	// No puzzle for today — fall back to the most recent available puzzle.
+	// Keeps local dev working when seed data doesn't cover the current date.
+	err = r.db.
+		Preload("Groups", func(db *gorm.DB) *gorm.DB {
+			return db.Order("display_order ASC")
+		}).
+		Preload("Groups.Cards", func(db *gorm.DB) *gorm.DB {
+			return db.Order("display_order ASC")
+		}).
+		Preload("Groups.Cards.Concept").
+		Preload("Groups.Cards.Concept.Tradition").
+		Where("DATE(date) <= DATE(?)", dateOnly).
+		Order("date DESC").
+		First(&puzzle).Error
+	return &puzzle, err
 }
 
 func (r *ConfluenceRepository) GetPuzzleByID(id uint) (*models.ConfluencePuzzle, error) {

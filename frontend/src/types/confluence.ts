@@ -79,7 +79,6 @@ export interface GuessResult {
 // Local game state (client-side, mirrors server session for auth users)
 export interface LocalGameState {
   puzzleId: number
-  flippedCardIds: Set<number>    // cards that have been tapped face-up
   selectedCardIds: Set<number>   // up to 4 selected for a guess
   foundGroupIds: number[]
   foundGroups: ConfluenceGroup[]
