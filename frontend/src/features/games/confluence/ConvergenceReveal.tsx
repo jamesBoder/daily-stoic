@@ -99,7 +99,7 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
       <div
         className="absolute inset-0 transition-opacity duration-500"
         style={{
-          backgroundColor: atLeast(phase, 'backdrop') ? 'rgba(0,0,0,0.87)' : 'rgba(0,0,0,0)',
+          backgroundColor: atLeast(phase, 'backdrop') ? 'var(--color-game-reveal-bg)' : 'transparent',
           backdropFilter: 'blur(6px)',
           WebkitBackdropFilter: 'blur(6px)',
         }}
@@ -163,12 +163,12 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
         >
           {group.convergence_teaching ? (
             isAuthenticated ? (
-              <p className="font-serif text-sm text-[var(--color-game-fg-muted)] italic leading-relaxed">
+              <p className="font-serif text-sm text-[var(--color-game-reveal-text)] italic leading-relaxed">
                 {group.convergence_teaching}
               </p>
             ) : (
               <div className="space-y-4">
-                <p className="font-serif text-sm text-[var(--color-game-fg-muted)] italic leading-relaxed">
+                <p className="font-serif text-sm text-[var(--color-game-reveal-text)] italic leading-relaxed">
                   Sign in to read the full cross-tradition teaching.
                 </p>
                 <Link
@@ -184,7 +184,7 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
             )
           ) : (
             // Fallback if teaching text is missing (shouldn't happen in normal data)
-            <p className="font-serif text-sm text-[var(--color-game-fg-dim)] italic">
+            <p className="font-serif text-sm text-[var(--color-game-reveal-text)] italic">
               The traditions converge.
             </p>
           )}
