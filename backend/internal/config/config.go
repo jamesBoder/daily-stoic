@@ -39,6 +39,11 @@ type Config struct {
 
 	// Anthropic (Ask the Philosopher feature — backend only, never expose to frontend)
 	AnthropicAPIKey string
+
+	// Web Push (VAPID)
+	VAPIDPublicKey  string
+	VAPIDPrivateKey string
+	VAPIDSubject    string
 }
 
 func Load() (*Config, error) {
@@ -60,13 +65,16 @@ func Load() (*Config, error) {
 		FrontendURL:           getEnvOrDefault("FRONTEND_URL", "http://localhost"),
 		AllowedOrigins:        parseAllowedOrigins(),
 		ResendAPIKey:          os.Getenv("RESEND_API_KEY"),
-		FromEmail:             getEnvOrDefault("FROM_EMAIL", "noreply@dailystoic.app"),
+		FromEmail:             getEnvOrDefault("FROM_EMAIL", "noreply@dailyxam.app"),
 		PhilosophyAPIKey:      os.Getenv("PHILOSOPHY_API_KEY"),
 		PhilosophyAPIBaseURL:  getEnvOrDefault("PHILOSOPHY_API_BASE_URL", "https://philosophyapi.com/api"),
 		StripeSecretKey:       os.Getenv("STRIPE_SECRET_KEY"),
 		StripeWebhookSecret:   os.Getenv("STRIPE_WEBHOOK_SECRET"),
 		StripeLifetimePriceID: os.Getenv("STRIPE_LIFETIME_PRICE_ID"),
 		AnthropicAPIKey:       os.Getenv("ANTHROPIC_API_KEY"),
+		VAPIDPublicKey:        os.Getenv("VAPID_PUBLIC_KEY"),
+		VAPIDPrivateKey:       os.Getenv("VAPID_PRIVATE_KEY"),
+		VAPIDSubject:          getEnvOrDefault("VAPID_SUBJECT", "mailto:hello@dailyxam.app"),
 	}, nil
 }
 

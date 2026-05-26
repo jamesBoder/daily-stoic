@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DailyXam — Offline</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      background: #0a1634;
+      color: #ccc8bc;
+      font-family: Georgia, 'Times New Roman', serif;
+      padding: 2rem;
+      text-align: center;
+    }
+    .logo { width: 72px; height: 72px; border-radius: 16px; }
+    h1 { font-size: 1.5rem; color: #d4a853; letter-spacing: 0.05em; }
+    p  { font-size: 0.95rem; color: #8892b8; max-width: 320px; line-height: 1.6; }
+    button {
+      margin-top: 0.5rem;
+      padding: 0.6rem 1.6rem;
+      background: #d4a853;
+      color: #040810;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { background: #e8c96a; }
+  </style>
+</head>
+<body>
+  <img src="/logo192.png" alt="DailyXam" class="logo" />
+  <h1>You're offline</h1>
+  <p>No connection right now. Your saved quotes and recent readings are still available once you're back online.</p>
+  <button onclick="location.reload()">Try again</button>
+</body>
+</html>

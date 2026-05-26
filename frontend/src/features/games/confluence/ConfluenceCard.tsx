@@ -38,7 +38,7 @@ export function ConfluenceCard({ card, isSelected, isAnySelected, isShaking, isL
   // Unique art color per card — golden-angle hue distribution is independent of tradition groupings,
   // so players cannot use color as a grouping signal.
   const artHue = (card.id * 137) % 360
-  const artBg  = `hsl(${artHue}, 42%, 11%)`
+  const artBg  = `hsl(${artHue}, var(--color-game-art-s, 42%), var(--color-game-art-l, 11%))`
 
   return (
     <div
@@ -68,11 +68,14 @@ export function ConfluenceCard({ card, isSelected, isAnySelected, isShaking, isL
       }}
     >
       {/* Card face — tradition hidden in grid; revealed only in FoundGroupsRow and ConvergenceReveal */}
-      <div className={[
-        'w-full h-full rounded-xl overflow-hidden border-2 flex flex-col',
-        'border-[var(--color-game-border)] bg-[var(--color-game-card-back)]',
-        isSelected ? 'ring-2 ring-offset-1 ring-[var(--color-game-selected-ring)] shadow-lg' : '',
-      ].join(' ')}>
+      <div
+        className={[
+          'w-full h-full rounded-xl overflow-hidden border-2 flex flex-col',
+          'border-[var(--color-game-border)] bg-[var(--color-game-card-back)]',
+          isSelected ? 'ring-2 ring-offset-1 ring-[var(--color-game-selected-ring)]' : '',
+        ].join(' ')}
+        style={{ boxShadow: isSelected ? 'var(--color-game-card-sel-shadow)' : 'var(--color-game-card-shadow)' }}
+      >
 
         {/* Art area — upper 33% on mobile, 38% on sm+ */}
         <div className="h-[33%] sm:h-[38%] flex-shrink-0 relative overflow-hidden" style={{ backgroundColor: artBg }}>

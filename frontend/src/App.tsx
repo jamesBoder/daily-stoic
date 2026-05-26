@@ -11,6 +11,7 @@ import { Toaster } from 'react-hot-toast'
 import { Layout } from './components/layout/Layout'
 import { ProtectedRoute } from './components/common/ProtectedRoute'
 import { ErrorBoundary } from './components/common/ErrorBoundary'
+import { InstallBanner } from './components/common/InstallBanner'
 // Home page loaded eagerly — it's the LCP element
 import { DailyQuote } from './features/quote/DailyQuote'
 
@@ -118,6 +119,7 @@ export default function App() {
           </LanguageProvider>
           </SubscriptionProvider>
         </AuthProvider>
+        <InstallBanner />
       </ThemeProvider>
     </BrowserRouter>
   )

@@ -370,6 +370,1225 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-05-31",
+      "title": "Know Thyself",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Turning the Gaze Inward",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Prohairesis",   "short_phrase": "the faculty of choice — the only thing truly ours",         "tradition": "stoicism",     "rarity_tier": "common" },
+            { "concept": "Vichara",       "short_phrase": "self-inquiry — tracing 'I' back to its source",             "tradition": "vedanta",      "rarity_tier": "common" },
+            { "concept": "Teshuvah",      "short_phrase": "return — honest turning back toward one's true nature",     "tradition": "kabbalah",     "rarity_tier": "common" },
+            { "concept": "Hsin",          "short_phrase": "the heart-mind — the seat of authentic perception",         "tradition": "taoism",       "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "Obstacles to Seeing the Self",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Ahamkara",      "short_phrase": "ego-making — the false sense of separate selfhood",         "tradition": "vedanta",          "rarity_tier": "common" },
+            { "concept": "Mauvaise Foi",  "short_phrase": "bad faith — fleeing one's own freedom into self-deception", "tradition": "existentialism",   "rarity_tier": "common" },
+            { "concept": "Hubris",        "short_phrase": "overreach — the blindness born of too much self-certainty", "tradition": "pre-socratic",     "rarity_tier": "common" },
+            { "concept": "Akusala",       "short_phrase": "unwholesome roots obscuring the mind's clarity",            "tradition": "buddhism",         "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Sages of the Inner Path",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Socrates",        "short_phrase": "the examined life — know thyself",                        "tradition": "pre-socratic", "rarity_tier": "uncommon" },
+            { "concept": "Nagarjuna",       "short_phrase": "emptiness of the self — two truths",                     "tradition": "buddhism",     "rarity_tier": "uncommon" },
+            { "concept": "Laozi",           "short_phrase": "knowing others is wisdom; knowing oneself is enlightenment", "tradition": "taoism",   "rarity_tier": "uncommon" },
+            { "concept": "Ramana Maharshi", "short_phrase": "Who am I? — the only question worth asking",              "tradition": "vedanta",     "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Self That Cannot Be Found",
+          "display_order": 3,
+          "convergence_teaching": "The great philosophical traditions do not merely tell us to know ourselves — they warn us that the self we expect to find is not there. Buddhism's Anatta insists that what we call 'I' is a process, not a thing — no fixed self can be found anywhere. Kabbalah points to Ayin — nothingness — as the ground of the divine and of the human soul alike. Vedanta's Turiya is the fourth state of consciousness: the silent witness behind waking, dreaming, and deep sleep, the one who was never born and never dies. The pre-Socratic tradition of Epoche — suspending judgment — reveals that we cannot even be certain of the perceiver. Every tradition reaches the same conclusion: the search for the self is the path. The finding is the recognition that there is no finder.",
+          "cards": [
+            { "concept": "Anatta",   "short_phrase": "no fixed self — the 'I' is a process, not a thing",              "tradition": "buddhism",     "rarity_tier": "rare" },
+            { "concept": "Ayin",     "short_phrase": "divine nothingness — the ground of self and God alike",          "tradition": "kabbalah",     "rarity_tier": "rare" },
+            { "concept": "Turiya",   "short_phrase": "the fourth state — the silent witness behind all experience",    "tradition": "vedanta",      "rarity_tier": "rare" },
+            { "concept": "Epoche",   "short_phrase": "suspending judgment — the self cannot be grasped from outside",  "tradition": "pre-socratic", "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-01",
+      "title": "The Good Life",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Names for Flourishing",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Eudaimonia",  "short_phrase": "the good life — flourishing as a rational, virtuous being",   "tradition": "pre-socratic",  "rarity_tier": "common" },
+            { "concept": "Ananda",      "short_phrase": "bliss — the intrinsic joy of pure being",                     "tradition": "vedanta",       "rarity_tier": "common" },
+            { "concept": "Plenitude",   "short_phrase": "fullness — existence overflowing toward the good",            "tradition": "neoplatonism",  "rarity_tier": "common" },
+            { "concept": "Shalom",      "short_phrase": "peace — wholeness, completion, nothing lacking",              "tradition": "kabbalah",      "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "What Blocks the Good Life",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Dukkha",      "short_phrase": "unsatisfactoriness — the ache running through conditioned life","tradition": "buddhism",       "rarity_tier": "common" },
+            { "concept": "Alienation",  "short_phrase": "estrangement from authentic existence",                        "tradition": "existentialism", "rarity_tier": "common" },
+            { "concept": "Pleonexia",   "short_phrase": "insatiable wanting more — the enemy of sufficiency",          "tradition": "pre-socratic",   "rarity_tier": "common" },
+            { "concept": "The Fall",    "short_phrase": "the soul's exile from its luminous origin",                    "tradition": "gnosticism",     "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Masters Who Embodied Contentment",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Marcus Aurelius", "short_phrase": "emperor who sought virtue, not power",                    "tradition": "stoicism",         "rarity_tier": "uncommon" },
+            { "concept": "Thoreau",         "short_phrase": "simplicity at Walden — the economy of the good life",    "tradition": "transcendentalism","rarity_tier": "uncommon" },
+            { "concept": "Epicurus",        "short_phrase": "the garden — pleasure through friendship and simplicity", "tradition": "pre-socratic",     "rarity_tier": "uncommon" },
+            { "concept": "Zhuangzi",        "short_phrase": "the cook and the ox — effortless mastery as flourishing", "tradition": "taoism",          "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "What Was Always Already Good",
+          "display_order": 3,
+          "convergence_teaching": "Every tradition arrives at the same paradox about the good life: it cannot be pursued, only recognized. The Stoic sage lives in Ataraxia — tranquility unmoved by fortune, not because they've achieved something but because they've stopped demanding that things be other than they are. Taoism speaks of Pu — the uncarved block — the natural state before desire complicated everything. Vedanta's Sat-Chit-Ananda describes existence-consciousness-bliss as the very ground of being, not a reward but a recognition. Kabbalah's Simcha — joy — is not happiness but the gladness of being aligned with divine purpose. The good life was never something to achieve. It was always the ground you were standing on.",
+          "cards": [
+            { "concept": "Ataraxia",       "short_phrase": "tranquility — peace that no external fortune can disturb",  "tradition": "pre-socratic", "rarity_tier": "rare" },
+            { "concept": "Pu",             "short_phrase": "the uncarved block — original nature before desire",        "tradition": "taoism",       "rarity_tier": "rare" },
+            { "concept": "Sat-Chit-Ananda","short_phrase": "being-consciousness-bliss — the ground of existence itself","tradition": "vedanta",      "rarity_tier": "rare" },
+            { "concept": "Simcha",         "short_phrase": "joy aligned with divine purpose — not mood but orientation","tradition": "kabbalah",     "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-02",
+      "title": "The Great Work",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Turning Toward the Source",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Metanoia",    "short_phrase": "radical change of mind — turning toward the light",           "tradition": "neoplatonism", "rarity_tier": "common" },
+            { "concept": "Nivritti",    "short_phrase": "the path of return — withdrawing from outward to inward",    "tradition": "vedanta",      "rarity_tier": "common" },
+            { "concept": "Fan",         "short_phrase": "returning — the movement of the Tao back to its source",     "tradition": "taoism",       "rarity_tier": "common" },
+            { "concept": "Hitbonenut",  "short_phrase": "deep contemplation — settling into the divine presence",     "tradition": "kabbalah",     "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Dark Passage of Transformation",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Nigredo",        "short_phrase": "blackening — the necessary dissolution before gold",       "tradition": "hermeticism",  "rarity_tier": "common" },
+            { "concept": "Enantiodromia", "short_phrase": "the reversal — things become their opposite at extremes",   "tradition": "pre-socratic", "rarity_tier": "common" },
+            { "concept": "Melete",        "short_phrase": "practice — patient repetition as the forge of virtue",      "tradition": "stoicism",     "rarity_tier": "common" },
+            { "concept": "Agni",          "short_phrase": "the sacred fire that purifies and transforms",              "tradition": "vedanta",      "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Stages of the Alchemical Path",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Solve et Coagula", "short_phrase": "dissolve and coagulate — the alchemical rhythm of change","tradition": "hermeticism", "rarity_tier": "uncommon" },
+            { "concept": "Bodhisattva",      "short_phrase": "the awakening being who defers liberation to help others", "tradition": "buddhism",    "rarity_tier": "uncommon" },
+            { "concept": "Pneumatic",        "short_phrase": "one who has awakened the spirit within matter",            "tradition": "gnosticism",  "rarity_tier": "uncommon" },
+            { "concept": "Praxis",           "short_phrase": "action informed by understanding — theory made flesh",     "tradition": "stoicism",    "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Gold That Was Always There",
+          "display_order": 3,
+          "convergence_teaching": "Hermeticism called it the Lapis Philosophorum — the philosopher's stone — and said it was not made but revealed. Neoplatonism called it Theosis: the divinization of the soul, its becoming what it always essentially was. Buddhism named the goal Bodhi — awakening — not the acquisition of something new but the removal of what obscured the ever-present clarity. Vedanta's Jivanmukta is the one who is liberated while still alive, who has finished the Great Work without dying. The traditions agree: the work is not construction but uncovering. The gold was never absent. Only the dross was added.",
+          "cards": [
+            { "concept": "Lapis Philosophorum", "short_phrase": "the philosopher's stone — not made but revealed",      "tradition": "hermeticism",  "rarity_tier": "rare" },
+            { "concept": "Theosis",             "short_phrase": "divinization — becoming what the soul always was",     "tradition": "neoplatonism", "rarity_tier": "rare" },
+            { "concept": "Bodhi",               "short_phrase": "awakening — removing what obscured the always-present","tradition": "buddhism",     "rarity_tier": "rare" },
+            { "concept": "Jivanmukta",          "short_phrase": "liberated while living — the Great Work complete",     "tradition": "vedanta",      "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-03",
+      "title": "The Present Moment",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Words for Resting in Now",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Nunc Stans",  "short_phrase": "the standing now — eternity as the eternal present",          "tradition": "neoplatonism", "rarity_tier": "common" },
+            { "concept": "Pratyaksha", "short_phrase": "direct perception — knowing what is, without concept",          "tradition": "vedanta",      "rarity_tier": "common" },
+            { "concept": "Rigpa",      "short_phrase": "pure awareness — the open, lucid nature of mind",               "tradition": "buddhism",     "rarity_tier": "common" },
+            { "concept": "Xiaoyao",    "short_phrase": "free and easy wandering — spontaneous presence in the now",     "tradition": "taoism",       "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "What Pulls Us from the Present",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Samskaras",  "short_phrase": "mental grooves — past impressions that pull us from now",       "tradition": "vedanta",      "rarity_tier": "common" },
+            { "concept": "Anusaya",    "short_phrase": "latent tendencies — old habits sleeping beneath awareness",      "tradition": "buddhism",     "rarity_tier": "common" },
+            { "concept": "Lethe",      "short_phrase": "forgetting — the river of oblivion that erases the real",       "tradition": "pre-socratic", "rarity_tier": "common" },
+            { "concept": "Phantasia",  "short_phrase": "impression — the mind's projection overlaid on bare reality",   "tradition": "stoicism",     "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Teachers of Immediate Awakening",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Chuang-Tzu", "short_phrase": "the butterfly dream — what is real is what is immediate",       "tradition": "taoism",       "rarity_tier": "uncommon" },
+            { "concept": "Hui-neng",   "short_phrase": "the Platform Sutra — sudden awakening in this very moment",     "tradition": "buddhism",     "rarity_tier": "uncommon" },
+            { "concept": "Epictetus",  "short_phrase": "the slave who was free — this moment is enough",                "tradition": "stoicism",     "rarity_tier": "uncommon" },
+            { "concept": "Heraclitus", "short_phrase": "the river — you cannot step in twice, so step in now",          "tradition": "pre-socratic", "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Depth Behind the Moment",
+          "display_order": 3,
+          "convergence_teaching": "Kabbalah's Olam — world — is also time, the dimension in which meaning unfolds. The Eternal Return of Nietzsche and the Existentialists asks: if you had to live this moment again infinitely, would you choose it? Gnosticism's Pleroma — the fullness — is not a future paradise but the fullness already present behind the veil of ordinary time. And the Greek Kairos is not the clock-time of Chronos but the right moment, the critical moment, the moment pregnant with meaning that arrives when one is present enough to receive it. Every tradition hides the same secret: the present moment is not thin. It contains everything.",
+          "cards": [
+            { "concept": "Olam",              "short_phrase": "world-time — the dimension in which meaning unfolds",   "tradition": "kabbalah",       "rarity_tier": "rare" },
+            { "concept": "The Eternal Return","short_phrase": "would you choose this moment again, forever?",           "tradition": "existentialism", "rarity_tier": "rare" },
+            { "concept": "Pleroma",           "short_phrase": "fullness — the complete reality behind the veil",       "tradition": "gnosticism",     "rarity_tier": "rare" },
+            { "concept": "Kairos",            "short_phrase": "the right moment — time pregnant with meaning",         "tradition": "pre-socratic",   "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-04",
+      "title": "Inner Light",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "The Light Within",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Photismos",  "short_phrase": "illumination — the mind touched by the light of the One",      "tradition": "neoplatonism", "rarity_tier": "common" },
+            { "concept": "Jyoti",      "short_phrase": "inner light — the luminosity at the heart of the self",        "tradition": "vedanta",      "rarity_tier": "common" },
+            { "concept": "Or",         "short_phrase": "light — the first divine emanation, preceding all form",       "tradition": "kabbalah",     "rarity_tier": "common" },
+            { "concept": "Prajna",     "short_phrase": "wisdom-light — the clarity that sees through all obscuration", "tradition": "buddhism",     "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "What Darkens the Inner Light",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Agnosis",     "short_phrase": "unknowing — ignorance of one's own luminous nature",          "tradition": "pre-socratic", "rarity_tier": "common" },
+            { "concept": "The Archons", "short_phrase": "rulers who trap the divine spark in matter",                  "tradition": "gnosticism",   "rarity_tier": "common" },
+            { "concept": "Po",          "short_phrase": "the earthly soul — the part bound to form and appetite",      "tradition": "taoism",       "rarity_tier": "common" },
+            { "concept": "Fallenness",  "short_phrase": "absorption in the crowd — lost to one's own light",          "tradition": "existentialism","rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Mystics of the Inner Radiance",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Isaac Luria",    "short_phrase": "the Ari — he saw sparks scattered through all creation",  "tradition": "kabbalah",     "rarity_tier": "uncommon" },
+            { "concept": "Iamblichus",     "short_phrase": "the divine Iamblichus — theurgic illumination",           "tradition": "neoplatonism", "rarity_tier": "uncommon" },
+            { "concept": "Ramakrishna",    "short_phrase": "the mystic who saw the divine in every form of light",    "tradition": "vedanta",      "rarity_tier": "uncommon" },
+            { "concept": "Jacob Boehme",   "short_phrase": "the cobbler who saw the light in a pewter bowl",          "tradition": "hermeticism",  "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Light That Is Always On",
+          "display_order": 3,
+          "convergence_teaching": "Kabbalah speaks of the Ain Soph Aur — the Limitless Light — that preceded creation and permeates it still, hidden within all things. Taoism's Taiji is the supreme ultimate, the first differentiation within primordial unity, the light-and-dark that generates all phenomena. Buddhism's Dharmakaya is the truth-body of the Buddha — not a person but the luminous nature of reality itself. Neoplatonism's Emanation is the light pouring endlessly from the One, not diminishing its source, the way a candle lights a thousand flames. In every tradition, light is not a metaphor. It is the name for what was never absent.",
+          "cards": [
+            { "concept": "Ain Soph Aur", "short_phrase": "Limitless Light — preceding creation, permeating it still", "tradition": "kabbalah",     "rarity_tier": "rare" },
+            { "concept": "Taiji",        "short_phrase": "the supreme ultimate — the first light within the void",     "tradition": "taoism",       "rarity_tier": "rare" },
+            { "concept": "Dharmakaya",   "short_phrase": "the truth-body — luminous nature of reality itself",         "tradition": "buddhism",     "rarity_tier": "rare" },
+            { "concept": "Emanation",    "short_phrase": "the One's light pouring out without diminishing its source", "tradition": "neoplatonism", "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-05",
+      "title": "The Womb of Being",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "The Feminine in the Divine",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Shekhina",  "short_phrase": "the divine presence — the feminine face of God dwelling among us","tradition": "kabbalah",           "rarity_tier": "common" },
+            { "concept": "Yin",       "short_phrase": "the receptive, yielding, dark — the generative principle",       "tradition": "taoism",             "rarity_tier": "common" },
+            { "concept": "Prakriti",  "short_phrase": "primordial nature — the matrix from which all form arises",      "tradition": "vedanta",            "rarity_tier": "common" },
+            { "concept": "Oya",       "short_phrase": "orisha of transformation — storms, rivers, and creation",        "tradition": "african-philosophy", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Creative Void Before Form",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Sophia",       "short_phrase": "the divine wisdom — co-creator who falls into matter",        "tradition": "gnosticism",   "rarity_tier": "common" },
+            { "concept": "Prima Materia","short_phrase": "the first matter — the formless substrate of all creation",   "tradition": "hermeticism",  "rarity_tier": "common" },
+            { "concept": "Demiurge",     "short_phrase": "the craftsman who shapes matter from the eternal forms",      "tradition": "neoplatonism", "rarity_tier": "common" },
+            { "concept": "Khora",        "short_phrase": "the receptacle — space as the womb for all becoming",         "tradition": "pre-socratic", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Feminine Embodiments of Wisdom",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Kuan Yin",   "short_phrase": "she who hears the cries of the world — compassion embodied",   "tradition": "buddhism",           "rarity_tier": "uncommon" },
+            { "concept": "Neith",      "short_phrase": "the weaver of existence — she who was, is, and will be",       "tradition": "kemetic-wisdom",     "rarity_tier": "uncommon" },
+            { "concept": "Yemoja",     "short_phrase": "mother of waters — source and sustainer of all life",          "tradition": "african-philosophy", "rarity_tier": "uncommon" },
+            { "concept": "Diotima",    "short_phrase": "the priestess who taught Socrates the philosophy of love",      "tradition": "pre-socratic",       "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Mother Before the Name",
+          "display_order": 3,
+          "convergence_teaching": "Before god was given a name, the traditions point to something prior: a generative ground, often feminine, from which the named gods emerge. Taoism speaks of the Valley Spirit — empty, inexhaustible, the dark mother of heaven and earth. Kabbalah names the third Sefirah Binah — Understanding — the great womb of divine intelligence from which the lower seven proceed. Vedanta's Para-Shakti is the supreme power that underlies and enables even Brahman's activity — the creative energy without which consciousness could not stir. Gnosticism's Barbelo is the first and highest aeon, the perfect power before all others, the mother of the divine mind. The mother before the father. The womb before the word.",
+          "cards": [
+            { "concept": "Valley Spirit", "short_phrase": "the dark mother — empty, inexhaustible, prior to heaven",   "tradition": "taoism",       "rarity_tier": "rare" },
+            { "concept": "Binah",         "short_phrase": "divine Understanding — the great womb of the Sefirot",     "tradition": "kabbalah",     "rarity_tier": "rare" },
+            { "concept": "Para-Shakti",   "short_phrase": "supreme power — the energy enabling all divine activity",   "tradition": "vedanta",      "rarity_tier": "rare" },
+            { "concept": "Barbelo",       "short_phrase": "the first aeon — the mother of the divine mind",            "tradition": "gnosticism",   "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-06",
+      "title": "The Power of Naming",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "The Sacred Word",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Davar",          "short_phrase": "word and thing as one — speech that creates reality",       "tradition": "kabbalah",           "rarity_tier": "common" },
+            { "concept": "Mantra",         "short_phrase": "sacred sound — the vibration that aligns with the divine",  "tradition": "vedanta",            "rarity_tier": "common" },
+            { "concept": "Ming",           "short_phrase": "naming — to name correctly is to see clearly",              "tradition": "taoism",             "rarity_tier": "common" },
+            { "concept": "Ashe",           "short_phrase": "the power inherent in authentic speech and action",         "tradition": "african-philosophy", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Misuse and Limits of Language",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Lashon ha-Ra", "short_phrase": "evil speech — harm done through words alone",                 "tradition": "kabbalah",     "rarity_tier": "common" },
+            { "concept": "Vitarka",      "short_phrase": "verbal proliferation — concepts that multiply and obscure",   "tradition": "buddhism",     "rarity_tier": "common" },
+            { "concept": "Sophistry",    "short_phrase": "clever speech that misleads rather than illuminates",          "tradition": "pre-socratic", "rarity_tier": "common" },
+            { "concept": "Mutus Liber",  "short_phrase": "the silent book — the truth beyond what words can carry",     "tradition": "hermeticism",  "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Philosophers of Language and Logos",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Vak",            "short_phrase": "the goddess of sacred speech — language as cosmic power",   "tradition": "vedanta",      "rarity_tier": "uncommon" },
+            { "concept": "Sefer Yetzirah", "short_phrase": "the Book of Formation — creation through Hebrew letters",   "tradition": "kabbalah",     "rarity_tier": "uncommon" },
+            { "concept": "Chrysippus",     "short_phrase": "Stoic logician — the rational structure underlying speech",  "tradition": "stoicism",     "rarity_tier": "uncommon" },
+            { "concept": "Zhuangzi",       "short_phrase": "the fish-trap — once you have the fish, forget the trap",   "tradition": "taoism",       "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Word That Made the World",
+          "display_order": 3,
+          "convergence_teaching": "Kabbalah's Tetragrammaton — the four-letter Name of God — is not a word about God but the divine name that participates in the divine nature. To speak it is an act, not a description. Vedanta's Shabda-Brahman is the Absolute as sound — the universe as vibration, sacred syllable before matter. Buddhism's Dharani are protective and transformative formulas — not understood but experienced, not translations but transmissions. Existentialism's Rede — speech — is the house of Being for Heidegger: we do not use language; language uses us. Across traditions the message is the same: words do not describe a world that already exists. In the beginning was the word, and it made the world.",
+          "cards": [
+            { "concept": "Tetragrammaton", "short_phrase": "the Name that participates in the divine nature",           "tradition": "kabbalah",       "rarity_tier": "rare" },
+            { "concept": "Shabda-Brahman", "short_phrase": "the Absolute as sound — universe as sacred vibration",      "tradition": "vedanta",        "rarity_tier": "rare" },
+            { "concept": "Dharani",        "short_phrase": "sacred formulas — not understood but transmitted",          "tradition": "buddhism",       "rarity_tier": "rare" },
+            { "concept": "Rede",           "short_phrase": "speech as the house of Being — language uses us",           "tradition": "existentialism", "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-07",
+      "title": "Virtue in Action",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Each Tradition's Word for Virtue",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Arete",  "short_phrase": "excellence — the full actualization of human potential",            "tradition": "stoicism",           "rarity_tier": "common" },
+            { "concept": "Sila",   "short_phrase": "ethical conduct — the ground of all practice",                     "tradition": "buddhism",           "rarity_tier": "common" },
+            { "concept": "De",     "short_phrase": "virtue-power — the natural excellence flowing from alignment with Tao","tradition": "taoism",          "rarity_tier": "common" },
+            { "concept": "Odu",    "short_phrase": "the corpus of wisdom guiding right action and character",           "tradition": "african-philosophy", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Enemies of Virtue",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Akrasia",      "short_phrase": "weakness of will — knowing the good but not doing it",       "tradition": "pre-socratic",   "rarity_tier": "common" },
+            { "concept": "Yetzer ha-Ra", "short_phrase": "the evil inclination — the drive that must be redirected",   "tradition": "kabbalah",       "rarity_tier": "common" },
+            { "concept": "Kakia",        "short_phrase": "vice — the failure to actualize what the soul truly is",     "tradition": "neoplatonism",   "rarity_tier": "common" },
+            { "concept": "Mauvaise Foi", "short_phrase": "bad faith — denying one's freedom to avoid responsibility",  "tradition": "existentialism", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Exemplars of the Virtuous Life",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Seneca",     "short_phrase": "letters on ethics — virtue alone is sufficient for happiness",  "tradition": "stoicism", "rarity_tier": "uncommon" },
+            { "concept": "Shantideva", "short_phrase": "the guide to the bodhisattva's way — patience as the core virtue","tradition": "buddhism","rarity_tier": "uncommon" },
+            { "concept": "Sun Tzu",    "short_phrase": "the art of virtue in conflict — mastery through non-force",     "tradition": "taoism",   "rarity_tier": "uncommon" },
+            { "concept": "Mirabai",    "short_phrase": "the poet-saint — devotion as the highest virtue",               "tradition": "vedanta",  "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "Acting from Virtue",
+          "display_order": 3,
+          "convergence_teaching": "The traditions disagree on many things but agree on this: virtue is not a rule followed from outside but a nature expressed from within. Stoicism's Kathekon — appropriate action — is what the virtuous person does naturally, not what is commanded. Buddhism's Upaya — skillful means — is the wise adaptation of virtue to each situation: not rules but responsiveness. Vedanta's Nishkama Karma is action without attachment to result: acting because it is right, not because it is rewarding. The Greek Kalokagathia — beautiful and good — holds that true virtue is beautiful to witness, that the good person cannot help but also be graceful. In every tradition, virtue is not a cage but a nature. The virtuous person does not restrain themselves from evil; they no longer wish to do it.",
+          "cards": [
+            { "concept": "Kathekon",       "short_phrase": "appropriate action — what virtue does naturally",          "tradition": "stoicism",     "rarity_tier": "rare" },
+            { "concept": "Upaya",          "short_phrase": "skillful means — wisdom adapted to each situation",        "tradition": "buddhism",     "rarity_tier": "rare" },
+            { "concept": "Nishkama Karma", "short_phrase": "action without attachment to result — virtue for its own sake","tradition": "vedanta", "rarity_tier": "rare" },
+            { "concept": "Kalokagathia",   "short_phrase": "beautiful-and-good — virtue as intrinsically graceful",    "tradition": "pre-socratic", "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-08",
+      "title": "Sacred Space",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Set-Apart Places",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Temenos",      "short_phrase": "the sacred precinct — ground set apart from ordinary space",  "tradition": "pre-socratic",       "rarity_tier": "common" },
+            { "concept": "Mishkan",      "short_phrase": "the tabernacle — the portable dwelling of the divine presence","tradition": "kabbalah",           "rarity_tier": "common" },
+            { "concept": "Mandala",      "short_phrase": "sacred diagram — the cosmos mapped as dwelling for the divine","tradition": "buddhism",           "rarity_tier": "common" },
+            { "concept": "Sacred Grove", "short_phrase": "forest shrine — where earth and spirit first meet",           "tradition": "african-philosophy", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Qualities That Make Space Sacred",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Kavod",       "short_phrase": "the divine glory — the weighty presence filling sacred space",  "tradition": "kabbalah",       "rarity_tier": "common" },
+            { "concept": "Hieros",      "short_phrase": "the holy — what is set apart, separated from the ordinary",    "tradition": "pre-socratic",   "rarity_tier": "common" },
+            { "concept": "Hwt-Netjer",  "short_phrase": "the house of the god — where deity condescends to dwell",      "tradition": "kemetic-wisdom", "rarity_tier": "common" },
+            { "concept": "Kshetra",     "short_phrase": "the field — the body and the world as sacred ground of practice","tradition": "vedanta",       "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Builders of Sacred Space",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Solomon",   "short_phrase": "the builder of the temple — wisdom as the measure of sacred space","tradition": "kabbalah",       "rarity_tier": "uncommon" },
+            { "concept": "Imhotep",   "short_phrase": "architect and physician — the first named builder in history",    "tradition": "kemetic-wisdom", "rarity_tier": "uncommon" },
+            { "concept": "Nalanda",   "short_phrase": "the great monastery — where sacred space enabled great learning", "tradition": "buddhism",       "rarity_tier": "uncommon" },
+            { "concept": "Plotinus",  "short_phrase": "the philosopher who refused to have his portrait painted",        "tradition": "neoplatonism",   "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Innermost Sanctuary",
+          "display_order": 3,
+          "convergence_teaching": "Every tradition eventually reveals that the true sanctuary is not made with hands. The Hermetic Athanor is the alchemist's furnace — but its real referent is the body and the heart undergoing transformation. Vedanta's Hridayakasha is the sky of the heart: infinite, luminous, the true inner space that contains all outer space. Kabbalah's Devir is the Holy of Holies — the innermost room of Solomon's Temple, empty of images, housing only the divine presence itself. Taoism's Xu is emptiness: the usefulness of a vessel lies in the empty space within. The traditions all agree: the holiest ground is the one inside you. Build the outer temple long enough and you are always led inward.",
+          "cards": [
+            { "concept": "Athanor",    "short_phrase": "the alchemist's furnace — the heart as the site of transformation","tradition": "hermeticism",  "rarity_tier": "rare" },
+            { "concept": "Hridayakasha","short_phrase": "the sky of the heart — infinite inner space",                   "tradition": "vedanta",      "rarity_tier": "rare" },
+            { "concept": "Devir",      "short_phrase": "the Holy of Holies — innermost room, empty, holding all",        "tradition": "kabbalah",     "rarity_tier": "rare" },
+            { "concept": "Xu",         "short_phrase": "emptiness — the usefulness of a vessel is the space within",     "tradition": "taoism",       "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-09",
+      "title": "The Beautiful",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Beauty in Each Tradition",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Kalos",    "short_phrase": "the beautiful — that which draws the soul upward toward the good",  "tradition": "pre-socratic",       "rarity_tier": "common" },
+            { "concept": "Sundaram", "short_phrase": "the beautiful — one face of the divine trinity of truth-beauty-bliss","tradition": "vedanta",           "rarity_tier": "common" },
+            { "concept": "Mei",      "short_phrase": "beauty as the natural expression of alignment with the Tao",        "tradition": "taoism",             "rarity_tier": "common" },
+            { "concept": "Ife",      "short_phrase": "beauty — the sacred city where Oduduwa created the world",         "tradition": "african-philosophy", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "Beauty as Cosmic Proportion",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Symmetria",   "short_phrase": "right proportion — the mathematical ground of beauty",           "tradition": "neoplatonism",          "rarity_tier": "common" },
+            { "concept": "Tiferet",     "short_phrase": "beauty — the central Sefirah, harmonizing all opposites",       "tradition": "kabbalah",              "rarity_tier": "common" },
+            { "concept": "Tetraktys",   "short_phrase": "the sacred triangle — number as the source of all beauty",      "tradition": "pythagoreanism",        "rarity_tier": "common" },
+            { "concept": "Microcosm",   "short_phrase": "the human as miniature cosmos — beautiful because proportioned","tradition": "hermeticism",           "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Thinkers Who Found the Beautiful",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Mimesis",        "short_phrase": "imitation — art's relationship to the beautiful forms",      "tradition": "pre-socratic",         "rarity_tier": "uncommon" },
+            { "concept": "The Sublime",    "short_phrase": "beauty that overwhelms — nature's excess as spiritual call", "tradition": "transcendentalism",    "rarity_tier": "uncommon" },
+            { "concept": "Disegno",        "short_phrase": "divine design — the beautiful line that connects mind to God","tradition": "renaissance-philosophy","rarity_tier": "uncommon" },
+            { "concept": "Prasada",        "short_phrase": "grace — beauty as the divine overflow, freely given",        "tradition": "vedanta",              "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "Beauty Is Not Decoration",
+          "display_order": 3,
+          "convergence_teaching": "Neoplatonism's To Kalon — The Beautiful — is not an aesthetic preference but an ontological fact: beauty is what existence looks like when it is most fully itself, when it participates most completely in the One. Kabbalah's Hod — Splendor — is the eighth Sefirah: the beauty that resonates outward, that communicates the divine in form. Vedanta's Chidananda — consciousness-bliss — is the nature of the deepest self, and those who have tasted it say it is experienced as a beauty that surpasses all outer beauty. Taoism's Wu Xing — the five movements — generates all aesthetic experience from the interplay of elemental forces. For every tradition: the beautiful is a trace of the real. When you are moved by beauty, you are touching something true.",
+          "cards": [
+            { "concept": "To Kalon",   "short_phrase": "The Beautiful — what existence looks like when most fully itself","tradition": "neoplatonism", "rarity_tier": "rare" },
+            { "concept": "Hod",        "short_phrase": "Splendor — the Sefirah of beauty that resonates outward",       "tradition": "kabbalah",     "rarity_tier": "rare" },
+            { "concept": "Chidananda", "short_phrase": "consciousness-bliss — the deepest self experienced as beauty",  "tradition": "vedanta",      "rarity_tier": "rare" },
+            { "concept": "Wu Xing",    "short_phrase": "five movements — elemental forces generating all aesthetic form","tradition": "taoism",       "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-10",
+      "title": "The Seed in the Ground",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Renewal and Rebirth",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Palingenesia", "short_phrase": "rebirth — the world periodically renewed by cosmic fire",       "tradition": "stoicism",       "rarity_tier": "common" },
+            { "concept": "Punabbhava",   "short_phrase": "re-becoming — the arising of a new moment from past conditions","tradition": "buddhism",       "rarity_tier": "common" },
+            { "concept": "Chun",         "short_phrase": "spring — the returning vitality after winter's withdrawal",    "tradition": "taoism",         "rarity_tier": "common" },
+            { "concept": "Khepri",       "short_phrase": "the self-created — the scarab god of the rising sun and renewal","tradition": "kemetic-wisdom", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Long Cycles of Time",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Prarabdha",   "short_phrase": "the karma set in motion — seeds already germinating",           "tradition": "vedanta",            "rarity_tier": "common" },
+            { "concept": "Egungun",     "short_phrase": "ancestors who return — the dead cycling back through the living","tradition": "african-philosophy", "rarity_tier": "common" },
+            { "concept": "Olam Ha-Ba",  "short_phrase": "the world to come — the future dimension of cosmic renewal",   "tradition": "kabbalah",           "rarity_tier": "common" },
+            { "concept": "Anabasis",    "short_phrase": "the soul's ascent — return toward the source after descent",   "tradition": "neoplatonism",       "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Philosophers of Cycle and Return",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Ouroboros",    "short_phrase": "the serpent eating its tail — eternal cyclical self-renewal",  "tradition": "hermeticism",  "rarity_tier": "uncommon" },
+            { "concept": "Anakyklosis",  "short_phrase": "the cycle of constitutions — history spiraling through forms", "tradition": "pre-socratic", "rarity_tier": "uncommon" },
+            { "concept": "Kalachakra",   "short_phrase": "wheel of time — the cosmic cycles of dissolution and renewal", "tradition": "buddhism",     "rarity_tier": "uncommon" },
+            { "concept": "Kalpa",        "short_phrase": "the cosmic era — the vast unit of time in which worlds arise", "tradition": "vedanta",      "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The World That Keeps Beginning",
+          "display_order": 3,
+          "convergence_teaching": "Every tradition that has grappled with time has arrived at the image of the cycle. Stoicism's Ekpyrosis is the periodic conflagration when all things return to fire — not as destruction but as the cosmic breath exhaling, before the next inhale. Kabbalah's Shemitot are the great sabbatical cycles — epochs of existence, each world yielding to the next. Taoism's Zhen — the arousing, the thunderclap — is the hexagram of beginning, the explosive movement from stillness to motion that initiates every new phase. African tradition's Orunmila holds all the wisdom of all the cycles, the divine witness of how things begin and return. The seed does not become the tree and stop. It becomes the tree that makes the seed that makes the tree.",
+          "cards": [
+            { "concept": "Ekpyrosis",  "short_phrase": "cosmic conflagration — the great breath returning all to fire",  "tradition": "stoicism",           "rarity_tier": "rare" },
+            { "concept": "Shemitot",   "short_phrase": "cosmic sabbatical cycles — each world yielding to the next",    "tradition": "kabbalah",           "rarity_tier": "rare" },
+            { "concept": "Zhen",       "short_phrase": "the arousing — the thunderclap that initiates every new phase", "tradition": "taoism",             "rarity_tier": "rare" },
+            { "concept": "Orunmila",   "short_phrase": "witness of all cycles — the one who holds wisdom of beginnings","tradition": "african-philosophy", "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-11",
+      "title": "The Turning Wheel",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "The Wheel as Sacred Symbol",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Dhammacakka", "short_phrase": "the wheel of the dharma — first set turning by the Buddha",    "tradition": "buddhism",       "rarity_tier": "common" },
+            { "concept": "Tyche",       "short_phrase": "fortune's wheel — all earthly things rise and fall",            "tradition": "pre-socratic",   "rarity_tier": "common" },
+            { "concept": "Bagua",       "short_phrase": "eight trigrams — the wheel of forces governing change",         "tradition": "taoism",         "rarity_tier": "common" },
+            { "concept": "Mehen",       "short_phrase": "the coiled serpent — the spiral around the solar barque",      "tradition": "kemetic-wisdom", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "What the Wheel Turns Through",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Lila",          "short_phrase": "divine play — the cosmos as joyful, free creative activity", "tradition": "vedanta",            "rarity_tier": "common" },
+            { "concept": "The Great Year","short_phrase": "the Platonic year — all stars returning to their first positions","tradition": "hermeticism",     "rarity_tier": "common" },
+            { "concept": "Vicissitudo",   "short_phrase": "the turning of fortune — change as the nature of all things", "tradition": "stoicism",           "rarity_tier": "common" },
+            { "concept": "Cycle of Ase",  "short_phrase": "the circulation of divine energy through all living things",  "tradition": "african-philosophy", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Masters of the Cyclic Vision",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Proclus",        "short_phrase": "the systematic Neoplatonist — all proceeds and returns",    "tradition": "neoplatonism", "rarity_tier": "uncommon" },
+            { "concept": "Padmasambhava",  "short_phrase": "the lotus-born — who turned the wheel of dharma in Tibet",  "tradition": "buddhism",     "rarity_tier": "uncommon" },
+            { "concept": "Empedocles",     "short_phrase": "love and strife — the cosmic forces that cycle eternally",  "tradition": "pre-socratic", "rarity_tier": "uncommon" },
+            { "concept": "Yukteswar",      "short_phrase": "the yuga cycles — ages of consciousness rising and falling", "tradition": "vedanta",      "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Hub That Does Not Turn",
+          "display_order": 3,
+          "convergence_teaching": "Every tradition that maps the wheel also points to the axle. What does not turn. Taoism's Tai-Yi — the great unity — is the silent center around which all phenomena revolve. Kabbalah's Keter — Crown — is the first and highest Sefirah, the point of pure will that precedes all movement. Buddhism's Nirodha — cessation — is not inertia but the stillness beneath all arising, the unconditioned that makes the conditioned possible. Neoplatonism's Nous — divine mind — contemplates the One eternally, neither coming nor going, the axis around which the procession turns. The wheel needs a hub. The hub does not spin. To find the center is to find the place that the wheel cannot reach.",
+          "cards": [
+            { "concept": "Tai-Yi",  "short_phrase": "the great unity — the still center around which all revolves",     "tradition": "taoism",       "rarity_tier": "rare" },
+            { "concept": "Keter",   "short_phrase": "Crown — the point of pure will before all motion",                 "tradition": "kabbalah",     "rarity_tier": "rare" },
+            { "concept": "Nirodha", "short_phrase": "cessation — the unconditioned stillness beneath all arising",      "tradition": "buddhism",     "rarity_tier": "rare" },
+            { "concept": "Nous",    "short_phrase": "divine mind — the axis of contemplation around which all turns",   "tradition": "neoplatonism", "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-12",
+      "title": "The Threshold",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Liminal Spaces",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Metaxu",      "short_phrase": "the in-between — the middle space where encounter happens",    "tradition": "neoplatonism",       "rarity_tier": "common" },
+            { "concept": "Pardes",      "short_phrase": "the orchard — four levels of approach to sacred mystery",      "tradition": "kabbalah",           "rarity_tier": "common" },
+            { "concept": "Crossroads",  "short_phrase": "the place of crossing — where paths meet and choices are made","tradition": "african-philosophy", "rarity_tier": "common" },
+            { "concept": "Yi-Jing",     "short_phrase": "book of changes — consulting the threshold between states",    "tradition": "taoism",             "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Difficulty of Crossing",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Aporia",     "short_phrase": "the impasse — genuine blockage that precedes understanding",    "tradition": "pre-socratic",   "rarity_tier": "common" },
+            { "concept": "Angst",      "short_phrase": "existential anxiety — the vertigo before authentic choice",     "tradition": "existentialism", "rarity_tier": "common" },
+            { "concept": "The Crossing","short_phrase": "the initiatory passage through darkness to the other side",   "tradition": "hermeticism",    "rarity_tier": "common" },
+            { "concept": "Peritrope",  "short_phrase": "the reversal — the argument that turns back on itself",        "tradition": "stoicism",       "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Guides at the Threshold",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Anubis",        "short_phrase": "the jackal-headed guide — escort of souls at the threshold", "tradition": "kemetic-wisdom", "rarity_tier": "uncommon" },
+            { "concept": "Psychopomp",    "short_phrase": "the soul-guide — leading between the worlds",                "tradition": "neoplatonism",   "rarity_tier": "uncommon" },
+            { "concept": "Milarepa",      "short_phrase": "the poet-saint who crossed through extreme suffering",       "tradition": "buddhism",       "rarity_tier": "uncommon" },
+            { "concept": "Abhinavagupta", "short_phrase": "the Kashmiri master — beauty as the threshold to the divine","tradition": "vedanta",        "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Threshold That Changes the One Who Crosses",
+          "display_order": 3,
+          "convergence_teaching": "Every tradition knows the threshold not as a line on a map but as a transformation in the one who crosses. Kabbalah's Tzimtzum — divine contraction — created the threshold: God withdrew to make space for creation, and every genuine act of creation requires a similar self-emptying. Existentialism's Leap of Faith is not irrational but the only rational response to a situation that exceeds all calculation — the threshold that can only be crossed, not understood from the near side. Taoism's Wuhua is transformation so complete the self does not survive it — what crosses is not what arrives. Neoplatonism's Apocatastasis is the restoration of all things — the threshold crossed by the entire cosmos, not just the individual soul. What all thresholds share: you cannot cross and remain the same.",
+          "cards": [
+            { "concept": "Tzimtzum",      "short_phrase": "divine contraction — the threshold made by self-emptying",   "tradition": "kabbalah",       "rarity_tier": "rare" },
+            { "concept": "Leap of Faith", "short_phrase": "the threshold that can only be crossed, not understood",     "tradition": "existentialism", "rarity_tier": "rare" },
+            { "concept": "Wuhua",         "short_phrase": "transformation so complete the self does not survive",       "tradition": "taoism",         "rarity_tier": "rare" },
+            { "concept": "Apocatastasis", "short_phrase": "the restoration of all — the threshold the cosmos crosses",  "tradition": "neoplatonism",   "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-13",
+      "title": "Both/And",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Unity Within Polarity",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Yin-Yang",                  "short_phrase": "the dyad — each pole containing its opposite",    "tradition": "taoism",       "rarity_tier": "common" },
+            { "concept": "Coincidentia Oppositorum",   "short_phrase": "coincidence of opposites — unity holding all contradiction","tradition": "neoplatonism","rarity_tier": "common" },
+            { "concept": "Chesed-Gevurah",            "short_phrase": "love and judgment — the polarity the divine holds in balance","tradition": "kabbalah", "rarity_tier": "common" },
+            { "concept": "Sunyata",                   "short_phrase": "emptiness — open enough to hold all opposites",   "tradition": "buddhism",     "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Paradox That Cannot Be Resolved",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Aporia",     "short_phrase": "genuine impasse — what cannot be resolved from one side alone",  "tradition": "pre-socratic",   "rarity_tier": "common" },
+            { "concept": "The Absurd", "short_phrase": "the clash between human longing and the world's silence",        "tradition": "existentialism", "rarity_tier": "common" },
+            { "concept": "The Rebis",  "short_phrase": "the two-headed hermaphrodite — opposites fused into new unity",  "tradition": "hermeticism",    "rarity_tier": "common" },
+            { "concept": "Neti Neti",  "short_phrase": "not this, not this — truth found by excluding every partial view","tradition": "vedanta",        "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Masters of Paradox",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Rabbi Akiva",          "short_phrase": "entered the Pardes and came out in peace",              "tradition": "kabbalah",              "rarity_tier": "uncommon" },
+            { "concept": "Nicholas of Cusa",     "short_phrase": "learned ignorance — knowing by not-knowing",           "tradition": "renaissance-philosophy","rarity_tier": "uncommon" },
+            { "concept": "Zhuangzi",             "short_phrase": "the cook and the butterfly — reality is both/and",     "tradition": "taoism",                "rarity_tier": "uncommon" },
+            { "concept": "Nagarjuna",            "short_phrase": "the two truths — conventional and ultimate both hold",  "tradition": "buddhism",              "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Truth That Includes Its Opposite",
+          "display_order": 3,
+          "convergence_teaching": "Taoism's Wuji-Taiji is the passage from the limitless void to the supreme ultimate — a movement that includes both absence and presence, neither canceling the other. Vedanta's Saguna Brahman is God-with-attributes: the infinite accommodating form without losing formlessness, the ultimate holding a relative face for those who cannot yet approach the absolute. Gnosticism's Autogenes — the self-begotten — is the light that arose without prior cause, the effect that preceded its condition. Neoplatonism's Apophasis is the via negativa, the way of unknowing: every affirmation about the One is false; only negation approaches. The one who holds both knows more than the one who holds one. The highest truth does not choose between yes and no. It says: yes, and.",
+          "cards": [
+            { "concept": "Wuji-Taiji",      "short_phrase": "void and ultimate — both present, neither canceling",       "tradition": "taoism",       "rarity_tier": "rare" },
+            { "concept": "Saguna Brahman",  "short_phrase": "God-with-attributes — the infinite accommodating form",     "tradition": "vedanta",      "rarity_tier": "rare" },
+            { "concept": "Autogenes",       "short_phrase": "the self-begotten — the effect that preceded its cause",    "tradition": "gnosticism",   "rarity_tier": "rare" },
+            { "concept": "Apophasis",       "short_phrase": "the way of unknowing — negation as the only true approach", "tradition": "neoplatonism", "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-14",
+      "title": "Through Fire",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Endurance and Fortitude",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Karteria",       "short_phrase": "patient endurance — holding steady under the weight of life", "tradition": "stoicism",     "rarity_tier": "common" },
+            { "concept": "Dukkha-Nirodha", "short_phrase": "the cessation of suffering — passing through, not around",   "tradition": "buddhism",     "rarity_tier": "common" },
+            { "concept": "Tapasya",        "short_phrase": "austerity as transformation — the fire that burns clean",    "tradition": "vedanta",      "rarity_tier": "common" },
+            { "concept": "Tzarah",         "short_phrase": "suffering — the narrow place that opens into liberation",    "tradition": "kabbalah",     "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Shape of Suffering",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Pathei Mathos",  "short_phrase": "learning through suffering — wisdom earned by endurance",    "tradition": "pre-socratic",       "rarity_tier": "common" },
+            { "concept": "Initiation",     "short_phrase": "ordeal as passage — suffering that confers a new identity",  "tradition": "african-philosophy", "rarity_tier": "common" },
+            { "concept": "Purgation",      "short_phrase": "the cleansing suffering — the fire that precedes ascent",   "tradition": "neoplatonism",       "rarity_tier": "common" },
+            { "concept": "Ku",             "short_phrase": "hardship — the hexagram of decay that precedes renewal",     "tradition": "taoism",             "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Those Who Went Through Fire",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Nietzsche",     "short_phrase": "what does not kill me makes me stronger — forged in suffering","tradition": "existentialism", "rarity_tier": "uncommon" },
+            { "concept": "Job",           "short_phrase": "the one who questioned God and was answered from the storm",   "tradition": "kabbalah",       "rarity_tier": "uncommon" },
+            { "concept": "Simone Weil",   "short_phrase": "affliction as the point of contact with the divine",           "tradition": "neoplatonism",   "rarity_tier": "uncommon" },
+            { "concept": "Lie Zi",        "short_phrase": "the Taoist master who embodied emptiness through loss",        "tradition": "taoism",         "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Fire That Does Not Consume",
+          "display_order": 3,
+          "convergence_teaching": "Neoplatonism's Katharsis is not mere emotional release but genuine purification — the stripping away of what was never truly ours, so the essential self can be seen. Vedanta's Kundalini is the serpent fire that rises through the body's centers: not comfortable, often terrifying, but moving always toward liberation. Kabbalah's Shevirat ha-Kelim — the shattering of the vessels — is the traumatic origin of the cosmos: divine light too intense for the containers, the breaking that made all repair possible. Buddhism's Vajra — the thunderbolt diamond — is the quality of mind that cuts through all illusion; it is forged in the fire of practice and cannot be destroyed. Every tradition says: the fire is not punishment. It is the path.",
+          "cards": [
+            { "concept": "Katharsis",          "short_phrase": "purification — stripping away what was never truly ours","tradition": "neoplatonism", "rarity_tier": "rare" },
+            { "concept": "Kundalini",          "short_phrase": "the serpent fire rising toward liberation",              "tradition": "vedanta",      "rarity_tier": "rare" },
+            { "concept": "Shevirat ha-Kelim",  "short_phrase": "the shattering of the vessels — breaking that enables repair","tradition": "kabbalah", "rarity_tier": "rare" },
+            { "concept": "Vajra",              "short_phrase": "the thunderbolt mind — forged in fire, impossible to destroy","tradition": "buddhism", "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-15",
+      "title": "The True Teacher",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Names for the One Who Guides",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Guru",     "short_phrase": "the weighty one — dispeller of darkness, pointer to light",        "tradition": "vedanta",            "rarity_tier": "common" },
+            { "concept": "Exaiphnes","short_phrase": "suddenly — the flash of illumination the teacher makes possible",  "tradition": "neoplatonism",       "rarity_tier": "common" },
+            { "concept": "Zhenren",  "short_phrase": "the true person — the realized master who teaches by being",       "tradition": "taoism",             "rarity_tier": "common" },
+            { "concept": "Griot",    "short_phrase": "keeper of oral wisdom — teacher who holds the community's soul",   "tradition": "african-philosophy", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "Obstacles to True Teaching",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Papanca",   "short_phrase": "mental proliferation — the student's conceptual noise blocking transmission","tradition": "buddhism",       "rarity_tier": "common" },
+            { "concept": "Misology",  "short_phrase": "hatred of reason — the mind turned against its own tool",         "tradition": "pre-socratic",   "rarity_tier": "common" },
+            { "concept": "Pesha",     "short_phrase": "transgression — the willful refusal of the teaching",             "tradition": "kabbalah",       "rarity_tier": "common" },
+            { "concept": "Das Man",   "short_phrase": "the They — the anonymous crowd that silences authentic voices",   "tradition": "existentialism", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Great Teachers Across Traditions",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Boethius",      "short_phrase": "the consolation — philosophy as teacher in the condemned cell","tradition": "neoplatonism", "rarity_tier": "uncommon" },
+            { "concept": "Huang Po",      "short_phrase": "the Zen master who taught by striking and shouting",          "tradition": "buddhism",     "rarity_tier": "uncommon" },
+            { "concept": "Ibn Rushd",     "short_phrase": "the Commentator — the teacher who preserved and transmitted", "tradition": "pre-socratic", "rarity_tier": "uncommon" },
+            { "concept": "Musonius Rufus","short_phrase": "the Roman Socrates — philosophy lived, not merely lectured",  "tradition": "stoicism",     "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "What Cannot Be Said Must Be Shown",
+          "display_order": 3,
+          "convergence_teaching": "The deepest traditions of teaching all arrive at the same paradox: the most important transmission cannot be made in words. Vedanta's Shaktipat is the direct transfer of awakened energy from teacher to student — something that passes between persons, not through language. Kabbalah's Maggid is the angelic teacher who appears to the prepared student, speaking from beyond the human plane. Buddhism's Dharma Transmission is the wordless passing of the flame — the Buddha held a flower, Mahakashyapa smiled, and what passed between them cannot be described. Taoism's Xin Zhai — fasting of the heart — is the emptying required to receive what the teacher cannot say but can only demonstrate. Every great teacher eventually points beyond themselves. The finger points at the moon. The student who stares at the finger has missed everything.",
+          "cards": [
+            { "concept": "Shaktipat",          "short_phrase": "direct transmission of awakened energy — beyond words",  "tradition": "vedanta",  "rarity_tier": "rare" },
+            { "concept": "Maggid",             "short_phrase": "the angelic teacher appearing to the prepared student",  "tradition": "kabbalah", "rarity_tier": "rare" },
+            { "concept": "Dharma Transmission","short_phrase": "the wordless passing of the flame — the smile at the flower","tradition": "buddhism","rarity_tier": "rare" },
+            { "concept": "Xin Zhai",           "short_phrase": "fasting of the heart — emptying to receive the teaching","tradition": "taoism",   "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-16",
+      "title": "What Can Be Known",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Forms of Knowing",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Episteme",       "short_phrase": "scientific knowledge — what can be demonstrated and proven",  "tradition": "pre-socratic", "rarity_tier": "common" },
+            { "concept": "Noesis",         "short_phrase": "intellectual intuition — direct knowing of the forms",       "tradition": "neoplatonism", "rarity_tier": "common" },
+            { "concept": "Prajnaparamita", "short_phrase": "the perfection of wisdom — knowing that liberates",          "tradition": "buddhism",     "rarity_tier": "common" },
+            { "concept": "Jnana",          "short_phrase": "knowledge as the direct path — knowing the self as absolute","tradition": "vedanta",      "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Limits and Conditions of Knowledge",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Katalepsis",   "short_phrase": "the Stoic grasp — cognitive certainty and its conditions",     "tradition": "stoicism",       "rarity_tier": "common" },
+            { "concept": "Thrownness",   "short_phrase": "the condition we find ourselves in — knowing begins here",     "tradition": "existentialism", "rarity_tier": "common" },
+            { "concept": "Da'at",        "short_phrase": "intimate knowledge — the knowing that unifies knower and known","tradition": "kabbalah",       "rarity_tier": "common" },
+            { "concept": "Itan",         "short_phrase": "oral narrative — knowledge that lives in the story",           "tradition": "african-philosophy","rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Philosophers of Knowing",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Plato",              "short_phrase": "the forms — what is most real is what is known, not seen","tradition": "pre-socratic", "rarity_tier": "uncommon" },
+            { "concept": "Porphyry",           "short_phrase": "the categories — organizing what can be known",          "tradition": "neoplatonism", "rarity_tier": "uncommon" },
+            { "concept": "Adi Shankaracharya", "short_phrase": "the non-dual knower — Brahman is the only knowledge",   "tradition": "vedanta",      "rarity_tier": "uncommon" },
+            { "concept": "Chrysippus",         "short_phrase": "Stoic epistemologist — the criteria of the real",        "tradition": "stoicism",     "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Knowing That Precedes Knowledge",
+          "display_order": 3,
+          "convergence_teaching": "Every tradition eventually names a form of knowing that precedes all methods, all techniques, all propositions. Kabbalah's Hochmah — Wisdom — is the second Sefirah: the flash of intuition before it is elaborated into Understanding. Taoism's Zhi is knowing-without-deliberation: the sage does not calculate, because knowing and doing arise simultaneously. Buddhism's Tathagatagarbha is the Buddha-nature already present in all beings — not something to be acquired but something to be recognized. Existentialism's Authenticity is knowing yourself in the only way that matters: not as an object of study but as the being who must choose. All the traditions distinguish between knowing about the real and knowing the real. Only the second is the point.",
+          "cards": [
+            { "concept": "Hochmah",           "short_phrase": "Wisdom — the pre-reflective flash before understanding",  "tradition": "kabbalah",       "rarity_tier": "rare" },
+            { "concept": "Zhi",               "short_phrase": "knowing without deliberation — sage wisdom as action",    "tradition": "taoism",         "rarity_tier": "rare" },
+            { "concept": "Tathagatagarbha",   "short_phrase": "the Buddha-nature — not acquired but recognized",         "tradition": "buddhism",       "rarity_tier": "rare" },
+            { "concept": "Authenticity",      "short_phrase": "knowing the self as the one who must choose",             "tradition": "existentialism", "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-17",
+      "title": "The Body's Wisdom",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Names for the Body",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Deha",   "short_phrase": "the body as vehicle — the material instrument of the soul",          "tradition": "vedanta",            "rarity_tier": "common" },
+            { "concept": "Jing",   "short_phrase": "essence — the refined vital substance stored and cultivated",        "tradition": "taoism",             "rarity_tier": "common" },
+            { "concept": "Ara",    "short_phrase": "the body as site of divine encounter — beauty as sacred ground",    "tradition": "african-philosophy", "rarity_tier": "common" },
+            { "concept": "Tonos",  "short_phrase": "tension — the pneuma's tone through the body maintaining health",   "tradition": "stoicism",           "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Subtle Body",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Rupakaya",           "short_phrase": "the form body — the Buddha's physical manifestation",   "tradition": "buddhism",     "rarity_tier": "common" },
+            { "concept": "The Subtle Body",    "short_phrase": "the light-body — the vehicle between spirit and flesh", "tradition": "hermeticism",  "rarity_tier": "common" },
+            { "concept": "Vehicle of the Soul","short_phrase": "the luminous body accompanying the soul between lives","tradition": "neoplatonism", "rarity_tier": "common" },
+            { "concept": "Nefesh",            "short_phrase": "the vital soul — the body-bound dimension of being",     "tradition": "kabbalah",     "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Traditions of Embodied Practice",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Hatha Yoga",      "short_phrase": "sun-moon yoga — the body as the primary site of practice", "tradition": "vedanta",      "rarity_tier": "uncommon" },
+            { "concept": "Tonglen",         "short_phrase": "taking and sending — breath as the vehicle of compassion", "tradition": "buddhism",     "rarity_tier": "uncommon" },
+            { "concept": "Qigong",          "short_phrase": "cultivation of vital breath — the body as cosmic antenna", "tradition": "taoism",       "rarity_tier": "uncommon" },
+            { "concept": "Gymnastic Arts",  "short_phrase": "the trained body as the temple of rational virtue",        "tradition": "pre-socratic", "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Sacred in the Cellular",
+          "display_order": 3,
+          "convergence_teaching": "Vedanta's Kosha — sheath — names the five layers wrapped around the deepest self: the body is not the prison of the soul but its outermost garment, worthy of respect and care. Kabbalah's Tzelem — the divine image — insists the body itself participates in the divine form; the shape of a human being is not an accident but a reflection. Taoism's Xing — one's inherent nature or form — is not separate from spiritual cultivation; the body's patterns carry the soul's history. Neoplatonism's Ochema-Pneuma — the pneumatic vehicle — is the body of light that accompanies the soul through all its journeys. Every tradition that began by transcending the body eventually learned to return to it. The great works of liberation are accomplished in and through flesh.",
+          "cards": [
+            { "concept": "Kosha",         "short_phrase": "the five sheaths — body as outermost garment of the self",   "tradition": "vedanta",      "rarity_tier": "rare" },
+            { "concept": "Tzelem",        "short_phrase": "the divine image — the body participates in the divine form", "tradition": "kabbalah",     "rarity_tier": "rare" },
+            { "concept": "Xing",          "short_phrase": "inherent nature — the body's patterns carry the soul's history","tradition": "taoism",     "rarity_tier": "rare" },
+            { "concept": "Ochema-Pneuma", "short_phrase": "the pneumatic vehicle — body of light accompanying the soul","tradition": "neoplatonism", "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-18",
+      "title": "Into the Dark",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Descent and the Underworld",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Nekuia",      "short_phrase": "the descent to consult the dead — wisdom from below",           "tradition": "pre-socratic",   "rarity_tier": "common" },
+            { "concept": "Gui",         "short_phrase": "the returning spirit — the dead who still move among the living","tradition": "taoism",         "rarity_tier": "common" },
+            { "concept": "Sitra Achra", "short_phrase": "the other side — the dark dimension of the divine order",      "tradition": "kabbalah",       "rarity_tier": "common" },
+            { "concept": "Svapna",      "short_phrase": "the dream state — where the waking world goes when eyes close", "tradition": "vedanta",        "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "What Dwells in the Dark",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Epithumia", "short_phrase": "appetite — the drives that pull consciousness downward",           "tradition": "stoicism",     "rarity_tier": "common" },
+            { "concept": "Hyle",      "short_phrase": "matter — the dark substrate that resists the light of form",      "tradition": "gnosticism",   "rarity_tier": "common" },
+            { "concept": "Po",        "short_phrase": "the earthly soul — the part that stays below when the spirit rises","tradition": "taoism",     "rarity_tier": "common" },
+            { "concept": "Egbe",      "short_phrase": "the spirit companions — the soul's celestial counterparts",       "tradition": "african-philosophy","rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Those Who Descended and Returned",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Ra in the Duat",  "short_phrase": "the sun god journeying through the underworld each night",  "tradition": "kemetic-wisdom", "rarity_tier": "uncommon" },
+            { "concept": "Persephone",      "short_phrase": "the queen of the underworld — absence that makes spring",   "tradition": "pre-socratic",   "rarity_tier": "uncommon" },
+            { "concept": "Hakuin",          "short_phrase": "the Zen master who passed through great doubt and returned", "tradition": "buddhism",       "rarity_tier": "uncommon" },
+            { "concept": "Orpheus",         "short_phrase": "descended for love and almost brought the dead to life",    "tradition": "neoplatonism",   "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Light Hidden in the Dark",
+          "display_order": 3,
+          "convergence_teaching": "Kabbalah's Tikkun Klipot is the elevation of the fallen sparks trapped within the husks of the demonic — the recognition that no darkness is beyond redemption, because every shadow contains a divine fragment that originally fell there. Vedanta's Taijasa is the dream-self: the being who wanders the intermediate world, and in that wandering often finds what waking life conceals. Gnosticism's Apolytrosis — redemption — is liberation from matter, but achieved through entering matter fully enough to find the light within it. Stoicism's Premeditatio Malorum — premeditation of evils — goes voluntarily into the dark imagination of loss, and finds there not fear but freedom. Every tradition's deepest teachers went into the dark on purpose. They came back carrying what could not be found in the light.",
+          "cards": [
+            { "concept": "Tikkun Klipot",       "short_phrase": "elevating fallen sparks — light found within the husks","tradition": "kabbalah",     "rarity_tier": "rare" },
+            { "concept": "Taijasa",             "short_phrase": "the dream-self — wandering the in-between for hidden wisdom","tradition": "vedanta",  "rarity_tier": "rare" },
+            { "concept": "Apolytrosis",         "short_phrase": "redemption through entering matter to find light within","tradition": "gnosticism",   "rarity_tier": "rare" },
+            { "concept": "Premeditatio Malorum","short_phrase": "going willingly into imagined loss — finding freedom there","tradition": "stoicism",  "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-19",
+      "title": "The Just Order",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "Each Tradition's Word for Justice",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Dikaiosyne", "short_phrase": "justice — the proper ordering of the soul and the city",         "tradition": "pre-socratic", "rarity_tier": "common" },
+            { "concept": "Koinon",     "short_phrase": "the common — what belongs to all rational beings together",      "tradition": "stoicism",     "rarity_tier": "common" },
+            { "concept": "Fa",         "short_phrase": "law — the codified expression of the natural order",            "tradition": "taoism",       "rarity_tier": "common" },
+            { "concept": "Mishpat",    "short_phrase": "judgment — the discernment that constitutes true justice",       "tradition": "kabbalah",     "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Corruption of Justice",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Adharma",      "short_phrase": "cosmic disorder — the violation of the right order of things", "tradition": "vedanta",        "rarity_tier": "common" },
+            { "concept": "Tyranny",      "short_phrase": "the soul out of order — reason enslaved to desire",            "tradition": "pre-socratic",   "rarity_tier": "common" },
+            { "concept": "Ressentiment", "short_phrase": "poisoned grievance — justice twisted by hatred into revenge",  "tradition": "existentialism", "rarity_tier": "common" },
+            { "concept": "Din",          "short_phrase": "strict judgment untempered by mercy — justice without love",   "tradition": "kabbalah",       "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Philosophers of the Just Society",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Hierocles",          "short_phrase": "concentric circles of concern — justice expanding outward","tradition": "stoicism",          "rarity_tier": "uncommon" },
+            { "concept": "Dhammaraja",         "short_phrase": "the righteous ruler — sovereignty grounded in dharma",   "tradition": "buddhism",          "rarity_tier": "uncommon" },
+            { "concept": "Civil Disobedience", "short_phrase": "the higher law that overrides unjust statute",            "tradition": "transcendentalism", "rarity_tier": "uncommon" },
+            { "concept": "Nguni Ubuntu",       "short_phrase": "communal justice — I am because we are, so we must be just","tradition": "african-philosophy","rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Order Behind the Law",
+          "display_order": 3,
+          "convergence_teaching": "Every tradition distinguishes between the law as written and the justice that grounds it. Neoplatonism's Form of Justice is the eternal reality that every particular law attempts and fails to fully embody — justice as an unchanging standard against which all human codes are measured and found wanting. Kabbalah's Hesed-Gevurah holds love and strict judgment in dynamic tension: the divine does not administer one without the other, and neither alone is justice. The pre-Socratic Dikē is the goddess of justice herself — not human law but the cosmic principle that will not be mocked, that restores balance regardless of human arrangements. Stoicism's Koinos Nomos is the common law of the cosmos, the law of reason that applies to all rational beings because they all share in the Logos. Justice is not what we decree. It is what we are obligated to approximate.",
+          "cards": [
+            { "concept": "Form of Justice",  "short_phrase": "the eternal standard no human law fully embodies",         "tradition": "neoplatonism", "rarity_tier": "rare" },
+            { "concept": "Hesed-Gevurah",    "short_phrase": "love and judgment held in tension — the fullness of justice","tradition": "kabbalah",    "rarity_tier": "rare" },
+            { "concept": "Dikē",             "short_phrase": "the goddess of cosmic justice — balance that cannot be denied","tradition": "pre-socratic","rarity_tier": "rare" },
+            { "concept": "Koinos Nomos",     "short_phrase": "common law of the cosmos — reason binding all rational beings","tradition": "stoicism",  "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-20",
+      "title": "In the Beginning",
+      "archetype": "convergence",
+      "is_major_arcana": true,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "The First Word",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Bereshit",   "short_phrase": "in the beginning — the first word that opens creation",          "tradition": "kabbalah",       "rarity_tier": "common" },
+            { "concept": "Hun-Yuan",   "short_phrase": "primordial chaos — the undifferentiated whole before the world",  "tradition": "taoism",         "rarity_tier": "common" },
+            { "concept": "Zep Tepi",   "short_phrase": "the first time — the mythic origin moment that grounds all after","tradition": "kemetic-wisdom", "rarity_tier": "common" },
+            { "concept": "Arche",      "short_phrase": "the first principle — what all things come from and return to",  "tradition": "pre-socratic",   "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The First Acts of Creation",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Procession",   "short_phrase": "the outflowing from the One — existence beginning its journey", "tradition": "neoplatonism",       "rarity_tier": "common" },
+            { "concept": "Srishti",      "short_phrase": "creation — the divine pouring itself into form",                "tradition": "vedanta",            "rarity_tier": "common" },
+            { "concept": "Achamoth",     "short_phrase": "the fallen Sophia — the creation that began in error",          "tradition": "gnosticism",         "rarity_tier": "common" },
+            { "concept": "Olodumare",    "short_phrase": "the supreme being — the source from which all orishas proceed", "tradition": "african-philosophy", "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Cosmogonic Texts and Teachers",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Poimandres",   "short_phrase": "the Hermetic creation vision — the mind of the all reveals itself","tradition": "hermeticism",    "rarity_tier": "uncommon" },
+            { "concept": "Nasadiya Sukta","short_phrase": "the hymn of creation — even the gods don't know how it began","tradition": "vedanta",          "rarity_tier": "uncommon" },
+            { "concept": "Ennead",       "short_phrase": "nine great gods — the family through which creation unfolds",   "tradition": "kemetic-wisdom",   "rarity_tier": "uncommon" },
+            { "concept": "Theogony",     "short_phrase": "the birth of the gods — creation as genealogy of powers",       "tradition": "pre-socratic",     "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "Before the First Word",
+          "display_order": 3,
+          "convergence_teaching": "This is the Major Arcana puzzle — the one that asks the deepest question. Before the beginning, what was there? Kabbalah's Tzimtzum — divine contraction — says God withdrew to make space for the world; before creation there was only God, and creation required a self-limitation, a willing diminishment of the infinite to make room for the finite. Neoplatonism's Prohodos — procession — says the One overflowed, not from need but from abundance: existence is the excess of the Good, poured out without intention and without diminishment. Taoism's Wu Sheng You — being arising from non-being — holds the paradox that the most fruitful origin is emptiness itself. Vedanta's Brahma-Srishti is God's self-projection into multiplicity: not an act but a dream, the cosmos as divine imagination. Every tradition glimpses the same mystery: before the beginning, there was something that wanted to give itself away.",
+          "cards": [
+            { "concept": "Tzimtzum",     "short_phrase": "divine contraction — God withdrew to make space for the world", "tradition": "kabbalah",     "rarity_tier": "rare" },
+            { "concept": "Prohodos",     "short_phrase": "procession — the One overflowed from abundance, not need",      "tradition": "neoplatonism", "rarity_tier": "rare" },
+            { "concept": "Wu Sheng You", "short_phrase": "being from non-being — emptiness as the most fruitful origin",  "tradition": "taoism",       "rarity_tier": "rare" },
+            { "concept": "Brahma-Srishti","short_phrase": "God's self-projection — the cosmos as divine dream",           "tradition": "vedanta",      "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-21",
+      "title": "Into the Shadow",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "What Hides in the Shadow",
+          "display_order": 0,
+          "cards": [
+            { "concept": "The Uncanny",  "short_phrase": "the familiar made strange — the shadow of the known",           "tradition": "existentialism", "rarity_tier": "common" },
+            { "concept": "Vritti",       "short_phrase": "mental fluctuations — the restless movements obscuring the self","tradition": "vedanta",        "rarity_tier": "common" },
+            { "concept": "Qliphoth",     "short_phrase": "the husks — the shadow side of the divine order",              "tradition": "kabbalah",       "rarity_tier": "common" },
+            { "concept": "Mara",         "short_phrase": "the tempter — the personification of what obscures awakening",  "tradition": "buddhism",       "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "Forces That Bind the Soul",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Akrasia",  "short_phrase": "weakness of will — the gap between knowing and doing",              "tradition": "pre-socratic",   "rarity_tier": "common" },
+            { "concept": "Pathos",   "short_phrase": "passion — the turbulent movements that overwhelm reason",           "tradition": "stoicism",       "rarity_tier": "common" },
+            { "concept": "Archons",  "short_phrase": "cosmic rulers — the forces that keep consciousness imprisoned",     "tradition": "gnosticism",     "rarity_tier": "common" },
+            { "concept": "Gui",      "short_phrase": "the returning spirits — the unresolved past seeking completion",   "tradition": "taoism",         "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Those Who Worked with Shadow",
+          "display_order": 2,
+          "cards": [
+            { "concept": "The Negative Confession","short_phrase": "declaring what the heart did not do — facing shadow honestly","tradition": "kemetic-wisdom", "rarity_tier": "uncommon" },
+            { "concept": "Purgatio",              "short_phrase": "the Neoplatonic cleansing — working through what weighs the soul","tradition": "neoplatonism", "rarity_tier": "uncommon" },
+            { "concept": "Fanpu",                 "short_phrase": "returning to the plain — shedding accretions to find simplicity","tradition": "taoism",       "rarity_tier": "uncommon" },
+            { "concept": "Pratipaksha Bhavana",   "short_phrase": "cultivating the opposite — replacing shadow with light",         "tradition": "vedanta",      "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "The Treasure in the Darkness",
+          "display_order": 3,
+          "convergence_teaching": "The shadow is not the enemy of the light. It is what the light has not yet claimed. Kabbalah's Tikkun is the repair — the careful, patient elevation of what has fallen, the recognition that nothing divine can be permanently lost. Existentialism's Resoluteness is the willingness to face one's own death and limitation without flinching, and to find in that facing a clarity unavailable to the comfortable. Buddhism's Vijaya — victory — is not conquest of the shadow but the enlightened mind's total ease with whatever arises, including the shadow. Neoplatonism's Epistrophe — return — is the soul's movement back toward the source, and the first stage of that return always involves turning toward what one has been fleeing. What is avoided cannot be transcended. What is faced can be transformed.",
+          "cards": [
+            { "concept": "Tikkun",       "short_phrase": "repair — the patient elevation of what has fallen",             "tradition": "kabbalah",       "rarity_tier": "rare" },
+            { "concept": "Resoluteness", "short_phrase": "facing one's own limit — clarity found in what was fled",       "tradition": "existentialism", "rarity_tier": "rare" },
+            { "concept": "Vijaya",       "short_phrase": "victory — the enlightened ease with whatever arises",           "tradition": "buddhism",       "rarity_tier": "rare" },
+            { "concept": "Epistrophe",   "short_phrase": "return — the soul's movement back, beginning with what was fled","tradition": "neoplatonism",   "rarity_tier": "rare" }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-06-22",
+      "title": "All Ways Home",
+      "archetype": "convergence",
+      "is_major_arcana": false,
+      "groups": [
+        {
+          "tier": "yellow",
+          "label": "The Turn Toward Home",
+          "display_order": 0,
+          "cards": [
+            { "concept": "Anachoresis", "short_phrase": "withdrawal — the turn inward that begins the return",            "tradition": "stoicism",     "rarity_tier": "common" },
+            { "concept": "Srotapanna",  "short_phrase": "stream-enterer — the one who has turned irreversibly toward liberation","tradition": "buddhism","rarity_tier": "common" },
+            { "concept": "Vairagya",    "short_phrase": "dispassion — the release of clinging that allows homeward movement","tradition": "vedanta",    "rarity_tier": "common" },
+            { "concept": "Gui Gen",     "short_phrase": "returning to the root — all things come back to their source",   "tradition": "taoism",       "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "green",
+          "label": "The Signs That You Are on the Path",
+          "display_order": 1,
+          "cards": [
+            { "concept": "Teshuvah",  "short_phrase": "return — repentance as homecoming, not punishment",                "tradition": "kabbalah",           "rarity_tier": "common" },
+            { "concept": "Anamnesis", "short_phrase": "recollection — knowing was always remembering the forms",          "tradition": "pre-socratic",       "rarity_tier": "common" },
+            { "concept": "Ile",       "short_phrase": "the home — where the ori comes from and where it returns",         "tradition": "african-philosophy", "rarity_tier": "common" },
+            { "concept": "Rubedo",    "short_phrase": "reddening — the final alchemical stage — the work complete",        "tradition": "hermeticism",        "rarity_tier": "common" }
+          ]
+        },
+        {
+          "tier": "blue",
+          "label": "Those Who Showed the Way Home",
+          "display_order": 2,
+          "cards": [
+            { "concept": "Rumi",             "short_phrase": "the reed flute crying for its origin — separation as longing","tradition": "neoplatonism",   "rarity_tier": "uncommon" },
+            { "concept": "Sisyphus",         "short_phrase": "imagine him happy — even the endless return is the path",   "tradition": "existentialism", "rarity_tier": "uncommon" },
+            { "concept": "Osiris Risen",     "short_phrase": "the god who died and was restored — death as the path home","tradition": "kemetic-wisdom", "rarity_tier": "uncommon" },
+            { "concept": "Apokatastasis",    "short_phrase": "universal restoration — all things returned to their origin","tradition": "gnosticism",     "rarity_tier": "uncommon" }
+          ]
+        },
+        {
+          "tier": "purple",
+          "label": "Every Path Is the Same Path",
+          "display_order": 3,
+          "convergence_teaching": "The final puzzle holds the final recognition. Kabbalah's Ein Sof — Without End — is the destination that is also the origin: the infinite toward which all finite paths converge, the ground that was never absent. Vedanta's Advaita — non-duality — says there is no path and no traveler and no home to reach; there is only the recognition of what always was. Buddhism's Parinirvana is the final passing, the complete liberation — not an ending but the last veil removed. Stoicism's Teleios is the perfect sage, the one who has completed the work — not a superhuman but a person who has finally, fully, become themselves. Every tradition says the same thing in a different voice: you are not lost. You were never lost. Every step you took, even the wrong ones, was the path. The way home is the recognition that you were always already there.",
+          "cards": [
+            { "concept": "Ein Sof",      "short_phrase": "Without End — the infinite that is also the origin",            "tradition": "kabbalah",     "rarity_tier": "rare" },
+            { "concept": "Advaita",      "short_phrase": "non-duality — the recognition that you were never lost",        "tradition": "vedanta",      "rarity_tier": "rare" },
+            { "concept": "Parinirvana",  "short_phrase": "the final passing — the last veil removed",                     "tradition": "buddhism",     "rarity_tier": "rare" },
+            { "concept": "Teleios",      "short_phrase": "the perfect sage — having finally, fully become oneself",       "tradition": "stoicism",     "rarity_tier": "rare" }
+          ]
+        }
+      ]
     }
   ]
 }

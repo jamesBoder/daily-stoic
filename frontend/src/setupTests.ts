@@ -1,6 +1,19 @@
 import { vi } from 'vitest';
 import '@testing-library/jest-dom';
 
+// jsdom doesn't implement matchMedia — stub it out so hooks that call it don't throw
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: vi.fn().mockImplementation((query: string) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+});
+
 // Add Jest compatibility
 (global as any).jest = vi;
 

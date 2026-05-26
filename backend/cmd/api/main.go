@@ -79,6 +79,7 @@ func main() {
 
 	// 11. Repositories
 	confluenceRepo      := repository.NewConfluenceRepository(db)
+	pushRepo            := repository.NewPushRepository(db)
 	userRepo            := repository.NewUserRepository(db)
 	quoteRepo           := repository.NewQuoteRepository(db)
 	authorRepo          := repository.NewAuthorRepository(db)
@@ -109,6 +110,7 @@ func main() {
 
 	stripeSvc := services.NewStripeService(cfg, subscriptionRepo)
 	aiSvc     := services.NewAiService(cfg.AnthropicAPIKey, quoteRepo)
+	pushSvc   := services.NewPushService(cfg.VAPIDPublicKey, cfg.VAPIDPrivateKey, cfg.VAPIDSubject)
 
 	// OAuth service
 	oauthCfg    := config.GoogleOAuthConfig()
@@ -137,9 +139,13 @@ func main() {
 	librarySvc         := services.NewLibraryService(db)
 	confluenceSvc      := services.NewConfluenceService(confluenceRepo, librarySvc)
 	confluenceHandler  := handlers.NewConfluenceHandler(confluenceSvc)
+	pushHandler        := handlers.NewPushHandler(pushRepo, pushSvc, cfg.VAPIDPublicKey)
 
 	// Start weekly theme scheduler (runs immediately + every 6h)
 	jobs.StartWeeklyThemeScheduler(db, weekRepo, quoteRepo)
+
+	// Start daily push notification scheduler (fires at 08:00 UTC)
+	jobs.StartDailyPushScheduler(pushRepo, pushSvc, dailyQuoteSvc)
 
 	_ = validate // used by profileHandler
 
@@ -161,7 +167,7 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"status": "ok", "timestamp": time.Now().UTC()})
 	})
 
-	routes.SetupRoutes(r, authHandler, oauthHandler, quoteHandler, favoriteHandler,
+	routes.SetupRoutes(r, authHandler, oauthHandler, quoteHandler, pushHandler, favoriteHandler,
 		historyHandler, commentHandler, profileHandler, settingsHandler, onboardingHandler,
 		subscriptionHandler, readingPlanHandler, aiHandler, confluenceHandler, tokenSvc, subscriptionRepo)
 

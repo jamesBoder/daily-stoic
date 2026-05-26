@@ -200,29 +200,36 @@
   --svg-fg:        rgba(0,0,0,0.52);
 }
 
-/* Game and tier tokens — always dark regardless of user preference */
-:root, .dark {
-  --color-game-bg:            #0d1117;
-  --color-game-card-back:     #0d1117;
-  --color-game-surface:       rgba(30,30,35,0.9);
-  --color-game-border:        rgba(255,255,255,0.08);
-  --color-game-fg:            #e0ddd4;
-  --color-game-fg-muted:      #a0a090;
-  --color-game-fg-dim:        #6b6b5a;
-  --color-game-filled:        rgba(255,255,255,0.18);
-  --color-game-empty:         rgba(255,255,255,0.08);
-  --color-game-selected-ring: rgba(255,255,255,0.9);
-  --color-convergence-glow:   0 0 16px 4px color-mix(in srgb, var(--color-tier-4) 45%, transparent);
+/* Game tokens — light mode (warm parchment) */
+:root {
+  --color-game-bg:            #ddd6c4;
+  --color-game-card-back:     #f4f0e7;
+  --color-game-surface:       rgba(240,236,228,0.98);
+  --color-game-border:        rgba(77,72,57,0.18);
+  --color-game-fg:            #2c2820;
+  --color-game-fg-muted:      #7d7560;
+  --color-game-fg-dim:        #9c9480;
+  --color-game-filled:        rgba(77,72,57,0.32);
+  --color-game-empty:         rgba(77,72,57,0.12);
+  --color-game-selected-ring: rgba(44,40,32,0.72);
+  --color-convergence-glow:    0 0 16px 4px color-mix(in srgb, var(--color-tier-4) 45%, transparent);
+  --color-game-art-s:          32%;
+  --color-game-art-l:          86%;
+  --color-game-card-shadow:    0 2px 10px rgba(77,72,57,0.13), 0 1px 4px rgba(77,72,57,0.09);
+  --color-game-card-sel-shadow: 0 6px 22px rgba(77,72,57,0.22), 0 2px 8px rgba(77,72,57,0.13);
+  --color-game-overlay-bg:     rgba(38,35,28,0.82);
+  --color-game-reveal-bg:      rgba(38,35,28,0.88);
+  --color-game-reveal-text:    rgba(220,216,208,0.88);
 
   /* Tier alpha variants */
-  --color-tier-1-bg:     color-mix(in srgb, var(--color-tier-1) 20%, transparent);
-  --color-tier-1-border: color-mix(in srgb, var(--color-tier-1) 40%, transparent);
-  --color-tier-2-bg:     color-mix(in srgb, var(--color-tier-2) 20%, transparent);
-  --color-tier-2-border: color-mix(in srgb, var(--color-tier-2) 40%, transparent);
-  --color-tier-3-bg:     color-mix(in srgb, var(--color-tier-3) 20%, transparent);
-  --color-tier-3-border: color-mix(in srgb, var(--color-tier-3) 40%, transparent);
-  --color-tier-4-bg:     color-mix(in srgb, var(--color-tier-4) 20%, transparent);
-  --color-tier-4-border: color-mix(in srgb, var(--color-tier-4) 40%, transparent);
+  --color-tier-1-bg:     color-mix(in srgb, var(--color-tier-1) 18%, transparent);
+  --color-tier-1-border: color-mix(in srgb, var(--color-tier-1) 38%, transparent);
+  --color-tier-2-bg:     color-mix(in srgb, var(--color-tier-2) 18%, transparent);
+  --color-tier-2-border: color-mix(in srgb, var(--color-tier-2) 38%, transparent);
+  --color-tier-3-bg:     color-mix(in srgb, var(--color-tier-3) 18%, transparent);
+  --color-tier-3-border: color-mix(in srgb, var(--color-tier-3) 38%, transparent);
+  --color-tier-4-bg:     color-mix(in srgb, var(--color-tier-4) 18%, transparent);
+  --color-tier-4-border: color-mix(in srgb, var(--color-tier-4) 38%, transparent);
 }
 
 /* Dark-mode semantic token overrides — higher specificity than @theme layer */
@@ -304,6 +311,36 @@
   --svg-era-text:  rgba(255,255,255,0.17);
   --svg-node-ring: rgba(255,255,255,0.25);
   --svg-fg:        rgba(255,255,255,0.60);
+
+  /* Game tokens — dark mode */
+  --color-game-bg:            #0d1117;
+  --color-game-card-back:     #0d1117;
+  --color-game-surface:       rgba(30,30,35,0.9);
+  --color-game-border:        rgba(255,255,255,0.08);
+  --color-game-fg:            #e0ddd4;
+  --color-game-fg-muted:      #a0a090;
+  --color-game-fg-dim:        #6b6b5a;
+  --color-game-filled:        rgba(255,255,255,0.18);
+  --color-game-empty:         rgba(255,255,255,0.08);
+  --color-game-selected-ring: rgba(255,255,255,0.9);
+  --color-convergence-glow:    0 0 16px 4px color-mix(in srgb, var(--color-tier-4) 45%, transparent);
+  --color-game-art-s:          42%;
+  --color-game-art-l:          11%;
+  --color-game-card-shadow:    0 2px 12px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04);
+  --color-game-card-sel-shadow: 0 6px 28px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.07);
+  --color-game-overlay-bg:     rgba(0,0,0,0.82);
+  --color-game-reveal-bg:      rgba(0,0,0,0.88);
+  --color-game-reveal-text:    #a0a090;
+
+  /* Tier alpha variants */
+  --color-tier-1-bg:     color-mix(in srgb, var(--color-tier-1) 20%, transparent);
+  --color-tier-1-border: color-mix(in srgb, var(--color-tier-1) 40%, transparent);
+  --color-tier-2-bg:     color-mix(in srgb, var(--color-tier-2) 20%, transparent);
+  --color-tier-2-border: color-mix(in srgb, var(--color-tier-2) 40%, transparent);
+  --color-tier-3-bg:     color-mix(in srgb, var(--color-tier-3) 20%, transparent);
+  --color-tier-3-border: color-mix(in srgb, var(--color-tier-3) 40%, transparent);
+  --color-tier-4-bg:     color-mix(in srgb, var(--color-tier-4) 20%, transparent);
+  --color-tier-4-border: color-mix(in srgb, var(--color-tier-4) 40%, transparent);
 }
 
 @keyframes quote-enter {

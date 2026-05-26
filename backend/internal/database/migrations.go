@@ -34,6 +34,7 @@ func RunMigrations(db *gorm.DB) error {
 		&models.ConfluenceCard{},
 		&models.ConfluenceGameSession{},
 		&models.UserLibraryCard{},
+		&models.PushSubscription{},
 	); err != nil {
 		return err
 	}
