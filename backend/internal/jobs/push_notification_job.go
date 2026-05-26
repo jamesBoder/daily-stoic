@@ -36,7 +36,12 @@ func StartDailyPushScheduler(pushRepo *repository.PushRepository, pushSvc *servi
 				continue
 			}
 
-			pushSvc.SendDailyQuote(subs, quote)
+			expired := pushSvc.SendDailyQuote(subs, quote)
+			for _, endpoint := range expired {
+				if err := pushRepo.DeleteByEndpointAdmin(endpoint); err != nil {
+					log.Printf("push: failed to remove expired subscription: %v", err)
+				}
+			}
 		}
 	}()
 	log.Println("push: daily push scheduler started (fires at 08:00 UTC)")

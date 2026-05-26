@@ -39,3 +39,7 @@ func (r *PushRepository) FindAllActive() ([]models.PushSubscription, error) {
 	err := r.db.Find(&subs).Error
 	return subs, err
 }
+
+func (r *PushRepository) DeleteByEndpointAdmin(endpoint string) error {
+	return r.db.Where("endpoint = ?", endpoint).Delete(&models.PushSubscription{}).Error
+}

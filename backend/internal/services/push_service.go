@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"net/http"
 
 	webpush "github.com/SherClockHolmes/webpush-go"
 	"github.com/jamesBoder/daily-stoic/internal/models"
@@ -30,10 +31,12 @@ type pushPayload struct {
 	URL   string `json:"url"`
 }
 
-func (s *PushService) send(sub models.PushSubscription, p pushPayload) error {
+// send returns (expired, error). expired=true means the subscription endpoint is
+// permanently gone (HTTP 410/404) and should be removed from the database.
+func (s *PushService) send(sub models.PushSubscription, p pushPayload) (expired bool, err error) {
 	body, err := json.Marshal(p)
 	if err != nil {
-		return err
+		return false, err
 	}
 
 	resp, err := webpush.SendNotification(body, &webpush.Subscription{
@@ -49,16 +52,22 @@ func (s *PushService) send(sub models.PushSubscription, p pushPayload) error {
 		TTL:             86400,
 	})
 	if err != nil {
-		return err
+		return false, err
 	}
 	defer resp.Body.Close()
-	return nil
+	if resp.StatusCode == http.StatusGone || resp.StatusCode == http.StatusNotFound {
+		return true, nil
+	}
+	return false, nil
 }
 
-func (s *PushService) SendDailyQuote(subs []models.PushSubscription, quote *models.Quote) {
+// SendDailyQuote sends to all subscribers and returns the endpoints that are
+// permanently expired so the caller can remove them.
+func (s *PushService) SendDailyQuote(subs []models.PushSubscription, quote *models.Quote) []string {
 	if !s.Enabled() || len(subs) == 0 {
-		return
+		return nil
 	}
+	// “ = " (left double quotation mark), ” = " (right), — = em dash
 	body := fmt.Sprintf("“%s” — %s", quote.Text, quote.Author.Name)
 	if len(body) > 140 {
 		body = body[:137] + "…"
@@ -70,18 +79,19 @@ func (s *PushService) SendDailyQuote(subs []models.PushSubscription, quote *mode
 		URL:   "/",
 	}
 	var failed int
+	var expiredEndpoints []string
 	for _, sub := range subs {
-		if err := s.send(sub, p); err != nil {
+		expired, err := s.send(sub, p)
+		if err != nil {
 			log.Printf("push: failed to send to endpoint %s: %v", sub.Endpoint[:min(40, len(sub.Endpoint))], err)
 			failed++
+		} else if expired {
+			expiredEndpoints = append(expiredEndpoints, sub.Endpoint)
 		}
 	}
-	log.Printf("push: daily quote sent to %d/%d subscribers", len(subs)-failed, len(subs))
-}
-
-func min(a, b int) int {
-	if a < b {
-		return a
+	if len(expiredEndpoints) > 0 {
+		log.Printf("push: %d expired subscriptions to clean up", len(expiredEndpoints))
 	}
-	return b
+	log.Printf("push: daily quote sent to %d/%d subscribers", len(subs)-failed-len(expiredEndpoints), len(subs))
+	return expiredEndpoints
 }

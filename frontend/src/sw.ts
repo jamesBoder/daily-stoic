@@ -109,13 +109,14 @@ self.addEventListener('notificationclick', (event: NotificationEvent) => {
   event.notification.close()
   if (event.action === 'dismiss') return
 
-  const url: string = (event.notification.data as { url?: string })?.url ?? '/'
+  const relUrl: string = (event.notification.data as { url?: string })?.url ?? '/'
+  const absUrl = new URL(relUrl, self.registration.scope).href
   event.waitUntil(
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
       for (const client of clientList) {
-        if (client.url === url && 'focus' in client) return client.focus()
+        if (client.url === absUrl && 'focus' in client) return client.focus()
       }
-      return self.clients.openWindow(url)
+      return self.clients.openWindow(absUrl)
     })
   )
 })
