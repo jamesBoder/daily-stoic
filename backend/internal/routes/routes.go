@@ -13,6 +13,7 @@ func SetupRoutes(
 	authHandler *handlers.AuthHandler,
 	oauthHandler *handlers.OAuthHandler,
 	quoteHandler *handlers.QuoteHandler,
+	pushHandler *handlers.PushHandler,
 	favoriteHandler *handlers.FavoriteHandler,
 	historyHandler *handlers.HistoryHandler,
 	commentHandler *handlers.CommentHandler,
@@ -149,5 +150,14 @@ func SetupRoutes(
 		rp.GET("/:slug/progress", authMW, readingPlanHandler.GetProgress)
 		rp.POST("/:slug/start", authMW, readingPlanHandler.StartPlan)
 		rp.POST("/:slug/advance", authMW, readingPlanHandler.AdvanceDay)
+	}
+
+	// Push notifications
+	push := api.Group("/push")
+	{
+		push.GET("/vapid-key", pushHandler.GetVAPIDKey)
+		push.POST("/subscribe", authMW, pushHandler.Subscribe)
+		push.POST("/unsubscribe", authMW, pushHandler.Unsubscribe)
+		push.POST("/status", authMW, pushHandler.GetStatus)
 	}
 }

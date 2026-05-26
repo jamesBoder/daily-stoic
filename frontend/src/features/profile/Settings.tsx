@@ -16,6 +16,7 @@ import { settingsService } from "../../services/api/settings";
 import { onboardingApi } from "../../services/api/onboarding";
 import { showToast } from "../../utils/toast";
 import { SettingsToggle } from "../../components/ui/SettingsToggle";
+import { usePushNotifications } from "../../hooks/usePushNotifications";
 
 interface SettingsState {
   emailNotifications: boolean;
@@ -37,6 +38,7 @@ export const Settings: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { currentLanguage, changeLanguage, supportedLanguages } = useLanguage();
   const { isDarkMode, toggleTheme } = useTheme();
+  const { canEnable: canPush, isSubscribed: pushSubscribed, isLoading: pushLoading, subscribe: subscribePush, unsubscribe: unsubscribePush } = usePushNotifications();
 
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isLoadingProfile, setIsLoadingProfile] = useState<boolean>(!isGuest);
@@ -290,6 +292,15 @@ export const Settings: React.FC = () => {
               onChange={val => setSettings(prev => ({ ...prev, dailyVerseReminder: val }))}
               disabled={isGuest}
             />
+            {canPush && !isGuest && (
+              <SettingsToggle
+                label="Push Notifications"
+                description="Receive your daily quote as a device notification at 8 AM"
+                checked={pushSubscribed}
+                onChange={val => val ? subscribePush() : unsubscribePush()}
+                disabled={pushLoading}
+              />
+            )}
             {!isGuest && (
               <div className="pt-3 flex justify-end">
                 <Button onClick={handleSave} disabled={isSaving}>

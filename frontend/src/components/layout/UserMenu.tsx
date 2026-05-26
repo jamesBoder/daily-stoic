@@ -3,12 +3,14 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
+import { useInstallPrompt } from '../../hooks/useInstallPrompt'
 
 export const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const { user, logout } = useAuth()
   const navigate = useNavigate()
+  const { canInstall, install } = useInstallPrompt()
 
   useEffect(() => {
     if (!isOpen) return
@@ -54,6 +56,14 @@ export const UserMenu = () => {
           <Link to="/history"   className={itemClass} onClick={() => setIsOpen(false)}>Reading History</Link>
           <Link to="/converse"  className={itemClass} onClick={() => setIsOpen(false)}>Converse</Link>
           <Link to="/settings"  className={itemClass} onClick={() => setIsOpen(false)}>Settings</Link>
+          {canInstall && (
+            <button
+              onClick={() => { install(); setIsOpen(false) }}
+              className={`w-full text-left ${itemClass}`}
+            >
+              Install App
+            </button>
+          )}
           <hr className="my-1 border-primary-200 dark:border-[var(--color-border)]" />
           <button
             onClick={() => { logout(); setIsOpen(false); navigate('/') }}
