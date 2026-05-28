@@ -24,24 +24,31 @@ function GameCard(props: GameCardProps) {
   return (
     <Link
       to={props.to}
-      className="group relative flex flex-col rounded-2xl overflow-hidden border border-stone-700/60 bg-stone-900/80 hover:border-stone-500 hover:bg-stone-800/90 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+      className="group relative flex flex-col rounded-2xl overflow-hidden transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-tier-1)]"
+      style={{
+        border: '1px solid var(--color-game-border)',
+        background: 'var(--color-game-surface)',
+      }}
     >
       <div className="flex items-center gap-4 px-5 pt-5 pb-4">
-        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-800 border border-stone-700 flex items-center justify-center text-2xl group-hover:border-stone-500 transition-colors">
+        <div
+          className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-2xl transition-colors"
+          style={{ background: 'var(--color-game-bg)', border: '1px solid var(--color-game-border)' }}
+        >
           {props.sigil}
         </div>
         <div className="min-w-0">
-          <p className="font-display text-[10px] tracking-[0.25em] uppercase text-amber-500/80 mb-0.5">
+          <p className="font-display text-[10px] tracking-[0.25em] uppercase mb-0.5" style={{ color: 'var(--color-tier-1)' }}>
             {props.tagline}
           </p>
-          <h2 className="font-display text-lg text-stone-100 tracking-wide">{props.name}</h2>
+          <h2 className="font-display text-lg tracking-wide" style={{ color: 'var(--color-game-fg)' }}>{props.name}</h2>
         </div>
       </div>
-      <p className="px-5 pb-5 text-sm text-stone-400 leading-relaxed">
+      <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: 'var(--color-game-fg-muted)' }}>
         {props.description}
       </p>
       <div className="px-5 pb-5">
-        <span className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-500 group-hover:text-amber-400 transition-colors">
+        <span className="inline-flex items-center gap-1.5 text-xs font-medium transition-colors" style={{ color: 'var(--color-tier-1)' }}>
           Play today's puzzle →
         </span>
       </div>
@@ -51,23 +58,29 @@ function GameCard(props: GameCardProps) {
 
 function ComingSoonCard(props: ComingSoonCardProps) {
   return (
-    <div className="relative flex flex-col rounded-2xl overflow-hidden border border-stone-800/60 bg-stone-900/40 opacity-60">
+    <div
+      className="relative flex flex-col rounded-2xl overflow-hidden opacity-50"
+      style={{ border: '1px solid var(--color-game-border)', background: 'var(--color-game-surface)' }}
+    >
       <div className="flex items-center gap-4 px-5 pt-5 pb-4">
-        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-stone-800/60 border border-stone-800 flex items-center justify-center text-2xl grayscale">
+        <div
+          className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-2xl grayscale"
+          style={{ background: 'var(--color-game-bg)', border: '1px solid var(--color-game-border)' }}
+        >
           {props.sigil}
         </div>
         <div className="min-w-0">
-          <p className="font-display text-[10px] tracking-[0.25em] uppercase text-stone-600 mb-0.5">
+          <p className="font-display text-[10px] tracking-[0.25em] uppercase mb-0.5" style={{ color: 'var(--color-game-fg-dim)' }}>
             {props.tagline}
           </p>
-          <h2 className="font-display text-lg text-stone-500 tracking-wide">{props.name}</h2>
+          <h2 className="font-display text-lg tracking-wide" style={{ color: 'var(--color-game-fg-muted)' }}>{props.name}</h2>
         </div>
         <div className="ml-auto flex-shrink-0">
-          <Lock size={14} className="text-stone-600" />
+          <Lock size={14} style={{ color: 'var(--color-game-fg-dim)' }} />
         </div>
       </div>
       <div className="px-5 pb-5">
-        <span className="text-xs text-stone-600">Coming soon</span>
+        <span className="text-xs" style={{ color: 'var(--color-game-fg-dim)' }}>Coming soon</span>
       </div>
     </div>
   )
@@ -80,15 +93,15 @@ export function AgoraPage() {
       {/* Header */}
       <div className="mb-10">
         <div className="flex items-center gap-3 mb-3">
-          <Swords size={22} className="text-amber-500/80" strokeWidth={1.5} />
-          <p className="font-display text-[10px] tracking-[0.3em] uppercase text-amber-500/80">
+          <Swords size={22} strokeWidth={1.5} style={{ color: 'var(--color-tier-1)' }} />
+          <p className="font-display text-[10px] tracking-[0.3em] uppercase" style={{ color: 'var(--color-tier-1)' }}>
             The Agora
           </p>
         </div>
-        <h1 className="font-display text-3xl sm:text-4xl text-stone-100 tracking-wide mb-3">
+        <h1 className="font-display text-3xl sm:text-4xl tracking-wide mb-3" style={{ color: 'var(--color-game-fg)' }}>
           Games of Wisdom
         </h1>
-        <p className="text-stone-400 text-sm sm:text-base leading-relaxed max-w-md">
+        <p className="text-sm sm:text-base leading-relaxed max-w-md" style={{ color: 'var(--color-game-fg-muted)' }}>
           The ancient Agora was where ideas met in open contest. Each game here is an
           encounter — with a concept, a tradition, a question worth sitting with.
         </p>
@@ -96,7 +109,7 @@ export function AgoraPage() {
 
       {/* Available games */}
       <div className="mb-8">
-        <p className="font-display text-[9px] tracking-[0.3em] uppercase text-stone-500 mb-4">
+        <p className="font-display text-[9px] tracking-[0.3em] uppercase mb-4" style={{ color: 'var(--color-game-fg-dim)' }}>
           Available now
         </p>
         <div className="flex flex-col gap-4">
@@ -113,7 +126,7 @@ export function AgoraPage() {
 
       {/* Coming soon */}
       <div>
-        <p className="font-display text-[9px] tracking-[0.3em] uppercase text-stone-500 mb-4">
+        <p className="font-display text-[9px] tracking-[0.3em] uppercase mb-4" style={{ color: 'var(--color-game-fg-dim)' }}>
           In the porch
         </p>
         <div className="flex flex-col gap-3">

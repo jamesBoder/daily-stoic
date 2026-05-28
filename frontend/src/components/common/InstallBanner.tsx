@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { useInstallPrompt } from '../../hooks/useInstallPrompt'
 
+const DISMISSED_KEY = 'install-banner-dismissed'
+
 export const InstallBanner = () => {
   const { canInstall, install } = useInstallPrompt()
-  const [dismissed, setDismissed] = useState(false)
+  const [dismissed, setDismissed] = useState(() => !!localStorage.getItem(DISMISSED_KEY))
 
   if (!canInstall || dismissed) return null
 
@@ -30,7 +32,7 @@ export const InstallBanner = () => {
           Install
         </button>
         <button
-          onClick={() => setDismissed(true)}
+          onClick={() => { localStorage.setItem(DISMISSED_KEY, '1'); setDismissed(true) }}
           aria-label="Dismiss"
           className="shrink-0 text-fg-muted hover:text-fg text-lg leading-none transition-colors"
         >
