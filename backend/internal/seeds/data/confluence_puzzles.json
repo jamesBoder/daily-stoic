@@ -11,10 +11,34 @@
           "label": "Accept What Cannot Change",
           "display_order": 0,
           "cards": [
-            { "concept": "Amor Fati",           "short_phrase": "loving the necessity of what comes",             "tradition": "stoicism", "rarity_tier": "common" },
-            { "concept": "Wu Wei",              "short_phrase": "non-striving — flowing with what is",            "tradition": "taoism",   "rarity_tier": "common" },
-            { "concept": "Upekkha",             "short_phrase": "equanimity toward what cannot be altered",       "tradition": "buddhism", "rarity_tier": "common" },
-            { "concept": "Ishvara Pranidhana",  "short_phrase": "surrender to the divine ordering of things",     "tradition": "vedanta",  "rarity_tier": "common" }
+            {
+              "concept": "Amor Fati", "short_phrase": "loving the necessity of what comes",
+              "tradition": "stoicism", "rarity_tier": "common",
+              "codex_in_tradition": "Amor Fati — love of fate — is the Stoic's highest practice of acceptance. Where a Stoic might tolerate what cannot be changed, Marcus Aurelius pushed further: to genuinely love it. Every difficulty is precisely what was needed. The universe, governed by the rational Logos, does not err. Resistance to necessity is therefore not a noble struggle but a failure of understanding.",
+              "codex_echoes": "Nietzsche borrowed the phrase from Stoicism but stripped the divine framework. In Taoism, the same orientation appears as wu wei — not forcing against the current of things. Buddhist upekkha and Hindu Ishvara Pranidhana both arrive at an analogous peace: releasing the claim that things should be other than they are.",
+              "codex_question": "What in your life are you tolerating rather than truly accepting? What would it mean to love that thing exactly as it is?"
+            },
+            {
+              "concept": "Wu Wei", "short_phrase": "non-striving — flowing with what is",
+              "tradition": "taoism", "rarity_tier": "common",
+              "codex_in_tradition": "Wu wei is often mistranslated as 'inaction.' It is more precisely effortless action — moving in harmony with the Tao rather than against it. The Tao Te Ching says: 'The Tao does nothing, yet nothing is left undone.' The master acts, but from a place of non-resistance; the action arises from alignment with what is, not from the ego's insistence on what should be.",
+              "codex_echoes": "Stoic Amor Fati and Buddhist equanimity share wu wei's core insight: reality runs better when you stop forcing it. In Vedanta, the Bhagavad Gita's teaching on nishkama karma — action without attachment to outcome — is structurally identical: do what is yours to do, without gripping the result.",
+              "codex_question": "Where are you pushing hardest in your life right now? Is there a way to meet that situation that requires less force and more flow?"
+            },
+            {
+              "concept": "Upekkha", "short_phrase": "equanimity toward what cannot be altered",
+              "tradition": "buddhism", "rarity_tier": "common",
+              "codex_in_tradition": "Upekkha is one of the four brahmaviharas — the 'divine abodes' of loving-kindness, compassion, sympathetic joy, and equanimity. It is not indifference; it is stable, clear awareness that neither grasps at pleasant experiences nor recoils from painful ones. Upekkha is the ground that makes all other qualities sustainable: without it, compassion collapses into grief, and loving-kindness becomes attachment.",
+              "codex_echoes": "The Stoic practice of distinguishing what is 'up to us' from what is not produces a similar equanimity — not by suppressing feeling but by redirecting attention to what one can actually change. The Taoist sage rests in a comparable stillness, neither chasing nor fleeing what the Tao brings.",
+              "codex_question": "Is there something you are currently resisting rather than observing? What would equanimity look like — not distance, but a steady, clear presence with what is?"
+            },
+            {
+              "concept": "Ishvara Pranidhana", "short_phrase": "surrender to the divine ordering of things",
+              "tradition": "vedanta", "rarity_tier": "common",
+              "codex_in_tradition": "Ishvara Pranidhana is one of the niyamas in Patanjali's Yoga Sutras — a practice of surrendering the fruits of all actions to Ishvara, the divine intelligence underlying existence. One still acts with full effort; the outcome is released, offered to something larger than personal preference. This surrender dissolves the ego's grip on results and produces a distinctive equanimity.",
+              "codex_echoes": "The Stoic 'reserve clause' (hupexairesis) is structurally identical: 'I will do this — unless something prevents it.' Both traditions ask practitioners to act wholeheartedly while holding outcomes lightly. Christian contemplatives call this abandonment to divine providence; Taoists call it wu wei.",
+              "codex_question": "What outcome are you most attached to right now? What would it feel like to give your full effort and then genuinely let the result go?"
+            }
           ]
         },
         {
@@ -22,10 +46,34 @@
           "label": "Each Tradition's Word for the Veil",
           "display_order": 1,
           "cards": [
-            { "concept": "Maya",     "short_phrase": "the cosmic illusion obscuring the real",          "tradition": "vedanta",       "rarity_tier": "common" },
-            { "concept": "Kenoma",   "short_phrase": "the empty lower realm — shadow of the pleroma",   "tradition": "gnosticism",    "rarity_tier": "common" },
-            { "concept": "Samsara",  "short_phrase": "the conditioned cycle mistaken for reality",       "tradition": "buddhism",      "rarity_tier": "common" },
-            { "concept": "Doxa",     "short_phrase": "mere opinion — appearance mistaken for truth",     "tradition": "pre-socratic",  "rarity_tier": "common" }
+            {
+              "concept": "Maya", "short_phrase": "the cosmic illusion obscuring the real",
+              "tradition": "vedanta", "rarity_tier": "common",
+              "codex_in_tradition": "Maya is not quite illusion and not quite falsehood — it is the superimposition of limitation onto the limitless. Vedanta teaches that Brahman, pure awareness, is the only reality; but through maya, this one reality appears as a multiplicity of separate things. The world is not unreal in the way a dream is; it is real as appearance, but mistaken for ultimate reality.",
+              "codex_echoes": "Gnostic Kenoma, Buddhist Samsara, and Pre-Socratic Doxa are all names for this same perceptual error: taking the conditioned world to be the whole of what is. The difference is in what they say lies beyond: Brahman in Vedanta, the Pleroma in Gnosticism, Nirvana in Buddhism, Being itself in Pre-Socratic thought.",
+              "codex_question": "Where in your life do you treat your interpretation of events as the events themselves? What might you see if you stepped back from that interpretation?"
+            },
+            {
+              "concept": "Kenoma", "short_phrase": "the empty lower realm — shadow of the pleroma",
+              "tradition": "gnosticism", "rarity_tier": "common",
+              "codex_in_tradition": "Kenoma — from the Greek for 'emptiness' — is the name Gnostics gave to the material realm: the lower world formed by the Demiurge, a flawed creator who mistook himself for the supreme God. Against it stands the Pleroma — the 'fullness,' the realm of light from which divine sparks have been exiled. To live in the Kenoma without knowing it is kenoma is to mistake a prison for home.",
+              "codex_echoes": "The Gnostic Kenoma maps directly onto Buddhist Samsara: both are realms of conditioned existence from which awakening is liberation. Vedanta's Maya describes the mechanism by which the Kenoma deceives; Pre-Socratic Doxa names the epistemic state of one still fully within it.",
+              "codex_question": "Are there areas of your life where you are dwelling in emptiness — living from habit or convention — without questioning whether something fuller is available?"
+            },
+            {
+              "concept": "Samsara", "short_phrase": "the conditioned cycle mistaken for reality",
+              "tradition": "buddhism", "rarity_tier": "common",
+              "codex_in_tradition": "Samsara is the wheel of conditioned existence — the cycle of birth, suffering, death, and rebirth driven by karma and klesha (craving, aversion, ignorance). It is not a place but a process, and that process can happen moment to moment: each time the mind grasps or pushes away, it is spinning the wheel. Liberation (nirvana) is not escape from the world but the cessation of that compulsive spinning.",
+              "codex_echoes": "The Stoic Logos-ordered cosmos has no cyclical cosmology, but the moment-to-moment psychology is shared: disturbance arises from incorrect judgment and desire for what is not in our power. Vedanta's Maya is the ignorance that keeps the wheel turning; Gnostic Kenoma is the realm the wheel occupies.",
+              "codex_question": "Where do you notice yourself caught in a repeating pattern — the same reaction to the same trigger? What would it take to step off that wheel, even briefly?"
+            },
+            {
+              "concept": "Doxa", "short_phrase": "mere opinion — appearance mistaken for truth",
+              "tradition": "pre-socratic", "rarity_tier": "common",
+              "codex_in_tradition": "Doxa — Greek for 'opinion' or 'seeming' — was the name Parmenides gave to ordinary human perception: the unstable, contradictory world of appearances that most people take for reality. Against it stood aletheia, truth-as-unconcealment — Being as it actually is. The Pre-Socratics were the first Western thinkers to insist that appearances systematically deceive, and that philosophy begins by recognising this.",
+              "codex_echoes": "Plato developed this distinction into his allegory of the cave. Vedanta's maya gave it a cosmic mechanism; Buddhism's samsara gave it a soteriological frame. All share the diagnosis: ordinary consciousness lives in a distorted relationship with reality, and wisdom begins with seeing that distortion clearly.",
+              "codex_question": "What is something you hold as obviously true that you have never seriously examined? What would it mean to move from doxa toward something closer to aletheia in that area?"
+            }
           ]
         },
         {
@@ -33,10 +81,34 @@
           "label": "Sages Who Founded Living Schools",
           "display_order": 2,
           "cards": [
-            { "concept": "Zeno of Citium",     "short_phrase": "the Stoa — a painted porch",           "tradition": "stoicism",       "rarity_tier": "uncommon" },
-            { "concept": "Siddhartha Gautama", "short_phrase": "the awakened under the tree",           "tradition": "buddhism",       "rarity_tier": "uncommon" },
-            { "concept": "Pythagoras",         "short_phrase": "numbers as the ground of all",          "tradition": "pythagoreanism", "rarity_tier": "uncommon" },
-            { "concept": "Plotinus",           "short_phrase": "the One pours itself outward",          "tradition": "neoplatonism",   "rarity_tier": "uncommon" }
+            {
+              "concept": "Zeno of Citium", "short_phrase": "the Stoa — a painted porch",
+              "tradition": "stoicism", "rarity_tier": "uncommon",
+              "codex_in_tradition": "Zeno of Citium arrived in Athens around 313 BCE, a Phoenician merchant who had lost his cargo in a shipwreck. He found Socratic philosophy in a bookshop and began studying immediately, eventually teaching in the Stoa Poikile — the Painted Porch — giving his school its name. His central innovation was the unity of virtue: wisdom, justice, courage, and temperance are one thing, not four. This became the structural spine of all subsequent Stoic ethics.",
+              "codex_echoes": "Like the Buddha, Zeno founded a school in response to loss — his own and the world's. Like Pythagoras, he built an integrated way of life, not just a set of doctrines. His successors (Chrysippus, Epictetus, Marcus Aurelius) show how a founding vision can evolve across centuries without losing its essential character.",
+              "codex_question": "Zeno began philosophy after a shipwreck changed everything. Has there been a loss or rupture in your life that unexpectedly redirected you toward something deeper?"
+            },
+            {
+              "concept": "Siddhartha Gautama", "short_phrase": "the awakened under the tree",
+              "tradition": "buddhism", "rarity_tier": "uncommon",
+              "codex_in_tradition": "Siddhartha Gautama — the historical Buddha — was a Kshatriya prince born around 563 BCE in what is now Nepal. His renunciation of palace life after encountering old age, sickness, and death was the founding act of a tradition spanning 2,600 years. His awakening under the Bodhi tree — the recognition of dependent origination and the end of craving — is the event the entire tradition unfolds from.",
+              "codex_echoes": "Like Zeno and Plotinus, the Buddha was a founder who never wrote anything himself — his teachings were transmitted orally, then codified by disciples. The tradition he founded has diversified as radically as Stoicism: Theravada, Mahayana, and Vajrayana all trace themselves back to that single awakening.",
+              "codex_question": "The Buddha's awakening began with an honest encounter with impermanence. Where in your life are you still averting your gaze from impermanence?"
+            },
+            {
+              "concept": "Pythagoras", "short_phrase": "numbers as the ground of all",
+              "tradition": "pythagoreanism", "rarity_tier": "uncommon",
+              "codex_in_tradition": "Pythagoras of Samos (c. 570–495 BCE) founded a community — part philosophical school, part religious brotherhood — in Croton, southern Italy. His central insight was that reality is fundamentally mathematical: number underlies all things. His followers practiced strict disciplines and held that the soul was immortal and underwent metempsychosis — transmigration between bodies. He may be the first figure in the Western tradition to speak of the soul's purification through philosophy.",
+              "codex_echoes": "The Pythagorean belief in metempsychosis connects directly to Buddhist and Vedantic ideas of karma and rebirth. His mathematical mysticism — the idea that harmony and proportion reveal the structure of the real — reappears in Neoplatonism and in Renaissance thought, where Φ became a symbol of divine proportion.",
+              "codex_question": "Pythagoras believed that beauty and truth share the same mathematical ground. Where do you find an unexpected harmony between things that seemed unrelated?"
+            },
+            {
+              "concept": "Plotinus", "short_phrase": "the One pours itself outward",
+              "tradition": "neoplatonism", "rarity_tier": "uncommon",
+              "codex_in_tradition": "Plotinus (204–270 CE) was the greatest philosopher of late antiquity and the founder of Neoplatonism. His central doctrine is the emanation of all reality from a single, utterly simple source he called the One — not a being, but the ground of being. From the One flows Nous (Intellect), from Nous flows Soul, from Soul flows the material world. Philosophy, for Plotinus, is the return of Soul through Nous to union with the One — a mystical ascent he reportedly achieved several times in his life.",
+              "codex_echoes": "The Neoplatonic One maps closely onto Vedanta's Brahman: both are beyond being and non-being, beyond thought, expressible only by negation. Plotinus influenced Augustine, Pseudo-Dionysius, and every major mystical tradition in the West. The Sufi concept of fana — annihilation of the self in union with the divine — is the closest Islamic parallel.",
+              "codex_question": "Plotinus said the soul longs to return to its source but has forgotten this longing. What draws you toward something larger or simpler than ordinary life?"
+            }
           ]
         },
         {
@@ -45,10 +117,34 @@
           "display_order": 3,
           "convergence_teaching": "Across four traditions separated by millennia and continents, the same conviction appears: inside every person is an indestructible fragment of the divine. Stoics call it the Pneuma — the breath of the Logos that animates rational beings. Vedanta names it Atman — the self that is ultimately identical with Brahman, the ground of all being. Gnostics speak of the Divine Spark — the fragment of light trapped in matter, longing for return. The Yoruba tradition names it Ori — the personal divine essence that accompanied the soul from heaven. Different words. The same insistence that you are more than you appear.",
           "cards": [
-            { "concept": "Pneuma",       "short_phrase": "the breath of the Logos within",            "tradition": "stoicism",           "rarity_tier": "rare" },
-            { "concept": "Atman",        "short_phrase": "the self that is Brahman",                   "tradition": "vedanta",            "rarity_tier": "rare" },
-            { "concept": "Divine Spark", "short_phrase": "the fragment of light in matter",            "tradition": "gnosticism",         "rarity_tier": "rare" },
-            { "concept": "Ori",          "short_phrase": "the personal divine from heaven",            "tradition": "african-philosophy", "rarity_tier": "rare" }
+            {
+              "concept": "Pneuma", "short_phrase": "the breath of the Logos within",
+              "tradition": "stoicism", "rarity_tier": "rare",
+              "codex_in_tradition": "Pneuma — Greek for 'breath' or 'spirit' — is the Stoic term for the divine rational fire that pervades and animates the entire cosmos. In human beings, the pneuma takes its highest form as the rational soul (hegemonikon), the ruling part of the mind. Because the pneuma within each person is a fragment of the universal Logos, every human being shares in the divine reason that governs all things — the Stoic basis for the radical equality of all rational natures.",
+              "codex_echoes": "Pneuma is the Stoic version of a conviction that appears across traditions: the divine does not merely observe us from outside — a fragment of it constitutes our deepest self. In Vedanta this fragment is Atman; in Gnosticism it is the Divine Spark; in Yoruba thought it is Ori. The same insistence, four different languages.",
+              "codex_question": "If the rational capacity you use to read these words is genuinely a fragment of what governs all things — what follows from that? Does it change how you treat your own mind?"
+            },
+            {
+              "concept": "Atman", "short_phrase": "the self that is Brahman",
+              "tradition": "vedanta", "rarity_tier": "rare",
+              "codex_in_tradition": "Atman is the innermost self — not the ego, not the personality, but the pure witness-consciousness that underlies them all. The teacher Shankaracharya expressed the most radical form of this: Atman is not merely like Brahman — Atman IS Brahman. The apparent multiplicity of individual selves is maya; underneath, there is one undivided awareness. This is the mahavakya: 'Tat tvam asi' — That thou art.",
+              "codex_echoes": "The Stoic Pneuma is a fragment of the Logos; Atman is not a fragment but the whole disguised as a fragment — a subtler and more radical claim. But the practical conclusion converges: you are not merely a body or a collection of desires, but something that participates in the ground of reality itself. Gnostic Divine Spark and Yoruba Ori insist on the same essential dignity.",
+              "codex_question": "Most of us identify primarily with our thoughts, preferences, and history. What would it be like — even for a moment — to rest in the awareness that precedes all of that?"
+            },
+            {
+              "concept": "Divine Spark", "short_phrase": "the fragment of light in matter",
+              "tradition": "gnosticism", "rarity_tier": "rare",
+              "codex_in_tradition": "In Gnostic cosmology, the material world was created by the Demiurge — an ignorant or malevolent lesser deity — not by the supreme God. But fragments of the true divine light were trapped in matter during this creation. These fragments — Divine Sparks — are the deepest reality of each human soul. The purpose of Gnostic knowledge (gnosis) is to awaken these sparks to their origin, enabling their return to the Pleroma, the fullness of light.",
+              "codex_echoes": "The Gnostic narrative is the most dramatic version of the universal theme: you are more than you appear. The Stoic Pneuma, Vedantic Atman, and Yoruba Ori assert the same thing without the mythology of cosmic catastrophe. Where Vedanta says the self was never actually exiled, Gnosticism says it truly was — and needs to find its way home.",
+              "codex_question": "The Gnostic tradition says the divine is hidden inside ordinary life, waiting to be recognised. Where do you catch glimpses of something luminous beneath the surface of daily experience?"
+            },
+            {
+              "concept": "Ori", "short_phrase": "the personal divine from heaven",
+              "tradition": "african-philosophy", "rarity_tier": "rare",
+              "codex_in_tradition": "In Yoruba spiritual philosophy, Ori — literally 'head' — is the personal divine essence chosen by each soul before birth. Before entering the world, a soul kneels before Olodumare (the supreme being) and selects its Ori — its destiny, character, and inner divinity. Ori is not simply fate; it is a living divine force that accompanies the person through life and must be cultivated. Success depends less on external circumstance than on alignment between one's actions and one's Ori.",
+              "codex_echoes": "Like the Stoic Daimon — the divine inner voice Socrates obeyed — Ori is simultaneously part of the person and something sacred, anterior to ordinary personality. In Gnostic terms, Ori is the Divine Spark; in Vedanta, the Atman present before birth. The Yoruba tradition makes the personal dimension especially vivid: your particular inner nature matters, not just the universal ground.",
+              "codex_question": "The Yoruba tradition says Ori must be cultivated and honoured — not simply received but activated. What practices in your life feel like alignment with your deepest nature, rather than performance for others?"
+            }
           ]
         }
       ]
@@ -64,10 +160,34 @@
           "label": "Watching the Mind Watch Itself",
           "display_order": 0,
           "cards": [
-            { "concept": "Prosoche",   "short_phrase": "sustained attention to one's own thoughts",     "tradition": "stoicism", "rarity_tier": "common" },
-            { "concept": "Sati",       "short_phrase": "mindfulness — clear seeing of what is",         "tradition": "buddhism", "rarity_tier": "common" },
-            { "concept": "Sakshi",     "short_phrase": "the witness — pure awareness behind the mind",  "tradition": "vedanta",  "rarity_tier": "common" },
-            { "concept": "Guan",       "short_phrase": "inner observation without interference",        "tradition": "taoism",   "rarity_tier": "common" }
+            {
+              "concept": "Prosoche", "short_phrase": "sustained attention to one's own thoughts",
+              "tradition": "stoicism", "rarity_tier": "common",
+              "codex_in_tradition": "Prosoche — sustained self-attention — is the foundational Stoic practice. Before you can govern your responses, you must first observe them with precision. Epictetus made it central: watching each impression as it arises, before assent turns it into a judgment and impulse into action. Marcus Aurelius called it 'keeping watch over the ruling faculty.' Without prosoche, the other practices have no ground to stand on.",
+              "codex_echoes": "Sati in Buddhism and Sakshi in Vedanta are both varieties of this same inner observational capacity. All three traditions locate freedom in the gap between stimulus and response — the space that attentive observation makes visible.",
+              "codex_question": "When you notice yourself reacting — to a slight, a disappointment, a craving — how quickly does awareness arrive? Is there a gap you can widen?"
+            },
+            {
+              "concept": "Sati", "short_phrase": "mindfulness — clear seeing of what is",
+              "tradition": "buddhism", "rarity_tier": "common",
+              "codex_in_tradition": "Sati is one of the seven factors of awakening in the Pali Canon and a cornerstone of Theravada practice. It is not passive awareness but an active, sharp quality of attention that knows the object clearly — body, feeling-tone, mental state, or phenomena — without distorting it. The Satipatthana Sutta calls it the 'direct path': four fields of mindfulness practiced ceaselessly until the nature of impermanence, suffering, and no-self becomes directly visible, not merely believed.",
+              "codex_echoes": "Stoic prosoche and Vedantic sakshi share sati's structure: a quality of awareness that watches without being absorbed. What distinguishes sati is its explicit soteriological purpose — clear seeing is not just self-knowledge but the engine of liberation.",
+              "codex_question": "Right now, what is the quality of your attention? Is it scattered, dull, or sharp? Can you feel the difference between knowing something and being absorbed in it?"
+            },
+            {
+              "concept": "Sakshi", "short_phrase": "the witness — pure awareness behind the mind",
+              "tradition": "vedanta", "rarity_tier": "common",
+              "codex_in_tradition": "Sakshi — the witness — is the pure, unchanging awareness that observes all mental and sensory events without participating in them. In Advaita Vedanta, sakshi is not a separate observer but consciousness itself in its witnessing aspect — the light by which everything else is seen. Thoughts appear before it; emotions arise in it; sleep comes and goes, but sakshi never sleeps. The practice of cultivating sakshi awareness is a primary method in the tradition of jnana yoga.",
+              "codex_echoes": "Buddhist awareness in meditation and Stoic prosoche both point toward this witnessing capacity. Vedanta's distinctive claim is the stronger one: sakshi is not a faculty you develop but the nature of what you already most fundamentally are.",
+              "codex_question": "Is there something in you that has been watching your whole life without itself changing? What would it mean to rest in that rather than in what it observes?"
+            },
+            {
+              "concept": "Guan", "short_phrase": "inner observation without interference",
+              "tradition": "taoism", "rarity_tier": "common",
+              "codex_in_tradition": "Guan — observation, contemplation — is the Taoist practice of watching the natural movements of body and mind without imposing a shape on them. The Tao Te Ching invites the sage to observe the ten thousand things returning to their root, to watch without interfering. This is not passivity but a precise non-grasping attention — the kind of looking that does not alter what is seen. In Taoist inner alchemy, guan of the body's energetic movements is a form of practice in itself.",
+              "codex_echoes": "What Guan shares with Buddhist sati and Stoic prosoche is the recognition that undistorted seeing is itself transformative. The Taoist adds something distinct: that the observed reality has its own self-correcting intelligence, and the observer's job is to trust it.",
+              "codex_question": "Where in your life are you watching and simultaneously trying to control what you see? What would pure observation — without intervention — feel like?"
+            }
           ]
         },
         {
@@ -75,10 +195,34 @@
           "label": "The Cosmic Law Beneath All Phenomena",
           "display_order": 1,
           "cards": [
-            { "concept": "Logos",   "short_phrase": "the rational fire that orders all things",          "tradition": "stoicism",       "rarity_tier": "common" },
-            { "concept": "Dharma",  "short_phrase": "the cosmic truth underlying existence",             "tradition": "buddhism",       "rarity_tier": "common" },
-            { "concept": "Rta",     "short_phrase": "cosmic order — the law that sustains the world",   "tradition": "vedanta",        "rarity_tier": "common" },
-            { "concept": "Maat",    "short_phrase": "cosmic truth and justice — the principle of all order", "tradition": "kemetic-wisdom", "rarity_tier": "common" }
+            {
+              "concept": "Logos", "short_phrase": "the rational fire that orders all things",
+              "tradition": "stoicism", "rarity_tier": "common",
+              "codex_in_tradition": "For the Stoics, the Logos is the divine rational principle that permeates and governs all of reality — not a person but an impersonal intelligence, sometimes called the World Soul or Zeus in its personal aspect. Heraclitus first named it; the Stoics made it the centerpiece of their physics. The Logos is identical with Fate, Providence, and Nature — different names for the same ordering intelligence. Because human reason is a fragment of the Logos, to live according to reason is to live in harmony with the entire cosmos.",
+              "codex_echoes": "Buddhist Dharma, Vedic Rta, and Egyptian Maat are all names for the same bedrock conviction: reality has a structure, and wisdom means aligning with it rather than fighting it. The Logos is the Greek tradition's most precise philosophical formulation of this universal intuition.",
+              "codex_question": "Where in your life are you working with the grain of things, and where are you fighting against a structure that simply is?"
+            },
+            {
+              "concept": "Dharma", "short_phrase": "the cosmic truth underlying existence",
+              "tradition": "buddhism", "rarity_tier": "common",
+              "codex_in_tradition": "Dharma in Buddhism carries several interlocking meanings: it is the truth about how things actually are (the teaching of the Buddha), the cosmic order that makes truth possible, and the individual phenomena of experience viewed clearly. The Dhamma — the Pali form — is one of the Three Jewels alongside Buddha and Sangha. It names both the destination (reality as it is) and the path (the way of practice that aligns with reality). To live by the Dharma is not to follow rules but to see clearly and respond accordingly.",
+              "codex_echoes": "The Stoic Logos and the Vedic Rta share Dharma's structure: a cosmic ordering principle that both describes reality and prescribes right action. What the Buddhist tradition adds is particular psychological precision — the Dharma is inseparable from the analysis of suffering and its causes.",
+              "codex_question": "What would it mean to act from understanding of how things actually are, rather than from how you wish they were?"
+            },
+            {
+              "concept": "Rta", "short_phrase": "cosmic order — the law that sustains the world",
+              "tradition": "vedanta", "rarity_tier": "common",
+              "codex_in_tradition": "Rta is one of the oldest concepts in the Vedic tradition, appearing throughout the Rig Veda as the cosmic order that upholds truth, sustains the universe, and governs both natural cycles and moral law. The gods themselves act within Rta; to violate it is to undermine the fabric of existence. Rta is both descriptive (this is how the cosmos operates) and normative (this is how humans must act to remain in alignment). Sacrifice, in the Vedic worldview, is the act that renews and restores Rta when it has been disturbed.",
+              "codex_echoes": "Rta is the Vedic antecedent to the later Vedantic concept of Dharma and closely parallels Egyptian Maat — both are cosmic truth-principles that moral action must respect. The Stoic Logos is its closest Greek analogue.",
+              "codex_question": "Do you sense that there are some things that simply must be — patterns in reality that resist being forced? How do you orient yourself to those?"
+            },
+            {
+              "concept": "Maat", "short_phrase": "cosmic truth and justice — the principle of all order",
+              "tradition": "kemetic-wisdom", "rarity_tier": "common",
+              "codex_in_tradition": "Maat — sometimes rendered as ma'at — is the Egyptian goddess, concept, and cosmic principle simultaneously. She is truth, justice, balance, harmony, and right order personified. At death, the heart of the deceased is weighed against Maat's feather: a heart heavy with wrongdoing tips the scale, and is devoured; a heart light as a feather passes into the Field of Reeds. But Maat is not merely posthumous judgment — she is the living principle by which pharaoh rules, priests officiate, and individuals navigate their days. To speak Maat is to speak truth; to do Maat is to act justly.",
+              "codex_echoes": "Maat is the Egyptian name for the cosmic ordering principle that Stoics call Logos, Vedantins call Rta, and Buddhists call Dharma. What distinguishes Maat is her intimate connection with justice and truth as a single undivided reality — not separate concepts but one.",
+              "codex_question": "If you imagine your heart being weighed against a feather — all of your choices, words, and habits on one side — how heavy do you think it would be?"
+            }
           ]
         },
         {
@@ -86,10 +230,34 @@
           "label": "Voluntary Austerity as Spiritual Training",
           "display_order": 2,
           "cards": [
-            { "concept": "Askesis",    "short_phrase": "voluntary training through chosen hardship",         "tradition": "stoicism",    "rarity_tier": "uncommon" },
-            { "concept": "Tapas",      "short_phrase": "inner heat of discipline burning away impurity",    "tradition": "vedanta",     "rarity_tier": "uncommon" },
-            { "concept": "Nekkhamma", "short_phrase": "renunciation — releasing the grip of pleasure",      "tradition": "buddhism",    "rarity_tier": "uncommon" },
-            { "concept": "Hesychia",   "short_phrase": "holy stillness — deliberate quieting of the soul", "tradition": "neoplatonism","rarity_tier": "uncommon" }
+            {
+              "concept": "Askesis", "short_phrase": "voluntary training through chosen hardship",
+              "tradition": "stoicism", "rarity_tier": "uncommon",
+              "codex_in_tradition": "Askesis — from which we get 'ascetic' — meant training or exercise to the Greeks, not deprivation. The Stoics practiced deliberate hardship: cold water instead of warm baths, sleeping on the floor occasionally, fasting, wearing plain clothing. The goal was not punishment but preparation — strengthening the will so that when circumstance imposed hardship, the sage was not undone. Epictetus described it as training to keep the will aligned with nature, strengthening the hegemonikon against fortune's reversals.",
+              "codex_echoes": "Buddhist nekkhamma and Vedantic tapas share askesis's structure: voluntary difficulty as the forge of inner freedom. What Stoic askesis adds is the explicitly practical framing — this is athletic training for the soul, not spiritual heroism.",
+              "codex_question": "What small voluntary hardship could you introduce into your routine — not for suffering's sake, but to discover where you are still dependent on comfort?"
+            },
+            {
+              "concept": "Tapas", "short_phrase": "inner heat of discipline burning away impurity",
+              "tradition": "vedanta", "rarity_tier": "uncommon",
+              "codex_in_tradition": "Tapas — heat, austerity — is one of the niyamas in Patanjali's Yoga Sutras and one of the three pillars of kriya yoga (along with self-study and surrender). The metaphor is metallurgical: just as fire separates gold from dross, tapas burns away the accumulated impurities (kleshas) that obscure the light of the self. Tapas ranges from physical disciplines (fasting, heat endurance) to the subtler inner heat generated by sustained meditation and ethical restraint.",
+              "codex_echoes": "Stoic askesis and Buddhist nekkhamma share tapas's core insight: voluntary difficulty produces inner freedom. Vedanta adds a cosmological dimension — tapas generates actual spiritual energy (shakti), not merely psychological resilience.",
+              "codex_question": "Where in your life do you generate inner heat through discipline rather than avoiding all friction? What has that heat produced in you?"
+            },
+            {
+              "concept": "Nekkhamma", "short_phrase": "renunciation — releasing the grip of pleasure",
+              "tradition": "buddhism", "rarity_tier": "uncommon",
+              "codex_in_tradition": "Nekkhamma — renunciation — is the first of the ten paramis (perfections) in Theravada Buddhism and a foundational quality of the bodhisattva path. It is not the suppression of pleasure but the recognition of sense pleasures as insufficient — unsatisfying at the root, conditioned, impermanent. The monk renounces household life; the lay practitioner renounces specific attachments. Both are practicing the same insight: grasping at pleasant experience is itself the source of unsatisfactoriness. Freedom begins when craving loosens its grip.",
+              "codex_echoes": "Vedantic vairagya (dispassion) and Stoic apatheia are structural parallels — inner non-attachment more than physical deprivation. Nekkhamma is less about what you possess and more about the quality of your relationship with what you experience.",
+              "codex_question": "Is there a pleasure in your life that you know holds you rather than you holding it? What would a week without it teach you?"
+            },
+            {
+              "concept": "Hesychia", "short_phrase": "holy stillness — deliberate quieting of the soul",
+              "tradition": "neoplatonism", "rarity_tier": "uncommon",
+              "codex_in_tradition": "Hesychia — stillness, quietude — was the central practice of the Desert Fathers and the Eastern Christian hesychast tradition, rooted in Neoplatonic soil. The hesychast practice was the deliberate silencing of all mental activity so the divine light could be received. Evagrius Ponticus described the goal as a mind stripped bare of all images and concepts — pure, formless prayer. The hesychasts of Mount Athos (14th century) maintained that this practice could make the uncreated light of God directly perceptible to the body, not just the soul.",
+              "codex_echoes": "Taoist stillness (jing), Buddhist samatha (calming), and Vedantic nirodha (cessation) are all versions of this same discovery: beneath the ordinary noise of the mind is a quality of silence that is not empty but luminous.",
+              "codex_question": "When was the last time you experienced genuine stillness — not distraction, not sleep, but lucid quiet? What was present there?"
+            }
           ]
         },
         {
@@ -98,10 +266,34 @@
           "display_order": 3,
           "convergence_teaching": "Every major philosophical tradition agrees: the most important territory to explore is internal. The Stoics called the inner center the Hegemonikon — the commanding faculty, the thing in you that can always choose its response. Vedanta names it Atman in its active mode: the innermost self, identical with the ground of all reality. Buddhism speaks of Citta — the mind-heart — whose deepest nature is luminous, unobstructed awareness. Taoism calls it Shen: the divine spirit that animates the person and connects them to heaven. The philosophers across every age and culture found the same thing when they looked within: something that cannot be reduced to body or circumstance, something that is more itself the stiller it becomes.",
           "cards": [
-            { "concept": "Hegemonikon", "short_phrase": "the commanding faculty — the pilot of the soul",          "tradition": "stoicism", "rarity_tier": "rare" },
-            { "concept": "Citta",       "short_phrase": "mind-heart — the luminous awareness beneath all thought", "tradition": "buddhism", "rarity_tier": "rare" },
-            { "concept": "Shen",        "short_phrase": "the divine spirit animating and connecting the person",   "tradition": "taoism",   "rarity_tier": "rare" },
-            { "concept": "Antahkarana", "short_phrase": "the inner instrument through which the self knows itself","tradition": "vedanta",  "rarity_tier": "rare" }
+            {
+              "concept": "Hegemonikon", "short_phrase": "the commanding faculty — the pilot of the soul",
+              "tradition": "stoicism", "rarity_tier": "rare",
+              "codex_in_tradition": "The Hegemonikon — ruling faculty — is the Stoic name for the highest part of the soul: the seat of reason, judgment, and assent. It is what gives or withholds agreement to impressions, what generates impulse, and what can always, even under torture, choose its own orientation. Epictetus called it the only thing truly our own. The Stoics located it in the heart rather than the head, making it the pilot of the whole psychological ship — the part that determines whether every experience is navigated wisely or badly.",
+              "codex_echoes": "Buddhist citta in its deepest sense, Taoist shen, and Vedantic antahkarana all name this same inner governing center — the irreducible agent that cannot be stripped away by circumstance. What makes the Stoic formulation distinctive is the insistence that this faculty is inviolably free.",
+              "codex_question": "Can you locate the part of you that has always been able to choose its response, even when it chose badly? What would it mean to trust and train that faculty deliberately?"
+            },
+            {
+              "concept": "Citta", "short_phrase": "mind-heart — the luminous awareness beneath all thought",
+              "tradition": "buddhism", "rarity_tier": "rare",
+              "codex_in_tradition": "Citta is the Pali and Sanskrit term for the mind-heart — not merely the cognitive faculty but the whole experiential field in which knowing, feeling, and willing arise. The Anguttara Nikaya contains a remarkable teaching: the Buddha declares that citta is, in its fundamental nature, luminous (pabhasara). It is only adventitiously obscured by visiting defilements — they are guests, not the nature of the host. The entire path of Buddhist practice can be understood as progressively revealing this luminosity by removing what temporarily obscures it.",
+              "codex_echoes": "This teaching of citta's inherent luminosity aligns closely with Vedanta's teaching that consciousness is intrinsically aware, and with Taoism's shen — the divine spirit that shines most clearly when the ordinary mind quiets.",
+              "codex_question": "If your deepest nature is luminous and the obscurations are only visitors — what does that imply about who you fundamentally are beneath the noise?"
+            },
+            {
+              "concept": "Shen", "short_phrase": "the divine spirit animating and connecting the person",
+              "tradition": "taoism", "rarity_tier": "rare",
+              "codex_in_tradition": "Shen — spirit, divine intelligence — is one of the Three Treasures of Taoist inner alchemy alongside jing (essence) and qi (vital breath). Shen is the most refined of the three and is associated with the heart and with consciousness itself. When the other two are cultivated and purified, shen naturally brightens. A person whose shen is intact radiates a quality of presence that others recognize instinctively — the ancient texts call it te, inner power or virtue. Shen connects the individual to heaven and is the human being's share of the divine.",
+              "codex_echoes": "The Buddhist notion of citta's inherent luminosity and the Stoic Pneuma as a fragment of the Logos are the closest parallels — all three say the divine is not added to the person from outside but is the person's deepest dimension.",
+              "codex_question": "Have you met someone whose presence was unusually clear or radiant — not because of what they said, but because of how they were? What did that quality feel like to be near?"
+            },
+            {
+              "concept": "Antahkarana", "short_phrase": "the inner instrument through which the self knows itself",
+              "tradition": "vedanta", "rarity_tier": "rare",
+              "codex_in_tradition": "Antahkarana — the inner instrument — is the Vedantic term for the fourfold inner faculty: manas (the receiving mind), buddhi (the discriminating intellect), ahamkara (the ego-sense), and chitta (the storehouse of memory and impressions). Together they constitute the apparatus through which Atman, pure consciousness, knows itself in the conditioned world. The practice of jnana yoga is largely the refinement of buddhi so that it can reflect Atman clearly, without distortion — like polishing a mirror so it shows an accurate image.",
+              "codex_echoes": "Where Stoicism speaks of the hegemonikon as the commanding faculty, Vedanta offers a more detailed map of the inner instrument's components — each requiring cultivation. The Buddhist antahkarana parallel is the skandhas, the aggregates that constitute apparent individual existence.",
+              "codex_question": "When you think, feel, or decide — can you distinguish the instruments (thoughts, emotions, impulses) from the awareness in which they arise? What is the difference?"
+            }
           ]
         }
       ]

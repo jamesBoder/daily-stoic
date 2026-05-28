@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useConfluence } from '../../../hooks/useConfluence'
 import { CardGrid, CardGridSkeleton } from './CardGrid'
 import { FoundGroupsRow } from './FoundGroupsRow'
 import { ActionBar } from './ActionBar'
 import { ConvergenceReveal } from './ConvergenceReveal'
 import { ResultModal } from './ResultModal'
-import type { ConfluenceGroup, PuzzleArchetype } from '../../../types/confluence'
+import { ConceptInsightDrawer } from './ConceptInsightDrawer'
+import type { ConfluenceCard, ConfluenceGroup, PuzzleArchetype } from '../../../types/confluence'
 
 const ARCHETYPE_LABEL: Record<PuzzleArchetype, string> = {
   convergence: 'Convergence',
@@ -14,6 +15,8 @@ const ARCHETYPE_LABEL: Record<PuzzleArchetype, string> = {
   lineage:      'Lineage',
   paradox:      'Paradox',
 }
+
+const INSIGHT_TIP_KEY = 'confluence-insight-tip-seen'
 
 export function ConfluencePage() {
   const {
@@ -45,30 +48,55 @@ export function ConfluencePage() {
     if (count > prevGroupCountRef.current) {
       const added = count - prevGroupCountRef.current
       prevGroupCountRef.current = count
-      // Only trigger on a single new group — bulk additions are session restores
       if (added === 1) {
-        // Check the NEWLY ADDED group — not any purple in foundGroups.
-        // Once purple is found it stays in foundGroups forever; searching
-        // the whole array would re-trigger the reveal on every subsequent guess.
         const newGroupId = gameState.foundGroupIds[gameState.foundGroupIds.length - 1]
         const newGroup = gameState.foundGroups.find(g => g.id === newGroupId)
         if (newGroup?.tier === 'purple') {
           setConvergenceGroup(newGroup)
+          // Close any open insight drawer when convergence reveal fires
+          setInsightCardId(null)
         }
       }
     }
   }, [gameState.foundGroupIds, gameState.foundGroups])
 
-  // Auto-open ResultModal after game ends.
-  // If ConvergenceReveal is still animating, wait for it to close first.
+  // Auto-open ResultModal after game ends
   useEffect(() => {
     const gameOver = gameState.status === 'complete' || gameState.status === 'failed'
     if (!gameOver) return
-    if (convergenceGroup) return  // ConvergenceReveal.onClose will trigger this instead
+    if (convergenceGroup) return
     const delay = gameState.status === 'complete' ? 1200 : 400
-    const t = setTimeout(() => setShowResult(true), delay)
+    const t = setTimeout(() => {
+      setInsightCardId(null)  // close drawer before result modal
+      setShowResult(true)
+    }, delay)
     return () => clearTimeout(t)
   }, [gameState.status, convergenceGroup])
+
+  // ── Card Insight Drawer ──────────────────────────────────────────
+  const [insightCardId, setInsightCardId] = useState<number | null>(null)
+
+  const insightCard = useMemo<ConfluenceCard | null>(() => {
+    if (!insightCardId || !puzzle) return null
+    return puzzle.groups.flatMap(g => g.cards).find(c => c.id === insightCardId) ?? null
+  }, [insightCardId, puzzle])
+
+  // ── One-time insight tooltip (mobile only) ───────────────────────
+  const [showInsightTip, setShowInsightTip] = useState(
+    () => !localStorage.getItem(INSIGHT_TIP_KEY)
+  )
+  const tipTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    if (!showInsightTip) return
+    tipTimer.current = setTimeout(() => dismissInsightTip(), 5000)
+    return () => { if (tipTimer.current) clearTimeout(tipTimer.current) }
+  }, [showInsightTip])
+
+  const dismissInsightTip = () => {
+    localStorage.setItem(INSIGHT_TIP_KEY, '1')
+    setShowInsightTip(false)
+  }
 
   // Puzzle not yet loaded — show full page skeleton
   if (isLoading) {
@@ -151,7 +179,7 @@ export function ConfluencePage() {
             </p>
           )}
 
-          {/* Game over message + reopen button — desktop only (mobile shows inline) */}
+          {/* Game over message + reopen button — desktop only */}
           {gameOver && (
             <div className="hidden lg:block mt-6">
               <p className="font-serif text-sm italic text-[var(--color-game-fg-muted)] mb-3">
@@ -159,16 +187,14 @@ export function ConfluencePage() {
                   ? 'Confluence achieved.'
                   : 'The philosophers remain divided.'}
               </p>
-              <button onClick={() => setShowResult(true)} className={seeResultsBtn}>
+              <button onClick={() => { setInsightCardId(null); setShowResult(true) }} className={seeResultsBtn}>
                 See results
               </button>
             </div>
           )}
         </div>
 
-        {/* ── Game area ──
-            While the server session loads (isSessionLoading), the info panel above is
-            already visible. Only the grid area skeletons — consistent with the spec. */}
+        {/* ── Game area ── */}
         <div className="flex-1 min-w-0">
 
           {isSessionLoading ? (
@@ -177,10 +203,35 @@ export function ConfluencePage() {
             <>
               <FoundGroupsRow foundGroups={gameState.foundGroups} />
 
+              {/* One-time insight tip — mobile only, shown between groups row and grid */}
+              {showInsightTip && !gameOver && (
+                <div
+                  className="mb-2 px-3 py-2.5 rounded-xl border flex items-center gap-2.5 lg:hidden"
+                  style={{
+                    borderColor: 'var(--color-game-border)',
+                    background: 'var(--color-game-surface)',
+                  }}
+                >
+                  <span className="text-xs select-none" style={{ color: 'var(--color-game-fg-dim)' }}>ⓘ</span>
+                  <p className="flex-1 font-sans text-xs" style={{ color: 'var(--color-game-fg-muted)' }}>
+                    Hold any card to learn about the concept
+                  </p>
+                  <button
+                    onClick={dismissInsightTip}
+                    aria-label="Dismiss tip"
+                    className="w-8 h-8 flex items-center justify-center text-lg leading-none"
+                    style={{ color: 'var(--color-game-fg-dim)' }}
+                  >
+                    ×
+                  </button>
+                </div>
+              )}
+
               <CardGrid
                 puzzle={puzzle}
                 gameState={gameState}
                 onTap={toggleCard}
+                onInsight={setInsightCardId}
                 lastWrongCardIds={lastWrongCardIds}
                 gameOver={gameOver}
               />
@@ -205,7 +256,7 @@ export function ConfluencePage() {
                       ? 'Confluence achieved.'
                       : 'The philosophers remain divided.'}
                   </p>
-                  <button onClick={() => setShowResult(true)} className={seeResultsBtn}>
+                  <button onClick={() => { setInsightCardId(null); setShowResult(true) }} className={seeResultsBtn}>
                     See results
                   </button>
                 </div>
@@ -222,8 +273,8 @@ export function ConfluencePage() {
       isOpen={!!convergenceGroup}
       onClose={() => {
         setConvergenceGroup(null)
-        const gameOver = gameState.status === 'complete' || gameState.status === 'failed'
-        if (gameOver) {
+        const over = gameState.status === 'complete' || gameState.status === 'failed'
+        if (over) {
           setTimeout(() => setShowResult(true), 400)
         }
       }}
@@ -235,6 +286,13 @@ export function ConfluencePage() {
       isOpen={showResult}
       onClose={() => setShowResult(false)}
     />
+
+    {insightCard && (
+      <ConceptInsightDrawer
+        card={insightCard}
+        onClose={() => setInsightCardId(null)}
+      />
+    )}
     </>
   )
 }
