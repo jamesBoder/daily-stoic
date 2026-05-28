@@ -1,25 +1,26 @@
-import type { ConfluenceCard as ConfluenceCardType, GroupTier } from '../../../types/confluence'
+import { useRef } from 'react'
+import type { ConfluenceCard as ConfluenceCardType } from '../../../types/confluence'
 import { TRADITION_COLORS } from '../../traditions/constants'
 
-// Per-tradition sigil + background. Border/glow derive from TRADITION_COLORS via --trad-color.
+// Per-tradition sigil. Border/glow derive from TRADITION_COLORS via --trad-color.
 // Λ = Lambda, the Logos — rational divine fire at the heart of Stoic cosmology
 // Φ = Phi, the golden ratio — emblem of Renaissance humanism and classical proportion
-const TRADITION_CONFIG: Record<string, { sigil: string; bgClass: string }> = {
-  stoicism:               { sigil: 'Λ',  bgClass: 'bg-slate-900' },
-  hermeticism:            { sigil: '☿',  bgClass: 'bg-yellow-950' },
-  neoplatonism:           { sigil: '◎',  bgClass: 'bg-violet-950' },
-  gnosticism:             { sigil: '⊕',  bgClass: 'bg-red-950' },
-  kabbalah:               { sigil: '✡',  bgClass: 'bg-blue-950' },
-  pythagoreanism:         { sigil: '△',  bgClass: 'bg-emerald-950' },
-  'pre-socratic':         { sigil: '≋',  bgClass: 'bg-amber-950' },
-  'african-philosophy':   { sigil: '☽',  bgClass: 'bg-orange-950' },
-  'renaissance-philosophy': { sigil: 'Φ', bgClass: 'bg-rose-950' },
-  transcendentalism:      { sigil: '☀',  bgClass: 'bg-green-950' },
-  buddhism:               { sigil: '☸',  bgClass: 'bg-amber-950' },
-  taoism:                 { sigil: '☯',  bgClass: 'bg-teal-950' },
-  vedanta:                { sigil: 'ॐ',  bgClass: 'bg-orange-950' },
-  existentialism:         { sigil: '∅',  bgClass: 'bg-zinc-900' },
-  'kemetic-wisdom':       { sigil: '𓂀', bgClass: 'bg-yellow-950' },
+const TRADITION_CONFIG: Record<string, { sigil: string }> = {
+  stoicism:                 { sigil: 'Λ' },
+  hermeticism:              { sigil: '☿' },
+  neoplatonism:             { sigil: '◎' },
+  gnosticism:               { sigil: '⊕' },
+  kabbalah:                 { sigil: '✡' },
+  pythagoreanism:           { sigil: '△' },
+  'pre-socratic':           { sigil: '≋' },
+  'african-philosophy':     { sigil: '☽' },
+  'renaissance-philosophy': { sigil: 'Φ' },
+  transcendentalism:        { sigil: '☀' },
+  buddhism:                 { sigil: '☸' },
+  taoism:                   { sigil: '☯' },
+  vedanta:                  { sigil: 'ॐ' },
+  existentialism:           { sigil: '∅' },
+  'kemetic-wisdom':         { sigil: '𓂀' },
 }
 
 interface ConfluenceCardProps {
@@ -28,17 +29,58 @@ interface ConfluenceCardProps {
   isAnySelected: boolean
   isShaking: boolean
   isLocked: boolean
-  lockedTier?: GroupTier
   onTap: (id: number) => void
+  onInsight: (id: number) => void
 }
 
-export function ConfluenceCard({ card, isSelected, isAnySelected, isShaking, isLocked, onTap }: ConfluenceCardProps) {
+export function ConfluenceCard({
+  card, isSelected, isAnySelected, isShaking, isLocked, onTap, onInsight,
+}: ConfluenceCardProps) {
   const tradSlug  = card.concept.tradition?.slug ?? ''
   const tradColor = TRADITION_COLORS[tradSlug]?.dark ?? 'var(--color-game-fg-muted)'
-  // Unique art color per card — golden-angle hue distribution is independent of tradition groupings,
-  // so players cannot use color as a grouping signal.
   const artHue = (card.id * 137) % 360
   const artBg  = `hsl(${artHue}, var(--color-game-art-s, 42%), var(--color-game-art-l, 11%))`
+
+  // Long-press state
+  const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const longPressTriggered = useRef(false)
+  const pointerStart = useRef({ x: 0, y: 0 })
+
+  const insightButtonRef = useRef<HTMLButtonElement>(null)
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (isLocked) return
+    longPressTriggered.current = false
+    pointerStart.current = { x: e.clientX, y: e.clientY }
+    longPressTimer.current = setTimeout(() => {
+      longPressTriggered.current = true
+      onInsight(card.id)
+    }, 500)
+  }
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    const dx = Math.abs(e.clientX - pointerStart.current.x)
+    const dy = Math.abs(e.clientY - pointerStart.current.y)
+    if ((dx > 5 || dy > 5) && longPressTimer.current) {
+      clearTimeout(longPressTimer.current)
+      longPressTimer.current = null
+    }
+  }
+
+  const handlePointerUp = () => {
+    if (longPressTimer.current) {
+      clearTimeout(longPressTimer.current)
+      longPressTimer.current = null
+    }
+  }
+
+  const handleClick = () => {
+    if (longPressTriggered.current) {
+      longPressTriggered.current = false
+      return
+    }
+    if (!isLocked) onTap(card.id)
+  }
 
   return (
     <div
@@ -47,8 +89,9 @@ export function ConfluenceCard({ card, isSelected, isAnySelected, isShaking, isL
       aria-pressed={isSelected}
       aria-label={`${card.concept.name} — ${card.concept.tradition?.name ?? 'Unknown'}`}
       aria-disabled={isLocked}
+      // `group` enables group-hover:opacity-100 on the ⓘ button
       className={[
-        'relative aspect-[5/7] cursor-pointer select-none',
+        'group relative aspect-[5/7] cursor-pointer select-none',
         'transition-[transform,opacity] duration-200',
         isSelected && !isLocked
           ? 'scale-[1.1] -translate-y-2 z-10'
@@ -59,9 +102,16 @@ export function ConfluenceCard({ card, isSelected, isAnySelected, isShaking, isL
         isLocked ? 'opacity-40 pointer-events-none' : '',
       ].filter(Boolean).join(' ')}
       style={{ '--trad-color': tradColor } as React.CSSProperties}
-      onClick={() => !isLocked && onTap(card.id)}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
+      onClick={handleClick}
+      onContextMenu={e => e.preventDefault()}
       onKeyDown={(e) => {
         if ((e.key === 'Enter' || e.key === ' ') && !isLocked) {
+          // Guard: don't fire if focus is on the ⓘ button (it handles its own keys)
+          if (e.target === insightButtonRef.current) return
           e.preventDefault()
           onTap(card.id)
         }
@@ -99,6 +149,29 @@ export function ConfluenceCard({ card, isSelected, isAnySelected, isShaking, isL
           </p>
         </div>
       </div>
+
+      {/* Desktop ⓘ button — lg:+ only. Long-press handles mobile. */}
+      {/* Placed on the OUTER wrapper (above overflow-hidden inner div). */}
+      <button
+        ref={insightButtonRef}
+        className="hidden lg:flex absolute bottom-1.5 right-1.5
+                   w-8 h-8 items-center justify-center rounded
+                   opacity-0 group-hover:opacity-100 transition-opacity duration-150
+                   focus-visible:opacity-100 focus-visible:ring-1"
+        style={{ color: 'var(--color-game-fg-dim)', outlineColor: 'var(--color-game-fg-dim)' }}
+        aria-label={`Learn about ${card.concept.name}`}
+        tabIndex={isLocked ? -1 : 0}
+        onClick={(e) => { e.stopPropagation(); onInsight(card.id) }}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.stopPropagation()
+            e.preventDefault()
+            onInsight(card.id)
+          }
+        }}
+      >
+        <span className="text-[11px] leading-none select-none">ⓘ</span>
+      </button>
     </div>
   )
 }

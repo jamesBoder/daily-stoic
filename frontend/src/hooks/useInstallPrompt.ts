@@ -21,14 +21,16 @@ export const useInstallPrompt = () => {
     const onDisplayChange = (e: MediaQueryListEvent) => setIsInstalled(e.matches)
     mediaQuery.addEventListener('change', onDisplayChange)
 
-    window.addEventListener('appinstalled', () => {
+    const onInstalled = () => {
       setPromptEvent(null)
       setIsInstalled(true)
-    })
+    }
+    window.addEventListener('appinstalled', onInstalled)
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handler)
       mediaQuery.removeEventListener('change', onDisplayChange)
+      window.removeEventListener('appinstalled', onInstalled)
     }
   }, [])
 

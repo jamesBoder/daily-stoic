@@ -19,6 +19,7 @@ interface CardGridProps {
   puzzle: ConfluencePuzzle
   gameState: LocalGameState
   onTap: (id: number) => void
+  onInsight: (id: number) => void
   lastWrongCardIds: number[]
   gameOver?: boolean
 }
@@ -36,7 +37,7 @@ export function CardGridSkeleton() {
   )
 }
 
-export function CardGrid({ puzzle, gameState, onTap, lastWrongCardIds, gameOver = false }: CardGridProps) {
+export function CardGrid({ puzzle, gameState, onTap, onInsight, lastWrongCardIds, gameOver = false }: CardGridProps) {
   const [shakingIds, setShakingIds] = useState<Set<number>>(new Set())
   const prevWrongKey = useRef('')
   const shakeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -85,6 +86,7 @@ export function CardGrid({ puzzle, gameState, onTap, lastWrongCardIds, gameOver 
           isShaking={shakingIds.has(card.id)}
           isLocked={gameOver}
           onTap={onTap}
+          onInsight={onInsight}
         />
       ))}
     </div>

@@ -16,11 +16,15 @@ import (
 var confluencePuzzlesJSON []byte
 
 type confluenceCardSeed struct {
-	Concept     string `json:"concept"`
-	ShortPhrase string `json:"short_phrase"`
-	Tradition   string `json:"tradition"`
-	RarityTier  string `json:"rarity_tier"`
-	QuoteRef    string `json:"quote_ref,omitempty"`
+	Concept          string `json:"concept"`
+	ShortPhrase      string `json:"short_phrase"`
+	Tradition        string `json:"tradition"`
+	RarityTier       string `json:"rarity_tier"`
+	QuoteRef         string `json:"quote_ref,omitempty"`
+	CodexInTradition string `json:"codex_in_tradition,omitempty"`
+	CodexEchoes      string `json:"codex_echoes,omitempty"`
+	CodexQuestion    string `json:"codex_question,omitempty"`
+	CodexPractice    string `json:"codex_practice,omitempty"`
 }
 
 type confluenceGroupSeed struct {
@@ -97,16 +101,24 @@ func SeedConfluencePuzzles(db *gorm.DB) {
 				}
 
 				concept := models.WisdomConcept{
-					Name:        cs.Concept,
-					ShortPhrase: cs.ShortPhrase,
-					TraditionID: tradID,
-					RarityTier:  cs.RarityTier,
+					Name:             cs.Concept,
+					ShortPhrase:      cs.ShortPhrase,
+					TraditionID:      tradID,
+					RarityTier:       cs.RarityTier,
+					CodexInTradition: cs.CodexInTradition,
+					CodexEchoes:      cs.CodexEchoes,
+					CodexQuestion:    cs.CodexQuestion,
+					CodexPractice:    cs.CodexPractice,
 				}
 				// rarity_tier intentionally excluded — first-seeded value is canonical;
 				// re-seeding must not downgrade a concept that already exists at a higher tier.
+				// Codex fields are updatable — content improves via re-seed.
 				db.Clauses(clause.OnConflict{
-					Columns:   []clause.Column{{Name: "name"}},
-					DoUpdates: clause.AssignmentColumns([]string{"short_phrase"}),
+					Columns: []clause.Column{{Name: "name"}},
+					DoUpdates: clause.AssignmentColumns([]string{
+						"short_phrase", "codex_in_tradition", "codex_echoes",
+						"codex_question", "codex_practice",
+					}),
 				}).Create(&concept)
 
 				card := models.ConfluenceCard{
