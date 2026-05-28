@@ -114,7 +114,7 @@ func SeedConfluencePuzzles(db *gorm.DB) {
 				// re-seeding must not downgrade a concept that already exists at a higher tier.
 				// Codex fields are updatable — content improves via re-seed.
 				db.Clauses(clause.OnConflict{
-					Columns:   []clause.Column{{Name: "name"}},
+					Columns: []clause.Column{{Name: "name"}},
 					DoUpdates: clause.AssignmentColumns([]string{
 						"short_phrase", "codex_in_tradition", "codex_echoes",
 						"codex_question", "codex_practice",
