@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import type { ConfluencePuzzle, LocalGameState, GroupTier } from '../../../types/confluence'
 import { ShareBlock } from './ShareBlock'
 import { TIER_STYLE } from './tierStyles'
+import { useModalFocus } from '../../../hooks/useModalFocus'
 
 const TIER_ORDER: GroupTier[] = ['yellow', 'green', 'blue', 'purple']
 
@@ -34,6 +35,8 @@ export function ResultModal({ puzzle, gameState, isOpen, onClose }: ResultModalP
     return () => { document.body.style.overflow = prev }
   }, [isOpen])
 
+  const panelRef = useModalFocus<HTMLDivElement>(isOpen)
+
   if (!isOpen) return null
 
   // Sort groups in canonical tier order for the reveal
@@ -57,6 +60,8 @@ export function ResultModal({ puzzle, gameState, isOpen, onClose }: ResultModalP
 
       {/* Panel */}
       <div
+        ref={panelRef}
+        tabIndex={-1}
         role="dialog"
         aria-modal="true"
         aria-labelledby="result-modal-title"
@@ -65,6 +70,7 @@ export function ResultModal({ puzzle, gameState, isOpen, onClose }: ResultModalP
           'sm:rounded-xl rounded-t-2xl',
           'max-h-[92dvh] overflow-y-auto',
           'animate-modal-rise',
+          'outline-none',
         ].join(' ')}
         style={{ padding: '1.5rem' }}
       >

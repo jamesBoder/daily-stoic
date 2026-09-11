@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"database/sql"
+	"errors"
 	"time"
 
 	"github.com/jamesBoder/daily-stoic/internal/models"
@@ -44,6 +46,10 @@ func (r *AIUsageRepository) TryConsume(userID uint) (allowed bool, remaining int
 	if scanErr := row.Scan(&newCount); scanErr == nil {
 		// Row existed and was under the limit — increment succeeded.
 		return true, FreeQuestionLimit - newCount, nil
+	} else if !errors.Is(scanErr, sql.ErrNoRows) {
+		// A genuine DB/connection error, not "no row matched" — surface it
+		// instead of silently reporting the user as having hit their limit.
+		return false, 0, scanErr
 	}
 
 	// Step 2: row didn't exist yet — try to insert (first question today).
@@ -57,6 +63,8 @@ func (r *AIUsageRepository) TryConsume(userID uint) (allowed bool, remaining int
 	if scanErr := insertRow.Scan(&newCount); scanErr == nil {
 		// First question today — inserted successfully.
 		return true, FreeQuestionLimit - newCount, nil
+	} else if !errors.Is(scanErr, sql.ErrNoRows) {
+		return false, 0, scanErr
 	}
 
 	// Both UPDATE and INSERT returned nothing: the row exists with count >= limit.

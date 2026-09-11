@@ -77,7 +77,7 @@ export function ShareBlock({ attempts, puzzle }: ShareBlockProps) {
             copyState === 'copied'
               ? 'border-[var(--color-tier-4-border)] text-[var(--color-tier-4)]'
               : copyState === 'failed'
-                ? 'border-[var(--color-danger,#ef4444)] text-[var(--color-danger,#ef4444)]'
+                ? 'border-danger text-danger'
                 : 'border-[var(--color-game-border)] text-[var(--color-game-fg-dim)] hover:border-[var(--color-game-fg-dim)] hover:text-[var(--color-game-fg-muted)]',
           ].join(' ')}
         >

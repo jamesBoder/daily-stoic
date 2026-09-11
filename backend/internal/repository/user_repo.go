@@ -58,8 +58,11 @@ func (r *userRepository) GetByID(id uint) (*models.User, error) {
 func (r *userRepository) GetByEmail(email string) (*models.User, error) {
 	var user models.User
 	err := r.db.Where("email = ?", email).First(&user).Error
-	if err == gorm.ErrRecordNotFound {
-		return nil, errors.New("user not found")
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, err
 	}
 	return &user, nil
 }
@@ -67,8 +70,11 @@ func (r *userRepository) GetByEmail(email string) (*models.User, error) {
 func (r *userRepository) GetByUsername(username string) (*models.User, error) {
 	var user models.User
 	err := r.db.Where("username = ?", username).First(&user).Error
-	if err == gorm.ErrRecordNotFound {
-		return nil, errors.New("user not found")
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, err
 	}
 	return &user, nil
 }

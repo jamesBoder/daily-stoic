@@ -10,7 +10,10 @@ export const InstallBanner = () => {
   if (!canInstall || dismissed) return null
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[9999] w-[calc(100%-2rem)] max-w-sm animate-modal-rise">
+    <div
+      className="fixed left-1/2 -translate-x-1/2 z-[9999] w-[calc(100%-2rem)] max-w-sm animate-modal-rise
+                 bottom-[calc(4.5rem+env(safe-area-inset-bottom))] md:bottom-4"
+    >
       <div
         className="flex items-center gap-3 rounded-card border px-4 py-3"
         style={{
@@ -25,8 +28,8 @@ export const InstallBanner = () => {
           <p className="font-sans text-xs text-fg-muted">Install DailyXam for quick access</p>
         </div>
         <button
-          onClick={() => { install() }}
-          className="shrink-0 px-3 py-1.5 rounded font-sans text-xs font-semibold
+          onClick={() => { install().catch(() => {}) }}
+          className="shrink-0 min-h-[44px] px-4 rounded font-sans text-xs font-semibold
                      bg-accent text-accent-text hover:bg-accent-dark transition-colors"
         >
           Install
@@ -34,7 +37,7 @@ export const InstallBanner = () => {
         <button
           onClick={() => { localStorage.setItem(DISMISSED_KEY, '1'); setDismissed(true) }}
           aria-label="Dismiss"
-          className="shrink-0 text-fg-muted hover:text-fg text-lg leading-none transition-colors"
+          className="shrink-0 w-11 h-11 flex items-center justify-center text-fg-muted hover:text-fg text-lg leading-none transition-colors"
         >
           ×
         </button>

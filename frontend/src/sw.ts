@@ -85,11 +85,13 @@ registerRoute(
 // ── Push notifications ────────────────────────────────────────────────────────
 self.addEventListener('push', (event: PushEvent) => {
   if (!event.data) return
-  const data = event.data.json() as {
-    title?: string
-    body?: string
-    icon?: string
-    url?: string
+  let data: { title?: string; body?: string; icon?: string; url?: string }
+  try {
+    data = event.data.json()
+  } catch {
+    // Malformed/non-JSON payload — fall back to a generic notification
+    // instead of throwing synchronously out of the push handler.
+    data = {}
   }
   event.waitUntil(
     self.registration.showNotification(data.title ?? 'DailyXam', {

@@ -39,7 +39,9 @@ export function CardGridSkeleton() {
 
 export function CardGrid({ puzzle, gameState, onTap, onInsight, lastWrongCardIds, gameOver = false }: CardGridProps) {
   const [shakingIds, setShakingIds] = useState<Set<number>>(new Set())
-  const prevWrongKey = useRef('')
+  // Seeded from the incoming prop (not '') so a restored session whose last
+  // attempt was wrong doesn't spuriously shake the cards on mount.
+  const prevWrongKey = useRef(lastWrongCardIds.length > 0 ? [...lastWrongCardIds].sort().join(',') : '')
   const shakeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {

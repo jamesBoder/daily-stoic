@@ -36,10 +36,18 @@ export const useInstallPrompt = () => {
 
   const install = async () => {
     if (!promptEvent) return false
-    await promptEvent.prompt()
-    const { outcome } = await promptEvent.userChoice
-    if (outcome === 'accepted') setPromptEvent(null)
-    return outcome === 'accepted'
+    try {
+      await promptEvent.prompt()
+      const { outcome } = await promptEvent.userChoice
+      return outcome === 'accepted'
+    } catch {
+      return false
+    } finally {
+      // A BeforeInstallPromptEvent can only be prompted once, regardless of
+      // outcome — clear it either way so a second tap doesn't re-invoke a
+      // used-up event (which browsers reject/throw).
+      setPromptEvent(null)
+    }
   }
 
   return {

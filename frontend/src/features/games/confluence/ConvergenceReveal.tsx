@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { ConfluenceGroup } from '../../../types/confluence'
 import { useAuth } from '../../../hooks/useAuth'
+import { useModalFocus } from '../../../hooks/useModalFocus'
 import { TRADITION_COLORS } from '../../traditions/constants'
 
 type RevealPhase = 'hidden' | 'backdrop' | 'drift' | 'pulse' | 'merge' | 'text' | 'actions'
@@ -42,6 +43,9 @@ interface Props {
 export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
   const [phase, setPhase] = useState<RevealPhase>('hidden')
   const { isAuthenticated } = useAuth()
+  const [reducedMotion] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  )
 
   // Drive the animation sequence
   useEffect(() => {
@@ -49,7 +53,7 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
       setPhase('hidden')
       return
     }
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (reducedMotion) {
       setPhase('actions')
       return
     }
@@ -62,7 +66,7 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
       setTimeout(() => setPhase('actions'), 2800),
     ]
     return () => timers.forEach(clearTimeout)
-  }, [isOpen, group])
+  }, [isOpen, group, reducedMotion])
 
   // ESC only works once actions are visible
   useEffect(() => {
@@ -81,6 +85,12 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
     document.body.style.overflow = 'hidden'
     return () => { document.body.style.overflow = prev }
   }, [isOpen])
+
+  // The panel isn't actually mounted until `phase` leaves 'hidden' (see the
+  // early return below), so gate focus-move on that rather than `isOpen`
+  // alone — otherwise the effect would fire while panelRef.current is still
+  // null and focus would never actually move into the dialog.
+  const panelRef = useModalFocus<HTMLDivElement>(isOpen && phase !== 'hidden')
 
   if (!isOpen || !group || phase === 'hidden') return null
 
@@ -107,7 +117,14 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
       />
 
       {/* Central panel */}
-      <div className="relative z-10 text-center w-full max-w-sm">
+      <div
+        ref={panelRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="convergence-reveal-title"
+        className="relative z-10 text-center w-full max-w-sm outline-none"
+      >
 
         {/* The 4 concept mini-cards */}
         <div className="flex justify-center gap-2.5 mb-10">
@@ -117,6 +134,11 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
             const tradColor   = TRADITION_COLORS[slug]?.dark ?? 'var(--color-game-fg-muted)'
             const borderColor = merged ? PURPLE_COLOR : tradColor
             const sigilColor  = merged ? PURPLE_COLOR : tradColor
+            // Reduced motion: skip the drift/pulse keyframe animations and the
+            // color/shadow transitions entirely rather than just compressing
+            // the timeline (phase still jumps straight to 'actions' above).
+            const driftClass = !showDrift ? 'opacity-0' : reducedMotion ? 'opacity-100' : 'animate-convergence-drift'
+            const pulseClass = isPulsing && !reducedMotion ? 'animate-border-pulse' : ''
 
             return (
               <div
@@ -124,17 +146,20 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
                 className={[
                   'w-[3.25rem] rounded-lg border-2 flex flex-col items-center justify-center py-3 gap-1',
                   'bg-[var(--color-game-surface)]',
-                  showDrift ? 'animate-convergence-drift' : 'opacity-0',
-                  isPulsing ? 'animate-border-pulse' : '',
+                  driftClass,
+                  pulseClass,
                 ].filter(Boolean).join(' ')}
                 style={{
                   borderColor,
                   boxShadow: merged ? PURPLE_GLOW : undefined,
-                  animationDelay: showDrift ? `${i * 70}ms` : undefined,
-                  transition: 'border-color 0.6s ease, box-shadow 0.6s ease',
+                  animationDelay: showDrift && !reducedMotion ? `${i * 70}ms` : undefined,
+                  transition: reducedMotion ? undefined : 'border-color 0.6s ease, box-shadow 0.6s ease',
                 }}
               >
-                <span className="text-lg leading-none" style={{ color: sigilColor, transition: 'color 0.6s ease' }}>
+                <span
+                  className="text-lg leading-none"
+                  style={{ color: sigilColor, transition: reducedMotion ? undefined : 'color 0.6s ease' }}
+                >
                   {cfg.sigil}
                 </span>
                 <p className="font-serif text-[7px] text-[var(--color-game-fg-muted)] italic px-1 text-center leading-tight line-clamp-3">
@@ -150,7 +175,7 @@ export function ConvergenceReveal({ group, isOpen, onClose }: Props) {
           className="transition-opacity duration-700"
           style={{ opacity: showText ? 1 : 0 }}
         >
-          <p className="font-display text-[10px] tracking-widest uppercase text-[var(--color-tier-4)] mb-2">
+          <p id="convergence-reveal-title" className="font-display text-[10px] tracking-widest uppercase text-[var(--color-tier-4)] mb-2">
             {group.label}
           </p>
           <div className="w-8 h-px bg-[var(--color-tier-4-border)] mx-auto mb-5" />

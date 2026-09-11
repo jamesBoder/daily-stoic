@@ -28,8 +28,10 @@ export function ActionBar({
   const [shakeSubmit, setShakeSubmit] = useState(false)
   const shakeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const prevWrongCount = useRef(0)
-  const prevOneAwayCount = useRef(0)
+  // Seeded from the incoming props (not 0) so a restored session with
+  // existing wrong guesses doesn't spuriously show a toast on mount.
+  const prevWrongCount = useRef(wrongCount)
+  const prevOneAwayCount = useRef(oneAwayCount)
 
   useEffect(() => {
     if (wrongCount > prevWrongCount.current) {

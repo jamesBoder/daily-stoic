@@ -105,8 +105,19 @@ function serializeGameState(s: LocalGameState) {
   })
 }
 
-function deserializeGameState(raw: string): LocalGameState {
+function deserializeGameState(raw: string): LocalGameState | null {
   const parsed = JSON.parse(raw)
+  if (
+    !parsed || typeof parsed !== 'object' ||
+    typeof parsed.puzzleId !== 'number' ||
+    !Array.isArray(parsed.foundGroupIds) ||
+    !Array.isArray(parsed.foundGroups) ||
+    !Array.isArray(parsed.attempts) ||
+    typeof parsed.attemptsRemaining !== 'number' ||
+    typeof parsed.status !== 'string'
+  ) {
+    return null
+  }
   return {
     ...parsed,
     selectedCardIds: new Set(),  // always reset selection on restore
@@ -163,14 +174,19 @@ export function useConfluence() {
   // Restore anonymous session from localStorage
   useEffect(() => {
     if (!isAuthenticated && puzzle) {
-      const raw = localStorage.getItem(`confluence_session_${puzzle.id}`)
+      const key = `confluence_session_${puzzle.id}`
+      const raw = localStorage.getItem(key)
       if (raw) {
         try {
           const saved = deserializeGameState(raw)
-          if (saved.status === 'in_progress') {
+          if (!saved) {
+            localStorage.removeItem(key)
+          } else if (saved.status === 'in_progress') {
             dispatch({ type: 'RESTORE_LOCAL', state: saved })
           }
-        } catch { /* corrupt data — ignore */ }
+        } catch {
+          localStorage.removeItem(key)  // corrupt data — clear it
+        }
       }
     }
   }, [puzzle?.id, isAuthenticated])
@@ -222,7 +238,15 @@ export function useConfluence() {
       if (result.correct) {
         const group = puzzle!.groups.find(
           g => g.tier === result.tier && !gameState.foundGroupIds.includes(g.id)
-        )!
+        )
+        if (!group) {
+          // Server says correct but no matching unfound group exists locally —
+          // stale/inconsistent client state. Resync from the server instead of
+          // dispatching an undefined group into the reducer.
+          console.error('confluence: correct guess result did not match any local group', result)
+          queryClient.invalidateQueries({ queryKey: ['confluence', 'session', puzzle?.id] })
+          return
+        }
         dispatch({ type: 'GUESS_CORRECT', group, result })
         if (result.session_status === 'complete' || result.session_status === 'failed') {
           queryClient.invalidateQueries({ queryKey: ['library'] })

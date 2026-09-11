@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
 	webpush "github.com/SherClockHolmes/webpush-go"
 	"github.com/jamesBoder/daily-stoic/internal/models"
@@ -14,10 +15,16 @@ type PushService struct {
 	publicKey  string
 	privateKey string
 	subject    string
+	httpClient *http.Client
 }
 
 func NewPushService(publicKey, privateKey, subject string) *PushService {
-	return &PushService{publicKey: publicKey, privateKey: privateKey, subject: subject}
+	return &PushService{
+		publicKey:  publicKey,
+		privateKey: privateKey,
+		subject:    subject,
+		httpClient: &http.Client{Timeout: 10 * time.Second},
+	}
 }
 
 func (s *PushService) Enabled() bool {
@@ -46,6 +53,7 @@ func (s *PushService) send(sub models.PushSubscription, p pushPayload) (expired 
 			P256dh: sub.P256DH,
 		},
 	}, &webpush.Options{
+		HTTPClient:      s.httpClient,
 		Subscriber:      s.subject,
 		VAPIDPublicKey:  s.publicKey,
 		VAPIDPrivateKey: s.privateKey,
@@ -69,8 +77,8 @@ func (s *PushService) SendDailyQuote(subs []models.PushSubscription, quote *mode
 	}
 	// “ = " (left double quotation mark), ” = " (right), — = em dash
 	body := fmt.Sprintf("“%s” — %s", quote.Text, quote.Author.Name)
-	if len(body) > 140 {
-		body = body[:137] + "…"
+	if runes := []rune(body); len(runes) > 140 {
+		body = string(runes[:137]) + "…"
 	}
 	p := pushPayload{
 		Title: "DailyXam",
