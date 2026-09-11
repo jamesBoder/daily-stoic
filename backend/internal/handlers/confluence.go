@@ -1,12 +1,14 @@
 package handlers
 
 import (
+	"errors"
 	"net/http"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jamesBoder/daily-stoic/internal/models"
 	"github.com/jamesBoder/daily-stoic/internal/services"
+	"gorm.io/gorm"
 )
 
 type ConfluenceHandler struct {
@@ -21,7 +23,11 @@ func NewConfluenceHandler(svc *services.ConfluenceService) *ConfluenceHandler {
 func (h *ConfluenceHandler) GetToday(c *gin.Context) {
 	puzzle, err := h.svc.GetTodayPuzzle()
 	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "no puzzle available for today"})
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			c.JSON(http.StatusNotFound, gin.H{"error": "no puzzle available for today"})
+			return
+		}
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to load puzzle"})
 		return
 	}
 	c.JSON(http.StatusOK, stripTeachings(puzzle))
@@ -36,7 +42,11 @@ func (h *ConfluenceHandler) GetByDate(c *gin.Context) {
 	}
 	puzzle, err := h.svc.GetPuzzleByDate(date)
 	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "no puzzle for that date"})
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			c.JSON(http.StatusNotFound, gin.H{"error": "no puzzle for that date"})
+			return
+		}
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to load puzzle"})
 		return
 	}
 	c.JSON(http.StatusOK, stripTeachings(puzzle))

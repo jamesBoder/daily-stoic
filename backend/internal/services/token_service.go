@@ -62,7 +62,7 @@ func (tc *TokenService) ValidateToken(tokenString string) (*TokenClaims, error) 
 
 	token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (interface{}, error) {
 		return []byte(tc.config.JWTSecret), nil
-	})
+	}, jwt.WithValidMethods([]string{jwt.SigningMethodHS256.Alg()}))
 
 	if err != nil {
 		return nil, err

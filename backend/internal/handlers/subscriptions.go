@@ -87,8 +87,12 @@ func (h *SubscriptionHandler) CreateCheckout(c *gin.Context) {
 // POST /api/subscription/webhook
 // Stripe calls this endpoint. Raw body must be read before any parsing.
 // Always returns HTTP 200 — Stripe retries on any non-200.
+// stripeWebhookMaxBytes caps the webhook body Stripe can send us; their
+// payloads are well under this (a few KB), so this only guards against abuse.
+const stripeWebhookMaxBytes = 1 << 20 // 1MB
+
 func (h *SubscriptionHandler) HandleWebhook(c *gin.Context) {
-	payload, err := io.ReadAll(c.Request.Body)
+	payload, err := io.ReadAll(http.MaxBytesReader(c.Writer, c.Request.Body, stripeWebhookMaxBytes))
 	if err != nil {
 		// Return 200 anyway — a read error on our side shouldn't cause Stripe to retry
 		c.Status(http.StatusOK)

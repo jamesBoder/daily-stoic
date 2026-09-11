@@ -93,7 +93,9 @@ func (r *favoriteRepository) SearchFavorites(userID uint, query string, limit, o
 		db = db.Where("quotes.text ILIKE ? OR quotes.source ILIKE ?", searchPattern, searchPattern)
 	}
 
-	db.Model(&models.Favorite{}).Count(&total)
+	if err := db.Model(&models.Favorite{}).Count(&total).Error; err != nil {
+		return nil, 0, err
+	}
 
 	err := db.Preload("Quote").Preload("Quote.Author").Preload("Quote.Tradition").
 		Order("favorites.created_at DESC").

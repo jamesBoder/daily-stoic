@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom'
 import { useEffect, useRef } from 'react'
 import type { ConfluenceCard } from '../../../types/confluence'
+import { useModalFocus } from '../../../hooks/useModalFocus'
 
 interface Props {
   card: ConfluenceCard
@@ -26,13 +27,21 @@ export function ConceptInsightDrawer({ card, onClose }: Props) {
     return () => document.removeEventListener('keydown', handler)
   }, [onClose])
 
+  // Drawer is mounted only while open, so focus moves in immediately and
+  // returns to the trigger element on unmount.
+  const panelRef = useModalFocus<HTMLDivElement>(true)
+
   // Swipe-to-dismiss
   const touchStartY = useRef(0)
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartY.current = e.touches[0].clientY
   }
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (e.touches[0].clientY - touchStartY.current > 80) onClose()
+    const deltaY = e.touches[0].clientY - touchStartY.current
+    // Only dismiss on a downward drag when the panel is already scrolled to
+    // the top — otherwise this fires while the user is scrolling long codex
+    // content back upward.
+    if (deltaY > 80 && e.currentTarget.scrollTop <= 0) onClose()
   }
 
   const content = (
@@ -42,10 +51,12 @@ export function ConceptInsightDrawer({ card, onClose }: Props) {
       onClick={onClose}
     >
       {/* Scrim — semi-transparent so the game remains visible */}
-      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.45)' }} />
+      <div className="absolute inset-0" style={{ backgroundColor: 'var(--color-game-overlay-bg)' }} />
 
       {/* Panel */}
       <div
+        ref={panelRef}
+        tabIndex={-1}
         role="dialog"
         aria-modal="true"
         aria-labelledby="insight-drawer-title"
@@ -56,6 +67,7 @@ export function ConceptInsightDrawer({ card, onClose }: Props) {
           'overflow-y-auto',
           'border-t border-x border-[var(--color-game-border)] sm:border',
           'animate-modal-rise',
+          'outline-none',
         ].join(' ')}
         style={{ background: 'var(--color-game-surface)' }}
         onClick={e => e.stopPropagation()}
@@ -133,6 +145,23 @@ export function ConceptInsightDrawer({ card, onClose }: Props) {
                       style={{ color: 'var(--color-game-fg-muted)' }}
                     >
                       {concept.codex_echoes}
+                    </p>
+                  </div>
+                )}
+
+                {concept.codex_practice && (
+                  <div className="mb-4">
+                    <p
+                      className="font-display text-[10px] tracking-widest uppercase mb-2"
+                      style={{ color: 'var(--color-game-fg-dim)' }}
+                    >
+                      Practice
+                    </p>
+                    <p
+                      className="font-sans text-sm leading-relaxed"
+                      style={{ color: 'var(--color-game-fg-muted)' }}
+                    >
+                      {concept.codex_practice}
                     </p>
                   </div>
                 )}

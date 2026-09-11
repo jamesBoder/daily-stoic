@@ -1,6 +1,8 @@
 package routes
 
 import (
+	"time"
+
 	"github.com/gin-gonic/gin"
 	"github.com/jamesBoder/daily-stoic/internal/handlers"
 	"github.com/jamesBoder/daily-stoic/internal/middleware"
@@ -30,18 +32,25 @@ func SetupRoutes(
 	authMW := middleware.AuthMiddleware(tokenService, subscriptionRepo)
 	optionalAuthMW := middleware.OptionalAuthMiddleware(tokenService, subscriptionRepo)
 
+	// Sensitive-endpoint rate limiters — per-IP, to blunt credential-stuffing
+	// and mail-bombing abuse. Each POST route gets its own limiter instance.
+	loginLimiter := middleware.RateLimit(10, time.Minute)
+	registerLimiter := middleware.RateLimit(5, time.Minute)
+	forgotPasswordLimiter := middleware.RateLimit(5, 10*time.Minute)
+	resendVerificationLimiter := middleware.RateLimit(5, 10*time.Minute)
+
 	api := r.Group("/api")
 
 	// Auth
 	auth := api.Group("/auth")
 	{
-		auth.POST("/register", authHandler.Register)
-		auth.POST("/login", authHandler.Login)
+		auth.POST("/register", registerLimiter, authHandler.Register)
+		auth.POST("/login", loginLimiter, authHandler.Login)
 		auth.POST("/logout", authHandler.Logout)
 		auth.GET("/me", authMW, authHandler.GetMe)
 		auth.POST("/verify-email", authHandler.VerifyEmail)
-		auth.POST("/resend-verification", authHandler.ResendVerification)
-		auth.POST("/forgot-password", authHandler.ForgotPassword)
+		auth.POST("/resend-verification", resendVerificationLimiter, authHandler.ResendVerification)
+		auth.POST("/forgot-password", forgotPasswordLimiter, authHandler.ForgotPassword)
 		auth.POST("/reset-password", authHandler.ResetPassword)
 		auth.GET("/google/login", oauthHandler.GoogleLogin)
 		auth.GET("/google/callback", oauthHandler.GoogleCallback)

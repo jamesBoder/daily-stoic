@@ -42,8 +42,23 @@ export function ConfluencePage() {
   // ── Convergence Reveal (purple group) ────────────────────────────
   const [convergenceGroup, setConvergenceGroup] = useState<ConfluenceGroup | null>(null)
   const prevGroupCountRef = useRef(0)
+  const prevGameOverRef = useRef(false)
+  const hasSyncedRef = useRef(false)
+
+  // Seed the "previous" trackers once the session finishes loading/restoring,
+  // so the effects below only react to genuinely NEW events during this page
+  // visit — not to groups/completion that already existed on a restored session
+  // (otherwise reloading an in-progress or finished puzzle would spuriously
+  // replay the convergence reveal / re-open the result modal on mount).
+  useEffect(() => {
+    if (isSessionLoading || hasSyncedRef.current) return
+    hasSyncedRef.current = true
+    prevGroupCountRef.current = gameState.foundGroupIds.length
+    prevGameOverRef.current = gameState.status === 'complete' || gameState.status === 'failed'
+  }, [isSessionLoading, gameState.foundGroupIds.length, gameState.status])
 
   useEffect(() => {
+    if (!hasSyncedRef.current) return
     const count = gameState.foundGroupIds.length
     if (count > prevGroupCountRef.current) {
       const added = count - prevGroupCountRef.current
@@ -57,13 +72,19 @@ export function ConfluencePage() {
           setInsightCardId(null)
         }
       }
+    } else {
+      prevGroupCountRef.current = count
     }
   }, [gameState.foundGroupIds, gameState.foundGroups])
 
-  // Auto-open ResultModal after game ends
+  // Auto-open ResultModal only when the game transitions to over during this
+  // visit — not when a restored session was already complete/failed on load.
   useEffect(() => {
+    if (!hasSyncedRef.current) return
     const gameOver = gameState.status === 'complete' || gameState.status === 'failed'
-    if (!gameOver) return
+    const wasGameOver = prevGameOverRef.current
+    prevGameOverRef.current = gameOver
+    if (!gameOver || wasGameOver) return
     if (convergenceGroup) return
     const delay = gameState.status === 'complete' ? 1200 : 400
     const t = setTimeout(() => {
